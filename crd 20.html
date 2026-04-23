@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Completely Randomised Design</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="crd 20_files/libs/clipboard/clipboard.min.js"></script>
+<script src="crd 20_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="crd 20_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="crd 20_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="crd 20_files/libs/quarto-html/popper.min.js"></script>
+<script src="crd 20_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="crd 20_files/libs/quarto-html/anchor.min.js"></script>
+<link href="crd 20_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="crd 20_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="crd 20_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="crd 20_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="crd 20_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="crd 20_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="crd 20_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="crd 20_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="sty.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>TABLE OF CONTENTS</strong></h2>
+   
+  <ul>
+  <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Analysis of experiments</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Completely Randomized Design (CRD)</a></li>
+  <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
+  <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> CRD analysis tab explained</a></li>
+  <li><a href="#sec-6" id="toc-sec-6" class="nav-link" data-scroll-target="#sec-6"><span class="header-section-number">6</span> Transformation</a></li>
+  <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">7</span> Analysis results</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-100" id="toc-interpretation-from-fig-100" class="nav-link" data-scroll-target="#interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from Figure&nbsp;7</a></li>
+  <li><a href="#interpretation-from-fig-101" id="toc-interpretation-from-fig-101" class="nav-link" data-scroll-target="#interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from Figure&nbsp;8</a></li>
+  </ul></li>
+  <li><a href="#sec-8" id="toc-sec-8" class="nav-link" data-scroll-target="#sec-8"><span class="header-section-number">8</span> Multiple comparison tests</a></li>
+  <li><a href="#SUM" id="toc-SUM" class="nav-link" data-scroll-target="#SUM"><span class="header-section-number">9</span> Summary stats</a>
+  <ul class="collapse">
+  <li><a href="#interpretations-from-fig-102" id="toc-interpretations-from-fig-102" class="nav-link" data-scroll-target="#interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from Figure&nbsp;10</a></li>
+  </ul></li>
+  <li><a href="#IA" id="toc-IA" class="nav-link" data-scroll-target="#IA"><span class="header-section-number">10</span> Individual ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-104" id="toc-interpretation-from-fig-104" class="nav-link" data-scroll-target="#interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from Figure&nbsp;11</a></li>
+  <li><a href="#interpretation-from-fig-103" id="toc-interpretation-from-fig-103" class="nav-link" data-scroll-target="#interpretation-from-fig-103"><span class="header-section-number">10.2</span> Interpretation from Figure&nbsp;12</a></li>
+  </ul></li>
+  <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">11</span> Basic plots</a>
+  <ul class="collapse">
+  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</a></li>
+  </ul></li>
+  <li><a href="#AP" id="toc-AP" class="nav-link" data-scroll-target="#AP"><span class="header-section-number">12</span> Advanced plots</a></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">13</span> AI interpretation</a></li>
+  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">14</span> Multivariate</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">15</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">16</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">18</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">19</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">20</span> View data</a></li>
+  <li><a href="#ra-one" id="toc-ra-one" class="nav-link" data-scroll-target="#ra-one"><span class="header-section-number">21</span> RA-One</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Completely Randomised Design</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;  /* smaller superscript */
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;  /* one size smaller than normal */
+   margin-top: 0.2em;
+ }
+</style>
+<div class="affiliations">
+<p><sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
+</div>
+<p>ABSTRACT</p>
+<div style="text-align: justify;">
+<p>Completely Randomized Design <strong>(CRD)</strong> is a basic experimental design for comparing treatments under homogeneous conditions. CRD assigns treatments randomly to experimental units, such as field plots or plants, ensuring each unit has an equal chance of receiving any treatment. In <strong>RAISINS</strong> you can perform CRD very easily without writing a single line of code. This tutorial will guide you, how to perform CRD very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
+</div>
+<details>
+<p><em>Hover or click each point to see more information.</em></p>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Introduction Completely Randomized Design
+</summary>
+<style>
+/* container */
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+
+/* image popup */
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;              /* below the text */
+  transform: translateX(-50%);
+  width: 260px;            /* change size */
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+
+/* show on hover */
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+<!--   In the **1920s**, statistician -->
+<!--   <span class="hover-img"> -->
+<!--     <strong>Ronald A. Fisher</strong> -->
+<!--     <img src="www/fisher.webp" alt="Preview"> -->
+<!--   </span> -->
+<!--   introduced modern statistical theory. He made significant contributions to the -->
+<!--   **Completely Randomized Design (CRD)** and enabled reliable statistical analysis using -->
+<!--   **ANOVA**. -->
+<!-- <ul> <small> In the **1920s**, statistician <span class="hover-img">[**Ronald A. Fisher**] -->
+<!--   <img src="www/fisher.webp" alt="Preview"></span> introduced modern statistical theory. He made significant contributions to the development of the **Completely Randomized Design (CRD)**, which was first used in the early 20th century. Fisher developed this design to enhance agricultural studies, particularly to identify subtle yet significant variations in crop yields under various fertilizer treatments. His novel approach was to **prevent bias** and enable reliable **statistical analysis** through analysis of variance **(ANOVA)** by randomly assigning treatments to experimental units (like land plots). </small></ul>  -->
+<ul>
+<small> In the <strong>1920s</strong>, statistician <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> introduced modern statistical theory. He made significant contributions to the development of the <strong>Completely Randomized Design (CRD)</strong>, which was first used in the early 20th century. Fisher developed this design to enhance agricultural studies, particularly to identify subtle yet significant variations in crop yields under various fertilizer treatments. His novel approach was to <strong>prevent bias</strong> and enable reliable <strong>statistical analysis</strong> through analysis of variance <strong>(ANOVA)</strong> by randomly assigning treatments to experimental units (like land plots). </small>
+</ul>
+</details>
+<section id="AE" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
+<div style="text-align: justify;">
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different single-factor experimental designs. In this tutorial, we focus on <strong>Completely Randomized Design (CRD)</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+</div>
+<div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/intro.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/intro.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Analysis of experiment tab
+</figcaption>
+</figure>
+</div>
+<!-- our code -->
+<!-- To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page, go to Analysis of experiments. Here, you can see different single-factor experimental designs. Select the design you want for analysis.In this tutorial, we will focus on Completely Randomized Design (CRD), as shown in  @fig-aov. -->
+<!-- ![Figure 1: Analysis of experiment tab](www/CRD_1.webp){#fig-aov fig-align="center"} -->
+</section>
+<section id="C" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Completely Randomized Design (CRD)</h2>
+<div style="text-align: justify;">
+<p>A Completely Randomized Design (CRD) is the simplest and most fundamental experimental design used in statistics, where all experimental units are randomly assigned to different treatment levels of a single factor, without any blocking or grouping. CRD is used in controlled settings like lab experiments, greenhouse trials, chemical assays, or biological studies where external variability is low and blocking is unnecessary. It excels in simplicity, providing maximum error degrees of freedom for efficiency with small samples, but unsuitable for heterogeneous field conditions; in such cases, a Randomized Block Design (RBD) is more appropriate.</p>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  CRD Layout
+</summary>
+<ul>
+<p><small></small></p><small>
+</small><p><small><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents a Completely Randomized Design (CRD) arrangement with four treatments labeled as A, B, C, and D arranged randomly across experimental units.Each square block corresponds to one experimental unit or plot where a treatment is applied.Letters A, B, C, and D represent the four different treatment groups applied to the experimental units randomly and replicated three times.The randomized arrangement inside the grid (3 rows and 4 columns) exemplifies the core principle of CRD, where treatments are assigned entirely at random without restrictions or blocking.The layout shows no pattern by row or column, confirming random allocation, which helps to ensure that uncontrolled variability is minimized by chance.</small></p>
+<div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/layweB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: CRD Layout"><img src="www/layweB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: CRD Layout
+</figcaption>
+</figure>
+</div>
+</ul>
+</details>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Completely Randomized Design (CRD) is a fundamental statistical experimental design where treatments are assigned to experimental units entirely at random, with each unit having an equal probability of receiving any treatment.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="W" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
+<div style="text-align: justify;">
+<p>To make things simple and interesting, we’ll explain CRD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters.Let’s assume the experiment is conducted in a field. Consider a dataset containing 10 treatments, each representing a distinct mango variety, with three replicates per variety. The treatments(varieties) are named as follows Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay_g, Langra, and Totapuri. Observations were recorded for four variables: <strong>yield, Obs1, Obs2, and FW</strong>.Our aim is to test whether treatments produce statistically significant differences in the response variable using ANOVA. The treatments are evaluated for each variables. The arrangement of the data is shown in the <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a> .</p>
+</div>
+<div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/Mangodata.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/Mangodata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Example dataset
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the varieties, and the Variables are the four traits mentioned earlier - <strong>yield, Obs1, Obs2, and FW</strong>.</p>
+</div>
+</section>
+<section id="sec-4" class="level2 H" data-number="4">
+<h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
+<div style="text-align: justify;">
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. Make sure no blank rows are left above, and all columns have proper names. That’s it - your file is ready to upload.</p>
+<p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a> .</p>
+<p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
+<p>Creating dataset in MS Excel</p>
+<p>Creating your dataset directly within the <strong>RAISINS</strong> app</p>
+</div>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/CREATEDAT.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Illustrating how to create a dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="AO" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> CRD analysis tab explained</h2>
+<div style="text-align: justify;">
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a> , you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every settings, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the <code>Analysis</code> tab. When the file is uploaded, options to select the Treatment and variables will appear. Select the appropriate column under treatments and variables. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly leaving no room for confusion.</p>
+</div>
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/sstabs.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="www/sstabs.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Analysis window explained
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>For some data, when there are large number of zeros/ discrete values/ when the observed variables are not normally distributed, we need to do transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>) . Here, <strong>RAISINS</strong> provide inbuilt transformation option.</p>
+</div>
+</section>
+<section id="sec-6" class="level2 T" data-number="6">
+<h2 class="T anchored" data-number="6" data-anchor-id="sec-6"><span class="header-section-number">6</span> Transformation</h2>
+<div style="text-align: justify;">
+<p>Log, square root, and arcsine transformations are often used in CRD analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in <strong>RAISINS</strong> as shown in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>.</p>
+</div>
+<div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/trans.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/trans.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Transformation options
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p><strong>Logarithmic transformation</strong> is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.</p>
+<p><strong>Square root transformation</strong> is a statistical method used to stabilize variance and reduce right-skewness by replacing each data point (x) with its square root. It is primarily applied to non-negative, discrete “count” data such as those following a Poisson distribution, where the variance of the data tends to increase in proportion to the mean. By compressing the upper end of the scale more significantly than the lower end, this transformation brings the data closer to a normal distribution, satisfying the homoscedasticity requirements of many parametric statistical tests.</p>
+<p><strong>Arcsine transformation</strong> (also known as the angular transformation) is a mathematical technique specifically designed for data expressed as proportions or percentages bounded between 0 and 1. By taking the inverse sine of the square root of the proportion, this transformation stretches the ends of the distribution near 0 and 1, where variance is naturally small. It is primarily used to achieve homoscedasticity in binomial data.</p>
+</div>
+<blockquote class="blockquote">
+<p>After choosing the appropriate transformation proceed to <a href="#sec-7" class="quarto-xref">Section&nbsp;7</a> for analysis.</p>
+</blockquote>
+</section>
+<section id="sec-7" class="level2 AR" data-number="7">
+<h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
+<div style="text-align: justify;">
+<p>Once your dataset is uploaded, cick on <code>Run Analysis</code>, <strong>one-way ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> is a statistical technique used to test the significance of differences among population means by partitioning total variation into treatment and error components and comparing them using the F-test (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a> ).</p>
+</div>
+<p><strong>Table 1 ANOVA summary</strong></p>
+<div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/res1.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Treatment and Error Mean Square ANOVA"><img src="www/res1.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Treatment and Error Mean Square ANOVA
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> ANOVA table </summary>
+<p><small> In a Completely Randomised Design (CRD), the analysis of variance <strong>(ANOVA)</strong> is used to test whether there are significant differences among the treatment means. The test statistic-F, follows an F distribution with two degrees of freedom: the numerator degrees of freedom (k-1), where k is the number of treatments, and the denominator degrees of freedom (N-k), where N is the total number of experimental units. To check whether the null hypothesis (all treatment means are equal)can be rejected or not, the calculated F value from the ANOVA table is compared with the critical F value obtained from F distribution table based on the degrees of freedom and the chosen significance level (α).</small></p><small>
+<p>Significance is indicated by an asterisk ( * ) for the <strong>5%</strong> level and two asterisks (** ) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F stat in the table.</p>
+</small><p><small>If the computed F value exceeds the critical value, the null hypothesis is rejected, indicating that at least one treatment mean differs significantly from the others. However, ANOVA alone does not indicate which specific treatments differ. Therefore, if a significant difference is detected, multiple comparison tests such as Fisher’s LSD, Tukey’s HSD or DMRT are performed to make pairwise comparisons between treatments and identify precisely where the differences exist. </small></p>
+</details>
+<section id="interpretation-from-fig-100" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
+<div style="text-align: justify;">
+<p>The ANOVA result show that the treatment mean square (40376.08) is much larger than the error mean square (10632.08), producing F-ratio of approximately 3.79, with 9 degrees of freedom for treatment and 20 for error, this F-value is statistically significant at the 1% level. This indicates that the variation in yield among treatments is highly unlikely to be due to random chance, and the null hypothesis (no treatment effect) can be rejected.</p>
+<p>In practical terms, the treatments exerted a strong influence on yield performance, meaning that at least one treatment differs meaningfully from the others. The presence of such significant differences suggests that further post-hoc tests (such as Tukey’s HSD or LSD) would be appropriate to identify which specific treatments contributed to the observed variation.</p>
+<p><a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provide detailed information on the multiple comparison test (Post-hoc test).</p>
+</div>
+<p><strong>Table 2: Detailed tabular representation with multiple comparisons</strong></p>
+<div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/Result2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Detailed tabular representation with multiple comparisons"><img src="www/Result2.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Detailed tabular representation with multiple comparisons
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">Overview of ANOVA Results and Interpretation
+</summary>
+<p><small></small></p><small>
+<ol type="1">
+<li><em>Treatments and Response Variables</em></li>
+</ol>
+<p><strong>Treatments</strong>: The independent variable or specific category (e.g., mango variety) being tested to determine its influence on the results.</p>
+<p><strong>Response Variable</strong>: The dependent variable or specific measurement (e.g., weight or yield) recorded to evaluate the performance of the treatments.</p>
+<ol start="2" type="1">
+<li><em>Multiple Comparisons</em></li>
+</ol>
+<p><strong>Post-hoc Grouping</strong>: A method of using letters (a, b, c) to categorize means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.</p>
+<ol start="3" type="1">
+<li><em>ANOVA Summary</em></li>
+</ol>
+<p><strong>F stat</strong>: A numerical value that compares the variance between different groups to the variance within those groups; it determines if the overall differences are statistically significant.</p>
+<p><strong>p value</strong>: The probability that the observed differences occurred by random chance. A value typically indicates that the results are statistically significant.</p>
+<ol start="4" type="1">
+<li><em>Critical Difference (CD) and Error Estimates</em></li>
+</ol>
+<p><strong>Critical Difference (CD)</strong>: The minimum mathematical gap required between two means to declare them “significantly different” at a specific confidence level.</p>
+<p><strong>Standard Error (SE)</strong>: A measure of the accuracy of a sample mean compared to the true population mean; it indicates how much the mean might fluctuate.</p>
+<p><strong>Mean Square Error (MSE)</strong>: The average of the squared differences between observed values and the predicted mean; it represents the “noise” or unexplained error in the experiment.</p>
+<p><strong>Coefficient of Variation (CV%)</strong>: A percentage that shows the level of dispersion in the data. A lower CV indicates higher precision and reliability in the experimental measurements.</p>
+</small><p><small><strong>Cohen’s F</strong>: A standardized measure of effect size that describes the magnitude of the experimental effect, regardless of the sample size. </small></p>
+</details>
+</section>
+<section id="interpretation-from-fig-101" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;8</a></h3>
+<div style="text-align: justify;">
+<p>Treatments are then grouped using letters like <strong>“a”, “b”, “c”</strong>, etc., to indicate statistical similarity. Overlapping of grouping letters (e.g., <strong>ab</strong>/ <strong>bc</strong>) indicates that the absolute difference between treatment means is less than the critical difference at the chosen level of significance, implying statistical similarity <strong>(on par)</strong>. For example, if both Alphonso and Badami are labeled <strong>“a”</strong>, their yields are statistically similar at <strong>5%</strong> significance level. Treatments with no common letters (e.g., <strong>a and c</strong>) differ significantly, providing a clear visual summary of treatment comparisons.</p>
+<p>For characters exhibiting significant treatment effects, pairwise comparisons of treatment means were conducted using the Least Significant Difference (LSD) test. The LSD test provides the critical difference (CD) value, which was used to determine significant differences between pairs of treatment means. Based on these comparisons, letter groupings were assigned to each treatment and presented as superscripts. Treatments sharing at least one common letter within a character were considered not significantly different (statistically on par).</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>When a researcher uses Tukey’s HSD or DMRT, each pairwise comparison produces a different value because the differences between the group means are unique.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div style="text-align: justify;">
+<p>In our example for the character yield, Alphonso recorded the highest mean value (1423.92 ± 110.44), whereas Safeda exhibited the lowest mean (1061.19 ± 149.30). Alphonso was statistically at par with Badami, Chausa, Dasheri, and Totapuri, as indicated by common letter groupings, i.e you can see from Table 2. Similarly, Safeda was statistically at par with Bombay green, Himsagar, Kesar, and Langra.</p>
+<p>The Cohen’s f values in the table represent the effect size and quantify the magnitude of treatment effects. Values less than 0.10 indicate a very small effect, below 0.25 indicate a small effect, below 0.40 indicate a medium effect, and values of 0.40 or higher indicate a large effect. The observed effect size for yield should therefore be interpreted as substantial and biologically meaningful, confirming that treatment differences are not only statistically significant but also practically relevant to the study.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Cohen’s f is a measure of effect size.It tells you how strong or meaningful the treatment (variety) effect is, independent of sample size.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+</section>
+<section id="sec-8" class="level2 MCT" data-number="8">
+<h2 class="MCT anchored" data-number="8" data-anchor-id="sec-8"><span class="header-section-number">8</span> Multiple comparison tests</h2>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  What is Post-hoc test?
+</summary>
+<ul>
+<small> Post-hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA). It’s purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same.</small>
+</ul>
+</details>
+<div style="text-align: justify;">
+<p>After obtaining a significant F-value in ANOVA under CRD, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>).</p>
+</div>
+<div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/CUSRES.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/CUSRES.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Multiple comparison test options explained
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Post-hoc test </summary>
+<p><small></small></p><small>
+<p>When the ANOVA in a <strong>Completely Randomised Design (CRD)</strong> is significant, the following post hoc tests are commonly used for pairwise comparisons: Tukey’s Honestly Significant Difference (HSD) test, and Fisher’s Least Significant Difference (LSD) test. These tests help identify which specific treatment means differ from each other, addressing the limitation of ANOVA in not indicating the exact sources of variation.</p>
+<p><strong>LSD (Least Significant Difference) Test</strong></p>
+<p>The <strong>Least Significant Difference (LSD)</strong> test is a post-hoc statistical procedure used in the context of a Completely Randomized Design (CRD) to identify which specific treatment means differ significantly after a one-way ANOVA has indicated an overall significant effect. When the ANOVA F-test rejects the null hypothesis, it implies that at least one treatment mean is different, but it does not specify which pairs differ. The LSD test addresses this by performing pairwise comparisons between treatment means using a critical difference threshold.</p>
+<p>The LSD is calculated as <span class="math display">\[
+\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
+\]</span></p>
+<p>where, <strong>t₍α/2, dfₑᵣᵣₒᵣ₎</strong> is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of replications per treatment under equal sample sizes. Any absolute difference between two treatment means exceeding this LSD value is declared statistically significant. The test assumes homogeneity of variances and is most valid when the overall F-test is significant, as it uses a pooled error term from all treatments, making it more powerful but also more prone to Type I errors when multiple comparisons are made without adjustment. The LSD test is simple and sensitive,therefore it should be applied cautiously, preferably for planned comparisons or nearby means in ordered data, because using it freely can increase the chance of false results.</p>
+<p><strong>Tukey’s Honestly Significant Difference (HSD)</strong></p>
+<p>Tukey’s test helps you find out exactly which pairs of treatment means differ significantly. The main idea is that Tukey’s HSD compares all possible pairs of treatment means while controlling the overall Type I error rate, so you avoid false positives when making multiple comparisons. It calculates a critical value based on the number of treatments, degrees of freedom for error (from ANOVA), and the mean square error. In CRD, this method works well because treatments are assigned completely at random and the error variance is assumed homogeneous. Tukey’s HSD uses the within-group variance from ANOVA (Mean Square Error) and the number of replicates per treatment to assess whether the difference between any two means is “honestly significant.”</p>
+<p><strong>Duncan’s Multiple Range Test (DMRT)</strong></p>
+</small><p><small>After confirming significant overall differences via ANOVA, DMRT ranks the treatment means and calculates critical differences using the studentized range statistic (Q) and the standard error based on error variance from ANOVA. For each pair of means, the observed mean difference is compared to a calculated critical value that increases with the number of means being compared, making DMRT more powerful than simpler tests like LSD. If the difference exceeds the critical threshold, the means are considered significantly different; otherwise, they are grouped together. This systematic and sequential approach provides clear groupings of treatments, ensuring that the probability of discovering real differences is maximized, which is why DMRT has gained popularity in agricultural research. </small></p>
+</details>
+<p><strong>Which Post-hoc test to use?</strong></p>
+<div style="text-align: justify;">
+<p>The choice of the post-hoc test completely relies on the researcher.</p>
+<p><strong>LSD</strong> is used for pairwise comparison of treatment means after a significant ANOVA in CRD. It is most suitable when the number of treatments is small and comparisons are limited, offering high sensitivity to detect differences, but it may increase Type I error when many treatments are compared.In agricultural experiments LSD is the most commonly used.</p>
+<p><strong>Tukey’s HSD</strong> is preferred when there are four or more treatments in a balanced CRD. It compares all possible treatment pairs while strictly controlling the family-wise error (the probability of making at least one false positive (Type I error) when you run multiple hypothesis tests at the same time) rate, making it a conservative and reliable method for multiple comparisons.</p>
+<p><strong>DMRT</strong> is commonly used in agricultural experiments with several treatments. It ranks treatment means step-wise and detects more significant differences than Tukey HSD, though it is less conservative and carries a higher risk of Type I error.</p>
+<p>In the example for those characters, a pairwise comparison was performed to identify significant differences between treatments using Least Significant Difference (LSD) test.</p>
+</div>
+</section>
+<section id="SUM" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="SUM"><span class="header-section-number">9</span> Summary stats</h2>
+<div style="text-align: justify;">
+<p>If you need to know about the detailed values of the various statistical metrices of treatments, move to <code>Summary stats</code> under the <code>Analysis</code>.</p>
+</div>
+<p><strong>Table 3: Summary statistics</strong></p>
+<div id="fig-102" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/summary_stat.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Summary statistics"><img src="www/summary_stat.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Summary statistics
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Table parameters </summary>
+<p><small></small></p><small>
+<p><strong>Mean</strong> The arithmetic average of all observations within a treatment. It represents the “typical” yield for that specific variety.</p>
+<p><strong>SD (Standard Deviation)</strong> A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.</p>
+<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[
+SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>,where n is the number of observations.</p>
+<p><strong>Min / Max</strong> The lowest and highest recorded yield values within that specific variety group.</p>
+<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[
+CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
+<p>It allows you to compare the variability between groups with different scales.</p>
+<p><strong>Skewness</strong> A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right (long tail on the right). Negative value: Data is skewed to the left (long tail on the left).</p>
+<p><strong>Kurtosis</strong> A measure of the “tailedness” of the distribution. It describes how much of the data is concentrated in the tails versus the peak. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.</p>
+</small><p><small></small></p>
+</details>
+<section id="interpretations-from-fig-102" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from <a href="#fig-102" class="quarto-xref">Figure&nbsp;10</a></h3>
+<div style="text-align: justify;">
+<p>The table presents a summary of yield performance across ten treatments, likely representing different mango varieties. Among them, Alphonso recorded the highest average yield (1423.92), followed by Dasheri and Totapuri, while Safeda had the lowest mean yield (1061.19).Varieties like Badami and Himsagar showed low variability in yield, indicated by their small standard deviations and low coefficients of variation (CV), suggesting consistent performance. In contrast, Safeda and Dasheri had higher CVs, pointing to greater fluctuation in yield. Skewness values show that most treatments had slightly asymmetric yield distributions, some leaning toward higher values (positively skewed) and others toward lower (negatively skewed). All treatments had a kurtosis of 1.5, indicating a relatively flat distribution compared to the normal curve.</p>
+</div>
+</section>
+</section>
+<section id="IA" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="IA"><span class="header-section-number">10</span> Individual ANOVA</h2>
+<div style="text-align: justify;">
+<p>If the user want to get individual ANOVA table for each variable click on <code>Individual ANOVA</code> in the <code>Analysis</code>.</p>
+<p>The significance of the treatment can be measured using F-test and p value as in <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a>.</p>
+</div>
+<p><strong>Table 4: ANOVA table for yield</strong></p>
+<div id="fig-104" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/INDIVIDUAL%20ANOVA.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: ANOVA table for yield"><img src="www/INDIVIDUAL%20ANOVA.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: ANOVA table for yield
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Table parameters </summary>
+<p><small></small></p><small>
+<p><strong>Critical Difference (CD)</strong></p>
+<p>The minimum difference required between any two treatment means to consider them significantly different from each other.</p>
+<p>In your table: At a 1% level (239.55), you are 99% confident in the difference. At a 5% level (175.62), you are 95% confident. You use these values for “mean separation” (e.g., Duncan’s test or Tukey’s).</p>
+<p><strong>Coefficient of Variation (CV (%))</strong></p>
+<p>A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. <span id="eq-crd"><span class="math display">\[
+CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100
+\tag{1}\]</span></span></p>
+<p>In your table: 8.31% indicates the experimental error is low, which is excellent for field trials.</p>
+<p><strong>Mean Square Error(MSE)</strong></p>
+<p>The Residual Mean sum of Squares from the ANOVA table. It represents the “noise” or unexplained variance in the experiment.</p>
+<p>In your table: 10632.08, this value is used to calculate all the SE and CD values below it.</p>
+<p><strong>Standard Error of Mean(SE(m))</strong></p>
+<p>Measures how much the sample mean of a treatment is likely to vary from the true population mean. <span class="math display">\[ SE(m)=\sqrt{MSE / r}\]</span> Where, r is the number of replications.</p>
+<p><strong>Standard Error of Difference (SE(d))</strong></p>
+<p>The standard error associated with the difference between two treatment means. <span class="math display">\[ SE(d)=\sqrt{2 \times MSE / r}\]</span> It is the foundation for calculating the CD value.</p>
+</small><p><small></small></p>
+</details>
+<section id="interpretation-from-fig-104" class="level3" data-number="10.1">
+<h3 data-number="10.1" class="anchored" data-anchor-id="interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a></h3>
+<div style="text-align: justify;">
+<p>It shows that the treatment mean square (40376.08) is much higher than the error mean square (10632.08), resulting in a calculated F-value of 3.80, which is significant at the 1% level (p = 0.01), indicating that treatments differ significantly in their effect on yield. The mean square error (10632.08) represents random variation and is used to compute precision measures such as standard error of a treatment mean, SE(m) = 59.53 and standard error of difference between two treatment means,SE(d) = 84.19, while the critical differences of 175.62 at 5% and 239.55 at 1% indicate the minimum difference required between two treatment means for significance. The coefficient of variation (8.31%) is low, showing good experimental precision and reliability of the results.</p>
+</div>
+<p><strong>Table 5: summary statistics</strong></p>
+<div id="fig-103" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/summary_abc.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Summary statistics"><img src="www/summary_abc.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Summary statistics
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="interpretation-from-fig-103" class="level3" data-number="10.2">
+<h3 data-number="10.2" class="anchored" data-anchor-id="interpretation-from-fig-103"><span class="header-section-number">10.2</span> Interpretation from <a href="#fig-103" class="quarto-xref">Figure&nbsp;12</a></h3>
+<div style="text-align: justify;">
+<p>Table compares different mango varieties based on their average values (Mean), variation (Standard Deviation or SD), and how they are grouped statistically.Alphonso and Dasheri mangoes have the highest average values, showing top performance. Safeda ranks lowest. Varieties are grouped based on statistical similarity, those sharing letters (“abc” or “cd”) are not significantly different. This helps identify which mango types truly differ and which are alike.</p>
+</div>
+</section>
+</section>
+<section id="BP" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="BP"><span class="header-section-number">11</span> Basic plots</h2>
+<div style="text-align: justify;">
+<p>RAISINS is designed for a smooth and hassle-free experience. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly-leaving no room for confusion. We’ve ensured that every possible plot related to the Completely Randomisd Design is readily available. Simply click on the <code>Basic Plots</code> tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;13</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi),JPEG,TIFF,PDF and SVG for use in reports or presentations.</p>
+</div>
+<section id="customizing-plots" class="level3" data-number="11.1">
+<h3 data-number="11.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</h3>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> provides user various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;13</a> to get a clear idea on the customizing features.</p>
+</div>
+<div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/customize.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Plot settings for customizing"><img src="www/customize.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Plot settings for customizing
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;14</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;18</a>, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
+</div>
+<script>
+// Hide all descriptions on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+    console.log('Hiding on load: ' + desc.id); // Debug log
+  });
+});
+
+function showDescription(id) {
+  console.log('Showing description: ' + id); // Debug log
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  console.log('Hiding description: ' + id); // Debug log
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px; /* Fixed width for container */
+  height: 300px; /* Fixed height for container */
+  overflow: hidden; /* Ensure content fits within container */
+  margin: 10px; /* Add margin to prevent overlap */
+}
+
+.plot-container img {
+  width: 350px; /* Fixed image width */
+  height: 300px; /* Fixed image height */
+  object-fit: cover; /* Scale image to cover container */
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plot-description {
+  display: none !important; /* Ensure hidden by default */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover full image width */
+  height: 100%; /* Cover full image height */
+  z-index: 1000; /* Ensure description is above image */
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); /* Semi-transparent gradient */
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex; /* Center text */
+  align-items: center; /* Vertical center */
+  justify-content: center; /* Horizontal center */
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none; /* Prevent description from blocking hover */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Visible border for debugging */
+}
+
+.plot-container:hover .plot-description {
+  display: flex !important; /* Force visibility on hover, using flex for centering */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Unique background gradients for each plot description */
+#boxplot-desc { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#barplot-desc { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#connectedplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#meanvalueplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#violinplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+</style>
+<div class="grid">
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')">
+<div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Box+Plot">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/box.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: Box plot"><img src="www/box.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Box+Plot"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Box plot
+</figcaption>
+</figure>
+</div>
+<div id="boxplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>box plot</strong> compares the distribution of values across different treatments. Each colored box represents a treatment and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). The vertical axis shows the value range, while the horizontal axis lists the treatments. Letters above each box indicate statistical groupings treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')">
+<div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Violin+Plot">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/violin.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Violin plot"><img src="www/violin.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Violin+Plot"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Violin plot
+</figcaption>
+</figure>
+</div>
+<div id="violinplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>violin plot</strong> compares the distribution of values across different treatments. Each treatment (like a mango variety) is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. The letters above each plot indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different. This plot helps you see not just the average values, but also how consistent or variable each treatment is.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')">
+<div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Bar+Plot">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/bar.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: Bar plot"><img src="www/bar.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Bar+Plot"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Bar plot
+</figcaption>
+</figure>
+</div>
+<div id="barplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>Bar plot</strong> compares the average values of different treatments, with error bars showing variability. The letters above each bar indicate statistical groupings: treatments sharing letters are similar, while those with different letters are significantly different. In short, it highlights which treatments have higher or lower averages and whether those differences are meaningful.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')">
+<div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Mean+Value+Plot">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/mean.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;17: Mean Value Plot"><img src="www/mean.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Mean+Value+Plot"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Mean Value Plot
+</figcaption>
+</figure>
+</div>
+<div id="meanvalueplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>mean value plot</strong> compares the mean values of different treatments, each shown as a colored dot with horizontal error bars indicating variability. Treatments are listed vertically, and their mean values are plotted along the x-axis. Letters next to each point represent statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different. This layout helps visualize which treatments have higher or lower averages and whether those differences are meaningful.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')">
+<div style="text-align: center;">
+<div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Connected+Plot">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/connect.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;18: Connected line plot"><img src="www/connect.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Connected+Plot"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Connected line plot
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="connectedplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>connected line plot</strong> compares the mean values of different treatments, with each point representing a treatment’s average and error bars showing variability. The points are linked by lines to highlight trends across treatments. Above each point, letters indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different. This plot helps visualize how treatment values change and which ones differ meaningfully from others.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="AP" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="AP"><span class="header-section-number">12</span> Advanced plots</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> also provides <code>advanced plots</code> which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations.(See <a href="#fig-90" class="quarto-xref">Figure&nbsp;19</a>)</p>
+</div>
+<div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/advanced_plot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;19: Advanced plots"><img src="www/advanced_plot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: Advanced plots
+</figcaption>
+</figure>
+</div>
+<p><strong>SUMMARY PLOT</strong></p>
+<div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/plot%20summary.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;20: Summary plot"><img src="www/plot%20summary.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: Summary plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>A summary plot is a visual representation that shows how data are distributed. It helps quickly understand the pattern, spread, and central tendency of the data.</p>
+</div>
+<p><strong>ADVANCED RAINCLOUD PLOT</strong></p>
+<div id="fig-15" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/advanced_raincloud.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;21: Advanced rain cloud plot"><img src="www/advanced_raincloud.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21: Advanced rain cloud plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Advanced raincloud plot combines a density plot, boxplot, and individual data points to show the full distribution of each group. The colored density (“cloud”) shows where values are most concentrated, the boxplot summarizes the median and quartiles, and the dots (“rain”) represent individual observations. The numbers indicate summary values (usually mean or median), and the horizontal axis shows the measured variable.</p>
+</div>
+<p><strong>QQ PLOT</strong></p>
+<div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/qq_plot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;22: QQ plot"><img src="www/qq_plot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22: QQ plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Q–Q (quantile–quantile) plot is used to assess normality of the data. The points represent observed data quantiles plotted against theoretical quantiles from a normal distribution. Because most points lie close to the diagonal reference line, the data approximately follows a normal distribution.</p>
+</div>
+<p><strong>RAIN CLOUD PLOT</strong></p>
+<div id="fig-17" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/raincloud_plot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;23: Rain cloud plot"><img src="www/raincloud_plot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;23: Rain cloud plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Raincloud plot shows the distribution of the response variable. The half-violin (cloud) represents the data density, indicating where values are most concentrated. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations.</p>
+</div>
+<p><strong>DISTRIBUTION PLOT</strong></p>
+<div id="fig-18" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/Screenshot%202026-04-01%20113358.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;24: Distribution plot"><img src="images/Screenshot%202026-04-01%20113358.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24: Distribution plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The distribution plot shows how the data values are spread for each treatment. It provides a visual comparison of the pattern, spread, and variability of observations across treatments, helping to understand overall differences and consistency in the data.</p>
+</div>
+</section>
+<section id="AI" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="AI"><span class="header-section-number">13</span> AI interpretation</h2>
+<div style="text-align: justify;">
+<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences between groups, and offers informed suggestions for potential next steps or interpretations.The user can get detailed interpretations of the analysis by clicking on <code>AI interpretation</code> on the <code>Analysis</code> as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;25</a> .</p>
+</div>
+<div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/ai.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results"><img src="www/ai.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="MUL" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="MUL"><span class="header-section-number">14</span> Multivariate</h2>
+<div style="text-align: justify;">
+<p>Multivariate analysis in Completely Randomised Design (CRD) helps you to compare different response variables simultaneously. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example, of evaluation of ten mango cultivars - Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay_g, Langra, and Totapuri - by a horticultural scientist, navigate to <code>Multivariate</code> see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;26</a>.</p>
+</div>
+<div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/MultiTAB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;26: Multivariate tab in RAISINS"><img src="www/MultiTAB.webp" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;26: Multivariate tab in RAISINS
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>MANOVA and PCA will be automatically carried out based on the selected variables. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.</p>
+</div>
+<div id="fig-MAN2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/MAN2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;27: Manova Results"><img src="www/MAN2.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;27: Manova Results
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The table titled ‘Eigen Values PCA’ given <a href="#fig-PC" class="quarto-xref">Figure&nbsp;28</a> provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1, PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 41.16% of the variance in the dataset, while PC2 accounts for about 29.5% of the variance. Together, PC1 and PC2 explain approximately 70.66% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.</p>
+</div>
+<div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/MAN3.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;28: PCA-based Index Score"><img src="www/MAN3.webp" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28: PCA-based Index Score
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;29</a> illustrates the proportion of variance explained by each principal component.</p>
+</div>
+<div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/CRD_Scree_Plot2025-10-07.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;29: Scree plot"><img src="www/CRD_Scree_Plot2025-10-07.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29: Scree plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;30</a> and decide which PC-based index needs to be selected. You can see that the variables yield and Obs2 have positive loadings in PC1. If you are seeking treatments with high values for these variables, consider treatments with a high index score based on PC1. Thus, treatments with high index scores based on PC1 can be considered optimal for improving the above variables. Conversely, the variables Obs1, FW have negative loadings in PC1. If you aim to improve these variables, look for treatments with a low index score based on PC1. For PC2, the variables yield, Obs1 and FW have positive loadings. If these variables are your focus, consider an index score based on PC2. Similarly, the variables Obs2 have negative loadings on PC2, and treatments with low index scores for PC2 would be suitable for these variables. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+</div>
+<div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/MAN4.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;30: Loadings of each variable"><img src="www/MAN4.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;30: Loadings of each variable
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The biplot gives a visual representation of the relationships among variables and treatments. Treatments with high values for a specific variable are positioned in the direction of that variable. The angle between variables in the biplot indicates their correlation, smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. Thus, the biplot aids in understanding the contributions of variables to each PC and in identifying patterns among treatments.</p>
+</div>
+<div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/BiplotPCA2025-10-07.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;31: PCA-Biplot"><img src="www/BiplotPCA2025-10-07.webp" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31: PCA-Biplot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatments based on their index scores.To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;32</a>, where you can choose the cutoff percentage to select treatments above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatments as per your preference. Selected treatments are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
+</div>
+<div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/MAN5.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;32: Index score"><img src="www/MAN5.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;32: Index score
+</figcaption>
+</figure>
+</div>
+<div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/Indexplot12025-10-07.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;33: Indexplot"><img src="www/Indexplot12025-10-07.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;33: Indexplot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study.</p>
+</div>
+</section>
+<section id="PRE" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="PRE"><span class="header-section-number">15</span> Preparing your data</h2>
+<div style="text-align: justify;">
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
+<ol type="1">
+<li><p>Create your dataset in MS Excel</p></li>
+<li><p>Build your dataset directly within the RAISINS app</p></li>
+</ol>
+</div>
+</section>
+<section id="EX" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="EX"><span class="header-section-number">16</span> Preparing data in MS Excel</h2>
+<div style="text-align: justify;">
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the treatment or group to be compared-you can name this column appropriately, such as “Group” or “Treatment.” All characters under study (e.g., yield, Obs1, Obs2, FW) should be arranged in separate columns, and each group should be repeated according to the number of replications. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;34</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, groups must appear repeatedly based on replications, and the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;35</a>.</p>
+</div>
+<div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/P1.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;34: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/P1.webp" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;34: Model-1: showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/P2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;35: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/P2.webp" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;35: Model-2: Showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<details>
+<summary>
+Dataset Creation Rules
+</summary>
+<p><small> 1. <strong>Column Naming Convention</strong> - No spaces allowed in column names.<br>
+- Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %,# etc 2. <strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
+- Ensure the row above the data is not blank. 3. <strong>Cell Management</strong> - Avoid typing or deleting in cells without data.<br>
+- If needed, select affected cells, right-click, and select <strong>Clear Contents</strong>. 4. <strong>Column Relevance</strong> - Name all columns meaningfully.<br>
+- Exclude unnecessary columns not required for analysis. </small></p>
+</details>
+<details>
+<summary>
+How to Save as CSV in MS Excel
+</summary>
+<p><small> 1. <strong>Open Your Workbook</strong></small></p><small>
+<pre><code>-   Ensure your data is arranged properly with only one sheet.</code></pre>
+<ol start="2" type="1">
+<li><p><strong>Click ‘File’ Menu</strong></p>
+<ul>
+<li>Go to the top-left corner and click on <strong>File</strong>.</li>
+</ul></li>
+<li><p><strong>Choose ‘Save As’ or ‘Save a Copy’</strong></p>
+<ul>
+<li>Select the location where you want to save your file.</li>
+</ul></li>
+<li><p><strong>Set File Type to CSV</strong></p>
+<ul>
+<li>In the <strong>‘Save as type’</strong> dropdown menu, choose <strong>CSV (Comma delimited) (*.csv)</strong>.</li>
+</ul></li>
+<li><p><strong>Name Your File</strong></p>
+<ul>
+<li>Enter a relevant file name without spaces (use underscores if needed).</li>
+</ul></li>
+<li><p><strong>Click ‘Save’</strong></p>
+<ul>
+<li>Click <strong>Save</strong> to export the file.</li>
+</ul></li>
+</ol>
+</small><blockquote class="blockquote"><small>
+</small><p><small>💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small></p>
+</blockquote>
+</details>
+</section>
+<section id="CR" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</h2>
+<div style="text-align: justify;">
+<p>If you’re unsure about the correct format for creating a dataset, don’t worry - Raisins offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
+<ul>
+<li><p>Navigate to the <strong>Create Data Tab</strong></p></li>
+<li><p>Select the number of <strong>Treatments</strong></p></li>
+<li><p>Select number of <strong>Replications</strong></p></li>
+<li><p>Select number of <strong>Characters</strong></p></li>
+<li><p>Click on <strong>Create</strong> button**</p></li>
+</ul>
+<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;36</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in <code>Analysis</code>.</p>
+</div>
+<div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;36: Creating dataset within RAISINS"><img src="www/CREATEDAT.webp" class="img-fluid figure-img" width="1011"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;36: Creating dataset within RAISINS
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="M" class="level2" data-number="18">
+<h2 data-number="18" class="anchored" data-anchor-id="M"><span class="header-section-number">18</span> Model datasets</h2>
+<div style="text-align: justify;">
+<p>To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the <code>Datasets</code>.</p>
+</div>
+<div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/modeldata.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;37: Model dataset"><img src="www/modeldata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37: Model dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="F" class="level2" data-number="19">
+<h2 data-number="19" class="anchored" data-anchor-id="F"><span class="header-section-number">19</span> FAQ’s</h2>
+<div style="text-align: justify;">
+<p>The app includes a dedicated <code>FAQs</code> to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the <code>FAQs</code> is a great place to start.</p>
+</div>
+<div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/FAQ%20TAB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;38: FAQs"><img src="www/FAQ%20TAB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;38: FAQs
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="U" class="level2" data-number="20">
+<h2 data-number="20" class="anchored" data-anchor-id="U"><span class="header-section-number">20</span> View data</h2>
+<div style="text-align: justify;">
+<p><code>View Data</code> serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="www/view%20data.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="View data"><img src="www/view%20data.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+</figure>
+</div>
+<figcaption>View data</figcaption>
+</figure>
+</div>
+</section>
+<section id="ra-one" class="level2" data-number="21">
+<h2 data-number="21" class="anchored" data-anchor-id="ra-one"><span class="header-section-number">21</span> RA-One</h2>
+<div style="text-align: justify;">
+<p>`RA-One is a simple and interactive tool for analyzing time series data. It helps users easily create and view plots like time series, forecasts, and residuals in one place.</p>
+<p>With its easy-to-use interface and built-in assistant, RA-One makes data analysis quick, clear, and user-friendly.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/crd%20gif%20canva.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-40" title="RA-One"><img src="images/crd%20gif%20canva.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="RA-One"></a></p>
+</figure>
+</div>
+<figcaption>RA-One</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

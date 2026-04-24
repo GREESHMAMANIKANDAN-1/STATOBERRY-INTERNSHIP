@@ -1,22 +1,10 @@
----
-title: "Completely Randomised Design"
-format:
-  html:
-    
-    mainfont: "Times New Roman"
-    fontsize: 0.90em
-    theme: cosmo
-    toc: true
-    lightbox: true
-    number-sections: true
-    number-depth: 3
-    number-offset: 1
-    toc-title: "**TABLE OF CONTENTS**"
-    toc-depth: 3
-    linkcolor: "purple"
-    citations-hover: true
-    css: sty.css
----
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+![](images/ANNOVA%202.webp)--- title: "Completely Randomised Design" format: html:
+
+mainfont: "Times New Roman" fontsize: 0.90em theme: cosmo toc: true lightbox: true number-sections: true number-depth: 3 number-offset: 1 toc-title: "\*\*TABLE OF CONTENTS\*\*" toc-depth: 3 linkcolor: "purple" citations-hover: true css: sty.css ---
 
 ```{=html}
 <style>
@@ -897,4 +885,10 @@ With its easy-to-use interface and built-in assistant, RA-One makes data analysi
 
 it is a tool for data analysis
 
+<<<<<<< HEAD
 HI I AM NIRU SABU HOW ARE YOU
+=======
+haiahalya how are you
+
+suganuuu
+>>>>>>> a0511a5a30e9bc9de485062f10ebfb1abf88c95f

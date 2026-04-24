@@ -1,8 +1,4 @@
-------------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-![](images/ANNOVA%202.webp)--- title: "Completely Randomised Design" format: html:
+title: "Completely Randomised Design" format: html:
 
 mainfont: "Times New Roman" fontsize: 0.90em theme: cosmo toc: true lightbox: true number-sections: true number-depth: 3 number-offset: 1 toc-title: "\*\*TABLE OF CONTENTS\*\*" toc-depth: 3 linkcolor: "purple" citations-hover: true css: sty.css ---
 
@@ -340,8 +336,7 @@ When the ANOVA in a **Completely Randomised Design (CRD)** is significant, the f
 
 The **Least Significant Difference (LSD)** test is a post-hoc statistical procedure used in the context of a Completely Randomized Design (CRD) to identify which specific treatment means differ significantly after a one-way ANOVA has indicated an overall significant effect. When the ANOVA F-test rejects the null hypothesis, it implies that at least one treatment mean is different, but it does not specify which pairs differ. The LSD test addresses this by performing pairwise comparisons between treatment means using a critical difference threshold.
 
-The LSD is calculated as
-$$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
+The LSD is calculated as $$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
 
 where, **t₍α/2, dfₑᵣᵣₒᵣ₎** is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of replications per treatment under equal sample sizes. Any absolute difference between two treatment means exceeding this LSD value is declared statistically significant. The test assumes homogeneity of variances and is most valid when the overall F-test is significant, as it uses a pooled error term from all treatments, making it more powerful but also more prone to Type I errors when multiple comparisons are made without adjustment. The LSD test is simple and sensitive,therefore it should be applied cautiously, preferably for planned comparisons or nearby means in ordered data, because using it freely can increase the chance of false results.
 
@@ -391,13 +386,11 @@ If you need to know about the detailed values of the various statistical metrice
 
 **SD (Standard Deviation)** A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.
 
-**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as
-$$SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$,where n is the number of observations.
+**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as $$SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$,where n is the number of observations.
 
 **Min / Max** The lowest and highest recorded yield values within that specific variety group.
 
-**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage
-$$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
+**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
 
 It allows you to compare the variability between groups with different scales.
 
@@ -443,9 +436,7 @@ In your table: At a 1% level (239.55), you are 99% confident in the difference. 
 
 **Coefficient of Variation (CV (%))**
 
-A relative measure of dispersion that expresses the standard deviation as a percentage of the mean.
-$$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
- {#eq-crd}
+A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$ {#eq-crd}
 
 In your table: 8.31% indicates the experimental error is low, which is excellent for field trials.
 
@@ -892,4 +883,6 @@ it is a tool for data analysis
 
 haiahalya how are you
 
-veshakkunnu
+fooddd
+
+hidoododododo

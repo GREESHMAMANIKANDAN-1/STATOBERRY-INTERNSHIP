@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>crd-20</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -26,18 +29,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="crd 20_files/libs/clipboard/clipboard.min.js"></script>
 <script src="crd 20_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="crd 20_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="crd 20_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="crd 20_files/libs/quarto-html/popper.min.js"></script>
 <script src="crd 20_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="crd 20_files/libs/quarto-html/anchor.min.js"></script>
 <link href="crd 20_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="crd 20_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="crd 20_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="crd 20_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="crd 20_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="crd 20_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="crd 20_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -77,9 +79,7 @@ window.Quarto = {
 
 
 
-<hr>
-<hr>
-<p><img src="images/ANNOVA%202.webp" class="img-fluid">— title: “Completely Randomised Design” format: html:</p>
+<p>title: “Completely Randomised Design” format: html:</p>
 <p>mainfont: “Times New Roman” fontsize: 0.90em theme: cosmo toc: true lightbox: true number-sections: true number-depth: 3 number-offset: 1 toc-title: “**TABLE OF CONTENTS**” toc-depth: 3 linkcolor: “purple” citations-hover: true css: sty.css —</p>
 <style>
  sup {
@@ -430,9 +430,7 @@ Figure&nbsp;9: Multiple comparison test options explained
 <p>When the ANOVA in a <strong>Completely Randomised Design (CRD)</strong> is significant, the following post hoc tests are commonly used for pairwise comparisons: Tukey’s Honestly Significant Difference (HSD) test, and Fisher’s Least Significant Difference (LSD) test. These tests help identify which specific treatment means differ from each other, addressing the limitation of ANOVA in not indicating the exact sources of variation.</p>
 <p><strong>LSD (Least Significant Difference) Test</strong></p>
 <p>The <strong>Least Significant Difference (LSD)</strong> test is a post-hoc statistical procedure used in the context of a Completely Randomized Design (CRD) to identify which specific treatment means differ significantly after a one-way ANOVA has indicated an overall significant effect. When the ANOVA F-test rejects the null hypothesis, it implies that at least one treatment mean is different, but it does not specify which pairs differ. The LSD test addresses this by performing pairwise comparisons between treatment means using a critical difference threshold.</p>
-<p>The LSD is calculated as <span class="math display">\[
-\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
-\]</span></p>
+<p>The LSD is calculated as <span class="math display">\[\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}\]</span></p>
 <p>where, <strong>t₍α/2, dfₑᵣᵣₒᵣ₎</strong> is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of replications per treatment under equal sample sizes. Any absolute difference between two treatment means exceeding this LSD value is declared statistically significant. The test assumes homogeneity of variances and is most valid when the overall F-test is significant, as it uses a pooled error term from all treatments, making it more powerful but also more prone to Type I errors when multiple comparisons are made without adjustment. The LSD test is simple and sensitive,therefore it should be applied cautiously, preferably for planned comparisons or nearby means in ordered data, because using it freely can increase the chance of false results.</p>
 <p><strong>Tukey’s Honestly Significant Difference (HSD)</strong></p>
 <p>Tukey’s test helps you find out exactly which pairs of treatment means differ significantly. The main idea is that Tukey’s HSD compares all possible pairs of treatment means while controlling the overall Type I error rate, so you avoid false positives when making multiple comparisons. It calculates a critical value based on the number of treatments, degrees of freedom for error (from ANOVA), and the mean square error. In CRD, this method works well because treatments are assigned completely at random and the error variance is assumed homogeneous. Tukey’s HSD uses the within-group variance from ANOVA (Mean Square Error) and the number of replicates per treatment to assess whether the difference between any two means is “honestly significant.”</p>
@@ -469,11 +467,9 @@ Figure&nbsp;10: Summary statistics
 <p><small></small></p><small>
 <p><strong>Mean</strong> The arithmetic average of all observations within a treatment. It represents the “typical” yield for that specific variety.</p>
 <p><strong>SD (Standard Deviation)</strong> A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.</p>
-<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[
-SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>,where n is the number of observations.</p>
+<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>,where n is the number of observations.</p>
 <p><strong>Min / Max</strong> The lowest and highest recorded yield values within that specific variety group.</p>
-<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
+<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
 <p>It allows you to compare the variability between groups with different scales.</p>
 <p><strong>Skewness</strong> A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right (long tail on the right). Negative value: Data is skewed to the left (long tail on the left).</p>
 <p><strong>Kurtosis</strong> A measure of the “tailedness” of the distribution. It describes how much of the data is concentrated in the tails versus the peak. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.</p>
@@ -510,9 +506,7 @@ Figure&nbsp;11: ANOVA table for yield
 <p>The minimum difference required between any two treatment means to consider them significantly different from each other.</p>
 <p>In your table: At a 1% level (239.55), you are 99% confident in the difference. At a 5% level (175.62), you are 95% confident. You use these values for “mean separation” (e.g., Duncan’s test or Tukey’s).</p>
 <p><strong>Coefficient of Variation (CV (%))</strong></p>
-<p>A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. <span id="eq-crd"><span class="math display">\[
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100
-\tag{1}\]</span></span></p>
+<p>A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. <span id="eq-crd"><span class="math display">\[CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100 \tag{1}\]</span></span></p>
 <p>In your table: 8.31% indicates the experimental error is low, which is excellent for field trials.</p>
 <p><strong>Mean Square Error(MSE)</strong></p>
 <p>The Residual Mean sum of Squares from the ANOVA table. It represents the “noise” or unexplained variance in the experiment.</p>
@@ -1133,7 +1127,10 @@ Figure&nbsp;38: FAQs
 </section>
 <section id="simple-t-test" class="level1">
 <h1>simple T Test</h1>
-<p>it is a tool for data analysis<img src="images/CLIMATE.png" class="img-fluid"></p>
+<p>it is a tool for data analysis</p>
+<p>haiahalya how are you</p>
+<p>fooddd</p>
+<p>hidoododododo</p>
 </section>
 
 </main>

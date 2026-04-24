@@ -340,9 +340,7 @@ When the ANOVA in a **Completely Randomised Design (CRD)** is significant, the f
 
 The **Least Significant Difference (LSD)** test is a post-hoc statistical procedure used in the context of a Completely Randomized Design (CRD) to identify which specific treatment means differ significantly after a one-way ANOVA has indicated an overall significant effect. When the ANOVA F-test rejects the null hypothesis, it implies that at least one treatment mean is different, but it does not specify which pairs differ. The LSD test addresses this by performing pairwise comparisons between treatment means using a critical difference threshold.
 
-The LSD is calculated as $$
-\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
-$$
+The LSD is calculated as $$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
 
 where, **t₍α/2, dfₑᵣᵣₒᵣ₎** is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of replications per treatment under equal sample sizes. Any absolute difference between two treatment means exceeding this LSD value is declared statistically significant. The test assumes homogeneity of variances and is most valid when the overall F-test is significant, as it uses a pooled error term from all treatments, making it more powerful but also more prone to Type I errors when multiple comparisons are made without adjustment. The LSD test is simple and sensitive,therefore it should be applied cautiously, preferably for planned comparisons or nearby means in ordered data, because using it freely can increase the chance of false results.
 
@@ -392,13 +390,11 @@ If you need to know about the detailed values of the various statistical metrice
 
 **SD (Standard Deviation)** A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.
 
-**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as $$
-SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$,where n is the number of observations.
+**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as $$SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$,where n is the number of observations.
 
 **Min / Max** The lowest and highest recorded yield values within that specific variety group.
 
-**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage $$
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
+**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
 
 It allows you to compare the variability between groups with different scales.
 
@@ -444,9 +440,7 @@ In your table: At a 1% level (239.55), you are 99% confident in the difference. 
 
 **Coefficient of Variation (CV (%))**
 
-A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. $$
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100
-$$ {#eq-crd}
+A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$ {#eq-crd}
 
 In your table: 8.31% indicates the experimental error is low, which is excellent for field trials.
 
@@ -807,23 +801,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click ‘File’ Menu**
 
-    -   Go to the top-left corner and click on **File**.
+    - Go to the top-left corner and click on **File**.
 
 3.  **Choose ‘Save As’ or ‘Save a Copy’**
 
-    -   Select the location where you want to save your file.
+    - Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    -   In the **‘Save as type’** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    - In the **‘Save as type’** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    -   Enter a relevant file name without spaces (use underscores if needed).
+    - Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click ‘Save’**
 
-    -   Click **Save** to export the file.
+    - Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small>
 
@@ -834,15 +828,15 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you’re unsure about the correct format for creating a dataset, don’t worry - Raisins offers an option to create data directly within the app using the prescribed template. Here’s how:
 
--   Navigate to the **Create Data Tab**
+- Navigate to the **Create Data Tab**
 
--   Select the number of **Treatments**
+- Select the number of **Treatments**
 
--   Select number of **Replications**
+- Select number of **Replications**
 
--   Select number of **Characters**
+- Select number of **Characters**
 
--   Click on **Create** button\*\*
+- Click on **Create** button\*\*
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in `Analysis`.
 :::
@@ -892,3 +886,5 @@ With its easy-to-use interface and built-in assistant, RA-One makes data analysi
 it is a tool for data analysis
 
 haiahalya how are you
+
+suganuuu

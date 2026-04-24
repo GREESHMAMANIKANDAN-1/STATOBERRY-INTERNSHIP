@@ -898,3 +898,7 @@ With its easy-to-use interface and built-in assistant, RA-One makes data analysi
 ------------------------------------------------------------------------
 
 ![![](www/crd1.jpg)](www/Chi-square-test.jpg)
+
+# simple T Test
+
+it is a tool for data analysis

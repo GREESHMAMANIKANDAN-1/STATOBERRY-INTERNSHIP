@@ -897,10 +897,4 @@ With its easy-to-use interface and built-in assistant, RA-One makes data analysi
 
 ------------------------------------------------------------------------
 
-![](www/Chi-square-test.jpg)
-
-# hai
-
-helooo and good morning
-
-statoberry
+![![](www/crd1.jpg)](www/Chi-square-test.jpg)

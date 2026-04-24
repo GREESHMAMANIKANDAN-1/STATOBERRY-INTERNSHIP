@@ -896,3 +896,5 @@ With its easy-to-use interface and built-in assistant, RA-One makes data analysi
 ![RA-One](images/crd%20gif%20canva.gif){fig-align="center"}
 
 ------------------------------------------------------------------------
+
+![](www/Chi-square-test.jpg)

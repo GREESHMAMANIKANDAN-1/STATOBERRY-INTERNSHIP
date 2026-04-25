@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>crd-20</title>
+<title>Completely Randomised Design</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,14 +36,10 @@ ul.task-list li input[type="checkbox"] {
 <link href="crd 20_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="crd 20_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="crd 20_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<<<<<<< HEAD
 <link href="crd 20_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="crd 20_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="crd 20_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="crd 20_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-=======
-<link href="crd 20_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
->>>>>>> a0511a5a30e9bc9de485062f10ebfb1abf88c95f
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -75,21 +71,77 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="sty.css">
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong><em>TABLE OF CONTENTS</em></strong></h2>
+   
+  <ul>
+  <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Analysis of experiments</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Completely Randomized Design (CRD)</a></li>
+  <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
+  <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> CRD analysis tab explained</a></li>
+  <li><a href="#sec-6" id="toc-sec-6" class="nav-link" data-scroll-target="#sec-6"><span class="header-section-number">6</span> Transformation</a></li>
+  <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">7</span> Analysis results</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-100" id="toc-interpretation-from-fig-100" class="nav-link" data-scroll-target="#interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from Figure&nbsp;7</a></li>
+  <li><a href="#interpretation-from-fig-101" id="toc-interpretation-from-fig-101" class="nav-link" data-scroll-target="#interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from Figure&nbsp;8</a></li>
+  </ul></li>
+  <li><a href="#sec-8" id="toc-sec-8" class="nav-link" data-scroll-target="#sec-8"><span class="header-section-number">8</span> Multiple comparison tests</a></li>
+  <li><a href="#SUM" id="toc-SUM" class="nav-link" data-scroll-target="#SUM"><span class="header-section-number">9</span> Summary stats</a>
+  <ul class="collapse">
+  <li><a href="#interpretations-from-fig-102" id="toc-interpretations-from-fig-102" class="nav-link" data-scroll-target="#interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from Figure&nbsp;10</a></li>
+  </ul></li>
+  <li><a href="#IA" id="toc-IA" class="nav-link" data-scroll-target="#IA"><span class="header-section-number">10</span> Individual ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-104" id="toc-interpretation-from-fig-104" class="nav-link" data-scroll-target="#interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from Figure&nbsp;11</a></li>
+  <li><a href="#interpretation-from-fig-103" id="toc-interpretation-from-fig-103" class="nav-link" data-scroll-target="#interpretation-from-fig-103"><span class="header-section-number">10.2</span> Interpretation from Figure&nbsp;12</a></li>
+  </ul></li>
+  <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">11</span> Basic plots</a>
+  <ul class="collapse">
+  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</a></li>
+  </ul></li>
+  <li><a href="#AP" id="toc-AP" class="nav-link" data-scroll-target="#AP"><span class="header-section-number">12</span> Advanced plots</a></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">13</span> AI interpretation</a></li>
+  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">14</span> Multivariate</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">15</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">16</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">18</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">19</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">20</span> View data</a></li>
+  <li><a href="#ra-one" id="toc-ra-one" class="nav-link" data-scroll-target="#ra-one"><span class="header-section-number">21</span> RA-One</a></li>
+  <li><a href="#simple-t-test" id="toc-simple-t-test" class="nav-link" data-scroll-target="#simple-t-test"><span class="header-section-number">22</span> Simple T Test</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Completely Randomised Design</h1>
+</div>
 
 
 
-<hr>
-<hr>
-<p><img src="images/ANNOVA%202.webp" class="img-fluid">— title: “Completely Randomised Design” format: html:</p>
-<p>mainfont: “Times New Roman” fontsize: 0.90em theme: cosmo toc: true lightbox: true number-sections: true number-depth: 3 number-offset: 1 toc-title: “**TABLE OF CONTENTS**” toc-depth: 3 linkcolor: “purple” citations-hover: true css: sty.css —</p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <style>
  sup {
    color: blue;
@@ -165,15 +217,15 @@ window.Quarto = {
 <small> In the <strong>1920s</strong>, statistician <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> introduced modern statistical theory. He made significant contributions to the development of the <strong>Completely Randomized Design (CRD)</strong>, which was first used in the early 20th century. Fisher developed this design to enhance agricultural studies, particularly to identify subtle yet significant variations in crop yields under various fertilizer treatments. His novel approach was to <strong>prevent bias</strong> and enable reliable <strong>statistical analysis</strong> through analysis of variance <strong>(ANOVA)</strong> by randomly assigning treatments to experimental units (like land plots). </small>
 </ul>
 </details>
-<section id="AE" class="level2">
-<h2 class="anchored" data-anchor-id="AE">Analysis of experiments</h2>
+<section id="AE" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
 <div style="text-align: justify;">
 <p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different single-factor experimental designs. In this tutorial, we focus on <strong>Completely Randomized Design (CRD)</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
 </div>
 <div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/intro.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/intro.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/intro.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Analysis of experiment tab
@@ -184,8 +236,8 @@ Figure&nbsp;1: Analysis of experiment tab
 <!-- To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page, go to Analysis of experiments. Here, you can see different single-factor experimental designs. Select the design you want for analysis.In this tutorial, we will focus on Completely Randomized Design (CRD), as shown in  @fig-aov. -->
 <!-- ![Figure 1: Analysis of experiment tab](www/CRD_1.webp){#fig-aov fig-align="center"} -->
 </section>
-<section id="C" class="level2">
-<h2 class="anchored" data-anchor-id="C">Completely Randomized Design (CRD)</h2>
+<section id="C" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Completely Randomized Design (CRD)</h2>
 <div style="text-align: justify;">
 <p>A Completely Randomized Design (CRD) is the simplest and most fundamental experimental design used in statistics, where all experimental units are randomly assigned to different treatment levels of a single factor, without any blocking or grouping. CRD is used in controlled settings like lab experiments, greenhouse trials, chemical assays, or biological studies where external variability is low and blocking is unnecessary. It excels in simplicity, providing maximum error degrees of freedom for efficiency with small samples, but unsuitable for heterogeneous field conditions; in such cases, a Randomized Block Design (RBD) is more appropriate.</p>
 </div>
@@ -199,7 +251,7 @@ Figure&nbsp;1: Analysis of experiment tab
 <div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/layweB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/layweB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: CRD Layout"><img src="www/layweB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: CRD Layout
@@ -222,15 +274,15 @@ Figure&nbsp;2: CRD Layout
 </div>
 </div>
 </section>
-<section id="W" class="level2">
-<h2 class="anchored" data-anchor-id="W">A working example</h2>
+<section id="W" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
 <p>To make things simple and interesting, we’ll explain CRD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters.Let’s assume the experiment is conducted in a field. Consider a dataset containing 10 treatments, each representing a distinct mango variety, with three replicates per variety. The treatments(varieties) are named as follows Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay_g, Langra, and Totapuri. Observations were recorded for four variables: <strong>yield, Obs1, Obs2, and FW</strong>.Our aim is to test whether treatments produce statistically significant differences in the response variable using ANOVA. The treatments are evaluated for each variables. The arrangement of the data is shown in the <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a> .</p>
 </div>
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/Mangodata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/Mangodata.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/Mangodata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Example dataset
@@ -238,11 +290,11 @@ Figure&nbsp;3: Example dataset
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;0.4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the varieties, and the Variables are the four traits mentioned earlier - <strong>yield, Obs1, Obs2, and FW</strong>.</p>
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the varieties, and the Variables are the four traits mentioned earlier - <strong>yield, Obs1, Obs2, and FW</strong>.</p>
 </div>
 </section>
-<section id="sec-4" class="level2 H">
-<h2 class="H anchored" data-anchor-id="sec-4">How to prepare your data?</h2>
+<section id="sec-4" class="level2 H" data-number="4">
+<h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
 <div style="text-align: justify;">
 <p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. Make sure no blank rows are left above, and all columns have proper names. That’s it - your file is ready to upload.</p>
 <p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a> .</p>
@@ -253,7 +305,7 @@ Figure&nbsp;3: Example dataset
 <div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/CREATEDAT.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/CREATEDAT.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Illustrating how to create a dataset
@@ -261,15 +313,15 @@ Figure&nbsp;4: Illustrating how to create a dataset
 </figure>
 </div>
 </section>
-<section id="AO" class="level2">
-<h2 class="anchored" data-anchor-id="AO">CRD analysis tab explained</h2>
+<section id="AO" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> CRD analysis tab explained</h2>
 <div style="text-align: justify;">
 <p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a> , you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every settings, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the <code>Analysis</code> tab. When the file is uploaded, options to select the Treatment and variables will appear. Select the appropriate column under treatments and variables. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly leaving no room for confusion.</p>
 </div>
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/sstabs.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/sstabs.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="www/sstabs.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Analysis window explained
@@ -277,18 +329,18 @@ Figure&nbsp;5: Analysis window explained
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>For some data, when there are large number of zeros/ discrete values/ when the observed variables are not normally distributed, we need to do transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;0.6</a>) . Here, <strong>RAISINS</strong> provide inbuilt transformation option.</p>
+<p>For some data, when there are large number of zeros/ discrete values/ when the observed variables are not normally distributed, we need to do transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>) . Here, <strong>RAISINS</strong> provide inbuilt transformation option.</p>
 </div>
 </section>
-<section id="sec-6" class="level2 T">
-<h2 class="T anchored" data-anchor-id="sec-6">Transformation</h2>
+<section id="sec-6" class="level2 T" data-number="6">
+<h2 class="T anchored" data-number="6" data-anchor-id="sec-6"><span class="header-section-number">6</span> Transformation</h2>
 <div style="text-align: justify;">
 <p>Log, square root, and arcsine transformations are often used in CRD analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in <strong>RAISINS</strong> as shown in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>.</p>
 </div>
 <div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/trans.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/trans.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/trans.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Transformation options
@@ -301,11 +353,11 @@ Figure&nbsp;6: Transformation options
 <p><strong>Arcsine transformation</strong> (also known as the angular transformation) is a mathematical technique specifically designed for data expressed as proportions or percentages bounded between 0 and 1. By taking the inverse sine of the square root of the proportion, this transformation stretches the ends of the distribution near 0 and 1, where variance is naturally small. It is primarily used to achieve homoscedasticity in binomial data.</p>
 </div>
 <blockquote class="blockquote">
-<p>After choosing the appropriate transformation proceed to <a href="#sec-7" class="quarto-xref">Section&nbsp;0.7</a> for analysis.</p>
+<p>After choosing the appropriate transformation proceed to <a href="#sec-7" class="quarto-xref">Section&nbsp;7</a> for analysis.</p>
 </blockquote>
 </section>
-<section id="sec-7" class="level2 AR">
-<h2 class="AR anchored" data-anchor-id="sec-7">Analysis results</h2>
+<section id="sec-7" class="level2 AR" data-number="7">
+<h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
 <p>Once your dataset is uploaded, cick on <code>Run Analysis</code>, <strong>one-way ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> is a statistical technique used to test the significance of differences among population means by partitioning total variation into treatment and error components and comparing them using the F-test (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a> ).</p>
 </div>
@@ -313,7 +365,7 @@ Figure&nbsp;6: Transformation options
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/res1.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/res1.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Treatment and Error Mean Square ANOVA"><img src="www/res1.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Treatment and Error Mean Square ANOVA
@@ -326,18 +378,18 @@ Figure&nbsp;7: Treatment and Error Mean Square ANOVA
 <p>Significance is indicated by an asterisk ( * ) for the <strong>5%</strong> level and two asterisks (** ) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F stat in the table.</p>
 </small><p><small>If the computed F value exceeds the critical value, the null hypothesis is rejected, indicating that at least one treatment mean differs significantly from the others. However, ANOVA alone does not indicate which specific treatments differ. Therefore, if a significant difference is detected, multiple comparison tests such as Fisher’s LSD, Tukey’s HSD or DMRT are performed to make pairwise comparisons between treatments and identify precisely where the differences exist. </small></p>
 </details>
-<section id="interpretation-from-fig-100" class="level3">
-<h3 class="anchored" data-anchor-id="interpretation-from-fig-100">Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
+<section id="interpretation-from-fig-100" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
 <div style="text-align: justify;">
 <p>The ANOVA result show that the treatment mean square (40376.08) is much larger than the error mean square (10632.08), producing F-ratio of approximately 3.79, with 9 degrees of freedom for treatment and 20 for error, this F-value is statistically significant at the 1% level. This indicates that the variation in yield among treatments is highly unlikely to be due to random chance, and the null hypothesis (no treatment effect) can be rejected.</p>
 <p>In practical terms, the treatments exerted a strong influence on yield performance, meaning that at least one treatment differs meaningfully from the others. The presence of such significant differences suggests that further post-hoc tests (such as Tukey’s HSD or LSD) would be appropriate to identify which specific treatments contributed to the observed variation.</p>
-<p><a href="#sec-8" class="quarto-xref">Section&nbsp;0.8</a> provide detailed information on the multiple comparison test (Post-hoc test).</p>
+<p><a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provide detailed information on the multiple comparison test (Post-hoc test).</p>
 </div>
 <p><strong>Table 2: Detailed tabular representation with multiple comparisons</strong></p>
 <div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/Result2.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/Result2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Detailed tabular representation with multiple comparisons"><img src="www/Result2.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Detailed tabular representation with multiple comparisons
@@ -372,8 +424,8 @@ Figure&nbsp;8: Detailed tabular representation with multiple comparisons
 </small><p><small><strong>Cohen’s F</strong>: A standardized measure of effect size that describes the magnitude of the experimental effect, regardless of the sample size. </small></p>
 </details>
 </section>
-<section id="interpretation-from-fig-101" class="level3">
-<h3 class="anchored" data-anchor-id="interpretation-from-fig-101">Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;8</a></h3>
+<section id="interpretation-from-fig-101" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;8</a></h3>
 <div style="text-align: justify;">
 <p>Treatments are then grouped using letters like <strong>“a”, “b”, “c”</strong>, etc., to indicate statistical similarity. Overlapping of grouping letters (e.g., <strong>ab</strong>/ <strong>bc</strong>) indicates that the absolute difference between treatment means is less than the critical difference at the chosen level of significance, implying statistical similarity <strong>(on par)</strong>. For example, if both Alphonso and Badami are labeled <strong>“a”</strong>, their yields are statistically similar at <strong>5%</strong> significance level. Treatments with no common letters (e.g., <strong>a and c</strong>) differ significantly, providing a clear visual summary of treatment comparisons.</p>
 <p>For characters exhibiting significant treatment effects, pairwise comparisons of treatment means were conducted using the Least Significant Difference (LSD) test. The LSD test provides the critical difference (CD) value, which was used to determine significant differences between pairs of treatment means. Based on these comparisons, letter groupings were assigned to each treatment and presented as superscripts. Treatments sharing at least one common letter within a character were considered not significantly different (statistically on par).</p>
@@ -410,8 +462,8 @@ Figure&nbsp;8: Detailed tabular representation with multiple comparisons
 </div>
 </section>
 </section>
-<section id="sec-8" class="level2 MCT">
-<h2 class="MCT anchored" data-anchor-id="sec-8">Multiple comparison tests</h2>
+<section id="sec-8" class="level2 MCT" data-number="8">
+<h2 class="MCT anchored" data-number="8" data-anchor-id="sec-8"><span class="header-section-number">8</span> Multiple comparison tests</h2>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
   What is Post-hoc test?
@@ -426,7 +478,7 @@ Figure&nbsp;8: Detailed tabular representation with multiple comparisons
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/CUSRES.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/CUSRES.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/CUSRES.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: Multiple comparison test options explained
@@ -455,8 +507,8 @@ Figure&nbsp;9: Multiple comparison test options explained
 <p>In the example for those characters, a pairwise comparison was performed to identify significant differences between treatments using Least Significant Difference (LSD) test.</p>
 </div>
 </section>
-<section id="SUM" class="level2">
-<h2 class="anchored" data-anchor-id="SUM">Summary stats</h2>
+<section id="SUM" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="SUM"><span class="header-section-number">9</span> Summary stats</h2>
 <div style="text-align: justify;">
 <p>If you need to know about the detailed values of the various statistical metrices of treatments, move to <code>Summary stats</code> under the <code>Analysis</code>.</p>
 </div>
@@ -464,7 +516,7 @@ Figure&nbsp;9: Multiple comparison test options explained
 <div id="fig-102" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/summary_stat.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/summary_stat.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Summary statistics"><img src="www/summary_stat.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: Summary statistics
@@ -484,15 +536,15 @@ Figure&nbsp;10: Summary statistics
 <p><strong>Kurtosis</strong> A measure of the “tailedness” of the distribution. It describes how much of the data is concentrated in the tails versus the peak. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.</p>
 </small><p><small></small></p>
 </details>
-<section id="interpretations-from-fig-102" class="level3">
-<h3 class="anchored" data-anchor-id="interpretations-from-fig-102">Interpretations from <a href="#fig-102" class="quarto-xref">Figure&nbsp;10</a></h3>
+<section id="interpretations-from-fig-102" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from <a href="#fig-102" class="quarto-xref">Figure&nbsp;10</a></h3>
 <div style="text-align: justify;">
 <p>The table presents a summary of yield performance across ten treatments, likely representing different mango varieties. Among them, Alphonso recorded the highest average yield (1423.92), followed by Dasheri and Totapuri, while Safeda had the lowest mean yield (1061.19).Varieties like Badami and Himsagar showed low variability in yield, indicated by their small standard deviations and low coefficients of variation (CV), suggesting consistent performance. In contrast, Safeda and Dasheri had higher CVs, pointing to greater fluctuation in yield. Skewness values show that most treatments had slightly asymmetric yield distributions, some leaning toward higher values (positively skewed) and others toward lower (negatively skewed). All treatments had a kurtosis of 1.5, indicating a relatively flat distribution compared to the normal curve.</p>
 </div>
 </section>
 </section>
-<section id="IA" class="level2">
-<h2 class="anchored" data-anchor-id="IA">Individual ANOVA</h2>
+<section id="IA" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="IA"><span class="header-section-number">10</span> Individual ANOVA</h2>
 <div style="text-align: justify;">
 <p>If the user want to get individual ANOVA table for each variable click on <code>Individual ANOVA</code> in the <code>Analysis</code>.</p>
 <p>The significance of the treatment can be measured using F-test and p value as in <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a>.</p>
@@ -501,7 +553,7 @@ Figure&nbsp;10: Summary statistics
 <div id="fig-104" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/INDIVIDUAL%20ANOVA.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/INDIVIDUAL%20ANOVA.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: ANOVA table for yield"><img src="www/INDIVIDUAL%20ANOVA.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: ANOVA table for yield
@@ -526,8 +578,8 @@ Figure&nbsp;11: ANOVA table for yield
 <p>The standard error associated with the difference between two treatment means. <span class="math display">\[ SE(d)=\sqrt{2 \times MSE / r}\]</span> It is the foundation for calculating the CD value.</p>
 </small><p><small></small></p>
 </details>
-<section id="interpretation-from-fig-104" class="level3">
-<h3 class="anchored" data-anchor-id="interpretation-from-fig-104">Interpretation from <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a></h3>
+<section id="interpretation-from-fig-104" class="level3" data-number="10.1">
+<h3 data-number="10.1" class="anchored" data-anchor-id="interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a></h3>
 <div style="text-align: justify;">
 <p>It shows that the treatment mean square (40376.08) is much higher than the error mean square (10632.08), resulting in a calculated F-value of 3.80, which is significant at the 1% level (p = 0.01), indicating that treatments differ significantly in their effect on yield. The mean square error (10632.08) represents random variation and is used to compute precision measures such as standard error of a treatment mean, SE(m) = 59.53 and standard error of difference between two treatment means,SE(d) = 84.19, while the critical differences of 175.62 at 5% and 239.55 at 1% indicate the minimum difference required between two treatment means for significance. The coefficient of variation (8.31%) is low, showing good experimental precision and reliability of the results.</p>
 </div>
@@ -535,7 +587,7 @@ Figure&nbsp;11: ANOVA table for yield
 <div id="fig-103" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/summary_abc.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/summary_abc.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Summary statistics"><img src="www/summary_abc.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Summary statistics
@@ -543,27 +595,27 @@ Figure&nbsp;12: Summary statistics
 </figure>
 </div>
 </section>
-<section id="interpretation-from-fig-103" class="level3">
-<h3 class="anchored" data-anchor-id="interpretation-from-fig-103">Interpretation from <a href="#fig-103" class="quarto-xref">Figure&nbsp;12</a></h3>
+<section id="interpretation-from-fig-103" class="level3" data-number="10.2">
+<h3 data-number="10.2" class="anchored" data-anchor-id="interpretation-from-fig-103"><span class="header-section-number">10.2</span> Interpretation from <a href="#fig-103" class="quarto-xref">Figure&nbsp;12</a></h3>
 <div style="text-align: justify;">
 <p>Table compares different mango varieties based on their average values (Mean), variation (Standard Deviation or SD), and how they are grouped statistically.Alphonso and Dasheri mangoes have the highest average values, showing top performance. Safeda ranks lowest. Varieties are grouped based on statistical similarity, those sharing letters (“abc” or “cd”) are not significantly different. This helps identify which mango types truly differ and which are alike.</p>
 </div>
 </section>
 </section>
-<section id="BP" class="level2">
-<h2 class="anchored" data-anchor-id="BP">Basic plots</h2>
+<section id="BP" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="BP"><span class="header-section-number">11</span> Basic plots</h2>
 <div style="text-align: justify;">
 <p>RAISINS is designed for a smooth and hassle-free experience. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly-leaving no room for confusion. We’ve ensured that every possible plot related to the Completely Randomisd Design is readily available. Simply click on the <code>Basic Plots</code> tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;13</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi),JPEG,TIFF,PDF and SVG for use in reports or presentations.</p>
 </div>
-<section id="customizing-plots" class="level3">
-<h3 class="anchored" data-anchor-id="customizing-plots">Customizing plots</h3>
+<section id="customizing-plots" class="level3" data-number="11.1">
+<h3 data-number="11.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</h3>
 <div style="text-align: justify;">
 <p><strong>RAISINS</strong> provides user various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;13</a> to get a clear idea on the customizing features.</p>
 </div>
 <div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/customize.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/customize.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Plot settings for customizing"><img src="www/customize.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: Plot settings for customizing
@@ -664,7 +716,7 @@ function hideDescription(id) {
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Box+Plot">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/box.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Box+Plot">
+<a href="www/box.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: Box plot"><img src="www/box.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Box+Plot"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14: Box plot
@@ -683,7 +735,7 @@ Figure&nbsp;14: Box plot
 <div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Violin+Plot">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/violin.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Violin+Plot">
+<a href="www/violin.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Violin plot"><img src="www/violin.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Violin+Plot"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15: Violin plot
@@ -702,7 +754,7 @@ Figure&nbsp;15: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Bar+Plot">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/bar.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Bar+Plot">
+<a href="www/bar.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: Bar plot"><img src="www/bar.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Bar+Plot"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: Bar plot
@@ -721,7 +773,7 @@ Figure&nbsp;16: Bar plot
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Mean+Value+Plot">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/mean.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Mean+Value+Plot">
+<a href="www/mean.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;17: Mean Value Plot"><img src="www/mean.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Mean+Value+Plot"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: Mean Value Plot
@@ -741,7 +793,7 @@ Figure&nbsp;17: Mean Value Plot
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored" data-fallback="https://via.placeholder.com/300x300?text=Connected+Plot">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/connect.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Connected+Plot">
+<a href="www/connect.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;18: Connected line plot"><img src="www/connect.webp" class="img-fluid figure-img" data-fallback="https://via.placeholder.com/300x300?text=Connected+Plot"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: Connected line plot
@@ -759,15 +811,15 @@ Figure&nbsp;18: Connected line plot
 </div>
 </section>
 </section>
-<section id="AP" class="level2">
-<h2 class="anchored" data-anchor-id="AP">Advanced plots</h2>
+<section id="AP" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="AP"><span class="header-section-number">12</span> Advanced plots</h2>
 <div style="text-align: justify;">
 <p><strong>RAISINS</strong> also provides <code>advanced plots</code> which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations.(See <a href="#fig-90" class="quarto-xref">Figure&nbsp;19</a>)</p>
 </div>
 <div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/advanced_plot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/advanced_plot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;19: Advanced plots"><img src="www/advanced_plot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19: Advanced plots
@@ -778,7 +830,7 @@ Figure&nbsp;19: Advanced plots
 <div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/plot%20summary.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/plot%20summary.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;20: Summary plot"><img src="www/plot%20summary.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20: Summary plot
@@ -792,7 +844,7 @@ Figure&nbsp;20: Summary plot
 <div id="fig-15" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/advanced_raincloud.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/advanced_raincloud.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;21: Advanced rain cloud plot"><img src="www/advanced_raincloud.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21: Advanced rain cloud plot
@@ -806,7 +858,7 @@ Figure&nbsp;21: Advanced rain cloud plot
 <div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/qq_plot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/qq_plot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;22: QQ plot"><img src="www/qq_plot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22: QQ plot
@@ -820,7 +872,7 @@ Figure&nbsp;22: QQ plot
 <div id="fig-17" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/raincloud_plot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/raincloud_plot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;23: Rain cloud plot"><img src="www/raincloud_plot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23: Rain cloud plot
@@ -834,7 +886,7 @@ Figure&nbsp;23: Rain cloud plot
 <div id="fig-18" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/Screenshot%202026-04-01%20113358.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="images/Screenshot%202026-04-01%20113358.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;24: Distribution plot"><img src="images/Screenshot%202026-04-01%20113358.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;24: Distribution plot
@@ -845,15 +897,15 @@ Figure&nbsp;24: Distribution plot
 <p>The distribution plot shows how the data values are spread for each treatment. It provides a visual comparison of the pattern, spread, and variability of observations across treatments, helping to understand overall differences and consistency in the data.</p>
 </div>
 </section>
-<section id="AI" class="level2">
-<h2 class="anchored" data-anchor-id="AI">AI interpretation</h2>
+<section id="AI" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="AI"><span class="header-section-number">13</span> AI interpretation</h2>
 <div style="text-align: justify;">
 <p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences between groups, and offers informed suggestions for potential next steps or interpretations.The user can get detailed interpretations of the analysis by clicking on <code>AI interpretation</code> on the <code>Analysis</code> as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;25</a> .</p>
 </div>
 <div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/ai.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/ai.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results"><img src="www/ai.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results
@@ -861,15 +913,15 @@ Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results
 </figure>
 </div>
 </section>
-<section id="MUL" class="level2">
-<h2 class="anchored" data-anchor-id="MUL">Multivariate</h2>
+<section id="MUL" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="MUL"><span class="header-section-number">14</span> Multivariate</h2>
 <div style="text-align: justify;">
 <p>Multivariate analysis in Completely Randomised Design (CRD) helps you to compare different response variables simultaneously. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example, of evaluation of ten mango cultivars - Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay_g, Langra, and Totapuri - by a horticultural scientist, navigate to <code>Multivariate</code> see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;26</a>.</p>
 </div>
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/MultiTAB.webp" class="img-fluid figure-img">
+<a href="www/MultiTAB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;26: Multivariate tab in RAISINS"><img src="www/MultiTAB.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;26: Multivariate tab in RAISINS
@@ -882,7 +934,7 @@ Figure&nbsp;26: Multivariate tab in RAISINS
 <div id="fig-MAN2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/MAN2.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/MAN2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;27: Manova Results"><img src="www/MAN2.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;27: Manova Results
@@ -895,7 +947,7 @@ Figure&nbsp;27: Manova Results
 <div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/MAN3.webp" class="img-fluid figure-img">
+<a href="www/MAN3.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;28: PCA-based Index Score"><img src="www/MAN3.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;28: PCA-based Index Score
@@ -908,7 +960,7 @@ Figure&nbsp;28: PCA-based Index Score
 <div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/CRD_Scree_Plot2025-10-07.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/CRD_Scree_Plot2025-10-07.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;29: Scree plot"><img src="www/CRD_Scree_Plot2025-10-07.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;29: Scree plot
@@ -921,7 +973,7 @@ Figure&nbsp;29: Scree plot
 <div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/MAN4.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/MAN4.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;30: Loadings of each variable"><img src="www/MAN4.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;30: Loadings of each variable
@@ -934,7 +986,7 @@ Figure&nbsp;30: Loadings of each variable
 <div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/BiplotPCA2025-10-07.webp" class="img-fluid figure-img">
+<a href="www/BiplotPCA2025-10-07.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;31: PCA-Biplot"><img src="www/BiplotPCA2025-10-07.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;31: PCA-Biplot
@@ -947,7 +999,7 @@ Figure&nbsp;31: PCA-Biplot
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/MAN5.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/MAN5.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;32: Index score"><img src="www/MAN5.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;32: Index score
@@ -957,7 +1009,7 @@ Figure&nbsp;32: Index score
 <div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/Indexplot12025-10-07.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/Indexplot12025-10-07.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;33: Indexplot"><img src="www/Indexplot12025-10-07.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;33: Indexplot
@@ -968,8 +1020,8 @@ Figure&nbsp;33: Indexplot
 <p>Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study.</p>
 </div>
 </section>
-<section id="PRE" class="level2">
-<h2 class="anchored" data-anchor-id="PRE">Preparing your data</h2>
+<section id="PRE" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="PRE"><span class="header-section-number">15</span> Preparing your data</h2>
 <div style="text-align: justify;">
 <p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
 <ol type="1">
@@ -978,15 +1030,15 @@ Figure&nbsp;33: Indexplot
 </ol>
 </div>
 </section>
-<section id="EX" class="level2">
-<h2 class="anchored" data-anchor-id="EX">Preparing data in MS Excel</h2>
+<section id="EX" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="EX"><span class="header-section-number">16</span> Preparing data in MS Excel</h2>
 <div style="text-align: justify;">
 <p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the treatment or group to be compared-you can name this column appropriately, such as “Group” or “Treatment.” All characters under study (e.g., yield, Obs1, Obs2, FW) should be arranged in separate columns, and each group should be repeated according to the number of replications. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;34</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, groups must appear repeatedly based on replications, and the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;35</a>.</p>
 </div>
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/P1.webp" class="img-fluid figure-img">
+<a href="www/P1.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;34: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/P1.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;34: Model-1: showing how the prepared Excel file for upload should look like
@@ -996,7 +1048,7 @@ Figure&nbsp;34: Model-1: showing how the prepared Excel file for upload should l
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/P2.webp" class="img-fluid figure-img">
+<a href="www/P2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;35: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/P2.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;35: Model-2: Showing how the prepared Excel file for upload should look like
@@ -1046,8 +1098,8 @@ How to Save as CSV in MS Excel
 </blockquote>
 </details>
 </section>
-<section id="CR" class="level2">
-<h2 class="anchored" data-anchor-id="CR">Creating dataset in RAISINS</h2>
+<section id="CR" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</h2>
 <div style="text-align: justify;">
 <p>If you’re unsure about the correct format for creating a dataset, don’t worry - Raisins offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
 <ul>
@@ -1062,7 +1114,7 @@ How to Save as CSV in MS Excel
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/CREATEDAT.webp" class="img-fluid figure-img" width="1011">
+<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;36: Creating dataset within RAISINS"><img src="www/CREATEDAT.webp" class="img-fluid figure-img" width="1011"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;36: Creating dataset within RAISINS
@@ -1070,15 +1122,15 @@ Figure&nbsp;36: Creating dataset within RAISINS
 </figure>
 </div>
 </section>
-<section id="M" class="level2">
-<h2 class="anchored" data-anchor-id="M">Model datasets</h2>
+<section id="M" class="level2" data-number="18">
+<h2 data-number="18" class="anchored" data-anchor-id="M"><span class="header-section-number">18</span> Model datasets</h2>
 <div style="text-align: justify;">
 <p>To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the <code>Datasets</code>.</p>
 </div>
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/modeldata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/modeldata.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;37: Model dataset"><img src="www/modeldata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;37: Model dataset
@@ -1086,15 +1138,15 @@ Figure&nbsp;37: Model dataset
 </figure>
 </div>
 </section>
-<section id="F" class="level2">
-<h2 class="anchored" data-anchor-id="F">FAQ’s</h2>
+<section id="F" class="level2" data-number="19">
+<h2 data-number="19" class="anchored" data-anchor-id="F"><span class="header-section-number">19</span> FAQ’s</h2>
 <div style="text-align: justify;">
 <p>The app includes a dedicated <code>FAQs</code> to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the <code>FAQs</code> is a great place to start.</p>
 </div>
 <div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="www/FAQ%20TAB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<a href="www/FAQ%20TAB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;38: FAQs"><img src="www/FAQ%20TAB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;38: FAQs
@@ -1102,48 +1154,62 @@ Figure&nbsp;38: FAQs
 </figure>
 </div>
 </section>
-<section id="U" class="level2">
-<h2 class="anchored" data-anchor-id="U">View data</h2>
+<section id="U" class="level2" data-number="20">
+<h2 data-number="20" class="anchored" data-anchor-id="U"><span class="header-section-number">20</span> View data</h2>
 <div style="text-align: justify;">
 <p><code>View Data</code> serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="www/view%20data.webp" class="img-fluid figure-img"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="www/view%20data.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="View data"><img src="www/view%20data.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+</figure>
+</div>
 <figcaption>View data</figcaption>
 </figure>
 </div>
 </section>
-<section id="ra-one" class="level2">
-<h2 class="anchored" data-anchor-id="ra-one">RA-One</h2>
+<section id="ra-one" class="level2" data-number="21">
+<h2 data-number="21" class="anchored" data-anchor-id="ra-one"><span class="header-section-number">21</span> RA-One</h2>
 <div style="text-align: justify;">
 <p>`RA-One is a simple and interactive tool for analyzing time series data. It helps users easily create and view plots like time series, forecasts, and residuals in one place.</p>
 <p>With its easy-to-use interface and built-in assistant, RA-One makes data analysis quick, clear, and user-friendly.</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/crd%20gif%20canva.gif" class="img-fluid figure-img"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/crd%20gif%20canva.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-40" title="RA-One"><img src="images/crd%20gif%20canva.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="RA-One"></a></p>
+</figure>
+</div>
 <figcaption>RA-One</figcaption>
 </figure>
 </div>
 <hr>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="www/Chi-square-test.jpg" class="img-fluid figure-img"></p>
-<figcaption><img src="www/crd1.jpg" class="img-fluid figure-img"></figcaption>
+<p><a href="www/Chi-square-test.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-43"><img src="www/Chi-square-test.jpg" class="img-fluid figure-img" alt=""></a></p>
+<figcaption><a href="www/crd1.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-41"><img src="www/crd1.jpg" class="img-fluid figure-img"></a></figcaption>
 </figure>
 </div>
 </section>
-<<<<<<< HEAD
-<section id="simple-t-test" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> simple T Test</h1>
-<p>it is a tool for data analysis</p>
-<p>HI I AM NIRU SABU HOW ARE YOU</p>
-=======
-<section id="simple-t-test" class="level1">
-<h1>simple T Test</h1>
-<p>it is a tool for data analysis<img src="images/CLIMATE.png" class="img-fluid"></p>
->>>>>>> a0511a5a30e9bc9de485062f10ebfb1abf88c95f
+<section id="simple-t-test" class="level2" data-number="22">
+<h2 data-number="22" class="anchored" data-anchor-id="simple-t-test"><span class="header-section-number">22</span> Simple T Test</h2>
+<p>A simple t-test is a statistical method used to determine whether the difference between an observed sample mean and a known value (or between two sample means) is statistically significant or just due to random variation; it works especially well when sample sizes are small and the population standard deviation is unknown, using the sample data to estimate variability and calculate a t value that is then compared against a reference distribution to make a decision. A good beginner tip is to always check your data first—make sure it’s roughly normally distributed and free of obvious outliers, because t-tests assume this, and ignoring it can lead to misleading results.</p>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>before running a t-test, clearly write down your null hypothesis (no difference) and alternative hypothesis (there is a difference)—this helps you avoid confusion when interpreting results, especially the p-value.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 </section>
 
 </main>
@@ -1549,6 +1615,38 @@ Figure&nbsp;38: FAQs
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

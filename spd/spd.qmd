@@ -100,6 +100,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Analysis of experiment tab](www/PLACEHOLDER_AnalysisTab.webp){#fig-aov fig-align="center"}
 
 ## Split Plot Design (SPD) {#C}
@@ -120,9 +121,10 @@ A Split Plot Design **(SPD)** is a two-factor experimental design in which the e
 
 <small>
 
-@fig-lay visually represents a Split Plot Design arrangement with two main plot treatments (M1 and M2) assigned randomly to main plots within each replication, and three sub-plot treatments (S1, S2, S3) randomly assigned within each main plot. In each replication, the two main plots appear in randomised order, and within every main plot, all three sub-plot levels are randomised independently. This means the order of S1, S2, and S3 within the M1 main plot may differ from their order within the M2 main plot, and both orderings will vary across replications. The design produces 2 × 3 = 6 treatment combinations in total, with each combination replicated three times across the three replications, yielding 18 experimental units overall.
+@fig-lay In this design, the experimental area is first divided into large plots, known as main plots, to which the main plot treatments such as A1, A2, A3 are randomly assigned (these represent different levels of the main factor, for example different irrigation levels). Each main plot is then further subdivided into smaller units called subplots, where the subplot treatments such as B1, B2, B3, B4 are applied randomly (these represent levels of another factor, for example different fertilizer types). This results in two levels of experimental units and two stages of randomization. The design is particularly useful in agricultural experiments where one factor is difficult or costly to change, while another factor can be applied more easily. It allows the study of both main effects and interactions between treatments, but involves more complex analysis and provides less precision for main plot treatments compared to subplot treatments.The design produces 3 × 4 = 12 treatment combinations in total, with each combination replicated three times across the three replications, yielding 36 experimental units overall.
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![SPD Layout](www/PLACEHOLDER_Layout.webp){#fig-lay fig-align="center"}
 
 </small>
@@ -142,6 +144,7 @@ To make things simple and interesting, we'll explain SPD analysis step by step u
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Example dataset — Mainplot, Subplot, Replication, and response variables arranged in columns](www/PLACEHOLDER_ExampleDataset.webp){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -171,6 +174,7 @@ In @fig-5, you can see the detailed view of the Analysis tab, along with explana
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Analysis window explained](www/PLACEHOLDER_AnalysisWindow.webp){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -204,6 +208,7 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **Split Plot ANO
 **Table 1 ANOVA summary**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Main Plot, Sub-plot, Interaction, and Error Mean Square ANOVA](www/PLACEHOLDER_ANOVASummary.webp){#fig-100 fig-align="center"}
 
 <details>
@@ -214,15 +219,15 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **Split Plot ANO
 
 <small> In a **Split Plot Design (SPD)**, the total sum of squares is partitioned into six components, each associated with specific degrees of freedom as shown below. With **a** = number of main plot levels, **b** = number of sub-plot levels, and **r** = number of replications:
 
-| Source of Variation | Degrees of Freedom |
-|---|---|
-| Replications | r − 1 |
-| Main Plot (A) | a − 1 |
-| Main Plot Error (Error a) | (a − 1)(r − 1) |
-| Sub-plot (B) | b − 1 |
-| A × B Interaction | (a − 1)(b − 1) |
-| Sub-plot Error (Error b) | a(b − 1)(r − 1) |
-| **Total** | **abr − 1** |
+| Source of Variation       | Degrees of Freedom |
+|---------------------------|--------------------|
+| Replications              | r − 1              |
+| Main Plot (A)             | a − 1              |
+| Main Plot Error (Error a) | (a − 1)(r − 1)     |
+| Sub-plot (B)              | b − 1              |
+| A × B Interaction         | (a − 1)(b − 1)     |
+| Sub-plot Error (Error b)  | a(b − 1)(r − 1)    |
+| **Total**                 | **abr − 1**        |
 
 In our example with a = 2 main plot levels, b = 3 sub-plot levels, and r = 3 replications: Replication df = 2, Main Plot df = 1, Main Plot Error df = 2, Sub-plot df = 2, Interaction df = 2, Sub-plot Error df = 8, Total df = 17. The F-value for the Main Plot factor is computed as MS(A) / MS(Error a), while the F-values for the Sub-plot and Interaction are computed as MS(B) / MS(Error b) and MS(A×B) / MS(Error b) respectively. Significance is indicated by an asterisk ( \* ) for the **5%** level and two asterisks (\*\*) for the **1%** level of significance, displayed as superscripts for each corresponding F stat in the table. If the computed F value exceeds the critical value, the null hypothesis is rejected for that source of variation. </small>
 
@@ -237,6 +242,7 @@ The Split Plot ANOVA results for three variables — Yield, Char1, and Char2 —
 **Table 2: Detailed tabular representation with multiple comparisons**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Detailed tabular representation with multiple comparisons](www/PLACEHOLDER_DetailedResults.webp){#fig-101 fig-align="center"}
 
 <details>
@@ -317,6 +323,7 @@ After obtaining a significant F-value in the SPD ANOVA, multiple comparison test
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Multiple comparison test options explained](www/PLACEHOLDER_PostHocOptions.webp){#fig-7 fig-align="center"}
 
 <details>
@@ -333,14 +340,11 @@ When the ANOVA in a **Split Plot Design (SPD)** is significant, the following po
 
 The **Least Significant Difference (LSD)** test identifies which specific treatment means differ significantly after ANOVA indicates an overall significant effect. In SPD, three types of LSD values are relevant:
 
-For comparing **main plot means** (using Error a):
-$$\text{LSD}_A = t_{\alpha/2,\,df_{Ea}} \sqrt{\frac{2\,\text{MSE}_a}{r \cdot b}}$$
+For comparing **main plot means** (using Error a): $$\text{LSD}_A = t_{\alpha/2,\,df_{Ea}} \sqrt{\frac{2\,\text{MSE}_a}{r \cdot b}}$$
 
-For comparing **sub-plot means within the same main plot** (using Error b):
-$$\text{LSD}_{B(A)} = t_{\alpha/2,\,df_{Eb}} \sqrt{\frac{2\,\text{MSE}_b}{r}}$$
+For comparing **sub-plot means within the same main plot** (using Error b): $$\text{LSD}_{B(A)} = t_{\alpha/2,\,df_{Eb}} \sqrt{\frac{2\,\text{MSE}_b}{r}}$$
 
-For comparing **sub-plot means across different main plots** (using a combined error):
-$$\text{LSD}_{B} = t_{\alpha/2,\,df_{Eb}} \sqrt{\frac{2\,\text{MSE}_b}{r \cdot a}}$$
+For comparing **sub-plot means across different main plots** (using a combined error): $$\text{LSD}_{B} = t_{\alpha/2,\,df_{Eb}} \sqrt{\frac{2\,\text{MSE}_b}{r \cdot a}}$$
 
 where r = number of replications, a = number of main plot levels, b = number of sub-plot levels, MSE_a = Main Plot Error mean square, and MSE_b = Sub-plot Error mean square.
 
@@ -377,6 +381,7 @@ If you need to know about the detailed values of the various statistical metrics
 **Table 3: Summary statistics**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Summary statistics](www/PLACEHOLDER_SummaryStats.webp){#fig-102 fig-align="center"}
 
 <details>
@@ -426,6 +431,7 @@ The significance of the main plot factor, sub-plot factor, and their interaction
 **Table 4: ANOVA table for Yield**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![ANOVA table for Yield](www/PLACEHOLDER_IndividualANOVA.webp){#fig-104 fig-align="center"}
 
 <details>
@@ -442,8 +448,7 @@ The minimum difference required between any two treatment means to consider them
 
 **Coefficient of Variation (CV (%))**
 
-A relative measure of dispersion that expresses the standard deviation as a percentage of the mean.
-$$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
+A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
 
 **Mean Square Error — Main Plot (MSE_a)**
 
@@ -474,6 +479,7 @@ The individual ANOVA table for Yield in the SPD experiment shows a Main Plot sum
 **Table 5: Summary statistics with letter groupings**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Summary statistics with letter groupings](www/PLACEHOLDER_SummaryGroupings.webp){#fig-103 fig-align="center"}
 
 ### Interpretation from @fig-103
@@ -589,6 +595,7 @@ function hideDescription(id) {
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Box plot](www/PLACEHOLDER_BoxPlot.webp){#fig-9}
 
 :::: {#boxplot-desc .plot-description}
@@ -602,6 +609,7 @@ A **box plot** compares the distribution of values across different treatment co
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Violin plot](www/PLACEHOLDER_ViolinPlot.webp){#fig-10}
 
 :::: {#violinplot-desc .plot-description}
@@ -615,6 +623,7 @@ A **violin plot** compares the distribution of values across treatment combinati
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Bar plot](www/PLACEHOLDER_BarPlot.webp){#fig-11}
 
 :::: {#barplot-desc .plot-description}
@@ -628,6 +637,7 @@ A **bar plot** compares the average values of different treatment combinations, 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Mean Value Plot](www/PLACEHOLDER_MeanPlot.webp){#fig-12}
 
 :::: {#meanvalueplot-desc .plot-description}
@@ -642,6 +652,7 @@ A **mean value plot** compares the mean values of different treatment combinatio
 :::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
 ::: {style="text-align: center;"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Connected line plot](www/PLACEHOLDER_ConnectedPlot.webp){#fig-13}
 :::
 
@@ -661,11 +672,13 @@ A **connected line plot** compares the mean values of treatment combinations, wi
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Advanced plots](www/PLACEHOLDER_AdvancedPlots.webp){#fig-90 fig-align="center"}
 
 **SUMMARY PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Summary plot](www/PLACEHOLDER_SummaryPlot.webp){#fig-14 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -675,6 +688,7 @@ A summary plot is a visual representation that shows how data are distributed ac
 **ADVANCED RAINCLOUD PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Advanced rain cloud plot](www/PLACEHOLDER_AdvancedRaincloud.webp){#fig-15 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -684,6 +698,7 @@ Advanced raincloud plot combines a density plot, boxplot, and individual data po
 **QQ PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![QQ plot](www/PLACEHOLDER_QQPlot.webp){#fig-16 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -693,6 +708,7 @@ Q–Q (quantile–quantile) plot is used to assess normality of the data. The po
 **RAIN CLOUD PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Rain cloud plot](www/PLACEHOLDER_Raincloud.webp){#fig-17 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -702,6 +718,7 @@ Raincloud plot shows the distribution of the response variable across each treat
 **DISTRIBUTION PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Distribution plot](www/PLACEHOLDER_Distribution.webp){#fig-18 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -723,6 +740,7 @@ Multivariate analysis in Split Plot Design **(SPD)** helps you to compare differ
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Multivariate tab in RAISINS](www/PLACEHOLDER_MultivariateTab.webp){#fig-mu}
 
 ::: {style="text-align: justify;"}
@@ -730,6 +748,7 @@ MANOVA and PCA will be automatically carried out based on the selected variables
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![MANOVA Results](www/PLACEHOLDER_MANOVAResults.webp){#fig-MAN2 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -741,6 +760,7 @@ The table titled 'Eigen Values PCA' given @fig-PC provides information about the
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![PCA-based Index Score](www/PLACEHOLDER_PCAIndex.webp){#fig-PC}
 
 ::: {style="text-align: justify;"}
@@ -748,6 +768,7 @@ The scree plot given @fig-screeplot illustrates the proportion of variance expla
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Scree plot](www/PLACEHOLDER_ScreePlot.webp){#fig-screeplot fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -755,6 +776,7 @@ Look upon the loadings of each variable in the given @fig-loadings and decide wh
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Loadings of each variable](www/PLACEHOLDER_Loadings.webp){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -762,6 +784,7 @@ The biplot gives a visual representation of the relationships among variables an
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![PCA-Biplot](www/PLACEHOLDER_Biplot.webp){#fig-biplot}
 
 ::: {style="text-align: justify;"}
@@ -769,9 +792,11 @@ In RAISINS, we calculate a scaled index score by converting the index score to a
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Index score](www/PLACEHOLDER_IndexScore.webp){#fig-indexscore fig-align="center"}
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Indexplot](www/PLACEHOLDER_IndexPlot.webp){#fig-index fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -795,9 +820,11 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Model-1: showing how the prepared Excel file for upload should look like](www/PLACEHOLDER_ExcelModel1.webp){#fig-pp}
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Model-2: Showing how the prepared Excel file for upload should look like](www/PLACEHOLDER_ExcelModel2.webp){#fig-kk}
 
 <details>
@@ -818,7 +845,7 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 <small> 1. **Open Your Workbook**
 
-```
+```         
 -   Ensure your data is arranged properly with only one sheet.
 ```
 
@@ -882,7 +909,7 @@ To test the app or better understand the data arrangement, we provide model data
 The app includes a dedicated `FAQs` to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the `FAQs` is a great place to start.
 :::
 
-![FAQs](www/FAQ TAB.webp){#fig-148 fig-align="center"}
+![FAQs](www/FAQ%20TAB.webp){#fig-148 fig-align="center"}
 
 ## View data {#U}
 
@@ -890,6 +917,6 @@ The app includes a dedicated `FAQs` to help clarify common doubts and guide user
 `View Data` serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For SPD data, the Health Check confirms that the main plot, sub-plot, and replication columns are correctly identified and that all treatment combinations are complete and balanced before analysis proceeds.
 :::
 
-![View data](www/view data.webp){fig-align="center"}
+![View data](www/view%20data.webp){fig-align="center"}
 
 ------------------------------------------------------------------------

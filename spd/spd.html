@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Split Plot Design (SPD)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -26,21 +29,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="spd_files/libs/clipboard/clipboard.min.js"></script>
 <script src="spd_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="spd_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/popper.min.js"></script>
 <script src="spd_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="spd_files/libs/quarto-html/anchor.min.js"></script>
 <link href="spd_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="spd_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="spd_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="spd_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="spd_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="spd_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="spd_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="spd_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -260,7 +262,7 @@ Figure&nbsp;2: SPD Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
-<p>To make things simple and interesting, we’ll explain SPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment designed to study the effect of irrigation method and nitrogen fertilizer dose on rice. The main plot factor is <strong>Irrigation method</strong>, with two levels: <strong>M1</strong> (Drip irrigation) and <strong>M2</strong> (Flood irrigation). The sub-plot factor is <strong>Nitrogen dose</strong>, with three levels: <strong>S1</strong> (60 kg N/ha), <strong>S2</strong> (90 kg N/ha), and <strong>S3</strong> (120 kg N/ha). The experiment is laid out in <strong>3 replications</strong>, giving a total of 2 × 3 × 3 = 18 experimental units. Observations were recorded for three variables: <strong>Yield</strong> (tonnes per hectare), <strong>Char1</strong> (plant height in cm), and <strong>Char2</strong> (number of tillers per hill). Our aim is to test whether the main plot factor, the sub-plot factor, and their interaction produce statistically significant differences using ANOVA. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To make things simple and interesting, we’ll explain SPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment designed to study the effect of irrigation method and nitrogen fertilizer dose on rice. The main plot factor is Irrigation method, with two levels: M1 (Drip irrigation) and M2 (Flood irrigation). The sub-plot factor is Nitrogen dose, with three levels: S1 (60 kg N/ha), S2 (90 kg N/ha), and S3 (120 kg N/ha). The experiment is laid out in 4 replications, giving a total of 2 × 3 × 4 = 24 experimental units. Observations were recorded for seven variables: Yield (tonnes per hectare), Char1 (plant height in cm), and Char2 (number of tillers per hill) Char3 (number of panicles per hill) Char4 (grain weight in gram) Char5 (biomass yield in t/ha ) Char6 (harvest index in %) . Our aim is to test whether the main plot factor, the sub-plot factor, and their interaction produce statistically significant differences using ANOVA. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -552,11 +554,9 @@ Figure&nbsp;10: Summary statistics
 <p><small></small></p><small>
 <p><strong>Mean</strong> The arithmetic average of all observations within a treatment combination. It represents the “typical” value for that specific main plot and sub-plot combination.</p>
 <p><strong>SD (Standard Deviation)</strong> A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.</p>
-<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[
-SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>, where n is the number of observations.</p>
+<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>, where n is the number of observations.</p>
 <p><strong>Min / Max</strong> The lowest and highest recorded values within that specific treatment combination group.</p>
-<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
+<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
 <p>It allows you to compare the variability between groups with different scales.</p>
 <p><strong>Skewness</strong> A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right (long tail on the right). Negative value: Data is skewed to the left (long tail on the left).</p>
 <p><strong>Kurtosis</strong> A measure of the “tailedness” of the distribution. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.</p>

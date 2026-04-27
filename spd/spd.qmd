@@ -165,9 +165,7 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](images/Copy of Red Modern Blank Page A4 Landscape.png){#fig-4 fig-align="center"}
-
-## SPD analysis tab explained {#AO}
+\![Illustrating how to create a dataset\] \## SPD analysis tab explained {#AO}
 
 ::: {style="text-align: justify;"}
 In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the **Main Plot**, **Sub-plot**, **Replication**, and **Variables** will appear. Select the appropriate column representing the main plot factor under **Main Plot**, the sub-plot factor column under **Sub-plot**, and the replication identifier under **Replication**. Then select the response variables you wish to analyse. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly leaving no room for confusion.
@@ -175,7 +173,9 @@ In @fig-5, you can see the detailed view of the Analysis tab, along with explana
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis window explained](www/PLACEHOLDER_AnalysisWindow.webp){#fig-5 fig-align="center"}
+![Analysis window explained](){#fig-5 fig-align="center"}
+
+![Analysis window explained](images/Copy of Red Modern Blank Page A4 Landscape (1)-01.png){fig-align="center"}
 
 ::: {style="text-align: justify;"}
 For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset (@sec-6). Here, **RAISINS** provide inbuilt transformation option.

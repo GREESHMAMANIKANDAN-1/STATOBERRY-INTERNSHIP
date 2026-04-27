@@ -165,7 +165,7 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](www/CREATEDAT.webp){#fig-4 fig-align="center"}
+![Illustrating how to create a dataset](images/Copy of Red Modern Blank Page A4 Landscape.png){#fig-4 fig-align="center"}
 
 ## SPD analysis tab explained {#AO}
 

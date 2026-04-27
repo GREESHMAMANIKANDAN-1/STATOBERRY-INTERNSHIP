@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Split Plot Design (SPD)</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,20 +26,21 @@ ul.task-list li input[type="checkbox"] {
 <script src="spd_files/libs/clipboard/clipboard.min.js"></script>
 <script src="spd_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="spd_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/popper.min.js"></script>
 <script src="spd_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="spd_files/libs/quarto-html/anchor.min.js"></script>
 <link href="spd_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="spd_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="spd_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="spd_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="spd_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="spd_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="spd_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="spd_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -207,11 +205,10 @@ window.Quarto = {
 <div style="text-align: justify;">
 <p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different two-factor experimental designs. In this tutorial, we focus on <strong>Split Plot Design (SPD)</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
 </div>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_AnalysisTab.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/PLACEHOLDER_AnalysisTab.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/analyss.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="images/analyss.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Analysis of experiment tab
@@ -231,11 +228,10 @@ Figure&nbsp;1: Analysis of experiment tab
 <ul>
 <p><small></small></p><small>
 <p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> In this design, the experimental area is first divided into large plots, known as main plots, to which the main plot treatments such as A1, A2, A3 are randomly assigned (these represent different levels of the main factor, for example different irrigation levels). Each main plot is then further subdivided into smaller units called subplots, where the subplot treatments such as B1, B2, B3, B4 are applied randomly (these represent levels of another factor, for example different fertilizer types). This results in two levels of experimental units and two stages of randomization. The design is particularly useful in agricultural experiments where one factor is difficult or costly to change, while another factor can be applied more easily. It allows the study of both main effects and interactions between treatments, but involves more complex analysis and provides less precision for main plot treatments compared to subplot treatments.The design produces 3 × 4 = 12 treatment combinations in total, with each combination replicated three times across the three replications, yielding 36 experimental units overall.</p>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Layout.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: SPD Layout"><img src="www/PLACEHOLDER_Layout.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/split%20plot%20image%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: SPD Layout"><img src="images/split%20plot%20image%201.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: SPD Layout
@@ -264,7 +260,6 @@ Figure&nbsp;2: SPD Layout
 <div style="text-align: justify;">
 <p>To make things simple and interesting, we’ll explain SPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment designed to study the effect of irrigation method and nitrogen fertilizer dose on rice. The main plot factor is Irrigation method, with two levels: M1 (Drip irrigation) and M2 (Flood irrigation). The sub-plot factor is Nitrogen dose, with three levels: S1 (60 kg N/ha), S2 (90 kg N/ha), and S3 (120 kg N/ha). The experiment is laid out in 4 replications, giving a total of 2 × 3 × 4 = 24 experimental units. Observations were recorded for seven variables: Yield (tonnes per hectare), Char1 (plant height in cm), and Char2 (number of tillers per hill) Char3 (number of panicles per hill) Char4 (grain weight in gram) Char5 (biomass yield in t/ha ) Char6 (harvest index in %) . Our aim is to test whether the main plot factor, the sub-plot factor, and their interaction produce statistically significant differences using ANOVA. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
 </div>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -276,7 +271,7 @@ Figure&nbsp;3: Example dataset — Mainplot, Subplot, Replication, and response 
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>As shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, the dataset should follow the structure described in the image above. Ensure there is only one sheet in the uploaded file. The <strong>first three columns</strong> must represent the <strong>main plot treatments</strong>, <strong>subplot treatments</strong>, and <strong>replication</strong> respectively — these can be named as per your preference (e.g., Mainplot, Subplot, Replication). All characters under study are arranged in subsequent columns. For example, Mainplot (with two levels M1 and M2) is the main plot factor, Subplot (with three levels 1, 2, 3) is the subplot factor nested within main plots, and Replication indicates the number of replicates (e.g., 1 to 3). The characters under study (e.g., Yield, Char1, Char2) are arranged in columns corresponding to each main plot, subplot, and replication combination. Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Main Plot Treatments</strong> and <strong>Sub-plot Treatments</strong>. In our example, the Main Plot Treatments refer to the irrigation methods (M1, M2), and the Sub-plot Treatments refer to the nitrogen doses (S1, S2, S3).</p>
+<p>As shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, the dataset should follow the structure described in the image above. Ensure there is only one sheet in the uploaded file. The <strong>first three columns</strong> must represent the <strong>main plot treatments</strong>, <strong>subplot treatments</strong>, and <strong>replication</strong> respectively — these can be named as per your preference (e.g., Mainplot, Subplot, Replication). All characters under study are arranged in subsequent columns. For example, Mainplot (with two levels M1 and M2) is the main plot factor, Subplot (with three levels 1, 2, 3) is the subplot factor nested within main plots, and Replication indicates the number of replicates (e.g., 1 to 4). The characters under study (e.g., Yield, Char1, Char2,Char3,etc) are arranged in columns corresponding to each main plot, subplot, and replication combination. Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Main Plot Treatments</strong> and <strong>Sub-plot Treatments</strong>. In our example, the Main Plot Treatments refer to the irrigation methods (M1, M2), and the Sub-plot Treatments refer to the nitrogen doses (S1, S2, S3).</p>
 </div>
 </section>
 <section id="sec-4" class="level2 H" data-number="4">
@@ -284,6 +279,16 @@ Figure&nbsp;3: Example dataset — Mainplot, Subplot, Replication, and response 
 <div style="text-align: justify;">
 <p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file with three leading columns — one for the main plot factor, one for the sub-plot factor, and one for replication — followed by all response variable columns. Make sure no blank rows are left above, and all columns have proper names. That’s it — your file is ready to upload.</p>
 <p>Still if you have doubt, see <strong>?@fig-4</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/WhatsApp%20Image%202026-04-27%20at%207.40.17%20PM.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="SPD Layout"><img src="images/WhatsApp%20Image%202026-04-27%20at%207.40.17%20PM.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="SPD Layout"></a></p>
+</figure>
+</div>
+<figcaption>SPD Layout</figcaption>
+</figure>
+</div>
 <p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
 <p>Creating dataset in MS Excel</p>
 <p>Creating your dataset directly within the <strong>RAISINS</strong> app</p>
@@ -295,30 +300,17 @@ Figure&nbsp;3: Example dataset — Mainplot, Subplot, Replication, and response 
 <div style="text-align: justify;">
 <p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;4</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking <code>Browse</code> in the sidebar of the <code>Analysis</code> tab. When the file is uploaded, options to select the <strong>Main Plot</strong>, <strong>Sub-plot</strong>, <strong>Replication</strong>, and <strong>Variables</strong> will appear. Select the appropriate column representing the main plot factor under <strong>Main Plot</strong>, the sub-plot factor column under <strong>Sub-plot</strong>, and the replication identifier under <strong>Replication</strong>. Then select the response variables you wish to analyse. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly leaving no room for confusion.</p>
 </div>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(1)-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Analysis window explained"><img src="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(1)-02.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(1)-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;4: Analysis window explained"><img src="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(1)-02.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Analysis window explained
 </figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href=".png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Analysis window explained"><img src=".png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Analysis window explained"></a></p>
-</figure>
-</div>
-<figcaption>Analysis window explained</figcaption>
-</figure>
-</div>
-<div style="text-align: justify;">
 <p>For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>). Here, <strong>RAISINS</strong> provide inbuilt transformation option.</p>
-</div>
 </section>
 <section id="sec-6" class="level2 T" data-number="6">
 <h2 class="T anchored" data-number="6" data-anchor-id="sec-6"><span class="header-section-number">6</span> Transformation</h2>
@@ -328,7 +320,7 @@ Figure&nbsp;4: Analysis window explained
 <div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/trans.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;5: Transformation options"><img src="www/trans.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Screenshot%202026-04-27%20164417.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;5: Transformation options"><img src="images/Screenshot%202026-04-27%20164417.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Transformation options
@@ -350,11 +342,10 @@ Figure&nbsp;5: Transformation options
 <p>Once your dataset is uploaded, click on <code>Run Analysis</code>, and the <strong>Split Plot ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in a Split Plot Design partitions the total variation into components attributable to Replications, Main Plot factor (A), Main Plot Error (Error a), Sub-plot factor (B), the A×B Interaction, and Sub-plot Error (Error b). Critically, the F-test for the Main Plot factor uses the <strong>Main Plot Error</strong> as its denominator, while the F-tests for the Sub-plot factor and the Interaction use the <strong>Sub-plot Error</strong> as their denominator (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;6</a>).</p>
 </div>
 <p><strong>Table 1 ANOVA summary</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ANOVASummary.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;6: Main Plot, Sub-plot, Interaction, and Error Mean Square ANOVA"><img src="www/PLACEHOLDER_ANOVASummary.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/WhatsApp%20Image%202026-04-27%20at%207.57.09%20PM.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;6: Main Plot, Sub-plot, Interaction, and Error Mean Square ANOVA"><img src="images/WhatsApp%20Image%202026-04-27%20at%207.57.09%20PM.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Main Plot, Sub-plot, Interaction, and Error Mean Square ANOVA
@@ -407,18 +398,28 @@ Figure&nbsp;6: Main Plot, Sub-plot, Interaction, and Error Mean Square ANOVA
 <section id="interpretation-from-fig-100" class="level3" data-number="7.1">
 <h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;6</a></h3>
 <div style="text-align: justify;">
-<p>The Split Plot ANOVA results for three variables — Yield, Char1, and Char2 — are summarised in Table 1. For <strong>Yield</strong>, the Main Plot factor (Irrigation method) yielded an F-ratio of 0.56 with 1 and 2 degrees of freedom using the Main Plot Error as denominator, which is <strong>not significant (NS)</strong>, indicating that the two irrigation methods did not differ significantly in mean yield across the experiment. The Sub-plot factor (Nitrogen dose) yielded an F-ratio of 4.21 with 2 and 8 degrees of freedom using the Sub-plot Error as denominator, which is significant at the <strong>5% level</strong> (*), indicating that nitrogen dose significantly affects rice yield. The A×B Interaction yielded an F-ratio of 3.89 with 2 and 8 degrees of freedom, also significant at the <strong>5% level</strong> (*), suggesting that the effect of nitrogen dose on yield depends on the irrigation method applied to the main plot. For <strong>Char1</strong>, neither the main plot factor nor the interaction was significant, while the sub-plot factor showed a marginally significant effect at the 5% level. For <strong>Char2</strong>, the interaction term was the primary significant source of variation. Because the interaction is significant for Yield, the main effect of the sub-plot factor should be interpreted within each level of the main plot factor rather than across the overall mean. <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provides detailed information on the multiple comparison tests (post-hoc tests) applicable under SPD.</p>
+<p>The Split Plot ANOVA results presented in Table 1 show the effects of the main plot factor (A), sub plot factor (B), and their interaction (A×B) on Yield and characters (Char1 to Char6). For Yield, both the main plot and sub plot factors were found to be non-significant (NS), indicating that neither factor independently influenced yield. The interaction effect was also non-significant, suggesting no combined influence of A and B on yield. Similarly, for <strong>Char1</strong>, all sources of variation—main plot, sub plot, and interaction—were non-significant, indicating no treatment effect. In the case of <strong>Char2,</strong> while the main plot and sub plot factors were non-significant, the interaction effect (A×B) was significant at the 5% level (*), showing that the response of Char2 depends on the combination of treatments rather than individual effects. For <strong>Char3, Char4, Char5, and Char6</strong>, all sources of variation remained non-significant, indicating that these characters were not affected by either factor or their interaction. Overall, the analysis reveals that there were no significant treatment effects on Yield and most characters, except for Char2 where a significant interaction effect was observed, suggesting the importance of considering treatment combinations for this character.</p>
 </div>
 <p><strong>Table 2: Detailed tabular representation with multiple comparisons</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_DetailedResults.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;7: Detailed tabular representation with multiple comparisons"><img src="www/PLACEHOLDER_DetailedResults.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Screenshot%202026-04-27%20144941.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;7: Detailed tabular representation with multiple comparisons"><img src="images/Screenshot%202026-04-27%20144941.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Detailed tabular representation with multiple comparisons
 </figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/Screenshot%202026-04-27%20145003.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Detailed tabular representation with multiple comparisons"><img src="images/Screenshot%202026-04-27%20145003.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Detailed tabular representation with multiple comparisons"></a></p>
+</figure>
+</div>
+<figcaption>Detailed tabular representation with multiple comparisons</figcaption>
 </figure>
 </div>
 <details>
@@ -453,9 +454,7 @@ Figure&nbsp;7: Detailed tabular representation with multiple comparisons
 <section id="interpretation-from-fig-101" class="level3" data-number="7.2">
 <h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;7</a></h3>
 <div style="text-align: justify;">
-<p>Treatments are grouped using letters like <strong>“a”, “b”, “c”</strong>, etc., to indicate statistical similarity. Overlapping of grouping letters (e.g., <strong>ab</strong> / <strong>bc</strong>) indicates that the absolute difference between treatment means is less than the critical difference at the chosen level of significance, implying statistical similarity <strong>(on par)</strong>. Treatments with no common letters are significantly different from each other.</p>
-<p>For <strong>Yield</strong>, because the A×B interaction is significant, comparison of sub-plot means is made within each level of the main plot factor. Within Drip irrigation (M1), the nitrogen dose S1 (60 kg N/ha) recorded the highest mean yield and was assigned grouping <strong>“a”</strong>, statistically superior to S2 (<strong>“b”</strong>) and at par with S3 (<strong>“ab”</strong>). Within Flood irrigation (M2), S1 again produced the highest yield, while S3 recorded the lowest. The pattern of nitrogen response differed between the two irrigation methods, confirming the practical significance of the interaction. For <strong>Char1</strong>, sub-plot means were compared across irrigation methods using a single critical difference based on the Sub-plot Error, and the nitrogen doses formed distinct groups. For <strong>Char2</strong>, the interaction groupings showed that the combination of M2 and S2 produced distinctly different results from other combinations.</p>
-<p>The Cohen’s f values in the table represent the effect size and quantify the magnitude of treatment effects. Values less than 0.10 indicate a very small effect, below 0.25 indicate a small effect, below 0.40 indicate a medium effect, and values of 0.40 or higher indicate a large effect. The observed effect sizes for the sub-plot factor and the interaction should therefore be interpreted in the context of both statistical significance and biological meaningfulness, confirming that nitrogen dose and its interaction with irrigation method are not only statistically significant but also practically relevant.</p>
+<p>The statistical comparison of treatment means for the main plot (A), sub plot (B), and their interaction (A×B). Treatments sharing common letters are statistically at par, while those without common letters differ significantly. For the <strong>main plot factor (A),</strong> both M1 and M2 showed no significant differences for Yield and all characters, as confirmed by non-significant F-values and absence of grouping distinctions, indicating that irrigation methods did not influence the traits. For the <strong>sub plot factor (B),</strong> the treatment means across levels (1, 2, and 3) were also non-significant for all variables, suggesting that sub plot treatments did not produce statistically different effects. However, in the interaction (A×B), a significant effect was observed only for Char2 at the 5% level. The letter groupings (a, ab, b) for Char2 indicate that certain treatment combinations differ significantly, while some remain statistically similar. Specifically, combinations sharing letters are at par, whereas those without common letters show significant differences, confirming that Char2 response depends on the interaction between main and sub plot factors. For Yield and the remaining characters (Char1, Char3, Char4, Char5, and Char6), the interaction effect was non-significant, indicating no meaningful differences among treatment combinations. The Cohen’s f values suggest generally small to moderate effect sizes, supporting the conclusion that treatment effects are minimal except for Char2 interaction. Overall, the results highlight that only <strong>Char2</strong> is influenced by treatment combinations, while all other traits remain statistically unaffected.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -498,11 +497,10 @@ Figure&nbsp;7: Detailed tabular representation with multiple comparisons
 <div style="text-align: justify;">
 <p>After obtaining a significant F-value in the SPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;8</a>). A key feature of SPD post-hoc comparisons is that <strong>different standard errors and critical differences apply</strong> depending on whether you are comparing main plot means, sub-plot means within the same main plot, sub-plot means across different main plots, or treatment combination means.</p>
 </div>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_PostHocOptions.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;8: Multiple comparison test options explained"><img src="www/PLACEHOLDER_PostHocOptions.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(3).png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;8: Multiple comparison test options explained"><img src="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(3).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Multiple comparison test options explained
@@ -543,7 +541,7 @@ Figure&nbsp;8: Multiple comparison test options explained
 <div id="fig-102" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_SummaryStats.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;9: Summary statistics"><img src="www/PLACEHOLDER_SummaryStats.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_SummaryStats.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;9: Summary statistics"><img src="www/PLACEHOLDER_SummaryStats.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: Summary statistics
@@ -581,7 +579,7 @@ Figure&nbsp;9: Summary statistics
 <div id="fig-104" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_IndividualANOVA.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;10: ANOVA table for Yield"><img src="www/PLACEHOLDER_IndividualANOVA.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_IndividualANOVA.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;10: ANOVA table for Yield"><img src="www/PLACEHOLDER_IndividualANOVA.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: ANOVA table for Yield
@@ -615,7 +613,7 @@ Figure&nbsp;10: ANOVA table for Yield
 <div id="fig-103" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_SummaryGroupings.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;11: Summary statistics with letter groupings"><img src="www/PLACEHOLDER_SummaryGroupings.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_SummaryGroupings.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;11: Summary statistics with letter groupings"><img src="www/PLACEHOLDER_SummaryGroupings.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: Summary statistics with letter groupings
@@ -643,7 +641,7 @@ Figure&nbsp;11: Summary statistics with letter groupings
 <div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/customize.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;12: Plot settings for customizing"><img src="www/customize.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/customize.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;12: Plot settings for customizing"><img src="www/customize.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Plot settings for customizing
@@ -739,7 +737,7 @@ function hideDescription(id) {
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_BoxPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;13: Box plot"><img src="www/PLACEHOLDER_BoxPlot.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_BoxPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;13: Box plot"><img src="www/PLACEHOLDER_BoxPlot.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: Box plot
@@ -759,7 +757,7 @@ Figure&nbsp;13: Box plot
 <div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ViolinPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;14: Violin plot"><img src="www/PLACEHOLDER_ViolinPlot.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_ViolinPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;14: Violin plot"><img src="www/PLACEHOLDER_ViolinPlot.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14: Violin plot
@@ -779,7 +777,7 @@ Figure&nbsp;14: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_BarPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;15: Bar plot"><img src="www/PLACEHOLDER_BarPlot.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_BarPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;15: Bar plot"><img src="www/PLACEHOLDER_BarPlot.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15: Bar plot
@@ -799,7 +797,7 @@ Figure&nbsp;15: Bar plot
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_MeanPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;16: Mean Value Plot"><img src="www/PLACEHOLDER_MeanPlot.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_MeanPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;16: Mean Value Plot"><img src="www/PLACEHOLDER_MeanPlot.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: Mean Value Plot
@@ -820,7 +818,7 @@ Figure&nbsp;16: Mean Value Plot
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ConnectedPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;17: Connected line plot"><img src="www/PLACEHOLDER_ConnectedPlot.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_ConnectedPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;17: Connected line plot"><img src="www/PLACEHOLDER_ConnectedPlot.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: Connected line plot
@@ -847,7 +845,7 @@ Figure&nbsp;17: Connected line plot
 <div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_AdvancedPlots.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;18: Advanced plots"><img src="www/PLACEHOLDER_AdvancedPlots.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_AdvancedPlots.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;18: Advanced plots"><img src="www/PLACEHOLDER_AdvancedPlots.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: Advanced plots
@@ -859,7 +857,7 @@ Figure&nbsp;18: Advanced plots
 <div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_SummaryPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;19: Summary plot"><img src="www/PLACEHOLDER_SummaryPlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_SummaryPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;19: Summary plot"><img src="www/PLACEHOLDER_SummaryPlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19: Summary plot
@@ -874,7 +872,7 @@ Figure&nbsp;19: Summary plot
 <div id="fig-15" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_AdvancedRaincloud.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;20: Advanced rain cloud plot"><img src="www/PLACEHOLDER_AdvancedRaincloud.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_AdvancedRaincloud.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;20: Advanced rain cloud plot"><img src="www/PLACEHOLDER_AdvancedRaincloud.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20: Advanced rain cloud plot
@@ -889,7 +887,7 @@ Figure&nbsp;20: Advanced rain cloud plot
 <div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_QQPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;21: QQ plot"><img src="www/PLACEHOLDER_QQPlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_QQPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;21: QQ plot"><img src="www/PLACEHOLDER_QQPlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21: QQ plot
@@ -904,7 +902,7 @@ Figure&nbsp;21: QQ plot
 <div id="fig-17" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Raincloud.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;22: Rain cloud plot"><img src="www/PLACEHOLDER_Raincloud.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_Raincloud.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;22: Rain cloud plot"><img src="www/PLACEHOLDER_Raincloud.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22: Rain cloud plot
@@ -919,7 +917,7 @@ Figure&nbsp;22: Rain cloud plot
 <div id="fig-18" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Distribution.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;23: Distribution plot"><img src="www/PLACEHOLDER_Distribution.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_Distribution.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;23: Distribution plot"><img src="www/PLACEHOLDER_Distribution.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23: Distribution plot
@@ -938,7 +936,7 @@ Figure&nbsp;23: Distribution plot
 <div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ai.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;24: AI powered RAISINS Assistant to interpret your results"><img src="www/ai.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ai.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;24: AI powered RAISINS Assistant to interpret your results"><img src="www/ai.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;24: AI powered RAISINS Assistant to interpret your results
@@ -955,7 +953,7 @@ Figure&nbsp;24: AI powered RAISINS Assistant to interpret your results
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_MultivariateTab.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;25: Multivariate tab in RAISINS"><img src="www/PLACEHOLDER_MultivariateTab.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_MultivariateTab.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;25: Multivariate tab in RAISINS"><img src="www/PLACEHOLDER_MultivariateTab.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;25: Multivariate tab in RAISINS
@@ -969,7 +967,7 @@ Figure&nbsp;25: Multivariate tab in RAISINS
 <div id="fig-MAN2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_MANOVAResults.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;26: MANOVA Results"><img src="www/PLACEHOLDER_MANOVAResults.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_MANOVAResults.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;26: MANOVA Results"><img src="www/PLACEHOLDER_MANOVAResults.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;26: MANOVA Results
@@ -986,7 +984,7 @@ Figure&nbsp;26: MANOVA Results
 <div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_PCAIndex.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;27: PCA-based Index Score"><img src="www/PLACEHOLDER_PCAIndex.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_PCAIndex.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;27: PCA-based Index Score"><img src="www/PLACEHOLDER_PCAIndex.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;27: PCA-based Index Score
@@ -1000,7 +998,7 @@ Figure&nbsp;27: PCA-based Index Score
 <div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ScreePlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;28: Scree plot"><img src="www/PLACEHOLDER_ScreePlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_ScreePlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;28: Scree plot"><img src="www/PLACEHOLDER_ScreePlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;28: Scree plot
@@ -1014,7 +1012,7 @@ Figure&nbsp;28: Scree plot
 <div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Loadings.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;29: Loadings of each variable"><img src="www/PLACEHOLDER_Loadings.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_Loadings.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;29: Loadings of each variable"><img src="www/PLACEHOLDER_Loadings.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;29: Loadings of each variable
@@ -1028,7 +1026,7 @@ Figure&nbsp;29: Loadings of each variable
 <div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Biplot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;30: PCA-Biplot"><img src="www/PLACEHOLDER_Biplot.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_Biplot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;30: PCA-Biplot"><img src="www/PLACEHOLDER_Biplot.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;30: PCA-Biplot
@@ -1042,7 +1040,7 @@ Figure&nbsp;30: PCA-Biplot
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_IndexScore.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;31: Index score"><img src="www/PLACEHOLDER_IndexScore.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_IndexScore.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;31: Index score"><img src="www/PLACEHOLDER_IndexScore.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;31: Index score
@@ -1053,7 +1051,7 @@ Figure&nbsp;31: Index score
 <div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_IndexPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;32: Indexplot"><img src="www/PLACEHOLDER_IndexPlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_IndexPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;32: Indexplot"><img src="www/PLACEHOLDER_IndexPlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;32: Indexplot
@@ -1083,7 +1081,7 @@ Figure&nbsp;32: Indexplot
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ExcelModel1.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;33: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/PLACEHOLDER_ExcelModel1.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_ExcelModel1.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;33: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/PLACEHOLDER_ExcelModel1.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;33: Model-1: showing how the prepared Excel file for upload should look like
@@ -1094,7 +1092,7 @@ Figure&nbsp;33: Model-1: showing how the prepared Excel file for upload should l
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ExcelModel2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;34: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/PLACEHOLDER_ExcelModel2.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_ExcelModel2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;34: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/PLACEHOLDER_ExcelModel2.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;34: Model-2: Showing how the prepared Excel file for upload should look like
@@ -1161,7 +1159,7 @@ How to Save as CSV in MS Excel
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;35: Creating dataset within RAISINS"><img src="www/CREATEDAT.webp" class="img-fluid figure-img" width="1011"></a>
+<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;35: Creating dataset within RAISINS"><img src="www/CREATEDAT.webp" class="img-fluid figure-img" width="1011"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;35: Creating dataset within RAISINS
@@ -1177,7 +1175,7 @@ Figure&nbsp;35: Creating dataset within RAISINS
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/modeldata.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;36: Model dataset"><img src="www/modeldata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/modeldata.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;36: Model dataset"><img src="www/modeldata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;36: Model dataset
@@ -1193,7 +1191,7 @@ Figure&nbsp;36: Model dataset
 <div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/FAQ%20TAB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;37: FAQs"><img src="www/FAQ%20TAB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/FAQ%20TAB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="Figure&nbsp;37: FAQs"><img src="www/FAQ%20TAB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;37: FAQs
@@ -1210,7 +1208,7 @@ Figure&nbsp;37: FAQs
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/view%20data.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="View data"><img src="www/view%20data.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+<p><a href="www/view%20data.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-40" title="View data"><img src="www/view%20data.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
 </figure>
 </div>
 <figcaption>View data</figcaption>

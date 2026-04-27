@@ -99,9 +99,7 @@ Split Plot Design **(SPD)** is a two-factor experimental design in which experim
 To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different two-factor experimental designs. In this tutorial, we focus on **Split Plot Design (SPD)**, as shown in @fig-aov.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Analysis of experiment tab](www/PLACEHOLDER_AnalysisTab.webp){#fig-aov fig-align="center"}
+![Analysis of experiment tab](images/analyss.png){#fig-aov fig-align="center"}
 
 ## Split Plot Design (SPD) {#C}
 
@@ -123,9 +121,7 @@ A Split Plot Design **(SPD)** is a two-factor experimental design in which the e
 
 @fig-lay In this design, the experimental area is first divided into large plots, known as main plots, to which the main plot treatments such as A1, A2, A3 are randomly assigned (these represent different levels of the main factor, for example different irrigation levels). Each main plot is then further subdivided into smaller units called subplots, where the subplot treatments such as B1, B2, B3, B4 are applied randomly (these represent levels of another factor, for example different fertilizer types). This results in two levels of experimental units and two stages of randomization. The design is particularly useful in agricultural experiments where one factor is difficult or costly to change, while another factor can be applied more easily. It allows the study of both main effects and interactions between treatments, but involves more complex analysis and provides less precision for main plot treatments compared to subplot treatments.The design produces 3 × 4 = 12 treatment combinations in total, with each combination replicated three times across the three replications, yielding 36 experimental units overall.
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![SPD Layout](www/PLACEHOLDER_Layout.webp){#fig-lay fig-align="center"}
+![SPD Layout](images/split%20plot%20image%201.png){#fig-lay fig-align="center"}
 
 </small>
 
@@ -143,12 +139,10 @@ A Split Plot Design **(SPD)** is a two-factor experimental design in which the e
 To make things simple and interesting, we'll explain SPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment designed to study the effect of irrigation method and nitrogen fertilizer dose on rice. The main plot factor is Irrigation method, with two levels: M1 (Drip irrigation) and M2 (Flood irrigation). The sub-plot factor is Nitrogen dose, with three levels: S1 (60 kg N/ha), S2 (90 kg N/ha), and S3 (120 kg N/ha). The experiment is laid out in 4 replications, giving a total of 2 × 3 × 4 = 24 experimental units. Observations were recorded for seven variables: Yield (tonnes per hectare), Char1 (plant height in cm), and Char2 (number of tillers per hill) Char3 (number of panicles per hill) Char4 (grain weight in gram) Char5 (biomass yield in t/ha ) Char6 (harvest index in %) . Our aim is to test whether the main plot factor, the sub-plot factor, and their interaction produce statistically significant differences using ANOVA. The arrangement of the data is shown in @fig-data.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
 ![Example dataset — Mainplot, Subplot, Replication, and response variables arranged in columns](images/split%20plot%20img-01.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-As shown in @fig-data, the dataset should follow the structure described in the image above. Ensure there is only one sheet in the uploaded file. The **first three columns** must represent the **main plot treatments**, **subplot treatments**, and **replication** respectively — these can be named as per your preference (e.g., Mainplot, Subplot, Replication). All characters under study are arranged in subsequent columns. For example, Mainplot (with two levels M1 and M2) is the main plot factor, Subplot (with three levels 1, 2, 3) is the subplot factor nested within main plots, and Replication indicates the number of replicates (e.g., 1 to 3). The characters under study (e.g., Yield, Char1, Char2) are arranged in columns corresponding to each main plot, subplot, and replication combination. Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Main Plot Treatments** and **Sub-plot Treatments**. In our example, the Main Plot Treatments refer to the irrigation methods (M1, M2), and the Sub-plot Treatments refer to the nitrogen doses (S1, S2, S3).
+As shown in @fig-data, the dataset should follow the structure described in the image above. Ensure there is only one sheet in the uploaded file. The **first three columns** must represent the **main plot treatments**, **subplot treatments**, and **replication** respectively — these can be named as per your preference (e.g., Mainplot, Subplot, Replication). All characters under study are arranged in subsequent columns. For example, Mainplot (with two levels M1 and M2) is the main plot factor, Subplot (with three levels 1, 2, 3) is the subplot factor nested within main plots, and Replication indicates the number of replicates (e.g., 1 to 4). The characters under study (e.g., Yield, Char1, Char2,Char3,etc) are arranged in columns corresponding to each main plot, subplot, and replication combination. Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Main Plot Treatments** and **Sub-plot Treatments**. In our example, the Main Plot Treatments refer to the irrigation methods (M1, M2), and the Sub-plot Treatments refer to the nitrogen doses (S1, S2, S3).
 :::
 
 ## How to prepare your data? {#sec-4 .H}
@@ -157,6 +151,8 @@ As shown in @fig-data, the dataset should follow the structure described in the 
 Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file with three leading columns — one for the main plot factor, one for the sub-plot factor, and one for replication — followed by all response variable columns. Make sure no blank rows are left above, and all columns have proper names. That's it — your file is ready to upload.
 
 Still if you have doubt, see @fig-4.
+
+![SPD Layout](images/WhatsApp%20Image%202026-04-27%20at%207.40.17%20PM.jpeg){fig-align="center"}
 
 To prepare your dataset for analysis in **RAISINS**, you have two options:
 
@@ -173,15 +169,9 @@ Creating your dataset directly within the **RAISINS** app
 In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the **Main Plot**, **Sub-plot**, **Replication**, and **Variables** will appear. Select the appropriate column representing the main plot factor under **Main Plot**, the sub-plot factor column under **Sub-plot**, and the replication identifier under **Replication**. Then select the response variables you wish to analyse. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly leaving no room for confusion.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
+![Analysis window explained](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(1)-02.png){#fig-5 fig-align="center"}
 
-![Analysis window explained](images/Copy of Red Modern Blank Page A4 Landscape (1)-02.png){#fig-5 fig-align="center"}
-
-![Analysis window explained](){fig-align="center"}
-
-::: {style="text-align: justify;"}
 For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset (@sec-6). Here, **RAISINS** provide inbuilt transformation option.
-:::
 
 ## Transformation {#sec-6 .T}
 
@@ -189,7 +179,7 @@ For some data, when there are large number of zeros / discrete values / when the
 Log, square root, and arcsine transformations are often used in SPD analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
-![Transformation options](www/trans.webp){#fig-6 fig-align="center"}
+![Transformation options](images/Screenshot%202026-04-27%20164417.png){#fig-6 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -209,9 +199,7 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **Split Plot ANO
 
 **Table 1 ANOVA summary**
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Main Plot, Sub-plot, Interaction, and Error Mean Square ANOVA](www/PLACEHOLDER_ANOVASummary.webp){#fig-100 fig-align="center"}
+![Main Plot, Sub-plot, Interaction, and Error Mean Square ANOVA](images/WhatsApp%20Image%202026-04-27%20at%207.57.09%20PM.jpeg){#fig-100 fig-align="center"}
 
 <details>
 
@@ -238,14 +226,16 @@ In our example with a = 2 main plot levels, b = 3 sub-plot levels, and r = 3 rep
 ### Interpretation from @fig-100
 
 ::: {style="text-align: justify;"}
-The Split Plot ANOVA results for three variables — Yield, Char1, and Char2 — are summarised in Table 1. For **Yield**, the Main Plot factor (Irrigation method) yielded an F-ratio of 0.56 with 1 and 2 degrees of freedom using the Main Plot Error as denominator, which is **not significant (NS)**, indicating that the two irrigation methods did not differ significantly in mean yield across the experiment. The Sub-plot factor (Nitrogen dose) yielded an F-ratio of 4.21 with 2 and 8 degrees of freedom using the Sub-plot Error as denominator, which is significant at the **5% level** (\*), indicating that nitrogen dose significantly affects rice yield. The A×B Interaction yielded an F-ratio of 3.89 with 2 and 8 degrees of freedom, also significant at the **5% level** (\*), suggesting that the effect of nitrogen dose on yield depends on the irrigation method applied to the main plot. For **Char1**, neither the main plot factor nor the interaction was significant, while the sub-plot factor showed a marginally significant effect at the 5% level. For **Char2**, the interaction term was the primary significant source of variation. Because the interaction is significant for Yield, the main effect of the sub-plot factor should be interpreted within each level of the main plot factor rather than across the overall mean. @sec-8 provides detailed information on the multiple comparison tests (post-hoc tests) applicable under SPD.
+The Split Plot ANOVA results presented in Table 1 show the effects of the main plot factor (A), sub plot factor (B), and their interaction (A×B) on Yield and characters (Char1 to Char6). For Yield, both the main plot and sub plot factors were found to be non-significant (NS), indicating that neither factor independently influenced yield. The interaction effect was also non-significant, suggesting no combined influence of A and B on yield. Similarly, for **Char1**, all sources of variation—main plot, sub plot, and interaction—were non-significant, indicating no treatment effect. In the case of **Char2,** while the main plot and sub plot factors were non-significant, the interaction effect (A×B) was significant at the 5% level (\*), showing that the response of Char2 depends on the combination of treatments rather than individual effects. For **Char3, Char4, Char5, and Char6**, all sources of variation remained non-significant, indicating that these characters were not affected by either factor or their interaction. Overall, the analysis reveals that there were no significant treatment effects on Yield and most characters, except for Char2 where a significant interaction effect was observed, suggesting the importance of considering treatment combinations for this character.
 :::
 
 **Table 2: Detailed tabular representation with multiple comparisons**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Detailed tabular representation with multiple comparisons](www/PLACEHOLDER_DetailedResults.webp){#fig-101 fig-align="center"}
+![Detailed tabular representation with multiple comparisons](images/Screenshot 2026-04-27 144941.png){#fig-101 fig-align="center"}
+
+![Detailed tabular representation with multiple comparisons](images/Screenshot 2026-04-27 145003.png){fig-align="center"}
 
 <details>
 
@@ -291,11 +281,8 @@ The Split Plot ANOVA results for three variables — Yield, Char1, and Char2 —
 ### Interpretation from @fig-101
 
 ::: {style="text-align: justify;"}
-Treatments are grouped using letters like **"a", "b", "c"**, etc., to indicate statistical similarity. Overlapping of grouping letters (e.g., **ab** / **bc**) indicates that the absolute difference between treatment means is less than the critical difference at the chosen level of significance, implying statistical similarity **(on par)**. Treatments with no common letters are significantly different from each other.
 
-For **Yield**, because the A×B interaction is significant, comparison of sub-plot means is made within each level of the main plot factor. Within Drip irrigation (M1), the nitrogen dose S1 (60 kg N/ha) recorded the highest mean yield and was assigned grouping **"a"**, statistically superior to S2 (**"b"**) and at par with S3 (**"ab"**). Within Flood irrigation (M2), S1 again produced the highest yield, while S3 recorded the lowest. The pattern of nitrogen response differed between the two irrigation methods, confirming the practical significance of the interaction. For **Char1**, sub-plot means were compared across irrigation methods using a single critical difference based on the Sub-plot Error, and the nitrogen doses formed distinct groups. For **Char2**, the interaction groupings showed that the combination of M2 and S2 produced distinctly different results from other combinations.
-
-The Cohen's f values in the table represent the effect size and quantify the magnitude of treatment effects. Values less than 0.10 indicate a very small effect, below 0.25 indicate a small effect, below 0.40 indicate a medium effect, and values of 0.40 or higher indicate a large effect. The observed effect sizes for the sub-plot factor and the interaction should therefore be interpreted in the context of both statistical significance and biological meaningfulness, confirming that nitrogen dose and its interaction with irrigation method are not only statistically significant but also practically relevant.
+The statistical comparison of treatment means for the main plot (A), sub plot (B), and their interaction (A×B). Treatments sharing common letters are statistically at par, while those without common letters differ significantly. For the **main plot factor (A),** both M1 and M2 showed no significant differences for Yield and all characters, as confirmed by non-significant F-values and absence of grouping distinctions, indicating that irrigation methods did not influence the traits. For the **sub plot factor (B),** the treatment means across levels (1, 2, and 3) were also non-significant for all variables, suggesting that sub plot treatments did not produce statistically different effects. However, in the interaction (A×B), a significant effect was observed only for Char2 at the 5% level. The letter groupings (a, ab, b) for Char2 indicate that certain treatment combinations differ significantly, while some remain statistically similar. Specifically, combinations sharing letters are at par, whereas those without common letters show significant differences, confirming that Char2 response depends on the interaction between main and sub plot factors. For Yield and the remaining characters (Char1, Char3, Char4, Char5, and Char6), the interaction effect was non-significant, indicating no meaningful differences among treatment combinations. The Cohen’s f values suggest generally small to moderate effect sizes, supporting the conclusion that treatment effects are minimal except for Char2 interaction. Overall, the results highlight that only **Char2** is influenced by treatment combinations, while all other traits remain statistically unaffected.
 :::
 
 ::: callout-tip
@@ -324,9 +311,7 @@ The Cohen's f values in the table represent the effect size and quantify the mag
 After obtaining a significant F-value in the SPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7). A key feature of SPD post-hoc comparisons is that **different standard errors and critical differences apply** depending on whether you are comparing main plot means, sub-plot means within the same main plot, sub-plot means across different main plots, or treatment combination means.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Multiple comparison test options explained](www/PLACEHOLDER_PostHocOptions.webp){#fig-7 fig-align="center"}
+![Multiple comparison test options explained](images/Copy of Red Modern Blank Page A4 Landscape (3).png){#fig-7 fig-align="center"}
 
 <details>
 
@@ -851,23 +836,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    - Go to the top-left corner and click on **File**.
+    -   Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    - Select the location where you want to save your file.
+    -   Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    - Enter a relevant file name without spaces (use underscores if needed).
+    -   Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    - Click **Save** to export the file.
+    -   Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (no empty rows above the data, meaningful column names, and consistent level labels for both the main plot and sub-plot factors). </small>
 
@@ -878,17 +863,17 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry — RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
-- Navigate to the **Create Data Tab**
+-   Navigate to the **Create Data Tab**
 
-- Select the number of **Main Plot levels**
+-   Select the number of **Main Plot levels**
 
-- Select the number of **Sub-plot levels**
+-   Select the number of **Sub-plot levels**
 
-- Select number of **Replications**
+-   Select number of **Replications**
 
-- Select number of **Characters**
+-   Select number of **Characters**
 
-- Click on **Create** button
+-   Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in `Analysis`.
 :::

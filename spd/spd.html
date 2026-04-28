@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Split Plot Design (SPD)</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,20 +26,21 @@ ul.task-list li input[type="checkbox"] {
 <script src="spd_files/libs/clipboard/clipboard.min.js"></script>
 <script src="spd_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="spd_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/popper.min.js"></script>
 <script src="spd_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="spd_files/libs/quarto-html/anchor.min.js"></script>
 <link href="spd_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="spd_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="spd_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="spd_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="spd_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="spd_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="spd_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="spd_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -147,7 +145,7 @@ window.Quarto = {
 </div>
 <p>ABSTRACT</p>
 <div style="text-align: justify;">
-<p>Split Plot Design <strong>(SPD)</strong> is a two-factor experimental design in which experimental units are arranged in two layers — main plots and sub-plots — allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. <strong>SPD</strong> accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In <strong>RAISINS</strong> you can perform SPD very easily without writing a single line of code. This tutorial will guide you, how to perform SPD very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
+<p>Split Plot Design <strong>(SPD)</strong> is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots - allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. <strong>SPD</strong> accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In <strong>RAISINS</strong> you can perform SPD very easily without writing a single line of code. This tutorial will guide you, how to perform SPD very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
 </div>
 <details>
 <p><em>Hover or click each point to see more information.</em></p>
@@ -190,7 +188,7 @@ window.Quarto = {
 }
 </style>
 <ul>
-<small> The concept of the <strong>Split Plot Design (SPD)</strong> originated in the early twentieth century within the fertile intellectual environment of <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> at the Rothamsted Experimental Station in England. As agricultural researchers began investigating experiments involving two factors simultaneously — such as irrigation methods and crop varieties — it became clear that certain factors (like large-scale tillage or irrigation treatments) could not be practically randomised at the same level as more manageable subplot factors (like seed rates or fertilizer doses). Fisher and his colleagues formalised the split plot framework, in which the experimental area is first divided into larger units called main plots, to which the levels of the first factor (Factor A) are randomly assigned. Each main plot is then subdivided into smaller sub-plots, within which the levels of the second factor (Factor B) are independently randomised. The fundamental statistical insight behind SPD is that two separate error terms emerge naturally from this structure — the main plot error, which captures the variability between main plots within replications, and the sub-plot error, which captures the residual variability within sub-plots after fitting main plot, sub-plot, and interaction effects. Because the sub-plot error is typically smaller than the main plot error, SPD achieves higher precision for sub-plot and interaction comparisons than for main plot comparisons. This asymmetric precision is both its defining strength and a critical consideration in the interpretation of results. The design became foundational to experimental statistics in agronomy, horticulture, and plant breeding, where the practical constraints of field experimentation naturally lead to hierarchical plot structures. </small>
+<small> The concept of the <strong>Split Plot Design (SPD)</strong> originated in the early twentieth century within the fertile intellectual environment of <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> at the Rothamsted Experimental Station in England. As agricultural researchers began investigating experiments involving two factors simultaneously - such as irrigation methods and crop varieties -it became clear that certain factors (like large-scale tillage or irrigation treatments) could not be practically randomised at the same level as more manageable subplot factors (like seed rates or fertilizer doses). Fisher and his colleagues formalised the split plot framework, in which the experimental area is first divided into larger units called main plots, to which the levels of the first factor (Factor A) are randomly assigned. Each main plot is then subdivided into smaller sub-plots, within which the levels of the second factor (Factor B) are independently randomised. The fundamental statistical insight behind SPD is that two separate error terms emerge naturally from this structure -the main plot error, which captures the variability between main plots within replications, and the sub-plot error, which captures the residual variability within sub-plots after fitting main plot, sub-plot, and interaction effects. Because the sub-plot error is typically smaller than the main plot error, SPD achieves higher precision for sub-plot and interaction comparisons than for main plot comparisons. This asymmetric precision is both its defining strength and a critical consideration in the interpretation of results. The design became foundational to experimental statistics in agronomy, horticulture, and plant breeding, where the practical constraints of field experimentation naturally lead to hierarchical plot structures. </small>
 </ul>
 </details>
 <section id="AE" class="level2" data-number="1">
@@ -286,7 +284,6 @@ Figure&nbsp;3: Example dataset — Mainplot, Subplot, Replication, and response 
 <p>Creating dataset in MS Excel</p>
 <p>Creating your dataset directly within the <strong>RAISINS</strong> app</p>
 </div>
-<p>![Illustrating how to create a dataset] ## SPD analysis tab explained {#AO}</p>
 </section>
 <section id="sec-5" class="level2 T" data-number="5">
 <h2 class="T anchored" data-number="5" data-anchor-id="sec-5"><span class="header-section-number">5</span> SPD analysis tab explained</h2>
@@ -386,7 +383,7 @@ Figure&nbsp;6: Main Plot, Sub-plot, Interaction, and Error Mean Square ANOVA
 </tr>
 </tbody>
 </table>
-</small><p><small>In our example with a = 2 main plot levels, b = 3 sub-plot levels, and r = 3 replications: Replication df = 2, Main Plot df = 1, Main Plot Error df = 2, Sub-plot df = 2, Interaction df = 2, Sub-plot Error df = 8, Total df = 17. The F-value for the Main Plot factor is computed as MS(A) / MS(Error a), while the F-values for the Sub-plot and Interaction are computed as MS(B) / MS(Error b) and MS(A×B) / MS(Error b) respectively. Significance is indicated by an asterisk ( * ) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F stat in the table. If the computed F value exceeds the critical value, the null hypothesis is rejected for that source of variation. </small></p>
+</small><p><small>In our example with a = 1 main plot levels, b = 2 sub-plot levels, and r = 3 replications: Replication df = 2, Main Plot df = 0, Main Plot Error df = 0, Sub-plot df = 1, Interaction df = 0, Sub-plot Error df = 2, Total df = 5. The F-value for the Main Plot factor is computed as MS(A) / MS(Error a), while the F-values for the Sub-plot and Interaction are computed as MS(B) / MS(Error b) and MS(A×B) / MS(Error b) respectively. Significance is indicated by an asterisk ( * ) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F stat in the table. If the computed F value exceeds the critical value, the null hypothesis is rejected for that source of variation. </small></p>
 </details>
 <section id="interpretation-from-fig-100" class="level3" data-number="7.1">
 <h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;6</a></h3>
@@ -394,7 +391,6 @@ Figure&nbsp;6: Main Plot, Sub-plot, Interaction, and Error Mean Square ANOVA
 <p>The Split Plot ANOVA results presented in Table 1 show the effects of the main plot factor (A), sub plot factor (B), and their interaction (A×B) on Yield and characters (Char1 to Char6). For Yield, both the main plot and sub plot factors were found to be non-significant (NS), indicating that neither factor independently influenced yield. The interaction effect was also non-significant, suggesting no combined influence of A and B on yield. Similarly, for <strong>Char1</strong>, all sources of variation—main plot, sub plot, and interaction—were non-significant, indicating no treatment effect. In the case of <strong>Char2,</strong> while the main plot and sub plot factors were non-significant, the interaction effect (A×B) was significant at the 5% level (*), showing that the response of Char2 depends on the combination of treatments rather than individual effects. For <strong>Char3, Char4, Char5, and Char6</strong>, all sources of variation remained non-significant, indicating that these characters were not affected by either factor or their interaction. Overall, the analysis reveals that there were no significant treatment effects on Yield and most characters, except for Char2 where a significant interaction effect was observed, suggesting the importance of considering treatment combinations for this character.</p>
 </div>
 <p><strong>Table 2: Detailed tabular representation with multiple comparisons</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -641,7 +637,7 @@ Figure&nbsp;10: Box plot
 </div>
 <div id="boxplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>box plot</strong> compares the distribution of values across different treatment combinations in the SPD. Each colored box represents a main plot–sub-plot combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings — treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>box plot</strong> compares the distribution of values across different treatment combinations in the SPD. Each colored box represents a main plot–sub-plot combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings - treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -660,7 +656,7 @@ Figure&nbsp;11: Violin plot
 </div>
 <div id="violinplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>violin plot</strong> compares the distribution of values across treatment combinations. Each combination is shown as a violin shape reflecting how the data is spread — wider sections indicate more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>violin plot</strong> compares the distribution of values across treatment combinations. Each combination is shown as a violin shape reflecting how the data is spread - wider sections indicate more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -670,7 +666,7 @@ Figure&nbsp;11: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20103142.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;12: Bar plot"><img src="images/Screenshot%202026-04-28%20103142.png" class="img-fluid figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20103220-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;12: Bar plot"><img src="images/Screenshot%202026-04-28%20103220-01.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Bar plot
@@ -689,7 +685,7 @@ Figure&nbsp;12: Bar plot
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20103158.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;13: Mean Value Plot"><img src="images/Screenshot%202026-04-28%20103158.png" class="img-fluid figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20103142-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;13: Mean Value Plot"><img src="images/Screenshot%202026-04-28%20103142-02.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: Mean Value Plot
@@ -709,7 +705,7 @@ Figure&nbsp;13: Mean Value Plot
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20103220.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;14: Connected line plot"><img src="images/Screenshot%202026-04-28%20103220.png" class="img-fluid figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20103158-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;14: Connected line plot"><img src="images/Screenshot%202026-04-28%20103158-01.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14: Connected line plot
@@ -719,7 +715,7 @@ Figure&nbsp;14: Connected line plot
 </div>
 <div id="connectedplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>connected line plot</strong> compares the mean values of treatment combinations, with each point representing a combination’s average and error bars showing variability. The points are linked by lines to highlight how the response variable changes across sub-plot levels within each main plot. This plot is especially informative in SPD as it visually reveals the nature of the A×B interaction — diverging or crossing lines indicate a significant interaction.</p>
+<p>A <strong>connected line plot</strong> compares the mean values of treatment combinations, with each point representing a combination’s average and error bars showing variability. The points are linked by lines to highlight how the response variable changes across sub-plot levels within each main plot. This plot is especially informative in SPD as it visually reveals the nature of the A×B interaction - diverging or crossing lines indicate a significant interaction.</p>
 </div>
 </div>
 </div>
@@ -748,10 +744,10 @@ Figure&nbsp;15: Advanced plots
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/Screenshot%202026-04-28%20103846-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="PLOT WISE GRAPH"><img src="images/Screenshot%202026-04-28%20103846-02.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="PLOT WISE GRAPH"></a></p>
+<p><a href="images/Screenshot%202026-04-28%20103846-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Plot Wise Graph"><img src="images/Screenshot%202026-04-28%20103846-02.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Plot Wise Graph"></a></p>
 </figure>
 </div>
-<figcaption>PLOT WISE GRAPH</figcaption>
+<figcaption>Plot Wise Graph</figcaption>
 </figure>
 </div>
 <p>Plot wise graph This figure shows a plot-wise graphical representation of a split-plot experiment, where the overall graph is divided into smaller panels for yield and different characters (Char1 to Char6). Each bar represents the mean value of a parameter under different sub-plot treatments (1, 2, and 3), while the vertical lines indicate variation or standard error. The x-axis shows the main plot treatments (such as M1 and M2), and the y-axis represents the measured values. This visualization helps compare the effect of different treatment combinations on yield and other traits, making it easier to identify the best-performing treatments.</p>
@@ -817,7 +813,6 @@ Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results
 <div style="text-align: justify;">
 <p>Multivariate analysis in Split Plot Design <strong>(SPD)</strong> helps you to compare different response variables simultaneously across all treatment combinations. Remember the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example of evaluating the effect of irrigation method and nitrogen dose on rice — with treatment combinations M1S1, M1S2, M1S3, M2S1, M2S2, and M2S3 — by an agronomist, navigate to <code>Multivariate</code> see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;19</a>.</p>
 </div>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -933,7 +928,6 @@ Figure&nbsp;26: Model-1: showing how the prepared Excel file for upload should l
 </figcaption>
 </figure>
 </div>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

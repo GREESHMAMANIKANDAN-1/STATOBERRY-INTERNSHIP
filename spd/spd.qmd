@@ -533,7 +533,7 @@ A **connected line plot** compares the mean values of treatment combinations, wi
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Advanced plots](images/105350.png){#fig-90 fig-align="center"}
+![Advanced plots](www/PLACEHOLDER_AdvancedPlots.webp){#fig-90 fig-align="center"}
 
 **PLOT WISE GRAPH**
 
@@ -707,7 +707,7 @@ If you're unsure about the correct format for creating a dataset, don't worry â€
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in `Analysis`.
 :::
 
-![SPD Layout](images/WhatsApp%20Image%202026-04-27%20at%207.40.17%20PM.jpeg){fig-align="center"}
+![SPD Layout](images/create data.png){fig-align="center"}
 
 ## Model datasets {#M}
 

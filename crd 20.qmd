@@ -1,20 +1,38 @@
 ---
+<<<<<<< HEAD
+title: "Completely Randomised Design"
+
+format:
+  html:
+=======
 title: "Completely Randomised Design" 
 format:
   html:
     mainfont: "Times New Roman"
     fontsize: 0.90em
+>>>>>>> f4e858c43b05428f8441d1aec294bce8562c460b
     theme: cosmo
     toc: true
     lightbox: true
     number-sections: true
     number-depth: 3
     number-offset: 1
+<<<<<<< HEAD
+    toc-title: "***TABLE OF CONTENTS***"
+    toc-depth: 3
+    linkcolor: purple
+    citations-hover: true
+css: sty.css 
+
+mainfont: "Times New Roman"
+fontsize: 0.90em 
+=======
     toc-title: "**TABLE OF CONTENTS**"
     toc-depth: 3
     linkcolor: "purple"
     citations-hover: true
     css: sty.css
+>>>>>>> f4e858c43b05428f8441d1aec294bce8562c460b
 ---
 
 ```{=html}
@@ -890,10 +908,15 @@ With its easy-to-use interface and built-in assistant, RA-One makes data analysi
 
 ![![](www/crd1.jpg)](www/Chi-square-test.jpg)
 
-# simple T Test
+## Simple T Test
 
-it is a tool for data analysis
+A simple t-test is a statistical method used to determine whether the difference between an observed sample mean and a known value (or between two sample means) is statistically significant or just due to random variation; it works especially well when sample sizes are small and the population standard deviation is unknown, using the sample data to estimate variability and calculate a t value that is then compared against a reference distribution to make a decision. A good beginner tip is to always check your data first—make sure it’s roughly normally distributed and free of obvious outliers, because t-tests assume this, and ignoring it can lead to misleading results.
 
+<<<<<<< HEAD
+::: callout-tip
+#### before running a t-test, clearly write down your null hypothesis (no difference) and alternative hypothesis (there is a difference)—this helps you avoid confusion when interpreting results, especially the p-value.
+
+=======
 HI I AM NIRU SABU HOW ARE YOU haiahalya how are you
 
 suganuuu hi hi
@@ -912,4 +935,5 @@ gtttttt
 
 ::: callout-tip
 ## IMPORTANT
+>>>>>>> f4e858c43b05428f8441d1aec294bce8562c460b
 :::

@@ -97,6 +97,14 @@ window.Quarto = {
   <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</a></li>
   </ul></li>
   <li><a href="#AP" id="toc-AP" class="nav-link" data-scroll-target="#AP"><span class="header-section-number">10</span> Advanced plots</a></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">11</span> AI interpretation</a></li>
+  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">12</span> Multivariate</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">13</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">14</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">15</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">16</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">17</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">18</span> View data</a></li>
   </ul>
 </nav>
 </div>
@@ -246,7 +254,7 @@ Figure&nbsp;2: 2F-RBD Layout
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/NEW.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="images/NEW.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/new%202f-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="images/new%202f-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Example dataset
@@ -482,9 +490,7 @@ Figure&nbsp;7: Multiple comparison test options explained
 <p><small></small></p><small>
 <p>When the ANOVA in a <strong>Two Factor Factorial RBD (2F-RBD)</strong> is significant, the following post hoc tests are commonly used for pairwise comparisons: Tukey’s Honestly Significant Difference (HSD) test, and Fisher’s Least Significant Difference (LSD) test.</p>
 <p><strong>LSD (Least Significant Difference) Test</strong></p>
-<p>The <strong>Least Significant Difference (LSD)</strong> test is a post-hoc statistical procedure used to identify which specific factor level means differ significantly after ANOVA has indicated a significant effect. The LSD is calculated as <span class="math display">\[
-\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
-\]</span></p>
+<p>The <strong>Least Significant Difference (LSD)</strong> test is a post-hoc statistical procedure used to identify which specific factor level means differ significantly after ANOVA has indicated a significant effect. The LSD is calculated as <span class="math display">\[\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}\]</span></p>
 <p>where, <strong>t₍α/2, dfₑᵣᵣₒᵣ₎</strong> is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of observations per factor level. In a 2F-RBD, the error degrees of freedom are (r − 1)(ab − 1), where r is the number of blocks, a is the number of levels of Factor A, and b is the number of levels of Factor B. The value of n depends on the comparison being made: for Factor A, n is the total number of observations per level of A (i.e., r × b); for Factor B, n is the total number of observations per level of B (i.e., r × a); and for the interaction, n is the number of blocks r per cell.</p>
 <p><strong>Tukey’s Honestly Significant Difference (HSD)</strong></p>
 <p>Tukey’s test helps you find out exactly which pairs of factor level means differ significantly. It compares all possible pairs of means while controlling the overall Type I error rate, so you avoid false positives when making multiple comparisons. In 2F-RBD, this method works well when the number of factor levels is large and a conservative, family-wise control of error is desired.</p>
@@ -730,7 +736,8 @@ Figure&nbsp;15: INTERACTION plot
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The interaction plot illustrates how the response variable changes across the levels of two factors in a 2F-RBD. The lines represent factor levels, and their trends show how the effect of one factor varies with the levels of the other factor. Non-parallel or crossing lines indicate the presence of interaction, helping to understand whether the factors jointly influence the response. In a block design, the interaction plot reflects the treatment effects after block variation has been removed from the error.:::</p>
+<p>The interaction plot illustrates how the response variable changes across the levels of two factors in a 2F-RBD. The lines represent factor levels, and their trends show how the effect of one factor varies with the levels of the other factor. Non-parallel or crossing lines indicate the presence of interaction, helping to understand whether the factors jointly influence the response. In a block design, the interaction plot reflects the treatment effects after block variation has been removed from the error.</p>
+</div>
 <p><strong>3D SCATTER PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-15" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -744,7 +751,8 @@ Figure&nbsp;16: 3D SCATTER plot
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>A 3D scatter plot visualizes the relationship between Factor A, Factor B, and the response variable in a three-dimensional space. Each point represents the mean response for a specific combination of factor levels, allowing clear observation of how the response changes across both factors simultaneously. This plot helps in identifying patterns, trends, and possible interaction effects between the factors in the factorial experiment.:::</p>
+<p>A 3D scatter plot visualizes the relationship between Factor A, Factor B, and the response variable in a three-dimensional space. Each point represents the mean response for a specific combination of factor levels, allowing clear observation of how the response changes across both factors simultaneously. This plot helps in identifying patterns, trends, and possible interaction effects between the factors in the factorial experiment.</p>
+</div>
 <p><strong>3D SCATTER PLOT WITH LINE</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -758,7 +766,9 @@ Figure&nbsp;17: 3D SCATTER PLOT WITH LINE
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>A 3D scatter plot with connecting lines illustrates the mean response across combinations of Factor A and Factor B in a three-dimensional space. The points represent mean values for each treatment combination, while the lines connect levels within a factor to highlight trends and changes in response. This visualization helps in understanding patterns, comparing factor effects, and identifying possible interaction between the factors.:::</p>
+<p>A 3D scatter plot with connecting lines illustrates the mean response across combinations of Factor A and Factor B in a three-dimensional space. The points represent mean values for each treatment combination, while the lines connect levels within a factor to highlight trends and changes in response. This visualization helps in understanding patterns, comparing factor effects, and identifying possible interaction between the factors.</p>
+</div>
+</section>
 <section id="AI" class="level2" data-number="11">
 <h2 data-number="11" class="anchored" data-anchor-id="AI"><span class="header-section-number">11</span> AI interpretation</h2>
 <div style="text-align: justify;">
@@ -1048,9 +1058,8 @@ Figure&nbsp;31: FAQs
 </figure>
 </div>
 <hr>
-</section>
-</div>
-</div>
+<div class=":::::::::::::::::::">
+
 </div>
 </section>
 

@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-Split Plot Design **(SPD)** is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots - allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. **SPD** accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In **RAISINS** you can perform SPD very easily without writing a single line of code. This tutorial will guide you, how to perform SPD very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+Split Plot Design is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots - allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. **Split Plot Design** accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In **RAISINS** you can perform SPD very easily without writing a single line of code. This tutorial will guide you, how to perform SPD very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
 :::
 
 <details>
@@ -99,7 +99,7 @@ Split Plot Design **(SPD)** is a two-factor experimental design in which experim
 To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different two-factor experimental designs. In this tutorial, we focus on **Split Plot Design (SPD)**, as shown in @fig-aov.
 :::
 
-![Analysis of experiment tab](images/analyss-02.png){#fig-aov fig-align="center"}
+![Analysis of experiment tab](images/analyss-03.png){#fig-aov fig-align="center"}
 
 ## Split Plot Design (SPD) {#C}
 
@@ -167,7 +167,7 @@ Creating your dataset directly within the **RAISINS** app
 In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the **Main Plot**, **Sub-plot**, **Replication**, and **Variables** will appear. Select the appropriate column representing the main plot factor under **Main Plot**, the sub-plot factor column under **Sub-plot**, and the replication identifier under **Replication**. Then select the response variables you wish to analyse. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly leaving no room for confusion.
 :::
 
-![Analysis window explained](images/Copy of Red Modern Blank Page A4 Landscape (3)-02.png){#fig-5 fig-align="center"}
+![Analysis window explained](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(3)-02.png){#fig-5 fig-align="center"}
 
 For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset (@sec-6). Here, **RAISINS** provide inbuilt transformation option.
 
@@ -366,7 +366,7 @@ In the example, pairwise comparisons were performed to identify significant diff
 **RAISINS** provides users various customization features for the plots to enhance the visualization according to the requirement of the user. **Click** on @fig-8 to get a clear idea on the customizing features.
 :::
 
-![Plot settings for customizing](images/WhatsApp Image 2026-04-28 at 12.59.45 PM-01.jpeg){#fig-8 fig-align="center"}
+![Plot settings for customizing](images/WhatsApp%20Image%202026-04-28%20at%2012.59.45%20PM-01.jpeg){#fig-8 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 From @fig-9 to @fig-13, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.
@@ -723,6 +723,6 @@ The app includes a dedicated `FAQs` to help clarify common doubts and guide user
 `View Data` serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For SPD data, the Health Check confirms that the main plot, sub-plot, and replication columns are correctly identified and that all treatment combinations are complete and balanced before analysis proceeds.
 :::
 
-![View data](images/WhatsApp Image 2026-04-28 at 11.49.24 AM-02.jpeg){fig-align="center"}
+![View data](images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM-02.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------

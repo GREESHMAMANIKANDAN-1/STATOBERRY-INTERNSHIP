@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-**Strip Plot Design** is a two-factor experimental design that arranges treatments in horizontal strips and vertical strips across blocks, making it especially suitable for experiments involving large-scale field operations such as irrigation, tillage, or mechanised sowing. SPD partitions experimental variation into three distinct error terms — one for horizontal strip factor, one for vertical strip factor, and one for their interaction — thereby providing greater precision for the interaction effect. In **RAISINS** you can perform SPD analysis very easily without writing a single line of code. This tutorial will guide you through how to perform **Strip Plot Design** analysis in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+**Strip Plot Design** is a two-factor experimental design that arranges treatments in horizontal strips and vertical strips across blocks, making it especially suitable for experiments involving large-scale field operations such as irrigation, tillage, or mechanised sowing. SPD partitions experimental variation into three distinct error terms - one for horizontal strip factor, one for vertical strip factor, and one for their interaction - thereby providing greater precision for the interaction effect. In **RAISINS** you can perform SPD analysis very easily without writing a single line of code. This tutorial will guide you through how to perform **Strip Plot Design** analysis in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
 :::
 
 <details>
@@ -136,8 +136,6 @@ A Strip Plot Design (SPD) is a two-factor experimental layout in which the level
 To make things simple and interesting, we'll explain SPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Let's assume an experiment is conducted to evaluate the combined effect of **irrigation levels** (Factor A, horizontal strips) and **rice varieties** (Factor B, vertical strips) on grain yield and related traits. The experiment is replicated across three blocks. Factor A comprises three irrigation levels: **I1** (continuous flooding), **I2** (alternate wetting and drying), and **I3** (deficit irrigation). Factor B comprises four rice varieties: **V1** (IR64), **V2** (Swarna), **V3** (ADT45), and **V4** (Jyothi). Observations were recorded for four variables: **Yield, Panicle_length, Spikelet_number, and Grain_weight**. Our aim is to test whether the main effects of irrigation level, variety, and their interaction produce statistically significant differences in the response variables using ANOVA. The arrangement of the data is shown in @fig-data.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
 ![Example dataset](images/dataset.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -165,8 +163,6 @@ Creating your dataset directly within the **RAISINS** app
 ::: {style="text-align: justify;"}
 In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the **Horizontal Strip Factor (Factor A)**, **Vertical Strip Factor (Factor B)**, **Block**, and **Variables** will appear. Select the appropriate columns for each field. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly, leaving no room for confusion.
 :::
-
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![SPD analysis window explained](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape-01.png){#fig-5 fig-align="center"}
 

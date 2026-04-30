@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-**Strip Plot Design** is a two-factor experimental design that arranges treatments in horizontal strips and vertical strips across blocks, making it especially suitable for experiments involving large-scale field operations such as irrigation, tillage, or mechanised sowing. SPD partitions experimental variation into three distinct error terms - one for horizontal strip factor, one for vertical strip factor, and one for their interaction - thereby providing greater precision for the interaction effect. In **RAISINS** you can perform SPD analysis very easily without writing a single line of code. This tutorial will guide you through how to perform **Strip Plot Design** analysis in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+**Strip Plot Design** is a two-factor experimental design that arranges treatments in horizontal strips and vertical strips across blocks, making it especially suitable for experiments involving large-scale field operations such as irrigation, tillage, or mechanized sowing. SPD partitions experimental variation into three distinct error terms - one for horizontal strip factor, one for vertical strip factor, and one for their interaction - thereby providing greater precision for the interaction effect. In **RAISINS** you can perform SPD analysis very easily without writing a single line of code. This tutorial will guide you through how to perform **Strip Plot Design** analysis in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
 :::
 
 <details>
@@ -464,13 +464,13 @@ function hideDescription(id) {
 ::::::::::::::::::::::: grid
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![Box plot](images/Screenshot%202026-04-28%20194717.png){#fig-9}
 
 :::: {#boxplot-desc .plot-description}
+
 ::: {style="text-align: justify;"}
-A **box plot** compares the distribution of values across different treatment combinations in the Strip Plot Design. Each coloured box represents a Factor A × Factor B combination and shows key statistics: the median (middle line), the interquartile range (the box), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings — combinations sharing letters are statistically similar, while those with different letters are significantly different.
+A **box plot** in strip plot design is a graphical method used to summarize and compare the distribution of data across different treatment combinations. It displays important statistical measures such as the median, quartiles, and range of the observations. The box represents the interquartile range, while the line inside shows the median value, and whiskers indicate the spread of the data. Outliers, if any, are shown as separate points. Each box corresponds to a specific combination of factors in the design. This type of plot helps in understanding the variability, identifying extreme values, and comparing the performance of different treatments in a clear and simple way.
 :::
 ::::
 :::::
@@ -478,13 +478,13 @@ A **box plot** compares the distribution of values across different treatment co
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![Violin plot](images/Screenshot%202026-04-28%20194728.png){#fig-10}
 
 :::: {#violinplot-desc .plot-description}
+
 ::: {style="text-align: justify;"}
-A **violin plot** displays the distribution of values for each treatment combination in SPD. The width of the violin at any point represents the density of data at that value, providing richer information about the spread than a simple box plot. The embedded box plot shows the median and interquartile range. Grouping letters indicate which treatment combinations are statistically similar or different following the post-hoc test.
+A **violin box** plot in strip plot design is an advanced graphical method that combines a box plot with a density plot. It not only shows the median, quartiles, and range like a box plot, but also displays the distribution shape of the data through a symmetrical “violin” curve. The width of the violin indicates the concentration of data at different values. Each violin represents a treatment combination, making it easy to compare both variability and data distribution between treatments. This plot helps in better understanding patterns, spread, and skewness of observations in the experiment.
 :::
 ::::
 :::::
@@ -492,13 +492,12 @@ A **violin plot** displays the distribution of values for each treatment combina
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![Bar plot](images/Screenshot%202026-04-28%20194800.png){#fig-11}
 
 :::: {#barplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **bar plot** compares the average values of treatment combinations across Factor A and Factor B levels, with error bars representing variability. The letters above each bar indicate statistical groupings from the post-hoc test — combinations sharing letters are not significantly different. This plot provides a clear visual summary of mean performance across all Factor A × Factor B combinations and is ideal for publication-quality reporting.
+A **bar plot** with letter groupings in strip plot design is used to compare the mean values of different treatment combinations along with their statistical significance. Each bar represents the mean value of a treatment, and letters (such as a, b, c) are placed above the bars to indicate grouping based on post-hoc tests like DMRT or Tukey. Treatments sharing the same letter are not significantly different, while those with different letters show significant differences. This type of plot helps in easy interpretation of both mean performance and statistical comparison among treatments in a clear visual form.
 :::
 ::::
 :::::
@@ -506,13 +505,13 @@ A **bar plot** compares the average values of treatment combinations across Fact
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![Mean Value Plot](images/Screenshot%202026-04-28%20194739.png){#fig-12}
 
 :::: {#meanvalueplot-desc .plot-description}
+
 ::: {style="text-align: justify;"}
-A **mean value plot** displays the mean values of treatment combinations as coloured dots along a horizontal axis, with error bars indicating variability. Treatment combinations are listed vertically, allowing easy comparison of means across irrigation levels and varieties simultaneously. Letters beside each point show post-hoc groupings, revealing which combinations perform at comparable levels and which are distinctly different.
+A **mean value plot** in strip plot design is used to show the average (mean) performance of different treatment combinations. Each point on the graph represents the mean value of a particular treatment, often connected by lines to show trends across factors. It helps in easily comparing the central tendency between treatments and identifying which combination gives higher or lower results. Sometimes, error bars are added to indicate variability around the mean. This plot provides a clear and simple way to understand treatment effects in the experiment.
 :::
 ::::
 :::::
@@ -520,20 +519,21 @@ A **mean value plot** displays the mean values of treatment combinations as colo
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![Connected line plot](images/Screenshot%202026-04-28%20194750.png){#fig-13}
 
 :::: {#connectedplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **connected line plot** is particularly useful in Strip Plot Design for visualising interaction patterns. Each line represents a level of Factor A (e.g., an irrigation level), and the x-axis shows levels of Factor B (e.g., varieties). When lines cross or diverge, this is a visual cue for a significant A × B interaction — indicating that the ranking of Factor A levels changes depending on the level of Factor B. This plot is among the most informative visualisations available for two-factor experiments.
+A **connected line plot** in strip plot design is used to display the relationship and trend between different treatment combinations. In this graph, mean values or observations are plotted as points and then connected with lines. It helps to clearly show how one factor changes across the levels of another factor. Each line usually represents a level of one factor, making comparisons easier. This plot is useful for identifying trends, interactions, and patterns between treatments. It provides a simple and effective way to visualize experimental results.
 :::
 ::::
 :::::
 ::::::
 :::::::::::::::::::::::
 
-![Box plot](images/basic plot.png){width="857"}
+A **pairs plot** in strip plot design is a graphical method used to show the relationships between multiple variables or treatment factors. It consists of a matrix of scatter plots where each variable is plotted against every other variable. The diagonal may display histograms or distributions of individual variables. This plot helps in identifying correlations, patterns, and interactions between factors. It is useful for understanding how different variables in the experiment are related to each other in a simple visual way.
+
+![Pairs Plot](images/basic plot.png){alt="Box plot" width="857"}
 
 ## Advanced plots {#AP}
 
@@ -541,60 +541,42 @@ A **connected line plot** is particularly useful in Strip Plot Design for visual
 In addition to the basic plots, **RAISINS** offers a suite of advanced visualisations accessible from the `Advanced Plots` tab. These plots provide deeper insight into the distributional properties of the data and the structure of treatment differences, complementing the ANOVA results with rich graphical summaries.
 :::
 
-**Summary Plot**
-
-<!-- REPLACE THIS SCREENSHOT -->
+**PLOT WISE GRAPH**
 
 ![Summary plot](www/PLACEHOLDER_SummaryPlot_SPD.webp){#fig-AP1 fig-align="center"}
 
-![Summary plot](images/WhatsApp Image 2026-04-29 at 3.06.26 PM (1).jpeg){fig-align="center"}
+![Plot Wise Graph](images/WhatsApp Image 2026-04-29 at 3.06.26 PM (1).jpeg){fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The **Summary Plot** provides a comprehensive single-panel visualisation of mean values, error bars, and individual data points for all Factor A × Factor B treatment combinations. It combines the information from bar plots and raw data overlays to give a complete picture of treatment performance and variability. This plot is especially useful for quickly identifying which treatment combinations stand out and whether variability is homogeneous across groups.
+A **plot-wise graph** in strip plot design is used to display the observations recorded from each individual experimental plot. Instead of summarizing data into averages, it shows the actual values of each plot under different treatment combinations. This helps in understanding the variability within treatments and identifying any unusual or outlier values. Each point or bar represents a single plot, making the data more detailed and transparent. It is useful for checking consistency and reliability of experimental results.A plot-wise graph in strip plot design is used to display the observations recorded from each individual experimental plot. Instead of summarizing data into averages, it shows the actual values of each plot under different treatment combinations. This helps in understanding the variability within treatments and identifying any unusual or outlier values. Each point or bar represents a single plot, making the data more detailed and transparent. It is useful for checking consistency and reliability of experimental results.
 :::
 
-**Advanced Raincloud Plot**
-
-<!-- REPLACE THIS SCREENSHOT -->
+**INTERACTION PLOT**
 
 ![Advanced Raincloud plot](www/PLACEHOLDER_AdvancedRaincloud_SPD.webp){#fig-AP2 fig-align="center"}
 
-![Advanced Raincloud plot](images/WhatsApp Image 2026-04-29 at 3.06.54 PM.jpeg){fig-align="center"}
+![Interaction Plot](images/WhatsApp Image 2026-04-29 at 3.06.54 PM.jpeg){fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The **Advanced Raincloud Plot** integrates a half-violin distribution, a box plot, and individual raw data points into a single composite display for each treatment combination. This multi-layer approach reveals not only the central tendency and spread but also the shape of the distribution and the position of individual observations. In SPD with multiple interaction cell means, this plot enables a nuanced comparison of distributional patterns across Factor A levels within each level of Factor B.
+An **interaction plot** in strip plot design is used to show how two factors interact with each other in influencing the response variable. It displays the mean values of one factor across the levels of another factor, usually with lines connecting the points. If the lines are parallel, it indicates no interaction between factors, while non-parallel or crossing lines suggest the presence of interaction. This plot helps in understanding whether the effect of one treatment depends on the level of another treatment. It provides a clear visual interpretation of combined treatment effects.
 :::
 
-**QQ Plot**
+**3D SCATTER PLOT**
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![QQ plot](images/ssstrip ppplot-01.gif){#fig-AP3 fig-align="center"}
+![3D Scatter Plot](images/ssstrip ppplot-01.gif){#fig-AP3 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The **QQ (Quantile-Quantile) Plot** is a diagnostic tool used to assess whether the residuals from the SPD ANOVA follow a normal distribution, which is a key assumption of the analysis. Each point represents a residual plotted against its expected value under normality. Points that closely follow the diagonal reference line indicate that the normality assumption is reasonably satisfied. Systematic departures from the line suggest the need for data transformation prior to analysis.
+A **3D scatter plot** in strip plot design is used to visualize the relationship among three variables in an experiment. Each point in the graph represents a treatment combination or observation, positioned along three axes (X, Y, and Z). It helps in understanding how two factors together influence the response variable. This plot makes it easier to identify patterns, trends, and clusters in the data. It is especially useful for studying interactions and variations in a more detailed and visual way.
 :::
 
-**Rain Cloud Plot**
-
-<!-- REPLACE THIS SCREENSHOT -->
+**3D SCATTER PLOT WITH LINES**
 
 ![Rain Cloud plot](www/PLACEHOLDER_RaincloudPlot_SPD.webp){#fig-AP4 fig-align="center"}
 
-![Rain Cloud plot](images/sstrip plott-03.gif){fig-align="center"}
+![3D Scatter Plot With Lines](images/sstrip plott-03.gif){fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The **Rain Cloud Plot** displays the distribution of raw data as scattered points (the "rain") beneath a half-violin density plot (the "cloud"), combined with a box plot summary. This plot avoids the information loss inherent in bar charts and box plots by showing the actual data points alongside distributional summaries. For SPD, it is particularly effective at illustrating how raw observations are spread within each Factor A or Factor B level, helping to identify any outliers or unusual distributional patterns.
-:::
-
-**Distribution Plot**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Distribution plot](www/PLACEHOLDER_DistributionPlot_SPD.webp){#fig-AP5 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The **Distribution Plot** presents a smoothed kernel density estimate for the response variable within each treatment combination. It provides an alternative to histograms by showing a continuous curve that reflects the probability density of the observed data. Comparing distribution plots across Factor A and Factor B levels allows the researcher to assess whether the spread and shape of the data are consistent across treatment groups, which has implications for the validity of the ANOVA assumptions.
+A **3D scatter plot** with lines in strip plot design is used to show the relationship among three variables along with the trend between them. Each point represents an observation or treatment combination in three-dimensional space (X, Y, and Z axes), and lines are added to connect points to highlight patterns or changes across levels of factors. It helps in visualizing how two factors together influence the response variable while also showing the direction and continuity of the data. This plot is useful for identifying trends, interactions, and overall structure of the experimental results in a clear visual form.
 :::
 
 ## AI Interpretation {#AI}
@@ -613,23 +595,11 @@ The **Distribution Plot** presents a smoothed kernel density estimate for the re
 Multivariate analysis in Strip Plot Design (SPD) helps you to compare different response variables simultaneously, accounting for the correlations among traits. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example — evaluation of irrigation levels (I1, I2, I3) crossed with rice varieties (IR64, Swarna, ADT45, Jyothi) for grain yield and related traits — navigate to `Multivariate` (see @fig-mu).
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
 ![Multivariate tab in RAISINS](images/WhatsApp%20Image%202026-04-29%20at%203.09.03%20PM.jpeg){#fig-mu}
-
-::: {style="text-align: justify;"}
-MANOVA and PCA will be automatically carried out based on the selected variables. The MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![MANOVA Results](){#fig-MAN2 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 The table titled 'Eigen Values PCA' given in @fig-PC provides information about the eigenvalues and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 58% of the variance in the dataset, while PC2 accounts for about 24% of the variance. Together, PC1 and PC2 explain approximately 82% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
 :::
-
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![PCA-based Index Score](images/WhatsApp%20Image%202026-04-29%20at%203.09.20%20PM-01.jpeg){#fig-PC}
 
@@ -637,15 +607,11 @@ The table titled 'Eigen Values PCA' given in @fig-PC provides information about 
 The scree plot given in @fig-screeplot illustrates the proportion of variance explained by each principal component.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
 ![Scree plot](images/WhatsApp%20Image%202026-04-29%20at%203.10.14%20PM.jpeg){#fig-screeplot fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Look upon the loadings of each variable given in @fig-loadings and decide which PC-based index needs to be selected. In this example, Yield and Grain_weight show strong positive loadings on PC1, while Panicle_length and Spikelet_number have moderate positive loadings on both PC1 and PC2. This pattern suggests that PC1 captures the primary yield formation axis, while PC2 reflects a secondary morphological component. Treatment combinations with high positive scores on PC1 are those with the most desirable yield and grain characteristics. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
 :::
-
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![Loadings of each variable](images/WhatsApp%20Image%202026-04-29%20at%203.10.47%20PM.jpeg){#fig-loadings fig-align="center"}
 

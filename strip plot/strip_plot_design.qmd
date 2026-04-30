@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-**Strip Plot Design** is a two-factor experimental design that arranges treatments in horizontal strips and vertical strips across blocks, making it especially suitable for experiments involving large-scale field operations such as irrigation, tillage, or mechanized sowing. SPD partitions experimental variation into three distinct error terms - one for horizontal strip factor, one for vertical strip factor, and one for their interaction - thereby providing greater precision for the interaction effect. In **RAISINS** you can perform SPD analysis very easily without writing a single line of code. This tutorial will guide you through how to perform **Strip Plot Design** analysis in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+**Strip Plot Design** is a two-factor experimental design that arranges treatments in horizontal strips and vertical strips across blocks, making it especially suitable for experiments involving large-scale field operations such as irrigation, tillage, or mechanized sowing. Strip Plot Design partitions experimental variation into three distinct error terms - one for horizontal strip factor, one for vertical strip factor, and one for their interaction - thereby providing greater precision for the interaction effect. In **RAISINS** you can perform Strip Plot Design analysis very easily without writing a single line of code. This tutorial will guide you through how to perform **Strip Plot Design** analysis in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
 :::
 
 <details>
@@ -86,14 +86,14 @@ ABSTRACT
 </style>
 ```
 
-<ul><small> The **Strip Plot Design** evolved from the pioneering work of [<strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"/>]{.hover-img} and his colleagues at Rothamsted Experimental Station during the 1920s and 1930s. As agricultural research began to incorporate large-scale mechanised operations — such as irrigation by flood or furrow, deep tillage, and combine harvesting — experimenters recognised that standard Randomised Block Designs could not efficiently accommodate treatments that needed to be applied across wide strips of land. The Strip Plot Design was formalised as a practical solution, allowing one set of treatments (horizontal strips) and a second set of treatments (vertical strips) to be laid out independently across each block, with their crossing generating interaction plots. This arrangement sacrifices some precision for the main effects compared to a factorial RBD, but it greatly enhances precision for the interaction between the two factors — precisely the comparison of greatest agronomic interest in many cropping system studies. The design became widely adopted in agronomy, irrigation research, and variety-by-management studies throughout the twentieth century, and remains a cornerstone of field experimental methodology to this day. </small></ul>
+<ul><small> The **Strip Plot Design** evolved from the pioneering work of **Ronald A Fisher**![Preview](){alt="Preview"} and his colleagues at Rothamsted Experimental Station during the 1920s and 1930s. As agricultural research began to incorporate large-scale mechanised operations such as irrigation by flood or furrow, deep tillage, and combine harvesting experimenters recognised that standard Randomised Block Designs could not efficiently accommodate treatments that needed to be applied across wide strips of land. The Strip Plot Design was formalised as a practical solution, allowing one set of treatments (horizontal strips) and a second set of treatments (vertical strips) to be laid out independently across each block, with their crossing generating interaction plots. This arrangement sacrifices some precision for the main effects compared to a factorial RBD, but it greatly enhances precision for the interaction between the two factors precisely the comparison of greatest agronomic interest in many cropping system studies. The design became widely adopted in agronomy, irrigation research, and variety-by-management studies throughout the twentieth century, and remains a cornerstone of field experimental methodology to this day. </small></ul>
 
 </details>
 
 ## Analysis of experiments {#AE}
 
 ::: {style="text-align: justify;"}
-To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different experimental designs available on the platform. In this tutorial, we focus on **Strip Plot Design (SPD)**, as shown in @fig-aov.
+To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different experimental designs available on the platform. In this tutorial, we focus on **Strip Plot Design** , as shown in @fig-aov.
 :::
 
 ![Analysis of experiment tab](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(8)-01.png){#fig-aov fig-align="center"}
@@ -101,7 +101,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 ## Strip Plot Design (SPD) {#C}
 
 ::: {style="text-align: justify;"}
-A Strip Plot Design (SPD) is a two-factor experimental layout in which the levels of one factor (called the **horizontal strip factor** or Factor A) are assigned to horizontal strips running across each block, while the levels of a second factor (called the **vertical strip factor** or Factor B) are assigned to vertical strips running down each block. Each block is thereby divided into a grid of interaction plots, where every level of Factor A intersects every level of Factor B exactly once. This arrangement is replicated across two or more blocks, and treatments within each factor are randomised independently within each block. SPD is particularly suited to experiments where one or both factors require large, contiguous areas for mechanised application — such as irrigation regimes, tillage depths, or sowing methods — making it impractical to use a fully randomised split-plot or factorial arrangement. The design produces three separate error terms: one for the horizontal factor, one for the vertical factor, and one for their interaction, providing the highest precision for the interaction effect. When factors do not require large-scale application equipment and experimental units are relatively homogeneous, a Randomised Block Design (RBD) or Split Plot Design may be more appropriate.
+A Strip Plot Design is a two-factor experimental layout in which the levels of one factor (called the **horizontal strip factor** or Factor A) are assigned to horizontal strips running across each block, while the levels of a second factor (called the **vertical strip factor** or Factor B) are assigned to vertical strips running down each block. Each block is thereby divided into a grid of interaction plots, where every level of Factor A intersects every level of Factor B exactly once. This arrangement is replicated across two or more blocks, and treatments within each factor are randomised independently within each block. Strip Plot Design is particularly suited to experiments where one or both factors require large, contiguous areas for mechanised application such as irrigation regimes, tillage depths, or sowing methods making it impractical to use a fully randomised split-plot or factorial arrangement. The design produces three separate error terms: one for the horizontal factor, one for the vertical factor, and one for their interaction, providing the highest precision for the interaction effect. When factors do not require large-scale application equipment and experimental units are relatively homogeneous, a Randomised Block Design (RBD) or Split Plot Design may be more appropriate.
 :::
 
 <details>
@@ -116,9 +116,9 @@ A Strip Plot Design (SPD) is a two-factor experimental layout in which the level
 
 <small>
 
-@fig-lay visually represents a Strip Plot Design (SPD) arrangement with three blocks (replications), three levels of the horizontal strip factor (A1, A2, A3) running across each block as rows, and three levels of the vertical strip factor (B1, B2, B3) running down each block as columns. Each cell in the grid represents one interaction plot where a specific level of Factor A and a specific level of Factor B are applied simultaneously. Within each block, the levels of Factor A are randomised across the horizontal strips, and the levels of Factor B are randomised independently across the vertical strips. The resulting grid of interaction subplots provides the finest level of experimental comparison and carries the smallest error term, making the interaction analysis the most precise component of SPD.
+@fig-lay visually represents a Strip Plot Design (SPD) arrangement with three blocks (replications), three levels of the horizontal strip factor (A1, A2, A3) running across each block as rows, and three levels of the vertical strip factor (B1, B2, B3,B4) running down each block as columns. Each cell in the grid represents one interaction plot where a specific level of Factor A and a specific level of Factor B are applied simultaneously. Within each block, the levels of Factor A are randomised across the horizontal strips, and the levels of Factor B are randomised independently across the vertical strips. The resulting grid of interaction subplots provides the finest level of experimental comparison and carries the smallest error term, making the interaction analysis the most precise component of Strip Plot Design.
 
-![SPD Layout](images/STRIP%20PLOT%20DESIGN.png){#fig-lay fig-align="center"}
+![Strip Plot Design Layout](images/STRIP%20PLOT%20DESIGN.png){#fig-lay fig-align="center"}
 
 </small>
 
@@ -127,25 +127,25 @@ A Strip Plot Design (SPD) is a two-factor experimental layout in which the level
 </details>
 
 ::: callout-tip
-#### Strip Plot Design (SPD) is a two-factor experimental design where one factor is applied in horizontal strips and another in vertical strips across each block, producing three independent error terms and maximum precision for the interaction between the two factors.
+#### Strip Plot Design is a two-factor experimental design where one factor is applied in horizontal strips and another in vertical strips across each block, producing three independent error terms and maximum precision for the interaction between the two factors.
 :::
 
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain SPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Let's assume an experiment is conducted to evaluate the combined effect of **irrigation levels** (Factor A, horizontal strips) and **rice varieties** (Factor B, vertical strips) on grain yield and related traits. The experiment is replicated across three blocks. Factor A comprises three irrigation levels: **I1** (continuous flooding), **I2** (alternate wetting and drying), and **I3** (deficit irrigation). Factor B comprises four rice varieties: **V1** (IR64), **V2** (Swarna), **V3** (ADT45), and **V4** (Jyothi). Observations were recorded for four variables: **Yield, Panicle_length, Spikelet_number, and Grain_weight**. Our aim is to test whether the main effects of irrigation level, variety, and their interaction produce statistically significant differences in the response variables using ANOVA. The arrangement of the data is shown in @fig-data.
+To make things simple and interesting, we'll explain Strip Plot Design analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters.A working example of the given figure can be explained using a Strip Plot Design experiment conducted to study the combined effect of **irrigation levels** and **rice varieties** on yield and related traits. In this experiment, Factor A (row treatments) consists of different irrigation levels such as continuous flooding, alternate wetting and drying, and deficit irrigation, while Factor B (column treatments) includes rice varieties like IR64, Swarna, ADT45, and Jyothi. The experiment is arranged in several replications to improve accuracy. Within each replication, the field is divided into horizontal strips representing irrigation levels and vertical strips representing varieties, and their intersections form individual plots where observations are recorded. For example, in Replication 1, each combination of **irrigation level** (R1, R2, etc.) and **variety** (C1, C2, C3, etc.) is measured for variables such as **yield, Panicle length, number of spikelets, and grain weight** (shown as y1, y2, y3… values). This structure is repeated across replications (Replication 2, 3, and 4), ensuring that every treatment combination appears in each block. The collected data are then analyzed using ANOVA to determine whether irrigation levels, varieties, and their interaction have a significant effect on crop performance. This layout helps in clearly separating and evaluating the main and interaction effects of both factors in an efficient and systematic manner. @fig-data.
 :::
 
 ![Example dataset](images/dataset.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organised in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the combinations of irrigation level and rice variety, and the Variables are the four traits mentioned earlier — **Yield, Panicle_length, Spikelet_number, and Grain_weight**.
+Data organised in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the combinations of irrigation level and rice variety, and the Variables are the four traits mentioned earlier **Yield, Panicle length, Spikelet number, and Grain weight**.
 :::
 
 ## How to prepare your data? {#sec-4 .H}
 
 ::: {style="text-align: justify;"}
-Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. Make sure no blank rows are left above, and all columns have proper names. That's it — your file is ready to upload.
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
 
 Still if you have doubt, see @fig-4.
 
@@ -158,22 +158,22 @@ Creating your dataset directly within the **RAISINS** app
 
 ![Illustrating how to create a dataset](images/cereate-01.png){#fig-4 fig-align="center"}
 
-## SPD analysis tab explained {#AO}
+## Strip Plot Design analysis tab explained {#AO}
 
 ::: {style="text-align: justify;"}
-In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the **Horizontal Strip Factor (Factor A)**, **Vertical Strip Factor (Factor B)**, **Block**, and **Variables** will appear. Select the appropriate columns for each field. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly, leaving no room for confusion.
+In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Horizontal Strip Factor (Factor A)**, **Vertical Strip Factor (Factor B)**, **Block**, and **Variables** will appear. Select the appropriate columns for each field. Once you click the Run Analysis button, all relevant results and outputs appear instantly, leaving no room for confusion.
 :::
 
-![SPD analysis window explained](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape-01.png){#fig-5 fig-align="center"}
+![Strip Plot Design analysis window explained](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape-01.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-For some data, when there are large numbers of zeros, discrete values, or when the observed variables are not normally distributed, it may be necessary to apply a transformation to the dataset (see @sec-6). **RAISINS** provides a built-in transformation option to handle such situations.
+For some data, when there are large numbers of zeros, discrete values, or when the observed variables are not normally distributed, it may be necessary to apply a transformation to the dataset see @sec-6. **RAISINS** provides a built-in transformation option to handle such situations.
 :::
 
 ## Transformation {#sec-6 .T}
 
 ::: {style="text-align: justify;"}
-Log, square root, and arcsine transformations are often used in SPD analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analysing experimental data in **RAISINS** as shown in @fig-6.
+Log, square root, and arcsine transformations are often used in Strip Plot Design analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analysing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
 ![Transformation options](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(12)-05.png){#fig-6 fig-align="center"}
@@ -191,7 +191,7 @@ Log, square root, and arcsine transformations are often used in SPD analysis to 
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, and the **Strip Plot ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the Strip Plot Design partitions the total variation into contributions from the horizontal strip factor (Factor A), the vertical strip factor (Factor B), their interaction (A × B), and three separate error terms corresponding to each of these sources (see @fig-100).
+Once your dataset is uploaded, click on Run Analysis, and the **Strip Plot ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the Strip Plot Design partitions the total variation into contributions from the horizontal strip factor (Factor A), the vertical strip factor (Factor B), their interaction (A × B), and three separate error terms corresponding to each of these sources (see @fig-100).
 :::
 
 **Table 1: ANOVA summary**
@@ -204,7 +204,7 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **Strip Plot ANO
 <summary style="color: #5DADE2"; font-weight: bold;"> ANOVA table </summary>
 ```
 
-<small> In a Strip Plot Design (SPD), the analysis of variance **(ANOVA)** partitions the total sum of squares into the following sources: **Blocks**, **Factor A** (horizontal strips) with its error term **Error(a)**, **Factor B** (vertical strips) with its error term **Error(b)**, the **A × B Interaction** with its error term **Error(ab)**, and **Total**. Each factor and the interaction are tested against their own independent error term, which is a key feature distinguishing SPD from a standard two-factor RBD. The degrees of freedom for Factor A are (a − 1), for Factor B are (b − 1), for the interaction are (a − 1)(b − 1), and for the blocks are (r − 1), where a, b, and r are the number of levels of Factor A, Factor B, and the number of replications (blocks), respectively.
+<small> In a Strip Plot Design (SPD), the analysis of variance **(ANOVA)** partitions the total sum of squares into the following sources: **Blocks**, **Factor A** (horizontal strips) with its error term **Error(a)**, **Factor B** (vertical strips) with its error term **Error(b)**, the **A × B Interaction** with its error term **Error(ab)**, and **Total**. Each factor and the interaction are tested against their own independent error term, which is a key feature distinguishing Strip Plot Design from a standard two-factor RBD. The degrees of freedom for Factor A are (a − 1), for Factor B are (b − 1), for the interaction are (a − 1)(b − 1), and for the blocks are (r − 1), where a, b, and r are the number of levels of Factor A, Factor B, and the number of replications (blocks), respectively.
 
 Significance is indicated by an asterisk (\*) for the **5%** level and two asterisks (\*\*) for the **1%** level of significance, displayed as superscripts for each corresponding F statistic in the table.
 
@@ -215,9 +215,9 @@ If the computed F value for a source exceeds the critical value, the null hypoth
 ### Interpretation from @fig-100
 
 ::: {style="text-align: justify;"}
-The ANOVA results show that the mean square for Factor A (Irrigation level) is substantially larger than Error(a), producing a statistically significant F-ratio at the 5% level, indicating that irrigation levels differ significantly in their effect on grain yield. Factor B (Variety) also shows a significant F-ratio when tested against Error(b), confirming meaningful differences among rice varieties. The A × B interaction mean square exceeds Error(ab) and is significant at the 5% level, suggesting that the response of varieties to irrigation levels is not consistent — that is, some varieties perform relatively better under certain irrigation conditions than others. This significant interaction implies that recommendations cannot be made for either factor in isolation, and pairwise comparisons at the interaction level are warranted.
+The ANOVA results show that the mean square for Factor A (Irrigation level) is substantially larger than Error(a), producing a statistically significant F-ratio at the 5% level, indicating that irrigation levels differ significantly in their effect on grain yield. Factor B (Variety) also shows a significant F-ratio when tested against Error(b), confirming meaningful differences among rice varieties. The A × B interaction mean square exceeds Error(ab) and is significant at the 5% level, suggesting that the response of varieties to irrigation levels is not consistent that is, some varieties perform relatively better under certain irrigation conditions than others. This significant interaction implies that recommendations cannot be made for either factor in isolation, and pairwise comparisons at the interaction level are warranted.
 
-@sec-8 provides detailed information on the multiple comparison tests (post-hoc tests) available in **RAISINS** for SPD.
+@sec-8 provides detailed information on the multiple comparison tests (post-hoc tests) available in **RAISINS** for Strip Plot Design.
 :::
 
 **Table 2: Detailed tabular representation with multiple comparisons**
@@ -241,7 +241,7 @@ The ANOVA results show that the mean square for Factor A (Irrigation level) is s
 
 **Factor B (Vertical Strip Factor)**: The second independent variable assigned to vertical strips down each block (e.g., Rice variety). Tested against Error(b).
 
-**Interaction (A × B)**: The combined effect of Factor A and Factor B applied simultaneously in each interaction subplot. Tested against Error(ab), the smallest and most precise error term in SPD.
+**Interaction (A × B)**: The combined effect of Factor A and Factor B applied simultaneously in each interaction subplot. Tested against Error(ab), the smallest and most precise error term in Strip Plot Design.
 
 **Response Variable**: The dependent variable measured on each interaction subplot (e.g., Yield, Grain_weight).
 
@@ -259,7 +259,7 @@ The ANOVA results show that the mean square for Factor A (Irrigation level) is s
 
 **SE (Standard Error)**: The standard error of a treatment mean or of a difference between two treatment means. Computed from the relevant error mean square.
 
-**MSE (Mean Square Error)**: The residual variance from the ANOVA. Three MSE values appear in SPD — one for Error(a), one for Error(b), and one for Error(ab).
+**MSE (Mean Square Error)**: The residual variance from the ANOVA. Three MSE values appear in Strip Plot Design one for Error(a), one for Error(b), and one for Error(ab).
 
 **CV% (Coefficient of Variation)**: Expressed as a percentage, it reflects the relative experimental error. Lower CV% values indicate a more precise experiment. In field trials, a CV% below 15% is generally considered acceptable.
 
@@ -272,19 +272,19 @@ The ANOVA results show that the mean square for Factor A (Irrigation level) is s
 ### Interpretation from @fig-101
 
 ::: {style="text-align: justify;"}
-The detailed results confirm that significant differences exist among irrigation levels, among varieties, and for their interaction for grain yield. The critical difference (CD) values for the A × B interaction cell means are computed from Error(ab) and are smaller than those for the main effects, reflecting the greater precision of the interaction comparisons in SPD. Among irrigation levels, I1 (continuous flooding) and I2 (alternate wetting and drying) produced the highest mean yields, while I3 (deficit irrigation) recorded the lowest. Among varieties, V2 (Swarna) and V4 (Jyothi) showed superior grain yield across irrigation levels. The significant interaction indicates that V2 and V4 maintained relatively high yields even under I2 conditions, making them suitable candidates for water-saving cultivation practices. The CV% values are within acceptable limits, and Cohen's f values indicate medium to large effect sizes for both main effects and the interaction.
+The detailed results confirm that significant differences exist among irrigation levels, among varieties, and for their interaction for grain yield. The critical difference (CD) values for the A × B interaction cell means are computed from Error(ab) and are smaller than those for the main effects, reflecting the greater precision of the interaction comparisons in Strip Plot Design. Among irrigation levels, I1 (continuous flooding) and I2 (alternate wetting and drying) produced the highest mean yields, while I3 (deficit irrigation) recorded the lowest. Among varieties, V2 (Swarna) and V4 (Jyothi) showed superior grain yield across irrigation levels. The significant interaction indicates that V2 and V4 maintained relatively high yields even under I2 conditions, making them suitable candidates for water-saving cultivation practices. The CV% values are within acceptable limits, and Cohen's f values indicate medium to large effect sizes for both main effects and the interaction.
 :::
 
 ::: callout-tip
 #### Tukey's HSD and DMRT in Strip Plot Design
 
-In SPD, post-hoc comparisons must use the appropriate error mean square for each type of comparison. Comparisons among levels of Factor A use Error(a), comparisons among levels of Factor B use Error(b), and comparisons among interaction cell means (A × B combinations) use Error(ab). **RAISINS** handles this automatically — simply select the desired post-hoc test and the software will apply the correct error term for each comparison.
+In Strip Plot Design, post-hoc comparisons must use the appropriate error mean square for each type of comparison. Comparisons among levels of Factor A use Error(a), comparisons among levels of Factor B use Error(b), and comparisons among interaction cell means (A × B combinations) use Error(ab). **RAISINS** handles this automatically simply select the desired post-hoc test and the software will apply the correct error term for each comparison.
 :::
 
 ::: callout-tip
 #### Cohen's f — Effect Size
 
-Cohen's f is a standardised effect size statistic that quantifies the magnitude of treatment differences relative to the within-group variability. Unlike p values, Cohen's f is not influenced by sample size and provides a direct measure of practical significance. In SPD, a large Cohen's f for the A × B interaction confirms that the combined effect of irrigation level and variety is not only statistically detectable but also agronomically meaningful.
+Cohen's f is a standardised effect size statistic that quantifies the magnitude of treatment differences relative to the within-group variability. Unlike p values, Cohen's f is not influenced by sample size and provides a direct measure of practical significance. In Strip Plot Design, a large Cohen's f for the A × B interaction confirms that the combined effect of irrigation level and variety is not only statistically detectable but also agronomically meaningful.
 :::
 
 ## Multiple comparison tests {#sec-8 .MCT}
@@ -295,12 +295,12 @@ Cohen's f is a standardised effect size statistic that quantifies the magnitude 
 <summary style="color: #5DADE2"; font-weight: bold;"> What is a post-hoc test? </summary>
 ```
 
-<small> A post-hoc test (also called a multiple comparison test) is a follow-up procedure performed after a significant ANOVA result to determine which specific group means differ from one another. ANOVA only informs you that at least one pair of means is different; it does not identify which pairs. Post-hoc tests correct for the inflated Type I error rate that arises when performing many pairwise comparisons simultaneously. In SPD, post-hoc comparisons are conducted separately for Factor A means (using Error(a)), Factor B means (using Error(b)), and interaction cell means (using Error(ab)), ensuring that each comparison is tested against the appropriate precision. </small>
+<small> A post-hoc test (also called a multiple comparison test) is a follow-up procedure performed after a significant ANOVA result to determine which specific group means differ from one another. ANOVA only informs you that at least one pair of means is different; it does not identify which pairs. Post-hoc tests correct for the inflated Type I error rate that arises when performing many pairwise comparisons simultaneously. In Strip Plot Design, post-hoc comparisons are conducted separately for Factor A means (using Error(a)), Factor B means (using Error(b)), and interaction cell means (using Error(ab)), ensuring that each comparison is tested against the appropriate precision. </small>
 
 </details>
 
 ::: {style="text-align: justify;"}
-**RAISINS** provides three post-hoc tests for SPD analysis: **Fisher's LSD**, **Tukey's HSD**, and **DMRT**. Each test controls Type I error at different levels of stringency, and the appropriate choice depends on the number of comparisons and the researcher's tolerance for false positives.
+**RAISINS** provides three post-hoc tests for Strip Plot Design analysis: **Fisher's LSD**, **Tukey's HSD**, and **DMRT**. Each test controls Type I error at different levels of stringency, and the appropriate choice depends on the number of comparisons and the researcher's tolerance for false positives.
 
 **Fisher's Least Significant Difference (LSD)** is the simplest post-hoc test, computing a single critical difference value used to declare any two means significantly different. For Factor A means compared using Error(a), the LSD is calculated as:
 
@@ -313,7 +313,7 @@ where $t_{\alpha, df_{E(a)}}$ is the critical t-value at significance level $\al
 **Duncan's Multiple Range Test (DMRT)** ranks treatment means in ascending or descending order and applies a step-wise critical range that increases with the number of steps between means being compared. It detects more significant differences than Tukey's HSD and is widely used in agricultural research, though it is less conservative and carries a somewhat higher risk of Type I error.
 :::
 
-![Multiple comparison results for SPD](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(13)-02.png){#fig-MCT fig-align="center"}
+![Multiple comparison results for Strip Plot Design](images/plot design.png){#fig-MCT fig-align="center"}
 
 <details>
 
@@ -346,9 +346,9 @@ where $MSE(ab)$ is the mean square of Error(ab) and $r$ is the number of blocks.
 **Which post-hoc test to use?**
 
 ::: {style="text-align: justify;"}
-The choice of post-hoc test in SPD depends on the researcher's priorities and the number of treatment levels being compared.
+The choice of post-hoc test in Strip Plot Design depends on the researcher's priorities and the number of treatment levels being compared.
 
-**LSD** is appropriate when comparisons are planned and limited in number, and when sensitivity to real differences is paramount. In agricultural SPD studies with few treatment levels, LSD is the most commonly used test and provides the highest power to detect genuine differences.
+**LSD** is appropriate when comparisons are planned and limited in number, and when sensitivity to real differences is paramount. In agricultural Strip Plot Design studies with few treatment levels, LSD is the most commonly used test and provides the highest power to detect genuine differences.
 
 **Tukey's HSD** is preferred when all pairwise comparisons among four or more treatment levels are to be made simultaneously and strict control of the family-wise error rate is required. It is the most reliable choice for making strong statistical claims across a large number of comparisons.
 
@@ -360,7 +360,7 @@ In the working example, pairwise comparisons for the significant interaction eff
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly — leaving no room for confusion. Every possible plot related to the Strip Plot Design is readily available. Simply click on the `Basic Plots` tab to view them (see @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customise its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. Every possible plot related to the Strip Plot Design is readily available. Simply click on the Basic Plot tab to view them see @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customise its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -464,11 +464,9 @@ function hideDescription(id) {
 ::::::::::::::::::::::: grid
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
-
 ![Box plot](images/Screenshot%202026-04-28%20194717.png){#fig-9}
 
 :::: {#boxplot-desc .plot-description}
-
 ::: {style="text-align: justify;"}
 A **box plot** in strip plot design is a graphical method used to summarize and compare the distribution of data across different treatment combinations. It displays important statistical measures such as the median, quartiles, and range of the observations. The box represents the interquartile range, while the line inside shows the median value, and whiskers indicate the spread of the data. Outliers, if any, are shown as separate points. Each box corresponds to a specific combination of factors in the design. This type of plot helps in understanding the variability, identifying extreme values, and comparing the performance of different treatments in a clear and simple way.
 :::
@@ -478,11 +476,9 @@ A **box plot** in strip plot design is a graphical method used to summarize and 
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
-
 ![Violin plot](images/Screenshot%202026-04-28%20194728.png){#fig-10}
 
 :::: {#violinplot-desc .plot-description}
-
 ::: {style="text-align: justify;"}
 A **violin box** plot in strip plot design is an advanced graphical method that combines a box plot with a density plot. It not only shows the median, quartiles, and range like a box plot, but also displays the distribution shape of the data through a symmetrical “violin” curve. The width of the violin indicates the concentration of data at different values. Each violin represents a treatment combination, making it easy to compare both variability and data distribution between treatments. This plot helps in better understanding patterns, spread, and skewness of observations in the experiment.
 :::
@@ -492,7 +488,6 @@ A **violin box** plot in strip plot design is an advanced graphical method that 
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
-
 ![Bar plot](images/Screenshot%202026-04-28%20194800.png){#fig-11}
 
 :::: {#barplot-desc .plot-description}
@@ -505,11 +500,9 @@ A **bar plot** with letter groupings in strip plot design is used to compare the
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
-
 ![Mean Value Plot](images/Screenshot%202026-04-28%20194739.png){#fig-12}
 
 :::: {#meanvalueplot-desc .plot-description}
-
 ::: {style="text-align: justify;"}
 A **mean value plot** in strip plot design is used to show the average (mean) performance of different treatment combinations. Each point on the graph represents the mean value of a particular treatment, often connected by lines to show trends across factors. It helps in easily comparing the central tendency between treatments and identifying which combination gives higher or lower results. Sometimes, error bars are added to indicate variability around the mean. This plot provides a clear and simple way to understand treatment effects in the experiment.
 :::
@@ -519,7 +512,6 @@ A **mean value plot** in strip plot design is used to show the average (mean) pe
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
-
 ![Connected line plot](images/Screenshot%202026-04-28%20194750.png){#fig-13}
 
 :::: {#connectedplot-desc .plot-description}
@@ -531,21 +523,17 @@ A **connected line plot** in strip plot design is used to display the relationsh
 ::::::
 :::::::::::::::::::::::
 
-A **pairs plot** in strip plot design is a graphical method used to show the relationships between multiple variables or treatment factors. It consists of a matrix of scatter plots where each variable is plotted against every other variable. The diagonal may display histograms or distributions of individual variables. This plot helps in identifying correlations, patterns, and interactions between factors. It is useful for understanding how different variables in the experiment are related to each other in a simple visual way.
-
-![Pairs Plot](images/basic plot.png){alt="Box plot" width="857"}
-
 ## Advanced plots {#AP}
 
 ::: {style="text-align: justify;"}
-In addition to the basic plots, **RAISINS** offers a suite of advanced visualisations accessible from the `Advanced Plots` tab. These plots provide deeper insight into the distributional properties of the data and the structure of treatment differences, complementing the ANOVA results with rich graphical summaries.
+In addition to the basic plots, **RAISINS** offers a suite of advanced visualisations accessible from the Advanced Plot tab. These plots provide deeper insight into the distributional properties of the data and the structure of treatment differences, complementing the ANOVA results with rich graphical summaries.
 :::
+
+![Connected line plot](images/WhatsApp%20Image%202026-04-30%20at%2012.31.14%20PM.jpeg)
 
 **PLOT WISE GRAPH**
 
-![Summary plot](www/PLACEHOLDER_SummaryPlot_SPD.webp){#fig-AP1 fig-align="center"}
-
-![Plot Wise Graph](images/WhatsApp Image 2026-04-29 at 3.06.26 PM (1).jpeg){fig-align="center"}
+![Plot Wise Graph](images/WhatsApp%20Image%202026-04-29%20at%203.06.26%20PM%20(1).jpeg){fig-align="center"}
 
 ::: {style="text-align: justify;"}
 A **plot-wise graph** in strip plot design is used to display the observations recorded from each individual experimental plot. Instead of summarizing data into averages, it shows the actual values of each plot under different treatment combinations. This helps in understanding the variability within treatments and identifying any unusual or outlier values. Each point or bar represents a single plot, making the data more detailed and transparent. It is useful for checking consistency and reliability of experimental results.A plot-wise graph in strip plot design is used to display the observations recorded from each individual experimental plot. Instead of summarizing data into averages, it shows the actual values of each plot under different treatment combinations. This helps in understanding the variability within treatments and identifying any unusual or outlier values. Each point or bar represents a single plot, making the data more detailed and transparent. It is useful for checking consistency and reliability of experimental results.
@@ -553,9 +541,7 @@ A **plot-wise graph** in strip plot design is used to display the observations r
 
 **INTERACTION PLOT**
 
-![Advanced Raincloud plot](www/PLACEHOLDER_AdvancedRaincloud_SPD.webp){#fig-AP2 fig-align="center"}
-
-![Interaction Plot](images/WhatsApp Image 2026-04-29 at 3.06.54 PM.jpeg){fig-align="center"}
+![Interaction Plot](images/WhatsApp%20Image%202026-04-29%20at%203.06.54%20PM.jpeg){fig-align="center"}
 
 ::: {style="text-align: justify;"}
 An **interaction plot** in strip plot design is used to show how two factors interact with each other in influencing the response variable. It displays the mean values of one factor across the levels of another factor, usually with lines connecting the points. If the lines are parallel, it indicates no interaction between factors, while non-parallel or crossing lines suggest the presence of interaction. This plot helps in understanding whether the effect of one treatment depends on the level of another treatment. It provides a clear visual interpretation of combined treatment effects.
@@ -563,7 +549,7 @@ An **interaction plot** in strip plot design is used to show how two factors int
 
 **3D SCATTER PLOT**
 
-![3D Scatter Plot](images/ssstrip ppplot-01.gif){#fig-AP3 fig-align="center"}
+![3D Scatter Plot](images/ssstrip%20ppplot-01.gif){#fig-AP3 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 A **3D scatter plot** in strip plot design is used to visualize the relationship among three variables in an experiment. Each point in the graph represents a treatment combination or observation, positioned along three axes (X, Y, and Z). It helps in understanding how two factors together influence the response variable. This plot makes it easier to identify patterns, trends, and clusters in the data. It is especially useful for studying interactions and variations in a more detailed and visual way.
@@ -571,9 +557,7 @@ A **3D scatter plot** in strip plot design is used to visualize the relationship
 
 **3D SCATTER PLOT WITH LINES**
 
-![Rain Cloud plot](www/PLACEHOLDER_RaincloudPlot_SPD.webp){#fig-AP4 fig-align="center"}
-
-![3D Scatter Plot With Lines](images/sstrip plott-03.gif){fig-align="center"}
+![3D Scatter Plot With Lines](images/sstrip%20plott-03.gif){fig-align="center"}
 
 ::: {style="text-align: justify;"}
 A **3D scatter plot** with lines in strip plot design is used to show the relationship among three variables along with the trend between them. Each point represents an observation or treatment combination in three-dimensional space (X, Y, and Z axes), and lines are added to connect points to highlight patterns or changes across levels of factors. It helps in visualizing how two factors together influence the response variable while also showing the direction and continuity of the data. This plot is useful for identifying trends, interactions, and overall structure of the experimental results in a clear visual form.
@@ -582,20 +566,18 @@ A **3D scatter plot** with lines in strip plot design is used to show the relati
 ## AI Interpretation {#AI}
 
 ::: {style="text-align: justify;"}
-**RAISINS** includes a built-in AI Assistant that automatically reads your SPD analysis results and generates a plain-language interpretation. The AI Assistant summarises the significance of Factor A, Factor B, and their interaction, identifies the best-performing treatment combinations based on post-hoc groupings, highlights any notable patterns in the interaction, and suggests appropriate next steps — such as further confirmation trials, transformation checks, or multivariate analysis. This feature saves time and ensures that results are interpreted correctly, even by users who are not specialists in experimental statistics. The AI Interpretation panel is shown in @fig-ai.
+**RAISINS** includes a built-in AI Assistant that automatically reads your Strip Plot Design analysis results and generates a plain-language interpretation. The AI Assistant summarises the significance of Factor A, Factor B, and their interaction, identifies the best-performing treatment combinations based on post-hoc groupings, highlights any notable patterns in the interaction, and suggests appropriate next steps such as further confirmation trials, transformation checks, or multivariate analysis. This feature saves time and ensures that results are interpreted correctly, even by users who are not specialists in experimental statistics. The AI Interpretation panel is shown in @fig-ai.
 :::
 
 ![AI Interpretation](images/WhatsApp%20Image%202026-04-29%20at%203.08.26%20PM.jpeg){#fig-ai fig-align="center"}
 
-![AI Interpretation](www/ai.webp){fig-align="center"}
-
 ## Multivariate {#MUL}
 
 ::: {style="text-align: justify;"}
-Multivariate analysis in Strip Plot Design (SPD) helps you to compare different response variables simultaneously, accounting for the correlations among traits. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example — evaluation of irrigation levels (I1, I2, I3) crossed with rice varieties (IR64, Swarna, ADT45, Jyothi) for grain yield and related traits — navigate to `Multivariate` (see @fig-mu).
+Multivariate analysis in Strip Plot Design (SPD) helps you to compare different response variables simultaneously, accounting for the correlations among traits. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example evaluation of irrigation levels (I1, I2, I3) crossed with rice varieties (IR64, Swarna, ADT45, Jyothi) for grain yield and related traits navigate to Multivariate see @fig-mu.
 :::
 
-![Multivariate tab in RAISINS](images/WhatsApp%20Image%202026-04-29%20at%203.09.03%20PM.jpeg){#fig-mu}
+![Multivariate tab in RAISINS](images/Screenshot 2026-04-30 220202.png){#fig-mu}
 
 ::: {style="text-align: justify;"}
 The table titled 'Eigen Values PCA' given in @fig-PC provides information about the eigenvalues and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 58% of the variance in the dataset, while PC2 accounts for about 24% of the variance. Together, PC1 and PC2 explain approximately 82% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
@@ -616,10 +598,8 @@ Look upon the loadings of each variable given in @fig-loadings and decide which 
 ![Loadings of each variable](images/WhatsApp%20Image%202026-04-29%20at%203.10.47%20PM.jpeg){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable's loading vector. The angle between variables in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. Thus, the biplot aids in understanding the contributions of variables to each PC and in identifying patterns among the Factor A × Factor B combinations.
+The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable's loading vector. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. Thus, the biplot aids in understanding the contributions of variables to each PC and in identifying patterns among the Factor A × Factor B combinations.
 :::
-
-![PCA Biplot](www/PLACEHOLDER_Biplot_SPD.webp){#fig-biplot}
 
 ![PCA Biplot](images/WhatsApp%20Image%202026-04-29%20at%203.11.06%20PM.jpeg)
 
@@ -627,9 +607,9 @@ The biplot gives a visual representation of the relationships among variables an
 In **RAISINS**, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare across treatment combinations. This standardised approach ensures consistency in evaluating treatments based on their index scores. To refine your selection, use the 'Select cutoff for Scaled Index Score' feature shown in @fig-indexscore, where you can choose the cutoff percentage to select treatment combinations above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment combinations as per your preference. Selected treatment combinations are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.
 :::
 
-![Index score](images/WhatsApp Image 2026-04-29 at 4.23.30 PM.jpeg){#fig-indexscore fig-align="center"}
+![Index score](images/WhatsApp%20Image%202026-04-29%20at%204.23.30%20PM.jpeg){#fig-indexscore fig-align="center"}
 
-![Index plot](images/WhatsApp Image 2026-04-29 at 4.26.22 PM.jpeg){#fig-index fig-align="center"}
+![Index plot](images/WhatsApp%20Image%202026-04-29%20at%204.26.22%20PM.jpeg){#fig-index fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study.
@@ -638,7 +618,7 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing your data {#PRE}
 
 ::: {style="text-align: justify;"}
-"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won't be trustworthy."
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won't be trustworthy."
 
 1.  Create your dataset in MS Excel
 
@@ -648,12 +628,12 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing data in MS Excel {#EX}
 
 ::: {style="text-align: justify;"}
-Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for Strip Plot Design should follow a column-based format. The first column should identify the **Block** (replication), the second column should identify the **Factor A** level (horizontal strip), the third column should identify the **Factor B** level (vertical strip), and all subsequent columns should contain the measured response variables — for example, Yield, Panicle_length, Spikelet_number, and Grain_weight. Each unique combination of Block, Factor A level, and Factor B level should appear as a separate row. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. The data can also be arranged as shown in @fig-kk.
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for Strip Plot Design should follow a column-based format. The first column should identify the **Block** (replication), the second column should identify the **Factor A** level (horizontal strip), the third column should identify the **Factor B** level (vertical strip), and all subsequent columns should contain the measured response variables for example, Yield, Panicle_length, Spikelet_number, and Grain_weight. Each unique combination of Block, Factor A level, and Factor B level should appear as a separate row. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. The data can also be arranged as shown in @fig-kk.
 :::
 
-![Model-1: showing how the prepared Excel file for upload should look like](images/WhatsApp Image 2026-04-29 at 4.27.45 PM.jpeg){#fig-pp}
+![Model-1: showing how the prepared Excel file for upload should look like](images/WhatsApp%20Image%202026-04-29%20at%204.27.45%20PM.jpeg){#fig-pp}
 
-![Model-2: Showing how the prepared Excel file for upload should look like](images/WhatsApp Image 2026-04-29 at 4.29.39 PM.jpeg){#fig-kk}
+![Model-2: Showing how the prepared Excel file for upload should look like](images/WhatsApp%20Image%202026-04-29%20at%204.29.39%20PM.jpeg){#fig-kk}
 
 <details>
 
@@ -704,7 +684,7 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ## Creating dataset in RAISINS {#CR}
 
 ::: {style="text-align: justify;"}
-If you're unsure about the correct format for creating a dataset, don't worry — **RAISINS** offers an option to create data directly within the app using the prescribed template. Here's how:
+If you're unsure about the correct format for creating a dataset, don't worry **RAISINS** offers an option to create data directly within the app using the prescribed template. Here's how:
 
 -   Navigate to the **Create Data Tab**
 
@@ -718,7 +698,7 @@ If you're unsure about the correct format for creating a dataset, don't worry �
 
 -   Click on the **Create** button
 
-A model layout will appear as shown in @fig-createdata. You may enter the observations manually into the CSV file once downloaded, or paste the observations directly into the file provided. Once you have entered the observations in the layout, download the CSV file and upload it in `Analysis`.
+A model layout will appear as shown in @fig-createdata. You may enter the observations manually into the CSV file once downloaded, or paste the observations directly into the file provided. Once you have entered the observations in the layout, download the CSV file and upload it in Analysis.
 :::
 
 ![Creating dataset within RAISINS](images/cereate-02.png){#fig-createdata}
@@ -726,25 +706,25 @@ A model layout will appear as shown in @fig-createdata. You may enter the observ
 ## Model datasets {#M}
 
 ::: {style="text-align: justify;"}
-To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the `Datasets` tab.
+To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the Datasets tab.
 :::
 
-![Model dataset](images/WhatsApp Image 2026-04-29 at 4.33.10 PM.jpeg){#fig-188 fig-align="center"}
+![Model dataset](images/WhatsApp%20Image%202026-04-29%20at%204.33.10%20PM.jpeg){#fig-188 fig-align="center"}
 
 ## FAQ's {#F}
 
 ::: {style="text-align: justify;"}
-The app includes a dedicated `FAQs` section to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the `FAQs` is a great place to start.
+The app includes a dedicated FAQs section to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQs is a great place to start.
 :::
 
-![FAQs](images/WhatsApp Image 2026-04-29 at 3.15.18 PM.jpeg){#fig-148 fig-align="center"}
+![FAQs](images/Screenshot 2026-04-30 220430.png){#fig-148 fig-align="center"}
 
 ## View data {#U}
 
 ::: {style="text-align: justify;"}
-`View Data` serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.
+View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.
 :::
 
-![View data](images/WhatsApp Image 2026-04-29 at 3.13.07 PM.jpeg){fig-align="center"}
+![View data](images/WhatsApp%20Image%202026-04-29%20at%203.13.07%20PM.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------

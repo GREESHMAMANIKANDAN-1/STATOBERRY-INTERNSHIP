@@ -146,7 +146,7 @@ To make things simple and interesting, we'll explain 2F-RBD analysis step by ste
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Example dataset](images/NEW.png){#fig-data fig-align="center"}
+![Example dataset](images/new 2f-01.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Three terms that we will use frequently are **Factor A**, **Factor B**, and **Variables**. In our example, Factor A has 2 levels, Factor B has 2 levels and the 7 Variables.
@@ -350,9 +350,7 @@ When the ANOVA in a **Two Factor Factorial RBD (2F-RBD)** is significant, the fo
 
 **LSD (Least Significant Difference) Test**
 
-The **Least Significant Difference (LSD)** test is a post-hoc statistical procedure used to identify which specific factor level means differ significantly after ANOVA has indicated a significant effect. The LSD is calculated as $$
-\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
-$$
+The **Least Significant Difference (LSD)** test is a post-hoc statistical procedure used to identify which specific factor level means differ significantly after ANOVA has indicated a significant effect. The LSD is calculated as $$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
 
 where, **t₍α/2, dfₑᵣᵣₒᵣ₎** is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of observations per factor level. In a 2F-RBD, the error degrees of freedom are (r − 1)(ab − 1), where r is the number of blocks, a is the number of levels of Factor A, and b is the number of levels of Factor B. The value of n depends on the comparison being made: for Factor A, n is the total number of observations per level of A (i.e., r × b); for Factor B, n is the total number of observations per level of B (i.e., r × a); and for the interaction, n is the number of blocks r per cell.
 
@@ -567,8 +565,9 @@ function hideDescription(id) {
 
 ![INTERACTION plot](images/rbd%2011%20b.jpeg){#fig-14 fig-align="center"}
 
-:::::::::::::::::::: {style="text-align: justify;"}
-The interaction plot illustrates how the response variable changes across the levels of two factors in a 2F-RBD. The lines represent factor levels, and their trends show how the effect of one factor varies with the levels of the other factor. Non-parallel or crossing lines indicate the presence of interaction, helping to understand whether the factors jointly influence the response. In a block design, the interaction plot reflects the treatment effects after block variation has been removed from the error.:::
+::: {style="text-align: justify;"}
+The interaction plot illustrates how the response variable changes across the levels of two factors in a 2F-RBD. The lines represent factor levels, and their trends show how the effect of one factor varies with the levels of the other factor. Non-parallel or crossing lines indicate the presence of interaction, helping to understand whether the factors jointly influence the response. In a block design, the interaction plot reflects the treatment effects after block variation has been removed from the error.
+:::
 
 **3D SCATTER PLOT**
 
@@ -576,8 +575,9 @@ The interaction plot illustrates how the response variable changes across the le
 
 ![3D SCATTER plot](images/gif%201.gif){#fig-15 fig-align="center"}
 
-::::::::::::::::::: {style="text-align: justify;"}
-A 3D scatter plot visualizes the relationship between Factor A, Factor B, and the response variable in a three-dimensional space. Each point represents the mean response for a specific combination of factor levels, allowing clear observation of how the response changes across both factors simultaneously. This plot helps in identifying patterns, trends, and possible interaction effects between the factors in the factorial experiment.:::
+::: {style="text-align: justify;"}
+A 3D scatter plot visualizes the relationship between Factor A, Factor B, and the response variable in a three-dimensional space. Each point represents the mean response for a specific combination of factor levels, allowing clear observation of how the response changes across both factors simultaneously. This plot helps in identifying patterns, trends, and possible interaction effects between the factors in the factorial experiment.
+:::
 
 **3D SCATTER PLOT WITH LINE**
 
@@ -585,8 +585,9 @@ A 3D scatter plot visualizes the relationship between Factor A, Factor B, and th
 
 ![3D SCATTER PLOT WITH LINE](images/gif%202-01.gif){#fig-16 fig-align="center"}
 
-:::::::::::::::::: {style="text-align: justify;"}
-A 3D scatter plot with connecting lines illustrates the mean response across combinations of Factor A and Factor B in a three-dimensional space. The points represent mean values for each treatment combination, while the lines connect levels within a factor to highlight trends and changes in response. This visualization helps in understanding patterns, comparing factor effects, and identifying possible interaction between the factors.:::
+::: {style="text-align: justify;"}
+A 3D scatter plot with connecting lines illustrates the mean response across combinations of Factor A and Factor B in a three-dimensional space. The points represent mean values for each treatment combination, while the lines connect levels within a factor to highlight trends and changes in response. This visualization helps in understanding patterns, comparing factor effects, and identifying possible interaction between the factors.
+:::
 
 ## AI interpretation {#AI}
 
@@ -789,6 +790,5 @@ The app includes a dedicated `FAQs` to help clarify common doubts and guide user
 ![View data](images/rbd%2010.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
-::::::::::::::::::
-:::::::::::::::::::
-::::::::::::::::::::
+
+:::::::::::::::::: ::::::::::::::::::: ::::::::::::::::::::

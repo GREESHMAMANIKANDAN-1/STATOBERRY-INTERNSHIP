@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-Split Plot Design is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots - allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. **Split plot design** accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In **RAISINS** you can perform SPD very easily without writing a single line of code. This tutorial will guide you, how to perform SPD very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+Split Plot Design is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots, allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. **Split Plot Design** accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In **RAISINS** you can perform SPD very easily without writing a single line of code. This tutorial will guide you on how to perform SPD easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform multivariate analysis including MANOVA and PCA.
 :::
 
 <details>
@@ -99,7 +99,7 @@ Split Plot Design is a two-factor experimental design in which experimental unit
 To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different two-factor experimental designs. In this tutorial, we focus on **Split Plot Design (SPD)**, as shown in @fig-aov.
 :::
 
-![Analysis of experiment tab](images/analyss-02.png){#fig-aov fig-align="center"}
+![Analysis of experiment tab](images/analyss-03.png){#fig-aov fig-align="center"}
 
 ## Split Plot Design (SPD) {#C}
 
@@ -655,23 +655,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    - Go to the top-left corner and click on **File**.
+    -   Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    - Select the location where you want to save your file.
+    -   Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    - Enter a relevant file name without spaces (use underscores if needed).
+    -   Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    - Click **Save** to export the file.
+    -   Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (no empty rows above the data, meaningful column names, and consistent level labels for both the main plot and sub-plot factors). </small>
 
@@ -682,17 +682,17 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
-- Navigate to the **Create Data Tab**
+-   Navigate to the **Create Data Tab**
 
-- Select the number of **Main Plot levels**
+-   Select the number of **Main Plot levels**
 
-- Select the number of **Sub-plot levels**
+-   Select the number of **Sub-plot levels**
 
-- Select number of **Replications**
+-   Select number of **Replications**
 
-- Select number of **Characters**
+-   Select number of **Characters**
 
-- Click on **Create** button
+-   Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::

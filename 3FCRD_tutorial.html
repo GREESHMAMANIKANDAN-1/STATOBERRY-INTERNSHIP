@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Three-Factor Completely Randomised Design (3FCRD)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="3FCRD_tutorial_files/libs/clipboard/clipboard.min.js"></script>
+<script src="3FCRD_tutorial_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="3FCRD_tutorial_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="3FCRD_tutorial_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="3FCRD_tutorial_files/libs/quarto-html/popper.min.js"></script>
+<script src="3FCRD_tutorial_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="3FCRD_tutorial_files/libs/quarto-html/anchor.min.js"></script>
+<link href="3FCRD_tutorial_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="3FCRD_tutorial_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="3FCRD_tutorial_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="3FCRD_tutorial_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="3FCRD_tutorial_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="3FCRD_tutorial_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="3FCRD_tutorial_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="3FCRD_tutorial_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="sty.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>TABLE OF CONTENTS</strong></h2>
+   
+  <ul>
+  <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Analysis of experiments</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Three-Factor Completely Randomized Design (3FCRD)</a></li>
+  <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
+  <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> 3FCRD analysis tab explained</a></li>
+  <li><a href="#sec-6" id="toc-sec-6" class="nav-link" data-scroll-target="#sec-6"><span class="header-section-number">6</span> Transformation</a></li>
+  <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">7</span> Analysis results</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-100" id="toc-interpretation-from-fig-100" class="nav-link" data-scroll-target="#interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from Figure&nbsp;7</a></li>
+  <li><a href="#interpretation-from-fig-101" id="toc-interpretation-from-fig-101" class="nav-link" data-scroll-target="#interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from Figure&nbsp;8</a></li>
+  </ul></li>
+  <li><a href="#sec-8" id="toc-sec-8" class="nav-link" data-scroll-target="#sec-8"><span class="header-section-number">8</span> Multiple comparison tests</a></li>
+  <li><a href="#SUM" id="toc-SUM" class="nav-link" data-scroll-target="#SUM"><span class="header-section-number">9</span> Summary stats</a>
+  <ul class="collapse">
+  <li><a href="#interpretations-from-fig-102" id="toc-interpretations-from-fig-102" class="nav-link" data-scroll-target="#interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from Figure&nbsp;10</a></li>
+  </ul></li>
+  <li><a href="#IA" id="toc-IA" class="nav-link" data-scroll-target="#IA"><span class="header-section-number">10</span> Individual ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-104" id="toc-interpretation-from-fig-104" class="nav-link" data-scroll-target="#interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from Figure&nbsp;11</a></li>
+  </ul></li>
+  <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">11</span> Basic plots</a>
+  <ul class="collapse">
+  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</a></li>
+  </ul></li>
+  <li><a href="#AP" id="toc-AP" class="nav-link" data-scroll-target="#AP"><span class="header-section-number">12</span> Advanced plots</a></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">13</span> AI interpretation</a></li>
+  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">14</span> Multivariate</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">15</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">16</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">18</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">19</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">20</span> View data</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Three-Factor Completely Randomised Design (3FCRD)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+<div class="affiliations">
+<p><sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
+</div>
+<p>ABSTRACT</p>
+<div style="text-align: justify;">
+<p>The <strong>Three-Factor Completely Randomized Design (3FCRD)</strong> is a factorial experimental design in which three independent factors are simultaneously studied, with all treatment combinations assigned completely at random to experimental units under homogeneous conditions. <strong>3FCRD</strong> allows researchers to evaluate not only the main effects of each factor, but also the two-way and three-way interaction effects, providing a comprehensive understanding of how factors jointly influence the response variable. In <strong>RAISINS</strong> you can perform <strong>3FCRD</strong> analysis very easily without writing a single line of code. This tutorial will guide you through how to perform <strong>3FCRD</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
+</div>
+<details>
+<p><em>Hover or click each point to see more information.</em></p>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Introduction Three-Factor Completely Randomised Design
+</summary>
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+<ul>
+<small> The foundations of factorial experimental design were laid in the early twentieth century by <span class="hover-img"><strong>Sir Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span>, the eminent British statistician and geneticist who worked at Rothamsted Experimental Station in Hertfordshire, England. In his landmark 1926 paper and later in his seminal book <em>The Design of Experiments</em> (1935), Fisher demonstrated that studying multiple factors simultaneously — rather than one at a time — was both more efficient and more informative, as it allowed the estimation of interaction effects that single-factor experiments could never reveal. The concept of complete randomization, which underpins the CRD and its factorial extensions, was articulated by Fisher as a means of eliminating systematic bias and ensuring the validity of the F-test. The Three-Factor Completely Randomized Design (3FCRD) naturally extends Fisher’s original factorial framework to three independent factors, enabling researchers in agronomy, plant breeding, food science, and allied disciplines to study the combined and individual influences of three experimental variables within a single unified trial, without the imposition of any blocking structure, making it most suitable for controlled laboratory or greenhouse conditions where environmental uniformity can be assured. </small>
+</ul>
+</details>
+<section id="AE" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
+<div style="text-align: justify;">
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different single-factor and multifactor experimental designs. In this tutorial, we focus on <strong>Three-Factor Completely Randomized Design (3FCRD)</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%204.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/3f%204.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Analysis of experiment tab
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="C" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Three-Factor Completely Randomized Design (3FCRD)</h2>
+<div style="text-align: justify;">
+<p>A <strong>Three-Factor Completely Randomized Design (3FCRD)</strong> is a factorial experiment in which three factors each at two or more levels are studied simultaneously, and all possible treatment combinations are assigned at random to experimental units without any restriction or blocking. This design is an extension of the one-way CRD to a three-factor factorial structure, enabling estimation of three main effects, three two-way interactions (Factor A × Factor B, Factor A × Factor C, and Factor B × Factor C), and one three-way interaction (Factor A × Factor B × Factor C). It is most appropriately used in controlled environments such as laboratory incubators, growth chambers, or greenhouses, where experimental units are sufficiently homogeneous and blocking is unnecessary. The complete randomization of all treatment combinations ensures an unbiased estimate of experimental error, though it may be less powerful than blocked designs when environmental variation exists. When heterogeneity among experimental units is suspected, a Three-Factor Randomized Block Design should be preferred over the 3FCRD.</p>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  3FCRD Layout
+</summary>
+<ul>
+<p><small></small></p><small>
+<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents a Three-Factor Completely Randomized Design arrangement with three factors (A, B, and C), each at multiple levels, forming a complete set of treatment combinations distributed randomly across all experimental units. Each cell in the layout corresponds to a unique combination of levels from all three factors (e.g., A₁B₁C₁, A₁B₁C₂, A₁B₂C₁, and so on), and these combinations are replicated and randomly assigned across experimental units. The complete randomization ensures that no systematic pattern influences the allocation of any treatment combination, preserving the integrity of the error estimate used in the factorial ANOVA.</p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%203.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: 3FCRD Layout"><img src="www/3F%203.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: 3FCRD Layout
+</figcaption>
+</figure>
+</div>
+</small><p><small></small></p>
+</ul>
+</details>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Three-Factor Completely Randomized Design (3FCRD) is a factorial design in which all combinations of three independent factors are randomly assigned to homogeneous experimental units, enabling simultaneous estimation of main effects, two-way interactions, and the three-way interaction within a single experiment.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="W" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
+<div style="text-align: justify;">
+<p>To make things simple and interesting, we’ll explain <strong>3FCRD</strong> analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider an experiment conducted in a controlled greenhouse to evaluate the effects of three factors on the growth of tomato plants: <strong>Factor A - Irrigation Level</strong> (two levels: Low,High), <strong>Factor B - Fertilizer Type</strong> (three levels: Organic, Inorganic,chemical), and <strong>Factor C - Plant Density</strong> (two levels: Low density, High density). This gives a total of 2 × 3 × 2 = 12 treatment combinations, each replicated three times, resulting in 36 experimental units altogether. Three response variables are recorded for each experimental unit: <strong>Yield</strong> (fruit yield in g/plant), <strong>Char1</strong> (plant height in cm) and <strong>Char2</strong> (number of fruits per plant). Our aim is to test whether the three factors and their interactions produce statistically significant differences in the response variables using factorial ANOVA. The arrangement of the data is shown in the <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+</div>
+<div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/3F%201.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Example dataset
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Data organised in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the 12 unique combinations of Irrigation Level, Fertilizer Type, and Plant Density, and the Variables are the Three traits mentioned earlier - <strong>Yield, Char 1 and Char 2.</strong></p>
+</div>
+</section>
+<section id="sec-4" class="level2 H" data-number="4">
+<h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
+<div style="text-align: justify;">
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. Make sure no blank rows are left above, and all columns have proper names. That’s it , your file is ready to upload.</p>
+<p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a>.</p>
+<p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
+<p>Creating dataset in MS Excel</p>
+<p>Creating your dataset directly within the <strong>RAISINS</strong> app</p>
+</div>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/3f%20csv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Illustrating how to create a dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="AO" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> 3FCRD analysis tab explained</h2>
+<div style="text-align: justify;">
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select Factor A, Factor B, Factor C, and the response variables will appear. Assign the appropriate columns to each of the three factors and to the variables. Once you click the Run Analysis button, all relevant results and outputs including main effects and interaction ANOVA tables appear instantly leaving no room for confusion.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: "><img src="www/3F%202.png" id="fig-5" class="img-fluid quarto-figure quarto-figure-center anchored figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5
+</figcaption>
+</figure>
+</div>
+<p>Analysis Tab explained</p>
+<div style="text-align: justify;">
+<p>For some data, when there are large numbers of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>). Here, <strong>RAISINS</strong> provides an inbuilt transformation option.</p>
+</div>
+</section>
+<section id="sec-6" class="level2 T" data-number="6">
+<h2 class="T anchored" data-number="6" data-anchor-id="sec-6"><span class="header-section-number">6</span> Transformation</h2>
+<div style="text-align: justify;">
+<p>Log, square root, and arcsine transformations are often used in <strong>3FCRD</strong> analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in <strong>RAISINS</strong> as shown in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>.</p>
+</div>
+<div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%205.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/3f%205.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Transformation options
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p><strong>Logarithmic transformation</strong> is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.</p>
+<p><strong>Square root transformation</strong> is a statistical method used to stabilize variance and reduce right-skewness by replacing each data point (x) with its square root. It is primarily applied to non-negative, discrete “count” data such as those following a Poisson distribution, where the variance of the data tends to increase in proportion to the mean. By compressing the upper end of the scale more significantly than the lower end, this transformation brings the data closer to a normal distribution, satisfying the homoscedasticity requirements of many parametric statistical tests.</p>
+<p><strong>Arcsine transformation</strong> (also known as the angular transformation) is a mathematical technique specifically designed for data expressed as proportions or percentages bounded between 0 and 1. By taking the inverse sine of the square root of the proportion, this transformation stretches the ends of the distribution near 0 and 1, where variance is naturally small. It is primarily used to achieve homoscedasticity in binomial data.</p>
+</div>
+<blockquote class="blockquote">
+<p>After choosing the appropriate transformation proceed to <a href="#sec-7" class="quarto-xref">Section&nbsp;7</a> for analysis.</p>
+</blockquote>
+</section>
+<section id="sec-7" class="level2 AR" data-number="7">
+<h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
+<div style="text-align: justify;">
+<p>Once your dataset is uploaded, click on Run Analysis, and a <strong>factorial ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> is a statistical technique used to test the significance of differences among population means by partitioning total variation into components attributable to Factor A, Factor B, Factor C, their two-way interactions (A×B, A×C, B×C), the three-way interaction (A×B×C), and experimental error, and comparing them using the F-test (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>).</p>
+</div>
+<p><strong>Table 1 ANOVA summary</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%206.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Factorial ANOVA Summary — Main Effects and Interactions"><img src="www/3f%206.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Factorial ANOVA Summary — Main Effects and Interactions
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> ANOVA table </summary>
+<p><small> In a <strong>Three-Factor Completely Randomized Design (3FCRD)</strong>, the analysis of variance <strong>(ANOVA)</strong> partitions the total sum of squares into contributions from Factor A (with degrees of freedom = a − 1), Factor B (df = b − 1), Factor C (df = c − 1), the A×B interaction (df = (a−1)(b−1)), the A×C interaction (df = (a−1)(c−1)), the B×C interaction (df = (b−1)(c−1)), the A×B×C interaction (df = (a−1)(b−1)(c−1)), and the experimental error (df = abc(r−1)), where a, b, c are the number of levels of Factors A, B, and C respectively, and r is the number of replications. Each source is tested against the error mean square using the F-ratio. Significance is indicated by an asterisk ( * ) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F statistic in the table. If the computed F value exceeds the critical value, the null hypothesis for that source is rejected, indicating that the corresponding main effect or interaction is statistically significant. </small></p>
+</details>
+<section id="interpretation-from-fig-100" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
+<div style="text-align: justify;">
+<p>In our hypothetical tomato experiment, the factorial ANOVA reveals that the main effect of Factor A (Irrigation Level) is highly significant (F = 18.42, df = 2 and 24, p &lt; 0.01), indicating that irrigation levels have a strong influence on fruit yield. Factor B (Fertilizer Type) is also significant (F = 9.17, df = 1 and 24, p &lt; 0.05), while Factor C (Plant Density) approaches significance (F = 4.63, df = 1 and 24, p &lt; 0.05). The A×B interaction is significant (F = 6.21, p &lt; 0.05), suggesting that the effect of fertilizer type depends on the irrigation level applied. The three-way interaction A×B×C, however, is non-significant (F = 1.84, p &gt; 0.05), indicating that the joint influence of all three factors combined does not produce an additional interaction beyond the two-way level. Since significant main effects and two-way interactions are present, post-hoc comparisons are appropriate and are discussed in <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a>.</p>
+</div>
+<p><strong>Table 2: Detailed tabular representation with multiple comparisons</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%207.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Detailed tabular representation with multiple comparisons"><img src="www/3f%207.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Detailed tabular representation with multiple comparisons
+</figcaption>
+</figure>
+</div>
+<p><strong>Table 3: Factor B - Detailed results with multiple comparisons</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="www/3f%208.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Factor B detailed results with multiple comparisons"><img src="www/3f%208.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Factor B detailed results with multiple comparisons"></a></p>
+</figure>
+</div>
+<figcaption>Factor B detailed results with multiple comparisons</figcaption>
+</figure>
+</div>
+<p><strong>Table 4: Factor C - Detailed results with multiple comparisons</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="www/3f%209.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Factor c detailed results with multiple comparisons"><img src="www/3f%209.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Factor c detailed results with multiple comparisons"></a></p>
+</figure>
+</div>
+<figcaption>Factor c detailed results with multiple comparisons</figcaption>
+</figure>
+</div>
+<p><strong>Table 5: Interaction (A × B) - Detailed results</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="www/3f%2010.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Interaction (A × B) detailed results"><img src="www/3f%2010.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Interaction (A × B) detailed results"></a></p>
+</figure>
+</div>
+<figcaption>Interaction (A × B) detailed results</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">Overview of ANOVA Results and Interpretation
+</summary>
+<p><small></small></p><small>
+<ol type="1">
+<li><em>Treatments and Response Variables</em></li>
+</ol>
+<p><strong>Treatments</strong>: The independent variable combinations in 3FCRD these are the unique combinations of Factor A, Factor B, and Factor C levels (e.g., Low-Organic-Low density, Medium-Inorganic-High density) being tested to determine their influence on the results.</p>
+<p><strong>Response Variable</strong>: The dependent variable or specific measurement (e.g., Yield in g/plant) recorded to evaluate the performance of the treatment combinations.</p>
+<ol start="2" type="1">
+<li><em>Multiple Comparisons</em></li>
+</ol>
+<p><strong>Post hoc Grouping</strong>: A method of using letters (a, b, c) to categorize means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.</p>
+<ol start="3" type="1">
+<li><em>ANOVA Summary</em></li>
+</ol>
+<p><strong>F stat</strong>: A numerical value that compares the variance between different groups to the variance within those groups; it determines if the overall differences are statistically significant.</p>
+<p><strong>p value</strong>: The probability that the observed differences occurred by random chance. A value below 0.05 typically indicates that the results are statistically significant.</p>
+<ol start="4" type="1">
+<li><em>Critical Difference (CD) and Error Estimates</em></li>
+</ol>
+<p><strong>Critical Difference (CD)</strong>: The minimum mathematical gap required between two means to declare them “significantly different” at a specific confidence level.</p>
+<p><strong>Standard Error (SE)</strong>: A measure of the accuracy of a sample mean compared to the true population mean; it indicates how much the mean might fluctuate.</p>
+<p><strong>Mean Square Error (MSE)</strong>: The average of the squared differences between observed values and the predicted mean; it represents the “noise” or unexplained error in the experiment.</p>
+<p><strong>Coefficient of Variation (CV%)</strong>: A percentage that shows the level of dispersion in the data. A lower CV indicates higher precision and reliability in the experimental measurements.</p>
+</small><p><small><strong>Cohen’s F</strong>: A standardized measure of effect size that describes the magnitude of the experimental effect, regardless of the sample size. </small></p>
+</details>
+</section>
+<section id="interpretation-from-fig-101" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;8</a></h3>
+<div style="text-align: justify;">
+<p>The multiple comparison results for Yield (g/plant) reveal clear groupings among the 12 treatment combinations. The combination of High irrigation with Inorganic fertilizer at Low plant density (A2B2C1) recorded the highest mean yield (320.4 g/plant) and was assigned the letter grouping “a”, indicating it is significantly superior to all others. Combinations involving Medium irrigation with Organic fertilizer (A₂B₁) were assigned the grouping “b”, being statistically at par with each other but significantly inferior to the top combination. Treatment combinations under Low irrigation consistently fell in the “c” or “bc” grouping, reflecting the limiting effect of water stress irrespective of fertilizer type or plant density. The LSD test was applied for pairwise comparisons. The Cohen’s f value of 0.52 for Yield indicates a large effect size, confirming that the differences among treatment combinations are not only statistically significant but also practically meaningful. For Char1and Char 2 similar trends were observed, with high irrigation consistently favouring higher performance across all secondary variables.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>When a researcher uses Tukey’s HSD or DMRT, each pairwise comparison produces a different value because the differences between the group means are unique.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Cohen’s f is a measure of effect size. It tells you how strong or meaningful the treatment effect is, independent of sample size.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+</section>
+<section id="sec-8" class="level2 MCT" data-number="8">
+<h2 class="MCT anchored" data-number="8" data-anchor-id="sec-8"><span class="header-section-number">8</span> Multiple comparison tests</h2>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  What is Post-hoc test?
+</summary>
+<ul>
+<small> Post-hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA). Its purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same.</small>
+</ul>
+</details>
+<div style="text-align: justify;">
+<p>After obtaining a significant F-value in ANOVA under <strong>3FCRD</strong>, multiple comparison tests are employed to identify which treatment combination means differ significantly. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatment combinations and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>).</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%2015.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/3f%2015.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Multiple comparison test options explained
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Post-hoc test </summary>
+<p><small></small></p><small>
+<p>When the factorial ANOVA in a <strong>Three-Factor Completely Randomized Design (3FCRD)</strong> is significant, the following post hoc tests are commonly used for pairwise comparisons: Tukey’s Honestly Significant Difference (HSD) test, and Fisher’s Least Significant Difference (LSD) test.</p>
+<p><strong>LSD (Least Significant Difference) Test</strong></p>
+<p>The <strong>Least Significant Difference (LSD)</strong> test is a post hoc statistical procedure used to identify which specific treatment combination means differ significantly after the factorial ANOVA has indicated an overall significant effect. The LSD is calculated as <span class="math display">\[
+\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
+\]</span></p>
+<p>where, <strong>t₍α/2, dfₑᵣᵣₒᵣ₎</strong> is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of replications per treatment combination under equal sample sizes.</p>
+<p><strong>Tukey’s Honestly Significant Difference (HSD)</strong></p>
+<p>Tukey’s test helps you find out exactly which pairs of treatment combination means differ significantly. It compares all possible pairs of treatment means while controlling the overall Type I error rate, so you avoid false positives when making multiple comparisons. In 3FCRD, this method works well because all treatment combinations are assigned completely at random to experimental units and the error variance is assumed homogeneous across all combinations.</p>
+<p><strong>Duncan’s Multiple Range Test (DMRT)</strong></p>
+</small><p><small>After confirming significant overall differences via ANOVA, DMRT ranks the treatment combination means and calculates critical differences using the studentised range statistic (Q) and the standard error based on error variance from ANOVA. This systematic and sequential approach provides clear groupings of treatment combinations and has gained popularity in agricultural and food science research. </small></p>
+</details>
+<p><strong>Which Post-hoc test to use?</strong></p>
+<div style="text-align: justify;">
+<p>The choice of the post hoc test completely relies on the researcher.</p>
+<p><strong>LSD</strong> is used for pairwise comparison of treatment combination means after a significant factorial ANOVA in <strong>3FCRD</strong>. It is most suitable when the number of treatment combinations is small and comparisons are limited, offering high sensitivity to detect differences, but it may increase Type I error when many treatment combinations are compared. In agricultural and horticultural experiments, LSD is the most commonly used post hoc procedure.</p>
+<p><strong>Tukey’s HSD</strong> is preferred when there are many treatment combinations in a balanced <strong>3FCRD</strong>. It compares all possible pairs of treatment combination means while strictly controlling the family-wise error rate, making it a conservative and reliable method for multiple comparisons, particularly when the number of treatment combinations is large (e.g., 12 or more).</p>
+<p><strong>DMRT</strong> is commonly used in agricultural experiments with several treatment combinations. It ranks treatment combination means step-wise and tends to detect more significant differences than Tukey’s HSD, though it is less conservative and carries a higher risk of Type I error.</p>
+<p>In the example for those characters, a pairwise comparison was performed to identify significant differences between treatment combinations using the Least Significant Difference (LSD) test.</p>
+</div>
+</section>
+<section id="SUM" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="SUM"><span class="header-section-number">9</span> Summary stats</h2>
+<div style="text-align: justify;">
+<p>If you need to know about the detailed values of the various statistical metrics of the treatment combinations, move to Summary stats under the Analysis.</p>
+</div>
+<p><strong>Table 3: Summary statistics</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-102" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%20FAQ.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;10: Summary statistics"><img src="www/3F%20FAQ.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Summary statistics
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Table parameters </summary>
+<p><small></small></p><small>
+<p><strong>Mean</strong> The arithmetic average of all observations within a treatment combination. It represents the “typical” value for that specific combination of Factor A, Factor B, and Factor C levels.</p>
+<p><strong>SD (Standard Deviation)</strong> A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.</p>
+<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[
+SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>, where n is the number of observations.</p>
+<p><strong>Min / Max</strong> The lowest and highest recorded values within that specific treatment combination.</p>
+<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[
+CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
+<p><strong>Skewness</strong> A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right. Negative value: Data is skewed to the left.</p>
+<p><strong>Kurtosis</strong> A measure of the “tailedness” of the distribution. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.</p>
+</small><p><small></small></p>
+</details>
+<section id="interpretations-from-fig-102" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from <a href="#fig-102" class="quarto-xref">Figure&nbsp;10</a></h3>
+<div style="text-align: justify;">
+<p>Among the 12 treatment combinations, A<sub>2</sub>B<sub>2</sub>C<sub>1</sub> (High irrigation, Inorganic fertilizer, Low plant density) recorded the highest mean Yield of 320.4 g/plant, while A<sub>1</sub>B<sub>1</sub>C<sub>2</sub> (Low irrigation, Organic fertilizer, High plant density) had the lowest mean Yield of 148.6 g/plant, illustrating the substantial influence of the three factors in combination. The CV values across treatment combinations ranged from 4.2% to 9.8%, indicating acceptable experimental precision overall, with most combinations showing low within-treatment variability. Standard deviations were generally small relative to the means, reflecting consistency among replications. For Char1 (plant height), skewness values were close to zero across most combinations, suggesting near-symmetric distributions. Kurtosis values were close to 3 for most treatment combinations, indicating distributions with tails consistent with a normal distribution, which supports the validity of the parametric ANOVA applied.</p>
+</div>
+</section>
+</section>
+<section id="IA" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="IA"><span class="header-section-number">10</span> Individual ANOVA</h2>
+<div style="text-align: justify;">
+<p>If the user wants to get the individual ANOVA table for each variable, click on Individual ANOVA in the Analysis.</p>
+<p>The significance of each main effect and interaction can be measured using the F-test and p value as in <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a>.</p>
+</div>
+<p><strong>Table 4: ANOVA table for Yield</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-104" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%20ind%20anova.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;11: ANOVA table for Yield"><img src="www/3f%20ind%20anova.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: ANOVA table for Yield
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Table parameters </summary>
+<p><small></small></p><small>
+<p><strong>Critical Difference (CD)</strong> The minimum difference required between any two treatment combination means to consider them significantly different from each other. At a 1% level, you are 99% confident in the difference. At a 5% level, you are 95% confident.</p>
+<p><strong>Coefficient of Variation (CV (%))</strong> A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. <span class="math display">\[
+CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100
+\]</span></p>
+<p><strong>Mean Square Error (MSE)</strong> The Residual Mean Sum of Squares from the ANOVA table. It represents the “noise” or unexplained variance in the experiment.</p>
+<p><strong>Standard Error of Mean (SE(m))</strong> Measures how much the sample mean of a treatment combination is likely to vary from the true population mean. <span class="math display">\[ SE(m)=\sqrt{MSE / r}\]</span> Where, r is the number of replications.</p>
+<p><strong>Standard Error of Difference (SE(d))</strong> The standard error associated with the difference between two treatment combination means. <span class="math display">\[ SE(d)=\sqrt{2 \times MSE / r}\]</span></p>
+</small><p><small></small></p>
+</details>
+<section id="interpretation-from-fig-104" class="level3" data-number="10.1">
+<h3 data-number="10.1" class="anchored" data-anchor-id="interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a></h3>
+<div style="text-align: justify;">
+<p>For Yield (g/plant), the treatment effect in the individual ANOVA table shows a treatment mean square of 2,148.6 and an error mean square of 116.4, yielding an F-value of 18.46 with degrees of freedom 11 and 24, which is significant at the 1% level (p &lt; 0.01). The MSE of 116.4 reflects moderate within-treatment variability, consistent with a controlled greenhouse experiment. The SE(m) is 6.22 and the SE(d) is 8.80, indicating acceptable precision in estimating treatment means and their differences. The CD at the 5% level is 18.14 and at the 1% level is 24.53, meaning that two treatment combination means must differ by at least 18.14 g/plant to be declared significantly different at the 5% level. The CV% of 6.3% indicates good experimental precision, confirming reliable data collection and a well-managed trial.</p>
+</div>
+</section>
+</section>
+<section id="BP" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="BP"><span class="header-section-number">11</span> Basic plots</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to the <strong>Three-Factor Completely Randomized Design</strong> is readily available. Simply click on the Basic Plots tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;12</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
+</div>
+<section id="customizing-plots" class="level3" data-number="11.1">
+<h3 data-number="11.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</h3>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> provides users various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;12</a> to get a clear idea on the customizing features.</p>
+</div>
+<div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%2016.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;12: Plot settings for customizing"><img src="www/3f%2016.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Plot settings for customizing
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;13</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;17</a>, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1000;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+#boxplot-desc { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#barplot-desc { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#connectedplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#meanvalueplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#violinplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+</style>
+<div class="grid">
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%2017.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;13: Box plot"><img src="www/3f%2017.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Box plot
+</figcaption>
+</figure>
+</div>
+<div id="boxplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>box plot</strong> compares the distribution of values across different treatment combinations. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings — treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%2018.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;14: Violin plot"><img src="www/3f%2018.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Violin plot
+</figcaption>
+</figure>
+</div>
+<div id="violinplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>violin plot</strong> compares the distribution of values across different treatment combinations. Each treatment combination is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%2021.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;15: Bar plot"><img src="www/3f%2021.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Bar plot
+</figcaption>
+</figure>
+</div>
+<div id="barplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>Bar plot</strong> compares the average values of different treatment combinations, with error bars showing variability. The letters above each bar indicate statistical groupings: treatment combinations sharing letters are similar, while those with different letters are significantly different. It highlights which treatment combinations have higher or lower averages and whether those differences are meaningful.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%2019.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;16: Mean Value Plot"><img src="www/3f%2019.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Mean Value Plot
+</figcaption>
+</figure>
+</div>
+<div id="meanvalueplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>mean value plot</strong> compares the mean values of different treatment combinations, each shown as a colored dot with horizontal error bars indicating variability. Letters next to each point represent statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')">
+<div style="text-align: center;">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%2020.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;17: Connected line plot"><img src="www/3f%2020.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Connected line plot
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="connectedplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>connected line plot</strong> compares the mean values of different treatment combinations, with each point representing a treatment combination’s average and error bars showing variability. The points are linked by lines to highlight trends across treatment combinations. Letters above each point indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="AP" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="AP"><span class="header-section-number">12</span> Advanced plots</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See <a href="#fig-90" class="quarto-xref">Figure&nbsp;18</a>)</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/rbd%20tab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;18: Advanced plots"><img src="www/rbd%20tab.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Advanced plots
+</figcaption>
+</figure>
+</div>
+<p><strong>INTERACTION PLOT</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/INT%20GEM.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;19: INTERACTION Plot"><img src="images/INT%20GEM.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: INTERACTION Plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Explains how it reveals whether the effect of one factor changes across levels of another, with parallel vs.&nbsp;crossing lines interpreted in the context of the A×B interaction found in the tomato experiment.</p>
+</div>
+<p><strong>3D SCATTER PLOT</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-15" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/3D%201st%20scattered-01.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;20: 3D SCATTER plot"><img src="images/3D%201st%20scattered-01.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: 3D SCATTER plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Describes how three response variables (Yield, Char 1, Char 2) are plotted simultaneously in 3D space, with colour coded points per treatment combination to visualize multivariate clustering across the factorial structure..</p>
+</div>
+<p><strong>3D SCATTER PLOT WITH LINE</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/3D%20SCATTERED%20WITH%20LINE-01.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;21: 3D SCATTER PLOT WITH LINE"><img src="images/3D%20SCATTERED%20WITH%20LINE-01.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21: 3D SCATTER PLOT WITH LINE
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Extends the 3D scatter by connecting replicated observations within each treatment combination via trajectory lines, showing within-combination consistency and between-combination separation in multivariate space..</p>
+</div>
+</section>
+<section id="AI" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="AI"><span class="header-section-number">13</span> AI interpretation</h2>
+<div style="text-align: justify;">
+<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant main effects and interactions, and offers informed suggestions for potential next steps or interpretations relevant to the <strong>3FCRD</strong> structure. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;22</a>.</p>
+</div>
+<div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%2030.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;22: AI powered RAISINS Assistant to interpret your results"><img src="www/3F%2030.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22: AI powered RAISINS Assistant to interpret your results
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="MUL" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="MUL"><span class="header-section-number">14</span> Multivariate</h2>
+<div style="text-align: justify;">
+<p>Multivariate analysis in <strong>Three-Factor Completely Randomized Design (3FCRD)</strong> helps you to compare different response variables simultaneously across all treatment combinations. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example the evaluation of tomato growth under combinations of Irrigation Level (Low, High), Fertilizer Type (Organic, Inorganic and Chemical), and Plant Density (Low, High) navigate to Multivariate see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;23</a>.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%2031.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;23: Multivariate tab in RAISINS"><img src="www/3F%2031.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;23: Multivariate tab in RAISINS
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>MANOVA and PCA will be automatically carried out based on the selected variables. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-MAN2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%2032.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;24: Manova Results"><img src="www/3F%2032.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24: Manova Results
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The table titled ‘Eigen Values PCA’ given <a href="#fig-PC" class="quarto-xref">Figure&nbsp;25</a> provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 58% of the variance in the dataset, while PC2 accounts for about 22% of the variance. Together, PC1 and PC2 explain approximately 80% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs together explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%2033.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;25: PCA-based Index Score"><img src="www/3F%2033.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;25: PCA-based Index Score
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;26</a> illustrates the proportion of variance explained by each principal component.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%2034.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;26: Scree plot"><img src="www/3F%2034.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;26: Scree plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;27</a> and decide which PC-based index needs to be selected. In our example, Yield and Char 2 (number of fruits) show strong positive loadings on PC1, indicating that treatment combinations with high irrigation and inorganic fertilizer drive high values on this component. Char 1 (plant height) has a moderate positive loading on both PC1 and PC2. Variables with high and positive loadings on the same principal component are positively correlated with each other. Since Yield and Char 2 are all important performance traits, a PC1-based index is most appropriate for ranking the 12 treatment combinations. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%2035.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;27: Loadings of each variable"><img src="www/3F%2035.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;27: Loadings of each variable
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%2036.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;28: PCA-Biplot"><img src="www/3F%2036.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28: PCA-Biplot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment combinations based on their index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;29</a>, where you can choose the cutoff percentage to select treatment combinations above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment combinations as per your preference. Selected treatment combinations are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%2037.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;29: Index score"><img src="www/3F%2037.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29: Index score
+</figcaption>
+</figure>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3F%2038.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;30: Indexplot"><img src="www/3F%2038.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;30: Indexplot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study, identifying which combination of Irrigation Level, Fertilizer Type, and Plant Density produces the most favourable overall performance across all measured traits.</p>
+</div>
+</section>
+<section id="PRE" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="PRE"><span class="header-section-number">15</span> Preparing your data</h2>
+<div style="text-align: justify;">
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
+<ol type="1">
+<li><p>Create your dataset in MS Excel</p></li>
+<li><p>Build your dataset directly within the RAISINS app</p></li>
+</ol>
+</div>
+</section>
+<section id="EX" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="EX"><span class="header-section-number">16</span> Preparing data in MS Excel</h2>
+<div style="text-align: justify;">
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The data set should follow a column-based format, where the first three columns represent Factor A, Factor B, and Factor C respectively — you can name these columns appropriately, such as “Irrigation Level”, “FertilizerType”, and “Plant Density”. All characters under study (e.g., Yield, Obs1, Obs2, FW) should be arranged in separate subsequent columns, and each treatment combination should be repeated according to the number of replications. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or factor level names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;31</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, treatment combinations must appear repeatedly based on replications, and the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;32</a>.</p>
+</div>
+<div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/MODEL%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;31: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/MODEL%201.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31: Model-1: showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/MODEL%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;32: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/MODEL%202.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;32: Model-2: Showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<details>
+<summary>
+Data set Creation Rules
+</summary>
+<p><small> 1. <strong>Column Naming Convention</strong> - No spaces allowed in column names.<br>
+- Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %,# etc 2. <strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
+- Ensure the row above the data is not blank. 3. <strong>Cell Management</strong> - Avoid typing or deleting in cells without data.<br>
+- If needed, select affected cells, right-click, and select <strong>Clear Contents</strong>. 4. <strong>Column Relevance</strong> - Name all columns meaningfully.<br>
+- Exclude unnecessary columns not required for analysis. </small></p>
+</details>
+<details>
+<summary>
+How to Save as CSV in MS Excel
+</summary>
+<p><small> 1. <strong>Open Your Workbook</strong></small></p><small>
+<pre><code>-   Ensure your data is arranged properly with only one sheet.</code></pre>
+<ol start="2" type="1">
+<li><p><strong>Click ‘File’ Menu</strong></p>
+<ul>
+<li>Go to the top-left corner and click on <strong>File</strong>.</li>
+</ul></li>
+<li><p><strong>Choose ‘Save As’ or ‘Save a Copy’</strong></p>
+<ul>
+<li>Select the location where you want to save your file.</li>
+</ul></li>
+<li><p><strong>Set File Type to CSV</strong></p>
+<ul>
+<li>In the <strong>‘Save as type’</strong> drop down menu, choose <strong>CSV (Comma delimited) (*.csv)</strong>.</li>
+</ul></li>
+<li><p><strong>Name Your File</strong></p>
+<ul>
+<li>Enter a relevant file name without spaces (use underscores if needed).</li>
+</ul></li>
+<li><p><strong>Click ‘Save’</strong></p>
+<ul>
+<li>Click <strong>Save</strong> to export the file.</li>
+</ul></li>
+</ol>
+</small><blockquote class="blockquote"><small>
+</small><p><small>💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names, all three factor columns correctly labelled). </small></p>
+</blockquote>
+</details>
+</section>
+<section id="CR" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</h2>
+<div style="text-align: justify;">
+<p>If you’re unsure about the correct format for creating a data set, don’t worry RAISINS offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
+<ul>
+<li><p>Navigate to the <strong>Create Data Tab</strong></p></li>
+<li><p>Select the number of <strong>Treatments</strong></p></li>
+<li><p>Select number of <strong>Replications</strong></p></li>
+<li><p>Select number of <strong>Characters</strong></p></li>
+<li><p>Click on <strong>Create</strong> button</p></li>
+</ul>
+<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;33</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.</p>
+</div>
+<div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;33: Creating dataset within RAISINS"><img src="www/3f%20csv.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;33: Creating dataset within RAISINS
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="M" class="level2" data-number="18">
+<h2 data-number="18" class="anchored" data-anchor-id="M"><span class="header-section-number">18</span> Model datasets</h2>
+<div style="text-align: justify;">
+<p>To test the app or better understand the data arrangement, we provide model data sets within the app. You can download them from the Datasets.</p>
+</div>
+<div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%20model%20data.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;34: Model dataset"><img src="www/3f%20model%20data.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;34: Model dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="F" class="level2" data-number="19">
+<h2 data-number="19" class="anchored" data-anchor-id="F"><span class="header-section-number">19</span> FAQ’s</h2>
+<div style="text-align: justify;">
+<p>The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the FAQs is a great place to start.</p>
+</div>
+<div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/3f%20faqq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;35: FAQs"><img src="www/3f%20faqq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;35: FAQs
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="U" class="level2" data-number="20">
+<h2 data-number="20" class="anchored" data-anchor-id="U"><span class="header-section-number">20</span> View data</h2>
+<div style="text-align: justify;">
+<p>View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your data set, the system performs an automated Health Check to validate column types and formatting, including verification that all three factor columns are correctly recognized and that treatment combination labels are consistent across all rows.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="www/3f%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="View data"><img src="www/3f%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+</figure>
+</div>
+<figcaption>View data</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

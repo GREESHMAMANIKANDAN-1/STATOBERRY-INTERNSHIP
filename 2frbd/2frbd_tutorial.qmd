@@ -107,7 +107,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 ## Two Factor Factorial RBD (2F-RBD) {#C}
 
 ::: {style="text-align: justify;"}
-A Two Factor Factorial Randomised Block Design (2F-RBD) is an experimental design in which two factors, each with two or more levels, are combined to form all possible treatment combinations, and these combinations are then randomly assigned within each homogeneous block. The design enables the researcher to evaluate the main effect of Factor A, the main effect of Factor B, and the interaction effect (A × B) simultaneously, while also accounting for variability among blocks. 2F-RBD is particularly useful in field experiments, greenhouse trials, and any situation where experimental units can be grouped into blocks that are more homogeneous within than between them. By removing block-to-block variation from the experimental error, the design improves the precision of treatment comparisons compared to a Two Factor Factorial CRD. It offers the dual advantage of factorial efficiency and block control, making it the preferred choice when environmental heterogeneity is expected to be a significant source of variation.
+A Two Factor Factorial Randomized Block Design (2F-RBD) is an experimental design in which two factors, each with two or more levels, are combined to form all possible treatment combinations, and these combinations are then randomly assigned within each homogeneous block. The design enables the researcher to evaluate the main effect of Factor A, the main effect of Factor B, and the interaction effect (A × B) simultaneously, while also accounting for variability among blocks. 2F-RBD is particularly useful in field experiments, greenhouse trials, and any situation where experimental units can be grouped into blocks that are more homogeneous within than between them. By removing block-to-block variation from the experimental error, the design improves the precision of treatment comparisons compared to a Two Factor Factorial CRD. It offers the dual advantage of factorial efficiency and block control, making it the preferred choice when environmental heterogeneity is expected to be a significant source of variation.
 :::
 
 <details>
@@ -141,12 +141,12 @@ A Two Factor Factorial Randomised Block Design (2F-RBD) is an experimental desig
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain 2F-RBD analysis step by step using a working example, so you can clearly see how it works and why it matters. This dataset represents a factorial experiment involving two factors: FactorA and FactorB, each with multiple levels, laid out in a Randomised Block Design. FactorA consists of 2 levels (A1, A2), while FactorB has 2levels (B1, B2). The experiment is conducted in a Randomised Block Design (RBD), where the treatment combinations formed by crossing the levels of FactorA and FactorB are randomly assigned within each of 3 blocks. Observations were recorded for 7 variables. This dataset allows for the examination of the individual effects of FactorA and FactorB, as well as their interaction effects, with block effects accounted for to improve precision. Our aim is to test whether the factors and their interaction produce statistically significant differences in the response variables using ANOVA. The arrangement of the data is shown in the @fig-data.
+To make things simple and interesting, we'll explain 2F-RBD analysis step by step using a working example, so you can clearly see how it works and why it matters. This data set represents a factorial experiment involving two factors: Factor A and Factor B, each with multiple levels, laid out in a Randomized Block Design. Factor A consists of 2 levels (A1, A2), while Factor B has 2levels (B1, B2). The experiment is conducted in a Randomized Block Design (RBD), where the treatment combinations formed by crossing the levels of Factor A and Factor B are randomly assigned within each of 3 blocks. Observations were recorded for 7 variables. This data set allows for the examination of the individual effects of Factor A and Factor B, as well as their interaction effects, with block effects accounted for to improve precision. Our aim is to test whether the factors and their interaction produce statistically significant differences in the response variables using ANOVA. The arrangement of the data is shown in the @fig-data.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Example dataset](images/new 2f-01.png){#fig-data fig-align="center"}
+![Example dataset](images/new%202f-01.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Three terms that we will use frequently are **Factor A**, **Factor B**, and **Variables**. In our example, Factor A has 2 levels, Factor B has 2 levels and the 7 Variables.
@@ -173,12 +173,12 @@ Creating your dataset directly within the **RAISINS** app
 ## 2F-RBD analysis tab explained {#AO}
 
 ::: {style="text-align: justify;"}
-In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the `Analysis` tab. When the file is uploaded, options to select Block, Factor A, Factor B, and variables will appear. Select the appropriate columns under each category. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly leaving no room for confusion.
+In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select Block, Factor A, Factor B, and variables will appear. Select the appropriate columns under each category. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis window explained](images/rbd%20re.jpeg){#fig-5 fig-align="center"}
+![Analysis window explained](images/2f tab exp.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 For some data, when there are large number of zeros/ discrete values/ when the observed variables are not normally distributed, we need to do transformation on the dataset (@sec-6). Here, **RAISINS** provide inbuilt transformation option.
@@ -190,7 +190,7 @@ For some data, when there are large number of zeros/ discrete values/ when the o
 Log, square root, and arcsine transformations are often used in 2F-RBD analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
-![Transformation options](images/rbd%20new%202.png){#fig-6 fig-align="center"}
+![Transformation options](images/2f transform.png){#fig-6 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -205,13 +205,13 @@ Log, square root, and arcsine transformations are often used in 2F-RBD analysis 
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, **two-way ANOVA** (factorial ANOVA) will be performed within a randomised block framework. Analysis of Variance **(ANOVA)** is a statistical technique used to test the significance of differences among population means by partitioning total variation into Blocks, Factor A, Factor B, Interaction (A × B), and error components and comparing them using the F-test.
+Once your dataset is uploaded, click on Run Analysis, **two-way ANOVA** (factorial ANOVA) will be performed within a randomized block framework. Analysis of Variance **(ANOVA)** is a statistical technique used to test the significance of differences among population means by partitioning total variation into Blocks, Factor A, Factor B, Interaction (A × B), and error components and comparing them using the F-test.
 :::
 
 **Table 1 ANOVA summary**
 
 ::: {style="text-align: justify;"}
-The ANOVA summary table below presents the mean squares for each source of variation — Blocks, Factor A, Factor B, the Interaction (A × B), and the residual Error — along with their degrees of freedom and significance indicators for each response variable.
+The ANOVA summary table below presents the mean squares for each source of variation Blocks, Factor A, Factor B, the Interaction (A × B), and the residual Error along with their degrees of freedom and significance indicators for each response variable.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -282,7 +282,7 @@ The table below presents the mean values (± standard deviation) for each level 
 
 2.  *Multiple Comparisons*
 
-**Post-hoc Grouping**: A method of using letters (a, b, c) to categorize means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.
+**Post hoc Grouping**: A method of using letters (a, b, c) to categorize means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.
 
 3.  *ANOVA Summary*
 
@@ -326,17 +326,17 @@ For Factor A, the mean values across levels A1 and A2 show meaningful difference
 </summary>
 ```
 
-<ul><small> Post-hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA). It's purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same.</small></ul>
+<ul><small> Post hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA). It's purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same.</small></ul>
 
 </details>
 
 ::: {style="text-align: justify;"}
-After obtaining a significant F-value in ANOVA under 2F-RBD, multiple comparison tests are employed to identify which factor level means differ significantly. In a factorial design with a block arrangement, post-hoc comparisons can be applied separately for each significant factor (Factor A, Factor B) and for the interaction (A × B) when significant. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7).
+After obtaining a significant F-value in ANOVA under 2F-RBD, multiple comparison tests are employed to identify which factor level means differ significantly. In a factorial design with a block arrangement, post hoc comparisons can be applied separately for each significant factor (Factor A, Factor B) and for the interaction (A × B) when significant. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7).
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multiple comparison test options explained](images/rbd%207.png){#fig-7 fig-align="center"}
+![Multiple comparison test options explained](images/multi.png){#fig-7 fig-align="center"}
 
 <details>
 
@@ -350,7 +350,7 @@ When the ANOVA in a **Two Factor Factorial RBD (2F-RBD)** is significant, the fo
 
 **LSD (Least Significant Difference) Test**
 
-The **Least Significant Difference (LSD)** test is a post-hoc statistical procedure used to identify which specific factor level means differ significantly after ANOVA has indicated a significant effect. The LSD is calculated as $$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
+The **Least Significant Difference (LSD)** test is a post hoc statistical procedure used to identify which specific factor level means differ significantly after ANOVA has indicated a significant effect. The LSD is calculated as $$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
 
 where, **t₍α/2, dfₑᵣᵣₒᵣ₎** is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of observations per factor level. In a 2F-RBD, the error degrees of freedom are (r − 1)(ab − 1), where r is the number of blocks, a is the number of levels of Factor A, and b is the number of levels of Factor B. The value of n depends on the comparison being made: for Factor A, n is the total number of observations per level of A (i.e., r × b); for Factor B, n is the total number of observations per level of B (i.e., r × a); and for the interaction, n is the number of blocks r per cell.
 
@@ -360,14 +360,14 @@ Tukey's test helps you find out exactly which pairs of factor level means differ
 
 **Duncan's Multiple Range Test (DMRT)**
 
-After confirming significant overall differences via ANOVA, DMRT ranks the factor level means and calculates critical differences using the studentized range statistic (Q) and the standard error based on error variance from ANOVA. This systematic and sequential approach provides clear groupings of factor levels and has gained popularity in agricultural research. </small>
+After confirming significant overall differences via ANOVA, DMRT ranks the factor level means and calculates critical differences using the standardized range statistic (Q) and the standard error based on error variance from ANOVA. This systematic and sequential approach provides clear groupings of factor levels and has gained popularity in agricultural research. </small>
 
 </details>
 
-**Which Post-hoc test to use?**
+**Which Post hoc test to use?**
 
 ::: {style="text-align: justify;"}
-The choice of the post-hoc test completely relies on the researcher.
+The choice of the post hoc test completely relies on the researcher.
 
 **LSD** is used for pairwise comparison of factor level means after a significant ANOVA in 2F-RBD. It is most suitable when the number of factor levels is small and comparisons are limited, offering high sensitivity to detect differences, but it may increase Type I error when many comparisons are made. In agricultural experiments LSD is the most commonly used.
 
@@ -381,7 +381,7 @@ In the example for those characters, a pairwise comparison was performed to iden
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly - leaving no room for confusion. We've ensured that every possible plot related to the Two Factor Factorial RBD is readily available. Simply click on the `Basic Plots` tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly - leaving no room for confusion. We've ensured that every possible plot related to the Two Factor Factorial RBD is readily available. Simply click on the Basic Plots tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -484,7 +484,7 @@ function hideDescription(id) {
 
 :::: {#boxplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-**\[PLACEHOLDER: Describe the box plot here. Mention the factor being plotted, the distribution of the response variable across factor levels, approximate median values, spread/variability, outliers if any, and the letter groupings confirming statistical significance between levels.\]**
+**Mention the factor being plotted, the distribution of the response variable across factor levels, approximate median values, spread/variability,outliers if any, and the letter groupings confirming statistical significance between levels.**
 :::
 ::::
 :::::
@@ -498,7 +498,7 @@ function hideDescription(id) {
 
 :::: {#violinplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-**\[PLACEHOLDER: Describe the violin plot here. Discuss the distribution shape for each factor level, the concentration of data, the width of each violin indicating density, and any differences in spread or central tendency between levels. Include letter groupings if applicable.\]**
+**Discuss the distribution shape for each factor level, the concentration of data, the width of each violin indicating density, and any differences in spread or central tendency between levels. Include letter groupings if applicable.**
 :::
 ::::
 :::::
@@ -512,7 +512,7 @@ function hideDescription(id) {
 
 :::: {#barplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-**\[PLACEHOLDER: Describe the bar plot here. Compare the mean values of the response variable across factor levels with error bars. Mention the approximate mean values for each level, whether error bars overlap, and the letter groupings confirming statistical differences as determined by the LSD/Tukey/DMRT test.\]**
+**Compare the mean values of the response variable across factor levels with error bars. Mention the approximate mean values for each level, whether error bars overlap, and the letter groupings confirming statistical differences as determined by the LSD/Tukey/DMRT test.**
 :::
 ::::
 :::::
@@ -526,7 +526,7 @@ function hideDescription(id) {
 
 :::: {#meanvalueplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-**\[PLACEHOLDER: Describe the mean value plot here. Explain the horizontal line representation of means for each factor level, the approximate positions of each level's mean on the axis, and the letter groupings shown to confirm significant differences between factor levels.\]**
+**Explain the horizontal line representation of means for each factor level, the approximate positions of each level's mean on the axis, and the letter groupings shown to confirm significant differences between factor levels.**
 :::
 ::::
 :::::
@@ -542,7 +542,7 @@ function hideDescription(id) {
 
 :::: {#connectedplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-**\[PLACEHOLDER: Describe the connected line plot here. Explain how the mean values for each factor level are connected by a line to highlight the trend across levels. Mention the direction of the trend (increasing/decreasing), approximate mean values, error bars, and the letter groupings confirming statistical differences.\]**
+**Explain how the mean values for each factor level are connected by a line to highlight the trend across levels. Mention the direction of the trend (increasing/decreasing), approximate mean values, error bars, and the letter groupings confirming statistical differences.**
 :::
 ::::
 ::::::
@@ -552,12 +552,12 @@ function hideDescription(id) {
 ## Advanced plots {#AP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** also provides `advanced plots` which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See @fig-90)
+**RAISINS** also provides advanced plots which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See @fig-90)
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Advanced plots](images/rbd%2011%20a.jpeg){#fig-90 fig-align="center"}
+![Advanced plots](images/2f advanced-01.png){#fig-90 fig-align="center"}
 
 **INTERACTION PLOT**
 
@@ -592,22 +592,22 @@ A 3D scatter plot with connecting lines illustrates the mean response across com
 ## AI interpretation {#AI}
 
 ::: {style="text-align: justify;"}
-RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences between groups, and offers informed suggestions for potential next steps or interpretations. The user can get detailed interpretations of the analysis by clicking on `AI interpretation` on the `Analysis` as shown below @fig-ai.
+RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences between groups, and offers informed suggestions for potential next steps or interpretations. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below @fig-ai.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![AI powered RAISINS Assistant to interpret your results](images/rbd%2018.png){#fig-ai fig-align="center"}
+![AI powered RAISINS Assistant to interpret your results](images/2f ai-01.png){#fig-ai fig-align="center"}
 
 ## Multivariate {#MUL}
 
 ::: {style="text-align: justify;"}
-Multivariate analysis in Two Factor Factorial RBD (2F-RBD) helps you to compare different response variables simultaneously. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example of evaluating treatment combinations formed by Factor A and Factor B across blocks, navigate to `Multivariate` see @fig-mu.
+Multivariate analysis in Two Factor Factorial RBD (2F-RBD) helps you to compare different response variables simultaneously. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example of evaluating treatment combinations formed by Factor A and Factor B across blocks, navigate to Multivariate see @fig-mu.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multivariate tab in RAISINS](images/rbd%2019.png){#fig-mu}
+![Multivariate tab in RAISINS](images/multi tab 2f.png){#fig-mu}
 
 ::: {style="text-align: justify;"}
 MANOVA and PCA will be automatically carried out based on the selected variables. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.
@@ -615,7 +615,7 @@ MANOVA and PCA will be automatically carried out based on the selected variables
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Manova Results](images/rbd%2020.png){#fig-MAN2 fig-align="center" width="575"}
+![Manova Results](images/2f manova new.png){#fig-MAN2 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 The table titled 'Eigen Values PCA' given @fig-PC provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1 and PC2 typically have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for the largest proportion of variance in the dataset, while PC2 accounts for the next largest share. Together, PC1 and PC2 explain a substantial portion of the total variance (termed as cumulative variance). Since PC1 explains a significant portion of the variance, a PC1-based index score is a strong consideration. Additionally, if both PCs together explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
@@ -767,12 +767,12 @@ To test the app or better understand the data arrangement, we provide model data
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Model dataset](images/rbd%20888.png){#fig-188 fig-align="center"}
+![Model dataset](images/2f model data.png){#fig-188 fig-align="center"}
 
 ## FAQ's {#F}
 
 ::: {style="text-align: justify;"}
-The app includes a dedicated `FAQs` to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the `FAQs` is a great place to start.
+The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQ is a great place to start.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -782,13 +782,14 @@ The app includes a dedicated `FAQs` to help clarify common doubts and guide user
 ## View data {#U}
 
 ::: {style="text-align: justify;"}
-`View Data` serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.
+View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![View data](images/rbd%2010.jpeg){fig-align="center"}
+![View data](images/2f view data.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-:::::::::::::::::: ::::::::::::::::::: ::::::::::::::::::::
+::: :::::::::::::::::::
+:::

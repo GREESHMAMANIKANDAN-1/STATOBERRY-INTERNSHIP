@@ -317,8 +317,7 @@ When the ANOVA in a **\[Module Name\] (\[ABBREVIATION\])** is significant, the f
 
 **LSD (Least Significant Difference) Test**
 
-The **Least Significant Difference (LSD)** test is a post-hoc statistical procedure used to identify which specific treatment means differ significantly after a one-way ANOVA has indicated an overall significant effect. The LSD is calculated as
-$$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
+The **Least Significant Difference (LSD)** test is a post-hoc statistical procedure used to identify which specific treatment means differ significantly after a one-way ANOVA has indicated an overall significant effect. The LSD is calculated as $$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
 
 where, **t₍α/2, dfₑᵣᵣₒᵣ₎** is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of replications per treatment under equal sample sizes.
 
@@ -370,13 +369,11 @@ If you need to know about the detailed values of the various statistical metrics
 
 **SD (Standard Deviation)** A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.
 
-**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as
-$$SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$, where n is the number of observations.
+**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as $$SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$, where n is the number of observations.
 
 **Min / Max** The lowest and highest recorded values within that specific \[treatment\] group.
 
-**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage
-$$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
+**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
 
 **Skewness** A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right. Negative value: Data is skewed to the left.
 
@@ -416,8 +413,7 @@ The significance of the treatment can be measured using F-test and p value as in
 
 **Critical Difference (CD)** The minimum difference required between any two treatment means to consider them significantly different from each other. At a 1% level, you are 99% confident in the difference. At a 5% level, you are 95% confident.
 
-**Coefficient of Variation (CV (%))** A relative measure of dispersion that expresses the standard deviation as a percentage of the mean.
-$$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
+**Coefficient of Variation (CV (%))** A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
 
 **Mean Square Error (MSE)** The Residual Mean sum of Squares from the ANOVA table. It represents the "noise" or unexplained variance in the experiment.
 

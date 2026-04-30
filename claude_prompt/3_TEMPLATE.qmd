@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-[MODULE NAME ABBREVIATION] is [one-sentence definition of the design and its purpose]. [MODULE NAME ABBREVIATION] [brief description of what it does — how treatments are assigned, what it controls for]. In **RAISINS** you can perform [MODULE NAME ABBREVIATION] very easily without writing a single line of code. This tutorial will guide you, how to perform [MODULE NAME ABBREVIATION] very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+\[MODULE NAME ABBREVIATION\] is \[one-sentence definition of the design and its purpose\]. \[MODULE NAME ABBREVIATION\] \[brief description of what it does — how treatments are assigned, what it controls for\]. In **RAISINS** you can perform \[MODULE NAME ABBREVIATION\] very easily without writing a single line of code. This tutorial will guide you, how to perform \[MODULE NAME ABBREVIATION\] very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
 :::
 
 <details>
@@ -86,23 +86,24 @@ ABSTRACT
 </style>
 ```
 
-<ul><small> [Historical background paragraph. Who developed this design? When? For what purpose? How did it advance experimental science? Include hover image of relevant scientist if applicable.] [<strong>[Scientist Name]</strong> <img src="www/[scientist].webp" alt="Preview"/>]{.hover-img} [Continue historical narrative.] </small></ul>
+<ul><small> \[Historical background paragraph. Who developed this design? When? For what purpose? How did it advance experimental science? Include hover image of relevant scientist if applicable.\] [<strong>\[Scientist Name\]</strong> <img src="www/[scientist].webp" alt="Preview"/>]{.hover-img} \[Continue historical narrative.\] </small></ul>
 
 </details>
 
 ## Analysis of experiments {#AE}
 
 ::: {style="text-align: justify;"}
-To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different single-factor experimental designs. In this tutorial, we focus on **[Module Name] ([ABBREVIATION])**, as shown in @fig-aov.
+To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different single-factor experimental designs. In this tutorial, we focus on **\[Module Name\] (\[ABBREVIATION\])**, as shown in @fig-aov.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Analysis of experiment tab](www/PLACEHOLDER_AnalysisTab.webp){#fig-aov fig-align="center"}
 
-## [Module Name] ([ABBREVIATION]) {#C}
+## \[Module Name\] (\[ABBREVIATION\]) {#C}
 
 ::: {style="text-align: justify;"}
-[Full definition of the design — 3 to 5 sentences. Describe: what it is, how treatments are assigned, what it controls for, where it is used (field trials, lab, greenhouse, etc.), its advantages and limitations. Mention when to use an alternative design.]
+\[Full definition of the design — 3 to 5 sentences. Describe: what it is, how treatments are assigned, what it controls for, where it is used (field trials, lab, greenhouse, etc.), its advantages and limitations. Mention when to use an alternative design.\]
 :::
 
 <details>
@@ -117,10 +118,11 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <small>
 
-@fig-lay visually represents a [Module Name] arrangement with [describe layout — number of treatments, blocks/rows/columns, how they are arranged]. [Explain what the letters/labels in the layout diagram represent. Describe how randomization works within this design's constraints.]
+@fig-lay visually represents a \[Module Name\] arrangement with \[describe layout — number of treatments, blocks/rows/columns, how they are arranged\]. \[Explain what the letters/labels in the layout diagram represent. Describe how randomization works within this design's constraints.\]
 
 <!-- REPLACE THIS SCREENSHOT -->
-![[ABBREVIATION] Layout](www/PLACEHOLDER_Layout.webp){#fig-lay fig-align="center"}
+
+![\[ABBREVIATION\] Layout](www/PLACEHOLDER_Layout.webp){#fig-lay fig-align="center"}
 
 </small>
 
@@ -129,20 +131,21 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 </details>
 
 ::: callout-tip
-#### [Module Name] ([ABBREVIATION]) is [one-sentence definition emphasizing the key statistical principle of this design].
+#### \[Module Name\] (\[ABBREVIATION\]) is \[one-sentence definition emphasizing the key statistical principle of this design\].
 :::
 
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain [ABBREVIATION] analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. [Describe the hypothetical experiment: what crop/subject, how many treatments, what the treatments are named, how many replicates/blocks, what variables are recorded (include yield and 3 others: Obs1, Obs2, FW or equivalent).] Our aim is to test whether treatments produce statistically significant differences in the response variable using ANOVA. The arrangement of the data is shown in the @fig-data.
+To make things simple and interesting, we'll explain \[ABBREVIATION\] analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. \[Describe the hypothetical experiment: what crop/subject, how many treatments, what the treatments are named, how many replicates/blocks, what variables are recorded (include yield and 3 others: Obs1, Obs2, FW or equivalent).\] Our aim is to test whether treatments produce statistically significant differences in the response variable using ANOVA. The arrangement of the data is shown in the @fig-data.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Example dataset](www/PLACEHOLDER_ExampleDataset.webp){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the [treatment type, e.g., varieties/genotypes/fertilizer levels], and the Variables are the [number] traits mentioned earlier - **[var1, var2, var3, var4]**.
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the \[treatment type, e.g., varieties/genotypes/fertilizer levels\], and the Variables are the \[number\] traits mentioned earlier - **\[var1, var2, var3, var4\]**.
 :::
 
 ## How to prepare your data? {#sec-4 .H}
@@ -161,13 +164,14 @@ Creating your dataset directly within the **RAISINS** app
 
 ![Illustrating how to create a dataset](www/CREATEDAT.webp){#fig-4 fig-align="center"}
 
-## [ABBREVIATION] analysis tab explained {#AO}
+## \[ABBREVIATION\] analysis tab explained {#AO}
 
 ::: {style="text-align: justify;"}
 In @fig-5 , you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every settings, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the Treatment and variables will appear. Select the appropriate column under treatments and variables. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly leaving no room for confusion.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Analysis window explained](www/PLACEHOLDER_AnalysisWindow.webp){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -177,7 +181,7 @@ For some data, when there are large number of zeros/ discrete values/ when the o
 ## Transformation {#sec-6 .T}
 
 ::: {style="text-align: justify;"}
-Log, square root, and arcsine transformations are often used in [ABBREVIATION] analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
+Log, square root, and arcsine transformations are often used in \[ABBREVIATION\] analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
 ![Transformation options](www/trans.webp){#fig-6 fig-align="center"}
@@ -195,12 +199,13 @@ Log, square root, and arcsine transformations are often used in [ABBREVIATION] a
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, **one-way ANOVA** will be performed. Analysis of Variance **(ANOVA)** is a statistical technique used to test the significance of differences among population means by partitioning total variation into [list sources of variation for this design, e.g., treatment and error for CRD; treatment, blocks, and error for RBD] components and comparing them using the F-test (see @fig-100).
+Once your dataset is uploaded, click on `Run Analysis`, **one-way ANOVA** will be performed. Analysis of Variance **(ANOVA)** is a statistical technique used to test the significance of differences among population means by partitioning total variation into \[list sources of variation for this design, e.g., treatment and error for CRD; treatment, blocks, and error for RBD\] components and comparing them using the F-test (see @fig-100).
 :::
 
 **Table 1 ANOVA summary**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Treatment and Error Mean Square ANOVA](www/PLACEHOLDER_ANOVASummary.webp){#fig-100 fig-align="center"}
 
 <details>
@@ -209,7 +214,7 @@ Once your dataset is uploaded, click on `Run Analysis`, **one-way ANOVA** will b
 <summary style="color: #5DADE2"; font-weight: bold;"> ANOVA table </summary>
 ```
 
-<small> In a [Module Name] ([ABBREVIATION]), the analysis of variance **(ANOVA)** is used to test whether there are significant differences among the treatment means. [Describe the ANOVA table structure for this specific design — sources of variation, degrees of freedom formula, F-test structure. For example, RBD has an additional row for Blocks.] Significance is indicated by an asterisk ( \* ) for the **5%** level and two asterisks (\*\* ) for the **1%** level of significance, displayed as superscripts for each corresponding F stat in the table. If the computed F value exceeds the critical value, the null hypothesis is rejected, indicating that at least one treatment mean differs significantly from the others. </small>
+<small> In a \[Module Name\] (\[ABBREVIATION\]), the analysis of variance **(ANOVA)** is used to test whether there are significant differences among the treatment means. \[Describe the ANOVA table structure for this specific design — sources of variation, degrees of freedom formula, F-test structure. For example, RBD has an additional row for Blocks.\] Significance is indicated by an asterisk ( \* ) for the **5%** level and two asterisks (\*\* ) for the **1%** level of significance, displayed as superscripts for each corresponding F stat in the table. If the computed F value exceeds the critical value, the null hypothesis is rejected, indicating that at least one treatment mean differs significantly from the others. </small>
 
 </details>
 
@@ -222,6 +227,7 @@ Once your dataset is uploaded, click on `Run Analysis`, **one-way ANOVA** will b
 **Table 2: Detailed tabular representation with multiple comparisons**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Detailed tabular representation with multiple comparisons](www/PLACEHOLDER_DetailedResults.webp){#fig-101 fig-align="center"}
 
 <details>
@@ -235,9 +241,9 @@ Once your dataset is uploaded, click on `Run Analysis`, **one-way ANOVA** will b
 
 1.  *Treatments and Response Variables*
 
-**Treatments**: The independent variable or specific category (e.g., [treatment type]) being tested to determine its influence on the results.
+**Treatments**: The independent variable or specific category (e.g., \[treatment type\]) being tested to determine its influence on the results.
 
-**Response Variable**: The dependent variable or specific measurement (e.g., [variable name]) recorded to evaluate the performance of the treatments.
+**Response Variable**: The dependent variable or specific measurement (e.g., \[variable name\]) recorded to evaluate the performance of the treatments.
 
 2.  *Multiple Comparisons*
 
@@ -266,7 +272,7 @@ Once your dataset is uploaded, click on `Run Analysis`, **one-way ANOVA** will b
 ### Interpretation from @fig-101
 
 ::: {style="text-align: justify;"}
-[Interpret the multiple comparison results from the hypothetical example. Describe the letter groupings (a, b, c, ab, bc). Explain which treatments are on par and which differ significantly. Mention overlapping letters. Reference the LSD test used. Include example statements like "Treatment A was statistically at par with Treatment B". End with a note on Cohen's f values and their interpretation (< 0.10 very small, < 0.25 small, < 0.40 medium, ≥ 0.40 large).]
+\[Interpret the multiple comparison results from the hypothetical example. Describe the letter groupings (a, b, c, ab, bc). Explain which treatments are on par and which differ significantly. Mention overlapping letters. Reference the LSD test used. Include example statements like "Treatment A was statistically at par with Treatment B". End with a note on Cohen's f values and their interpretation (\< 0.10 very small, \< 0.25 small, \< 0.40 medium, ≥ 0.40 large).\]
 :::
 
 ::: callout-tip
@@ -292,10 +298,11 @@ Once your dataset is uploaded, click on `Run Analysis`, **one-way ANOVA** will b
 </details>
 
 ::: {style="text-align: justify;"}
-After obtaining a significant F-value in ANOVA under [ABBREVIATION], multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7).
+After obtaining a significant F-value in ANOVA under \[ABBREVIATION\], multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7).
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Multiple comparison test options explained](www/PLACEHOLDER_PostHocOptions.webp){#fig-7 fig-align="center"}
 
 <details>
@@ -306,19 +313,18 @@ After obtaining a significant F-value in ANOVA under [ABBREVIATION], multiple co
 
 <small>
 
-When the ANOVA in a **[Module Name] ([ABBREVIATION])** is significant, the following post hoc tests are commonly used for pairwise comparisons: Tukey's Honestly Significant Difference (HSD) test, and Fisher's Least Significant Difference (LSD) test.
+When the ANOVA in a **\[Module Name\] (\[ABBREVIATION\])** is significant, the following post hoc tests are commonly used for pairwise comparisons: Tukey's Honestly Significant Difference (HSD) test, and Fisher's Least Significant Difference (LSD) test.
 
 **LSD (Least Significant Difference) Test**
 
-The **Least Significant Difference (LSD)** test is a post-hoc statistical procedure used to identify which specific treatment means differ significantly after a one-way ANOVA has indicated an overall significant effect. The LSD is calculated as $$
-\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
-$$
+The **Least Significant Difference (LSD)** test is a post-hoc statistical procedure used to identify which specific treatment means differ significantly after a one-way ANOVA has indicated an overall significant effect. The LSD is calculated as
+$$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
 
 where, **t₍α/2, dfₑᵣᵣₒᵣ₎** is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of replications per treatment under equal sample sizes.
 
 **Tukey's Honestly Significant Difference (HSD)**
 
-Tukey's test helps you find out exactly which pairs of treatment means differ significantly. It compares all possible pairs of treatment means while controlling the overall Type I error rate, so you avoid false positives when making multiple comparisons. In [ABBREVIATION], this method works well because treatments are assigned [describe randomization scheme for this design] and the error variance is assumed homogeneous.
+Tukey's test helps you find out exactly which pairs of treatment means differ significantly. It compares all possible pairs of treatment means while controlling the overall Type I error rate, so you avoid false positives when making multiple comparisons. In \[ABBREVIATION\], this method works well because treatments are assigned \[describe randomization scheme for this design\] and the error variance is assumed homogeneous.
 
 **Duncan's Multiple Range Test (DMRT)**
 
@@ -331,9 +337,9 @@ After confirming significant overall differences via ANOVA, DMRT ranks the treat
 ::: {style="text-align: justify;"}
 The choice of the post-hoc test completely relies on the researcher.
 
-**LSD** is used for pairwise comparison of treatment means after a significant ANOVA in [ABBREVIATION]. It is most suitable when the number of treatments is small and comparisons are limited, offering high sensitivity to detect differences, but it may increase Type I error when many treatments are compared. In agricultural experiments LSD is the most commonly used.
+**LSD** is used for pairwise comparison of treatment means after a significant ANOVA in \[ABBREVIATION\]. It is most suitable when the number of treatments is small and comparisons are limited, offering high sensitivity to detect differences, but it may increase Type I error when many treatments are compared. In agricultural experiments LSD is the most commonly used.
 
-**Tukey's HSD** is preferred when there are four or more treatments in a balanced [ABBREVIATION]. It compares all possible treatment pairs while strictly controlling the family-wise error rate, making it a conservative and reliable method for multiple comparisons.
+**Tukey's HSD** is preferred when there are four or more treatments in a balanced \[ABBREVIATION\]. It compares all possible treatment pairs while strictly controlling the family-wise error rate, making it a conservative and reliable method for multiple comparisons.
 
 **DMRT** is commonly used in agricultural experiments with several treatments. It ranks treatment means step-wise and detects more significant differences than Tukey HSD, though it is less conservative and carries a higher risk of Type I error.
 
@@ -349,6 +355,7 @@ If you need to know about the detailed values of the various statistical metrics
 **Table 3: Summary statistics**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Summary statistics](www/PLACEHOLDER_SummaryStats.webp){#fig-102 fig-align="center"}
 
 <details>
@@ -359,17 +366,17 @@ If you need to know about the detailed values of the various statistical metrics
 
 <small>
 
-**Mean** The arithmetic average of all observations within a treatment. It represents the "typical" value for that specific [treatment type].
+**Mean** The arithmetic average of all observations within a treatment. It represents the "typical" value for that specific \[treatment type\].
 
 **SD (Standard Deviation)** A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.
 
-**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as $$
-SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$, where n is the number of observations.
+**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as
+$$SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$, where n is the number of observations.
 
-**Min / Max** The lowest and highest recorded values within that specific [treatment] group.
+**Min / Max** The lowest and highest recorded values within that specific \[treatment\] group.
 
-**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage $$
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
+**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage
+$$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
 
 **Skewness** A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right. Negative value: Data is skewed to the left.
 
@@ -382,7 +389,7 @@ CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
 ### Interpretations from @fig-102
 
 ::: {style="text-align: justify;"}
-[Interpret the summary statistics from the hypothetical example. State which treatment had the highest and lowest mean. Comment on variability (SD, CV) — which treatments are consistent and which are variable. Comment on skewness and kurtosis patterns.]
+\[Interpret the summary statistics from the hypothetical example. State which treatment had the highest and lowest mean. Comment on variability (SD, CV) — which treatments are consistent and which are variable. Comment on skewness and kurtosis patterns.\]
 :::
 
 ## Individual ANOVA {#IA}
@@ -393,10 +400,11 @@ If the user wants to get individual ANOVA table for each variable click on `Indi
 The significance of the treatment can be measured using F-test and p value as in @fig-104.
 :::
 
-**Table 4: ANOVA table for [primary variable name]**
+**Table 4: ANOVA table for \[primary variable name\]**
 
 <!-- REPLACE THIS SCREENSHOT -->
-![ANOVA table for [primary variable]](www/PLACEHOLDER_IndividualANOVA.webp){#fig-104 fig-align="center"}
+
+![ANOVA table for \[primary variable\]](www/PLACEHOLDER_IndividualANOVA.webp){#fig-104 fig-align="center"}
 
 <details>
 
@@ -408,9 +416,8 @@ The significance of the treatment can be measured using F-test and p value as in
 
 **Critical Difference (CD)** The minimum difference required between any two treatment means to consider them significantly different from each other. At a 1% level, you are 99% confident in the difference. At a 5% level, you are 95% confident.
 
-**Coefficient of Variation (CV (%))** A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. $$
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100
-$$
+**Coefficient of Variation (CV (%))** A relative measure of dispersion that expresses the standard deviation as a percentage of the mean.
+$$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
 
 **Mean Square Error (MSE)** The Residual Mean sum of Squares from the ANOVA table. It represents the "noise" or unexplained variance in the experiment.
 
@@ -425,24 +432,25 @@ $$
 ### Interpretation from @fig-104
 
 ::: {style="text-align: justify;"}
-[Interpret the individual ANOVA table. State treatment mean square, error mean square, F-value, degrees of freedom, and significance level. Report the MSE, SE(m), SE(d), CD values at 5% and 1%, and CV%. Comment on experimental precision based on the CV%.]
+\[Interpret the individual ANOVA table. State treatment mean square, error mean square, F-value, degrees of freedom, and significance level. Report the MSE, SE(m), SE(d), CD values at 5% and 1%, and CV%. Comment on experimental precision based on the CV%.\]
 :::
 
 **Table 5: Summary statistics with letter groupings**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Summary statistics with groupings](www/PLACEHOLDER_SummaryGroupings.webp){#fig-103 fig-align="center"}
 
 ### Interpretation from @fig-103
 
 ::: {style="text-align: justify;"}
-[Interpret the treatment means with letter groupings. Identify top and bottom performers. Explain what the letter groupings (e.g., "a", "ab", "cd") indicate about statistical similarity between treatments.]
+\[Interpret the treatment means with letter groupings. Identify top and bottom performers. Explain what the letter groupings (e.g., "a", "ab", "cd") indicate about statistical similarity between treatments.\]
 :::
 
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly-leaving no room for confusion. We've ensured that every possible plot related to the [Module Name] is readily available. Simply click on the `Basic Plots` tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly-leaving no room for confusion. We've ensured that every possible plot related to the \[Module Name\] is readily available. Simply click on the `Basic Plots` tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -538,6 +546,7 @@ function hideDescription(id) {
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Box plot](www/PLACEHOLDER_BoxPlot.webp){#fig-9}
 
 :::: {#boxplot-desc .plot-description}
@@ -551,6 +560,7 @@ A **box plot** compares the distribution of values across different treatments. 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Violin plot](www/PLACEHOLDER_ViolinPlot.webp){#fig-10}
 
 :::: {#violinplot-desc .plot-description}
@@ -564,6 +574,7 @@ A **violin plot** compares the distribution of values across different treatment
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Bar plot](www/PLACEHOLDER_BarPlot.webp){#fig-11}
 
 :::: {#barplot-desc .plot-description}
@@ -577,6 +588,7 @@ A **Bar plot** compares the average values of different treatments, with error b
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Mean Value Plot](www/PLACEHOLDER_MeanPlot.webp){#fig-12}
 
 :::: {#meanvalueplot-desc .plot-description}
@@ -591,6 +603,7 @@ A **mean value plot** compares the mean values of different treatments, each sho
 :::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
 ::: {style="text-align: center;"}
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Connected line plot](www/PLACEHOLDER_ConnectedPlot.webp){#fig-13}
 :::
 
@@ -610,11 +623,13 @@ A **connected line plot** compares the mean values of different treatments, with
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Advanced plots](www/PLACEHOLDER_AdvancedPlots.webp){#fig-90 fig-align="center"}
 
 **SUMMARY PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Summary plot](www/PLACEHOLDER_SummaryPlot.webp){#fig-14 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -624,6 +639,7 @@ A summary plot is a visual representation that shows how data are distributed. I
 **ADVANCED RAINCLOUD PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Advanced rain cloud plot](www/PLACEHOLDER_AdvancedRaincloud.webp){#fig-15 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -633,6 +649,7 @@ Advanced raincloud plot combines a density plot, boxplot, and individual data po
 **QQ PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![QQ plot](www/PLACEHOLDER_QQPlot.webp){#fig-16 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -642,6 +659,7 @@ Q–Q (quantile–quantile) plot is used to assess normality of the data. The po
 **RAIN CLOUD PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Rain cloud plot](www/PLACEHOLDER_Raincloud.webp){#fig-17 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -651,6 +669,7 @@ Raincloud plot shows the distribution of the response variable. The half-violin 
 **DISTRIBUTION PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Distribution plot](www/PLACEHOLDER_Distribution.webp){#fig-18 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -668,10 +687,11 @@ RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist user
 ## Multivariate {#MUL}
 
 ::: {style="text-align: justify;"}
-Multivariate analysis in [Module Name] ([ABBREVIATION]) helps you to compare different response variables simultaneously. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example, of evaluation of [describe hypothetical treatments list] — [list treatment names] — by a [describe researcher type], navigate to `Multivariate` see @fig-mu.
+Multivariate analysis in \[Module Name\] (\[ABBREVIATION\]) helps you to compare different response variables simultaneously. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example, of evaluation of \[describe hypothetical treatments list\] — \[list treatment names\] — by a \[describe researcher type\], navigate to `Multivariate` see @fig-mu.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Multivariate tab in RAISINS](www/PLACEHOLDER_MultivariateTab.webp){#fig-mu}
 
 ::: {style="text-align: justify;"}
@@ -679,13 +699,15 @@ MANOVA and PCA will be automatically carried out based on the selected variables
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Manova Results](www/PLACEHOLDER_MANOVAResults.webp){#fig-MAN2 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The table titled 'Eigen Values PCA' given @fig-PC provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1, PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately [XX]% of the variance in the dataset, while PC2 accounts for about [XX]% of the variance. Together, PC1 and PC2 explain approximately [XX]% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
+The table titled 'Eigen Values PCA' given @fig-PC provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1, PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately \[XX\]% of the variance in the dataset, while PC2 accounts for about \[XX\]% of the variance. Together, PC1 and PC2 explain approximately \[XX\]% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![PCA-based Index Score](www/PLACEHOLDER_PCAIndex.webp){#fig-PC}
 
 ::: {style="text-align: justify;"}
@@ -693,13 +715,15 @@ The scree plot given @fig-screeplot illustrates the proportion of variance expla
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Scree plot](www/PLACEHOLDER_ScreePlot.webp){#fig-screeplot fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. [Describe which variables have positive/negative loadings in PC1 and PC2, and what this means for selecting optimal treatments. Use the variable names from the hypothetical example.] It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
+Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. \[Describe which variables have positive/negative loadings in PC1 and PC2, and what this means for selecting optimal treatments. Use the variable names from the hypothetical example.\] It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Loadings of each variable](www/PLACEHOLDER_Loadings.webp){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -707,6 +731,7 @@ The biplot gives a visual representation of the relationships among variables an
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![PCA-Biplot](www/PLACEHOLDER_Biplot.webp){#fig-biplot}
 
 ::: {style="text-align: justify;"}
@@ -714,9 +739,11 @@ In RAISINS, we calculate a scaled index score by converting the index score to a
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Index score](www/PLACEHOLDER_IndexScore.webp){#fig-indexscore fig-align="center"}
 
 <!-- REPLACE THIS SCREENSHOT -->
+
 ![Indexplot](www/PLACEHOLDER_IndexPlot.webp){#fig-index fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -736,7 +763,7 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing data in MS Excel {#EX}
 
 ::: {style="text-align: justify;"}
-Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the treatment or group to be compared — you can name this column appropriately, such as "Group" or "Treatment." All characters under study (e.g., [list variables]) should be arranged in separate columns, and each group should be repeated according to the number of replications. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, groups must appear repeatedly based on replications, and the data can also be arranged as shown in @fig-kk.
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the treatment or group to be compared — you can name this column appropriately, such as "Group" or "Treatment." All characters under study (e.g., \[list variables\]) should be arranged in separate columns, and each group should be repeated according to the number of replications. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, groups must appear repeatedly based on replications, and the data can also be arranged as shown in @fig-kk.
 :::
 
 ![Model-1: showing how the prepared Excel file for upload should look like](www/P1.webp){#fig-pp}
@@ -767,23 +794,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    -   Go to the top-left corner and click on **File**.
+    - Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    -   Select the location where you want to save your file.
+    - Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    -   Enter a relevant file name without spaces (use underscores if needed).
+    - Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    -   Click **Save** to export the file.
+    - Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small>
 
@@ -794,15 +821,15 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry — RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
--   Navigate to the **Create Data Tab**
+- Navigate to the **Create Data Tab**
 
--   Select the number of **Treatments**
+- Select the number of **Treatments**
 
--   Select number of **Replications**
+- Select number of **Replications**
 
--   Select number of **Characters**
+- Select number of **Characters**
 
--   Click on **Create** button
+- Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in `Analysis`.
 :::
@@ -823,7 +850,7 @@ To test the app or better understand the data arrangement, we provide model data
 The app includes a dedicated `FAQs` to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the `FAQs` is a great place to start.
 :::
 
-![FAQs](www/FAQ TAB.webp){#fig-148 fig-align="center"}
+![FAQs](www/FAQ%20TAB.webp){#fig-148 fig-align="center"}
 
 ## View data {#U}
 
@@ -831,6 +858,6 @@ The app includes a dedicated `FAQs` to help clarify common doubts and guide user
 `View Data` serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.
 :::
 
-![View data](www/view data.webp){fig-align="center"}
+![View data](www/view%20data.webp){fig-align="center"}
 
 ------------------------------------------------------------------------

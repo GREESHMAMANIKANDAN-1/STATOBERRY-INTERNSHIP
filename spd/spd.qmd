@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-Split Plot Design **(SPD)** is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots - allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. **SPD** accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In **RAISINS** you can perform SPD very easily without writing a single line of code. This tutorial will guide you, how to perform SPD very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+Split Plot Design is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots - allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. **Split plot design** accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In **RAISINS** you can perform SPD very easily without writing a single line of code. This tutorial will guide you, how to perform SPD very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
 :::
 
 <details>
@@ -104,7 +104,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 ## Split Plot Design (SPD) {#C}
 
 ::: {style="text-align: justify;"}
-A Split Plot Design **(SPD)** is a two-factor experimental design in which the experimental area is divided hierarchically into main plots and sub-plots. The levels of one factor — typically the one that is more difficult or impractical to randomise, such as irrigation method, tillage system, or spacing — are randomly assigned to the main plots within each replication. Each main plot is then sub-divided into as many sub-plots as there are levels of the second factor, and these levels are randomly assigned within each main plot. This hierarchical randomisation generates two independent experimental errors: the **main plot error** (Error a), used to test the main plot factor (Factor A), and the **sub-plot error** (Error b), used to test the sub-plot factor (Factor B) and the interaction between A and B. Because the sub-plot error reflects variation at a finer spatial or temporal scale, it is generally smaller than the main plot error, making SPD particularly efficient for detecting differences due to Factor B and the A×B interaction. SPD is widely used in field agronomy, horticulture, and food science whenever one factor requires a larger experimental unit. When neither factor requires differential plot sizes, a Factorial RBD may be more appropriate as it provides equal precision for all comparisons.
+A Split Plot Design **(SPD)** is a two-factor experimental design in which the experimental area is divided hierarchically into main plots and sub-plots. The levels of one factor typically the one that is more difficult or impractical to randomise, such as irrigation method, tillage system, or spacing are randomly assigned to the main plots within each replication. Each main plot is then sub-divided into as many sub-plots as there are levels of the second factor, and these levels are randomly assigned within each main plot. This hierarchical randomisation generates two independent experimental errors: the **main plot error** (Error a), used to test the main plot factor (Factor A), and the **sub-plot error** (Error b), used to test the sub-plot factor (Factor B) and the interaction between A and B. Because the sub-plot error reflects variation at a finer spatial or temporal scale, it is generally smaller than the main plot error, making SPD particularly efficient for detecting differences due to Factor B and the A×B interaction. SPD is widely used in field agronomy, horticulture, and food science whenever one factor requires a larger experimental unit. When neither factor requires differential plot sizes, a Factorial RBD may be more appropriate as it provides equal precision for all comparisons.
 :::
 
 <details>
@@ -142,7 +142,7 @@ To make things simple and interesting, we'll explain SPD analysis step by step u
 ![Example dataset — Mainplot, Subplot, Replication, and response variables arranged in columns](images/split%20plot%20img-01.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-As shown in @fig-data, the dataset should follow the structure described in the image above. Ensure there is only one sheet in the uploaded file. The **first three columns** must represent the **main plot treatments**, **subplot treatments**, and **replication** respectively — these can be named as per your preference (e.g., Mainplot, Subplot, Replication). All characters under study are arranged in subsequent columns. For example, Mainplot (with two levels M1 and M2) is the main plot factor, Subplot (with three levels 1, 2, 3) is the subplot factor nested within main plots, and Replication indicates the number of replicates (e.g., 1 to 4). The characters under study (e.g., Yield, Char1, Char2,Char3,etc) are arranged in columns corresponding to each main plot, subplot, and replication combination. Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Main Plot Treatments** and **Sub-plot Treatments**. In our example, the Main Plot Treatments refer to the irrigation methods (M1, M2), and the Sub-plot Treatments refer to the nitrogen doses (S1, S2, S3).
+As shown in @fig-data, the dataset should follow the structure described in the image above. Ensure there is only one sheet in the uploaded file. The **first three columns** must represent the **main plot treatments**, **subplot treatments**, and **replication** respectively these can be named as per your preference (e.g., Mainplot, Subplot, Replication). All characters under study are arranged in subsequent columns. For example, Mainplot (with two levels M1 and M2) is the main plot factor, Subplot (with three levels 1, 2, 3) is the subplot factor nested within main plots, and Replication indicates the number of replicates (e.g., 1 to 4). The characters under study (e.g., Yield, Char1, Char2,Char3,etc) are arranged in columns corresponding to each main plot, subplot, and replication combination. Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Main Plot Treatments** and **Sub-plot Treatments**. In our example, the Main Plot Treatments refer to the irrigation methods (M1, M2), and the Sub-plot Treatments refer to the nitrogen doses (S1, S2, S3).
 :::
 
 ## How to prepare your data? {#sec-4 .H}
@@ -150,9 +150,9 @@ As shown in @fig-data, the dataset should follow the structure described in the 
 ::: {style="text-align: justify;"}
 Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file with three leading columns — one for the main plot factor, one for the sub-plot factor, and one for replication — followed by all response variable columns. Make sure no blank rows are left above, and all columns have proper names. That's it — your file is ready to upload.
 
-Still if you have doubt, see @fig-4.
+Still if you have doubt, see @fig-4
 
-![SPD Layout](images/create%20dataset-01.png){fig-align="center"}
+![SPD Layout](images/create%20dataset-01.png){#fig-4 fig-align="center"}
 
 To prepare your dataset for analysis in **RAISINS**, you have two options:
 
@@ -164,10 +164,10 @@ Creating your dataset directly within the **RAISINS** app
 ## SPD analysis tab explained {#sec-5 .T}
 
 ::: {style="text-align: justify;"}
-In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the **Main Plot**, **Sub-plot**, **Replication**, and **Variables** will appear. Select the appropriate column representing the main plot factor under **Main Plot**, the sub-plot factor column under **Sub-plot**, and the replication identifier under **Replication**. Then select the response variables you wish to analyse. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly leaving no room for confusion.
+In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking browse in the sidebar of the analysis tab.when the file is uploaded option to select the Main plot,Sub plot,Replication and variables will appear.select the appropriate column representing the main ploy factor under main plot,the subplot factor under subplot and replication identifies as replication.then select the responsible variables you wish to analysis.once you click the Run analysis button, all relevant results and outputs appear instantly leaving no room for confusion.
 :::
 
-![Analysis window explained](images/Copy of Red Modern Blank Page A4 Landscape (3)-02.png){#fig-5 fig-align="center"}
+![Analysis window explained](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(3)-02.png){#fig-5 fig-align="center"}
 
 For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset (@sec-6). Here, **RAISINS** provide inbuilt transformation option.
 
@@ -192,7 +192,7 @@ Log, square root, and arcsine transformations are often used in SPD analysis to 
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, and the **Split Plot ANOVA** will be performed. Analysis of Variance **(ANOVA)** in a Split Plot Design partitions the total variation into components attributable to Replications, Main Plot factor (A), Main Plot Error (Error a), Sub-plot factor (B), the A×B Interaction, and Sub-plot Error (Error b). Critically, the F-test for the Main Plot factor uses the **Main Plot Error** as its denominator, while the F-tests for the Sub-plot factor and the Interaction use the **Sub-plot Error** as their denominator (see @fig-100).
+Once your dataset is uploaded, click on Run Analysis and the **Split Plot ANOVA** will be performed. Analysis of Variance **(ANOVA)** in a Split Plot Design partitions the total variation into components attributable to Replications, Main Plot factor (A), Main Plot Error (Error a), Sub-plot factor (B), the A×B Interaction, and Sub-plot Error (Error b). Critically, the F-test for the Main Plot factor uses the **Main Plot Error** as its denominator, while the F-tests for the Sub-plot factor and the Interaction use the **Sub-plot Error** as their denominator (see @fig-100).
 :::
 
 **Table 1 ANOVA summary**
@@ -224,7 +224,7 @@ In our example with a = 1 main plot levels, b = 2 sub-plot levels, and r = 3 rep
 ### Interpretation from @fig-100
 
 ::: {style="text-align: justify;"}
-The Split Plot ANOVA results presented in Table 1 show the effects of the main plot factor (A), sub plot factor (B), and their interaction (A×B) on Yield and characters (Char1 to Char6). For Yield, both the main plot and sub plot factors were found to be non-significant (NS), indicating that neither factor independently influenced yield. The interaction effect was also non-significant, suggesting no combined influence of A and B on yield. Similarly, for **Char1**, all sources of variation—main plot, sub plot, and interaction—were non-significant, indicating no treatment effect. In the case of **Char2,** while the main plot and sub plot factors were non-significant, the interaction effect (A×B) was significant at the 5% level (\*), showing that the response of Char2 depends on the combination of treatments rather than individual effects. For **Char3, Char4, Char5, and Char6**, all sources of variation remained non-significant, indicating that these characters were not affected by either factor or their interaction. Overall, the analysis reveals that there were no significant treatment effects on Yield and most characters, except for Char2 where a significant interaction effect was observed, suggesting the importance of considering treatment combinations for this character.
+The Split Plot ANOVA results presented in Table 1 show the effects of the main plot factor (A), sub plot factor (B), and their interaction (A×B) on Yield and characters (Char1 to Char6). For Yield, both the main plot and sub plot factors were found to be non-significant (NS), indicating that neither factor independently influenced yield. The interaction effect was also non-significant, suggesting no combined influence of A and B on yield. Similarly, for **Char1**, all sources of variation main plot, sub plot, and interaction were non-significant, indicating no treatment effect. In the case of **Char2,** while the main plot and sub plot factors were non-significant, the interaction effect (A×B) was significant at the 5% level (\*), showing that the response of Char2 depends on the combination of treatments rather than individual effects. For **Char3, Char4, Char5, and Char6**, all sources of variation remained non-significant, indicating that these characters were not affected by either factor or their interaction. Overall, the analysis reveals that there were no significant treatment effects on Yield and most characters, except for Char2 where a significant interaction effect was observed, suggesting the importance of considering treatment combinations for this character.
 :::
 
 **Table 2: Detailed tabular representation with multiple comparisons**
@@ -357,7 +357,7 @@ In the example, pairwise comparisons were performed to identify significant diff
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly — leaving no room for confusion. We've ensured that every possible plot related to the Split Plot Design is readily available. Simply click on the `Basic Plots` tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to the Split Plot Design is readily available. Simply click on the Basic Plot tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -366,7 +366,7 @@ In the example, pairwise comparisons were performed to identify significant diff
 **RAISINS** provides users various customization features for the plots to enhance the visualization according to the requirement of the user. **Click** on @fig-8 to get a clear idea on the customizing features.
 :::
 
-![Plot settings for customizing](images/WhatsApp Image 2026-04-28 at 12.59.45 PM-01.jpeg){#fig-8 fig-align="center"}
+![Plot settings for customizing](images/WhatsApp%20Image%202026-04-28%20at%2012.59.45%20PM-01.jpeg){#fig-8 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 From @fig-9 to @fig-13, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.
@@ -657,23 +657,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    -   Go to the top-left corner and click on **File**.
+    - Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    -   Select the location where you want to save your file.
+    - Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    -   Enter a relevant file name without spaces (use underscores if needed).
+    - Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    -   Click **Save** to export the file.
+    - Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (no empty rows above the data, meaningful column names, and consistent level labels for both the main plot and sub-plot factors). </small>
 
@@ -684,17 +684,17 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry — RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
--   Navigate to the **Create Data Tab**
+- Navigate to the **Create Data Tab**
 
--   Select the number of **Main Plot levels**
+- Select the number of **Main Plot levels**
 
--   Select the number of **Sub-plot levels**
+- Select the number of **Sub-plot levels**
 
--   Select number of **Replications**
+- Select number of **Replications**
 
--   Select number of **Characters**
+- Select number of **Characters**
 
--   Click on **Create** button
+- Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in `Analysis`.
 :::
@@ -723,6 +723,6 @@ The app includes a dedicated `FAQs` to help clarify common doubts and guide user
 `View Data` serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For SPD data, the Health Check confirms that the main plot, sub-plot, and replication columns are correctly identified and that all treatment combinations are complete and balanced before analysis proceeds.
 :::
 
-![View data](images/WhatsApp Image 2026-04-28 at 11.49.24 AM-02.jpeg){fig-align="center"}
+![View data](images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM-02.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------

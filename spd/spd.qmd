@@ -1,5 +1,5 @@
 ---
-title: "Split Plot Design (SPD)"
+title: "Split Plot Design "
 format:
   html:
     mainfont: "Times New Roman"
@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-Split Plot Design is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots - allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. **Split plot design** accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In **RAISINS** you can perform SPD very easily without writing a single line of code. This tutorial will guide you, how to perform SPD very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+Split Plot Design is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots, allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. **Split Plot Design** accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In **RAISINS** you can perform SPD very easily without writing a single line of code. This tutorial will guide you on how to perform SPD easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform multivariate analysis including MANOVA and PCA.
 :::
 
 <details>
@@ -89,7 +89,7 @@ Split Plot Design is a two-factor experimental design in which experimental unit
 </style>
 ```
 
-<ul><small> The concept of the **Split Plot Design (SPD)** originated in the early twentieth century within the fertile intellectual environment of [<strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"/>]{.hover-img} at the Rothamsted Experimental Station in England. As agricultural researchers began investigating experiments involving two factors simultaneously - such as irrigation methods and crop varieties -it became clear that certain factors (like large-scale tillage or irrigation treatments) could not be practically randomised at the same level as more manageable subplot factors (like seed rates or fertilizer doses). Fisher and his colleagues formalised the split plot framework, in which the experimental area is first divided into larger units called main plots, to which the levels of the first factor (Factor A) are randomly assigned. Each main plot is then subdivided into smaller sub-plots, within which the levels of the second factor (Factor B) are independently randomised. The fundamental statistical insight behind SPD is that two separate error terms emerge naturally from this structure -the main plot error, which captures the variability between main plots within replications, and the sub-plot error, which captures the residual variability within sub-plots after fitting main plot, sub-plot, and interaction effects. Because the sub-plot error is typically smaller than the main plot error, SPD achieves higher precision for sub-plot and interaction comparisons than for main plot comparisons. This asymmetric precision is both its defining strength and a critical consideration in the interpretation of results. The design became foundational to experimental statistics in agronomy, horticulture, and plant breeding, where the practical constraints of field experimentation naturally lead to hierarchical plot structures. </small></ul>
+<ul><small> The concept of the **Split Plot Design (SPD)** originated in the early twentieth century within the fertile intellectual environment of **Ronald A. Fisher** at the Rothamsted Experimental Station in England. As agricultural researchers began investigating experiments involving two factors simultaneously - such as irrigation methods and crop varieties -it became clear that certain factors (like large-scale tillage or irrigation treatments) could not be practically randomised at the same level as more manageable subplot factors (like seed rates or fertilizer doses). Fisher and his colleagues formalised the split plot framework, in which the experimental area is first divided into larger units called main plots, to which the levels of the first factor (Factor A) are randomly assigned. Each main plot is then subdivided into smaller sub-plots, within which the levels of the second factor (Factor B) are independently randomised. The fundamental statistical insight behind SPD is that two separate error terms emerge naturally from this structure -the main plot error, which captures the variability between main plots within replications, and the sub-plot error, which captures the residual variability within sub-plots after fitting main plot, sub-plot, and interaction effects. Because the sub-plot error is typically smaller than the main plot error, SPD achieves higher precision for sub-plot and interaction comparisons than for main plot comparisons. This asymmetric precision is both its defining strength and a critical consideration in the interpretation of results. The design became foundational to experimental statistics in agronomy, horticulture, and plant breeding, where the practical constraints of field experimentation naturally lead to hierarchical plot structures. </small></ul>
 
 </details>
 
@@ -99,7 +99,7 @@ Split Plot Design is a two-factor experimental design in which experimental unit
 To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different two-factor experimental designs. In this tutorial, we focus on **Split Plot Design (SPD)**, as shown in @fig-aov.
 :::
 
-![Analysis of experiment tab](images/analyss-02.png){#fig-aov fig-align="center"}
+![Analysis of experiment tab](images/analyss-03.png){#fig-aov fig-align="center"}
 
 ## Split Plot Design (SPD) {#C}
 
@@ -169,7 +169,7 @@ In @fig-5, you can see the detailed view of the Analysis tab, along with explana
 
 ![Analysis window explained](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(3)-02.png){#fig-5 fig-align="center"}
 
-For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset (@sec-6). Here, **RAISINS** provide inbuilt transformation option.
+For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset @sec-6. Here, **RAISINS** provide inbuilt transformation option.
 
 ## Transformation {#sec-6 .T}
 
@@ -192,7 +192,7 @@ Log, square root, and arcsine transformations are often used in SPD analysis to 
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on Run Analysis and the **Split Plot ANOVA** will be performed. Analysis of Variance **(ANOVA)** in a Split Plot Design partitions the total variation into components attributable to Replications, Main Plot factor (A), Main Plot Error (Error a), Sub-plot factor (B), the A×B Interaction, and Sub-plot Error (Error b). Critically, the F-test for the Main Plot factor uses the **Main Plot Error** as its denominator, while the F-tests for the Sub-plot factor and the Interaction use the **Sub-plot Error** as their denominator (see @fig-100).
+Once your dataset is uploaded, click on Run Analysis and the **Split Plot ANOVA** will be performed. Analysis of Variance **(ANOVA)** in a Split Plot Design partitions the total variation into components attributable to Replications, Main Plot factor (A), Main Plot Error (Error a), Sub-plot factor (B), the A×B Interaction, and Sub-plot Error (Error b). Critically, the F-test for the Main Plot factor uses the **Main Plot Error** as its denominator, while the F-tests for the Sub-plot factor and the Interaction use the **Sub-plot Error** as their denominator see @fig-100.
 :::
 
 **Table 1 ANOVA summary**
@@ -303,7 +303,7 @@ The statistical comparison of treatment means for the main plot (A), sub plot (B
 </details>
 
 ::: {style="text-align: justify;"}
-After obtaining a significant F-value in the SPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7). A key feature of SPD post-hoc comparisons is that **different standard errors and critical differences apply** depending on whether you are comparing main plot means, sub-plot means within the same main plot, sub-plot means across different main plots, or treatment combination means.
+After obtaining a significant F-value in the SPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions see @fig-7. A key feature of SPD post-hoc comparisons is that **different standard errors and critical differences apply** depending on whether you are comparing main plot means, sub-plot means within the same main plot, sub-plot means across different main plots, or treatment combination means.
 :::
 
 ![Multiple comparison test options explained](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(3)-01.png){#fig-7 fig-align="center"}
@@ -357,7 +357,7 @@ In the example, pairwise comparisons were performed to identify significant diff
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to the Split Plot Design is readily available. Simply click on the Basic Plot tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to the Split Plot Design is readily available. Simply click on the Basic Plot tab to view them See @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -524,10 +524,10 @@ A **connected line plot** compares the mean values of treatment combinations, wi
 ## ADVANCED PLOT {#AP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** also provides advanced plot which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See @fig-90)
+**RAISINS** also provides advanced plot which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. See @fig-90
 :::
 
-![Advanced plots](images/Screenshot 2026-04-30 115407.png){#fig-90 fig-align="center"}
+![Advanced plots](images/Screenshot%202026-04-30%20115407.png){#fig-90 fig-align="center"}
 
 **PLOT WISE GRAPH**
 
@@ -592,7 +592,7 @@ Look upon the loadings of each variable in the given @fig-loadings and decide wh
 ![Loadings of each variable](images/Screenshot%202026-04-28%20114144-01.png){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable's arrow. The angle between variable arrows in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. The biplot thus aids in identifying which treatment combinations perform well for which traits simultaneously, providing a holistic view of the SPD results across all measured variables.
+The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable's arrow. The angle between variable arrows in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. The biplot thus aids in identifying which treatment combinations perform well for which traits simultaneously, providing a holistic view of the SPD results across all measured variables.
 :::
 
 ![PCA-Biplot](images/Screenshot%202026-04-28%20112808-01.png){#fig-biplot}
@@ -612,7 +612,7 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing your data {#PRE}
 
 ::: {style="text-align: justify;"}
-"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won't be trustworthy."
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won't be trustworthy."
 
 1.  Create your dataset in MS Excel
 
@@ -655,23 +655,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    - Go to the top-left corner and click on **File**.
+    -   Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    - Select the location where you want to save your file.
+    -   Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    - Enter a relevant file name without spaces (use underscores if needed).
+    -   Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    - Click **Save** to export the file.
+    -   Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (no empty rows above the data, meaningful column names, and consistent level labels for both the main plot and sub-plot factors). </small>
 
@@ -682,22 +682,22 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
-- Navigate to the **Create Data Tab**
+-   Navigate to the **Create Data Tab**
 
-- Select the number of **Main Plot levels**
+-   Select the number of **Main Plot levels**
 
-- Select the number of **Sub-plot levels**
+-   Select the number of **Sub-plot levels**
 
-- Select number of **Replications**
+-   Select number of **Replications**
 
-- Select number of **Characters**
+-   Select number of **Characters**
 
-- Click on **Create** button
+-   Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
-![SPD Layout](images/create%20dataset.png){#fig-createdata fig-align="center"}
+![Create Dataset](images/create%20dataset.png){#fig-createdata fig-align="center"}
 
 ## Model datasets {#M}
 

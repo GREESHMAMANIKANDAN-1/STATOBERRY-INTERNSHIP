@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Split Plot Design (SPD)</title>
+<title>Split Plot Design</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,20 +26,21 @@ ul.task-list li input[type="checkbox"] {
 <script src="spd_files/libs/clipboard/clipboard.min.js"></script>
 <script src="spd_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="spd_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/popper.min.js"></script>
 <script src="spd_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="spd_files/libs/quarto-html/anchor.min.js"></script>
 <link href="spd_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="spd_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="spd_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="spd_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="spd_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="spd_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="spd_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="spd_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -114,7 +112,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Split Plot Design (SPD)</h1>
+<h1 class="title">Split Plot Design</h1>
 </div>
 
 
@@ -147,7 +145,7 @@ window.Quarto = {
 </div>
 <p>ABSTRACT</p>
 <div style="text-align: justify;">
-<p>Split Plot Design is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots - allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. <strong>Split plot design</strong> accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In <strong>RAISINS</strong> you can perform SPD very easily without writing a single line of code. This tutorial will guide you, how to perform SPD very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
+<p>Split Plot Design is a two-factor experimental design in which experimental units are arranged in two layers - main plots and sub-plots, allowing factors that require larger experimental units to be assigned to main plots while factors requiring smaller, more precise units are assigned within sub-plots. <strong>Split Plot Design</strong> accommodates two distinct sources of experimental error, one for main plot comparisons and another for sub-plot and interaction comparisons, thereby improving precision for sub-plot factor estimates. In <strong>RAISINS</strong> you can perform SPD very easily without writing a single line of code. This tutorial will guide you on how to perform SPD easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform multivariate analysis including MANOVA and PCA.</p>
 </div>
 <details>
 <p><em>Hover or click each point to see more information.</em></p>
@@ -190,7 +188,7 @@ window.Quarto = {
 }
 </style>
 <ul>
-<small> The concept of the <strong>Split Plot Design (SPD)</strong> originated in the early twentieth century within the fertile intellectual environment of <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> at the Rothamsted Experimental Station in England. As agricultural researchers began investigating experiments involving two factors simultaneously - such as irrigation methods and crop varieties -it became clear that certain factors (like large-scale tillage or irrigation treatments) could not be practically randomised at the same level as more manageable subplot factors (like seed rates or fertilizer doses). Fisher and his colleagues formalised the split plot framework, in which the experimental area is first divided into larger units called main plots, to which the levels of the first factor (Factor A) are randomly assigned. Each main plot is then subdivided into smaller sub-plots, within which the levels of the second factor (Factor B) are independently randomised. The fundamental statistical insight behind SPD is that two separate error terms emerge naturally from this structure -the main plot error, which captures the variability between main plots within replications, and the sub-plot error, which captures the residual variability within sub-plots after fitting main plot, sub-plot, and interaction effects. Because the sub-plot error is typically smaller than the main plot error, SPD achieves higher precision for sub-plot and interaction comparisons than for main plot comparisons. This asymmetric precision is both its defining strength and a critical consideration in the interpretation of results. The design became foundational to experimental statistics in agronomy, horticulture, and plant breeding, where the practical constraints of field experimentation naturally lead to hierarchical plot structures. </small>
+<small> The concept of the <strong>Split Plot Design (SPD)</strong> originated in the early twentieth century within the fertile intellectual environment of <strong>Ronald A. Fisher</strong> at the Rothamsted Experimental Station in England. As agricultural researchers began investigating experiments involving two factors simultaneously - such as irrigation methods and crop varieties -it became clear that certain factors (like large-scale tillage or irrigation treatments) could not be practically randomised at the same level as more manageable subplot factors (like seed rates or fertilizer doses). Fisher and his colleagues formalised the split plot framework, in which the experimental area is first divided into larger units called main plots, to which the levels of the first factor (Factor A) are randomly assigned. Each main plot is then subdivided into smaller sub-plots, within which the levels of the second factor (Factor B) are independently randomised. The fundamental statistical insight behind SPD is that two separate error terms emerge naturally from this structure -the main plot error, which captures the variability between main plots within replications, and the sub-plot error, which captures the residual variability within sub-plots after fitting main plot, sub-plot, and interaction effects. Because the sub-plot error is typically smaller than the main plot error, SPD achieves higher precision for sub-plot and interaction comparisons than for main plot comparisons. This asymmetric precision is both its defining strength and a critical consideration in the interpretation of results. The design became foundational to experimental statistics in agronomy, horticulture, and plant breeding, where the practical constraints of field experimentation naturally lead to hierarchical plot structures. </small>
 </ul>
 </details>
 <section id="AE" class="level2" data-number="1">
@@ -201,7 +199,7 @@ window.Quarto = {
 <div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/analyss-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="images/analyss-02.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/analyss-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="images/analyss-03.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Analysis of experiment tab
@@ -302,7 +300,7 @@ Figure&nbsp;5: Analysis window explained
 </figcaption>
 </figure>
 </div>
-<p>For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>). Here, <strong>RAISINS</strong> provide inbuilt transformation option.</p>
+<p>For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset <a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>. Here, <strong>RAISINS</strong> provide inbuilt transformation option.</p>
 </section>
 <section id="sec-6" class="level2 T" data-number="6">
 <h2 class="T anchored" data-number="6" data-anchor-id="sec-6"><span class="header-section-number">6</span> Transformation</h2>
@@ -331,7 +329,7 @@ Figure&nbsp;6: Transformation options
 <section id="sec-7" class="level2 AR" data-number="7">
 <h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
-<p>Once your dataset is uploaded, click on Run Analysis and the <strong>Split Plot ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in a Split Plot Design partitions the total variation into components attributable to Replications, Main Plot factor (A), Main Plot Error (Error a), Sub-plot factor (B), the A×B Interaction, and Sub-plot Error (Error b). Critically, the F-test for the Main Plot factor uses the <strong>Main Plot Error</strong> as its denominator, while the F-tests for the Sub-plot factor and the Interaction use the <strong>Sub-plot Error</strong> as their denominator (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>).</p>
+<p>Once your dataset is uploaded, click on Run Analysis and the <strong>Split Plot ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in a Split Plot Design partitions the total variation into components attributable to Replications, Main Plot factor (A), Main Plot Error (Error a), Sub-plot factor (B), the A×B Interaction, and Sub-plot Error (Error b). Critically, the F-test for the Main Plot factor uses the <strong>Main Plot Error</strong> as its denominator, while the F-tests for the Sub-plot factor and the Interaction use the <strong>Sub-plot Error</strong> as their denominator see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>.</p>
 </div>
 <p><strong>Table 1 ANOVA summary</strong></p>
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -486,7 +484,7 @@ Figure&nbsp;8: Detailed tabular representation with multiple comparisons
 </ul>
 </details>
 <div style="text-align: justify;">
-<p>After obtaining a significant F-value in the SPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>). A key feature of SPD post-hoc comparisons is that <strong>different standard errors and critical differences apply</strong> depending on whether you are comparing main plot means, sub-plot means within the same main plot, sub-plot means across different main plots, or treatment combination means.</p>
+<p>After obtaining a significant F-value in the SPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>. A key feature of SPD post-hoc comparisons is that <strong>different standard errors and critical differences apply</strong> depending on whether you are comparing main plot means, sub-plot means within the same main plot, sub-plot means across different main plots, or treatment combination means.</p>
 </div>
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -525,7 +523,7 @@ Figure&nbsp;9: Multiple comparison test options explained
 <section id="BP" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="BP"><span class="header-section-number">9</span> Basic plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to the Split Plot Design is readily available. Simply click on the Basic Plot tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;10</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to the Split Plot Design is readily available. Simply click on the Basic Plot tab to view them See <a href="#fig-8" class="quarto-xref">Figure&nbsp;10</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
 </div>
 <section id="customizing-plots" class="level3" data-number="9.1">
 <h3 data-number="9.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</h3>
@@ -728,7 +726,7 @@ Figure&nbsp;15: Connected line plot
 <section id="AP" class="level2" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="AP"><span class="header-section-number">10</span> ADVANCED PLOT</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> also provides advanced plot which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See <a href="#fig-90" class="quarto-xref">Figure&nbsp;16</a>)</p>
+<p><strong>RAISINS</strong> also provides advanced plot which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. See <a href="#fig-90" class="quarto-xref">Figure&nbsp;16</a></p>
 </div>
 <div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -864,7 +862,7 @@ Figure&nbsp;23: Loadings of each variable
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable’s arrow. The angle between variable arrows in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. The biplot thus aids in identifying which treatment combinations perform well for which traits simultaneously, providing a holistic view of the SPD results across all measured variables.</p>
+<p>The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable’s arrow. The angle between variable arrows in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. The biplot thus aids in identifying which treatment combinations perform well for which traits simultaneously, providing a holistic view of the SPD results across all measured variables.</p>
 </div>
 <div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -906,7 +904,7 @@ Figure&nbsp;26: Index score and Index plot
 <section id="PRE" class="level2" data-number="13">
 <h2 data-number="13" class="anchored" data-anchor-id="PRE"><span class="header-section-number">13</span> Preparing your data</h2>
 <div style="text-align: justify;">
-<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won’t be trustworthy.”</p>
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
 <ol type="1">
 <li><p>Create your dataset in MS Excel</p></li>
 <li><p>Build your dataset directly within the RAISINS app</p></li>
@@ -999,10 +997,10 @@ How to Save as CSV in MS Excel
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/create%20dataset.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;29: SPD Layout"><img src="images/create%20dataset.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/create%20dataset.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;29: Create Dataset"><img src="images/create%20dataset.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;29: SPD Layout
+Figure&nbsp;29: Create Dataset
 </figcaption>
 </figure>
 </div>

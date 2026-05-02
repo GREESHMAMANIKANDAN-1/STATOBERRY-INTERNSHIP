@@ -224,7 +224,7 @@ Once your dataset is uploaded, click on Run Analysis, and a **factorial ANOVA** 
 In our hypothetical tomato experiment, the factorial ANOVA reveals that the main effect of Factor A (Irrigation Level) is highly significant (F = 18.42, df = 2 and 24, p \< 0.01), indicating that irrigation levels have a strong influence on fruit yield. Factor B (Fertilizer Type) is also significant (F = 9.17, df = 1 and 24, p \< 0.05), while Factor C (Plant Density) approaches significance (F = 4.63, df = 1 and 24, p \< 0.05). The A×B interaction is significant (F = 6.21, p \< 0.05), suggesting that the effect of fertilizer type depends on the irrigation level applied. The three-way interaction A×B×C, however, is non-significant (F = 1.84, p \> 0.05), indicating that the joint influence of all three factors combined does not produce an additional interaction beyond the two-way level. Since significant main effects and two-way interactions are present, post-hoc comparisons are appropriate and are discussed in @sec-8.
 :::
 
-**Table 2: Detailed tabular representation with multiple comparisons**
+**Table 2:Factor A- Detailed tabular representation with multiple comparisons**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
@@ -641,7 +641,7 @@ A **connected line plot** compares the mean values of different treatment combin
 ![INTERACTION Plot](images/INT%20GEM.png){#fig-14 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Explains how it reveals whether the effect of one factor changes across levels of another, with parallel vs. crossing lines interpreted in the context of the A×B interaction found in the tomato experiment.
+Explains how it reveals whether the effect of one factor changes across levels of another, with parallel vs. crossing lines interpreted in the context of the A×B interaction found in the experiment.
 :::
 
 **3D SCATTER PLOT**

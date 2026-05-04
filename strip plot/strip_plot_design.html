@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Strip Plot Design</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -26,21 +29,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="strip_plot_design_files/libs/clipboard/clipboard.min.js"></script>
 <script src="strip_plot_design_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="strip_plot_design_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="strip_plot_design_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="strip_plot_design_files/libs/quarto-html/popper.min.js"></script>
 <script src="strip_plot_design_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="strip_plot_design_files/libs/quarto-html/anchor.min.js"></script>
 <link href="strip_plot_design_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="strip_plot_design_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="strip_plot_design_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="strip_plot_design_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="strip_plot_design_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="strip_plot_design_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="strip_plot_design_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="strip_plot_design_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="strip_plot_design_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="strip_plot_design_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -246,7 +248,7 @@ Figure&nbsp;2: Strip Plot Design Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
-<p>To make things simple and interesting, we’ll explain Strip Plot Design analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters.A working example of the given figure can be explained using a Strip Plot Design experiment conducted to study the combined effect of <strong>irrigation levels</strong> and <strong>rice varieties</strong> on yield and related traits. In this experiment, Factor A (row treatments) consists of different irrigation levels such as continuous flooding, alternate wetting and drying, and deficit irrigation, while Factor B (column treatments) includes rice varieties like IR64, Swarna, ADT45, and Jyothi. The experiment is arranged in several replications to improve accuracy. Within each replication, the field is divided into horizontal strips representing irrigation levels and vertical strips representing varieties, and their intersections form individual plots where observations are recorded. For example, in Replication 1, each combination of <strong>irrigation level</strong> (R1, R2, etc.) and <strong>variety</strong> (C1, C2, C3, etc.) is measured for variables such as <strong>yield, Panicle length, number of spikelets, and grain weight</strong> (shown as y1, y2, y3… values). This structure is repeated across replications (Replication 2, 3, and 4), ensuring that every treatment combination appears in each block. The collected data are then analyzed using ANOVA to determine whether irrigation levels, varieties, and their interaction have a significant effect on crop performance. This layout helps in clearly separating and evaluating the main and interaction effects of both factors in an efficient and systematic manner. <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To make things simple and interesting, we’ll explain Strip Plot Design analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters.A working example of the given figure can be explained using a Strip Plot Design experiment conducted to study the combined effect of <strong>irrigation levels</strong> and <strong>rice varieties</strong> on yield and related traits. In this experiment, Factor A (row treatments) consists of different irrigation levels such as continuous flooding and alternate wetting and drying, while Factor B (column treatments) includes rice varieties like IR64, Swarna and ADT45. The experiment is arranged in several replications to improve accuracy. Within each replication, the field is divided into horizontal strips representing irrigation levels and vertical strips representing varieties, and their intersections form individual plots where observations are recorded. For example, in Replication 1, each combination of <strong>irrigation level</strong> (R1, R2) and <strong>variety</strong> (C1, C2, C3) is measured for variables such as <strong>yield, Panicle length, number of spikelets, and grain weight</strong> (shown as y1, y2, y3… values). This structure is repeated across replications (Replication 2, 3, and 4), ensuring that every treatment combination appears in each block. The collected data are then analyzed using ANOVA to determine whether irrigation levels, varieties, and their interaction have a significant effect on crop performance. This layout helps in clearly separating and evaluating the main and interaction effects of both factors in an efficient and systematic manner. <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
 </div>
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">

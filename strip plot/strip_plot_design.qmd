@@ -133,7 +133,7 @@ A Strip Plot Design is a two-factor experimental layout in which the levels of o
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain Strip Plot Design analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters.A working example of the given figure can be explained using a Strip Plot Design experiment conducted to study the combined effect of **irrigation levels** and **rice varieties** on yield and related traits. In this experiment, Factor A (row treatments) consists of different irrigation levels such as continuous flooding, alternate wetting and drying, and deficit irrigation, while Factor B (column treatments) includes rice varieties like IR64, Swarna, ADT45, and Jyothi. The experiment is arranged in several replications to improve accuracy. Within each replication, the field is divided into horizontal strips representing irrigation levels and vertical strips representing varieties, and their intersections form individual plots where observations are recorded. For example, in Replication 1, each combination of **irrigation level** (R1, R2, etc.) and **variety** (C1, C2, C3, etc.) is measured for variables such as **yield, Panicle length, number of spikelets, and grain weight** (shown as y1, y2, y3… values). This structure is repeated across replications (Replication 2, 3, and 4), ensuring that every treatment combination appears in each block. The collected data are then analyzed using ANOVA to determine whether irrigation levels, varieties, and their interaction have a significant effect on crop performance. This layout helps in clearly separating and evaluating the main and interaction effects of both factors in an efficient and systematic manner. @fig-data.
+To make things simple and interesting, we'll explain Strip Plot Design analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters.A working example of the given figure can be explained using a Strip Plot Design experiment conducted to study the combined effect of **irrigation levels** and **rice varieties** on yield and related traits. In this experiment, Factor A (row treatments) consists of different irrigation levels such as continuous flooding and alternate wetting and drying, while Factor B (column treatments) includes rice varieties like IR64, Swarna and ADT45. The experiment is arranged in several replications to improve accuracy. Within each replication, the field is divided into horizontal strips representing irrigation levels and vertical strips representing varieties, and their intersections form individual plots where observations are recorded. For example, in Replication 1, each combination of **irrigation level** (R1, R2) and **variety** (C1, C2, C3) is measured for variables such as **yield, Panicle length, number of spikelets, and grain weight** (shown as y1, y2, y3… values). This structure is repeated across replications (Replication 2, 3, and 4), ensuring that every treatment combination appears in each block. The collected data are then analyzed using ANOVA to determine whether irrigation levels, varieties, and their interaction have a significant effect on crop performance. This layout helps in clearly separating and evaluating the main and interaction effects of both factors in an efficient and systematic manner. @fig-data.
 :::
 
 ![Example dataset](images/dataset.png){#fig-data fig-align="center"}
@@ -313,7 +313,7 @@ where $t_{\alpha, df_{E(a)}}$ is the critical t-value at significance level $\al
 **Duncan's Multiple Range Test (DMRT)** ranks treatment means in ascending or descending order and applies a step-wise critical range that increases with the number of steps between means being compared. It detects more significant differences than Tukey's HSD and is widely used in agricultural research, though it is less conservative and carries a somewhat higher risk of Type I error.
 :::
 
-![Multiple comparison results for Strip Plot Design](images/plot design.png){#fig-MCT fig-align="center"}
+![Multiple comparison results for Strip Plot Design](images/plot%20design.png){#fig-MCT fig-align="center"}
 
 <details>
 
@@ -577,7 +577,7 @@ A **3D scatter plot** with lines in strip plot design is used to show the relati
 Multivariate analysis in Strip Plot Design (SPD) helps you to compare different response variables simultaneously, accounting for the correlations among traits. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example evaluation of irrigation levels (I1, I2, I3) crossed with rice varieties (IR64, Swarna, ADT45, Jyothi) for grain yield and related traits navigate to Multivariate see @fig-mu.
 :::
 
-![Multivariate tab in RAISINS](images/Screenshot 2026-04-30 220202.png){#fig-mu}
+![Multivariate tab in RAISINS](images/Screenshot%202026-04-30%20220202.png){#fig-mu}
 
 ::: {style="text-align: justify;"}
 The table titled 'Eigen Values PCA' given in @fig-PC provides information about the eigenvalues and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 58% of the variance in the dataset, while PC2 accounts for about 24% of the variance. Together, PC1 and PC2 explain approximately 82% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
@@ -659,23 +659,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    -   Go to the top-left corner and click on **File**.
+    - Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    -   Select the location where you want to save your file.
+    - Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    -   Enter a relevant file name without spaces (use underscores if needed).
+    - Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    -   Click **Save** to export the file.
+    - Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names, and a separate column for Block, Factor A, and Factor B). </small>
 
@@ -686,17 +686,17 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry **RAISINS** offers an option to create data directly within the app using the prescribed template. Here's how:
 
--   Navigate to the **Create Data Tab**
+- Navigate to the **Create Data Tab**
 
--   Select the number of **Factor A levels** (Horizontal Strips)
+- Select the number of **Factor A levels** (Horizontal Strips)
 
--   Select the number of **Factor B levels** (Vertical Strips)
+- Select the number of **Factor B levels** (Vertical Strips)
 
--   Select the number of **Blocks** (Replications)
+- Select the number of **Blocks** (Replications)
 
--   Select the number of **Characters** (Response variables)
+- Select the number of **Characters** (Response variables)
 
--   Click on the **Create** button
+- Click on the **Create** button
 
 A model layout will appear as shown in @fig-createdata. You may enter the observations manually into the CSV file once downloaded, or paste the observations directly into the file provided. Once you have entered the observations in the layout, download the CSV file and upload it in Analysis.
 :::
@@ -717,7 +717,7 @@ To test the app or better understand the data arrangement, we provide model data
 The app includes a dedicated FAQs section to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQs is a great place to start.
 :::
 
-![FAQs](images/Screenshot 2026-04-30 220430.png){#fig-148 fig-align="center"}
+![FAQs](images/Screenshot%202026-04-30%20220430.png){#fig-148 fig-align="center"}
 
 ## View data {#U}
 

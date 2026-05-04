@@ -32,7 +32,7 @@ format:
 ```
 
 ::: affiliations
-<sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University
+<sup>1</sup>Statoberry LLP, <sup>2</sup> Department of Agricultural Statistics, Kerala Agricultural University
 :::
 
 ABSTRACT
@@ -136,10 +136,10 @@ A Split Plot Design **(SPD)** is a two-factor experimental design in which the e
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain SPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment designed to study the effect of irrigation method and nitrogen fertilizer dose on rice. The main plot factor is Irrigation method, with two levels: M1 (Drip irrigation) and M2 (Flood irrigation). The sub-plot factor is Nitrogen dose, with three levels: S1 (60 kg N/ha), S2 (90 kg N/ha), and S3 (120 kg N/ha). The experiment is laid out in 4 replications, giving a total of 2 × 3 × 4 = 24 experimental units. Observations were recorded for seven variables: Yield (tonnes per hectare), Char1 (plant height in cm), and Char2 (number of tillers per hill) Char3 (number of panicles per hill) Char4 (grain weight in gram) Char5 (biomass yield in t/ha ) Char6 (harvest index in %) . Our aim is to test whether the main plot factor, the sub-plot factor, and their interaction produce statistically significant differences using ANOVA. The arrangement of the data is shown in @fig-data.
+To make things simple and interesting, we'll explain Split Plot Design analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment designed to study the effect of irrigation method and nitrogen fertilizer dose on rice. The main plot factor is Irrigation method, with two levels: M1 (Drip irrigation) and M2 (Flood irrigation). The sub-plot factor is Nitrogen dose, with three levels: S1 (60 kg N/ha), S2 (90 kg N/ha), and S3 (120 kg N/ha). The experiment is laid out in 4 replications, giving a total of 2 × 3 × 4 = 24 experimental units. Observations were recorded for seven variables: Yield (tonnes per hectare), Char1 (plant height in cm), and Char2 (number of tillers per hill) Char3 (number of panicles per hill) Char4 (grain weight in gram) Char5 (biomass yield in t/ha ) Char6 (harvest index in %) . Our aim is to test whether the main plot factor, the sub-plot factor, and their interaction produce statistically significant differences using ANOVA. The arrangement of the data is shown in @fig-data.
 :::
 
-![Example dataset — Mainplot, Subplot, Replication, and response variables arranged in columns](images/split%20plot%20img-01.png){#fig-data fig-align="center"}
+![Example dataset Mainplot, Subplot, Replication, and response variables arranged in columns](images/split%20plot%20img-01.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
 As shown in @fig-data, the dataset should follow the structure described in the image above. Ensure there is only one sheet in the uploaded file. The **first three columns** must represent the **main plot treatments**, **subplot treatments**, and **replication** respectively these can be named as per your preference (e.g., Mainplot, Subplot, Replication). All characters under study are arranged in subsequent columns. For example, Mainplot (with two levels M1 and M2) is the main plot factor, Subplot (with three levels 1, 2, 3) is the subplot factor nested within main plots, and Replication indicates the number of replicates (e.g., 1 to 4). The characters under study (e.g., Yield, Char1, Char2,Char3,etc) are arranged in columns corresponding to each main plot, subplot, and replication combination. Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Main Plot Treatments** and **Sub-plot Treatments**. In our example, the Main Plot Treatments refer to the irrigation methods (M1, M2), and the Sub-plot Treatments refer to the nitrogen doses (S1, S2, S3).
@@ -152,7 +152,7 @@ Arranging data for uploading in **RAISINS** is very simple. Prepare your data ex
 
 Still if you have doubt, see @fig-4
 
-![SPD Layout](images/create%20dataset-01.png){#fig-4 fig-align="center"}
+![SPD Layout](images/Copy of Copy of Red Modern Blank Page A4 Landscape.png){#fig-4 fig-align="center"}
 
 To prepare your dataset for analysis in **RAISINS**, you have two options:
 
@@ -161,13 +161,13 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-## SPD analysis tab explained {#sec-5 .T}
+## Split Plot Design analysis tab explained {#sec-5 .T}
 
 ::: {style="text-align: justify;"}
 In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking browse in the sidebar of the analysis tab.when the file is uploaded option to select the Main plot,Sub plot,Replication and variables will appear.select the appropriate column representing the main ploy factor under main plot,the subplot factor under subplot and replication identifies as replication.then select the responsible variables you wish to analysis.once you click the Run analysis button, all relevant results and outputs appear instantly leaving no room for confusion.
 :::
 
-![Analysis window explained](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(3)-02.png){#fig-5 fig-align="center"}
+![Analysis window explained](images/ggg-01.png){#fig-5 fig-align="center"}
 
 For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset @sec-6. Here, **RAISINS** provide inbuilt transformation option.
 
@@ -527,7 +527,9 @@ A **connected line plot** compares the mean values of treatment combinations, wi
 **RAISINS** also provides advanced plot which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. See @fig-90
 :::
 
-![Advanced plots](images/Screenshot%202026-04-30%20115407.png){#fig-90 fig-align="center"}
+![Advanced plots](images/Copy of Copy of Red Modern Blank Page A4 Landscape (1).png){#fig-90 fig-align="center"}
+
+![Advanced plots](images/Screenshot%202026-04-30%20115407.png){fig-align="center"}
 
 **PLOT WISE GRAPH**
 
@@ -697,7 +699,7 @@ If you're unsure about the correct format for creating a dataset, don't worry RA
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
-![Create Dataset](images/create%20dataset.png){#fig-createdata fig-align="center"}
+![Create Dataset](images/Copy of Copy of Red Modern Blank Page A4 Landscape-01.png){#fig-createdata fig-align="center"}
 
 ## Model datasets {#M}
 

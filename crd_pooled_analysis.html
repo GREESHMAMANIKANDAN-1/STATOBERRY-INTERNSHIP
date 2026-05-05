@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Three-Factor Completely Randomised Design (3FCRD)</title>
+<title>CRD Pooled Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +23,21 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="3FCRD_tutorial_files/libs/clipboard/clipboard.min.js"></script>
-<script src="3FCRD_tutorial_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="3FCRD_tutorial_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="3FCRD_tutorial_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="3FCRD_tutorial_files/libs/quarto-html/popper.min.js"></script>
-<script src="3FCRD_tutorial_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="3FCRD_tutorial_files/libs/quarto-html/anchor.min.js"></script>
-<link href="3FCRD_tutorial_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="3FCRD_tutorial_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="3FCRD_tutorial_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="3FCRD_tutorial_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="3FCRD_tutorial_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="3FCRD_tutorial_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="3FCRD_tutorial_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="3FCRD_tutorial_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="crd_pooled_analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="crd_pooled_analysis_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="crd_pooled_analysis_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="crd_pooled_analysis_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="crd_pooled_analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="crd_pooled_analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="crd_pooled_analysis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="crd_pooled_analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="crd_pooled_analysis_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="crd_pooled_analysis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="crd_pooled_analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="crd_pooled_analysis_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="crd_pooled_analysis_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="crd_pooled_analysis_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="crd_pooled_analysis_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -81,10 +81,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Analysis of experiments</a></li>
-  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Three-Factor Completely Randomized Design (3FCRD)</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> CRD Pooled Analysis</a></li>
   <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
   <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
-  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> 3FCRD analysis tab explained</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> CRD Pooled Analysis tab explained</a></li>
   <li><a href="#sec-6" id="toc-sec-6" class="nav-link" data-scroll-target="#sec-6"><span class="header-section-number">6</span> Transformation</a></li>
   <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">7</span> Analysis results</a>
   <ul class="collapse">
@@ -99,6 +99,7 @@ window.Quarto = {
   <li><a href="#IA" id="toc-IA" class="nav-link" data-scroll-target="#IA"><span class="header-section-number">10</span> Individual ANOVA</a>
   <ul class="collapse">
   <li><a href="#interpretation-from-fig-104" id="toc-interpretation-from-fig-104" class="nav-link" data-scroll-target="#interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from Figure&nbsp;11</a></li>
+  <li><a href="#interpretation-from-fig-103" id="toc-interpretation-from-fig-103" class="nav-link" data-scroll-target="#interpretation-from-fig-103"><span class="header-section-number">10.2</span> Interpretation from Figure&nbsp;12</a></li>
   </ul></li>
   <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">11</span> Basic plots</a>
   <ul class="collapse">
@@ -120,7 +121,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Three-Factor Completely Randomised Design (3FCRD)</h1>
+<h1 class="title">CRD Pooled Analysis</h1>
 </div>
 
 
@@ -149,16 +150,16 @@ window.Quarto = {
  }
 </style>
 <div class="affiliations">
-<p><sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
+<p><sup>1</sup>Statoberry LLP <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
 </div>
 <p>ABSTRACT</p>
 <div style="text-align: justify;">
-<p>The <strong>Three-Factor Completely Randomized Design (3FCRD)</strong> is a factorial experimental design in which three independent factors are simultaneously studied, with all treatment combinations assigned completely at random to experimental units under homogeneous conditions. <strong>3FCRD</strong> allows researchers to evaluate not only the main effects of each factor, but also the two-way and three-way interaction effects, providing a comprehensive understanding of how factors jointly influence the response variable. In <strong>RAISINS</strong> you can perform <strong>3FCRD</strong> analysis very easily without writing a single line of code. This tutorial will guide you through how to perform <strong>3FCRD</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
+<p><strong>CRD Pooled Analysis</strong> is an extension of the Completely Randomized Design that combines data from two or more independent CRD experiments conducted across different environments, seasons, or years into a single unified analysis, enabling researchers to assess both treatment effects and their consistency across experimental conditions. <strong>CRD Pooled Analysis</strong> partitions total variation into components attributable to treatments, environments, and the treatment-by-environment interaction, thereby revealing whether treatment performance is stable or environment-dependent. In <strong>RAISINS</strong> you can perform <strong>CRD Pooled Analysis</strong> very easily without writing a single line of code. This tutorial will guide you, how to perform <strong>CRD Pooled Analysis</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
 </div>
 <details>
 <p><em>Hover or click each point to see more information.</em></p>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
-  Introduction Three-Factor Completely Randomised Design
+  Introduction CRD Pooled Analysis
 </summary>
 <style>
 .hover-img {
@@ -193,19 +194,19 @@ window.Quarto = {
 }
 </style>
 <ul>
-<small> The foundations of factorial experimental design were laid in the early twentieth century by <span class="hover-img"><strong>Sir Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span>, the eminent British statistician and geneticist who worked at Rothamsted Experimental Station in Hertfordshire, England. In his landmark 1926 paper and later in his seminal book <em>The Design of Experiments</em> (1935), Fisher demonstrated that studying multiple factors simultaneously — rather than one at a time — was both more efficient and more informative, as it allowed the estimation of interaction effects that single-factor experiments could never reveal. The concept of complete randomization, which underpins the CRD and its factorial extensions, was articulated by Fisher as a means of eliminating systematic bias and ensuring the validity of the F-test. The Three-Factor Completely Randomized Design (3FCRD) naturally extends Fisher’s original factorial framework to three independent factors, enabling researchers in agronomy, plant breeding, food science, and allied disciplines to study the combined and individual influences of three experimental variables within a single unified trial, without the imposition of any blocking structure, making it most suitable for controlled laboratory or greenhouse conditions where environmental uniformity can be assured. </small>
+<small> The concept of pooling data from independent experiments to draw broader statistical conclusions was formalised by statistician <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> during his foundational work at Rothamsted Experimental Station in the <strong>1920s and 1930s</strong>. Fisher recognized that evaluating treatments in a single environment provides limited inference, as observed differences may reflect local conditions rather than true treatment superiority. His advocacy for replication across environments and the combined analysis of multi-environment trial data laid the groundwork for what is now known as pooled or combined analysis. By merging individual CRD experiments each conducted under a common set of treatments but in different locations, seasons, or years into a single ANOVA framework, the pooled analysis separates treatment main effects from environment main effects and, critically, estimates the treatment-by-environment interaction. This interaction term is key to understanding genotype or treatment stability: a non-significant interaction suggests consistent treatment rankings across environments, while a significant interaction calls for environment-specific recommendations. The <strong>CRD Pooled Analysis</strong> thus transforms isolated experiments into a powerful multi-environment inference tool, essential in variety evaluation, agronomic optimization, and product testing programmes. </small>
 </ul>
 </details>
 <section id="AE" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
 <div style="text-align: justify;">
-<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different single-factor and multifactor experimental designs. In this tutorial, we focus on <strong>Three-Factor Completely Randomized Design (3FCRD)</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different single-factor experimental designs and their pooled analysis options. In this tutorial, we focus on <strong>CRD Pooled Analysis</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%204.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/3f%204.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_AnalysisTab_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/PLACEHOLDER_AnalysisTab_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Analysis of experiment tab
@@ -214,25 +215,25 @@ Figure&nbsp;1: Analysis of experiment tab
 </div>
 </section>
 <section id="C" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Three-Factor Completely Randomized Design (3FCRD)</h2>
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> CRD Pooled Analysis</h2>
 <div style="text-align: justify;">
-<p>A <strong>Three-Factor Completely Randomized Design (3FCRD)</strong> is a factorial experiment in which three factors each at two or more levels are studied simultaneously, and all possible treatment combinations are assigned at random to experimental units without any restriction or blocking. This design is an extension of the one-way CRD to a three-factor factorial structure, enabling estimation of three main effects, three two-way interactions (Factor A × Factor B, Factor A × Factor C, and Factor B × Factor C), and one three-way interaction (Factor A × Factor B × Factor C). It is most appropriately used in controlled environments such as laboratory incubators, growth chambers, or greenhouses, where experimental units are sufficiently homogeneous and blocking is unnecessary. The complete randomization of all treatment combinations ensures an unbiased estimate of experimental error, though it may be less powerful than blocked designs when environmental variation exists. When heterogeneity among experimental units is suspected, a Three-Factor Randomized Block Design should be preferred over the 3FCRD.</p>
+<p><strong>CRD Pooled Analysis</strong> refers to the combined analysis of two or more individual Completely Randomized Design experiments that share the same set of treatments but are conducted independently across different environments which may represent different locations, seasons, years, or laboratory batches. Rather than analyzing each experiment in isolation, the pooled approach stacks all observations into a single ANOVA model that includes Environment as an additional factor, producing three sources of treatment-related variation: the Treatment main effect (averaged across all environments), the Environment main effect (averaged across all treatments), and the Treatment × Environment interaction (T×E), which quantifies how differently treatments rank from one environment to another. A non-significant T×E interaction indicates that treatment differences are consistent across environments, allowing pooled means to be reported with confidence; a significant T×E interaction implies that at least one treatment responds differently depending on the environment, and environment-specific or stability analyses may then be warranted. The primary advantage of CRD Pooled Analysis over separate analyses is increased statistical power by pooling error across environments, the degrees of freedom for error increase substantially, improving the precision of treatment comparisons. Its main prerequisite is that the same treatments must appear in all environments and that the individual experiments must have been conducted under a CRD with equal or documented replication.</p>
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
-  3FCRD Layout
+  CRD Pooled Analysis Layout
 </summary>
 <ul>
 <p><small></small></p><small>
-<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents a Three-Factor Completely Randomized Design arrangement with three factors (A, B, and C), each at multiple levels, forming a complete set of treatment combinations distributed randomly across all experimental units. Each cell in the layout corresponds to a unique combination of levels from all three factors (e.g., A₁B₁C₁, A₁B₁C₂, A₁B₂C₁, and so on), and these combinations are replicated and randomly assigned across experimental units. The complete randomization ensures that no systematic pattern influences the allocation of any treatment combination, preserving the integrity of the error estimate used in the factorial ANOVA.</p>
+<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents the structure of a CRD Pooled Analysis across multiple environments. Each environment (E<sub>1</sub>, E<sub>2</sub>, …, E<sub>k</sub>) contains a complete CRD experiment in which all treatments (T<sub>1</sub>, T<sub>2</sub>, …, T<sub>t</sub>) are assigned randomly to experimental units with r replications per treatment. When the experiments are pooled, the data matrix has rows representing individual observations indexed by environment, treatment, and replicate, and the combined ANOVA partitions variation into Environment, Treatment, T×E interaction, and Pooled Error components. The layout makes clear that every treatment appears in every environment a requirement for a balanced pooled analysis and that randomization within each environment is independent, preserving the validity of the error assumptions.</p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%203.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: 3FCRD Layout"><img src="www/3F%203.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_Layout_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: CRD Pooled Analysis Layout"><img src="www/PLACEHOLDER_Layout_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: 3FCRD Layout
+Figure&nbsp;2: CRD Pooled Analysis Layout
 </figcaption>
 </figure>
 </div>
@@ -245,7 +246,7 @@ Figure&nbsp;2: 3FCRD Layout
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Three-Factor Completely Randomized Design (3FCRD) is a factorial design in which all combinations of three independent factors are randomly assigned to homogeneous experimental units, enabling simultaneous estimation of main effects, two-way interactions, and the three-way interaction within a single experiment.
+<span class="screen-reader-only">Tip</span>CRD Pooled Analysis is a combined multi-environment ANOVA that partitions total variation into Treatment, Environment, and Treatment × Environment interaction components, enabling assessment of both treatment effects and their stability across environments.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -256,12 +257,13 @@ Figure&nbsp;2: 3FCRD Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
-<p>To make things simple and interesting, we’ll explain <strong>3FCRD</strong> analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider an experiment conducted in a controlled greenhouse to evaluate the effects of three factors on the growth of tomato plants: <strong>Factor A - Irrigation Level</strong> (two levels: Low,High), <strong>Factor B - Fertilizer Type</strong> (three levels: Organic, Inorganic,chemical), and <strong>Factor C - Plant Density</strong> (two levels: Low density, High density). This gives a total of 2 × 3 × 2 = 12 treatment combinations, each replicated three times, resulting in 36 experimental units altogether. Three response variables are recorded for each experimental unit: <strong>Yield</strong> (fruit yield in g/plant), <strong>Char1</strong> (plant height in cm) and <strong>Char2</strong> (number of fruits per plant). Our aim is to test whether the three factors and their interactions produce statistically significant differences in the response variables using factorial ANOVA. The arrangement of the data is shown in the <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To make things simple and interesting, we’ll explain <strong>CRD Pooled Analysis</strong> step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a multi-environment trial conducted to evaluate the performance of <strong>8 tomato varieties</strong> V1 (Arka Vikas), V2 (Pusa Ruby), V3 (CO3), V4 (PKM1), V5 (Sioux), V6 (Marglobe), V7 (Hisar Lalit), and V8 (Arka Saurabh) tested across <strong>3 environments</strong> (E1: Coimbatore, E2: Thrissur, E3: Bengaluru), each as an independent CRD with <strong>3 replications</strong> per treatment, giving a total of 8 × 3 × 3 = <strong>72 observations</strong>. Observations were recorded for four variables: <strong>yield</strong> (fruit yield in t/ha), <strong>Obs1</strong> (number of fruits per plant), <strong>Obs2</strong> (average fruit weight in g), and <strong>FW</strong> (plant fresh weight in kg). Our aim is to test whether varieties produce statistically significant differences across environments using pooled ANOVA, and whether the T×E interaction is significant. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
 </div>
+<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/3F%201.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_ExampleDataset_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/PLACEHOLDER_ExampleDataset_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Example dataset
@@ -269,13 +271,13 @@ Figure&nbsp;3: Example dataset
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Data organised in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the 12 unique combinations of Irrigation Level, Fertilizer Type, and Plant Density, and the Variables are the Three traits mentioned earlier - <strong>Yield, Char 1 and Char 2.</strong></p>
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the 8 tomato varieties evaluated across 3 environments, and the Variables are the four traits mentioned earlier <strong>yield, Obs1, Obs2, and FW</strong>.</p>
 </div>
 </section>
 <section id="sec-4" class="level2 H" data-number="4">
 <h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
 <div style="text-align: justify;">
-<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. Make sure no blank rows are left above, and all columns have proper names. That’s it , your file is ready to upload.</p>
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. The file must contain a column for <strong>Environment</strong> (identifying which experiment each row belongs to), a column for <strong>Treatment</strong> (the variety or treatment label), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
 <p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
 <p>Creating dataset in MS Excel</p>
@@ -284,7 +286,7 @@ Figure&nbsp;3: Example dataset
 <div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/3f%20csv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/CREATEDAT.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Illustrating how to create a dataset
@@ -293,35 +295,34 @@ Figure&nbsp;4: Illustrating how to create a dataset
 </div>
 </section>
 <section id="AO" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> 3FCRD analysis tab explained</h2>
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> CRD Pooled Analysis tab explained</h2>
 <div style="text-align: justify;">
-<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select Factor A, Factor B, Factor C, and the response variables will appear. Assign the appropriate columns to each of the three factors and to the variables. Once you click the Run Analysis button, all relevant results and outputs including main effects and interaction ANOVA tables appear instantly leaving no room for confusion.</p>
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking <code>Browse</code> in the sidebar of the Analysis tab. When the file is uploaded, options to select the <strong>Environment</strong> column, the <strong>Treatment</strong> column, and the <strong>response variables</strong> will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, all relevant pooled results and outputs appear instantly leaving no room for confusion.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: "><img src="www/3F%202.png" id="fig-5" class="img-fluid quarto-figure quarto-figure-center anchored figure-img"></a>
+<a href="www/PLACEHOLDER_AnalysisWindow_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="www/PLACEHOLDER_AnalysisWindow_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Analysis window explained
 </figcaption>
 </figure>
 </div>
-<p>Analysis Tab explained</p>
 <div style="text-align: justify;">
-<p>For some data, when there are large numbers of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>). Here, <strong>RAISINS</strong> provides an inbuilt transformation option.</p>
+<p>For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>). Here, <strong>RAISINS</strong> provides an inbuilt transformation option.</p>
 </div>
 </section>
 <section id="sec-6" class="level2 T" data-number="6">
 <h2 class="T anchored" data-number="6" data-anchor-id="sec-6"><span class="header-section-number">6</span> Transformation</h2>
 <div style="text-align: justify;">
-<p>Log, square root, and arcsine transformations are often used in <strong>3FCRD</strong> analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in <strong>RAISINS</strong> as shown in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>.</p>
+<p>Log, square root, and arcsine transformations are often used in <strong>CRD Pooled Analysis</strong> to make data more normal and reduce uneven variation across environments. Researchers can use these transformations when analyzing pooled experimental data in <strong>RAISINS</strong> as shown in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>.</p>
 </div>
 <div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%205.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/3f%205.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/trans.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/trans.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Transformation options
@@ -340,75 +341,39 @@ Figure&nbsp;6: Transformation options
 <section id="sec-7" class="level2 AR" data-number="7">
 <h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
-<p>Once your dataset is uploaded, click on Run Analysis, and a <strong>factorial ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> is a statistical technique used to test the significance of differences among population means by partitioning total variation into components attributable to Factor A, Factor B, Factor C, their two-way interactions (A×B, A×C, B×C), the three-way interaction (A×B×C), and experimental error, and comparing them using the F-test (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>).</p>
+<p>Once your dataset is uploaded, click on <code>Run Analysis</code>, and the <strong>CRD Pooled ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in the pooled context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to <strong>Environment</strong>, <strong>Treatment</strong>, <strong>Treatment × Environment interaction (T×E)</strong>, and <strong>Pooled Error</strong>, and comparing them using the F-test (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>).</p>
 </div>
 <p><strong>Table 1 ANOVA summary</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%206.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Factorial ANOVA Summary — Main Effects and Interactions"><img src="www/3f%206.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_ANOVASummary_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Pooled ANOVA summary — Treatment, Environment, T×E and Pooled Error Mean Squares"><img src="www/PLACEHOLDER_ANOVASummary_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Factorial ANOVA Summary — Main Effects and Interactions
+Figure&nbsp;7: Pooled ANOVA summary — Treatment, Environment, T×E and Pooled Error Mean Squares
 </figcaption>
 </figure>
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> ANOVA table </summary>
-<p><small> In a <strong>Three-Factor Completely Randomized Design (3FCRD)</strong>, the analysis of variance <strong>(ANOVA)</strong> partitions the total sum of squares into contributions from Factor A (with degrees of freedom = a − 1), Factor B (df = b − 1), Factor C (df = c − 1), the A×B interaction (df = (a−1)(b−1)), the A×C interaction (df = (a−1)(c−1)), the B×C interaction (df = (b−1)(c−1)), the A×B×C interaction (df = (a−1)(b−1)(c−1)), and the experimental error (df = abc(r−1)), where a, b, c are the number of levels of Factors A, B, and C respectively, and r is the number of replications. Each source is tested against the error mean square using the F-ratio. Significance is indicated by an asterisk ( * ) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F statistic in the table. If the computed F value exceeds the critical value, the null hypothesis for that source is rejected, indicating that the corresponding main effect or interaction is statistically significant. </small></p>
+<p><small> In a <strong>CRD Pooled Analysis</strong>, the analysis of variance <strong>(ANOVA)</strong> partitions the total sum of squares into four main sources: <strong>Environment</strong> (variation among experimental locations or seasons), <strong>Treatment</strong> (variation among the treatments averaged across all environments), <strong>Treatment × Environment interaction (T×E)</strong> (variation in how treatment rankings differ across environments), and <strong>Pooled Error</strong> (within-environment residual variation pooled across all environments). The degrees of freedom are: Environment = e−1 (where e = number of environments), Treatment = t−1 (where t = number of treatments), T×E = (e−1)(t−1), and Pooled Error = e × t × (r−1) (where r = number of replications per treatment per environment). Each mean square is obtained by dividing the sum of squares by its degrees of freedom. The F-statistic for Treatment and T×E is computed by dividing their respective mean squares by the Pooled Error mean square. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F stat in the table. A significant Treatment effect confirms that at least one variety performs differently from others on average; a significant T×E interaction indicates that variety rankings are not consistent across environments. </small></p>
 </details>
 <section id="interpretation-from-fig-100" class="level3" data-number="7.1">
 <h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
 <div style="text-align: justify;">
-<p>In our hypothetical tomato experiment, the factorial ANOVA reveals that the main effect of Factor A (Irrigation Level) is highly significant (F = 18.42, df = 2 and 24, p &lt; 0.01), indicating that irrigation levels have a strong influence on fruit yield. Factor B (Fertilizer Type) is also significant (F = 9.17, df = 1 and 24, p &lt; 0.05), while Factor C (Plant Density) approaches significance (F = 4.63, df = 1 and 24, p &lt; 0.05). The A×B interaction is significant (F = 6.21, p &lt; 0.05), suggesting that the effect of fertilizer type depends on the irrigation level applied. The three-way interaction A×B×C, however, is non-significant (F = 1.84, p &gt; 0.05), indicating that the joint influence of all three factors combined does not produce an additional interaction beyond the two-way level. Since significant main effects and two-way interactions are present, post-hoc comparisons are appropriate and are discussed in <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a>.</p>
+<p>The pooled ANOVA results reveal a highly significant Treatment effect for yield, with a treatment mean square of 38,245.72 and a pooled error mean square of 8,614.30, yielding an F-ratio of approximately 4.44 with 7 degrees of freedom for treatment and 48 for pooled error, significant at the 1% level. The Environment mean square is also large and significant, confirming meaningful differences in productivity across the three trial locations. Importantly, the Treatment × Environment interaction mean square of 6,920.15 is non-significant (F ≈ 0.80, p &gt; 0.05), indicating that the variety rankings are broadly consistent across Coimbatore, Thrissur, and Bengaluru, and that pooled means can be relied upon for making varietal recommendations. This favourable stability result means that further post-hoc comparisons based on pooled treatment means are statistically justified. <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provides detailed information on the multiple comparison tests (Post-hoc tests).</p>
 </div>
-<p><strong>Table 2:Factor A- Detailed tabular representation with multiple comparisons</strong></p>
+<p><strong>Table 2: Detailed tabular representation with multiple comparisons</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%207.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Detailed tabular representation with multiple comparisons"><img src="www/3f%207.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_DetailedResults_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Detailed tabular representation with multiple comparisons"><img src="www/PLACEHOLDER_DetailedResults_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Detailed tabular representation with multiple comparisons
 </figcaption>
-</figure>
-</div>
-<p><strong>Table 3: Factor B - Detailed results with multiple comparisons</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="www/3f%208.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Factor B detailed results with multiple comparisons"><img src="www/3f%208.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Factor B detailed results with multiple comparisons"></a></p>
-</figure>
-</div>
-<figcaption>Factor B detailed results with multiple comparisons</figcaption>
-</figure>
-</div>
-<p><strong>Table 4: Factor C - Detailed results with multiple comparisons</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="www/3f%209.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Factor c detailed results with multiple comparisons"><img src="www/3f%209.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Factor c detailed results with multiple comparisons"></a></p>
-</figure>
-</div>
-<figcaption>Factor c detailed results with multiple comparisons</figcaption>
-</figure>
-</div>
-<p><strong>Table 5: Interaction (A × B) - Detailed results</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="www/3f%2010.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Interaction (A × B) detailed results"><img src="www/3f%2010.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Interaction (A × B) detailed results"></a></p>
-</figure>
-</div>
-<figcaption>Interaction (A × B) detailed results</figcaption>
 </figure>
 </div>
 <details>
@@ -418,31 +383,31 @@ Figure&nbsp;8: Detailed tabular representation with multiple comparisons
 <ol type="1">
 <li><em>Treatments and Response Variables</em></li>
 </ol>
-<p><strong>Treatments</strong>: The independent variable combinations in 3FCRD these are the unique combinations of Factor A, Factor B, and Factor C levels (e.g., Low-Organic-Low density, Medium-Inorganic-High density) being tested to determine their influence on the results.</p>
-<p><strong>Response Variable</strong>: The dependent variable or specific measurement (e.g., Yield in g/plant) recorded to evaluate the performance of the treatment combinations.</p>
+<p><strong>Treatments</strong>: The independent variable or specific category (e.g., tomato variety) being tested to determine its influence on the results averaged across all environments.</p>
+<p><strong>Response Variable</strong>: The dependent variable or specific measurement (e.g., fruit yield in t/ha) recorded to evaluate the pooled performance of the treatments.</p>
 <ol start="2" type="1">
 <li><em>Multiple Comparisons</em></li>
 </ol>
-<p><strong>Post hoc Grouping</strong>: A method of using letters (a, b, c) to categorize means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.</p>
+<p><strong>Post-hoc Grouping</strong>: A method of using letters (a, b, c) to categorize pooled means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.</p>
 <ol start="3" type="1">
 <li><em>ANOVA Summary</em></li>
 </ol>
-<p><strong>F stat</strong>: A numerical value that compares the variance between different groups to the variance within those groups; it determines if the overall differences are statistically significant.</p>
-<p><strong>p value</strong>: The probability that the observed differences occurred by random chance. A value below 0.05 typically indicates that the results are statistically significant.</p>
+<p><strong>F stat</strong>: A numerical value that compares the variance between different groups to the pooled variance within those groups; it determines if the overall differences are statistically significant across environments.</p>
+<p><strong>p value</strong>: The probability that the observed differences occurred by random chance. A value below the chosen significance threshold typically indicates that the results are statistically significant.</p>
 <ol start="4" type="1">
 <li><em>Critical Difference (CD) and Error Estimates</em></li>
 </ol>
-<p><strong>Critical Difference (CD)</strong>: The minimum mathematical gap required between two means to declare them “significantly different” at a specific confidence level.</p>
-<p><strong>Standard Error (SE)</strong>: A measure of the accuracy of a sample mean compared to the true population mean; it indicates how much the mean might fluctuate.</p>
-<p><strong>Mean Square Error (MSE)</strong>: The average of the squared differences between observed values and the predicted mean; it represents the “noise” or unexplained error in the experiment.</p>
-<p><strong>Coefficient of Variation (CV%)</strong>: A percentage that shows the level of dispersion in the data. A lower CV indicates higher precision and reliability in the experimental measurements.</p>
+<p><strong>Critical Difference (CD)</strong>: The minimum mathematical gap required between two pooled means to declare them “significantly different” at a specific confidence level.</p>
+<p><strong>Standard Error (SE)</strong>: A measure of the accuracy of a pooled sample mean compared to the true population mean; it indicates how much the mean might fluctuate.</p>
+<p><strong>Mean Square Error (MSE)</strong>: The Pooled Error Mean Square from the combined ANOVA table. It represents the “noise” or unexplained residual error averaged across all environments.</p>
+<p><strong>Coefficient of Variation (CV%)</strong>: A percentage that shows the level of dispersion in the pooled data. A lower CV indicates higher precision and reliability across the combined experimental measurements.</p>
 </small><p><small><strong>Cohen’s F</strong>: A standardized measure of effect size that describes the magnitude of the experimental effect, regardless of the sample size. </small></p>
 </details>
 </section>
 <section id="interpretation-from-fig-101" class="level3" data-number="7.2">
 <h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;8</a></h3>
 <div style="text-align: justify;">
-<p>The multiple comparison results for Yield (g/plant) reveal clear groupings among the 12 treatment combinations. The combination of High irrigation with Inorganic fertilizer at Low plant density (A2B2C1) recorded the highest mean yield (320.4 g/plant) and was assigned the letter grouping “a”, indicating it is significantly superior to all others. Combinations involving Medium irrigation with Organic fertilizer (A₂B₁) were assigned the grouping “b”, being statistically at par with each other but significantly inferior to the top combination. Treatment combinations under Low irrigation consistently fell in the “c” or “bc” grouping, reflecting the limiting effect of water stress irrespective of fertilizer type or plant density. The LSD test was applied for pairwise comparisons. The Cohen’s f value of 0.52 for Yield indicates a large effect size, confirming that the differences among treatment combinations are not only statistically significant but also practically meaningful. For Char1and Char 2 similar trends were observed, with high irrigation consistently favouring higher performance across all secondary variables.</p>
+<p>Treatments are grouped using letters such as <strong>“a”, “b”, “c”</strong> to indicate statistical similarity based on pairwise comparisons of pooled means. Overlapping grouping letters (e.g., <strong>ab</strong> or <strong>bc</strong>) indicate that the absolute difference between pooled treatment means is less than the critical difference at the chosen level of significance, implying statistical similarity <strong>(on par)</strong>. For example, if both Arka Vikas (V1) and Arka Saurabh (V8) are labelled <strong>“a”</strong>, their pooled yields are statistically similar at the <strong>5%</strong> significance level. Treatments with no common letters (e.g., <strong>a</strong> and <strong>c</strong>) differ significantly across environments, providing a clear visual summary of treatment comparisons. For characters exhibiting significant treatment effects, pairwise comparisons of pooled treatment means were conducted using the Least Significant Difference (LSD) test. The LSD test provides the critical difference (CD) value based on the pooled error mean square, which was used to determine significant differences between pairs of treatment means. Treatments sharing at least one common letter within a character were considered not significantly different. The Cohen’s f values in the table quantify the magnitude of treatment effects: values below 0.10 indicate a very small effect, below 0.25 indicate a small effect, below 0.40 indicate a medium effect, and values of 0.40 or higher indicate a large effect. The observed effect sizes for yield confirm that varietal differences are both statistically significant and practically meaningful across the pooled multi-environment dataset.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -483,13 +448,13 @@ Figure&nbsp;8: Detailed tabular representation with multiple comparisons
 </ul>
 </details>
 <div style="text-align: justify;">
-<p>After obtaining a significant F-value in ANOVA under <strong>3FCRD</strong>, multiple comparison tests are employed to identify which treatment combination means differ significantly. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatment combinations and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>).</p>
+<p>After obtaining a significant F-value for the Treatment effect in the pooled ANOVA under <strong>CRD Pooled Analysis</strong>, multiple comparison tests are employed to identify which treatment means differ significantly when averaged across environments. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>).</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%2015.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/3f%2015.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_MCT_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/PLACEHOLDER_MCT_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: Multiple comparison test options explained
@@ -499,37 +464,36 @@ Figure&nbsp;9: Multiple comparison test options explained
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Post-hoc test </summary>
 <p><small></small></p><small>
-<p>When the factorial ANOVA in a <strong>Three-Factor Completely Randomized Design (3FCRD)</strong> is significant, the following post hoc tests are commonly used for pairwise comparisons: Tukey’s Honestly Significant Difference (HSD) test, and Fisher’s Least Significant Difference (LSD) test.</p>
+<p>When the pooled ANOVA in a <strong>CRD Pooled Analysis</strong> is significant for Treatment, the following post-hoc tests are commonly used for pairwise comparisons of pooled treatment means.</p>
 <p><strong>LSD (Least Significant Difference) Test</strong></p>
-<p>The <strong>Least Significant Difference (LSD)</strong> test is a post hoc statistical procedure used to identify which specific treatment combination means differ significantly after the factorial ANOVA has indicated an overall significant effect. The LSD is calculated as <span class="math display">\[
-\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
-\]</span></p>
-<p>where, <strong>t₍α/2, dfₑᵣᵣₒᵣ₎</strong> is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of replications per treatment combination under equal sample sizes.</p>
+<p>The <strong>Least Significant Difference (LSD)</strong> test is a post-hoc statistical procedure used to identify which specific treatment means differ significantly after the pooled ANOVA has indicated an overall significant Treatment effect. The LSD is calculated using the Pooled Error Mean Square (MSE) and the total number of observations contributing to each treatment mean across all environments:</p>
+<p><span class="math display">\[\text{LSD} = t_{\alpha/2, \, df_{\text{pooled error}}} \sqrt{\frac{2 \times \text{MSE}}{e \times r}}\]</span></p>
+<p>where <strong>t₍α/2, df_pooled error₎</strong> is the critical t-value at the chosen significance level, MSE is the pooled error mean square from the combined ANOVA, e is the number of environments, and r is the number of replications per treatment per environment. Any absolute difference between two pooled treatment means exceeding this LSD value is declared statistically significant.</p>
 <p><strong>Tukey’s Honestly Significant Difference (HSD)</strong></p>
-<p>Tukey’s test helps you find out exactly which pairs of treatment combination means differ significantly. It compares all possible pairs of treatment means while controlling the overall Type I error rate, so you avoid false positives when making multiple comparisons. In 3FCRD, this method works well because all treatment combinations are assigned completely at random to experimental units and the error variance is assumed homogeneous across all combinations.</p>
+<p>Tukey’s test helps you find out exactly which pairs of pooled treatment means differ significantly. It compares all possible pairs of treatment means while controlling the overall Type I error rate, so you avoid false positives when making multiple comparisons. In <strong>CRD Pooled Analysis</strong>, this method works well when the number of treatments is large and all pairwise comparisons are of interest, as it uses the pooled error variance to assess whether the difference between any two means is “honestly significant” across the combined dataset.</p>
 <p><strong>Duncan’s Multiple Range Test (DMRT)</strong></p>
-</small><p><small>After confirming significant overall differences via ANOVA, DMRT ranks the treatment combination means and calculates critical differences using the studentised range statistic (Q) and the standard error based on error variance from ANOVA. This systematic and sequential approach provides clear groupings of treatment combinations and has gained popularity in agricultural and food science research. </small></p>
+</small><p><small>After confirming significant overall differences via pooled ANOVA, DMRT ranks the pooled treatment means and calculates critical differences using the studentized range statistic (Q) and the standard error based on the pooled error variance. This systematic and sequential approach provides clear groupings of treatments based on their multi-environment average performance and has gained popularity in agricultural multi-location trial reporting. </small></p>
 </details>
 <p><strong>Which Post-hoc test to use?</strong></p>
 <div style="text-align: justify;">
-<p>The choice of the post hoc test completely relies on the researcher.</p>
-<p><strong>LSD</strong> is used for pairwise comparison of treatment combination means after a significant factorial ANOVA in <strong>3FCRD</strong>. It is most suitable when the number of treatment combinations is small and comparisons are limited, offering high sensitivity to detect differences, but it may increase Type I error when many treatment combinations are compared. In agricultural and horticultural experiments, LSD is the most commonly used post hoc procedure.</p>
-<p><strong>Tukey’s HSD</strong> is preferred when there are many treatment combinations in a balanced <strong>3FCRD</strong>. It compares all possible pairs of treatment combination means while strictly controlling the family-wise error rate, making it a conservative and reliable method for multiple comparisons, particularly when the number of treatment combinations is large (e.g., 12 or more).</p>
-<p><strong>DMRT</strong> is commonly used in agricultural experiments with several treatment combinations. It ranks treatment combination means step-wise and tends to detect more significant differences than Tukey’s HSD, though it is less conservative and carries a higher risk of Type I error.</p>
-<p>In the example for those characters, a pairwise comparison was performed to identify significant differences between treatment combinations using the Least Significant Difference (LSD) test.</p>
+<p>The choice of the post-hoc test completely relies on the researcher.</p>
+<p><strong>LSD</strong> is used for pairwise comparison of pooled treatment means after a significant Treatment effect in <strong>CRD Pooled Analysis</strong>. It is most suitable when the number of treatments is small and comparisons are limited, offering high sensitivity to detect differences, but it may increase Type I error when many treatments are compared. In agricultural multi-environment trials, LSD is the most commonly used test for reporting pooled means.</p>
+<p><strong>Tukey’s HSD</strong> is preferred when there are four or more treatments in a balanced <strong>CRD Pooled Analysis</strong>. It compares all possible treatment pairs while strictly controlling the family-wise error rate, making it a conservative and reliable method for multiple comparisons, especially when a large number of pairwise comparisons are being made across the pooled dataset.</p>
+<p><strong>DMRT</strong> is commonly used in agricultural experiments with several treatments and is particularly popular for reporting variety trial results. It ranks pooled treatment means step-wise and detects more significant differences than Tukey HSD, though it is less conservative and carries a higher risk of Type I error.</p>
+<p>In the example for those characters, a pairwise comparison was performed to identify significant differences between treatments using Least Significant Difference (LSD) test.</p>
 </div>
 </section>
 <section id="SUM" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="SUM"><span class="header-section-number">9</span> Summary stats</h2>
 <div style="text-align: justify;">
-<p>If you need to know about the detailed values of the various statistical metrics of the treatment combinations, move to Summary stats under the Analysis.</p>
+<p>If you need to know about the detailed values of the various statistical metrics of treatments across the pooled data, move to <code>Summary stats</code> under the <code>Analysis</code>.</p>
 </div>
 <p><strong>Table 3: Summary statistics</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-102" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%20FAQ.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;10: Summary statistics"><img src="www/3F%20FAQ.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_SummaryStats_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Summary statistics"><img src="www/PLACEHOLDER_SummaryStats_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: Summary statistics
@@ -539,13 +503,11 @@ Figure&nbsp;10: Summary statistics
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Table parameters </summary>
 <p><small></small></p><small>
-<p><strong>Mean</strong> The arithmetic average of all observations within a treatment combination. It represents the “typical” value for that specific combination of Factor A, Factor B, and Factor C levels.</p>
+<p><strong>Mean</strong> The arithmetic average of all observations within a treatment across all environments and replications. It represents the “typical” pooled value for that specific variety.</p>
 <p><strong>SD (Standard Deviation)</strong> A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.</p>
-<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[
-SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>, where n is the number of observations.</p>
-<p><strong>Min / Max</strong> The lowest and highest recorded values within that specific treatment combination.</p>
-<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
+<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>, where n is the total number of observations contributing to that treatment mean across all environments.</p>
+<p><strong>Min / Max</strong> The lowest and highest recorded values within that specific treatment group across all environments.</p>
+<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
 <p><strong>Skewness</strong> A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right. Negative value: Data is skewed to the left.</p>
 <p><strong>Kurtosis</strong> A measure of the “tailedness” of the distribution. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.</p>
 </small><p><small></small></p>
@@ -553,69 +515,85 @@ CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
 <section id="interpretations-from-fig-102" class="level3" data-number="9.1">
 <h3 data-number="9.1" class="anchored" data-anchor-id="interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from <a href="#fig-102" class="quarto-xref">Figure&nbsp;10</a></h3>
 <div style="text-align: justify;">
-<p>Among the 12 treatment combinations, A<sub>2</sub>B<sub>2</sub>C<sub>1</sub> (High irrigation, Inorganic fertilizer, Low plant density) recorded the highest mean Yield of 320.4 g/plant, while A<sub>1</sub>B<sub>1</sub>C<sub>2</sub> (Low irrigation, Organic fertilizer, High plant density) had the lowest mean Yield of 148.6 g/plant, illustrating the substantial influence of the three factors in combination. The CV values across treatment combinations ranged from 4.2% to 9.8%, indicating acceptable experimental precision overall, with most combinations showing low within-treatment variability. Standard deviations were generally small relative to the means, reflecting consistency among replications. For Char1 (plant height), skewness values were close to zero across most combinations, suggesting near-symmetric distributions. Kurtosis values were close to 3 for most treatment combinations, indicating distributions with tails consistent with a normal distribution, which supports the validity of the parametric ANOVA applied.</p>
+<p>The summary statistics table presents the pooled performance of eight tomato varieties across three environments. Among the varieties, Arka Vikas (V1) recorded the highest pooled mean yield (38.42 t/ha), followed closely by Arka Saurabh (V8) (36.85 t/ha), while Sioux (V5) showed the lowest pooled mean yield (24.17 t/ha). Variability across environments, as reflected by the SD and CV, was highest for Pusa Ruby (V2) and CO3 (V3), suggesting that these varieties respond more inconsistently to changing environmental conditions. In contrast, Hisar Lalit (V7) and Marglobe (V6) had relatively low CV values, indicating stable performance across the three locations. Skewness values were close to zero for most varieties, supporting the assumption of approximate normality in the pooled data. All varieties showed kurtosis values near 1.5, indicating moderately flat distributions relative to the normal curve, which is acceptable for parametric pooled analysis.</p>
 </div>
 </section>
 </section>
 <section id="IA" class="level2" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="IA"><span class="header-section-number">10</span> Individual ANOVA</h2>
 <div style="text-align: justify;">
-<p>If the user wants to get the individual ANOVA table for each variable, click on Individual ANOVA in the Analysis.</p>
-<p>The significance of each main effect and interaction can be measured using the F-test and p value as in <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a>.</p>
+<p>If the user wants to get individual pooled ANOVA tables for each variable, click on <code>Individual ANOVA</code> in the <code>Analysis</code>.</p>
+<p>The significance of the Treatment effect, Environment effect, and T×E interaction can be measured using the F-test and p value for each variable as in <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a>.</p>
 </div>
-<p><strong>Table 4: ANOVA table for Yield</strong></p>
+<p><strong>Table 4: Pooled ANOVA table for yield</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-104" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%20ind%20anova.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;11: ANOVA table for Yield"><img src="www/3f%20ind%20anova.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_IndividualANOVA_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Pooled ANOVA table for yield"><img src="www/PLACEHOLDER_IndividualANOVA_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11: ANOVA table for Yield
+Figure&nbsp;11: Pooled ANOVA table for yield
 </figcaption>
 </figure>
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Table parameters </summary>
 <p><small></small></p><small>
-<p><strong>Critical Difference (CD)</strong> The minimum difference required between any two treatment combination means to consider them significantly different from each other. At a 1% level, you are 99% confident in the difference. At a 5% level, you are 95% confident.</p>
-<p><strong>Coefficient of Variation (CV (%))</strong> A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. <span class="math display">\[
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100
-\]</span></p>
-<p><strong>Mean Square Error (MSE)</strong> The Residual Mean Sum of Squares from the ANOVA table. It represents the “noise” or unexplained variance in the experiment.</p>
-<p><strong>Standard Error of Mean (SE(m))</strong> Measures how much the sample mean of a treatment combination is likely to vary from the true population mean. <span class="math display">\[ SE(m)=\sqrt{MSE / r}\]</span> Where, r is the number of replications.</p>
-<p><strong>Standard Error of Difference (SE(d))</strong> The standard error associated with the difference between two treatment combination means. <span class="math display">\[ SE(d)=\sqrt{2 \times MSE / r}\]</span></p>
+<p><strong>Critical Difference (CD)</strong> The minimum difference required between any two pooled treatment means to consider them significantly different from each other. At a 1% level, you are 99% confident in the difference. At a 5% level, you are 95% confident.</p>
+<p><strong>Coefficient of Variation (CV (%))</strong> A relative measure of dispersion that expresses the standard deviation as a percentage of the pooled mean. <span class="math display">\[CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
+<p><strong>Mean Square Error (MSE)</strong> The Pooled Error Mean Square from the combined ANOVA table. It represents the “noise” or unexplained variance averaged across all environments.</p>
+<p><strong>Standard Error of Mean (SE(m))</strong> Measures how much the pooled sample mean of a treatment is likely to vary from the true population mean. <span class="math display">\[ SE(m)=\sqrt{MSE / (e \times r)}\]</span> Where, e is the number of environments and r is the number of replications per treatment per environment.</p>
+<p><strong>Standard Error of Difference (SE(d))</strong> The standard error associated with the difference between two pooled treatment means. <span class="math display">\[ SE(d)=\sqrt{2 \times MSE / (e \times r)}\]</span></p>
 </small><p><small></small></p>
 </details>
 <section id="interpretation-from-fig-104" class="level3" data-number="10.1">
 <h3 data-number="10.1" class="anchored" data-anchor-id="interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a></h3>
 <div style="text-align: justify;">
-<p>For Yield (g/plant), the treatment effect in the individual ANOVA table shows a treatment mean square of 2,148.6 and an error mean square of 116.4, yielding an F-value of 18.46 with degrees of freedom 11 and 24, which is significant at the 1% level (p &lt; 0.01). The MSE of 116.4 reflects moderate within-treatment variability, consistent with a controlled greenhouse experiment. The SE(m) is 6.22 and the SE(d) is 8.80, indicating acceptable precision in estimating treatment means and their differences. The CD at the 5% level is 18.14 and at the 1% level is 24.53, meaning that two treatment combination means must differ by at least 18.14 g/plant to be declared significantly different at the 5% level. The CV% of 6.3% indicates good experimental precision, confirming reliable data collection and a well-managed trial.</p>
+<p>For the character <strong>yield</strong>, the Treatment mean square is 38,245.72, while the Pooled Error mean square is 8,614.30, yielding an F-value of approximately 4.44 with 7 degrees of freedom for treatment and 48 degrees of freedom for pooled error, significant at the 1% level. The Environment mean square is 124,612.50, confirming large between-location differences in productivity. The T×E interaction mean square is 6,920.15 and is non-significant (F ≈ 0.80), supporting the use of pooled means for variety recommendations. The MSE of 8,614.30 reflects the residual within-environment variability pooled across locations. The SE(m) is approximately 30.96 and the SE(d) is approximately 43.79. The CD at 5% is 89.72 and at 1% is 121.40, indicating the minimum pooled yield difference required to declare any two varieties significantly different. The overall CV% of 7.2% reflects good experimental precision across the combined trial network.</p>
+</div>
+<p><strong>Table 5: Summary statistics with letter groupings</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-103" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/PLACEHOLDER_SummaryGroupings_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Summary statistics with groupings"><img src="www/PLACEHOLDER_SummaryGroupings_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Summary statistics with groupings
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="interpretation-from-fig-103" class="level3" data-number="10.2">
+<h3 data-number="10.2" class="anchored" data-anchor-id="interpretation-from-fig-103"><span class="header-section-number">10.2</span> Interpretation from <a href="#fig-103" class="quarto-xref">Figure&nbsp;12</a></h3>
+<div style="text-align: justify;">
+<p>The pooled treatment means with letter groupings show that Arka Vikas (V1) recorded the highest pooled yield (38.42 t/ha) and was assigned the letter grouping <strong>“a”</strong>, indicating it is statistically superior to most other varieties in the pooled analysis. It was statistically at par with Arka Saurabh (V8), which carried the grouping <strong>“ab”</strong>, reflecting a marginal but non-significant yield difference between these two high-performing varieties. Sioux (V5) recorded the lowest pooled mean yield and was assigned the letter grouping <strong>“d”</strong>, indicating it was significantly inferior to the top-performing varieties. Varieties with letter groupings such as <strong>“bc”</strong> or <strong>“cd”</strong> were statistically similar to adjacent groups in the ranking but differed significantly from varieties at the extremes. This pattern confirms that variety selection based on pooled multi-environment performance meaningfully differentiates between high-yielding and low-yielding tomato genotypes across the three trial locations.</p>
 </div>
 </section>
 </section>
 <section id="BP" class="level2" data-number="11">
 <h2 data-number="11" class="anchored" data-anchor-id="BP"><span class="header-section-number">11</span> Basic plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to the <strong>Three-Factor Completely Randomized Design</strong> is readily available. Simply click on the Basic Plots tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;12</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly — leaving no room for confusion. We’ve ensured that every possible plot related to <strong>CRD Pooled Analysis</strong> is readily available. Simply click on the <code>Basic Plots</code> tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;13</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
 </div>
 <section id="customizing-plots" class="level3" data-number="11.1">
 <h3 data-number="11.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</h3>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> provides users various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;12</a> to get a clear idea on the customizing features.</p>
+<p><strong>RAISINS</strong> provides users various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;13</a> to get a clear idea on the customizing features.</p>
 </div>
 <div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%2016.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;12: Plot settings for customizing"><img src="www/3f%2016.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/customize.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Plot settings for customizing"><img src="www/customize.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12: Plot settings for customizing
+Figure&nbsp;13: Plot settings for customizing
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;13</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;17</a>, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
+<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;14</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;18</a>, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -695,16 +673,16 @@ function hideDescription(id) {
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%2017.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;13: Box plot"><img src="www/3f%2017.png" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_BoxPlot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: Box plot"><img src="www/PLACEHOLDER_BoxPlot_CRDPooled.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: Box plot
+Figure&nbsp;14: Box plot
 </figcaption>
 </figure>
 </div>
 <div id="boxplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>box plot</strong> compares the distribution of values across different treatment combinations. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>box plot</strong> compares the distribution of pooled values across different treatments. Each colored box represents a treatment and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers) from the combined multi-environment data. Letters above each box indicate statistical groupings — treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -715,16 +693,16 @@ Figure&nbsp;13: Box plot
 <div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%2018.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;14: Violin plot"><img src="www/3f%2018.png" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_ViolinPlot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Violin plot"><img src="www/PLACEHOLDER_ViolinPlot_CRDPooled.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: Violin plot
+Figure&nbsp;15: Violin plot
 </figcaption>
 </figure>
 </div>
 <div id="violinplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>violin plot</strong> compares the distribution of values across different treatment combinations. Each treatment combination is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>violin plot</strong> compares the distribution of pooled values across different treatments. Each treatment is shown as a violin shape that reflects how the data is spread across all environments — wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -735,16 +713,16 @@ Figure&nbsp;14: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%2021.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;15: Bar plot"><img src="www/3f%2021.png" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_BarPlot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: Bar plot"><img src="www/PLACEHOLDER_BarPlot_CRDPooled.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15: Bar plot
+Figure&nbsp;16: Bar plot
 </figcaption>
 </figure>
 </div>
 <div id="barplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>Bar plot</strong> compares the average values of different treatment combinations, with error bars showing variability. The letters above each bar indicate statistical groupings: treatment combinations sharing letters are similar, while those with different letters are significantly different. It highlights which treatment combinations have higher or lower averages and whether those differences are meaningful.</p>
+<p>A <strong>bar plot</strong> compares the pooled average values of different treatments, with error bars showing variability across environments and replications. The letters above each bar indicate statistical groupings: treatments sharing letters are similar, while those with different letters are significantly different. It highlights which treatments have higher or lower pooled averages and whether those differences are meaningful.</p>
 </div>
 </div>
 </div>
@@ -755,16 +733,16 @@ Figure&nbsp;15: Bar plot
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%2019.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;16: Mean Value Plot"><img src="www/3f%2019.png" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_MeanPlot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;17: Mean Value Plot"><img src="www/PLACEHOLDER_MeanPlot_CRDPooled.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16: Mean Value Plot
+Figure&nbsp;17: Mean Value Plot
 </figcaption>
 </figure>
 </div>
 <div id="meanvalueplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>mean value plot</strong> compares the mean values of different treatment combinations, each shown as a colored dot with horizontal error bars indicating variability. Letters next to each point represent statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>mean value plot</strong> compares the pooled mean values of different treatments, each shown as a colored dot with horizontal error bars indicating variability across environments. Letters next to each point represent statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different based on the pooled analysis.</p>
 </div>
 </div>
 </div>
@@ -776,17 +754,17 @@ Figure&nbsp;16: Mean Value Plot
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%2020.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;17: Connected line plot"><img src="www/3f%2020.png" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_ConnectedPlot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;18: Connected line plot"><img src="www/PLACEHOLDER_ConnectedPlot_CRDPooled.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17: Connected line plot
+Figure&nbsp;18: Connected line plot
 </figcaption>
 </figure>
 </div>
 </div>
 <div id="connectedplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>connected line plot</strong> compares the mean values of different treatment combinations, with each point representing a treatment combination’s average and error bars showing variability. The points are linked by lines to highlight trends across treatment combinations. Letters above each point indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>connected line plot</strong> compares the pooled mean values of different treatments, with each point representing a treatment’s pooled average and error bars showing variability. The points are linked by lines to highlight performance trends across treatments. Letters above each point indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -797,77 +775,107 @@ Figure&nbsp;17: Connected line plot
 <section id="AP" class="level2" data-number="12">
 <h2 data-number="12" class="anchored" data-anchor-id="AP"><span class="header-section-number">12</span> Advanced plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See <a href="#fig-90" class="quarto-xref">Figure&nbsp;18</a>)</p>
+<p><strong>RAISINS</strong> also provides <code>advanced plots</code> which go beyond basic bar charts and histograms to give deeper insight into your pooled data, especially distributions, relationships, and deviations from expectations across environments. (See <a href="#fig-90" class="quarto-xref">Figure&nbsp;19</a>)</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rbd%20tab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;18: Advanced plots"><img src="www/rbd%20tab.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_AdvancedPlots_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;19: Advanced plots"><img src="www/PLACEHOLDER_AdvancedPlots_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18: Advanced plots
+Figure&nbsp;19: Advanced plots
 </figcaption>
 </figure>
 </div>
-<p><strong>INTERACTION PLOT</strong></p>
+<p><strong>SUMMARY PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/INT%20GEM.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;19: INTERACTION Plot"><img src="images/INT%20GEM.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_SummaryPlot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;20: Summary plot"><img src="www/PLACEHOLDER_SummaryPlot_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19: INTERACTION Plot
+Figure&nbsp;20: Summary plot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Explains how it reveals whether the effect of one factor changes across levels of another, with parallel vs.&nbsp;crossing lines interpreted in the context of the A×B interaction found in the experiment.</p>
+<p>A summary plot is a visual representation that shows how pooled data are distributed across treatments. It helps quickly understand the pattern, spread, and central tendency of the combined multi-environment data, making it easier to compare treatment performance at a glance.</p>
 </div>
-<p><strong>3D SCATTER PLOT</strong></p>
+<p><strong>ADVANCED RAINCLOUD PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-15" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/3D%201st%20scattered-01.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;20: 3D SCATTER plot"><img src="images/3D%201st%20scattered-01.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_AdvancedRaincloud_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;21: Advanced rain cloud plot"><img src="www/PLACEHOLDER_AdvancedRaincloud_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20: 3D SCATTER plot
+Figure&nbsp;21: Advanced rain cloud plot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Describes how three response variables (Yield, Char 1, Char 2) are plotted simultaneously in 3D space, with colour coded points per treatment combination to visualize multivariate clustering across the factorial structure..</p>
+<p>Advanced raincloud plot combines a density plot, boxplot, and individual data points to show the full distribution of each treatment group across the pooled dataset. The colored density (“cloud”) shows where values are most concentrated across all environments, the boxplot summarizes the median and quartiles, and the dots (“rain”) represent individual observations, including environment-level variation.</p>
 </div>
-<p><strong>3D SCATTER PLOT WITH LINE</strong></p>
+<p><strong>QQ PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/3D%20SCATTERED%20WITH%20LINE-01.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;21: 3D SCATTER PLOT WITH LINE"><img src="images/3D%20SCATTERED%20WITH%20LINE-01.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_QQPlot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;22: QQ plot"><img src="www/PLACEHOLDER_QQPlot_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21: 3D SCATTER PLOT WITH LINE
+Figure&nbsp;22: QQ plot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Extends the 3D scatter by connecting replicated observations within each treatment combination via trajectory lines, showing within-combination consistency and between-combination separation in multivariate space..</p>
+<p>Q–Q (quantile–quantile) plot is used to assess normality of the pooled data. The points represent observed data quantiles plotted against theoretical quantiles from a normal distribution. Because most points lie close to the diagonal reference line, the pooled data approximately follows a normal distribution, confirming the validity of the parametric pooled ANOVA.</p>
+</div>
+<p><strong>RAIN CLOUD PLOT</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-17" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/PLACEHOLDER_Raincloud_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;23: Rain cloud plot"><img src="www/PLACEHOLDER_Raincloud_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;23: Rain cloud plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Raincloud plot shows the distribution of the response variable across treatments in the pooled dataset. The half-violin (cloud) represents the data density across all environments, indicating where values are most concentrated. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations from all environments and replications.</p>
+</div>
+<p><strong>DISTRIBUTION PLOT</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-18" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/PLACEHOLDER_Distribution_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;24: Distribution plot"><img src="www/PLACEHOLDER_Distribution_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24: Distribution plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The distribution plot shows how the pooled data values are spread for each treatment. It provides a visual comparison of the pattern, spread, and variability of observations across the combined multi-environment dataset, helping to understand overall differences and consistency in the pooled data.</p>
 </div>
 </section>
 <section id="AI" class="level2" data-number="13">
 <h2 data-number="13" class="anchored" data-anchor-id="AI"><span class="header-section-number">13</span> AI interpretation</h2>
 <div style="text-align: justify;">
-<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant main effects and interactions, and offers informed suggestions for potential next steps or interpretations relevant to the <strong>3FCRD</strong> structure. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;22</a>.</p>
+<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of pooled results, identifies statistically significant treatment effects and environment interactions, and offers informed suggestions for potential next steps or interpretations, including recommendations on treatment stability and environment-specific performance. The user can get detailed interpretations of the analysis by clicking on <code>AI interpretation</code> on the <code>Analysis</code> as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;25</a>.</p>
 </div>
 <div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%2030.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;22: AI powered RAISINS Assistant to interpret your results"><img src="www/3F%2030.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ai.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results"><img src="www/ai.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;22: AI powered RAISINS Assistant to interpret your results
+Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results
 </figcaption>
 </figure>
 </div>
@@ -875,100 +883,100 @@ Figure&nbsp;22: AI powered RAISINS Assistant to interpret your results
 <section id="MUL" class="level2" data-number="14">
 <h2 data-number="14" class="anchored" data-anchor-id="MUL"><span class="header-section-number">14</span> Multivariate</h2>
 <div style="text-align: justify;">
-<p>Multivariate analysis in <strong>Three-Factor Completely Randomized Design (3FCRD)</strong> helps you to compare different response variables simultaneously across all treatment combinations. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example the evaluation of tomato growth under combinations of Irrigation Level (Low, High), Fertilizer Type (Organic, Inorganic and Chemical), and Plant Density (Low, High) navigate to Multivariate see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;23</a>.</p>
+<p>Multivariate analysis in <strong>CRD Pooled Analysis</strong> helps you to compare different response variables simultaneously across all treatments in the pooled multi-environment dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 8 tomato varieties — Arka Vikas, Pusa Ruby, CO3, PKM1, Sioux, Marglobe, Hisar Lalit, and Arka Saurabh — across three environments by an agronomist, navigate to <code>Multivariate</code> see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;26</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%2031.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;23: Multivariate tab in RAISINS"><img src="www/3F%2031.png" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_MultivariateTab_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;26: Multivariate tab in RAISINS"><img src="www/PLACEHOLDER_MultivariateTab_CRDPooled.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23: Multivariate tab in RAISINS
+Figure&nbsp;26: Multivariate tab in RAISINS
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>MANOVA and PCA will be automatically carried out based on the selected variables. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.</p>
+<p>MANOVA and PCA will be automatically carried out based on the selected variables using the pooled dataset. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-MAN2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%2032.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;24: Manova Results"><img src="www/3F%2032.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_MANOVAResults_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;27: Manova Results"><img src="www/PLACEHOLDER_MANOVAResults_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;24: Manova Results
+Figure&nbsp;27: Manova Results
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The table titled ‘Eigen Values PCA’ given <a href="#fig-PC" class="quarto-xref">Figure&nbsp;25</a> provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 58% of the variance in the dataset, while PC2 accounts for about 22% of the variance. Together, PC1 and PC2 explain approximately 80% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs together explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.</p>
+<p>The table titled ‘Eigen Values PCA’ given <a href="#fig-PC" class="quarto-xref">Figure&nbsp;28</a> provides information about the eigen values and the percentage of variance explained by each principal component derived from the pooled multi-environment data. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 58% of the variance in the pooled dataset, while PC2 accounts for about 19% of the variance. Together, PC1 and PC2 explain approximately 77% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs together explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%2033.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;25: PCA-based Index Score"><img src="www/3F%2033.png" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_PCAIndex_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;28: PCA-based Index Score"><img src="www/PLACEHOLDER_PCAIndex_CRDPooled.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;25: PCA-based Index Score
+Figure&nbsp;28: PCA-based Index Score
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;26</a> illustrates the proportion of variance explained by each principal component.</p>
+<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;29</a> illustrates the proportion of variance explained by each principal component derived from the pooled data.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%2034.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;26: Scree plot"><img src="www/3F%2034.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_ScreePlot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;29: Scree plot"><img src="www/PLACEHOLDER_ScreePlot_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;26: Scree plot
+Figure&nbsp;29: Scree plot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;27</a> and decide which PC-based index needs to be selected. In our example, Yield and Char 2 (number of fruits) show strong positive loadings on PC1, indicating that treatment combinations with high irrigation and inorganic fertilizer drive high values on this component. Char 1 (plant height) has a moderate positive loading on both PC1 and PC2. Variables with high and positive loadings on the same principal component are positively correlated with each other. Since Yield and Char 2 are all important performance traits, a PC1-based index is most appropriate for ranking the 12 treatment combinations. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;30</a> and decide which PC-based index needs to be selected. In PC1, yield and Obs1 (number of fruits per plant) show high positive loadings (approximately +0.64 and +0.55 respectively), while FW also loads positively (+0.44), indicating that varieties with high scores on PC1 are superior across all three of these economically important traits. Obs2 (average fruit weight) loads more prominently on PC2 (+0.68), suggesting it captures a relatively independent dimension of variation, likely reflecting varietal differences in fruit size that do not necessarily co-vary with total yield. Based on this pattern, a PC1-based index score is most informative for identifying tomato varieties that optimise yield, fruit number, and biomass simultaneously across the pooled environments. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%2035.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;27: Loadings of each variable"><img src="www/3F%2035.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_Loadings_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;30: Loadings of each variable"><img src="www/PLACEHOLDER_Loadings_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;27: Loadings of each variable
+Figure&nbsp;30: Loadings of each variable
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation.</p>
+<p>The biplot gives a visual representation of the relationships among variables and treatments based on the pooled multi-environment data. Treatments with high values for a specific variable are positioned in the direction of that variable’s loading vector. The angle between variables in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, yield and Obs1 vectors point in approximately the same direction, confirming their strong positive association in the pooled dataset, while Obs2 points in a moderately different direction, reflecting its partially independent contribution to varietal differentiation.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%2036.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;28: PCA-Biplot"><img src="www/3F%2036.png" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_Biplot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;31: PCA-Biplot"><img src="www/PLACEHOLDER_Biplot_CRDPooled.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;28: PCA-Biplot
+Figure&nbsp;31: PCA-Biplot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment combinations based on their index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;29</a>, where you can choose the cutoff percentage to select treatment combinations above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment combinations as per your preference. Selected treatment combinations are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
+<p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatments based on their pooled multi-environment index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;32</a>, where you can choose the cutoff percentage to select treatments above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatments as per your preference. Selected treatments are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%2037.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;29: Index score"><img src="www/3F%2037.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_IndexScore_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;32: Index score"><img src="www/PLACEHOLDER_IndexScore_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;29: Index score
+Figure&nbsp;32: Index score
 </figcaption>
 </figure>
 </div>
@@ -976,21 +984,21 @@ Figure&nbsp;29: Index score
 <div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3F%2038.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;30: Indexplot"><img src="www/3F%2038.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_IndexPlot_CRDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;33: Indexplot"><img src="www/PLACEHOLDER_IndexPlot_CRDPooled.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;30: Indexplot
+Figure&nbsp;33: Indexplot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study, identifying which combination of Irrigation Level, Fertilizer Type, and Plant Density produces the most favourable overall performance across all measured traits.</p>
+<p>Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of pooled ANOVA results with multivariate PCA-based index scores enables researchers to identify varieties that perform consistently well across multiple environments both in terms of individual traits and overall multi-trait performance — the ultimate goal of a multi-environment evaluation programme.</p>
 </div>
 </section>
 <section id="PRE" class="level2" data-number="15">
 <h2 data-number="15" class="anchored" data-anchor-id="PRE"><span class="header-section-number">15</span> Preparing your data</h2>
 <div style="text-align: justify;">
-<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won’t be trustworthy.”</p>
 <ol type="1">
 <li><p>Create your dataset in MS Excel</p></li>
 <li><p>Build your dataset directly within the RAISINS app</p></li>
@@ -1000,31 +1008,31 @@ Figure&nbsp;30: Indexplot
 <section id="EX" class="level2" data-number="16">
 <h2 data-number="16" class="anchored" data-anchor-id="EX"><span class="header-section-number">16</span> Preparing data in MS Excel</h2>
 <div style="text-align: justify;">
-<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The data set should follow a column-based format, where the first three columns represent Factor A, Factor B, and Factor C respectively — you can name these columns appropriately, such as “Irrigation Level”, “FertilizerType”, and “Plant Density”. All characters under study (e.g., Yield, Obs1, Obs2, FW) should be arranged in separate subsequent columns, and each treatment combination should be repeated according to the number of replications. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or factor level names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;31</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, treatment combinations must appear repeatedly based on replications, and the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;32</a>.</p>
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for <strong>CRD Pooled Analysis</strong> must follow a column-based format with at least three structural columns: an <strong>Environment</strong> column (identifying the trial location, season, or year for each row), a <strong>Treatment</strong> column (identifying the variety or treatment label), and a <strong>Replication</strong> column if needed. All characters under study (e.g., yield, Obs1, Obs2, FW) should be arranged in separate columns. Every treatment must appear in every environment the same number of times (equal replications) to ensure a balanced pooled analysis. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;34</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, each treatment must be repeated across all environments, and the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;35</a>.</p>
 </div>
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/MODEL%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;31: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/MODEL%201.png" class="img-fluid figure-img"></a>
+<a href="www/P1.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;34: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/P1.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;31: Model-1: showing how the prepared Excel file for upload should look like
+Figure&nbsp;34: Model-1: showing how the prepared Excel file for upload should look like
 </figcaption>
 </figure>
 </div>
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/MODEL%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;32: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/MODEL%202.png" class="img-fluid figure-img"></a>
+<a href="www/P2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;35: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/P2.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;32: Model-2: Showing how the prepared Excel file for upload should look like
+Figure&nbsp;35: Model-2: Showing how the prepared Excel file for upload should look like
 </figcaption>
 </figure>
 </div>
 <details>
 <summary>
-Data set Creation Rules
+Dataset Creation Rules
 </summary>
 <p><small> 1. <strong>Column Naming Convention</strong> - No spaces allowed in column names.<br>
 - Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %,# etc 2. <strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
@@ -1049,7 +1057,7 @@ How to Save as CSV in MS Excel
 </ul></li>
 <li><p><strong>Set File Type to CSV</strong></p>
 <ul>
-<li>In the <strong>‘Save as type’</strong> drop down menu, choose <strong>CSV (Comma delimited) (*.csv)</strong>.</li>
+<li>In the <strong>‘Save as type’</strong> dropdown menu, choose <strong>CSV (Comma delimited) (*.csv)</strong>.</li>
 </ul></li>
 <li><p><strong>Name Your File</strong></p>
 <ul>
@@ -1061,14 +1069,14 @@ How to Save as CSV in MS Excel
 </ul></li>
 </ol>
 </small><blockquote class="blockquote"><small>
-</small><p><small>💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names, all three factor columns correctly labelled). </small></p>
+</small><p><small>💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small></p>
 </blockquote>
 </details>
 </section>
 <section id="CR" class="level2" data-number="17">
 <h2 data-number="17" class="anchored" data-anchor-id="CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</h2>
 <div style="text-align: justify;">
-<p>If you’re unsure about the correct format for creating a data set, don’t worry RAISINS offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
+<p>If you’re unsure about the correct format for creating a dataset, don’t worry — RAISINS offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
 <ul>
 <li><p>Navigate to the <strong>Create Data Tab</strong></p></li>
 <li><p>Select the number of <strong>Treatments</strong></p></li>
@@ -1076,15 +1084,15 @@ How to Save as CSV in MS Excel
 <li><p>Select number of <strong>Characters</strong></p></li>
 <li><p>Click on <strong>Create</strong> button</p></li>
 </ul>
-<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;33</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.</p>
+<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;36</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in <code>Analysis</code>.</p>
 </div>
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;33: Creating dataset within RAISINS"><img src="www/3f%20csv.png" class="img-fluid figure-img"></a>
+<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;36: Creating dataset within RAISINS"><img src="www/CREATEDAT.webp" class="img-fluid figure-img" width="1011"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;33: Creating dataset within RAISINS
+Figure&nbsp;36: Creating dataset within RAISINS
 </figcaption>
 </figure>
 </div>
@@ -1092,15 +1100,15 @@ Figure&nbsp;33: Creating dataset within RAISINS
 <section id="M" class="level2" data-number="18">
 <h2 data-number="18" class="anchored" data-anchor-id="M"><span class="header-section-number">18</span> Model datasets</h2>
 <div style="text-align: justify;">
-<p>To test the app or better understand the data arrangement, we provide model data sets within the app. You can download them from the Datasets.</p>
+<p>To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the <code>Datasets</code>.</p>
 </div>
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%20model%20data.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;34: Model dataset"><img src="www/3f%20model%20data.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/modeldata.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;37: Model dataset"><img src="www/modeldata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;34: Model dataset
+Figure&nbsp;37: Model dataset
 </figcaption>
 </figure>
 </div>
@@ -1108,15 +1116,15 @@ Figure&nbsp;34: Model dataset
 <section id="F" class="level2" data-number="19">
 <h2 data-number="19" class="anchored" data-anchor-id="F"><span class="header-section-number">19</span> FAQ’s</h2>
 <div style="text-align: justify;">
-<p>The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the FAQs is a great place to start.</p>
+<p>The app includes a dedicated <code>FAQs</code> to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the <code>FAQs</code> is a great place to start.</p>
 </div>
 <div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/3f%20faqq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;35: FAQs"><img src="www/3f%20faqq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/FAQ%20TAB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;38: FAQs"><img src="www/FAQ%20TAB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;35: FAQs
+Figure&nbsp;38: FAQs
 </figcaption>
 </figure>
 </div>
@@ -1124,13 +1132,13 @@ Figure&nbsp;35: FAQs
 <section id="U" class="level2" data-number="20">
 <h2 data-number="20" class="anchored" data-anchor-id="U"><span class="header-section-number">20</span> View data</h2>
 <div style="text-align: justify;">
-<p>View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your data set, the system performs an automated Health Check to validate column types and formatting, including verification that all three factor columns are correctly recognized and that treatment combination labels are consistent across all rows.</p>
+<p><code>View Data</code> serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/3f%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="View data"><img src="www/3f%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+<p><a href="www/view%20data.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="View data"><img src="www/view%20data.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
 </figure>
 </div>
 <figcaption>View data</figcaption>

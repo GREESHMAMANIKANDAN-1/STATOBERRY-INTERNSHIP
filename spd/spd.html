@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Split Plot Design (SPD)</title>
+<title>Split Plot Design</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -26,21 +29,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="spd_files/libs/clipboard/clipboard.min.js"></script>
 <script src="spd_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="spd_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/popper.min.js"></script>
 <script src="spd_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="spd_files/libs/quarto-html/anchor.min.js"></script>
 <link href="spd_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="spd_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="spd_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="spd_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="spd_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="spd_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="spd_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="spd_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -84,7 +86,7 @@ window.Quarto = {
   <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Split Plot Design (SPD)</a></li>
   <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
   <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
-  <li><a href="#sec-5" id="toc-sec-5" class="nav-link" data-scroll-target="#sec-5"><span class="header-section-number">5</span> SPD analysis tab explained</a></li>
+  <li><a href="#sec-5" id="toc-sec-5" class="nav-link" data-scroll-target="#sec-5"><span class="header-section-number">5</span> Split Plot Design analysis tab explained</a></li>
   <li><a href="#sec-6" id="toc-sec-6" class="nav-link" data-scroll-target="#sec-6"><span class="header-section-number">6</span> Transformation</a></li>
   <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">7</span> Analysis results</a>
   <ul class="collapse">
@@ -112,7 +114,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Split Plot Design (SPD)</h1>
+<h1 class="title">Split Plot Design</h1>
 </div>
 
 
@@ -141,7 +143,7 @@ window.Quarto = {
  }
 </style>
 <div class="affiliations">
-<p><sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
+<p><sup>1</sup>Statoberry LLP, <sup>2</sup> Department of Agricultural Statistics, Kerala Agricultural University</p>
 </div>
 <p>ABSTRACT</p>
 <div style="text-align: justify;">
@@ -188,7 +190,7 @@ window.Quarto = {
 }
 </style>
 <ul>
-<small> The concept of the <strong>Split Plot Design (SPD)</strong> originated in the early twentieth century within the fertile intellectual environment of <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> at the Rothamsted Experimental Station in England. As agricultural researchers began investigating experiments involving two factors simultaneously - such as irrigation methods and crop varieties -it became clear that certain factors (like large-scale tillage or irrigation treatments) could not be practically randomised at the same level as more manageable subplot factors (like seed rates or fertilizer doses). Fisher and his colleagues formalised the split plot framework, in which the experimental area is first divided into larger units called main plots, to which the levels of the first factor (Factor A) are randomly assigned. Each main plot is then subdivided into smaller sub-plots, within which the levels of the second factor (Factor B) are independently randomised. The fundamental statistical insight behind SPD is that two separate error terms emerge naturally from this structure -the main plot error, which captures the variability between main plots within replications, and the sub-plot error, which captures the residual variability within sub-plots after fitting main plot, sub-plot, and interaction effects. Because the sub-plot error is typically smaller than the main plot error, SPD achieves higher precision for sub-plot and interaction comparisons than for main plot comparisons. This asymmetric precision is both its defining strength and a critical consideration in the interpretation of results. The design became foundational to experimental statistics in agronomy, horticulture, and plant breeding, where the practical constraints of field experimentation naturally lead to hierarchical plot structures. </small>
+<small> The concept of the <strong>Split Plot Design (SPD)</strong> originated in the early twentieth century within the fertile intellectual environment of <strong>Ronald A. Fisher</strong> at the Rothamsted Experimental Station in England. As agricultural researchers began investigating experiments involving two factors simultaneously - such as irrigation methods and crop varieties -it became clear that certain factors (like large-scale tillage or irrigation treatments) could not be practically randomised at the same level as more manageable subplot factors (like seed rates or fertilizer doses). Fisher and his colleagues formalised the split plot framework, in which the experimental area is first divided into larger units called main plots, to which the levels of the first factor (Factor A) are randomly assigned. Each main plot is then subdivided into smaller sub-plots, within which the levels of the second factor (Factor B) are independently randomised. The fundamental statistical insight behind SPD is that two separate error terms emerge naturally from this structure -the main plot error, which captures the variability between main plots within replications, and the sub-plot error, which captures the residual variability within sub-plots after fitting main plot, sub-plot, and interaction effects. Because the sub-plot error is typically smaller than the main plot error, SPD achieves higher precision for sub-plot and interaction comparisons than for main plot comparisons. This asymmetric precision is both its defining strength and a critical consideration in the interpretation of results. The design became foundational to experimental statistics in agronomy, horticulture, and plant breeding, where the practical constraints of field experimentation naturally lead to hierarchical plot structures. </small>
 </ul>
 </details>
 <section id="AE" class="level2" data-number="1">
@@ -249,15 +251,15 @@ Figure&nbsp;2: SPD Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
-<p>To make things simple and interesting, we’ll explain SPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment designed to study the effect of irrigation method and nitrogen fertilizer dose on rice. The main plot factor is Irrigation method, with two levels: M1 (Drip irrigation) and M2 (Flood irrigation). The sub-plot factor is Nitrogen dose, with three levels: S1 (60 kg N/ha), S2 (90 kg N/ha), and S3 (120 kg N/ha). The experiment is laid out in 4 replications, giving a total of 2 × 3 × 4 = 24 experimental units. Observations were recorded for seven variables: Yield (tonnes per hectare), Char1 (plant height in cm), and Char2 (number of tillers per hill) Char3 (number of panicles per hill) Char4 (grain weight in gram) Char5 (biomass yield in t/ha ) Char6 (harvest index in %) . Our aim is to test whether the main plot factor, the sub-plot factor, and their interaction produce statistically significant differences using ANOVA. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To make things simple and interesting, we’ll explain Split Plot Design analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment designed to study the effect of irrigation method and nitrogen fertilizer dose on rice. The main plot factor is Irrigation method, with two levels: M1 (Drip irrigation) and M2 (Flood irrigation). The sub-plot factor is Nitrogen dose, with three levels: S1 (60 kg N/ha), S2 (90 kg N/ha), and S3 (120 kg N/ha). The experiment is laid out in 4 replications, giving a total of 2 × 3 × 4 = 24 experimental units. Observations were recorded for seven variables: Yield (tonnes per hectare), Char1 (plant height in cm), and Char2 (number of tillers per hill) Char3 (number of panicles per hill) Char4 (grain weight in gram) Char5 (biomass yield in t/ha ) Char6 (harvest index in %) . Our aim is to test whether the main plot factor, the sub-plot factor, and their interaction produce statistically significant differences using ANOVA. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
 </div>
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/split%20plot%20img-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset — Mainplot, Subplot, Replication, and response variables arranged in columns"><img src="images/split%20plot%20img-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/split%20plot%20img-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset Mainplot, Subplot, Replication, and response variables arranged in columns"><img src="images/split%20plot%20img-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Example dataset — Mainplot, Subplot, Replication, and response variables arranged in columns
+Figure&nbsp;3: Example dataset Mainplot, Subplot, Replication, and response variables arranged in columns
 </figcaption>
 </figure>
 </div>
@@ -273,7 +275,7 @@ Figure&nbsp;3: Example dataset — Mainplot, Subplot, Replication, and response 
 <div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/create%20dataset-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: SPD Layout"><img src="images/create%20dataset-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: SPD Layout"><img src="images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: SPD Layout
@@ -286,21 +288,21 @@ Figure&nbsp;4: SPD Layout
 </div>
 </section>
 <section id="sec-5" class="level2 T" data-number="5">
-<h2 class="T anchored" data-number="5" data-anchor-id="sec-5"><span class="header-section-number">5</span> SPD analysis tab explained</h2>
+<h2 class="T anchored" data-number="5" data-anchor-id="sec-5"><span class="header-section-number">5</span> Split Plot Design analysis tab explained</h2>
 <div style="text-align: justify;">
 <p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking browse in the sidebar of the analysis tab.when the file is uploaded option to select the Main plot,Sub plot,Replication and variables will appear.select the appropriate column representing the main ploy factor under main plot,the subplot factor under subplot and replication identifies as replication.then select the responsible variables you wish to analysis.once you click the Run analysis button, all relevant results and outputs appear instantly leaving no room for confusion.</p>
 </div>
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(3)-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(3)-02.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/ggg-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="images/ggg-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Analysis window explained
 </figcaption>
 </figure>
 </div>
-<p>For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>). Here, <strong>RAISINS</strong> provide inbuilt transformation option.</p>
+<p>For some data, when there are large number of zeros / discrete values / when the observed variables are not normally distributed, we need to do transformation on the dataset <a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>. Here, <strong>RAISINS</strong> provide inbuilt transformation option.</p>
 </section>
 <section id="sec-6" class="level2 T" data-number="6">
 <h2 class="T anchored" data-number="6" data-anchor-id="sec-6"><span class="header-section-number">6</span> Transformation</h2>
@@ -329,7 +331,7 @@ Figure&nbsp;6: Transformation options
 <section id="sec-7" class="level2 AR" data-number="7">
 <h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
-<p>Once your dataset is uploaded, click on Run Analysis and the <strong>Split Plot ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in a Split Plot Design partitions the total variation into components attributable to Replications, Main Plot factor (A), Main Plot Error (Error a), Sub-plot factor (B), the A×B Interaction, and Sub-plot Error (Error b). Critically, the F-test for the Main Plot factor uses the <strong>Main Plot Error</strong> as its denominator, while the F-tests for the Sub-plot factor and the Interaction use the <strong>Sub-plot Error</strong> as their denominator (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>).</p>
+<p>Once your dataset is uploaded, click on Run Analysis and the <strong>Split Plot ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in a Split Plot Design partitions the total variation into components attributable to Replications, Main Plot factor (A), Main Plot Error (Error a), Sub-plot factor (B), the A×B Interaction, and Sub-plot Error (Error b). Critically, the F-test for the Main Plot factor uses the <strong>Main Plot Error</strong> as its denominator, while the F-tests for the Sub-plot factor and the Interaction use the <strong>Sub-plot Error</strong> as their denominator see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>.</p>
 </div>
 <p><strong>Table 1 ANOVA summary</strong></p>
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -484,7 +486,7 @@ Figure&nbsp;8: Detailed tabular representation with multiple comparisons
 </ul>
 </details>
 <div style="text-align: justify;">
-<p>After obtaining a significant F-value in the SPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>). A key feature of SPD post-hoc comparisons is that <strong>different standard errors and critical differences apply</strong> depending on whether you are comparing main plot means, sub-plot means within the same main plot, sub-plot means across different main plots, or treatment combination means.</p>
+<p>After obtaining a significant F-value in the SPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>. A key feature of SPD post-hoc comparisons is that <strong>different standard errors and critical differences apply</strong> depending on whether you are comparing main plot means, sub-plot means within the same main plot, sub-plot means across different main plots, or treatment combination means.</p>
 </div>
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -523,7 +525,7 @@ Figure&nbsp;9: Multiple comparison test options explained
 <section id="BP" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="BP"><span class="header-section-number">9</span> Basic plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to the Split Plot Design is readily available. Simply click on the Basic Plot tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;10</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to the Split Plot Design is readily available. Simply click on the Basic Plot tab to view them See <a href="#fig-8" class="quarto-xref">Figure&nbsp;10</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
 </div>
 <section id="customizing-plots" class="level3" data-number="9.1">
 <h3 data-number="9.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</h3>
@@ -726,16 +728,26 @@ Figure&nbsp;15: Connected line plot
 <section id="AP" class="level2" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="AP"><span class="header-section-number">10</span> ADVANCED PLOT</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> also provides advanced plot which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See <a href="#fig-90" class="quarto-xref">Figure&nbsp;16</a>)</p>
+<p><strong>RAISINS</strong> also provides advanced plot which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. See <a href="#fig-90" class="quarto-xref">Figure&nbsp;16</a></p>
 </div>
 <div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-30%20115407.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;16: Advanced plots"><img src="images/Screenshot%202026-04-30%20115407.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;16: Advanced plots"><img src="images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: Advanced plots
 </figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/Screenshot%202026-04-30%20115407.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Advanced plots"><img src="images/Screenshot%202026-04-30%20115407.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Advanced plots"></a></p>
+</figure>
+</div>
+<figcaption>Advanced plots</figcaption>
 </figure>
 </div>
 <p><strong>PLOT WISE GRAPH</strong></p>
@@ -743,7 +755,7 @@ Figure&nbsp;16: Advanced plots
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/Screenshot%202026-04-28%20103846-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Plot Wise Graph"><img src="images/Screenshot%202026-04-28%20103846-02.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Plot Wise Graph"></a></p>
+<p><a href="images/Screenshot%202026-04-28%20103846-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Plot Wise Graph"><img src="images/Screenshot%202026-04-28%20103846-02.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Plot Wise Graph"></a></p>
 </figure>
 </div>
 <figcaption>Plot Wise Graph</figcaption>
@@ -755,7 +767,7 @@ Figure&nbsp;16: Advanced plots
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/Screenshot%202026-04-28%20110815.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Interaction plot"><img src="images/Screenshot%202026-04-28%20110815.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Interaction plot"></a></p>
+<p><a href="images/Screenshot%202026-04-28%20110815.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Interaction plot"><img src="images/Screenshot%202026-04-28%20110815.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Interaction plot"></a></p>
 </figure>
 </div>
 <figcaption>Interaction plot</figcaption>
@@ -766,7 +778,7 @@ Figure&nbsp;16: Advanced plots
 <div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/239.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;17: 3D Scatter plot"><img src="images/239.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/239.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;17: 3D Scatter plot"><img src="images/239.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: 3D Scatter plot
@@ -780,7 +792,7 @@ Figure&nbsp;17: 3D Scatter plot
 <div id="fig-17" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/scatter%20line%20plot.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;18: 3D Scatter plot with lines"><img src="images/scatter%20line%20plot.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/scatter%20line%20plot.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;18: 3D Scatter plot with lines"><img src="images/scatter%20line%20plot.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: 3D Scatter plot with lines
@@ -799,7 +811,7 @@ Figure&nbsp;18: 3D Scatter plot with lines
 <div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20111921.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;19: AI powered RAISINS Assistant to interpret your results"><img src="images/Screenshot%202026-04-28%20111921.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20111921.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;19: AI powered RAISINS Assistant to interpret your results"><img src="images/Screenshot%202026-04-28%20111921.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19: AI powered RAISINS Assistant to interpret your results
@@ -815,7 +827,7 @@ Figure&nbsp;19: AI powered RAISINS Assistant to interpret your results
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(5).png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;20: Multivariate tab in RAISINS"><img src="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(5).png" class="img-fluid figure-img"></a>
+<a href="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(5).png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;20: Multivariate tab in RAISINS"><img src="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(5).png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20: Multivariate tab in RAISINS
@@ -828,7 +840,7 @@ Figure&nbsp;20: Multivariate tab in RAISINS
 <div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20114144.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;21: PCA-based Index Score"><img src="images/Screenshot%202026-04-28%20114144.png" class="img-fluid figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20114144.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;21: PCA-based Index Score"><img src="images/Screenshot%202026-04-28%20114144.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21: PCA-based Index Score
@@ -841,7 +853,7 @@ Figure&nbsp;21: PCA-based Index Score
 <div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20112629-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;22: Scree plot"><img src="images/Screenshot%202026-04-28%20112629-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20112629-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;22: Scree plot"><img src="images/Screenshot%202026-04-28%20112629-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22: Scree plot
@@ -854,7 +866,7 @@ Figure&nbsp;22: Scree plot
 <div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20114144-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;23: Loadings of each variable"><img src="images/Screenshot%202026-04-28%20114144-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20114144-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;23: Loadings of each variable"><img src="images/Screenshot%202026-04-28%20114144-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23: Loadings of each variable
@@ -862,12 +874,12 @@ Figure&nbsp;23: Loadings of each variable
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable’s arrow. The angle between variable arrows in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. The biplot thus aids in identifying which treatment combinations perform well for which traits simultaneously, providing a holistic view of the SPD results across all measured variables.</p>
+<p>The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable’s arrow. The angle between variable arrows in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. The biplot thus aids in identifying which treatment combinations perform well for which traits simultaneously, providing a holistic view of the SPD results across all measured variables.</p>
 </div>
 <div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20112808-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;24: PCA-Biplot"><img src="images/Screenshot%202026-04-28%20112808-01.png" class="img-fluid figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20112808-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;24: PCA-Biplot"><img src="images/Screenshot%202026-04-28%20112808-01.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;24: PCA-Biplot
@@ -880,7 +892,7 @@ Figure&nbsp;24: PCA-Biplot
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20114639.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;25: "><img src="images/Screenshot%202026-04-28%20114639.png" id="fig-indexscore" class="img-fluid quarto-figure quarto-figure-center anchored figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20114639.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;25: "><img src="images/Screenshot%202026-04-28%20114639.png" id="fig-indexscore" class="img-fluid quarto-figure quarto-figure-center anchored figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;25
@@ -890,7 +902,7 @@ Figure&nbsp;25
 <div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-04-28%20114720.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;26: Index score and Index plot"><img src="images/Screenshot%202026-04-28%20114720.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Screenshot%202026-04-28%20114720.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;26: Index score and Index plot"><img src="images/Screenshot%202026-04-28%20114720.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;26: Index score and Index plot
@@ -904,7 +916,7 @@ Figure&nbsp;26: Index score and Index plot
 <section id="PRE" class="level2" data-number="13">
 <h2 data-number="13" class="anchored" data-anchor-id="PRE"><span class="header-section-number">13</span> Preparing your data</h2>
 <div style="text-align: justify;">
-<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won’t be trustworthy.”</p>
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
 <ol type="1">
 <li><p>Create your dataset in MS Excel</p></li>
 <li><p>Build your dataset directly within the RAISINS app</p></li>
@@ -920,7 +932,7 @@ Figure&nbsp;26: Index score and Index plot
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.25%20AM.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;27: Model-1: showing how the prepared Excel file for upload should look like"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.25%20AM.jpeg" class="img-fluid figure-img"></a>
+<a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.25%20AM.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;27: Model-1: showing how the prepared Excel file for upload should look like"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.25%20AM.jpeg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;27: Model-1: showing how the prepared Excel file for upload should look like
@@ -930,7 +942,7 @@ Figure&nbsp;27: Model-1: showing how the prepared Excel file for upload should l
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM%20(2).jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;28: Model-2: Showing how the prepared Excel file for upload should look like"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM%20(2).jpeg" class="img-fluid figure-img"></a>
+<a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM%20(2).jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;28: Model-2: Showing how the prepared Excel file for upload should look like"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM%20(2).jpeg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;28: Model-2: Showing how the prepared Excel file for upload should look like
@@ -997,10 +1009,10 @@ How to Save as CSV in MS Excel
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/create%20dataset.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;29: SPD Layout"><img src="images/create%20dataset.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;29: Create Dataset"><img src="images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;29: SPD Layout
+Figure&nbsp;29: Create Dataset
 </figcaption>
 </figure>
 </div>
@@ -1013,7 +1025,7 @@ Figure&nbsp;29: SPD Layout
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.23%20AM.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;30: Model dataset"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.23%20AM.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.23%20AM.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;30: Model dataset"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.23%20AM.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;30: Model dataset
@@ -1029,7 +1041,7 @@ Figure&nbsp;30: Model dataset
 <div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM%20(1).jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;31: FAQs"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM%20(1).jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM%20(1).jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;31: FAQs"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM%20(1).jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;31: FAQs
@@ -1044,7 +1056,7 @@ Figure&nbsp;31: FAQs
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM-02.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="View data"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM-02.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+<p><a href="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM-02.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="View data"><img src="images/WhatsApp%20Image%202026-04-28%20at%2011.49.24%20AM-02.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
 </figure>
 </div>
 <figcaption>View data</figcaption>

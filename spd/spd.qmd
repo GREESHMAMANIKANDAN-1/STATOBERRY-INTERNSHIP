@@ -152,7 +152,7 @@ Arranging data for uploading in **RAISINS** is very simple. Prepare your data ex
 
 Still if you have doubt, see @fig-4
 
-![SPD Layout](images/Copy of Copy of Red Modern Blank Page A4 Landscape.png){#fig-4 fig-align="center"}
+![SPD Layout](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape.png){#fig-4 fig-align="center"}
 
 To prepare your dataset for analysis in **RAISINS**, you have two options:
 
@@ -527,9 +527,7 @@ A **connected line plot** compares the mean values of treatment combinations, wi
 **RAISINS** also provides advanced plot which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. See @fig-90
 :::
 
-![Advanced plots](images/Copy of Copy of Red Modern Blank Page A4 Landscape (1).png){#fig-90 fig-align="center"}
-
-![Advanced plots](images/Screenshot%202026-04-30%20115407.png){fig-align="center"}
+![Advanced plots](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(1).png){#fig-90 fig-align="center"}
 
 **PLOT WISE GRAPH**
 
@@ -699,7 +697,7 @@ If you're unsure about the correct format for creating a dataset, don't worry RA
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
-![Create Dataset](images/Copy of Copy of Red Modern Blank Page A4 Landscape-01.png){#fig-createdata fig-align="center"}
+![Create Dataset](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape-01.png){#fig-createdata fig-align="center"}
 
 ## Model datasets {#M}
 

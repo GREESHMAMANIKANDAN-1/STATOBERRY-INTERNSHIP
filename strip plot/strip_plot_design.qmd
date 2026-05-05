@@ -96,7 +96,7 @@ ABSTRACT
 To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different experimental designs available on the platform. In this tutorial, we focus on **Strip Plot Design** , as shown in @fig-aov.
 :::
 
-![Analysis of experiment tab](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(8)-01.png){#fig-aov fig-align="center"}
+![Analysis of experiment tab](images/strip%201.png){#fig-aov fig-align="center"}
 
 ## Strip Plot Design (SPD) {#C}
 
@@ -156,7 +156,7 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](images/cereate-01.png){#fig-4 fig-align="center"}
+![Illustrating how to create a dataset](images/create%20strip.png){#fig-4 fig-align="center"}
 
 ## Strip Plot Design analysis tab explained {#AO}
 
@@ -164,7 +164,7 @@ Creating your dataset directly within the **RAISINS** app
 In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Horizontal Strip Factor (Factor A)**, **Vertical Strip Factor (Factor B)**, **Block**, and **Variables** will appear. Select the appropriate columns for each field. Once you click the Run Analysis button, all relevant results and outputs appear instantly, leaving no room for confusion.
 :::
 
-![Strip Plot Design analysis window explained](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape-01.png){#fig-5 fig-align="center"}
+![Strip Plot Design analysis window explained](images/multi.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 For some data, when there are large numbers of zeros, discrete values, or when the observed variables are not normally distributed, it may be necessary to apply a transformation to the dataset see @sec-6. **RAISINS** provides a built-in transformation option to handle such situations.
@@ -313,7 +313,7 @@ where $t_{\alpha, df_{E(a)}}$ is the critical t-value at significance level $\al
 **Duncan's Multiple Range Test (DMRT)** ranks treatment means in ascending or descending order and applies a step-wise critical range that increases with the number of steps between means being compared. It detects more significant differences than Tukey's HSD and is widely used in agricultural research, though it is less conservative and carries a somewhat higher risk of Type I error.
 :::
 
-![Multiple comparison results for Strip Plot Design](images/plot design.png){#fig-MCT fig-align="center"}
+![Multiple comparison results for Strip Plot Design](images/multi%202-01.png){#fig-MCT fig-align="center"}
 
 <details>
 
@@ -529,7 +529,7 @@ A **connected line plot** in strip plot design is used to display the relationsh
 In addition to the basic plots, **RAISINS** offers a suite of advanced visualisations accessible from the Advanced Plot tab. These plots provide deeper insight into the distributional properties of the data and the structure of treatment differences, complementing the ANOVA results with rich graphical summaries.
 :::
 
-![Connected line plot](images/WhatsApp%20Image%202026-04-30%20at%2012.31.14%20PM.jpeg)
+![Connected line plot](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(13)-05.png)
 
 **PLOT WISE GRAPH**
 
@@ -557,7 +557,7 @@ A **3D scatter plot** in strip plot design is used to visualize the relationship
 
 **3D SCATTER PLOT WITH LINES**
 
-![3D Scatter Plot With Lines](images/sstrip%20plott-03.gif){fig-align="center"}
+![3D Scatter Plot With Lines](images/Screen Recording 2026-05-05 103443-02.gif){fig-align="center"}
 
 ::: {style="text-align: justify;"}
 A **3D scatter plot** with lines in strip plot design is used to show the relationship among three variables along with the trend between them. Each point represents an observation or treatment combination in three-dimensional space (X, Y, and Z axes), and lines are added to connect points to highlight patterns or changes across levels of factors. It helps in visualizing how two factors together influence the response variable while also showing the direction and continuity of the data. This plot is useful for identifying trends, interactions, and overall structure of the experimental results in a clear visual form.
@@ -577,7 +577,7 @@ A **3D scatter plot** with lines in strip plot design is used to show the relati
 Multivariate analysis in Strip Plot Design (SPD) helps you to compare different response variables simultaneously, accounting for the correlations among traits. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example evaluation of irrigation levels (I1, I2, I3) crossed with rice varieties (IR64, Swarna, ADT45, Jyothi) for grain yield and related traits navigate to Multivariate see @fig-mu.
 :::
 
-![Multivariate tab in RAISINS](images/Screenshot 2026-04-30 220202.png){#fig-mu}
+![Multivariate tab in RAISINS](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(14)-01.png){#fig-mu}
 
 ::: {style="text-align: justify;"}
 The table titled 'Eigen Values PCA' given in @fig-PC provides information about the eigenvalues and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 58% of the variance in the dataset, while PC2 accounts for about 24% of the variance. Together, PC1 and PC2 explain approximately 82% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
@@ -717,7 +717,7 @@ To test the app or better understand the data arrangement, we provide model data
 The app includes a dedicated FAQs section to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQs is a great place to start.
 :::
 
-![FAQs](images/Screenshot 2026-04-30 220430.png){#fig-148 fig-align="center"}
+![FAQs](images/Screenshot%202026-04-30%20220430.png){#fig-148 fig-align="center"}
 
 ## View data {#U}
 

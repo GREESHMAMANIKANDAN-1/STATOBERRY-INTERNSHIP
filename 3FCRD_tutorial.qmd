@@ -160,7 +160,11 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
+<<<<<<< HEAD
 ![Illustrating how to create a dataset](images/3FCRD%20CSV%20FILE-01.jpg){#fig-4 fig-align="center"}
+=======
+![Illustrating how to create a dataset](www/3f%20csv.png){#fig-4 fig-align="center"}
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 ## 3FCRD analysis tab explained {#AO}
 
@@ -170,7 +174,11 @@ In @fig-5, you can see the detailed view of the Analysis tab, along with explana
 
 <!-- REPLACE THIS SCREENSHOT -->
 
+<<<<<<< HEAD
 ![](images/3FCRD%20TAB%20EXPLAINED%202.png){#fig-5 fig-align="center"}
+=======
+![](www/3F%202.png){#fig-5 fig-align="center"}
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 Analysis Tab explained
 
@@ -184,9 +192,13 @@ For some data, when there are large numbers of zeros, discrete values, or when t
 Log, square root, and arcsine transformations are often used in **3FCRD** analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
+<<<<<<< HEAD
 <!-- REPLACE THIS SCREENSHOT -->
 
 ![](images/3FCRD%20TTRANSFORMATION%20NEW-01.png){#fig-6 fig-align="center"}
+=======
+![Transformation options](www/3f%205.png){#fig-6 fig-align="center"}
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -201,7 +213,11 @@ Log, square root, and arcsine transformations are often used in **3FCRD** analys
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 Once your dataset is uploaded, click on Run Analysis, and a **factorial ANOVA** will be performed. Analysis of Variance **(ANOVA)** is a statistical technique used to test the significance of differences among population means by partitioning total variation into components attributable to Factor A, Factor B, Factor C, their two-way interactions (A×B, A×C, B×C), the three-way interaction (A×B×C), and experimental error, and comparing them using the F-test, see @fig-100.
+=======
+Once your dataset is uploaded, click on Run Analysis, and a **factorial ANOVA** will be performed. Analysis of Variance **(ANOVA)** is a statistical technique used to test the significance of differences among population means by partitioning total variation into components attributable to Factor A, Factor B, Factor C, their two-way interactions (A×B, A×C, B×C), the three-way interaction (A×B×C), and experimental error, and comparing them using the F-test (see @fig-100).
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 :::
 
 **Table 1 ANOVA summary**
@@ -226,7 +242,11 @@ Once your dataset is uploaded, click on Run Analysis, and a **factorial ANOVA** 
 In our hypothetical tomato experiment, the factorial ANOVA reveals that the main effect of Factor A (Irrigation Level) is highly significant (F = 18.42, df = 2 and 24, p \< 0.01), indicating that irrigation levels have a strong influence on fruit yield. Factor B (Fertilizer Type) is also significant (F = 9.17, df = 1 and 24, p \< 0.05), while Factor C (Plant Density) approaches significance (F = 4.63, df = 1 and 24, p \< 0.05). The A×B interaction is significant (F = 6.21, p \< 0.05), suggesting that the effect of fertilizer type depends on the irrigation level applied. The three-way interaction A×B×C, however, is non-significant (F = 1.84, p \> 0.05), indicating that the joint influence of all three factors combined does not produce an additional interaction beyond the two-way level. Since significant main effects and two-way interactions are present, post-hoc comparisons are appropriate and are discussed in @sec-8.
 :::
 
+<<<<<<< HEAD
 **Table 2:Factor A- Detailed tabular representation with multiple comparisons**
+=======
+**Table 2: Detailed tabular representation with multiple comparisons**
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 <!-- REPLACE THIS SCREENSHOT -->
 
@@ -318,12 +338,20 @@ The multiple comparison results for Yield (g/plant) reveal clear groupings among
 </details>
 
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 After obtaining a significant F-value in ANOVA under **3FCRD**, multiple comparison tests are employed to identify which treatment combination means differ significantly. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatment combinations and experimental conditions, see @fig-7.
+=======
+After obtaining a significant F-value in ANOVA under **3FCRD**, multiple comparison tests are employed to identify which treatment combination means differ significantly. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatment combinations and experimental conditions (see @fig-7).
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
+<<<<<<< HEAD
 ![Multiple comparison test options explained](images/3FCRD%20MULTI%20COMPARISON%202.png){#fig-7 fig-align="center"}
+=======
+![Multiple comparison test options explained](www/3f%2015.png){#fig-7 fig-align="center"}
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 <details>
 
@@ -337,7 +365,13 @@ When the factorial ANOVA in a **Three-Factor Completely Randomized Design (3FCRD
 
 **LSD (Least Significant Difference) Test**
 
+<<<<<<< HEAD
 The **Least Significant Difference (LSD)** test is a post hoc statistical procedure used to identify which specific treatment combination means differ significantly after the factorial ANOVA has indicated an overall significant effect. The LSD is calculated as $$\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}$$
+=======
+The **Least Significant Difference (LSD)** test is a post hoc statistical procedure used to identify which specific treatment combination means differ significantly after the factorial ANOVA has indicated an overall significant effect. The LSD is calculated as $$
+\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
+$$
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 where, **t₍α/2, dfₑᵣᵣₒᵣ₎** is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of replications per treatment combination under equal sample sizes.
 
@@ -389,11 +423,21 @@ If you need to know about the detailed values of the various statistical metrics
 
 **SD (Standard Deviation)** A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.
 
+<<<<<<< HEAD
 **SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as $$SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$, where n is the number of observations.
 
 **Min / Max** The lowest and highest recorded values within that specific treatment combination.
 
 **CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
+=======
+**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as $$
+SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$, where n is the number of observations.
+
+**Min / Max** The lowest and highest recorded values within that specific treatment combination.
+
+**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage $$
+CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 **Skewness** A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right. Negative value: Data is skewed to the left.
 
@@ -421,7 +465,11 @@ The significance of each main effect and interaction can be measured using the F
 
 <!-- REPLACE THIS SCREENSHOT -->
 
+<<<<<<< HEAD
 ![ANOVA table for Yield](images/3FCRD%20INDIVIDUAL%20ANOVA.png){#fig-104 fig-align="center"}
+=======
+![ANOVA table for Yield](www/3f%20ind%20anova.png){#fig-104 fig-align="center"}
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 <details>
 
@@ -433,7 +481,13 @@ The significance of each main effect and interaction can be measured using the F
 
 **Critical Difference (CD)** The minimum difference required between any two treatment combination means to consider them significantly different from each other. At a 1% level, you are 99% confident in the difference. At a 5% level, you are 95% confident.
 
+<<<<<<< HEAD
 **Coefficient of Variation (CV (%))** A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
+=======
+**Coefficient of Variation (CV (%))** A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. $$
+CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100
+$$
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 **Mean Square Error (MSE)** The Residual Mean Sum of Squares from the ANOVA table. It represents the "noise" or unexplained variance in the experiment.
 
@@ -454,7 +508,11 @@ For Yield (g/plant), the treatment effect in the individual ANOVA table shows a 
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 **RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to the **Three-Factor Completely Randomized Design** is readily available. Simply click on the Basic Plots tab to view them, see @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+=======
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to the **Three-Factor Completely Randomized Design** is readily available. Simply click on the Basic Plots tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 :::
 
 ### Customizing plots
@@ -555,7 +613,11 @@ function hideDescription(id) {
 
 :::: {#boxplot-desc .plot-description}
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 A **box plot** compares the distribution of values across different treatment combinations. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings — treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
+=======
+A **box plot** compares the distribution of values across different treatment combinations. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 :::
 ::::
 :::::
@@ -623,7 +685,11 @@ A **connected line plot** compares the mean values of different treatment combin
 ## Advanced plots {#AP}
 
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 **RAISINS** also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations, see @fig-90.
+=======
+**RAISINS** also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See @fig-90)
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -637,7 +703,11 @@ A **connected line plot** compares the mean values of different treatment combin
 ![INTERACTION Plot](images/INT%20GEM.png){#fig-14 fig-align="center"}
 
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 Explains how it reveals whether the effect of one factor changes across levels of another, with parallel vs. crossing lines interpreted in the context of the A×B interaction found in the experiment.
+=======
+Explains how it reveals whether the effect of one factor changes across levels of another, with parallel vs. crossing lines interpreted in the context of the A×B interaction found in the tomato experiment.
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 :::
 
 **3D SCATTER PLOT**
@@ -778,6 +848,7 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
+<<<<<<< HEAD
     - Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
@@ -795,6 +866,25 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 6.  **Click 'Save'**
 
     - Click **Save** to export the file.
+=======
+    -   Go to the top-left corner and click on **File**.
+
+3.  **Choose 'Save As' or 'Save a Copy'**
+
+    -   Select the location where you want to save your file.
+
+4.  **Set File Type to CSV**
+
+    -   In the **'Save as type'** drop down menu, choose **CSV (Comma delimited) (\*.csv)**.
+
+5.  **Name Your File**
+
+    -   Enter a relevant file name without spaces (use underscores if needed).
+
+6.  **Click 'Save'**
+
+    -   Click **Save** to export the file.
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names, all three factor columns correctly labelled). </small>
 
@@ -805,6 +895,7 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a data set, don't worry RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
+<<<<<<< HEAD
 - Navigate to the **Create Data Tab**
 
 - Select the number of **Treatments**
@@ -814,11 +905,26 @@ If you're unsure about the correct format for creating a data set, don't worry R
 - Select number of **Characters**
 
 - Click on **Create** button
+=======
+-   Navigate to the **Create Data Tab**
+
+-   Select the number of **Treatments**
+
+-   Select number of **Replications**
+
+-   Select number of **Characters**
+
+-   Click on **Create** button
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
+<<<<<<< HEAD
 ![Creating dataset within RAISINS](images/3FCRD%20CSV%20FILE-02.jpg){#fig-createdata fig-align="center"}
+=======
+![Creating dataset within RAISINS](www/3f%20csv.png){#fig-createdata}
+>>>>>>> 57cff8ec981c979c8f4dd7ff5db5eb3cb9a01264
 
 ## Model datasets {#M}
 

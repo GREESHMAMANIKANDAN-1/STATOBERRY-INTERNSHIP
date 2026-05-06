@@ -98,12 +98,12 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis of experiment tab](images/cp analys.png){#fig-aov fig-align="center"}
+![Analysis of experiment tab](images/cp%20analys.png){#fig-aov fig-align="center"}
 
 ## CRD Pooled Analysis {#C}
 
 ::: {style="text-align: justify;"}
-**CRD Pooled Analysis** refers to the combined analysis of two or more individual Completely Randomized Design experiments that share the same set of treatments but are conducted independently across different environments which may represent different locations, seasons, years, or laboratory batches. Rather than analyzing each experiment in isolation, the pooled approach stacks all observations into a single ANOVA model that includes Environment as an additional factor, producing three sources of treatment-related variation: the Treatment main effect (averaged across all environments), the Environment main effect (averaged across all treatments), and the Treatment × Environment interaction (T×E), which quantifies how differently treatments rank from one environment to another. A non-significant T×E interaction indicates that treatment differences are consistent across environments, allowing pooled means to be reported with confidence; a significant T×E interaction implies that at least one treatment responds differently depending on the environment, and environment-specific or stability analyses may then be warranted. The primary advantage of CRD Pooled Analysis over separate analyses is increased statistical power by pooling error across environments, the degrees of freedom for error increase substantially, improving the precision of treatment comparisons. Its main prerequisite is that the same treatments must appear in all environments and that the individual experiments must have been conducted under a CRD with equal or documented replication.
+**CRD Pooled Analysis** refers to the combined analysis of two or more individual Completely Randomized Design experiments that share the same set of treatments but are conducted independently across different locations which may represent different locations, seasons, years, or laboratory batches. Rather than analyzing each experiment in isolation, the pooled approach stacks all observations into a single ANOVA model that includes location as an additional factor, producing three sources of treatment-related variation: the Treatment main effect (averaged across all locations), the location main effect (averaged across all treatments), and the Location× Treatment interaction (L×T), which quantifies how differently treatments rank from one Location to another. A non-significant L×T interaction indicates that treatment differences are consistent across locations, allowing pooled means to be reported with confidence; a significant L×T interaction implies that at least one treatment responds differently depending on the location, and location-specific or stability analyses may then be warranted. The primary advantage of CRD Pooled Analysis over separate analyses is increased statistical power by pooling error across environments, the degrees of freedom for error increase substantially, improving the precision of treatment comparisons. Its main prerequisite is that the same treatments must appear in all environments and that the individual experiments must have been conducted under a CRD with equal or documented replication.
 :::
 
 <details>
@@ -118,11 +118,11 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <small>
 
-@fig-lay visually represents the structure of a CRD Pooled Analysis across multiple environments. Each environment (E~1~, E~2~, …, E~k~) contains a complete CRD experiment in which all treatments (T~1~, T~2~, …, T~t~) are assigned randomly to experimental units with r replications per treatment. When the experiments are pooled, the data matrix has rows representing individual observations indexed by environment, treatment, and replicate, and the combined ANOVA partitions variation into Environment, Treatment, T×E interaction, and Pooled Error components. The layout makes clear that every treatment appears in every environment a requirement for a balanced pooled analysis and that randomization within each environment is independent, preserving the validity of the error assumptions.
+@fig-lay visually represents the structure of a CRD Pooled Analysis across multiple environments. Each location (L~1~, L~2~, …, L~k~) contains a complete CRD experiment in which all treatments (T~1~, T~2~, …, T~t~) are assigned randomly to experimental units with r replications per treatment. When the experiments are pooled, the data matrix has rows representing individual observations indexed by location, treatment, and replicate, and the combined ANOVA partitions variation into location, Treatment, T×E interaction, and Pooled Error components. The layout makes clear that every treatment appears in every location a requirement for a balanced pooled analysis and that randomization within each location is independent, preserving the validity of the error assumptions.
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![CRD Pooled Analysis Layout](www/cp layout.png){#fig-lay fig-align="center"}
+![CRD Pooled Analysis Layout](www/cp%20layout.png){#fig-lay fig-align="center"}
 
 </small>
 
@@ -131,27 +131,27 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 </details>
 
 ::: callout-tip
-#### CRD Pooled Analysis is a combined multi-environment ANOVA that partitions total variation into Treatment, Environment, and Treatment × Environment interaction components, enabling assessment of both treatment effects and their stability across environments.
+#### CRD Pooled Analysis is a combined multi-environment ANOVA that partitions total variation into Treatment, Location, and Treatment × Location interaction components, enabling assessment of both treatment effects and their stability across locations.
 :::
 
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain **CRD Pooled Analysis** step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a multi-environment trial conducted to evaluate the performance of **8 tomato varieties** V1 (Arka Vikas), V2 (Pusa Ruby), V3 (CO3), V4 (PKM1), V5 (Sioux), V6 (Marglobe), V7 (Hisar Lalit), and V8 (Arka Saurabh) tested across **3 environments** (E1: Coimbatore, E2: Thrissur, E3: Bengaluru), each as an independent CRD with **3 replications** per treatment, giving a total of 8 × 3 × 3 = **72 observations**. Observations were recorded for four variables: **yield** (fruit yield in t/ha), **Obs1** (number of fruits per plant), **Obs2** (average fruit weight in g), and **FW** (plant fresh weight in kg). Our aim is to test whether varieties produce statistically significant differences across environments using pooled ANOVA, and whether the T×E interaction is significant. The arrangement of the data is shown in @fig-data.
+To make things simple and interesting, we'll explain **CRD Pooled Analysis** step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a multi-environment trial conducted to evaluate the performance of **8 tomato varieties** V1 (Arka Vikas), V2 (Pusa Ruby), V3 (CO3), V4 (PKM1), V5 (Sioux), V6 (Marglobe), V7 (Hisar Lalit), and V8 (Arka Saurabh) tested across **3 locations** (E1: Coimbatore, E2: Thrissur, E3: Bengaluru), each as an independent CRD with **3 replications** per treatment, giving a total of 8 × 3 × 3 = **72 observations**. Observations were recorded for three variables: **Char 1** (number of fruits per plant), **Char 2** (average fruit weight in g), and **Char 3** (plant fresh weight in kg). Our aim is to test whether varieties produce statistically significant differences across environments using pooled ANOVA, and whether the T×E interaction is significant. The arrangement of the data is shown in @fig-data.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Example dataset](www/cp wor exmp.png){#fig-data fig-align="center"}
+![Example dataset](www/cp%20wor%20exmp.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the 8 tomato varieties evaluated across 3 environments, and the Variables are the four traits mentioned earlier **yield, Obs1, Obs2, and FW**.
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the 8 tomato varieties evaluated across 3 environments, and the Variables are the four traits mentioned earlier **Char1, Char2, and Char 3**
 :::
 
 ## How to prepare your data? {#sec-4 .H}
 
 ::: {style="text-align: justify;"}
-Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. The file must contain a column for **Environment** (identifying which experiment each row belongs to), a column for **Treatment** (the variety or treatment label), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single sheet Excel file. The file must contain a column for **Location** (identifying which experiment each row belongs to), a column for **Treatment** (the variety or treatment label), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
 
 Still if you have doubt, see @fig-4.
 
@@ -162,22 +162,20 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](images/cpcsv-01.png){#fig-4 fig-align="center"}
-
-![Illustrating how to create a dataset](images/cp csv.png){fig-align="center"}
+![Illustrating how to create a dataset](www/cp%20csv%20lat.png){#fig-4 fig-align="center"}
 
 ## CRD Pooled Analysis tab explained {#AO}
 
 ::: {style="text-align: justify;"}
-In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Environment** column, the **Treatment** column, and the **response variables** will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, all relevant pooled results and outputs appear instantly leaving no room for confusion.
+In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Environment** column, the **Treatment** column, and the **response variables** will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, all relevant pooled results and outputs appear instantly leaving no room for confusion.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis window explained](www/PLACEHOLDER_AnalysisWindow_CRDPooled.webp){#fig-5 fig-align="center"}
+![Analysis window explained](images/POOLED%20ANALYSIS%20TAB%20EXPLAINED.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset (@sec-6). Here, **RAISINS** provides an inbuilt transformation option.
+For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset @sec-6. Here, **RAISINS** provides an inbuilt transformation option.
 :::
 
 ## Transformation {#sec-6 .T}
@@ -186,7 +184,7 @@ For some data, when there are a large number of zeros, discrete values, or when 
 Log, square root, and arcsine transformations are often used in **CRD Pooled Analysis** to make data more normal and reduce uneven variation across environments. Researchers can use these transformations when analyzing pooled experimental data in **RAISINS** as shown in @fig-6.
 :::
 
-![Transformation options](images/pooled trandformation 2.png){#fig-6 fig-align="center"}
+![Transformation options](images/pooled%20trandformation%202.png){#fig-6 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -201,14 +199,14 @@ Log, square root, and arcsine transformations are often used in **CRD Pooled Ana
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, and the **CRD Pooled ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the pooled context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to **Environment**, **Treatment**, **Treatment × Environment interaction (T×E)**, and **Pooled Error**, and comparing them using the F-test (see @fig-100).
+Once your dataset is uploaded, click on Run Analysis, and the **CRD Pooled ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the pooled context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to **location**, **Treatment**, **Location × Treatment interaction (L×T)**, and **Pooled Error**, and comparing them using the F-test ,see @fig-100.
 :::
 
 **Table 1 ANOVA summary**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Pooled ANOVA summary — Treatment, Environment, T×E and Pooled Error Mean Squares](www/cp anova.png){#fig-100 fig-align="center"}
+![Pooled ANOVA summary — Treatment, Environment, T×E and Pooled Error Mean Squares](www/cp%20anova.png){#fig-100 fig-align="center"}
 
 <details>
 
@@ -223,14 +221,22 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **CRD Pooled ANO
 ### Interpretation from @fig-100
 
 ::: {style="text-align: justify;"}
-The pooled ANOVA results reveal a highly significant Treatment effect for yield, with a treatment mean square of 38,245.72 and a pooled error mean square of 8,614.30, yielding an F-ratio of approximately 4.44 with 7 degrees of freedom for treatment and 48 for pooled error, significant at the 1% level. The Environment mean square is also large and significant, confirming meaningful differences in productivity across the three trial locations. Importantly, the Treatment × Environment interaction mean square of 6,920.15 is non-significant (F ≈ 0.80, p \> 0.05), indicating that the variety rankings are broadly consistent across Coimbatore, Thrissur, and Bengaluru, and that pooled means can be relied upon for making varietal recommendations. This favourable stability result means that further post-hoc comparisons based on pooled treatment means are statistically justified. @sec-8 provides detailed information on the multiple comparison tests (Post-hoc tests).
+The pooled ANOVA results reveal a highly significant Treatment effect for yield, with a treatment mean square of 38,245.72 and a pooled error mean square of 8,614.30, yielding an F-ratio of approximately 4.44 with 7 degrees of freedom for treatment and 48 for pooled error, significant at the 1% level. The Environment mean square is also large and significant, confirming meaningful differences in productivity across the three trial locations. Importantly, the Treatment × Environment interaction mean square of 6,920.15 is non-significant (F ≈ 0.80, p \> 0.05), indicating that the variety rankings are broadly consistent across Coimbatore,Thrissur, and Bengalore, and that pooled means can be relied upon for making varietal recommendations. This favourable stability result means that further post-hoc comparisons based on pooled treatment means are statistically justified. @sec-8 provides detailed information on the multiple comparison tests (Post hoc tests).
 :::
 
-**Table 2: Detailed tabular representation with multiple comparisons**
+**Table 2: Detailed tabular representation with multiple comparisons of Treatment.**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Detailed tabular representation with multiple comparisons](www/PLACEHOLDER_DetailedResults_CRDPooled.webp){#fig-101 fig-align="center"}
+![Treatment : Detailed tabular representation with multiple comparisons](www/cp%20trtmnt.png){#fig-101 fig-align="left"}
+
+**Table 3: Detailed tabular representation with multiple comparisons of Location.**
+
+![Location : Detailed tabular representation with multiple comparisons](www/cp%20loc.png){fig-align="left" width="403"}
+
+**Table 4: Detailed tabular representation with multiple comparisons of Location x Treatment**
+
+![Interaction (Location x Treatment) detailed results](www/cp%20cross.png){fig-align="left"}
 
 <details>
 
@@ -300,12 +306,12 @@ Treatments are grouped using letters such as **"a", "b", "c"** to indicate stati
 </details>
 
 ::: {style="text-align: justify;"}
-After obtaining a significant F-value for the Treatment effect in the pooled ANOVA under **CRD Pooled Analysis**, multiple comparison tests are employed to identify which treatment means differ significantly when averaged across environments. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7).
+After obtaining a significant F-value for the Treatment effect in the pooled ANOVA under **CRD Pooled Analysis**, multiple comparison tests are employed to identify which treatment means differ significantly when averaged across environments. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions ,see @fig-7.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multiple comparison test options explained](images/POOLED MULTI COMPARISON.png){#fig-7 fig-align="center"}
+![Multiple comparison test options explained](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(16).png){#fig-7 fig-align="center"}
 
 <details>
 
@@ -349,63 +355,19 @@ The choice of the post-hoc test completely relies on the researcher.
 In the example for those characters, a pairwise comparison was performed to identify significant differences between treatments using Least Significant Difference (LSD) test.
 :::
 
-## Summary stats {#SUM}
-
-::: {style="text-align: justify;"}
-If you need to know about the detailed values of the various statistical metrics of treatments across the pooled data, move to Summary stats under the Analysis.
-:::
-
-**Table 3: Summary statistics**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary statistics](www/PLACEHOLDER_SummaryStats_CRDPooled.webp){#fig-102 fig-align="center"}
-
-<details>
-
-```{=html}
-<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
-```
-
-<small>
-
-**Mean** The arithmetic average of all observations within a treatment across all environments and replications. It represents the "typical" pooled value for that specific variety.
-
-**SD (Standard Deviation)** A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.
-
-**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as $$SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$, where n is the total number of observations contributing to that treatment mean across all environments.
-
-**Min / Max** The lowest and highest recorded values within that specific treatment group across all environments.
-
-**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
-
-**Skewness** A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right. Negative value: Data is skewed to the left.
-
-**Kurtosis** A measure of the "tailedness" of the distribution. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.
-
-</small>
-
-</details>
-
-### Interpretations from @fig-102
-
-::: {style="text-align: justify;"}
-The summary statistics table presents the pooled performance of eight tomato varieties across three environments. Among the varieties, Arka Vikas (V1) recorded the highest pooled mean yield (38.42 t/ha), followed closely by Arka Saurabh (V8) (36.85 t/ha), while Sioux (V5) showed the lowest pooled mean yield (24.17 t/ha). Variability across environments, as reflected by the SD and CV, was highest for Pusa Ruby (V2) and CO3 (V3), suggesting that these varieties respond more inconsistently to changing environmental conditions. In contrast, Hisar Lalit (V7) and Marglobe (V6) had relatively low CV values, indicating stable performance across the three locations. Skewness values were close to zero for most varieties, supporting the assumption of approximate normality in the pooled data. All varieties showed kurtosis values near 1.5, indicating moderately flat distributions relative to the normal curve, which is acceptable for parametric pooled analysis.
-:::
-
 ## Individual ANOVA {#IA}
 
 ::: {style="text-align: justify;"}
 If the user wants to get individual pooled ANOVA tables for each variable, click on Individual ANOVA in the Analysis.
 
-The significance of the Treatment effect, Environment effect, and T×E interaction can be measured using the F-test and p value for each variable as in @fig-104.
+The significance of the Treatment effect, Location effect, and L×T interaction can be measured using the F-test and p value for each variable as in @fig-104.
 :::
 
 **Table 4: Pooled ANOVA table for yield**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Pooled ANOVA table for yield](www/cp ind anova.png){#fig-104 fig-align="center"}
+![Pooled ANOVA table for yield](www/cp%20ind%20anova.png){#fig-104 fig-align="center"}
 
 <details>
 
@@ -432,25 +394,13 @@ The significance of the Treatment effect, Environment effect, and T×E interacti
 ### Interpretation from @fig-104
 
 ::: {style="text-align: justify;"}
-For the character **yield**, the Treatment mean square is 38,245.72, while the Pooled Error mean square is 8,614.30, yielding an F-value of approximately 4.44 with 7 degrees of freedom for treatment and 48 degrees of freedom for pooled error, significant at the 1% level. The Environment mean square is 124,612.50, confirming large between-location differences in productivity. The T×E interaction mean square is 6,920.15 and is non-significant (F ≈ 0.80), supporting the use of pooled means for variety recommendations. The MSE of 8,614.30 reflects the residual within-environment variability pooled across locations. The SE(m) is approximately 30.96 and the SE(d) is approximately 43.79. The CD at 5% is 89.72 and at 1% is 121.40, indicating the minimum pooled yield difference required to declare any two varieties significantly different. The overall CV% of 7.2% reflects good experimental precision across the combined trial network.
-:::
-
-**Table 5: Summary statistics with letter groupings**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary statistics with groupings](www/PLACEHOLDER_SummaryGroupings_CRDPooled.webp){#fig-103 fig-align="center"}
-
-### Interpretation from @fig-103
-
-::: {style="text-align: justify;"}
-The pooled treatment means with letter groupings show that Arka Vikas (V1) recorded the highest pooled yield (38.42 t/ha) and was assigned the letter grouping **"a"**, indicating it is statistically superior to most other varieties in the pooled analysis. It was statistically at par with Arka Saurabh (V8), which carried the grouping **"ab"**, reflecting a marginal but non-significant yield difference between these two high-performing varieties. Sioux (V5) recorded the lowest pooled mean yield and was assigned the letter grouping **"d"**, indicating it was significantly inferior to the top-performing varieties. Varieties with letter groupings such as **"bc"** or **"cd"** were statistically similar to adjacent groups in the ranking but differed significantly from varieties at the extremes. This pattern confirms that variety selection based on pooled multi-environment performance meaningfully differentiates between high-yielding and low-yielding tomato genotypes across the three trial locations.
+For the character 1, the Treatment mean square is 38,245.72, while the Pooled Error mean square is 8,614.30, yielding an F-value of approximately 4.44 with 7 degrees of freedom for treatment and 48 degrees of freedom for pooled error, significant at the 1% level. The Location mean square is 124,612.50, confirming large between-location differences in productivity. The L×T interaction mean square is 6,920.15 and is non-significant (F ≈ 0.80), supporting the use of pooled means for variety recommendations. The MSE of 8,614.30 reflects the residual within-environment variability pooled across locations. The SE(m) is approximately 30.96 and the SE(d) is approximately 43.79. The CD at 5% is 89.72 and at 1% is 121.40, indicating the minimum pooled yield difference required to declare any two varieties significantly different. The overall CV% of 7.2% reflects good experimental precision across the combined trial network.
 :::
 
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to **CRD Pooled Analysis** is readily available. Simply click on the Basic Plots tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to **CRD Pooled Analysis** is readily available. Simply click on the Basic Plots tab to view them ,See @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -459,7 +409,7 @@ The pooled treatment means with letter groupings show that Arka Vikas (V1) recor
 **RAISINS** provides users various customization features for the plots to enhance the visualization according to the requirement of the user. **Click** on @fig-8 to get a clear idea on the customizing features.
 :::
 
-![Plot settings for customizing](www/cp customizing plot.png){#fig-8 fig-align="center"}
+![Plot settings for customizing](www/cp%20customizing%20plot.png){#fig-8 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 From @fig-9 to @fig-13, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.
@@ -551,7 +501,7 @@ function hideDescription(id) {
 
 :::: {#boxplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **box plot** compares the distribution of pooled values across different treatments. Each colored box represents a treatment and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers) from the combined multi-environment data. Letters above each box indicate statistical groupings treatments sharing letters are statistically similar, while those with different letters are significantly different.
+A **box plot** compares the distribution of values across different treatment combinations. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
 :::
 ::::
 :::::
@@ -561,11 +511,11 @@ A **box plot** compares the distribution of pooled values across different treat
 ::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Violin plot](www/cp  violin.png){#fig-10}
+![Violin plot](images/cp vio.png){#fig-10 width="744"}
 
 :::: {#violinplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **violin plot** compares the distribution of pooled values across different treatments. Each treatment is shown as a violin shape that reflects how the data is spread across all environments wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.
+A **violin plot** compares the distribution of values across different treatment combinations. Each treatment combination is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
 :::
 ::::
 :::::
@@ -579,7 +529,7 @@ A **violin plot** compares the distribution of pooled values across different tr
 
 :::: {#barplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **bar plot** compares the pooled average values of different treatments, with error bars showing variability across environments and replications. The letters above each bar indicate statistical groupings: treatments sharing letters are similar, while those with different letters are significantly different. It highlights which treatments have higher or lower pooled averages and whether those differences are meaningful.
+A **Bar plot** compares the average values of different treatment combinations, with error bars showing variability. The letters above each bar indicate statistical groupings: treatment combinations sharing letters are similar, while those with different letters are significantly different. It highlights which treatment combinations have higher or lower averages and whether those differences are meaningful.
 :::
 ::::
 :::::
@@ -593,7 +543,7 @@ A **bar plot** compares the pooled average values of different treatments, with 
 
 :::: {#meanvalueplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **mean value plot** compares the pooled mean values of different treatments, each shown as a colored dot with horizontal error bars indicating variability across environments. Letters next to each point represent statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different based on the pooled analysis.
+A **mean value plot** compares the mean values of different treatment combinations, each shown as a colored dot with horizontal error bars indicating variability. Letters next to each point represent statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
 :::
 ::::
 :::::
@@ -604,12 +554,12 @@ A **mean value plot** compares the pooled mean values of different treatments, e
 ::: {style="text-align: center;"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Connected line plot](www/cp con plot.png){#fig-13}
+![Connected line plot](images/cp con-02.png){#fig-13}
 :::
 
 :::: {#connectedplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **connected line plot** compares the pooled mean values of different treatments, with each point representing a treatment's pooled average and error bars showing variability. The points are linked by lines to highlight performance trends across treatments. Letters above each point indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.
+A **connected line plot** compares the mean values of different treatment combinations, with each point representing a treatment combination's average and error bars showing variability. The points are linked by lines to highlight trends across treatment combinations. Letters above each point indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
 :::
 ::::
 ::::::
@@ -619,12 +569,12 @@ A **connected line plot** compares the pooled mean values of different treatment
 ## Advanced plots {#AP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your pooled data, especially distributions, relationships, and deviations from expectations across environments. (See @fig-90)
+**RAISINS** also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your pooled data, especially distributions, relationships, and deviations from expectations across locations. See @fig-90
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Advanced plots](www/cp adv first .png){#fig-90 fig-align="center"}
+![Advanced plots](www/cp%20adv%20first%20.png){#fig-90 fig-align="center"}
 
 **INTERACRION PLOT**
 
@@ -634,7 +584,7 @@ A **connected line plot** compares the pooled mean values of different treatment
 
 :::: {style="text-align: justify;"}
 ::: {style="text-align: justify;"}
-An interaction plot explains how it reveals whether the effect of one factor changes across levels of another, with parallel vs. crossing lines interpreted in the context of the A×B interaction found in the experiment
+An interaction plot explains how it reveals whether the effect of one factor changes across levels of another, with parallel vs. crossing lines interpreted in the context of the L×T interaction found in the experiment
 :::
 ::::
 
@@ -642,7 +592,7 @@ An interaction plot explains how it reveals whether the effect of one factor cha
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![3D scatter plot](images/cp 3d gif.gif){fig-align="center"}
+![3D scatter plot](images/cp%203d%20gif.gif){fig-align="center"}
 
 ::::: {style="text-align: justify;"}
 :::: {style="text-align: justify;"}
@@ -656,7 +606,7 @@ Describes how three response variables (Yield, Char 1, Char 2) are plotted simul
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![3D scatter plot with line](images/cp 3d line gif.gif){#fig-16 fig-align="center"}
+![3D scatter plot with line](images/cp%203d%20line%20gif.gif){#fig-16 fig-align="center"}
 
 ::::: {style="text-align: justify;"}
 :::: {style="text-align: justify;"}
@@ -672,33 +622,25 @@ Extends the 3D scatter by connecting replicated observations within each treatme
 RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of pooled results, identifies statistically significant treatment effects and environment interactions, and offers informed suggestions for potential next steps or interpretations, including recommendations on treatment stability and environment-specific performance. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below @fig-ai.
 :::
 
-![AI powered RAISINS Assistant to interpret your results](www/cp ai interpretation.png){#fig-ai fig-align="center"}
+![AI powered RAISINS Assistant to interpret your results](www/cp%20ai%20interpretation.png){#fig-ai fig-align="center"}
 
 ## Multivariate {#MUL}
 
 ::: {style="text-align: justify;"}
-Multivariate analysis in **CRD Pooled Analysis** helps you to compare different response variables simultaneously across all treatments in the pooled multi-environment dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 8 tomato varieties Arka Vikas, Pusa Ruby, CO3, PKM1, Sioux, Marglobe, Hisar Lalit, and Arka Saurabh across three environments by an agronomist, navigate to `Multivariate` see @fig-mu.
+Multivariate analysis in **CRD Pooled Analysis** helps you to compare different response variables simultaneously across all treatments in the pooled multi-environment dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 8 tomato varieties Arka Vikas, Pusa Ruby, CO3, PKM1, Sioux, Marglobe, Hisar Lalit, and Arka Saurabh across three environments by an agronomist, navigate to Multivariate see @fig-mu.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multivariate tab in RAISINS](www/cp multi tab.png){#fig-mu}
+![Multivariate tab in RAISINS](www/cp%20multi%20tab.png){#fig-mu}
 
-::: {style="text-align: justify;"}
-MANOVA and PCA will be automatically carried out based on the selected variables using the pooled dataset. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.
-:::
+PCA -based Index score
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Manova Results](www/PLACEHOLDER_MANOVAResults_CRDPooled.webp){#fig-MAN2 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The table titled 'Eigen Values PCA' given @fig-PC provides information about the eigen values and the percentage of variance explained by each principal component derived from the pooled multi-environment data. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 58% of the variance in the pooled dataset, while PC2 accounts for about 19% of the variance. Together, PC1 and PC2 explain approximately 77% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs together explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
-:::
+PCA will be automatically carried out based on the selected variables using the pooled dataset. PCA results and plots will appear along with automated interpretation.
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![PCA-based Index Score](www/cp pca index.png){#fig-PC}
+![PCA-based Index Score](www/cp%20pca%20index.png){#fig-PC}
 
 ::: {style="text-align: justify;"}
 The scree plot given @fig-screeplot illustrates the proportion of variance explained by each principal component derived from the pooled data.
@@ -706,7 +648,7 @@ The scree plot given @fig-screeplot illustrates the proportion of variance expla
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Scree plot](www/cp scree plot.png){#fig-screeplot fig-align="center"}
+![Scree plot](www/cp%20scree%20plot.png){#fig-screeplot fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. In PC1, yield and Obs1 (number of fruits per plant) show high positive loadings (approximately +0.64 and +0.55 respectively), while FW also loads positively (+0.44), indicating that varieties with high scores on PC1 are superior across all three of these economically important traits. Obs2 (average fruit weight) loads more prominently on PC2 (+0.68), suggesting it captures a relatively independent dimension of variation, likely reflecting varietal differences in fruit size that do not necessarily co-vary with total yield. Based on this pattern, a PC1-based index score is most informative for identifying tomato varieties that optimize yield, fruit number, and biomass simultaneously across the pooled environments. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
@@ -714,15 +656,15 @@ Look upon the loadings of each variable in the given @fig-loadings and decide wh
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Loadings of each variable](www/cp loading of each variable.png){#fig-loadings fig-align="center"}
+![Loadings of each variable](www/cp%20loading%20of%20each%20variable.png){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The biplot gives a visual representation of the relationships among variables and treatments based on the pooled multi-environment data. Treatments with high values for a specific variable are positioned in the direction of that variable's loading vector. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, yield and Obs1 vectors point in approximately the same direction, confirming their strong positive association in the pooled dataset, while Obs2 points in a moderately different direction, reflecting its partially independent contribution to varietal differentiation.
+The biplot gives a visual representation of the relationships among variables and treatments based on the pooled multi-environment data. Treatments with high values for a specific variable are positioned in the direction of that variable's loading vector. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, yield and Obs1 vectors point in approximately the same direction, confirming their strong positive association in the pooled dataset, while Char 2 points in a moderately different direction, reflecting its partially independent contribution to varietal differentiation.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![PCA-Biplot](www/cp bio plot.png){#fig-biplot}
+![PCA-Biplot](www/cp%20bio%20plot.png){#fig-biplot}
 
 ::: {style="text-align: justify;"}
 In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatments based on their pooled multi-environment index scores. To refine your selection, use the 'Select cutoff for Scaled Index Score' feature given as in @fig-indexscore, where you can choose the cutoff percentage to select treatments above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatments as per your preference. Selected treatments are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.
@@ -730,11 +672,11 @@ In RAISINS, we calculate a scaled index score by converting the index score to a
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Index score](www/cp index score.png){#fig-indexscore fig-align="center"}
+![Index score](www/cp%20index%20score.png){#fig-indexscore fig-align="center"}
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Indexplot](www/cp index plot.png){#fig-index fig-align="center"}
+![Indexplot](www/cp%20index%20plot.png){#fig-index fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of pooled ANOVA results with multivariate PCA-based index scores enables researchers to identify varieties that perform consistently well across multiple environments both in terms of individual traits and overall multi-trait performance the ultimate goal of a multi-environment evaluation programme.
@@ -753,12 +695,12 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing data in MS Excel {#EX}
 
 ::: {style="text-align: justify;"}
-Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for **CRD Pooled Analysis** must follow a column-based format with at least three structural columns: an **Environment** column (identifying the trial location, season, or year for each row), a **Treatment** column (identifying the variety or treatment label), and a **Replication** column if needed. All characters under study (e.g., yield, Obs1, Obs2, FW) should be arranged in separate columns. Every treatment must appear in every environment the same number of times (equal replications) to ensure a balanced pooled analysis. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, each treatment must be repeated across all environments, and the data can also be arranged as shown in @fig-kk.
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for **CRD Pooled Analysis** must follow a column-based format with at least three structural columns: an Location column (identifying the trial location, season, or year for each row), a **Treatment** column (identifying the variety or treatment label), and a **Replication** column if needed. All characters under study (e.g Char 1, Char 2,Char3) should be arranged in separate columns. Every treatment must appear in every environment the same number of times (equal replications) to ensure a balanced pooled analysis. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, each treatment must be repeated across all environments, and the data can also be arranged as shown in @fig-kk.
 :::
 
-![Model-1: showing how the prepared Excel file for upload should look like](images/mod 1.png)
+![Model-1: showing how the prepared Excel file for upload should look like](images/mod%201.png){#fig-pp}
 
-![Model-2: Showing how the prepared Excel file for upload should look like](images/mod 2.png){#fig-kk}
+![Model-2: Showing how the prepared Excel file for upload should look like](images/mod%202.png){#fig-kk}
 
 <details>
 
@@ -824,7 +766,7 @@ If you're unsure about the correct format for creating a dataset, don't worry RA
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
-![Creating dataset within RAISINS](images/cpcsv.png){#fig-createdata}
+![Creating dataset within RAISINS](www/cp%20csv%20lat.png){#fig-createdata}
 
 ## Model datasets {#M}
 
@@ -832,7 +774,7 @@ Model layout will appear as shown in @fig-createdata. Now you may enter the obse
 To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the Datasets.
 :::
 
-![Model dataset](www/cp model data sets.png){#fig-188 fig-align="center"}
+![Model dataset](www/cp%20model%20data%20sets.png){#fig-188 fig-align="center"}
 
 ## FAQ's {#F}
 
@@ -840,7 +782,7 @@ To test the app or better understand the data arrangement, we provide model data
 The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQs is a great place to start.
 :::
 
-![FAQs](www/cp faq.png){#fig-148 fig-align="center"}
+![FAQs](www/cp%20faq.png){#fig-148 fig-align="center"}
 
 ## View data {#U}
 
@@ -848,6 +790,6 @@ The app includes a dedicated FAQs to help clarify common doubts and guide users 
 View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.
 :::
 
-![View data](www/cp view data.png){fig-align="center"}
+![View data](www/cp%20view%20data.png){fig-align="center"}
 
 ------------------------------------------------------------------------

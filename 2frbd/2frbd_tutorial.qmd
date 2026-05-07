@@ -89,7 +89,11 @@ Two Factor Factorial Randomised Block Design **(2F-RBD)** is an experimental des
 </style>
 ```
 
+<<<<<<< HEAD
 <ul><small> The Randomised Block Design has its roots in the pioneering work of [<strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"/>]{.hover-img} at Rothamsted Experimental Station during the **1920s and 1930s**. Fisher recognized that natural heterogeneity in experimental fields — caused by gradients in soil fertility, moisture, or topography — could confound treatment comparisons if left uncontrolled. He proposed grouping experimental units into homogeneous blocks and randomizing treatments separately within each block, thereby isolating and removing block-to-block variability from the error term. This innovation greatly improved the precision of field experiments. When factorial treatment structures were later combined with the block arrangement, the Two Factor Factorial RBD emerged as one of the most widely used designs in agricultural, biological, and industrial research, allowing researchers to study multiple factors and their interactions efficiently while controlling for environmental variability. </small></ul>
+=======
+<ul><small> The Randomised Block Design has its roots in the pioneering work of **Ronald A Fisher** at Rothamsted Experimental Station during the **1920s and 1930s**. Fisher recognized that natural heterogeneity in experimental fields caused by gradients in soil fertility, moisture, or topography could confound treatment comparisons if left uncontrolled. He proposed grouping experimental units into homogeneous blocks and randomizing treatments separately within each block, thereby isolating and removing block-to-block variability from the error term. This innovation greatly improved the precision of field experiments. When factorial treatment structures were later combined with the block arrangement, the Two Factor Factorial RBD emerged as one of the most widely used designs in agricultural, biological, and industrial research, allowing researchers to study multiple factors and their interactions efficiently while controlling for environmental variability. </small></ul>
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 </details>
 
@@ -100,7 +104,12 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Analysis of experiment tab](www/PLACEHOLDER_FrontPage_2FRBD.webp){#fig-aov fig-align="center"}
+=======
+
+![Analysis of experiment tab](images/2f%20rbd%20analysis-03.png){#fig-aov fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ## Two Factor Factorial RBD (2F-RBD) {#C}
 
@@ -163,7 +172,12 @@ Creating your dataset directly within the **RAISINS** app
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Illustrating how to create a dataset](www/PLACEHOLDER_CreateData_2FRBD.webp){#fig-4 fig-align="center"}
+=======
+
+![Illustrating how to create a dataset](images/2F%20CSV-03.png){#fig-4 fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ## 2F-RBD analysis tab explained {#AO}
 
@@ -172,7 +186,12 @@ In @fig-5, you can see the detailed view of the Analysis tab, along with explana
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Analysis window explained](www/PLACEHOLDER_AnalysisTab_2FRBD.webp){#fig-5 fig-align="center"}
+=======
+
+![Analysis window explained](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(19).png){#fig-5 fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ::: {style="text-align: justify;"}
 For some data, when there are large number of zeros/ discrete values/ when the observed variables are not normally distributed, we need to do transformation on the dataset (@sec-6). Here, **RAISINS** provide inbuilt transformation option.
@@ -184,7 +203,11 @@ For some data, when there are large number of zeros/ discrete values/ when the o
 Log, square root, and arcsine transformations are often used in 2F-RBD analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
+<<<<<<< HEAD
 ![Transformation options](www/trans.webp){#fig-6 fig-align="center"}
+=======
+![Transformation options](images/2f%20transformation%20new-01.png){#fig-6 fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -323,11 +346,20 @@ The table below presents the mean values (± standard deviation) for each level 
 </details>
 
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 After obtaining a significant F-value in ANOVA under 2F-RBD, multiple comparison tests are employed to identify which factor level means differ significantly. In a factorial design with a block arrangement, post-hoc comparisons can be applied separately for each significant factor (Factor A, Factor B) and for the interaction (A × B) when significant. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7).
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 ![Multiple comparison test options explained](www/PLACEHOLDER_AnalysisTab_2FRBD.webp){#fig-7 fig-align="center"}
+=======
+After obtaining a significant F-value in ANOVA under 2F-RBD, multiple comparison tests are employed to identify which factor level means differ significantly. In a factorial design with a block arrangement, post hoc comparisons can be applied separately for each significant factor (Factor A, Factor B) and for the interaction (A × B) when significant. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions,see @fig-7.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Multiple comparison test options explained](images/2f%20multi-02.png){#fig-7 fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 <details>
 
@@ -374,7 +406,11 @@ In the example for those characters, a pairwise comparison was performed to iden
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 **RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly - leaving no room for confusion. We've ensured that every possible plot related to the Two Factor Factorial RBD is readily available. Simply click on the `Basic Plots` tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+=======
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly - leaving no room for confusion. We've ensured that every possible plot related to the Two Factor Factorial RBD is readily available. Simply click on the Basic Plots tab to view them,see @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 :::
 
 ### Customizing plots
@@ -471,11 +507,20 @@ function hideDescription(id) {
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Box plot](www/PLACEHOLDER_BoxPlot_2FRBD.webp){#fig-9}
 
 :::: {#boxplot-desc .plot-description}
 ::: {style="text-align: justify;"}
 **[PLACEHOLDER: Describe the box plot here. Mention the factor being plotted, the distribution of the response variable across factor levels, approximate median values, spread/variability, outliers if any, and the letter groupings confirming statistical significance between levels.]**
+=======
+
+![Box plot](images/box.png){#fig-9}
+
+:::: {#boxplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **box plot** compares the distribution of values across different treatment combinations. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 :::
 ::::
 :::::
@@ -484,11 +529,20 @@ function hideDescription(id) {
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Violin plot](www/PLACEHOLDER_ViolinPlot_2FRBD.webp){#fig-10}
 
 :::: {#violinplot-desc .plot-description}
 ::: {style="text-align: justify;"}
 **[PLACEHOLDER: Describe the violin plot here. Discuss the distribution shape for each factor level, the concentration of data, the width of each violin indicating density, and any differences in spread or central tendency between levels. Include letter groupings if applicable.]**
+=======
+
+![Violin plot](images/violin.png){#fig-10}
+
+:::: {#violinplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **violin plot** compares the distribution of values across different treatment combinations. Each treatment combination is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 :::
 ::::
 :::::
@@ -497,11 +551,20 @@ function hideDescription(id) {
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Bar plot](www/PLACEHOLDER_BarPlot_2FRBD.webp){#fig-11}
 
 :::: {#barplot-desc .plot-description}
 ::: {style="text-align: justify;"}
 **[PLACEHOLDER: Describe the bar plot here. Compare the mean values of the response variable across factor levels with error bars. Mention the approximate mean values for each level, whether error bars overlap, and the letter groupings confirming statistical differences as determined by the LSD/Tukey/DMRT test.]**
+=======
+
+![Bar plot](images/bar plot.png){#fig-11}
+
+:::: {#barplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **Bar plot** compares the average values of different treatment combinations, with error bars showing variability. The letters above each bar indicate statistical groupings: treatment combinations sharing letters are similar, while those with different letters are significantly different. It highlights which treatment combinations have higher or lower averages and whether those differences are meaningful.
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 :::
 ::::
 :::::
@@ -510,11 +573,20 @@ function hideDescription(id) {
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Mean Value Plot](www/PLACEHOLDER_MeanValuePlot_2FRBD.webp){#fig-12}
 
 :::: {#meanvalueplot-desc .plot-description}
 ::: {style="text-align: justify;"}
 **[PLACEHOLDER: Describe the mean value plot here. Explain the horizontal line representation of means for each factor level, the approximate positions of each level's mean on the axis, and the letter groupings shown to confirm significant differences between factor levels.]**
+=======
+
+![Mean Value Plot](images/mean value.png){#fig-12}
+
+:::: {#meanvalueplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **mean value plot** compares the mean values of different treatment combinations, each shown as a colored dot with horizontal error bars indicating variability. Letters next to each point represent statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 :::
 ::::
 :::::
@@ -524,12 +596,21 @@ function hideDescription(id) {
 :::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
 ::: {style="text-align: center;"}
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Connected line plot](www/PLACEHOLDER_ConnectedLinePlot_2FRBD.webp){#fig-13}
+=======
+
+![Connected line plot](images/connected.png){#fig-13}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 :::
 
 :::: {#connectedplot-desc .plot-description}
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 **[PLACEHOLDER: Describe the connected line plot here. Explain how the mean values for each factor level are connected by a line to highlight the trend across levels. Mention the direction of the trend (increasing/decreasing), approximate mean values, error bars, and the letter groupings confirming statistical differences.]**
+=======
+A **connected line plot** compares the mean values of different treatment combinations, with each point representing a treatment combination's average and error bars showing variability. The points are linked by lines to highlight trends across treatment combinations. Letters above each point indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 :::
 ::::
 ::::::
@@ -539,11 +620,16 @@ function hideDescription(id) {
 ## Advanced plots {#AP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** also provides advanced plots which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See @fig-90)
+**RAISINS** also provides advanced plots which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations,see @fig-90.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Advanced plots](www/PLACEHOLDER_AdvancedTab_2FRBD.webp){#fig-90 fig-align="center"}
+=======
+
+![Advanced plots](images/2f%20advanced-03.png){#fig-90 fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 **INTERACTION PLOT**
 
@@ -576,7 +662,12 @@ RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist user
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![AI powered RAISINS Assistant to interpret your results](www/PLACEHOLDER_AI_2FRBD.webp){#fig-ai fig-align="center"}
+=======
+
+![AI powered RAISINS Assistant to interpret your results](images/ai%20intrep-03.png){#fig-ai fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ## Multivariate {#MUL}
 
@@ -585,14 +676,24 @@ Multivariate analysis in Two Factor Factorial RBD (2F-RBD) helps you to compare 
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Multivariate tab in RAISINS](www/PLACEHOLDER_Multivariate_2FRBD.webp){#fig-mu}
+=======
+
+![Multivariate tab in RAISINS](images/multi%20tab%202f.png){#fig-mu}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ::: {style="text-align: justify;"}
 MANOVA and PCA will be automatically carried out based on the selected variables. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Manova Results](www/PLACEHOLDER_MANOVA_2FRBD.webp){#fig-MAN2 fig-align="center"}
+=======
+
+![Manova Results](images/2f%20manova%20new.png){#fig-MAN2 fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ::: {style="text-align: justify;"}
 The table titled 'Eigen Values PCA' given @fig-PC provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1 and PC2 typically have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for the largest proportion of variance in the dataset, while PC2 accounts for the next largest share. Together, PC1 and PC2 explain a substantial portion of the total variance (termed as cumulative variance). Since PC1 explains a significant portion of the variance, a PC1-based index score is a strong consideration. Additionally, if both PCs together explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
@@ -682,23 +783,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    -   Go to the top-left corner and click on **File**.
+    - Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    -   Select the location where you want to save your file.
+    - Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    -   Enter a relevant file name without spaces (use underscores if needed).
+    - Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    -   Click **Save** to export the file.
+    - Click **Save** to export the file.
 
 > Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small>
 
@@ -709,23 +810,28 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry - RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
--   Navigate to the **Create Data Tab**
+- Navigate to the **Create Data Tab**
 
--   Select the number of **Factor A levels**
+- Select the number of **Factor A levels**
 
--   Select the number of **Factor B levels**
+- Select the number of **Factor B levels**
 
--   Select number of **Blocks**
+- Select number of **Blocks**
 
--   Select number of **Characters**
+- Select number of **Characters**
 
--   Click on **Create** button
+- Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Creating dataset within RAISINS](www/PLACEHOLDER_CreateData_2FRBD.webp){#fig-createdata}
+=======
+
+![Creating dataset within RAISINS](images/2F%20CSV-04.png){#fig-createdata}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ## Model datasets {#M}
 
@@ -734,7 +840,12 @@ To test the app or better understand the data arrangement, we provide model data
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![Model dataset](www/PLACEHOLDER_ModelDataset_2FRBD.webp){#fig-188 fig-align="center"}
+=======
+
+![Model dataset](images/2f%20model%20data.png){#fig-188 fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ## FAQ's {#F}
 
@@ -752,7 +863,12 @@ View Data serves as the primary diagnostic tool for ensuring data integrity befo
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+<<<<<<< HEAD
 ![View data](www/PLACEHOLDER_ViewData_2FRBD.webp){fig-align="center"}
+=======
+
+![View data](images/2f%20view%20data.png){fig-align="center"}
+>>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 
 ------------------------------------------------------------------------
 ::::::::::::::::::

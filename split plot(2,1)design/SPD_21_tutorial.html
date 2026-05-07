@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Split Plot Design (2,1)</title>
+<title>Split Plot(2,1) Design</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -83,10 +83,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Analysis of experiments</a></li>
-  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Split Plot Design (2,1) (SPD)</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Split Plot <strong>(2,1)</strong> Design</a></li>
   <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
   <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
-  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> SPD analysis tab explained</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> Split Plot Design analysis tab explained</a></li>
   <li><a href="#sec-6" id="toc-sec-6" class="nav-link" data-scroll-target="#sec-6"><span class="header-section-number">6</span> Transformation</a></li>
   <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">7</span> Analysis results</a>
   <ul class="collapse">
@@ -94,28 +94,19 @@ window.Quarto = {
   <li><a href="#interpretation-from-fig-101" id="toc-interpretation-from-fig-101" class="nav-link" data-scroll-target="#interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <strong>?@fig-101</strong></a></li>
   </ul></li>
   <li><a href="#sec-8" id="toc-sec-8" class="nav-link" data-scroll-target="#sec-8"><span class="header-section-number">8</span> Multiple comparison tests</a></li>
-  <li><a href="#SUM" id="toc-SUM" class="nav-link" data-scroll-target="#SUM"><span class="header-section-number">9</span> Summary stats</a>
+  <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">9</span> Basic plots</a>
   <ul class="collapse">
-  <li><a href="#interpretations-from-fig-102" id="toc-interpretations-from-fig-102" class="nav-link" data-scroll-target="#interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from Figure&nbsp;9</a></li>
+  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</a></li>
   </ul></li>
-  <li><a href="#IA" id="toc-IA" class="nav-link" data-scroll-target="#IA"><span class="header-section-number">10</span> Individual ANOVA</a>
-  <ul class="collapse">
-  <li><a href="#interpretation-from-fig-104" id="toc-interpretation-from-fig-104" class="nav-link" data-scroll-target="#interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from Figure&nbsp;10</a></li>
-  <li><a href="#interpretation-from-fig-103" id="toc-interpretation-from-fig-103" class="nav-link" data-scroll-target="#interpretation-from-fig-103"><span class="header-section-number">10.2</span> Interpretation from Figure&nbsp;11</a></li>
-  </ul></li>
-  <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">11</span> Basic plots</a>
-  <ul class="collapse">
-  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</a></li>
-  </ul></li>
-  <li><a href="#AP" id="toc-AP" class="nav-link" data-scroll-target="#AP"><span class="header-section-number">12</span> Advanced plots</a></li>
-  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">13</span> AI interpretation</a></li>
-  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">14</span> Multivariate</a></li>
-  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">15</span> Preparing your data</a></li>
-  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">16</span> Preparing data in MS Excel</a></li>
-  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</a></li>
-  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">18</span> Model datasets</a></li>
-  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">19</span> FAQ’s</a></li>
-  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">20</span> View data</a></li>
+  <li><a href="#AP" id="toc-AP" class="nav-link" data-scroll-target="#AP"><span class="header-section-number">10</span> Advanced plots</a></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">11</span> AI interpretation</a></li>
+  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">12</span> Multivariate</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">13</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">14</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">15</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">16</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">17</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">18</span> View data</a></li>
   </ul>
 </nav>
 </div>
@@ -123,7 +114,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Split Plot Design (2,1)</h1>
+<h1 class="title">Split Plot(2,1) Design</h1>
 </div>
 
 
@@ -156,7 +147,7 @@ window.Quarto = {
 </div>
 <p>ABSTRACT</p>
 <div style="text-align: justify;">
-<p>The <strong>Split Plot Design (2,1)</strong> is a two-factor experimental design where one factor (the main plot factor) is assigned to larger experimental units called main plots, and the other factor (the sub-plot factor) is assigned to smaller units within each main plot, enabling differential precision in estimating the two factor effects. <strong>Split Plot Design (2,1)</strong> is particularly suitable for experiments where one factor requires large plot sizes or involves difficult-to-change conditions, while the second factor can be applied flexibly within those larger units. In <strong>RAISINS</strong> you can perform <strong>Split Plot Design (2,1)</strong> very easily without writing a single line of code. This tutorial will guide you how to perform <strong>Split Plot Design (2,1)</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
+<p>The <strong>Split Plot(2,1) Design</strong> is a two-factor experimental design where one factor (the main plot factor) is assigned to larger experimental units called main plots, and the other factor (the sub-plot factor) is assigned to smaller units within each main plot, enabling differential precision in estimating the two factor effects. <strong>Split Plot</strong> <strong>(2,1)Design</strong> is particularly suitable for experiments where one factor requires large plot sizes or involves difficult-to-change conditions, while the second factor can be applied flexibly within those larger units. In <strong>RAISINS</strong> you can perform <strong>Split Plot (2,1) Design</strong> very easily without writing a single line of code. This tutorial will guide you how to perform <strong>Split Plot (2,1) Design</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
 </div>
 <details>
 <p><em>Hover or click each point to see more information.</em></p>
@@ -196,19 +187,19 @@ window.Quarto = {
 }
 </style>
 <ul>
-<small> The Split Plot Design has its roots in agricultural field experimentation and is closely associated with the pioneering work of <span class="hover-img"><strong>Sir Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span>, the father of modern statistics, who developed the foundational principles of experimental design at Rothamsted Experimental Station in the 1920s and 1930s. The design emerged as a practical solution to experiments where two factors of interest differed markedly in the scale of their application — for example, irrigation methods (which required large field areas) and crop varieties (which could be tested in smaller subplots within those areas). Frank Yates, a close collaborator of Fisher, further formalized the statistical theory of the split plot design and extended its applications to more complex factorial structures. The notation “2,1” specifically refers to a two-level hierarchy of experimental units: two strata of randomization — one for the main plot factor and one for the sub-plot factor — reflecting the nested structure of the design. Over time, the split plot framework became indispensable in agronomy, horticulture, and industrial experimentation wherever logistical constraints prevent complete randomization of all factor combinations at the same scale of experimental unit. </small>
+<small> The Split Plot Design has its roots in agricultural field experimentation and is closely associated with the pioneering work of <span class="hover-img">Sir Ronald A. Fisher</span>, the father of modern statistics, who developed the foundational principles of experimental design at Rothamsted Experimental Station in the 1920s and 1930s. The design emerged as a practical solution to experiments where two factors of interest differed markedly in the scale of their application for example, irrigation methods (which required large field areas) and crop varieties (which could be tested in smaller subplots within those areas). Frank Yates, a close collaborator of Fisher, further formalized the statistical theory of the split plot design and extended its applications to more complex factorial structures. The notation “2,1” specifically refers to a two-level hierarchy of experimental units: two strata of randomization one for the main plot factor and one for the sub-plot factor reflecting the nested structure of the design. Over time, the split plot framework became indispensable in agronomy, horticulture, and industrial experimentation wherever logistical constraints prevent complete randomization of all factor combinations at the same scale of experimental unit. </small>
 </ul>
 </details>
 <section id="AE" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
 <div style="text-align: justify;">
-<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different single-factor and multi-factor experimental designs. In this tutorial, we focus on <strong>Split Plot Design (2,1) (SPD)</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different single-factor and multi-factor experimental designs. In this tutorial, we focus on <strong>Split Plot (2,1) Design</strong> , as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_AnalysisTab.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/PLACEHOLDER_AnalysisTab.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/analyse21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="images/analyse21.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Analysis of experiment tab
@@ -217,9 +208,9 @@ Figure&nbsp;1: Analysis of experiment tab
 </div>
 </section>
 <section id="C" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Split Plot Design (2,1) (SPD)</h2>
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Split Plot <strong>(2,1)</strong> Design</h2>
 <div style="text-align: justify;">
-<p>The <strong>Split Plot Design (2,1) (SPD)</strong> is a two-factor experimental layout in which the levels of one factor — called the <strong>Main Plot Factor (Factor A)</strong> — are assigned to larger experimental units (main plots) following a Randomised Block Design (RBD) arrangement, while the levels of the second factor — called the <strong>Sub-plot Factor (Factor B)</strong> — are randomly assigned within each main plot. The notation “2,1” refers to the two levels of experimental units in the design: the main plot (level 2) and the subplot (level 1). This hierarchical structure results in two separate error terms — one for the main plot comparisons and another, typically smaller, error for the subplot and interaction comparisons, making the design more sensitive to subplot effects and the interaction between the two factors. The <strong>SPD</strong> is widely used in agricultural and horticultural research when one factor is difficult or impractical to apply at the scale of a subplot — such as tillage methods, irrigation regimes, or spacing arrangements — while the second factor, such as variety or fertilizer dose, can be applied more flexibly within those larger units. However, the <strong>SPD</strong> sacrifices precision in estimating main plot factor effects compared to a fully randomised factorial design, so it is recommended only when logistical constraints genuinely necessitate the split plot structure.</p>
+<p>The <strong>Split Plot (2,1) Design</strong> is a two-factor experimental layout in which the levels of one factor called the <strong>Main Plot Factor (Factor A)</strong> are assigned to larger experimental units (main plots) following a Randomised Block Design (RBD) arrangement, while the levels of the second factor called the <strong>Sub-plot Factor (Factor B)</strong> are randomly assigned within each main plot. The notation “2,1” refers to the two levels of experimental units in the design: the main plot (level 2) and the subplot (level 1). This hierarchical structure results in two separate error terms one for the main plot comparisons and another, typically smaller, error for the subplot and interaction comparisons, making the design more sensitive to subplot effects and the interaction between the two factors. The <strong>Split Plot Design</strong> is widely used in agricultural and horticultural research when one factor is difficult or impractical to apply at the scale of a subplot such as tillage methods, irrigation regimes, or spacing arrangements while the second factor, such as variety or fertilizer dose, can be applied more flexibly within those larger units. However, the <strong>Split Plot Design</strong> sacrifices precision in estimating main plot factor effects compared to a fully randomised factorial design, so it is recommended only when logistical constraints genuinely necessitate the split plot structure.</p>
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
@@ -227,12 +218,11 @@ Figure&nbsp;1: Analysis of experiment tab
 </summary>
 <ul>
 <p><small></small></p><small>
-<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents a Split Plot Design arrangement with two main plot treatments (Factor A levels) assigned across three blocks, each main plot further subdivided into sub-plots receiving the levels of Factor B. The main plot treatments are randomised independently within each block, and within each main plot, the subplot treatments are again randomised independently. This two-stage randomisation produces the nested error structure that characterises the <strong>SPD</strong>. In the layout diagram, each large rectangle represents a block, the medium-sized divisions within each block represent main plots, and the smaller cells within each main plot represent the sub-plots to which Factor B levels are applied.</p>
-<!-- REPLACE THIS SCREENSHOT -->
+<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents a Split Plot Design arrangement with two main plot treatments (Factor A levels) assigned across three blocks, each main plot further subdivided into sub-plots receiving the levels of Factor B. The main plot treatments are randomised independently within each block, and within each main plot, the subplot treatments are again randomised independently. This two-stage randomisation produces the nested error structure that characterises the <strong>Split Plot Design</strong>. In the layout diagram, each large rectangle represents a block, the medium-sized divisions within each block represent main plots, and the smaller cells within each main plot represent the sub-plots to which Factor B levels are applied.</p>
 <div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Layout.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: SPD Layout"><img src="www/PLACEHOLDER_Layout.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/blockreplication.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: SPD Layout"><img src="images/blockreplication.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: SPD Layout
@@ -248,7 +238,7 @@ Figure&nbsp;2: SPD Layout
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Split Plot Design (2,1) (SPD) is a two-factor experimental design in which the main plot factor is randomised at the block level and the subplot factor is randomised within each main plot, yielding two distinct error terms that provide higher precision for subplot and interaction comparisons.
+<span class="screen-reader-only">Tip</span>Split Plot <strong>(2,1)</strong> Design is a two-factor experimental design in which the main plot factor is randomised at the block level and the subplot factor is randomised within each main plot, yielding two distinct error terms that provide higher precision for subplot and interaction comparisons.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -259,13 +249,12 @@ Figure&nbsp;2: SPD Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
-<p>To make things simple and interesting, we’ll explain <strong>SPD</strong> analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment conducted by an agronomist to evaluate the effect of <strong>Irrigation Method</strong> (Factor A — Main Plot Factor) and <strong>Rice Variety</strong> (Factor B — Sub-plot Factor) on the performance of rice. The experiment is laid out in <strong>3 Blocks</strong> (replications). Factor A consists of <strong>3 irrigation methods</strong>: Surface Irrigation (I1), Drip Irrigation (I2), and Sprinkler Irrigation (I3). Factor B consists of <strong>4 rice varieties</strong>: V1, V2, V3, and V4. Each combination of irrigation method and variety is thus represented once within each block, giving a total of 3 × 3 × 4 = 36 experimental units. The response variables recorded are <strong>Grain Yield (kg/ha)</strong>, <strong>Plant Height (cm)</strong>, <strong>Number of Tillers</strong>, and <strong>1000 Grain Weight (g)</strong>. Our aim is to test whether irrigation methods, varieties, and their interaction produce statistically significant differences in the response variables using ANOVA. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To make things simple and interesting, we’ll explain <strong>Split Plot Design</strong> analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment conducted by an agronomist to evaluate the effect of <strong>Irrigation Method</strong> (Factor A Main Plot Factor) and <strong>Rice Variety</strong> (Factor B Sub-plot Factor) on the performance of rice. The experiment is laid out in <strong>3 Blocks</strong> (replications). Factor A consists of <strong>2 irrigation methods</strong>: Surface Irrigation (A1), Drip Irrigation (A2), and . Factor B consists of <strong>3 rice varieties</strong>: B1,B2 and B3. Each combination of irrigation method and variety is thus represented once within each block, giving a total of 3 × 2 × 3 = 18 experimental units. The response variables recorded are <strong>Grain Yield (kg/ha)</strong>, <strong>Plant Height (cm)</strong>, <strong>Number of Tillers</strong>, and <strong>1000 Grain Weight (g)</strong>. Our aim is to test whether irrigation methods, varieties, and their interaction produce statistically significant differences in the response variables using ANOVA. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
 </div>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ExampleDataset.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/PLACEHOLDER_ExampleDataset.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/basic%20plot%20(3).png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="images/basic%20plot%20(3).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Example dataset
@@ -273,13 +262,13 @@ Figure&nbsp;3: Example dataset
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Three terms that we will use frequently are <strong>Main Plot Factor</strong>, <strong>Sub-plot Factor</strong>, and <strong>Variables</strong>. In our example, the Main Plot Factor refers to the <strong>Irrigation Methods (I1, I2, I3)</strong>, the Sub-plot Factor refers to the <strong>Rice Varieties (V1, V2, V3, V4)</strong>, and the Variables are the 4 traits mentioned earlier — <strong>Grain Yield, Plant Height, Number of Tillers, and 1000 Grain Weight</strong>.</p>
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Three terms that we will use frequently are <strong>Main Plot Factor</strong>, <strong>Sub-plot Factor</strong>, and <strong>Variables</strong>. In our example, the Main Plot Factor refers to the <strong>Irrigation Methods (A1,A2)</strong>, the Sub-plot Factor refers to the <strong>Rice Varieties (V1, V2, V3,)</strong>, and the Variables are the 4 traits mentioned earlier — <strong>Grain Yield, Plant Height, Number of Tillers, and 1000 Grain Weight</strong>.</p>
 </div>
 </section>
 <section id="sec-4" class="level2 H" data-number="4">
 <h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
 <div style="text-align: justify;">
-<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. For a <strong>Split Plot Design (2,1)</strong>, ensure that your data contains separate columns for the Block, the Main Plot Factor (Factor A), and the Sub-plot Factor (Factor B), followed by the response variable columns. Make sure no blank rows are left above, and all columns have proper names. That’s it — your file is ready to upload.</p>
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. For a <strong>Split Plot (2,1) Design</strong> , ensure that your data contains separate columns for the Block, the Main Plot Factor (Factor A), and the Sub-plot Factor (Factor B), followed by the response variable columns. Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
 <p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
 <p>Creating dataset in MS Excel</p>
@@ -288,7 +277,7 @@ Figure&nbsp;3: Example dataset
 <div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/CREATEDAT.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/basic%20plot%20(4)-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="images/basic%20plot%20(4)-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Illustrating how to create a dataset
@@ -297,9 +286,9 @@ Figure&nbsp;4: Illustrating how to create a dataset
 </div>
 </section>
 <section id="AO" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> SPD analysis tab explained</h2>
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> Split Plot Design analysis tab explained</h2>
 <div style="text-align: justify;">
-<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking <code>Browse</code> in the sidebar of the <code>Analysis</code> tab. When the file is uploaded, options to select the Block, Main Plot Factor, Sub-plot Factor, and Variables will appear. Select the appropriate column for each of these fields. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly, leaving no room for confusion.</p>
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the Block, Main Plot Factor, Sub-plot Factor, and Variables will appear. Select the appropriate column for each of these fields. Once you click the Run Analysis button, all relevant results and outputs appear instantly, leaving no room for confusion.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -312,6 +301,16 @@ Figure&nbsp;5: Analysis window explained
 </figcaption>
 </figure>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/basic%20pllot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Analysis window explained"><img src="images/basic%20pllot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Analysis window explained"></a></p>
+</figure>
+</div>
+<figcaption>Analysis window explained</figcaption>
+</figure>
+</div>
 <div style="text-align: justify;">
 <p>For some data, when there are large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to do transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>). Here, <strong>RAISINS</strong> provides an inbuilt transformation option.</p>
 </div>
@@ -319,12 +318,12 @@ Figure&nbsp;5: Analysis window explained
 <section id="sec-6" class="level2 T" data-number="6">
 <h2 class="T anchored" data-number="6" data-anchor-id="sec-6"><span class="header-section-number">6</span> Transformation</h2>
 <div style="text-align: justify;">
-<p>Log, square root, and arcsine transformations are often used in <strong>SPD</strong> analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in <strong>RAISINS</strong> as shown in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>.</p>
+<p>Log, square root, and arcsine transformations are often used in <strong>Split Plot</strong> <strong>(2,1) Design</strong> analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in <strong>RAISINS</strong> as shown in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>.</p>
 </div>
 <div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/transformation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="images/transformation.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/transformation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;6: Transformation options"><img src="images/transformation.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Transformation options
@@ -335,7 +334,7 @@ Figure&nbsp;6: Transformation options
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/trans.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Transformation options"><img src="www/trans.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Transformation options"></a></p>
+<p><a href="www/trans.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Transformation options"><img src="www/trans.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Transformation options"></a></p>
 </figure>
 </div>
 <figcaption>Transformation options</figcaption>
@@ -353,14 +352,13 @@ Figure&nbsp;6: Transformation options
 <section id="sec-7" class="level2 AR" data-number="7">
 <h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
-<p>Once your dataset is uploaded, click on <code>Run Analysis</code>, and the <strong>Split Plot ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in the <strong>Split Plot Design (2,1)</strong> partitions the total variation into components attributable to <strong>Blocks</strong>, <strong>Main Plot Factor (Factor A)</strong>, <strong>Main Plot Error (Error A)</strong>, <strong>Sub-plot Factor (Factor B)</strong>, <strong>Interaction (A × B)</strong>, and <strong>Sub-plot Error (Error B)</strong>, and compares them using appropriate F-tests at each stratum (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>).</p>
+<p>Once your dataset is uploaded, click on Run Analysis, and the <strong>Split Plot ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in the <strong>Split Plot (2,1) Design</strong> partitions the total variation into components attributable to <strong>Blocks</strong>, <strong>Main Plot Factor (Factor A)</strong>, <strong>Main Plot Error (Error A)</strong>, <strong>Sub-plot Factor (Factor B)</strong>, <strong>Interaction (A × B)</strong>, and <strong>Sub-plot Error (Error B)</strong>, and compares them using appropriate F-tests at each stratum (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>).</p>
 </div>
 <p><strong>Table 1 ANOVA summary</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/annova.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;7: Main Plot and Sub-plot ANOVA Summary"><img src="images/annova.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/annova.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;7: Main Plot and Sub-plot ANOVA Summary"><img src="images/annova.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Main Plot and Sub-plot ANOVA Summary
@@ -369,15 +367,14 @@ Figure&nbsp;7: Main Plot and Sub-plot ANOVA Summary
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> ANOVA table </summary>
-<p><small> In a <strong>Split Plot Design (2,1) (SPD)</strong>, the analysis of variance <strong>(ANOVA)</strong> uses a hierarchical error structure with two distinct error terms. The main plot factor (Factor A) is tested against the <strong>Main Plot Error (Error A)</strong>, which is derived from the interaction of Blocks × Factor A. The sub-plot factor (Factor B) and the interaction term (A × B) are each tested against the <strong>Sub-plot Error (Error B)</strong>, which captures the residual variation within main plots. The degrees of freedom are apportioned as follows: Blocks have (r − 1) degrees of freedom, Factor A has (a − 1) degrees of freedom, Error A has (r − 1)(a − 1) degrees of freedom, Factor B has (b − 1) degrees of freedom, A × B interaction has (a − 1)(b − 1) degrees of freedom, and Error B has a(r − 1)(b − 1) degrees of freedom, where r is the number of blocks (replications), a is the number of main plot factor levels, and b is the number of sub-plot factor levels. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F stat in the table. If the computed F value exceeds the critical value, the null hypothesis is rejected, indicating that at least one treatment mean differs significantly from the others within that stratum. </small></p>
+<p><small> In a <strong>Split Plot (2,1) Design</strong> , the analysis of variance <strong>(ANOVA)</strong> uses a hierarchical error structure with two distinct error terms. The main plot factor (Factor A) is tested against the <strong>Main Plot Error (Error A)</strong>, which is derived from the interaction of Blocks × Factor A. The sub-plot factor (Factor B) and the interaction term (A × B) are each tested against the <strong>Sub-plot Error (Error B)</strong>, which captures the residual variation within main plots. The degrees of freedom are apportioned as follows: Blocks have (r − 1) degrees of freedom, Factor A has (a − 1) degrees of freedom, Error A has (r − 1)(a − 1) degrees of freedom, Factor B has (b − 1) degrees of freedom, A × B interaction has (a − 1)(b − 1) degrees of freedom, and Error B has a(r − 1)(b − 1) degrees of freedom, where r is the number of blocks (replications), a is the number of main plot factor levels, and b is the number of sub-plot factor levels. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F stat in the table. If the computed F value exceeds the critical value, the null hypothesis is rejected, indicating that at least one treatment mean differs significantly from the others within that stratum. </small></p>
 </details>
 <section id="interpretation-from-fig-100" class="level3" data-number="7.1">
 <h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
 <div style="text-align: justify;">
-<p>In our hypothetical example with 3 irrigation methods (Factor A), 4 varieties (Factor B), and 3 blocks, the ANOVA for Grain Yield reveals the following: the Main Plot Factor (Irrigation Method) has 2 degrees of freedom, Error A has 4 degrees of freedom, Factor B (Variety) has 3 degrees of freedom, the A × B interaction has 6 degrees of freedom, and Error B has 18 degrees of freedom. The F value for Factor A is found to be 12.34, which is significant at the 1% level (p &lt; 0.01), indicating that irrigation methods differ significantly in their effect on grain yield. The F value for Factor B (Variety) is 18.72, also significant at the 1% level, while the A × B interaction F value is 3.45, which is significant at the 5% level (p &lt; 0.05), suggesting that the effect of irrigation method on grain yield depends on the variety used. Since significant differences exist, post-hoc comparisons are appropriate — refer to <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> for details on multiple comparison tests applicable in <strong>SPD</strong>.</p>
+<p>The ANOVA results obtained from the Split Plot Design indicated that the treatment factors and their interactions had significant effects on yield and several associated characters. The replication effect was non-significant for all traits, showing uniformity among experimental blocks. Main Plot Factor A significantly influenced Yield, Char1, Char2, Char5, and Char6, while Main Plot Factor B showed significant effects on Yield, Char2, Char5, and Char6. The interaction effect between A × B was also significant for Yield and certain characters, indicating that the combined performance of both factors varied across treatments. The Sub Plot Factor C significantly affected Yield, Char1, Char2, and Char3, demonstrating the importance of subplot treatments in influencing these traits. Further, the interactions between main plot and subplot factors were significant for some characters, especially Yield and Char5, suggesting that treatment combinations responded differently under varying subplot conditions. The three-way interaction among Factors A, B, and C was also significant for Yield and a few other characters, revealing the combined influence of all treatment factors. Overall, the ANOVA analysis confirmed the presence of significant treatment variation and highlighted the importance of both individual and interaction effects on crop performance. refer to <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> for details on multiple comparison tests applicable in <strong>Split Plot Design</strong>.</p>
 </div>
 <p><strong>Table 2: Detailed tabular representation with multiple comparisons</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
 <p><img src="images/a2.png" id="fig-101" class="img-fluid quarto-figure quarto-figure-center anchored" alt="Detailed tabular representation with multiple comparisons"> <img src="images/a3.png" class="img-fluid quarto-figure quarto-figure-center" alt="Detailed tabular representation with multiple comparisons"></p>
 <p><img src="images/a4.png" class="img-fluid quarto-figure quarto-figure-center" alt="Detailed tabular representation with multiple comparisons"> <img src="images/a5.png" class="img-fluid quarto-figure quarto-figure-center" alt="Detailed tabular representation with multiple comparisons"></p>
 <details>
@@ -449,7 +446,7 @@ Figure&nbsp;7: Main Plot and Sub-plot ANOVA Summary
   What is Post-hoc test?
 </summary>
 <ul>
-<small> Post-hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA). Its purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same. In a <strong>Split Plot Design (2,1)</strong>, post-hoc tests must be applied separately for Factor A comparisons, Factor B comparisons, and the A × B interaction comparisons, each using the appropriate error term (Error A or Error B). </small>
+<small> Post-hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA). Its purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same. In a <strong>Split Plot (2,1)Design</strong> , post-hoc tests must be applied separately for Factor A comparisons, Factor B comparisons, and the A × B interaction comparisons, each using the appropriate error term (Error A or Error B). </small>
 </ul>
 </details>
 <details>
@@ -461,7 +458,7 @@ Figure&nbsp;7: Main Plot and Sub-plot ANOVA Summary
 <div id="fig-posthoc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-posthoc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/CUSRES.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;8: Post-hoc test options in RAISINS"><img src="www/CUSRES.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/CUSRES.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;8: Post-hoc test options in RAISINS"><img src="www/CUSRES.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-posthoc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Post-hoc test options in RAISINS
@@ -489,117 +486,28 @@ Figure&nbsp;8: Post-hoc test options in RAISINS
 <p>In the example for those characters, a pairwise comparison was performed to identify significant differences between treatments using the Least Significant Difference (LSD) test.</p>
 </div>
 </section>
-<section id="SUM" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="SUM"><span class="header-section-number">9</span> Summary stats</h2>
+<section id="BP" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="BP"><span class="header-section-number">9</span> Basic plots</h2>
 <div style="text-align: justify;">
-<p>If you need to know about the detailed values of the various statistical metrics of treatments, move to <code>Summary stats</code> under the <code>Analysis</code>.</p>
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly — leaving no room for confusion. We’ve ensured that every possible plot related to the <strong>Split Plot (2,1) Design</strong> is readily available. Simply click on the Basic Plots tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;9</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
 </div>
-<p><strong>Table 3: Summary statistics</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
-<div id="fig-102" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_SummaryStats.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;9: Summary statistics"><img src="www/PLACEHOLDER_SummaryStats.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Summary statistics
-</figcaption>
-</figure>
-</div>
-<details>
-<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Table parameters </summary>
-<p><small></small></p><small>
-<p><strong>Mean</strong> The arithmetic average of all observations within a treatment combination. It represents the “typical” value for that specific combination of Factor A and Factor B levels.</p>
-<p><strong>SD (Standard Deviation)</strong> A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.</p>
-<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>, where n is the number of observations.</p>
-<p><strong>Min / Max</strong> The lowest and highest recorded values within that specific treatment combination.</p>
-<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
-<p><strong>Skewness</strong> A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right. Negative value: Data is skewed to the left.</p>
-<p><strong>Kurtosis</strong> A measure of the “tailedness” of the distribution. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.</p>
-</small><p><small></small></p>
-</details>
-<section id="interpretations-from-fig-102" class="level3" data-number="9.1">
-<h3 data-number="9.1" class="anchored" data-anchor-id="interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from <a href="#fig-102" class="quarto-xref">Figure&nbsp;9</a></h3>
+<section id="customizing-plots" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</h3>
 <div style="text-align: justify;">
-<p>In our hypothetical example, the treatment combination I2 × V3 (Drip Irrigation with Variety V3) recorded the highest mean grain yield of 5820 kg/ha, while the combination I1 × V2 (Surface Irrigation with Variety V2) recorded the lowest mean yield of 3940 kg/ha. Variability in yield was relatively low for the I2 combinations (CV% ranging from 6.2% to 8.5%), suggesting that drip irrigation promotes a more consistent crop response across varieties, whereas I1 combinations showed higher CV% values (11.3%–14.7%), indicating greater variability under surface irrigation. Skewness values close to zero for most treatment combinations indicate approximately symmetrical distributions, while kurtosis values near 3 confirm that the data are roughly normally distributed, supporting the validity of parametric ANOVA.</p>
-</div>
-</section>
-</section>
-<section id="IA" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="IA"><span class="header-section-number">10</span> Individual ANOVA</h2>
-<div style="text-align: justify;">
-<p>If the user wants to get an individual ANOVA table for each variable, click on <code>Individual ANOVA</code> in the <code>Analysis</code>.</p>
-<p>The significance of the main plot factor, sub-plot factor, and their interaction can be measured using the F-test and p value as in <a href="#fig-104" class="quarto-xref">Figure&nbsp;10</a>.</p>
-</div>
-<p><strong>Table 4: ANOVA table for Grain Yield</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
-<div id="fig-104" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_IndividualANOVA.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;10: ANOVA table for Grain Yield"><img src="www/PLACEHOLDER_IndividualANOVA.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: ANOVA table for Grain Yield
-</figcaption>
-</figure>
-</div>
-<details>
-<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Table parameters </summary>
-<p><small></small></p><small>
-<p><strong>Critical Difference (CD)</strong> The minimum difference required between any two treatment means to consider them significantly different from each other. In <strong>SPD</strong>, two CD values are reported — CD(a) for main plot factor comparisons (computed using Error A) and CD(b) for sub-plot factor and interaction comparisons (computed using Error B). At a 1% level, you are 99% confident in the difference. At a 5% level, you are 95% confident.</p>
-<p><strong>Coefficient of Variation (CV (%))</strong> A relative measure of dispersion that expresses the standard deviation as a percentage of the mean. In <strong>SPD</strong>, two CV% values are typically reported — one for the main plot stratum and one for the sub-plot stratum — with the sub-plot CV% generally expected to be lower, reflecting greater precision at the sub-plot level. <span class="math display">\[CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
-<p><strong>Mean Square Error (MSE)</strong> The Residual Mean Sum of Squares from the relevant stratum of the ANOVA table. In <strong>SPD</strong>, MSE(a) refers to the Main Plot Error and MSE(b) refers to the Sub-plot Error. These are used to calculate the respective CD and SE values for each stratum.</p>
-<p><strong>Standard Error of Mean (SE(m))</strong> Measures how much the sample mean of a treatment is likely to vary from the true population mean. For Factor A: <span class="math display">\[ SE(m)_A=\sqrt{MSE_A / (r \times b)}\]</span> For Factor B: <span class="math display">\[ SE(m)_B=\sqrt{MSE_B / (r \times a)}\]</span> Where r is the number of replications, a is the number of main plot levels, and b is the number of sub-plot levels.</p>
-<p><strong>Standard Error of Difference (SE(d))</strong> The standard error associated with the difference between two treatment means. For Factor A: <span class="math display">\[ SE(d)_A=\sqrt{2 \times MSE_A / (r \times b)}\]</span> For Factor B: <span class="math display">\[ SE(d)_B=\sqrt{2 \times MSE_B / (r \times a)}\]</span></p>
-</small><p><small></small></p>
-</details>
-<section id="interpretation-from-fig-104" class="level3" data-number="10.1">
-<h3 data-number="10.1" class="anchored" data-anchor-id="interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from <a href="#fig-104" class="quarto-xref">Figure&nbsp;10</a></h3>
-<div style="text-align: justify;">
-<p>For Grain Yield in our hypothetical example, the individual ANOVA table shows that the Main Plot Factor (Irrigation Method) has a Treatment Mean Square of 486,250 with Error A Mean Square of 39,420, giving an F value of 12.34 (significant at 1%, df = 2, 4). The Sub-plot Factor (Variety) yields an F value of 18.72 (df = 3, 18, p &lt; 0.01), and the A × B Interaction yields an F value of 3.45 (df = 6, 18, p &lt; 0.05). The MSE(b) (Sub-plot Error) is 18,560. The SE(m) for Factor A comparison is 51.22 and the SE(d) is 72.44; for Factor B comparison, SE(m) is 35.15 and SE(d) is 49.71. The CD at 5% for Factor A is 112.8 and for Factor B is 74.3, while at 1%, CD for Factor A is 168.5 and for Factor B is 102.1. The CV% at the sub-plot level is 7.8%, indicating good experimental precision.</p>
-</div>
-<p><strong>Table 5: Summary statistics with letter groupings</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
-<div id="fig-103" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_SummaryGroupings.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;11: Summary statistics with groupings"><img src="www/PLACEHOLDER_SummaryGroupings.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11: Summary statistics with groupings
-</figcaption>
-</figure>
-</div>
-</section>
-<section id="interpretation-from-fig-103" class="level3" data-number="10.2">
-<h3 data-number="10.2" class="anchored" data-anchor-id="interpretation-from-fig-103"><span class="header-section-number">10.2</span> Interpretation from <a href="#fig-103" class="quarto-xref">Figure&nbsp;11</a></h3>
-<div style="text-align: justify;">
-<p>From the treatment mean table with letter groupings for Grain Yield, Drip Irrigation (I2) is clearly the superior main plot treatment (grouping “a”), while Surface Irrigation (I1) and Sprinkler Irrigation (I3) are statistically at par (both grouped “b”), indicating that the choice of drip irrigation significantly improves grain yield over the other methods. Among varieties, V3 (grouping “a”) and V1 (grouping “ab”) are the top performers, with V2 (grouping “c”) recording the lowest mean yield. The interaction results highlight that the best performing treatment combination is I2 × V3, which should be recommended to farmers where drip irrigation infrastructure is feasible.</p>
-</div>
-</section>
-</section>
-<section id="BP" class="level2" data-number="11">
-<h2 data-number="11" class="anchored" data-anchor-id="BP"><span class="header-section-number">11</span> Basic plots</h2>
-<div style="text-align: justify;">
-<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly — leaving no room for confusion. We’ve ensured that every possible plot related to the <strong>Split Plot Design (2,1)</strong> is readily available. Simply click on the <code>Basic Plots</code> tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;12</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
-</div>
-<section id="customizing-plots" class="level3" data-number="11.1">
-<h3 data-number="11.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</h3>
-<div style="text-align: justify;">
-<p><strong>RAISINS</strong> provides users various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;12</a> to get a clear idea on the customizing features.</p>
+<p><strong>RAISINS</strong> provides users various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;9</a> to get a clear idea on the customizing features.</p>
 </div>
 <div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/basic%20plot-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;12: Plot settings for customizing"><img src="images/basic%20plot-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/basic%20plot-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;9: Plot settings for customizing"><img src="images/basic%20plot-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12: Plot settings for customizing
+Figure&nbsp;9: Plot settings for customizing
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;13</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;17</a>, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
+<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;10</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;14</a>, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -679,16 +587,16 @@ function hideDescription(id) {
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/box%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;13: Box plot"><img src="images/box%20plot.png" class="img-fluid figure-img"></a>
+<a href="images/box%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;10: Box plot"><img src="images/box%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: Box plot
+Figure&nbsp;10: Box plot
 </figcaption>
 </figure>
 </div>
 <div id="boxplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>box plot</strong> compares the distribution of values across different treatment combinations of Factor A and Factor B. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings — treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>box plot</strong> in a split (2,1) design is a graphical method used to summarize and compare the distribution of data across treatment combinations where one factor has two levels (main plot factor) and the other represents a single subplot level or repeated observations within each main plot. Each box corresponds to a treatment level of the main factor (e.g., A₁ and A₂), showing key statistical measures such as the median, quartiles, and overall range of the observations. The box represents the interquartile range, the line inside indicates the median, and the whiskers show the spread of the data, while any outliers are plotted separately. This type of plot helps in understanding variability within each main plot level, identifying extreme values, and comparing the performance and consistency of the two treatments in a clear and simple manner.</p>
 </div>
 </div>
 </div>
@@ -699,16 +607,16 @@ Figure&nbsp;13: Box plot
 <div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/violin%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;14: Violin plot"><img src="images/violin%20plot.png" class="img-fluid figure-img"></a>
+<a href="images/violin%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;11: Violin plot"><img src="images/violin%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: Violin plot
+Figure&nbsp;11: Violin plot
 </figcaption>
 </figure>
 </div>
 <div id="violinplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>violin plot</strong> compares the distribution of values across different treatment combinations in the <strong>SPD</strong>. Each treatment combination is shown as a violin shape that reflects how the data is spread — wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>violin plot</strong> in a split (2,1) design is used to display the distribution and variation of data for different treatment combinations in a detailed way. In this design, one factor has two levels (main plots) and another factor is applied within them (subplots). Each violin represents a treatment combination, where the shape shows the density of the data—wider sections indicate more observations, and narrower sections indicate fewer. It often includes a central line or small box showing the median and interquartile range. This plot not only helps in comparing central values but also reveals the spread, symmetry, and patterns of the data, making it easier to identify differences, variability, and possible outliers among treatments.</p>
 </div>
 </div>
 </div>
@@ -719,90 +627,97 @@ Figure&nbsp;14: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/bar%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;15: Bar plot"><img src="images/bar%20plot.png" class="img-fluid figure-img"></a>
+<a href="images/bar%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;12: Bar plot"><img src="images/bar%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15: Bar plot
+Figure&nbsp;12: Bar plot
 </figcaption>
 </figure>
 </div>
 <div id="barplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>Bar plot</strong> compares the average values of different Factor A and Factor B combinations, with error bars showing variability. The letters above each bar indicate statistical groupings: treatments sharing letters are similar, while those with different letters are significantly different. It highlights which treatment combinations have higher or lower averages and whether those differences are meaningful.</p>
+<p>A <strong>bar plot</strong> in a split (2,1) design is a graphical representation used to compare the values or mean performance of different treatment combinations. In this design, one factor has two levels (main plots) and another factor is applied within them (subplots). Each bar represents the mean value of a specific treatment combination, and the height of the bar indicates the magnitude of the response. Different colors or patterns may be used to distinguish between factor levels. Error bars can also be added to show variability or standard error. This type of plot helps in easily comparing treatments, identifying differences among factor levels, and understanding the overall performance of the treatments in a clear and visual manner.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="g-col-6">
 <div class="plot-container" onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')">
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/mean%20value.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;16: Mean Value Plot"><img src="images/mean%20value.png" class="img-fluid figure-img"></a>
+<a href="images/mean%20value.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;13: Mean Value Plot"><img src="images/mean%20value.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16: Mean Value Plot
+Figure&nbsp;13: Mean Value Plot
 </figcaption>
 </figure>
 </div>
 <div id="meanvalueplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>mean value plot</strong> compares the mean values of different treatment combinations in the <strong>SPD</strong>, each shown as a colored dot with horizontal error bars indicating variability. Letters next to each point represent statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>mean value plot</strong> in a split (2,1) design is used to represent the average values of different treatment combinations in a clear and organized manner. In this design, one factor has two levels (main plots) and another factor is applied within each main plot (subplots). Each point on the graph indicates the mean of a particular treatment combination, and these points are often connected by lines to show trends or interactions between factors. Error bars may be included to represent variability, such as standard error or confidence intervals. This plot helps in easily comparing treatment effects, identifying differences between factor levels, and understanding overall patterns in the data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/connectec%20line.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Connected line plot"><img src="images/connectec%20line.png" class="img-fluid figure-img" alt="Connected line plot"></a></p>
+<figcaption>Connected line plot</figcaption>
+</figure>
+</div>
+<div class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>connected line plot</strong> in a split (2,1) design is used to display and compare treatment effects by linking mean values across different factor levels. In this design, one factor has two levels (main plots) and another factor is applied within them (subplots). Each point on the graph represents the mean value of a treatment combination, and points belonging to the same factor level are connected with lines. These lines help to visualize trends and interactions between factors. Differences in the slope or pattern of the lines indicate variation in treatment responses, making it easier to understand relationships, compare effects, and identify any interaction between the factors.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="g-col-6">
 <div class="plot-container" onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')">
-<div style="text-align: center;">
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/connectec%20line.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;17: Connected line plot"><img src="images/connectec%20line.png" class="img-fluid figure-img"></a>
+<a href="images/connectec%20line.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;14: Connected line plot"><img src="images/connectec%20line.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17: Connected line plot
+Figure&nbsp;14: Connected line plot
 </figcaption>
 </figure>
 </div>
-</div>
-<div id="connectedplot-desc" class="plot-description">
-<div style="text-align: justify;">
-<p>A <strong>connected line plot</strong> compares the mean values of different Factor A and Factor B combinations, with each point representing a treatment’s average and error bars showing variability. The points are linked by lines to highlight trends across treatment levels and visualize interaction patterns. Letters above each point indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>:::: {#connected line plot-desc .plot-description} ::: {style=“text-align: justify;”} A <strong>connected line plot</strong> in a split (2,1) design is used to display and compare treatment effects by linking mean values across different factor levels. In this design, one factor has two levels (main plots) and another factor is applied within them (subplots). Each point on the graph represents the mean value of a treatment combination, and points belonging to the same factor level are connected with lines. These lines help to visualize trends and interactions between factors. Differences in the slope or pattern of the lines indicate variation in treatment responses, making it easier to understand relationships, compare effects, and identify any interaction between the factors.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
+<p>::::::</p>
 </section>
 </section>
-<section id="AP" class="level2" data-number="12">
-<h2 data-number="12" class="anchored" data-anchor-id="AP"><span class="header-section-number">12</span> Advanced plots</h2>
+<section id="AP" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="AP"><span class="header-section-number">10</span> Advanced plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> also provides <code>advanced plots</code> which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See <a href="#fig-90" class="quarto-xref">Figure&nbsp;18</a>)</p>
+<p><strong>RAISINS</strong> also provides advanced plot which goes beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See <a href="#fig-90" class="quarto-xref">Figure&nbsp;15</a>)</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/basic%20plot%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;18: Advanced plots"><img src="images/basic%20plot%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/basic%20plot%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;15: Advanced plots"><img src="images/basic%20plot%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18: Advanced plots
+Figure&nbsp;15: Advanced plots
 </figcaption>
 </figure>
 </div>
 <p><strong>SUMMARY PLOT</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_SummaryPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;19: Summary plot"><img src="www/PLACEHOLDER_SummaryPlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_SummaryPlot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;16: Summary plot"><img src="www/PLACEHOLDER_SummaryPlot.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19: Summary plot
+Figure&nbsp;16: Summary plot
 </figcaption>
 </figure>
 </div>
@@ -810,24 +725,23 @@ Figure&nbsp;19: Summary plot
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/summary%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Summary plot"><img src="images/summary%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Summary plot"></a></p>
+<p><a href="images/summary%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Summary plot"><img src="images/summary%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Summary plot"></a></p>
 </figure>
 </div>
 <figcaption>Summary plot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>A summary plot is a visual representation that shows how data are distributed across all treatment combinations of Factor A and Factor B in the <strong>SPD</strong>. It helps quickly understand the pattern, spread, and central tendency of the data at a glance, making it an efficient tool to compare performance across both factors simultaneously.</p>
+<p>A <strong>summary plot</strong> in a split (2,1) design is a graphical method used to summarize and compare the overall performance of different treatment combinations in a single figure. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. The plot combines important statistical features such as mean values, variability, confidence intervals, and interaction effects to provide a detailed understanding of the data. Different colors, symbols, or line patterns are used to clearly separate the factor levels and treatment combinations. This type of plot helps in identifying trends, comparing treatment responses, understanding variability, and detecting interactions between factors in a clear and informative manner.</p>
 </div>
 <p><strong>ADVANCED RAINCLOUD PLOT</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-15" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_AdvancedRaincloud.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;20: Advanced rain cloud plot"><img src="www/PLACEHOLDER_AdvancedRaincloud.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_AdvancedRaincloud.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;17: Advanced rain cloud plot"><img src="www/PLACEHOLDER_AdvancedRaincloud.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20: Advanced rain cloud plot
+Figure&nbsp;17: Advanced rain cloud plot
 </figcaption>
 </figure>
 </div>
@@ -835,54 +749,53 @@ Figure&nbsp;20: Advanced rain cloud plot
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/adv%20raincloud.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Advanced rain cloud plot"><img src="images/adv%20raincloud.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Advanced rain cloud plot"></a></p>
+<p><a href="images/adv%20raincloud.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Advanced rain cloud plot"><img src="images/adv%20raincloud.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Advanced rain cloud plot"></a></p>
 </figure>
 </div>
 <figcaption>Advanced rain cloud plot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Advanced raincloud plot combines a density plot, boxplot, and individual data points to show the full distribution of each treatment combination. The colored density (“cloud”) shows where values are most concentrated for each Factor A × Factor B combination, the boxplot summarizes the median and quartiles, and the dots (“rain”) represent individual observations from each block.</p>
+<p>An advanced <strong>rain cloud plot</strong> in a split (2,1) design is a detailed graphical method used to visualize the distribution, variability, and summary statistics of different treatment combinations in a single plot. It combines features of a violin plot, box plot, and scatter plot to provide a complete view of the data. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. The “cloud” part shows the density distribution of the data, the box plot displays median and quartiles, and the scattered points represent individual observations. This plot helps in comparing treatment effects, understanding variability, identifying outliers, and observing data patterns more clearly and effectively.</p>
 </div>
 <p><strong>QQ PLOT</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/qq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;21: QQ plot"><img src="images/qq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/qq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;18: QQ plot"><img src="images/qq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21: QQ plot
+Figure&nbsp;18: QQ plot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Q–Q (quantile–quantile) plot is used to assess normality of the residuals in the <strong>SPD</strong> analysis. The points represent observed data quantiles plotted against theoretical quantiles from a normal distribution. Because most points lie close to the diagonal reference line, the data approximately follows a normal distribution, validating the use of parametric ANOVA for the split plot analysis.</p>
+<p>A <strong>Q-Q (Quantile–Quantile) plot</strong> in a split (2,1) design is a graphical method used to check whether the data follows a normal distribution for different treatment combinations. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. The plot compares the observed data quantiles with the expected quantiles of a normal distribution. If the points lie close to a straight line, the data is considered approximately normal, while deviations from the line indicate non-normality or outliers. This plot is useful for assessing the distributional assumptions of the data before performing statistical analysis.</p>
 </div>
 <p><strong>RAIN CLOUD PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-17" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/raincloud.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;22: Rain cloud plot"><img src="images/raincloud.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/raincloud.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;19: Rain cloud plot"><img src="images/raincloud.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;22: Rain cloud plot
+Figure&nbsp;19: Rain cloud plot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Raincloud plot shows the distribution of the response variable across Factor A and Factor B combinations. The half-violin (cloud) represents the data density, indicating where values are most concentrated. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations from each block, making it easy to spot patterns and outliers within treatment combinations.</p>
+<p>A rain cloud plot in a split (2,1) design is a graphical method used to display the distribution, spread, and individual observations of data for different treatment combinations. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. The plot combines features of a density plot, box plot, and scatter plot in a single figure. The “cloud” portion shows the data distribution, the box plot summarizes measures such as median and quartiles, and the scattered points represent individual observations. This type of plot helps in understanding variability, comparing treatment effects, identifying outliers, and visualizing data patterns in a clear and informative way.</p>
 </div>
 <p><strong>DISTRIBUTION PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-18" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Distribution.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;23: Distribution plot"><img src="www/PLACEHOLDER_Distribution.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/PLACEHOLDER_Distribution.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;20: Distribution plot"><img src="www/PLACEHOLDER_Distribution.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23: Distribution plot
+Figure&nbsp;20: Distribution plot
 </figcaption>
 </figure>
 </div>
@@ -890,126 +803,125 @@ Figure&nbsp;23: Distribution plot
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/distribution.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Distribution plot"><img src="images/distribution.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Distribution plot"></a></p>
+<p><a href="images/distribution.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Distribution plot"><img src="images/distribution.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Distribution plot"></a></p>
 </figure>
 </div>
 <figcaption>Distribution plot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The distribution plot shows how the data values are spread for each treatment combination in the <strong>SPD</strong>. It provides a visual comparison of the pattern, spread, and variability of observations across all Factor A × Factor B combinations, helping to understand overall differences and consistency in the data and to identify treatment combinations with unusually high or low variability.</p>
+<p>A distribution plot in a split (2,1) design is used to visualize the overall pattern and spread of data for different treatment combinations. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. The plot shows how the observations are distributed across different values, helping to identify the concentration, symmetry, and variability of the data. It may also reveal skewness, peaks, gaps, or outliers in the distribution. This type of plot is useful for comparing treatment responses and understanding the underlying data pattern in a clear and informative way.</p>
 </div>
-<p><strong>RAIN CLOUD PLOT</strong></p>
+<p><strong>PAIR PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/pair%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Rain cloud plot"><img src="images/pair%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Rain cloud plot"></a></p>
+<p><a href="images/pair%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Pair plot"><img src="images/pair%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Pair plot"></a></p>
 </figure>
 </div>
-<figcaption>Rain cloud plot</figcaption>
+<figcaption>Pair plot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Raincloud plot shows the distribution of the response variable across Factor A and Factor B combinations. The half-violin (cloud) represents the data density, indicating where values are most concentrated. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations from each block, making it easy to spot patterns and outliers within treatment combinations.</p>
+<p>A pair plot in a split (2,1) design is a graphical method used to display the relationships between multiple variables and treatment combinations in a single figure. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. The plot consists of scatter plots arranged in a matrix form, where each variable is compared with every other variable. Diagonal panels often show the distribution of individual variables using histograms or density plots. This type of plot helps in identifying correlations, trends, variability, and patterns among variables, making it useful for understanding the overall relationship between treatments and observations.</p>
 </div>
-<p><strong>RAIN CLOUD PLOT</strong></p>
+<p><strong>CIRCULAR PLOT</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/circular%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Circular plot"><img src="images/circular%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Circular plot"></a></p>
+</figure>
+</div>
+<figcaption>Circular plot</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>A circular plot in a split (2,1) design is a graphical representation used to display relationships, patterns, and comparisons among different treatment combinations in a circular layout. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. The plot arranges the treatments or variables around a circle, and connections, segments, or colored regions are used to show interactions, similarities, or differences between them. This type of plot helps in visualizing complex relationships, comparing treatment effects, and understanding overall data patterns in an attractive and organized manner.</p>
+</div>
+<p><strong>CORRELATION PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/circular%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Rain cloud plot"><img src="images/circular%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Rain cloud plot"></a></p>
+<p><a href="images/correlation%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Correlation plot"><img src="images/correlation%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Correlation plot"></a></p>
 </figure>
 </div>
-<figcaption>Rain cloud plot</figcaption>
+<figcaption>Correlation plot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Raincloud plot shows the distribution of the response variable across Factor A and Factor B combinations. The half-violin (cloud) represents the data density, indicating where values are most concentrated. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations from each block, making it easy to spot patterns and outliers within treatment combinations.</p>
+<p>A correlation plot in a split (2,1) design is used to show the strength and direction of relationships between different variables or treatment combinations. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. The plot usually displays correlation coefficients using colors, circles, or numerical values, where positive correlations indicate variables increasing together and negative correlations indicate opposite trends. Strong correlations are shown with darker colors or larger symbols, while weak correlations appear lighter or smaller. This type of plot helps in understanding associations, identifying patterns, and analyzing relationships among variables in a clear and visual manner.</p>
 </div>
-<p><strong>RAIN CLOUD PLOT</strong></p>
+<p><strong>3D SCATTER PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/correlation%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Rain cloud plot"><img src="images/correlation%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Rain cloud plot"></a></p>
+<p><a href="images/3d%20scatter%20plot%20(1).gif" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="3D Scatter plot"><img src="images/3d%20scatter%20plot%20(1).gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="3D Scatter plot"></a></p>
 </figure>
 </div>
-<figcaption>Rain cloud plot</figcaption>
+<figcaption>3D Scatter plot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Raincloud plot shows the distribution of the response variable across Factor A and Factor B combinations. The half-violin (cloud) represents the data density, indicating where values are most concentrated. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations from each block, making it easy to spot patterns and outliers within treatment combinations.</p>
+<p>A 3D scatter plot in a split (2,1) design is a graphical method used to visualize the relationship among three variables or treatment factors in a three-dimensional space. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. Each point in the plot represents an observation, positioned according to its values on the three axes. Different colors or symbols may be used to distinguish treatment combinations or factor levels. This plot helps in identifying trends, clusters, interactions, and variability among treatments, providing a more detailed understanding of complex relationships in the data.</p>
 </div>
-<p><strong>RAIN CLOUD PLOT</strong></p>
+<p><strong>3D SCATTER PLOT WITH LINES PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/3d%20scatter%20plot%20(1).gif" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Rain cloud plot"><img src="images/3d%20scatter%20plot%20(1).gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Rain cloud plot"></a></p>
+<p><a href="images/3d%20line%20plot.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="3DSctter plot with lines plot"><img src="images/3d%20line%20plot.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="3DSctter plot with lines plot"></a></p>
 </figure>
 </div>
-<figcaption>Rain cloud plot</figcaption>
-</figure>
-</div>
-<div style="text-align: justify;">
-<p>Raincloud plot shows the distribution of the response variable across Factor A and Factor B combinations. The half-violin (cloud) represents the data density, indicating where values are most concentrated. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations from each block, making it easy to spot patterns and outliers within treatment combinations.</p>
-</div>
-<p><strong>RAIN CLOUD PLOT</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/3d%20line%20plot.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Rain cloud plot"><img src="images/3d%20line%20plot.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Rain cloud plot"></a></p>
-</figure>
-</div>
-<figcaption>Rain cloud plot</figcaption>
+<figcaption>3DSctter plot with lines plot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Raincloud plot shows the distribution of the response variable across Factor A and Factor B combinations. The half-violin (cloud) represents the data density, indicating where values are most concentrated. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations from each block, making it easy to spot patterns and outliers within treatment combinations.</p>
+<p>A 3D scatter line plot in a split (2,1) design is a graphical method used to display the relationship among three variables while also showing trends through connected lines. In this design, one factor has two levels as main plots and another factor is applied within them as subplots. Each point in the three-dimensional space represents an observation based on values along the x, y, and z axes, and related points are connected with lines to highlight patterns or progression among treatment combinations. Different colors or symbols may be used to distinguish factor levels. This type of plot helps in understanding trends, interactions, and variability among treatments in a more detailed and visual manner.</p>
 </div>
 </section>
-<section id="AI" class="level2" data-number="13">
-<h2 data-number="13" class="anchored" data-anchor-id="AI"><span class="header-section-number">13</span> AI interpretation</h2>
+<section id="AI" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="AI"><span class="header-section-number">11</span> AI interpretation</h2>
 <div style="text-align: justify;">
-<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences between groups, and offers informed suggestions for potential next steps or interpretations. The user can get detailed interpretations of the analysis by clicking on <code>AI interpretation</code> on the <code>Analysis</code> as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;24</a>.</p>
+<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences between groups, and offers informed suggestions for potential next steps or interpretations. The user can get detailed interpretations of the analysis by clicking on AI Interpretaton on the Analysis as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;21</a>.</p>
 </div>
 <div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/ai%20inter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;24: AI powered RAISINS Assistant to interpret your results"><img src="images/ai%20inter.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/ai%20inter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;21: AI powered RAISINS Assistant to interpret your results"><img src="images/ai%20inter.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;24: AI powered RAISINS Assistant to interpret your results
+Figure&nbsp;21: AI powered RAISINS Assistant to interpret your results
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="MUL" class="level2" data-number="14">
-<h2 data-number="14" class="anchored" data-anchor-id="MUL"><span class="header-section-number">14</span> Multivariate</h2>
+<section id="MUL" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="MUL"><span class="header-section-number">12</span> Multivariate</h2>
 <div style="text-align: justify;">
-<p>Multivariate analysis in <strong>Split Plot Design (2,1) (SPD)</strong> helps you to compare different response variables simultaneously across all treatment combinations of Factor A and Factor B. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example, of evaluation of three irrigation methods — Surface Irrigation (I1), Drip Irrigation (I2), and Sprinkler Irrigation (I3) — across four rice varieties (V1, V2, V3, V4), as studied by an agronomist, navigate to <code>Multivariate</code> see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;25</a>.</p>
+<p>Multivariate analysis in <strong>Split Plot (2,1)Design</strong> helps you to compare different response variables simultaneously across all treatment combinations of Factor A and Factor B. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example, of evaluation of three irrigation methods — Surface Irrigation (I1), Drip Irrigation (I2), and Sprinkler Irrigation (I3) — across four rice varieties (V1, V2, V3, V4), as studied by an agronomist, navigate to Multivariate see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;22</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_MultivariateTab.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;25: Multivariate tab in RAISINS"><img src="www/PLACEHOLDER_MultivariateTab.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_MultivariateTab.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;22: Multivariate tab in RAISINS"><img src="www/PLACEHOLDER_MultivariateTab.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;25: Multivariate tab in RAISINS
+Figure&nbsp;22: Multivariate tab in RAISINS
 </figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/basic%20plot%20(2)-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Multivariate tab in RAISINS"><img src="images/basic%20plot%20(2)-01.png" class="img-fluid figure-img" alt="Multivariate tab in RAISINS"></a></p>
+<p><a href="images/basic%20plot%20(2)-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Multivariate tab in RAISINS"><img src="images/basic%20plot%20(2)-01.png" class="img-fluid figure-img" alt="Multivariate tab in RAISINS"></a></p>
 <figcaption>Multivariate tab in RAISINS</figcaption>
 </figure>
 </div>
@@ -1018,50 +930,50 @@ Figure&nbsp;25: Multivariate tab in RAISINS
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div style="text-align: justify;">
-<p>The table titled ‘Eigen Values PCA’ given <a href="#fig-PC" class="quarto-xref">Figure&nbsp;26</a> provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1, PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 54% of the variance in the dataset, while PC2 accounts for about 28% of the variance. Together, PC1 and PC2 explain approximately 82% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.</p>
+<p>The table titled ‘Eigen Values PCA’ given <a href="#fig-PC" class="quarto-xref">Figure&nbsp;23</a> provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1, PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 54% of the variance in the dataset, while PC2 accounts for about 28% of the variance. Together, PC1 and PC2 explain approximately 82% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_PCAIndex.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;26: PCA-based Index Score"><img src="www/PLACEHOLDER_PCAIndex.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_PCAIndex.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;23: PCA-based Index Score"><img src="www/PLACEHOLDER_PCAIndex.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;26: PCA-based Index Score
+Figure&nbsp;23: PCA-based Index Score
 </figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/pca%20index-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="PCA-based Index Score"><img src="images/pca%20index-01.png" class="img-fluid figure-img" alt="PCA-based Index Score"></a></p>
+<p><a href="images/pca%20index-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="PCA-based Index Score"><img src="images/pca%20index-01.png" class="img-fluid figure-img" alt="PCA-based Index Score"></a></p>
 <figcaption>PCA-based Index Score</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;27</a> illustrates the proportion of variance explained by each principal component.</p>
+<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;24</a> illustrates the proportion of variance explained by each principal component.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/screee.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;27: Scree plot"><img src="images/screee.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/screee.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;24: Scree plot"><img src="images/screee.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;27: Scree plot
+Figure&nbsp;24: Scree plot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;28</a> and decide which PC-based index needs to be selected. In our example, PC1 shows strong positive loadings for Grain Yield and 1000 Grain Weight, indicating that treatment combinations with high PC1 scores tend to produce heavier grains and higher overall yield. PC2 shows positive loadings for Plant Height and Number of Tillers, suggesting that PC2 captures vegetative growth patterns independent of grain-related traits. Based on these loadings, a PC1-based index score would be most appropriate for identifying superior treatment combinations for yield improvement. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;25</a> and decide which PC-based index needs to be selected. In our example, PC1 shows strong positive loadings for Grain Yield and 1000 Grain Weight, indicating that treatment combinations with high PC1 scores tend to produce heavier grains and higher overall yield. PC2 shows positive loadings for Plant Height and Number of Tillers, suggesting that PC2 captures vegetative growth patterns independent of grain-related traits. Based on these loadings, a PC1-based index score would be most appropriate for identifying superior treatment combinations for yield improvement. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/plott.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="Figure&nbsp;28: Loadings of each variable"><img src="images/plott.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/plott.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;25: Loadings of each variable"><img src="images/plott.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;28: Loadings of each variable
+Figure&nbsp;25: Loadings of each variable
 </figcaption>
 </figure>
 </div>
@@ -1072,30 +984,30 @@ Figure&nbsp;28: Loadings of each variable
 <div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Biplot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-40" title="Figure&nbsp;29: PCA-Biplot"><img src="www/PLACEHOLDER_Biplot.webp" class="img-fluid figure-img"></a>
+<a href="www/PLACEHOLDER_Biplot.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="Figure&nbsp;26: PCA-Biplot"><img src="www/PLACEHOLDER_Biplot.webp" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;29: PCA-Biplot
+Figure&nbsp;26: PCA-Biplot
 </figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/biplot-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41" title="PCA-Biplot"><img src="images/biplot-01.png" class="img-fluid figure-img" alt="PCA-Biplot"></a></p>
+<p><a href="images/biplot-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40" title="PCA-Biplot"><img src="images/biplot-01.png" class="img-fluid figure-img" alt="PCA-Biplot"></a></p>
 <figcaption>PCA-Biplot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment combinations based on their index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;30</a>, where you can choose the cutoff percentage to select treatment combinations above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment combinations as per your preference. Selected treatment combinations are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
+<p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment combinations based on their index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;27</a>, where you can choose the cutoff percentage to select treatment combinations above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment combinations as per your preference. Selected treatment combinations are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/annovaaaaa.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42" title="Figure&nbsp;30: Index score"><img src="images/annovaaaaa.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/annovaaaaa.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41" title="Figure&nbsp;27: Index score"><img src="images/annovaaaaa.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;30: Index score
+Figure&nbsp;27: Index score
 </figcaption>
 </figure>
 </div>
@@ -1103,10 +1015,10 @@ Figure&nbsp;30: Index score
 <div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/annnnnovvaa22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-43" title="Figure&nbsp;31: Indexplot"><img src="images/annnnnovvaa22.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/annnnnovvaa22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42" title="Figure&nbsp;28: Indexplot"><img src="images/annnnnovvaa22.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;31: Indexplot
+Figure&nbsp;28: Indexplot
 </figcaption>
 </figure>
 </div>
@@ -1114,8 +1026,8 @@ Figure&nbsp;31: Indexplot
 <p>Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. In our hypothetical example, the multivariate analysis confirms that the I2 × V3 combination (Drip Irrigation with Variety V3) is the top-ranked treatment combination across all four response variables, and should be the primary recommendation from this experiment.</p>
 </div>
 </section>
-<section id="PRE" class="level2" data-number="15">
-<h2 data-number="15" class="anchored" data-anchor-id="PRE"><span class="header-section-number">15</span> Preparing your data</h2>
+<section id="PRE" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="PRE"><span class="header-section-number">13</span> Preparing your data</h2>
 <div style="text-align: justify;">
 <p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won’t be trustworthy.”</p>
 <ol type="1">
@@ -1124,28 +1036,28 @@ Figure&nbsp;31: Indexplot
 </ol>
 </div>
 </section>
-<section id="EX" class="level2" data-number="16">
-<h2 data-number="16" class="anchored" data-anchor-id="EX"><span class="header-section-number">16</span> Preparing data in MS Excel</h2>
+<section id="EX" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="EX"><span class="header-section-number">14</span> Preparing data in MS Excel</h2>
 <div style="text-align: justify;">
-<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. For a <strong>Split Plot Design (2,1)</strong>, the dataset must follow a column-based format with a minimum of four structural columns: one for the Block, one for the Main Plot Factor (Factor A), one for the Sub-plot Factor (Factor B), followed by the response variable columns. Name each column clearly — for example, “Block”, “Irrigation”, “Variety”, “Grain_Yield”, “Plant_Height”, “Tillers”, “Grain_Weight_1000”. Each unique combination of Block × Factor A × Factor B should appear on a separate row. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;32</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;33</a>.</p>
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. For a <strong>Split Plot (2,1) Design</strong> , the dataset must follow a column-based format with a minimum of four structural columns: one for the Block, one for the Main Plot Factor (Factor A), one for the Sub-plot Factor (Factor B), followed by the response variable columns. Name each column clearly — for example, “Block”, “Irrigation”, “Variety”, “Grain_Yield”, “Plant_Height”, “Tillers”, “Grain_Weight_1000”. Each unique combination of Block × Factor A × Factor B should appear on a separate row. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;29</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;30</a>.</p>
 </div>
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/P1.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-44" title="Figure&nbsp;32: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/P1.webp" class="img-fluid figure-img"></a>
+<a href="images/m1-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-43" title="Figure&nbsp;29: Model-1: showing how the prepared Excel file for upload should look like"><img src="images/m1-01.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;32: Model-1: showing how the prepared Excel file for upload should look like
+Figure&nbsp;29: Model-1: showing how the prepared Excel file for upload should look like
 </figcaption>
 </figure>
 </div>
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/P2.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-45" title="Figure&nbsp;33: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/P2.webp" class="img-fluid figure-img"></a>
+<a href="images/m2-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-44" title="Figure&nbsp;30: Model-2: Showing how the prepared Excel file for upload should look like"><img src="images/m2-01.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;33: Model-2: Showing how the prepared Excel file for upload should look like
+Figure&nbsp;30: Model-2: Showing how the prepared Excel file for upload should look like
 </figcaption>
 </figure>
 </div>
@@ -1192,8 +1104,8 @@ How to Save as CSV in MS Excel
 </blockquote>
 </details>
 </section>
-<section id="CR" class="level2" data-number="17">
-<h2 data-number="17" class="anchored" data-anchor-id="CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</h2>
+<section id="CR" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="CR"><span class="header-section-number">15</span> Creating dataset in RAISINS</h2>
 <div style="text-align: justify;">
 <p>If you’re unsure about the correct format for creating a dataset, don’t worry — RAISINS offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
 <ul>
@@ -1204,61 +1116,61 @@ How to Save as CSV in MS Excel
 <li><p>Select number of <strong>Characters</strong></p></li>
 <li><p>Click on <strong>Create</strong> button</p></li>
 </ul>
-<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;34</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in <code>Analysis</code>.</p>
+<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;31</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in <code>Analysis</code>.</p>
 </div>
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-46" title="Figure&nbsp;34: Creating dataset within RAISINS"><img src="www/CREATEDAT.webp" class="img-fluid figure-img" width="1011"></a>
+<a href="www/CREATEDAT.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-45" title="Figure&nbsp;31: Creating dataset within RAISINS"><img src="www/CREATEDAT.webp" class="img-fluid figure-img" width="1011"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;34: Creating dataset within RAISINS
+Figure&nbsp;31: Creating dataset within RAISINS
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="M" class="level2" data-number="18">
-<h2 data-number="18" class="anchored" data-anchor-id="M"><span class="header-section-number">18</span> Model datasets</h2>
+<section id="M" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="M"><span class="header-section-number">16</span> Model datasets</h2>
 <div style="text-align: justify;">
 <p>To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the <code>Datasets</code>.</p>
 </div>
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/modeldata.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-47" title="Figure&nbsp;35: Model dataset"><img src="www/modeldata.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/model-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-46" title="Figure&nbsp;32: Model dataset"><img src="images/model-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;35: Model dataset
+Figure&nbsp;32: Model dataset
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="F" class="level2" data-number="19">
-<h2 data-number="19" class="anchored" data-anchor-id="F"><span class="header-section-number">19</span> FAQ’s</h2>
+<section id="F" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="F"><span class="header-section-number">17</span> FAQ’s</h2>
 <div style="text-align: justify;">
 <p>The app includes a dedicated <code>FAQs</code> to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the <code>FAQs</code> is a great place to start.</p>
 </div>
 <div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/FAQ%20TAB.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-48" title="Figure&nbsp;36: FAQs"><img src="www/FAQ%20TAB.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/faq-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-47" title="Figure&nbsp;33: FAQs"><img src="images/faq-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;36: FAQs
+Figure&nbsp;33: FAQs
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="U" class="level2" data-number="20">
-<h2 data-number="20" class="anchored" data-anchor-id="U"><span class="header-section-number">20</span> View data</h2>
+<section id="U" class="level2" data-number="18">
+<h2 data-number="18" class="anchored" data-anchor-id="U"><span class="header-section-number">18</span> View data</h2>
 <div style="text-align: justify;">
-<p><code>View Data</code> serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. This is especially important in a <strong>Split Plot Design (2,1)</strong> where the correct identification of the Block, Main Plot Factor, and Sub-plot Factor columns is critical for the ANOVA to be partitioned correctly.</p>
+<p><code>View Data</code> serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. This is especially important in a <strong>Split Plot (2,1) Design</strong> where the correct identification of the Block, Main Plot Factor, and Sub-plot Factor columns is critical for the ANOVA to be partitioned correctly.</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/view%20data.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-49" title="View data"><img src="www/view%20data.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+<p><a href="images/view-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-48" title="View data"><img src="images/view-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
 </figure>
 </div>
 <figcaption>View data</figcaption>

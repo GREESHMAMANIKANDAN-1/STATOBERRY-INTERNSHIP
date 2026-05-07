@@ -86,7 +86,7 @@ Split Split Plot Design **(SSPD)** is an advanced multi-factor experimental desi
 </style>
 ```
 
-<ul><small> The **Split Split Plot Design** has its intellectual roots in the foundational work of [<strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"/>]{.hover-img} at Rothamsted Experimental Station during the **1920s and 1930s**. Fisher's development of randomized block designs and the analysis of variance laid the groundwork for hierarchical plot designs. The Split Plot Design emerged from the practical need to accommodate factors that required large experimental units alongside factors that could be applied to smaller units. Agricultural researchers recognised that certain treatments such as irrigation methods or tillage operations could not be practically applied to small plots, necessitating a hierarchical arrangement of experimental units. The **Split Split Plot Design** was a natural extension of this concept, introduced as agronomy and crop science experiments grew increasingly complex, requiring the simultaneous study of three factors with differing levels of precision. This design allowed researchers to gain maximum information from factorial experiments where complete randomization across all factor combinations was impractical, and has since become indispensable in agronomy, horticulture, and food science research. </small></ul>
+<ul><small> The **Split Split Plot Design** has its intellectual roots in the foundational work of [Ronald A. Fisher]{.hover-img} at Rothamsted Experimental Station during the **1920s and 1930s**. Fisher's development of randomized block designs and the analysis of variance laid the groundwork for hierarchical plot designs. The Split Plot Design emerged from the practical need to accommodate factors that required large experimental units alongside factors that could be applied to smaller units. Agricultural researchers recognised that certain treatments such as irrigation methods or tillage operations could not be practically applied to small plots, necessitating a hierarchical arrangement of experimental units. The **Split Split Plot Design** was a natural extension of this concept, introduced as agronomy and crop science experiments grew increasingly complex, requiring the simultaneous study of three factors with differing levels of precision. This design allowed researchers to gain maximum information from factorial experiments where complete randomization across all factor combinations was impractical, and has since become indispensable in agronomy, horticulture, and food science research. </small></ul>
 
 </details>
 
@@ -116,9 +116,9 @@ The **Split Split Plot Design (SSPD)** is a three-factor experimental design in 
 
 <small>
 
-@fig-lay visually represents a Split Split Plot Design arrangement with three replication blocks, three main plot treatments (Factor A), two sub-plot treatments (Factor B), and two sub-sub-plot treatments (Factor C). Each block is divided into three main plots, one for each level of Factor A. Each main plot is further subdivided into sub-plots for Factor B levels, and each sub-plot is split into sub-sub-plots where levels of Factor C are randomly assigned. Randomization is applied at each level of the hierarchy: Factor A levels are randomized among main plots within each block, Factor B levels are randomized within each main plot, and Factor C levels are randomized within each sub-plot. This three-level nesting produces a design with three distinct error terms for unbiased testing of each factor and their interactions.
+@fig-lay visually represents a Split Split Plot Design arrangement with three replication blocks, three main plot treatments (Factor A), three sub-plot treatments (Factor B), and three sub-sub-plot treatments (Factor C). Each block is divided into three main plots, one for each level of Factor A. Each main plot is further subdivided into sub-plots for Factor B levels, and each sub-plot is split into sub-sub-plots where levels of Factor C are randomly assigned. Randomization is applied at each level of the hierarchy: Factor A levels are randomized among main plots within each block, Factor B levels are randomized within each main plot, and Factor C levels are randomized within each sub-plot. This three-level nesting produces a design with three distinct error terms for unbiased testing of each factor and their interactions.
 
-![SSPD Layout](www/PLACEHOLDER_SSP_Layout.webp){#fig-lay fig-align="center"}
+![SSPD Layout](images/blockreplication (1).png){#fig-lay fig-align="center"}
 
 </small>
 
@@ -133,7 +133,7 @@ The **Split Split Plot Design (SSPD)** is a three-factor experimental design in 
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain SSPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Let's assume the experiment is conducted in a paddy field to evaluate the combined effects of three agronomic factors on rice performance. Consider a dataset with three replications (blocks), three irrigation regimes as the main plot factor (Factor A: I1 - Continuous flooding, I2 - Alternate wetting and drying, I3 - Deficit irrigation), two nitrogen levels as the sub-plot factor (Factor B: N1 - 80 kg/ha, N2 - 120 kg/ha), and three rice varieties as the sub-sub-plot factor (Factor C: V1 -Jyothi, V2 — Uma, V3 - Kanchana). Observations were recorded for four variables: **Yield, Obs1, Obs2, and FW**. Our aim is to test whether the main plot, sub-plot, and sub-sub-plot factors produce statistically significant differences in the response variable using ANOVA, and to examine their interactions. The arrangement of the data is shown in @fig-data.
+To make things simple and interesting, we'll explain SSPD analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Let's assume the experiment is conducted in a paddy field to evaluate the combined effects of three agronomic factors on rice performance. Consider a dataset with three replications (blocks), three irrigation regimes as the main plot factor (Factor A: I1 - Continuous flooding, I2 - Alternate wetting and drying, I3 - Deficit irrigation), two nitrogen levels as the sub-plot factor (Factor B: N1 - 80 kg/ha, N2 - 120 kg/ha), and three rice varieties as the sub-sub-plot factor (Factor C: V1 -Jyothi, V2 Uma, V3 - Kanchana). Observations were recorded for four variables: **Yield, Obs1, Obs2, and FW**. Our aim is to test whether the main plot, sub-plot, and sub-sub-plot factors produce statistically significant differences in the response variable using ANOVA, and to examine their interactions. The arrangement of the data is shown in @fig-data.
 :::
 
 ![Example dataset](images/Screenshot%202026-05-04%20113159.png){#fig-data fig-align="center"}
@@ -145,7 +145,7 @@ Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis.
 ## How to prepare your data? {#sec-4 .H}
 
 ::: {style="text-align: justify;"}
-Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. For a Split Split Plot Design, your dataset must include columns for the Replication (block), the Main Plot factor (Factor A), the Sub-plot factor (Factor B), the Sub-sub-plot factor (Factor C), and all response variable columns. Make sure no blank rows are left above, and all columns have proper names. That's it — your file is ready to upload.
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. For a Split Split Plot Design, your dataset must include columns for the Replication (block), the Main Plot factor (Factor A), the Sub-plot factor (Factor B), the Sub-sub-plot factor (Factor C), and all response variable columns. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
 
 Still if you have doubt, see @fig-4.
 
@@ -156,18 +156,18 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(4)-01.png){#fig-4 fig-align="center"}
+![Illustrating how to create a dataset](images/Copy of Copy of Red Modern Blank Page A4 Landscape (9)-02.png){#fig-4 fig-align="center"}
 
 ## SSPD analysis tab explained {#AO}
 
 ::: {style="text-align: justify;"}
-In @fig-5, you can see the detailed view of the Analysis tab for Split Split Plot Design, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the Replication column, Main Plot factor (Factor A), Sub-plot factor (Factor B), Sub-sub-plot factor (Factor C), and the response Variables will appear. Select the appropriate columns for each role. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly, leaving no room for confusion.
+In @fig-5, you can see the detailed view of the Analysis tab for Split Split Plot Design, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the Replication column, Main Plot factor (Factor A), Sub-plot factor (Factor B), Sub-sub-plot factor (Factor C), and the response Variables will appear. Select the appropriate columns for each role. Once you click the Run Analysis button, all relevant results and outputs appear instantly, leaving no room for confusion.
 :::
 
-![SSP Analysis window explained](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(5)-01.png){#fig-5 fig-align="center"}
+![SSP Analysis window explained](images/Copy of Copy of Red Modern Blank Page A4 Landscape (10)-01.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset (@sec-6). Here, **RAISINS** provides an inbuilt transformation option.
+For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset @sec-6. Here, **RAISINS** provides an inbuilt transformation option.
 :::
 
 ## Transformation {#sec-6 .T}
@@ -176,7 +176,7 @@ For some data, when there are a large number of zeros, discrete values, or when 
 Log, square root, and arcsine transformations are often used in SSPD analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
-![Transformation options](www/trans.webp){#fig-6 fig-align="center"}
+![Transformation options](images/WhatsApp%20Image%202026-05-05%20at%2012.39.29%20PM.jpeg){#fig-6 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -191,14 +191,12 @@ Log, square root, and arcsine transformations are often used in SSPD analysis to
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, and a **three-factor ANOVA** appropriate for the Split Split Plot Design will be performed. Analysis of Variance **(ANOVA)** in an SSPD partitions the total variation into components attributable to blocks, the main plot factor (Factor A), the main plot error, the sub-plot factor (Factor B), the A×B interaction, the sub-plot error, the sub-sub-plot factor (Factor C), the A×C interaction, the B×C interaction, the A×B×C interaction, and the sub-sub-plot error. Each factor is tested against its own appropriate error term (see @fig-100).
+Once your dataset is uploaded, click on Run Analysis, and a **three-factor ANOVA** appropriate for the Split Split Plot Design will be performed. Analysis of Variance **(ANOVA)** in an SSPD partitions the total variation into components attributable to blocks, the main plot factor (Factor A), the main plot error, the sub-plot factor (Factor B), the A×B interaction, the sub-plot error, the sub-sub-plot factor (Factor C), the A×C interaction, the B×C interaction, the A×B×C interaction, and the sub-sub-plot error. Each factor is tested against its own appropriate error term see @fig-100.
 :::
 
 **Table 1: ANOVA summary**
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Treatment and Error Mean Square ANOVA — Split Split Plot](www/PLACEHOLDER_SSP_ANOVA1.webp){#fig-100 fig-align="center"}
+![Treatment and Error Mean Square ANOVA — Split Split Plot](images/anovaa1.jpeg){#fig-100 fig-align="center"}
 
 <details>
 
@@ -229,19 +227,17 @@ Significance is indicated by an asterisk ( \* ) for the **5%** level and two ast
 
 </details>
 
-### Interpretation from @fig-100
+### Interpretation 
 
 ::: {style="text-align: justify;"}
-In our hypothetical example, the ANOVA results indicate that the Main Plot factor — Irrigation regime (Factor A) — has a treatment mean square of 3215.40 and a main plot error mean square of 842.60, producing an F-ratio of approximately 3.81, which is statistically significant at the 5% level. This suggests that irrigation regime has a meaningful effect on yield. The Sub-plot factor — Nitrogen level (Factor B) — produced an F-ratio of 6.45, significant at the 1% level, confirming strong nitrogen effects on yield. The Sub-sub-plot factor — Variety (Factor C) — yielded an F-ratio of 8.12, also highly significant at the 1% level, indicating substantial varietal differences. Importantly, the A×B×C three-way interaction was significant at the 5% level (F = 3.24), suggesting that the effect of variety on yield is influenced by the combination of irrigation regime and nitrogen level.
+In our hypothetical example, the ANOVA results indicate that the Main Plot factor Irrigation regime (Factor A) - has a treatment mean square of 3215.40 and a main plot error mean square of 842.60, producing an F-ratio of approximately 3.81, which is statistically significant at the 5% level. This suggests that irrigation regime has a meaningful effect on yield. The Sub-plot factor -Nitrogen level (Factor B) - produced an F-ratio of 6.45, significant at the 1% level, confirming strong nitrogen effects on yield. The Sub-sub-plot factor - Variety (Factor C) -yielded an F-ratio of 8.12, also highly significant at the 1% level, indicating substantial varietal differences. Importantly, the A×B×C three-way interaction was significant at the 5% level (F = 3.24), suggesting that the effect of variety on yield is influenced by the combination of irrigation regime and nitrogen level.
 
 In practical terms, these results imply that selecting the best variety cannot be done in isolation from irrigation and nitrogen management. The significant three-way interaction makes a strong case for evaluating each variety under specific combinations of irrigation and nitrogen rather than across their averages. @sec-8 provides detailed information on multiple comparison tests (post-hoc tests) for interpreting specific pairwise differences.
 :::
 
 **Table 2: Detailed tabular representation with multiple comparisons**
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Detailed tabular representation with multiple comparisons](www/PLACEHOLDER_SSP_Result2.webp){#fig-101 fig-align="center"}
+![Detailed tabular representation with multiple comparisons](images/a2.jpeg){#fig-101 fig-align="center"} ![Detailed tabular representation with multiple comparisons](images/a3.jpeg){fig-align="center"} ![Detailed tabular representation with multiple comparisons](images/a4.jpeg){fig-align="center"}
 
 <details>
 
@@ -254,11 +250,11 @@ In practical terms, these results imply that selecting the best variety cannot b
 
 1.  *Factors and Response Variables*
 
-**Main Plot Factor (Factor A)**: The largest-scale independent variable applied to whole plots — in our example, Irrigation regime (I1, I2, I3).
+**Main Plot Factor (Factor A)**: The largest-scale independent variable applied to whole plots - in our example, Irrigation regime (I1, I2, I3).
 
-**Sub-plot Factor (Factor B)**: The intermediate independent variable applied within each main plot — in our example, Nitrogen level (N1, N2).
+**Sub-plot Factor (Factor B)**: The intermediate independent variable applied within each main plot - in our example, Nitrogen level (N1, N2).
 
-**Sub-sub-plot Factor (Factor C)**: The smallest-scale independent variable applied within each sub-plot — in our example, Variety (V1, V2, V3).
+**Sub-sub-plot Factor (Factor C)**: The smallest-scale independent variable applied within each sub-plot -in our example, Variety (V1, V2, V3).
 
 **Response Variable**: The dependent variable or specific measurement (e.g., Yield) recorded to evaluate the combined performance of the three factors.
 
@@ -316,17 +312,15 @@ In our example for the character Yield, the interaction between Irrigation regim
 </summary>
 ```
 
-<ul><small> A post-hoc test is a follow-up analysis performed after finding a significant result in an overall statistical test like ANOVA. Its purpose is to identify exactly which groups or treatments differ from each other. In a Split Split Plot Design, post-hoc tests must be applied carefully because different error terms govern different comparisons — the main plot error is used for Factor A comparisons, the sub-plot error for Factor B and A×B comparisons, and the sub-sub-plot error for Factor C and all interactions involving C.</small></ul>
+<ul><small> A post-hoc test is a follow-up analysis performed after finding a significant result in an overall statistical test like ANOVA. Its purpose is to identify exactly which groups or treatments differ from each other. In a Split Split Plot Design, post-hoc tests must be applied carefully because different error terms govern different comparisons - the main plot error is used for Factor A comparisons, the sub-plot error for Factor B and A×B comparisons, and the sub-sub-plot error for Factor C and all interactions involving C.</small></ul>
 
 </details>
 
 ::: {style="text-align: justify;"}
-After obtaining significant F-values in the SSPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatment levels and the hierarchy of the comparison being made (see @fig-7).
+After obtaining significant F-values in the SSPD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatment levels and the hierarchy of the comparison being made see @fig-7.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Multiple comparison test options explained](www/PLACEHOLDER_SSP_MCT.webp){#fig-7 fig-align="center"}
+![Multiple comparison test options explained](images/Copy%20of%20Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(8).png){#fig-7 fig-align="center"}
 
 <details>
 
@@ -336,7 +330,7 @@ After obtaining significant F-values in the SSPD ANOVA, multiple comparison test
 
 <small>
 
-When the ANOVA in a **Split Split Plot Design (SSPD)** is significant, the following post-hoc tests are commonly used for pairwise comparisons. A critical distinction in SSPD is that the appropriate error mean square must be identified for each comparison — Factor A uses Error A, Factor B and A×B use Error B, while Factor C, A×C, B×C, and A×B×C use Error C.
+When the ANOVA in a **Split Split Plot Design (SSPD)** is significant, the following post-hoc tests are commonly used for pairwise comparisons. A critical distinction in SSPD is that the appropriate error mean square must be identified for each comparison Factor A uses Error A, Factor B and A×B use Error B, while Factor C, A×C, B×C, and A×B×C use Error C.
 
 **LSD (Least Significant Difference) Test**
 
@@ -370,130 +364,10 @@ The choice of the post-hoc test completely relies on the researcher.
 In our example, for characters showing significant treatment effects or interactions, pairwise comparisons were performed using the Least Significant Difference (LSD) test, with the appropriate error mean square applied at each level of the design hierarchy.
 :::
 
-## Summary stats {#SUM}
-
-::: {style="text-align: justify;"}
-If you need to know about the detailed values of the various statistical metrics for each treatment combination, move to `Summary stats` under the `Analysis`.
-:::
-
-**Table 3: Summary statistics**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary statistics](www/PLACEHOLDER_SSP_SummaryStats.webp){#fig-102 fig-align="center"}
-
-<details>
-
-```{=html}
-<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
-```
-
-<small>
-
-**Mean** The arithmetic average of all observations within a treatment combination. It represents the typical yield for that specific combination of Factor A, Factor B, and Factor C levels.
-
-**Standard Deviation (SD)** Describes the spread or variability of individual observations around their mean within a treatment combination. A smaller SD indicates more consistent observations within that group.
-
-**Standard Error of Mean (SE)** Indicates how much the sample mean for a treatment combination is likely to vary from the true population mean. A smaller SE reflects higher reliability of the estimated mean.
-
-**Minimum (Min)** The smallest observed value recorded for that treatment combination across all replications.
-
-**Maximum (Max)** The largest observed value recorded for that treatment combination across all replications.
-
-**Coefficient of Variation (CV%)** A percentage that shows the level of relative dispersion in the data for a given treatment combination. Lower values indicate higher precision and repeatability.
-
-**Skewness** Measures the asymmetry of the distribution of observations within a treatment combination. A value near zero indicates an approximately symmetric distribution.
-
-**Kurtosis** Measures the "tailedness" or peakedness of the distribution of observations within a treatment combination relative to a normal distribution.
-
-</small>
-
-</details>
-
-### Interpretations from @fig-102
-
-::: {style="text-align: justify;"}
-In our hypothetical example, the summary statistics reveal that among the nine variety-by-irrigation regime combinations (holding nitrogen constant at N2), the treatment combination I2 × N2 × V1 recorded the highest mean yield (5104.28 ± 145.62 kg/ha), while I3 × N1 × V3 recorded the lowest mean yield (3874.15 ± 98.44 kg/ha). The coefficient of variation across treatment combinations remained below 10%, indicating acceptable experimental precision. Varieties showed greater variability in their responses under deficit irrigation (I3) compared to continuous flooding (I1), as reflected in the higher standard deviation values under I3 conditions. These summary statistics complement the ANOVA and post-hoc results by providing a granular view of performance across all factor level combinations.
-:::
-
-## Individual ANOVA {#IA}
-
-::: {style="text-align: justify;"}
-If you need detailed ANOVA results for each response variable individually, navigate to the `Individual ANOVA` section under `Analysis`. This section provides separate ANOVA tables for each variable, including the F-statistic, critical difference (CD), coefficient of variation (CV%), mean square error (MSE), standard error of the mean (SE(m)), and standard error of difference (SE(d)) for each level of the design hierarchy.
-:::
-
-**Table 4: Individual ANOVA**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Individual ANOVA table](www/PLACEHOLDER_SSP_IndividualANOVA.webp){#fig-104 fig-align="center"}
-
-**Table 5: Summary statistics with groupings**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary statistics with letter groupings](www/PLACEHOLDER_SSP_SummaryABC.webp){#fig-103 fig-align="center"}
-
-<details>
-
-```{=html}
-<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
-```
-
-<small>
-
-**Critical Difference (CD)**
-
-In a Split Split Plot Design, separate CD values are computed for comparisons at each level of the hierarchy. The CD for Factor A uses Error A; CD for Factor B and A×B uses Error B; and CD for Factor C, A×C, B×C, and A×B×C uses Error C. The CD is computed as:
-
-$$\text{CD} = t_{\alpha/2, \, df_{\text{error}}} \times \text{SE(d)}$$
-
-where SE(d) is the standard error of the difference between two treatment means at the relevant level.
-
-**Coefficient of Variation (CV%)**
-
-$$\text{CV\%} = \frac{\sqrt{\text{MSE}}}{\bar{x}} \times 100$$
-
-Separate CV% values may be reported for the main plot, sub-plot, and sub-sub-plot error levels. A CV% below 10% generally indicates high experimental precision for agronomic traits.
-
-**Mean Square Error (MSE)**
-
-The MSE represents the unexplained random variation at each level of the SSPD hierarchy — Error A for the main plot level, Error B for the sub-plot level, and Error C for the sub-sub-plot level. Lower MSE values indicate more precise estimation of treatment effects.
-
-**Standard Error of Mean (SE(m))**
-
-Measures how much the sample mean of a treatment combination is likely to vary from the true population mean.
-
-$$\text{SE(m)} = \sqrt{\text{MSE}/r}$$
-
-Where r is the number of replications.
-
-**Standard Error of Difference (SE(d))**
-
-The standard error associated with the difference between two treatment means, used as the basis for calculating the CD value.
-
-$$\text{SE(d)} = \sqrt{2 \times \text{MSE}/r}$$
-
-</small>
-
-</details>
-
-### Interpretation from @fig-104
-
-::: {style="text-align: justify;"}
-The individual ANOVA table for Yield shows that the Main Plot error mean square (Error A) is 842.60, the Sub-plot error mean square (Error B) is 524.30, and the Sub-sub-plot error mean square (Error C) is 318.75. These progressively smaller error mean squares confirm that the precision of estimation increases from the main plot to the sub-sub-plot level, which is a characteristic feature of the SSPD. The CD values computed using these error mean squares — CD(A) = 98.42, CD(B) = 64.18, CD(C) = 42.35 at the 5% level — allow meaningful pairwise comparisons among factor levels at each tier of the design. The sub-sub-plot CV% of 6.74% indicates excellent experimental precision at the variety comparison level.
-:::
-
-### Interpretation from @fig-103
-
-::: {style="text-align: justify;"}
-The summary statistics table with letter groupings provides an integrated view of treatment means alongside their statistical similarity groupings for each variable. In our example, Variety V1 (Jyothi) recorded the highest overall mean yield across nitrogen levels and irrigation regimes and was statistically at par with V2 (Uma), while V3 (Kanchana) recorded the lowest mean and was placed in a separate statistical group. Among irrigation regimes, I2 (Alternate wetting and drying) emerged as the best-performing regime, significantly outperforming I3 (Deficit irrigation). These letter-based groupings allow the researcher to quickly identify top-performing treatment combinations and make evidence-based recommendations.
-:::
-
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly — leaving no room for confusion. We have ensured that every possible plot related to the Split Split Plot Design is readily available. Simply click on the `Basic Plots` tab to view them (see @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We have ensured that every possible plot related to the Split Split Plot Design is readily available. Simply click on the Basic Plots tab to view them see @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -502,9 +376,11 @@ The summary statistics table with letter groupings provides an integrated view o
 **RAISINS** provides users various customization features for the plots to enhance the visualization according to their requirements. **Click** on @fig-8 to get a clear idea of the customizing features.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
+-   <div>
 
-![Plot settings for customizing](www/PLACEHOLDER_SSP_Customize.webp){#fig-8 fig-align="center"}
+    ![Plot settings for customizing](images/Copy of Copy of Red Modern Blank Page A4 Landscape (11).png){#fig-8 fig-align="center"}
+
+    </div>
 
 ::: {style="text-align: justify;"}
 From @fig-9 to @fig-13, you can see the different types of plots available in **RAISINS** for Split Split Plot Design analysis. Each one is visually illustrated and accompanied by a clear, insightful description, making it easy to understand.
@@ -599,13 +475,11 @@ function hideDescription(id) {
 :::::::::::::::::::::::: grid
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Box plot](www/PLACEHOLDER_SSP_BoxPlot.webp){#fig-9}
+![Box plot](images/box.jpeg){#fig-9}
 
 :::: {#boxplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **box plot** compares the distribution of values across different treatment combinations in the Split Split Plot Design. Each colored box represents a treatment level and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). The vertical axis shows the value range, while the horizontal axis lists the factor levels. Letters above each box indicate statistical groupings — treatment levels sharing letters are statistically similar, while those with different letters differ significantly.
+A **box plot** in split–split plot design is used to visually summarize the distribution of data for different treatment combinations across three factors (main plot, subplot, and sub-subplot). It displays the median, quartiles, and variability of observations, helping to compare the effects of treatments and their interactions. Box plots make it easy to identify differences, spread, and possible outliers among levels of each factor, providing a clear understanding of treatment performance in a complex experimental design.
 :::
 ::::
 :::::
@@ -613,13 +487,11 @@ A **box plot** compares the distribution of values across different treatment co
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Violin plot](www/PLACEHOLDER_SSP_ViolinPlot.webp){#fig-10}
+![Violin plot](images/violin.jpeg){#fig-10}
 
 :::: {#violinplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **violin plot** compares the distribution of values across different treatment combinations in the SSPD. Each violin shape reflects how the data is spread — wider sections indicate more data points at that value. Inside each violin is a box plot showing the median and interquartile range. The letters above each plot indicate statistical groupings: treatment levels sharing letters are statistically similar, while those with different letters are significantly different. This plot helps you see not just the average values but also how consistent or variable each treatment combination is across replications.
+A **violin plot** in split–split plot design is used to show the distribution and density of data for different treatment combinations across main plot, subplot, and sub-subplot factors. It combines a box plot with a density curve, allowing better visualization of data spread, symmetry, and variation. This helps in comparing treatments and understanding how values are distributed within each factor level, especially in complex experimental designs.
 :::
 ::::
 :::::
@@ -627,13 +499,11 @@ A **violin plot** compares the distribution of values across different treatment
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Bar plot](www/PLACEHOLDER_SSP_BarPlot.webp){#fig-11}
+![Bar plot](images/barplot line-01.jpeg){#fig-11}
 
 :::: {#barplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **bar plot** compares the average values of different treatment levels or factor combinations, with error bars showing variability. The letters above each bar indicate statistical groupings: treatment levels sharing letters are statistically similar, while those with different letters are significantly different. In the context of SSPD, bar plots can be generated separately for each factor or for selected two-way interaction combinations, highlighting which factor levels have higher or lower averages and whether those differences are meaningful.
+A **bar plot with grouping** in split–split plot design is used to compare mean values of different treatment combinations by arranging bars in groups based on factors like main plot, subplot, and sub-subplot. Each group represents one factor level, while bars within the group show variations of other factors. It helps in clearly visualizing differences, comparisons, and interactions among treatments in a simple and organized manner.
 :::
 ::::
 :::::
@@ -641,13 +511,11 @@ A **bar plot** compares the average values of different treatment levels or fact
 
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Mean Value Plot](www/PLACEHOLDER_SSP_MeanPlot.webp){#fig-12}
+![Mean Value Plot](images/mean%20value.jpeg){#fig-12}
 
 :::: {#meanvalueplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **mean value plot** compares the mean values of different treatment levels, each shown as a colored dot with horizontal error bars indicating variability. Treatment levels are listed vertically, and their mean values are plotted along the x-axis. Letters next to each point represent statistical groupings: treatment levels sharing letters are statistically similar, while those with different letters are significantly different. This layout is especially useful for comparing main plot and sub-sub-plot factor means in the SSPD.
+A **mean value plot** in split–split plot design shows the average (mean) performance of different treatment combinations across main plot, subplot, and sub-subplot factors. It helps in easily comparing the effects of each factor and their interactions. By plotting mean values, it provides a clear understanding of treatment differences and overall trends in the data, making interpretation of complex experimental results simpler.
 :::
 ::::
 :::::
@@ -656,14 +524,12 @@ A **mean value plot** compares the mean values of different treatment levels, ea
 ::::::: g-col-6
 :::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
 ::: {style="text-align: center;"}
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Connected line plot](www/PLACEHOLDER_SSP_ConnectedPlot.webp){#fig-13}
+![Connected line plot](images/connected.jpeg){#fig-13}
 :::
 
 :::: {#connectedplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **connected line plot** compares the mean values of different treatment levels, with each point representing a treatment combination's average and error bars showing variability. The points are linked by lines to highlight trends across factor levels — particularly useful for visualizing interaction patterns in SSPD. Above each point, letters indicate statistical groupings: treatment levels sharing letters are statistically similar, while those with different letters are significantly different.
+A **connected line plot** in split–split plot design is used to display the relationship and trend of mean values across different treatment levels. Points representing treatment means are connected with lines, making it easier to visualize changes and interactions among main plot, subplot, and sub-subplot factors. It helps in identifying patterns, trends, and comparative performance of treatments in a clear and simple way.
 :::
 ::::
 ::::::
@@ -673,132 +539,88 @@ A **connected line plot** compares the mean values of different treatment levels
 ## Advanced plots {#AP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** also provides `advanced plots` which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. (See @fig-90)
+**RAISINS** also provides advanced plot which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. See @fig-90
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
+![Advanced plots](images/advanced-02.jpeg){#fig-90 fig-align="center"}
 
-![Advanced plots](www/PLACEHOLDER_SSP_AdvancedPlots.webp){#fig-90 fig-align="center"}
+**INTERACTION PLOT**
 
-**SUMMARY PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary plot](www/PLACEHOLDER_SSP_SummaryPlot.webp){#fig-14 fig-align="center"}
+![Interaction Plot](images/interaction-01.jpeg){fig-align="center"}
 
 ::: {style="text-align: justify;"}
-A summary plot is a visual representation that shows how data are distributed across treatment combinations in the Split Split Plot Design. It helps quickly understand the pattern, spread, and central tendency of the data for all factor level combinations simultaneously.
+An interaction plot in split–split plot design is used to show how the effect of one factor changes with the levels of another factor. It plots mean values with lines for different treatments, helping to identify interactions among main plot, subplot, and sub-subplot factors. If the lines are parallel, there is little or no interaction; if they cross or diverge, it indicates a strong interaction between factors.
 :::
 
-**ADVANCED RAINCLOUD PLOT**
+**3D SCATTER PLOT**
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Advanced rain cloud plot](www/PLACEHOLDER_SSP_AdvancedRaincloud.webp){#fig-15 fig-align="center"}
+![3D Scatter Plot](images/Screen%20Recording%202026-05-05%20102928.gif){fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The advanced raincloud plot combines a density plot, boxplot, and individual data points to show the full distribution of each treatment group. The colored density ("cloud") shows where values are most concentrated, the boxplot summarizes the median and quartiles, and the dots ("rain") represent individual observations across replications. In the SSPD context, this plot is particularly informative for visualizing the spread of sub-sub-plot treatment responses within each main plot treatment combination.
+A 3D scatter plot in split–split plot design is used to visualize the relationship among three variables or factors simultaneously. Each point represents a treatment combination positioned along three axes, typically corresponding to main plot, subplot, and sub-subplot factors or their values. It helps in identifying patterns, clusters, and interactions in complex experimental data in a more visual and intuitive way.
 :::
 
-**QQ PLOT**
+**3D SCATTER PLOT WITH LINES**
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![QQ plot](www/PLACEHOLDER_SSP_QQPlot.webp){#fig-16 fig-align="center"}
+![3D Scatter Plot with lines](images/Screen%20Recording%202026-05-05%20103030.gif){#fig-16 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-A Q–Q (quantile–quantile) plot is used to assess the normality of the data. The points represent observed data quantiles plotted against theoretical quantiles from a normal distribution. Because most points should lie close to the diagonal reference line when the normality assumption holds, the QQ plot serves as a useful diagnostic for validating the assumptions underlying the SSPD ANOVA, particularly for the sub-sub-plot error residuals.
-:::
-
-**RAIN CLOUD PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Rain cloud plot](www/PLACEHOLDER_SSP_RaincloudPlot.webp){#fig-17 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The raincloud plot shows the distribution of the response variable for each treatment level. The half-violin (cloud) represents the data density, indicating where values are most concentrated. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations. This plot provides a rich visual summary that is especially useful for comparing the distributional properties of sub-sub-plot treatment responses in the SSPD.
-:::
-
-**DISTRIBUTION PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Distribution plot](www/PLACEHOLDER_SSP_DistributionPlot.webp){#fig-18 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The distribution plot shows how data values are spread for each treatment combination in the Split Split Plot Design. It provides a visual comparison of the pattern, spread, and variability of observations across all factor level combinations, helping to understand overall differences and consistency in the data. It is particularly helpful for identifying treatment combinations with unusually high variability or skewed response distributions.
+A 3D scatter plot with lines in split–split plot design is used to visualize relationships among three variables along with trends between treatment combinations. Data points represent different treatments across main plot, subplot, and sub-subplot factors, and lines are used to connect related points to show patterns or progression. This helps in better understanding interactions, trends, and the overall structure of complex experimental data.
 :::
 
 ## AI interpretation {#AI}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences among factor levels and interactions, and offers informed suggestions for potential next steps or interpretations. In the context of a Split Split Plot Design, the AI assistant will interpret the significance of main effects, two-way interactions (A×B, A×C, B×C), and the three-way interaction (A×B×C), guiding researchers on how to report and act upon the results. The user can get detailed interpretations of the analysis by clicking on `AI interpretation` on the `Analysis` as shown below @fig-ai.
+**RAISINS** is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences among factor levels and interactions, and offers informed suggestions for potential next steps or interpretations. In the context of a Split Split Plot Design, the AI assistant will interpret the significance of main effects, two-way interactions (A×B, A×C, B×C), and the three-way interaction (A×B×C), guiding researchers on how to report and act upon the results. The user can get detailed interpretations of the analysis by clicking on AI Intrepretation on the Analysis as shown below @fig-ai.
 :::
 
-![AI powered RAISINS Assistant to interpret your results](www/ai.webp){#fig-ai fig-align="center"}
+![AI powered RAISINS Assistant to interpret your results](images/ai%20inter.jpeg){#fig-ai fig-align="center"}
 
 ## Multivariate {#MUL}
 
 ::: {style="text-align: justify;"}
-Multivariate analysis in Split Split Plot Design (SSPD) helps you compare different response variables simultaneously across all factor level combinations. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example of evaluating rice varieties (V1, V2, V3) under different irrigation regimes (I1, I2, I3) and nitrogen levels (N1, N2) — a total of 18 treatment combinations across three replications — navigate to `Multivariate`, see @fig-mu.
+Multivariate analysis in Split Split Plot Design (SSPD) helps you compare different response variables simultaneously across all factor level combinations. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example of evaluating rice varieties (V1, V2, V3) under different irrigation regimes (I1, I2, I3) and nitrogen levels (N1, N2) —a total of 18 treatment combinations across three replications navigate to Multivariate, see @fig-mu.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Multivariate tab in RAISINS](www/PLACEHOLDER_SSP_MultivariateTab.webp){#fig-mu}
+![Multivariate tab in RAISINS](images/multi sspd.png){#fig-mu}
 
 ::: {style="text-align: justify;"}
 MANOVA and PCA will be automatically carried out based on the selected variables. The MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![MANOVA Results](www/PLACEHOLDER_SSP_MANOVAResults.webp){#fig-MAN2 fig-align="center"}
+![MANOVA Results](images/manova.jpeg){#fig-MAN2 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 The table titled 'Eigen Values PCA' given in @fig-PC provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 54% of the variance in the dataset, while PC2 accounts for about 22% of the variance. Together, PC1 and PC2 explain approximately 76% of the total variance (termed cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![PCA-based Index Score](www/PLACEHOLDER_SSP_PCAIndex.webp){#fig-PC}
+![PCA-based Index Score](images/pca%20index.jpeg){#fig-PC}
 
 ::: {style="text-align: justify;"}
 The scree plot given in @fig-screeplot illustrates the proportion of variance explained by each principal component.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Scree plot](www/PLACEHOLDER_SSP_ScreePlot.webp){#fig-screeplot fig-align="center"}
+![Scree plot](images/scree%20plot.jpeg){#fig-screeplot fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. In our example, Yield and FW show high positive loadings in PC1, suggesting that treatment combinations scoring high on PC1 perform well in terms of overall biomass and economic yield. Obs1 and Obs2 show moderate positive loadings in PC2, indicating that PC2 captures additional trait variation not explained by PC1. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index. Since Yield and FW are strongly positively loaded in PC1, a PC1-based index score is most appropriate for identifying superior irrigation × nitrogen × variety combinations.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Loadings of each variable](www/PLACEHOLDER_SSP_Loadings.webp){#fig-loadings fig-align="center"}
+![Loadings of each variable](images/pca-03.jpeg){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable's vector. The angle between variable vectors in the biplot indicates their correlation — smaller angles suggest high positive correlation, while angles close to 90 degrees suggest weak or no correlation. In the SSPD biplot, treatment combinations are labeled by their factor level codes (e.g., I2N2V1), allowing the researcher to identify which combinations are associated with superior performance across multiple traits simultaneously.
+The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable's vector. The angle between variable vectors in the biplot indicates their correlation smaller angles suggest high positive correlation, while angles close to 90 degrees suggest weak or no correlation. In the SSPD biplot, treatment combinations are labeled by their factor level codes (e.g., I2N2V1), allowing the researcher to identify which combinations are associated with superior performance across multiple traits simultaneously.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![PCA-Biplot](www/PLACEHOLDER_SSP_Biplot.webp){#fig-biplot}
+![PCA-Biplot](images/biplot-01.jpeg){#fig-biplot}
 
 ::: {style="text-align: justify;"}
 In **RAISINS**, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment combinations based on their index scores. To refine your selection, use the 'Select cutoff for Scaled Index Score' feature given in @fig-indexscore, where you can choose the cutoff percentage to select treatment combinations above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment combinations as per your preference. Selected combinations are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
+![Index score and Index Plot](images/index2-01.jpeg){#fig-indexscore fig-align="center"}
 
-![Index score](www/PLACEHOLDER_SSP_IndexScore.webp){#fig-indexscore fig-align="center"}
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Indexplot](www/PLACEHOLDER_SSP_IndexPlot.webp){#fig-index fig-align="center"}
+![Index Score and Index Plot](images/index-02.jpeg){#fig-index fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. In our example, the combination I2 × N2 × V1 consistently emerged as the top-performing treatment combination based on both univariate ANOVA and the multivariate PCA index score, providing a robust recommendation grounded in multiple lines of statistical evidence.
@@ -807,7 +629,7 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing your data {#PRE}
 
 ::: {style="text-align: justify;"}
-"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won't be trustworthy."
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights - feed it messy data, and the results won't be trustworthy."
 
 1.  Create your dataset in MS Excel
 
@@ -817,12 +639,10 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing data in MS Excel {#EX}
 
 ::: {style="text-align: justify;"}
-Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. For a Split Split Plot Design, the dataset must follow a column-based format with the following required columns: a Replication column (indicating the block number), a Main Plot factor column (Factor A — e.g., Irrigation regime), a Sub-plot factor column (Factor B — e.g., Nitrogen level), a Sub-sub-plot factor column (Factor C — e.g., Variety), and all response variable columns (e.g., Yield, Obs1, Obs2, FW). Each unique combination of Replication × Factor A × Factor B × Factor C must appear as a separate row. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or factor level names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, all factor combinations must appear in full across replications, and the data can also be arranged as shown in @fig-kk.
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. For a Split Split Plot Design, the dataset must follow a column-based format with the following required columns: a Replication column (indicating the block number), a Main Plot factor column (Factor A - e.g., Irrigation regime), a Sub-plot factor column (Factor B - e.g., Nitrogen level), a Sub-sub-plot factor column (Factor C - e.g., Variety), and all response variable columns (e.g., Yield, Obs1, Obs2, FW). Each unique combination of Replication × Factor A × Factor B × Factor C must appear as a separate row. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or factor level names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, all factor combinations must appear in full across replications, and the data can also be arranged as shown in @fig-kk.
 :::
 
-![Model-1: showing how the prepared Excel file for upload should look like](www/P1.webp){#fig-pp}
-
-![Model-2: Showing how the prepared Excel file for upload should look like](www/P2.webp){#fig-kk}
+![Model-1: showing how the prepared Excel file for upload should look like](images/WhatsApp%20Image%202026-05-05%20at%2012.49.58%20PM.jpeg){#fig-pp}
 
 <details>
 
@@ -867,14 +687,14 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
     -   Click **Save** to export the file.
 
-> 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format — no empty rows above the data, all four structural columns present (Replication, Factor A, Factor B, Factor C), and meaningful column names. </small>
+> 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format no empty rows above the data, all four structural columns present (Replication, Factor A, Factor B, Factor C), and meaningful column names. </small>
 
 </details>
 
 ## Creating dataset in RAISINS {#CR}
 
 ::: {style="text-align: justify;"}
-If you're unsure about the correct format for creating a dataset, don't worry — **RAISINS** offers an option to create data directly within the app using the prescribed template. Here's how:
+If you're unsure about the correct format for creating a dataset, don't worry -**RAISINS** offers an option to create data directly within the app using the prescribed template. Here's how:
 
 -   Navigate to the **Create Data Tab**
 
@@ -890,33 +710,33 @@ If you're unsure about the correct format for creating a dataset, don't worry �
 
 -   Click on **Create** button
 
-Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the CSV file and upload in `Analysis`.
+Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the CSV file and upload in Analysis.
 :::
 
-![Creating dataset within RAISINS](www/CREATEDAT.webp){#fig-createdata width="1011"}
+![Illustrating how to create a dataset](images/Copy of Copy of Red Modern Blank Page A4 Landscape (9)-03.png){fig-align="center"}
 
 ## Model datasets {#M}
 
 ::: {style="text-align: justify;"}
-To test the app or better understand the data arrangement for a Split Split Plot Design, we provide model datasets within the app. You can download them from the `Datasets`.
+To test the app or better understand the data arrangement for a Split Split Plot Design, we provide model datasets within the app. You can download them from the Dataset.
 :::
 
-![Model dataset](www/modeldata.webp){#fig-188 fig-align="center"}
+![Model dataset](images/WhatsApp%20Image%202026-05-05%20at%2012.43.27%20PM.jpeg){#fig-188 fig-align="center"} ![Model dataset](images/WhatsApp%20Image%202026-05-05%20at%2012.44.20%20PM.jpeg){fig-align="center"}
 
 ## FAQ's {#F}
 
 ::: {style="text-align: justify;"}
-The app includes a dedicated `FAQs` to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the `FAQs` is a great place to start.
+The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQs is a great place to start.
 :::
 
-![FAQs](www/FAQ%20TAB.webp){#fig-148 fig-align="center"}
+![FAQs](images/faq.jpeg){#fig-148 fig-align="center"}
 
 ## View data {#U}
 
 ::: {style="text-align: justify;"}
-`View Data` serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For a Split Split Plot Design, this check will confirm that the Replication, Main Plot, Sub-plot, and Sub-sub-plot factor columns are correctly identified and that no unexpected missing values or formatting inconsistencies are present in the dataset.
+View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For a Split Split Plot Design, this check will confirm that the Replication, Main Plot, Sub-plot, and Sub-sub-plot factor columns are correctly identified and that no unexpected missing values or formatting inconsistencies are present in the dataset.
 :::
 
-![View data](www/view%20data.webp){fig-align="center"}
+![View data](images/WhatsApp%20Image%202026-05-05%20at%2011.40.06%20AM.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------

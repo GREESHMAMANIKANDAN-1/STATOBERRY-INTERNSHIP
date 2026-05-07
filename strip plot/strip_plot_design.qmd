@@ -557,7 +557,7 @@ A **3D scatter plot** in strip plot design is used to visualize the relationship
 
 **3D SCATTER PLOT WITH LINES**
 
-![3D Scatter Plot With Lines](images/Screen Recording 2026-05-05 103443-02.gif){fig-align="center"}
+![3D Scatter Plot With Lines](images/Screen%20Recording%202026-05-05%20103443-02.gif){fig-align="center"}
 
 ::: {style="text-align: justify;"}
 A **3D scatter plot** with lines in strip plot design is used to show the relationship among three variables along with the trend between them. Each point represents an observation or treatment combination in three-dimensional space (X, Y, and Z axes), and lines are added to connect points to highlight patterns or changes across levels of factors. It helps in visualizing how two factors together influence the response variable while also showing the direction and continuity of the data. This plot is useful for identifying trends, interactions, and overall structure of the experimental results in a clear visual form.

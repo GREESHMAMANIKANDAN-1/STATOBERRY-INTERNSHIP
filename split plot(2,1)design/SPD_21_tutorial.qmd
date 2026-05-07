@@ -221,7 +221,7 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **Split Plot ANO
 ### Interpretation from @fig-100
 
 ::: {style="text-align: justify;"}
-In our hypothetical example with 3 irrigation methods (Factor A), 4 varieties (Factor B), and 3 blocks, the ANOVA for Grain Yield reveals the following: the Main Plot Factor (Irrigation Method) has 2 degrees of freedom, Error A has 4 degrees of freedom, Factor B (Variety) has 3 degrees of freedom, the A × B interaction has 6 degrees of freedom, and Error B has 18 degrees of freedom. The F value for Factor A is found to be 12.34, which is significant at the 1% level (p < 0.01), indicating that irrigation methods differ significantly in their effect on grain yield. The F value for Factor B (Variety) is 18.72, also significant at the 1% level, while the A × B interaction F value is 3.45, which is significant at the 5% level (p < 0.05), suggesting that the effect of irrigation method on grain yield depends on the variety used. Since significant differences exist, post-hoc comparisons are appropriate — refer to @sec-8 for details on multiple comparison tests applicable in **SPD**.
+In our hypothetical example with 3 irrigation methods (Factor A), 4 varieties (Factor B), and 3 blocks, the ANOVA for Grain Yield reveals the following: the Main Plot Factor (Irrigation Method) has 2 degrees of freedom, Error A has 4 degrees of freedom, Factor B (Variety) has 3 degrees of freedom, the A × B interaction has 6 degrees of freedom, and Error B has 18 degrees of freedom. The F value for Factor A is found to be 12.34, which is significant at the 1% level (p \< 0.01), indicating that irrigation methods differ significantly in their effect on grain yield. The F value for Factor B (Variety) is 18.72, also significant at the 1% level, while the A × B interaction F value is 3.45, which is significant at the 5% level (p \< 0.05), suggesting that the effect of irrigation method on grain yield depends on the variety used. Since significant differences exist, post-hoc comparisons are appropriate — refer to @sec-8 for details on multiple comparison tests applicable in **SPD**.
 :::
 
 **Table 2: Detailed tabular representation with multiple comparisons**
@@ -434,7 +434,7 @@ The significance of the main plot factor, sub-plot factor, and their interaction
 ### Interpretation from @fig-104
 
 ::: {style="text-align: justify;"}
-For Grain Yield in our hypothetical example, the individual ANOVA table shows that the Main Plot Factor (Irrigation Method) has a Treatment Mean Square of 486,250 with Error A Mean Square of 39,420, giving an F value of 12.34 (significant at 1%, df = 2, 4). The Sub-plot Factor (Variety) yields an F value of 18.72 (df = 3, 18, p < 0.01), and the A × B Interaction yields an F value of 3.45 (df = 6, 18, p < 0.05). The MSE(b) (Sub-plot Error) is 18,560. The SE(m) for Factor A comparison is 51.22 and the SE(d) is 72.44; for Factor B comparison, SE(m) is 35.15 and SE(d) is 49.71. The CD at 5% for Factor A is 112.8 and for Factor B is 74.3, while at 1%, CD for Factor A is 168.5 and for Factor B is 102.1. The CV% at the sub-plot level is 7.8%, indicating good experimental precision.
+For Grain Yield in our hypothetical example, the individual ANOVA table shows that the Main Plot Factor (Irrigation Method) has a Treatment Mean Square of 486,250 with Error A Mean Square of 39,420, giving an F value of 12.34 (significant at 1%, df = 2, 4). The Sub-plot Factor (Variety) yields an F value of 18.72 (df = 3, 18, p \< 0.01), and the A × B Interaction yields an F value of 3.45 (df = 6, 18, p \< 0.05). The MSE(b) (Sub-plot Error) is 18,560. The SE(m) for Factor A comparison is 51.22 and the SE(d) is 72.44; for Factor B comparison, SE(m) is 35.15 and SE(d) is 49.71. The CD at 5% for Factor A is 112.8 and for Factor B is 74.3, while at 1%, CD for Factor A is 168.5 and for Factor B is 102.1. The CV% at the sub-plot level is 7.8%, indicating good experimental precision.
 :::
 
 **Table 5: Summary statistics with letter groupings**
@@ -796,23 +796,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    - Go to the top-left corner and click on **File**.
+    -   Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    - Select the location where you want to save your file.
+    -   Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    - Enter a relevant file name without spaces (use underscores if needed).
+    -   Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    - Click **Save** to export the file.
+    -   Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names, separate columns for Block, Main Plot Factor, and Sub-plot Factor). </small>
 
@@ -823,17 +823,17 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry — RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
-- Navigate to the **Create Data Tab**
+-   Navigate to the **Create Data Tab**
 
-- Select the number of **Main Plot Treatments**
+-   Select the number of **Main Plot Treatments**
 
-- Select the number of **Sub-plot Treatments**
+-   Select the number of **Sub-plot Treatments**
 
-- Select number of **Replications (Blocks)**
+-   Select number of **Replications (Blocks)**
 
-- Select number of **Characters**
+-   Select number of **Characters**
 
-- Click on **Create** button
+-   Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in `Analysis`.
 :::

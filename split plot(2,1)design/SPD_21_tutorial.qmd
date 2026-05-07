@@ -141,7 +141,7 @@ To make things simple and interesting, we'll explain **Split Plot Design** analy
 ![Example dataset](images/basic plot (9).png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Three terms that we will use frequently are **Main Plot Factor**, **Sub-plot Factor**, and **Variables**. In our example, the Main Plot Factor refers to the **Irrigation Methods (A1,A2)**, the Sub-plot Factor refers to the **Rice Varieties (V1, V2, V3,)**, and the Variables are the 4 traits mentioned earlier **Grain Yield, Plant Height, Number of Tillers, and 1000 Grain Weight**.
+giData organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Three terms that we will use frequently are **Main Plot Factor**, **Sub-plot Factor**, and **Variables**. In our example, the Main Plot Factor refers to the **Irrigation Methods (A1,A2)**, the Sub-plot Factor refers to the **Rice Varieties (V1, V2, V3,)**, and the Variables are the 4 traits mentioned earlier **Grain Yield, Plant Height, Number of Tillers, and 1000 Grain Weight**.
 :::
 
 ## How to prepare your data? {#sec-4 .H}
@@ -169,7 +169,7 @@ In @fig-5, you can see the detailed view of the Analysis tab, along with explana
 ![Analysis window explained](images/basic%20pllot-01.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-For some data, when there are large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to do transformation on the dataset (@sec-6). Here, **RAISINS** provides an inbuilt transformation option.
+For some data, when there are large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to do transformation on the dataset @sec-6. Here, **RAISINS** provides an inbuilt transformation option.
 :::
 
 ## Transformation {#sec-6 .T}
@@ -346,7 +346,7 @@ In the example for those characters, a pairwise comparison was performed to iden
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to the **Split Plot (2,1) Design** is readily available. Simply click on the Basic Plots tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to the **Split Plot (2,1) Design** is readily available. Simply click on the Basic Plots tab to view them See @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots

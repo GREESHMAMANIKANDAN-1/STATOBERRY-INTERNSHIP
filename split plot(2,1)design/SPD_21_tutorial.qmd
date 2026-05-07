@@ -138,10 +138,10 @@ The **Split Plot (2,1) Design** is a two-factor experimental layout in which the
 To make things simple and interesting, we'll explain **Split Plot Design** analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment conducted by an agronomist to evaluate the effect of **Irrigation Method** (Factor A Main Plot Factor) and **Rice Variety** (Factor B Sub-plot Factor) on the performance of rice. The experiment is laid out in **3 Blocks** (replications). Factor A consists of **2 irrigation methods**: Surface Irrigation (A1), Drip Irrigation (A2), and . Factor B consists of **3 rice varieties**: B1,B2 and B3. Each combination of irrigation method and variety is thus represented once within each block, giving a total of 3 × 2 × 3 = 18 experimental units. The response variables recorded are **Grain Yield (kg/ha)**, **Plant Height (cm)**, **Number of Tillers**, and **1000 Grain Weight (g)**. Our aim is to test whether irrigation methods, varieties, and their interaction produce statistically significant differences in the response variables using ANOVA. The arrangement of the data is shown in @fig-data.
 :::
 
-![Example dataset](images/basic plot (3).png){#fig-data fig-align="center"}
+![Example dataset](images/basic plot (9).png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Three terms that we will use frequently are **Main Plot Factor**, **Sub-plot Factor**, and **Variables**. In our example, the Main Plot Factor refers to the **Irrigation Methods (A1,A2)**, the Sub-plot Factor refers to the **Rice Varieties (V1, V2, V3,)**, and the Variables are the 4 traits mentioned earlier — **Grain Yield, Plant Height, Number of Tillers, and 1000 Grain Weight**.
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Three terms that we will use frequently are **Main Plot Factor**, **Sub-plot Factor**, and **Variables**. In our example, the Main Plot Factor refers to the **Irrigation Methods (A1,A2)**, the Sub-plot Factor refers to the **Rice Varieties (V1, V2, V3,)**, and the Variables are the 4 traits mentioned earlier **Grain Yield, Plant Height, Number of Tillers, and 1000 Grain Weight**.
 :::
 
 ## How to prepare your data? {#sec-4 .H}
@@ -158,7 +158,7 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](images/basic plot (4)-01.png){#fig-4 fig-align="center"}
+![Illustrating how to create a dataset](images/basic%20plot%20(4)-01.png){#fig-4 fig-align="center"}
 
 ## Split Plot Design analysis tab explained {#AO}
 
@@ -166,11 +166,7 @@ Creating your dataset directly within the **RAISINS** app
 In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the Block, Main Plot Factor, Sub-plot Factor, and Variables will appear. Select the appropriate column for each of these fields. Once you click the Run Analysis button, all relevant results and outputs appear instantly, leaving no room for confusion.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Analysis window explained](www/PLACEHOLDER_AnalysisWindow.webp){#fig-5 fig-align="center"}
-
-![Analysis window explained](images/basic pllot.png){fig-align="center"}
+![Analysis window explained](images/basic%20pllot-01.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 For some data, when there are large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to do transformation on the dataset (@sec-6). Here, **RAISINS** provides an inbuilt transformation option.
@@ -183,8 +179,6 @@ Log, square root, and arcsine transformations are often used in **Split Plot** *
 :::
 
 ![Transformation options](images/transformation.png){#fig-6 fig-align="center"}
-
-![Transformation options](www/trans.webp){fig-align="center"}
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -199,7 +193,7 @@ Log, square root, and arcsine transformations are often used in **Split Plot** *
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on Run Analysis, and the **Split Plot ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the **Split Plot (2,1) Design** partitions the total variation into components attributable to **Blocks**, **Main Plot Factor (Factor A)**, **Main Plot Error (Error A)**, **Sub-plot Factor (Factor B)**, **Interaction (A × B)**, and **Sub-plot Error (Error B)**, and compares them using appropriate F-tests at each stratum (see @fig-100).
+Once your dataset is uploaded, click on Run Analysis, and the **Split Plot ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the **Split Plot (2,1) Design** partitions the total variation into components attributable to **Blocks**, **Main Plot Factor (Factor A)**, **Main Plot Error (Error A)**, **Sub-plot Factor (Factor B)**, **Interaction (A × B)**, and **Sub-plot Error (Error B)**, and compares them using appropriate F-tests at each stratum see @fig-100.
 :::
 
 **Table 1 ANOVA summary**
@@ -239,9 +233,9 @@ The ANOVA results obtained from the Split Plot Design indicated that the treatme
 
 1.  *Treatments and Response Variables*
 
-**Main Plot Factor (Factor A)**: The primary independent variable assigned to larger experimental units — in our example, the Irrigation Methods (I1, I2, I3) — whose effect is tested against the main plot error.
+**Main Plot Factor (Factor A)**: The primary independent variable assigned to larger experimental units in our example, the Irrigation Methods (I1, I2, I3) whose effect is tested against the main plot error.
 
-**Sub-plot Factor (Factor B)**: The secondary independent variable assigned within each main plot — in our example, Rice Varieties (V1, V2, V3, V4) — whose effect and interaction with Factor A are tested against the sub-plot error.
+**Sub-plot Factor (Factor B)**: The secondary independent variable assigned within each main plot in our example, Rice Varieties (V1, V2, V3, V4) whose effect and interaction with Factor A are tested against the sub-plot error.
 
 **Response Variable**: The dependent variable or specific measurement (e.g., Grain Yield) recorded to evaluate the combined performance of Factor A and Factor B levels.
 
@@ -261,7 +255,7 @@ The ANOVA results obtained from the Split Plot Design indicated that the treatme
 
 **Standard Error (SE)**: A measure of the accuracy of a sample mean compared to the true population mean; it indicates how much the mean might fluctuate.
 
-**Mean Square Error (MSE)**: The average of the squared differences between observed values and the predicted mean; it represents the "noise" or unexplained error in the experiment — in **SPD**, there are two MSE values (one for main plots and one for sub-plots).
+**Mean Square Error (MSE)**: The average of the squared differences between observed values and the predicted mean; it represents the "noise" or unexplained error in the experiment in **SPD**, there are two MSE values (one for main plots and one for sub-plots).
 
 **Coefficient of Variation (CV%)**: A percentage that shows the level of dispersion in the data. A lower CV indicates higher precision and reliability in the experimental measurements. In **SPD**, CV% is typically reported separately for main plots and sub-plots, and it is expected that the sub-plot CV% will be smaller, reflecting higher precision at that stratum.
 
@@ -284,6 +278,8 @@ The multiple comparison results from our hypothetical example reveal that, for G
 :::
 
 ## Multiple comparison tests {#sec-8 .MCT}
+
+![Multicomparison Test in RAISINS](images/basic%20plot%20(7).png){#fig-posthoc fig-align="center"}
 
 <details>
 
@@ -308,8 +304,6 @@ The multiple comparison results from our hypothetical example reveal that, for G
 <small>
 
 <!-- REPLACE THIS SCREENSHOT -->
-
-![Post-hoc test options in RAISINS](www/CUSRES.webp){#fig-posthoc fig-align="center"}
 
 **Least Significant Difference (LSD)**
 
@@ -352,7 +346,7 @@ In the example for those characters, a pairwise comparison was performed to iden
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly — leaving no room for confusion. We've ensured that every possible plot related to the **Split Plot (2,1) Design** is readily available. Simply click on the Basic Plots tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to the **Split Plot (2,1) Design** is readily available. Simply click on the Basic Plots tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -534,8 +528,6 @@ A **connected line plot** in a split (2,1) design is used to display and compare
 
 **SUMMARY PLOT**
 
-![Summary plot](www/PLACEHOLDER_SummaryPlot.webp){#fig-14 fig-align="center"}
-
 ![Summary plot](images/summary%20plot.png){fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -543,8 +535,6 @@ A **summary plot** in a split (2,1) design is a graphical method used to summari
 :::
 
 **ADVANCED RAINCLOUD PLOT**
-
-![Advanced rain cloud plot](www/PLACEHOLDER_AdvancedRaincloud.webp){#fig-15 fig-align="center"}
 
 ![Advanced rain cloud plot](images/adv%20raincloud.png){fig-align="center"}
 
@@ -562,8 +552,6 @@ A **Q-Q (Quantile–Quantile) plot** in a split (2,1) design is a graphical meth
 
 **RAIN CLOUD PLOT**
 
-<!-- REPLACE THIS SCREENSHOT -->
-
 ![Rain cloud plot](images/raincloud.png){#fig-17 fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -572,10 +560,6 @@ A rain cloud plot in a split (2,1) design is a graphical method used to display 
 
 **DISTRIBUTION PLOT**
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Distribution plot](www/PLACEHOLDER_Distribution.webp){#fig-18 fig-align="center"}
-
 ![Distribution plot](images/distribution.png){fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -583,8 +567,6 @@ A distribution plot in a split (2,1) design is used to visualize the overall pat
 :::
 
 **PAIR PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![Pair plot](images/pair%20plot.png){fig-align="center"}
 
@@ -612,8 +594,6 @@ A correlation plot in a split (2,1) design is used to show the strength and dire
 
 **3D SCATTER PLOT**
 
-<!-- REPLACE THIS SCREENSHOT -->
-
 ![3D Scatter plot](images/3d%20scatter%20plot%20(1).gif){fig-align="center"}
 
 ::: {style="text-align: justify;"}
@@ -621,8 +601,6 @@ A 3D scatter plot in a split (2,1) design is a graphical method used to visualiz
 :::
 
 **3D SCATTER PLOT WITH LINES PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![3DSctter plot with lines plot](images/3d%20line%20plot.gif){fig-align="center"}
 
@@ -641,36 +619,20 @@ RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist user
 ## Multivariate {#MUL}
 
 ::: {style="text-align: justify;"}
-Multivariate analysis in **Split Plot (2,1)Design** helps you to compare different response variables simultaneously across all treatment combinations of Factor A and Factor B. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example, of evaluation of three irrigation methods — Surface Irrigation (I1), Drip Irrigation (I2), and Sprinkler Irrigation (I3) — across four rice varieties (V1, V2, V3, V4), as studied by an agronomist, navigate to Multivariate see @fig-mu.
+Multivariate analysis in **Split Plot (2,1)Design** helps you to compare different response variables simultaneously across all treatment combinations of Factor A and Factor B. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example, of evaluation of three irrigation methods Surface Irrigation (I1), Drip Irrigation (I2), and Sprinkler Irrigation (I3) across four rice varieties (V1, V2, V3, V4), as studied by an agronomist, navigate to Multivariate see @fig-mu.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Multivariate tab in RAISINS](www/PLACEHOLDER_MultivariateTab.webp){#fig-mu}
-
-![Multivariate tab in RAISINS](images/basic%20plot%20(2)-01.png)
-
-::: {style="text-align: justify;"}
-MANOVA and PCA will be automatically carried out based on the selected variables. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
+![Multivariate tab in RAISINS](images/basic plot (8).png){#fig-mu}
 
 ::: {style="text-align: justify;"}
 The table titled 'Eigen Values PCA' given @fig-PC provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1, PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 54% of the variance in the dataset, while PC2 accounts for about 28% of the variance. Together, PC1 and PC2 explain approximately 82% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
-![PCA-based Index Score](www/PLACEHOLDER_PCAIndex.webp){#fig-PC}
-
-![PCA-based Index Score](images/pca%20index-01.png)
+![PCA-based Index Score](images/pca%20index-01.png){#fig-PC}
 
 ::: {style="text-align: justify;"}
 The scree plot given @fig-screeplot illustrates the proportion of variance explained by each principal component.
 :::
-
-<!-- REPLACE THIS SCREENSHOT -->
 
 ![Scree plot](images/screee.png){#fig-screeplot fig-align="center"}
 
@@ -678,17 +640,11 @@ The scree plot given @fig-screeplot illustrates the proportion of variance expla
 Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. In our example, PC1 shows strong positive loadings for Grain Yield and 1000 Grain Weight, indicating that treatment combinations with high PC1 scores tend to produce heavier grains and higher overall yield. PC2 shows positive loadings for Plant Height and Number of Tillers, suggesting that PC2 captures vegetative growth patterns independent of grain-related traits. Based on these loadings, a PC1-based index score would be most appropriate for identifying superior treatment combinations for yield improvement. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
 ![Loadings of each variable](images/plott.png){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable. The angle between variables in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In our example, the I2 × V3 combination is positioned in the direction of Grain Yield and 1000 Grain Weight vectors, confirming its superior performance for yield-related traits.
+The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In our example, the I2 × V3 combination is positioned in the direction of Grain Yield and 1000 Grain Weight vectors, confirming its superior performance for yield-related traits.
 :::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![PCA-Biplot](www/PLACEHOLDER_Biplot.webp){#fig-biplot}
 
 ![PCA-Biplot](images/biplot-01.png)
 
@@ -711,7 +667,7 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing your data {#PRE}
 
 ::: {style="text-align: justify;"}
-"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won't be trustworthy."
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won't be trustworthy."
 
 1.  Create your dataset in MS Excel
 
@@ -721,7 +677,7 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing data in MS Excel {#EX}
 
 ::: {style="text-align: justify;"}
-Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. For a **Split Plot (2,1) Design** , the dataset must follow a column-based format with a minimum of four structural columns: one for the Block, one for the Main Plot Factor (Factor A), one for the Sub-plot Factor (Factor B), followed by the response variable columns. Name each column clearly — for example, "Block", "Irrigation", "Variety", "Grain_Yield", "Plant_Height", "Tillers", "Grain_Weight_1000". Each unique combination of Block × Factor A × Factor B should appear on a separate row. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, the data can also be arranged as shown in @fig-kk.
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. For a **Split Plot (2,1) Design** , the dataset must follow a column-based format with a minimum of four structural columns: one for the Block, one for the Main Plot Factor (Factor A), one for the Sub-plot Factor (Factor B), followed by the response variable columns. Name each column clearly for example, "Block", "Irrigation", "Variety", "Grain_Yield", "Plant_Height", "Tillers", "Grain_Weight_1000". Each unique combination of Block × Factor A × Factor B should appear on a separate row. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, the data can also be arranged as shown in @fig-kk.
 :::
 
 ![Model-1: showing how the prepared Excel file for upload should look like](images/m1-01.png){#fig-pp}
@@ -777,7 +733,7 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ## Creating dataset in RAISINS {#CR}
 
 ::: {style="text-align: justify;"}
-If you're unsure about the correct format for creating a dataset, don't worry — RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
+If you're unsure about the correct format for creating a dataset, don't worry RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
 - Navigate to the **Create Data Tab**
 
@@ -791,15 +747,15 @@ If you're unsure about the correct format for creating a dataset, don't worry �
 
 - Click on **Create** button
 
-Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in `Analysis`.
+Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
-![Creating dataset within RAISINS](www/CREATEDAT.webp){#fig-createdata width="1011"}
+![Creating dataset within RAISINS](images/basic%20plot%20(4)-01.png){#fig-createdata}
 
 ## Model datasets {#M}
 
 ::: {style="text-align: justify;"}
-To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the `Datasets`.
+To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the Datasets.
 :::
 
 ![Model dataset](images/model-01.png){#fig-188 fig-align="center"}
@@ -807,7 +763,7 @@ To test the app or better understand the data arrangement, we provide model data
 ## FAQ's {#F}
 
 ::: {style="text-align: justify;"}
-The app includes a dedicated `FAQs` to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the `FAQs` is a great place to start.
+The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQs is a great place to start.
 :::
 
 ![FAQs](images/faq-01.png){#fig-148 fig-align="center"}
@@ -815,7 +771,7 @@ The app includes a dedicated `FAQs` to help clarify common doubts and guide user
 ## View data {#U}
 
 ::: {style="text-align: justify;"}
-`View Data` serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. This is especially important in a **Split Plot (2,1) Design** where the correct identification of the Block, Main Plot Factor, and Sub-plot Factor columns is critical for the ANOVA to be partitioned correctly.
+View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. This is especially important in a **Split Plot (2,1) Design** where the correct identification of the Block, Main Plot Factor, and Sub-plot Factor columns is critical for the ANOVA to be partitioned correctly.
 :::
 
 ![View data](images/view-01.png){fig-align="center"}

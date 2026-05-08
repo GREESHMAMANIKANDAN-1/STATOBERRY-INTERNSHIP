@@ -162,11 +162,7 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-<<<<<<< HEAD
-![Illustrating how to create a dataset](www/rp%20csv.png){fig-align="center"}
-=======
 ![Illustrating how to create a dataset](www/rp%20csv%20new.png){#fig-4 fig-align="center"}
->>>>>>> 05d2c594c55a9edd65578ce364a11d023120543e
 
 ## RBD Pooled Analysis tab explained {#AO}
 
@@ -203,11 +199,9 @@ Log, square root, and arcsine transformations are often used in **RBD Pooled Ana
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-<<<<<<< HEAD
 Once your dataset is uploaded, click on `Run Analysis`, and the **RBD Pooled ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the pooled RBD context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to **Environment**, **Blocks within Environments**, **Treatment**, **Treatment × Environment interaction (T×E)**, and **Pooled Error**, and comparing them using the F-test ,see @fig-100.
-=======
 Once your dataset is uploaded, click on Run Analysis, and the **RBD Pooled ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the pooled RBD context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to **Locations**, **Blocks within Locations**, **Treatment**, **Treatment × Location interaction (T×E)**, and **Pooled Error**, and comparing them using the F-test, see @fig-100.
->>>>>>> 05d2c594c55a9edd65578ce364a11d023120543e
+
 :::
 
 **Table 1 ANOVA summary**
@@ -649,15 +643,12 @@ The interaction plot illustrates how the response variable changes across the le
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-<<<<<<< HEAD
 ![Advanced plots](www/rp%20adv%20plot%201%20tab.png){fig-align="center"}
 
 **3D SCATTER PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-=======
->>>>>>> 05d2c594c55a9edd65578ce364a11d023120543e
 ![3D scatter plot](images/rp%203d.gif){fig-align="center"}
 
 ::::: {style="text-align: justify;"}
@@ -859,10 +850,7 @@ View Data serves as the primary diagnostic tool for ensuring data integrity befo
 :::
 
 ![View data](www/rp%20view%20data.png){fig-align="center"}
-<<<<<<< HEAD
-=======
-
 
 ::: :::::::::::::::::::
 :::
->>>>>>> 05d2c594c55a9edd65578ce364a11d023120543e
+

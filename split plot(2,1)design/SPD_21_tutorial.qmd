@@ -218,7 +218,7 @@ The ANOVA results obtained from the Split Plot Design indicated that the treatme
 
 **Table 2: Detailed tabular representation with multiple comparisons**
 
-![Detailed tabular representation with multiple comparisons](images/a2.png){#fig-101 fig-align="center"} ![Detailed tabular representation with multiple comparisons](images/a3.png){fig-align="center"}
+![Detailed tabular representation with multiple comparisons](images/a2.png){#@fig-101 fig-align="center"} ![Detailed tabular representation with multiple comparisons](images/a3.png){fig-align="center"}
 
 ![Detailed tabular representation with multiple comparisons](images/a4.png){fig-align="center"} ![Detailed tabular representation with multiple comparisons](images/a5.png){fig-align="center"}
 
@@ -263,7 +263,7 @@ The ANOVA results obtained from the Split Plot Design indicated that the treatme
 
 </details>
 
-### Interpretation from @fig-101
+### Interpretation from@fig-
 
 ::: {style="text-align: justify;"}
 The multiple comparison results from our hypothetical example reveal that, for Grain Yield, among the Irrigation Methods (Factor A), Drip Irrigation (I2) recorded the highest mean grain yield and was assigned letter grouping "a", indicating it is significantly superior to Surface Irrigation (I1, grouping "b") and Sprinkler Irrigation (I3, grouping "b"). I1 and I3 were statistically at par with each other. Among the Varieties (Factor B), V3 recorded the highest grain yield (grouping "a"), followed by V1 (grouping "ab"), V4 (grouping "bc"), and V2 (grouping "c"). For the interaction (A × B), the combination of I2 × V3 produced the maximum grain yield, reflecting the synergistic effect of drip irrigation and variety V3. Treatments sharing the same letter are statistically similar, while those with different letters differ significantly at the 5% level of significance using the LSD test. Cohen's f values for Factor A and Factor B both exceeded 0.40, indicating a large and practically meaningful effect of both irrigation method and variety on grain yield.
@@ -441,7 +441,7 @@ function hideDescription(id) {
 ::::::::::::::::::::::::: grid
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
+
 
 ![Box plot](images/box%20plot.png){#fig-9}
 
@@ -505,16 +505,15 @@ A **connected line plot** in a split (2,1) design is used to display and compare
 :::::
 ::::::
 
-:::: g-col-6
-::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
 ![Connected line plot](images/connectec%20line.png){#fig-13}
 
-:::: {#connected line plot-desc .plot-description} ::: {style="text-align: justify;"} A **connected line plot** in a split (2,1) design is used to display and compare treatment effects by linking mean values across different factor levels. In this design, one factor has two levels (main plots) and another factor is applied within them (subplots). Each point on the graph represents the mean value of a treatment combination, and points belonging to the same factor level are connected with lines. These lines help to visualize trends and interactions between factors. Differences in the slope or pattern of the lines indicate variation in treatment responses, making it easier to understand relationships, compare effects, and identify any interaction between the factors.
+:::: {#connected line plot-desc .plot-description} 
+::: {style="text-align: justify;"} A **connected line plot** in a split (2,1) design is used to display and compare treatment effects by linking mean values across different factor levels. In this design, one factor has two levels (main plots) and another factor is applied within them (subplots). Each point on the graph represents the mean value of a treatment combination, and points belonging to the same factor level are connected with lines. These lines help to visualize trends and interactions between factors. Differences in the slope or pattern of the lines indicate variation in treatment responses, making it easier to understand relationships, compare effects, and identify any interaction between the factors.
 :::
 ::::
-:::::::::::::::::::::::::
-
-::::::
+:::::
 
 ## Advanced plots {#AP}
 

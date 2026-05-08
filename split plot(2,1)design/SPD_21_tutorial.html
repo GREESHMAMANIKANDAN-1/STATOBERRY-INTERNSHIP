@@ -91,7 +91,7 @@ window.Quarto = {
   <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">7</span> Analysis results</a>
   <ul class="collapse">
   <li><a href="#interpretation-from-fig-100" id="toc-interpretation-from-fig-100" class="nav-link" data-scroll-target="#interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from Figure&nbsp;7</a></li>
-  <li><a href="#interpretation-from-fig-101" id="toc-interpretation-from-fig-101" class="nav-link" data-scroll-target="#interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <strong>?@fig-101</strong></a></li>
+  <li><a href="#interpretation-fromfig-" id="toc-interpretation-fromfig-" class="nav-link" data-scroll-target="#interpretation-fromfig-"><span class="header-section-number">7.2</span> Interpretation from@fig-</a></li>
   </ul></li>
   <li><a href="#sec-8" id="toc-sec-8" class="nav-link" data-scroll-target="#sec-8"><span class="header-section-number">8</span> Multiple comparison tests</a></li>
   <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">9</span> Basic plots</a>
@@ -354,7 +354,7 @@ Figure&nbsp;7: Main Plot and Sub-plot ANOVA Summary
 <p>The ANOVA results obtained from the Split Plot Design indicated that the treatment factors and their interactions had significant effects on yield and several associated characters. The replication effect was non-significant for all traits, showing uniformity among experimental blocks. Main Plot Factor A significantly influenced Yield, Char1, Char2, Char5, and Char6, while Main Plot Factor B showed significant effects on Yield, Char2, Char5, and Char6. The interaction effect between A × B was also significant for Yield and certain characters, indicating that the combined performance of both factors varied across treatments. The Sub Plot Factor C significantly affected Yield, Char1, Char2, and Char3, demonstrating the importance of subplot treatments in influencing these traits. Further, the interactions between main plot and subplot factors were significant for some characters, especially Yield and Char5, suggesting that treatment combinations responded differently under varying subplot conditions. The three-way interaction among Factors A, B, and C was also significant for Yield and a few other characters, revealing the combined influence of all treatment factors. Overall, the ANOVA analysis confirmed the presence of significant treatment variation and highlighted the importance of both individual and interaction effects on crop performance. refer to <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> for details on multiple comparison tests applicable in <strong>Split Plot Design</strong>.</p>
 </div>
 <p><strong>Table 2: Detailed tabular representation with multiple comparisons</strong></p>
-<p><img src="images/a2.png" id="fig-101" class="img-fluid quarto-figure quarto-figure-center anchored" alt="Detailed tabular representation with multiple comparisons"> <img src="images/a3.png" class="img-fluid quarto-figure quarto-figure-center" alt="Detailed tabular representation with multiple comparisons"></p>
+<p><img src="images/a2.png" class="img-fluid" alt="Detailed tabular representation with multiple comparisons">{#<strong>?@fig-101</strong> fig-align=“center”} <img src="images/a3.png" class="img-fluid quarto-figure quarto-figure-center" alt="Detailed tabular representation with multiple comparisons"></p>
 <p><img src="images/a4.png" class="img-fluid quarto-figure quarto-figure-center" alt="Detailed tabular representation with multiple comparisons"> <img src="images/a5.png" class="img-fluid quarto-figure quarto-figure-center" alt="Detailed tabular representation with multiple comparisons"></p>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">Overview of ANOVA Results and Interpretation
@@ -385,8 +385,8 @@ Figure&nbsp;7: Main Plot and Sub-plot ANOVA Summary
 </small><p><small><strong>Cohen’s F</strong>: A standardized measure of effect size that describes the magnitude of the experimental effect, regardless of the sample size. </small></p>
 </details>
 </section>
-<section id="interpretation-from-fig-101" class="level3" data-number="7.2">
-<h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <strong>?@fig-101</strong></h3>
+<section id="interpretation-fromfig-" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-fromfig-"><span class="header-section-number">7.2</span> Interpretation from@fig-</h3>
 <div style="text-align: justify;">
 <p>The multiple comparison results from our hypothetical example reveal that, for Grain Yield, among the Irrigation Methods (Factor A), Drip Irrigation (I2) recorded the highest mean grain yield and was assigned letter grouping “a”, indicating it is significantly superior to Surface Irrigation (I1, grouping “b”) and Sprinkler Irrigation (I3, grouping “b”). I1 and I3 were statistically at par with each other. Among the Varieties (Factor B), V3 recorded the highest grain yield (grouping “a”), followed by V1 (grouping “ab”), V4 (grouping “bc”), and V2 (grouping “c”). For the interaction (A × B), the combination of I2 × V3 produced the maximum grain yield, reflecting the synergistic effect of drip irrigation and variety V3. Treatments sharing the same letter are statistically similar, while those with different letters differ significantly at the 5% level of significance using the LSD test. Cohen’s f values for Factor A and Factor B both exceeded 0.40, indicating a large and practically meaningful effect of both irrigation method and variety on grain yield.</p>
 </div>
@@ -562,7 +562,6 @@ function hideDescription(id) {
 <div class="grid">
 <div class="g-col-6">
 <div class="plot-container" onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')">
-<!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -670,7 +669,6 @@ Figure&nbsp;14: Connected line plot
 </div>
 </div>
 </div>
-<p>::::::</p>
 </section>
 </section>
 <section id="AP" class="level2" data-number="10">

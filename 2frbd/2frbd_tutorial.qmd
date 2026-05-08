@@ -694,12 +694,9 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 <summary>Dataset Creation Rules</summary>
 
 <small> 1. **Column Naming Convention** - No spaces allowed in column names.\
-- Use underscores (`_`) or full stops (`.`) for separation. - Avoid symbols and special characters like %,# etc
-2. **Data Arrangement** - Start data arrangement towards the upper-left corner.\
-- Ensure the row above the data is not blank.
-3. **Cell Management** - Avoid typing or deleting in cells without data.\
-- If needed, select affected cells, right-click, and select **Clear Contents**.
-4. **Column Relevance** - Name all columns meaningfully.\
+- Use underscores (`_`) or full stops (`.`) for separation. - Avoid symbols and special characters like %,# etc 2. **Data Arrangement** - Start data arrangement towards the upper-left corner.\
+- Ensure the row above the data is not blank. 3. **Cell Management** - Avoid typing or deleting in cells without data.\
+- If needed, select affected cells, right-click, and select **Clear Contents**. 4. **Column Relevance** - Name all columns meaningfully.\
 - Exclude unnecessary columns not required for analysis. </small>
 
 </details>

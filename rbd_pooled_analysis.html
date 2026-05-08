@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>RBD Pooled Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -26,21 +29,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="rbd_pooled_analysis_files/libs/clipboard/clipboard.min.js"></script>
 <script src="rbd_pooled_analysis_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="rbd_pooled_analysis_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="rbd_pooled_analysis_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="rbd_pooled_analysis_files/libs/quarto-html/popper.min.js"></script>
 <script src="rbd_pooled_analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="rbd_pooled_analysis_files/libs/quarto-html/anchor.min.js"></script>
 <link href="rbd_pooled_analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="rbd_pooled_analysis_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="rbd_pooled_analysis_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="rbd_pooled_analysis_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="rbd_pooled_analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="rbd_pooled_analysis_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="rbd_pooled_analysis_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="rbd_pooled_analysis_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="rbd_pooled_analysis_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="rbd_pooled_analysis_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -99,6 +101,15 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</a></li>
   </ul></li>
+  <li><a href="#AP" id="toc-AP" class="nav-link" data-scroll-target="#AP"><span class="header-section-number">12</span> Advanced plots</a></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">13</span> AI interpretation</a></li>
+  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">14</span> Multivariate</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">15</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">16</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">18</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">19</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">20</span> View data</a></li>
   </ul>
 </nav>
 </div>
@@ -202,7 +213,7 @@ Figure&nbsp;1: Analysis of experiment tab
 <section id="C" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> RBD Pooled Analysis</h2>
 <div style="text-align: justify;">
-<p><strong>RBD Pooled Analysis</strong> refers to the combined analysis of two or more individual Randomized Block Design experiments that share the same set of treatments but are conducted independently across different locations which may represent different locations, seasons, years, or trial centres. Within each environment the individual experiment follows the standard RBD structure, where treatments are randomized within homogeneous blocks to control local variation. When these experiments are pooled, the combined ANOVA model includes location as a main factor, Blocks nested within locations to account for the block structure of each individual trial, a Treatment main effect representing the average treatment performance across all locations, and a Location× Treatment interaction (L×T) that quantifies how consistently treatment rankings are reproduced across environments. A non-significant L×T interaction indicates stable treatment performance, allowing pooled means to be reported and recommended broadly; a significant L×T interaction implies location-specific rankings and calls for stability analysis or location-specific recommendations. The primary advantage of <strong>RBD Pooled Analysis</strong> over separate analyses of each experiment is a substantial increase in error degrees of freedom, which improves the sensitivity of treatment comparisons and the reliability of confidence intervals. Its main requirement is that the same treatments must appear in every location with consistent blocking structure, ensuring that a balanced combined analysis is possible.</p>
+<p><strong>RBD Pooled Analysis</strong> refers to the combined analysis of two or more individual Randomized Block Design experiments that share the same set of treatments but are conducted independently across different locations which may represent different locations, seasons, years, or trial centres. Within each location the individual experiment follows the standard RBD structure, where treatments are randomized within homogeneous blocks to control local variation. When these experiments are pooled, the combined ANOVA model includes location as a main factor, Blocks nested within locations to account for the block structure of each individual trial, a Treatment main effect representing the average treatment performance across all locations, and a Location× Treatment interaction (L×T) that quantifies how consistently treatment rankings are reproduced across locations. A non-significant L×T interaction indicates stable treatment performance, allowing pooled means to be reported and recommended broadly; a significant L×T interaction implies location-specific rankings and calls for stability analysis or location-specific recommendations. The primary advantage of <strong>RBD Pooled Analysis</strong> over separate analyses of each experiment is a substantial increase in error degrees of freedom, which improves the sensitivity of treatment comparisons and the reliability of confidence intervals. Its main requirement is that the same treatments must appear in every location with consistent blocking structure, ensuring that a balanced combined analysis is possible.</p>
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
@@ -210,7 +221,7 @@ Figure&nbsp;1: Analysis of experiment tab
 </summary>
 <ul>
 <p><small></small></p><small>
-<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents the structure of an <strong>RBD Pooled Analysis</strong> across multiple environments. In each location (L<sub>1</sub>, L<sub>2</sub>, …, L<sub>k</sub>) the experiment is laid out as a standard RBD in which all treatments (T<sub>1</sub>, T<sub>2</sub>, …, T<sub>t</sub>) are randomized independently within each block (B<sub>1</sub>, B<sub>2</sub>, …, B<sub>r</sub>), so every treatment appears exactly once per block. When the individual experiments are pooled, the full data matrix is organised by environment, block within environment, and treatment. The combined ANOVA then partitions variation into location (differences among trial locations), Blocks within locations (differences among blocks at each location), Treatment (differences among treatments averaged across all locations), location× Treatment interaction (differential response of treatments across locations), and Pooled Error (residual within-block variation pooled across all locations). The layout makes clear that the block structure of each individual RBD is preserved and explicitly modelled in the pooled analysis, providing a more accurate error estimate than pooling without blocking.</p>
+<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents the structure of an <strong>RBD Pooled Analysis</strong> across multiple locations. In each location (L<sub>1</sub>, L<sub>2</sub>, …, L<sub>k</sub>) the experiment is laid out as a standard RBD in which all treatments (T<sub>1</sub>, T<sub>2</sub>, …, T<sub>t</sub>) are randomized independently within each block (B<sub>1</sub>, B<sub>2</sub>, …, B<sub>r</sub>), so every treatment appears exactly once per block. When the individual experiments are pooled, the full data matrix is organised by location, block within location, and treatment. The combined ANOVA then partitions variation into location (differences among trial locations), Blocks within locations (differences among blocks at each location), Treatment (differences among treatments averaged across all locations), location× Treatment interaction (differential response of treatments across locations), and Pooled Error (residual within-block variation pooled across all locations). The layout makes clear that the block structure of each individual RBD is preserved and explicitly modelled in the pooled analysis, providing a more accurate error estimate than pooling without blocking.</p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -231,7 +242,7 @@ Figure&nbsp;2: RBD Pooled Analysis Layout
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>RBD Pooled Analysis is a combined multi-environment ANOVA that pools data from independent Randomized Block Design experiments, partitioning variation into Treatment, Location, Blocks within locations, and Location × Treatment interaction components to assess both treatment effects and their stability across locations.
+<span class="screen-reader-only">Tip</span>RBD Pooled Analysis is a combined multi-location ANOVA that pools data from independent Randomized Block Design experiments, partitioning variation into Treatment, Location, Blocks within locations, and Location × Treatment interaction components to assess both treatment effects and their stability across locations.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -242,7 +253,7 @@ Figure&nbsp;2: RBD Pooled Analysis Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
-<p>To make things simple and interesting, we’ll explain <strong>RBD Pooled Analysis</strong> step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a multi-location field trial conducted to evaluate the performance of <strong>6 wheat varieties</strong> V1 (HD2967), V2 (GW322), V3 (K307), V4 (DBW17), V5 (PBW343), and V6 (NW1014) tested across <strong>4 locations</strong> (L1: Ludhiana, L2: Karnal, L3: Varanasi, L4: Pune), each as an independent RBD with <strong>4 blocks (replications)</strong> per environment, giving a total of 6 × 4 × 4 = <strong>96 observations</strong>. Observations were recorded for four variables: <strong>yield</strong> (grain yield in kg/ha), <strong>Char1</strong> (plant height in cm), <strong>Char2</strong> (number of grains per spike), and <strong>Char 3</strong> (thousand grain weight in g). Our aim is to test whether the varieties produce statistically significant differences across environments using combined RBD ANOVA, and whether the treatment-by-environment interaction is significant. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To make things simple and interesting, we’ll explain <strong>RBD Pooled Analysis</strong> step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a multi-location field trial conducted to evaluate the performance of <strong>6 wheat varieties</strong> V1 (HD2967), V2 (GW322), V3 (K307), V4 (DBW17), V5 (PBW343), and V6 (NW1014) tested across <strong>4 locations</strong> (L1: Ludhiana, L2: Karnal, L3: Varanasi, L4: Pune), each as an independent RBD with <strong>4 blocks (replications)</strong> per location, giving a total of 6 × 4 × 4 = <strong>96 observations</strong>. Observations were recorded for four variables: <strong>yield</strong> (grain yield in kg/ha), <strong>Char1</strong> (plant height in cm), <strong>Char2</strong> (number of grains per spike), and <strong>Char 3</strong> (thousand grain weight in g). Our aim is to test whether the varieties produce statistically significant differences across locations using combined RBD ANOVA, and whether the treatment-by-location interaction is significant. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -256,13 +267,13 @@ Figure&nbsp;3: Example dataset
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the 6 wheat varieties evaluated across 4 environments, and the Variables are the four traits mentioned earlier <strong>yield, Char1, Char 2, and Char 3.</strong></p>
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the 6 wheat varieties evaluated across 4 locations, and the Variables are the four traits mentioned earlier <strong>yield, Char1, Char 2, and Char 3.</strong></p>
 </div>
 </section>
 <section id="sec-4" class="level2 H" data-number="4">
 <h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
 <div style="text-align: justify;">
-<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. The file must contain a column for <strong>Location</strong> (identifying the trial location for each row), a column for <strong>Block</strong> (identifying the block within each environment), a column for <strong>Treatment</strong> (the variety label), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. The file must contain a column for <strong>Location</strong> (identifying the trial location for each row), a column for <strong>Block</strong> (identifying the block within each location), a column for <strong>Treatment</strong> (the variety label), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
 <p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
 <p>Creating dataset in MS Excel</p>
@@ -278,16 +289,6 @@ Figure&nbsp;4: Illustrating how to create a dataset
 </figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="www/rp%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Illustrating how to create a dataset"><img src="www/rp%20csv.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Illustrating how to create a dataset"></a></p>
-</figure>
-</div>
-<figcaption>Illustrating how to create a dataset</figcaption>
-</figure>
-</div>
 </section>
 <section id="AO" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> RBD Pooled Analysis tab explained</h2>
@@ -298,7 +299,7 @@ Figure&nbsp;4: Illustrating how to create a dataset
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20ana%20tab%20exp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;5: Analysis window explained"><img src="www/rp%20ana%20tab%20exp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20ana%20tab%20exp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="www/rp%20ana%20tab%20exp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Analysis window explained
@@ -317,7 +318,7 @@ Figure&nbsp;5: Analysis window explained
 <div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20tran.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;6: Transformation options"><img src="www/rp%20tran.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20tran.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/rp%20tran.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Transformation options
@@ -336,14 +337,14 @@ Figure&nbsp;6: Transformation options
 <section id="sec-7" class="level2 AR" data-number="7">
 <h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
-<p>Once your dataset is uploaded, click on <code>Run Analysis</code>, and the <strong>RBD Pooled ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in the pooled RBD context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to <strong>Environment</strong>, <strong>Blocks within Environments</strong>, <strong>Treatment</strong>, <strong>Treatment × Environment interaction (T×E)</strong>, and <strong>Pooled Error</strong>, and comparing them using the F-test (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>).</p>
+<p>Once your dataset is uploaded, click on Run Analysis, and the <strong>RBD Pooled ANOVA</strong> will be performed. Analysis of Variance <strong>(ANOVA)</strong> in the pooled RBD context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to <strong>Locations</strong>, <strong>Blocks within Locations</strong>, <strong>Treatment</strong>, <strong>Treatment × Location interaction (T×E)</strong>, and <strong>Pooled Error</strong>, and comparing them using the F-test, see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>.</p>
 </div>
 <p><strong>Table 1 ANOVA summary</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20anova%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;7: Pooled RBD ANOVA summary"><img src="www/rp%20anova%202.png" class="img-fluid quarto-figure quarto-figure-left figure-img"></a>
+<a href="www/rp%20anova%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Pooled RBD ANOVA summary"><img src="www/rp%20anova%202.png" class="img-fluid quarto-figure quarto-figure-left figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Pooled RBD ANOVA summary
@@ -352,19 +353,19 @@ Figure&nbsp;7: Pooled RBD ANOVA summary
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> ANOVA table </summary>
-<p><small> In an <strong>RBD Pooled Analysis</strong>, the analysis of variance <strong>(ANOVA)</strong> partitions the total sum of squares into five main sources: <strong>Environment</strong> (variation among trial locations or seasons), <strong>Blocks within Environments</strong> (variation among blocks at each individual location, reflecting local heterogeneity controlled by the RBD structure), <strong>Treatment</strong> (variation among the treatments averaged across all environments), <strong>Treatment × Environment interaction (T×E)</strong> (variation in how treatment rankings differ across environments), and <strong>Pooled Error</strong> (within-block residual variation pooled across all environments). The degrees of freedom are: Environment = e−1 (where e = number of environments), Blocks within Environments = e(r−1) (where r = number of blocks per environment), Treatment = t−1 (where t = number of treatments), T×E = (e−1)(t−1), and Pooled Error = e(r−1)(t−1). Each mean square is obtained by dividing the sum of squares by its degrees of freedom. The F-statistic for Treatment and T×E is computed by dividing their respective mean squares by the Pooled Error mean square. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F stat in the table. A significant Treatment effect confirms that at least one variety performs differently from others on average; a significant T×E interaction indicates that variety rankings are not consistent across environments and environment-specific analysis may be warranted. </small></p>
+<p><small> In an <strong>RBD Pooled Analysis</strong>, the analysis of variance <strong>(ANOVA)</strong> partitions the total sum of squares into five main sources: <strong>Location</strong> (variation among trial locations or seasons), <strong>Blocks within Locations</strong> (variation among blocks at each individual location, reflecting local heterogeneity controlled by the RBD structure), <strong>Treatment</strong> (variation among the treatments averaged across all Locations), <strong>Treatment ×</strong> <strong>Location interaction (T×L)</strong> (variation in how treatment rankings differ across environments), and <strong>Pooled Error</strong> (within-block residual variation pooled across all locations). The degrees of freedom are:Location = e−1 (where e = number of Locations), Blocks within Locations = e(r−1) (where r = number of blocks per Location), Treatment = t−1 (where t = number of treatments), T×L = (e−1)(t−1), and Pooled Error = e(r−1)(t−1). Each mean square is obtained by dividing the sum of squares by its degrees of freedom. The F-statistic for Treatment and T×L is computed by dividing their respective mean squares by the Pooled Error mean square. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding F stat in the table. A significant Treatment effect confirms that at least one variety performs differently from others on average; a significant T×L interaction indicates that variety rankings are not consistent across locations and location-specific analysis may be warranted. </small></p>
 </details>
 <section id="interpretation-from-fig-100" class="level3" data-number="7.1">
 <h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
 <div style="text-align: justify;">
-<p>The pooled RBD ANOVA results reveal a highly significant Treatment effect for yield, with a treatment mean square of 52,340.85 and a pooled error mean square of 9,418.64, yielding an F-ratio of approximately 5.56 with 5 degrees of freedom for treatment and 45 degrees of freedom for pooled error, significant at the 1% level. The Environment mean square is also large and highly significant, confirming meaningful differences in wheat productivity across the four trial locations. The Blocks within Environments mean square (18,720.32) is significant, confirming that the RBD blocking structure effectively absorbed local field heterogeneity within each environment, which justifies the use of RBD over CRD in these trials. The Treatment × Environment interaction mean square of 7,245.60 is non-significant (F ≈ 0.77, p &gt; 0.05), indicating that the variety rankings are broadly consistent across Ludhiana, Karnal, Varanasi, and Pune, and that pooled means can be relied upon for making varietal recommendations. <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provides detailed information on the multiple comparison tests (Post-hoc tests).</p>
+<p>The pooled RBD ANOVA results reveal a highly significant Treatment effect for yield, with a treatment mean square of 52,340.85 and a pooled error mean square of 9,418.64, yielding an F-ratio of approximately 5.56 with 5 degrees of freedom for treatment and 45 degrees of freedom for pooled error, significant at the 1% level. The Location mean square is also large and highly significant, confirming meaningful differences in wheat productivity across the four trial locations. The Blocks within Locations mean square (18,720.32) is significant, confirming that the RBD blocking structure effectively absorbed local field heterogeneity within each location, which justifies the use of RBD over CRD in these trials. The Treatment × Location interaction mean square of 7,245.60 is non-significant (F ≈ 0.77, p &gt; 0.05), indicating that the variety rankings are broadly consistent across Ludhiana, Karnal, Varanasi, and Pune, and that pooled means can be relied upon for making varietal recommendations. <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provides detailed information on the multiple comparison tests (Post-hoc tests).</p>
 </div>
 <p><strong>Table 2: Detailed tabular representation with multiple comparisons of Treatment</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-101" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20treat.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;8: Treatment :Detailed tabular representation with multiple comparisons"><img src="www/rp%20treat.jpeg" class="img-fluid quarto-figure quarto-figure-left figure-img"></a>
+<a href="www/rp%20treat.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Treatment :Detailed tabular representation with multiple comparisons"><img src="www/rp%20treat.jpeg" class="img-fluid quarto-figure quarto-figure-left figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Treatment :Detailed tabular representation with multiple comparisons
@@ -376,7 +377,7 @@ Figure&nbsp;8: Treatment :Detailed tabular representation with multiple comparis
 <figure class="figure">
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="www/rp%20loc.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Location : Detailed tabular representation with multiple comparisons"><img src="www/rp%20loc.jpeg" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="Location : Detailed tabular representation with multiple comparisons"></a></p>
+<p><a href="www/rp%20loc.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Location : Detailed tabular representation with multiple comparisons"><img src="www/rp%20loc.jpeg" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="Location : Detailed tabular representation with multiple comparisons"></a></p>
 </figure>
 </div>
 <figcaption>Location : Detailed tabular representation with multiple comparisons</figcaption>
@@ -387,7 +388,7 @@ Figure&nbsp;8: Treatment :Detailed tabular representation with multiple comparis
 <figure class="figure">
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="www/rp%20lx%20t.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Interaction (Location x Treatment) detailed results"><img src="www/rp%20lx%20t.jpeg" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="Interaction (Location x Treatment) detailed results"></a></p>
+<p><a href="www/rp%20lx%20t.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Interaction (Location x Treatment) detailed results"><img src="www/rp%20lx%20t.jpeg" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="Interaction (Location x Treatment) detailed results"></a></p>
 </figure>
 </div>
 <figcaption>Interaction (Location x Treatment) detailed results</figcaption>
@@ -415,16 +416,16 @@ Figure&nbsp;8: Treatment :Detailed tabular representation with multiple comparis
 <li><em>Critical Difference (CD) and Error Estimates</em></li>
 </ol>
 <p><strong>Critical Difference (CD)</strong>: The minimum mathematical gap required between two pooled means to declare them “significantly different” at a specific confidence level.</p>
-<p><strong>Standard Error (SE)</strong>: A measure of the accuracy of a pooled sample mean compared to the true population mean; it reflects both within-environment and between-block variability absorbed by the pooled error term.</p>
-<p><strong>Mean Square Error (MSE)</strong>: The Pooled Error Mean Square from the combined RBD ANOVA table. It represents the “noise” or unexplained residual error averaged across all environments and blocks.</p>
-<p><strong>Coefficient of Variation (CV%)</strong>: A percentage that shows the level of dispersion in the pooled data relative to the grand mean. A lower CV indicates higher experimental precision across the combined multi-environment multi-block dataset.</p>
+<p><strong>Standard Error (SE)</strong>: A measure of the accuracy of a pooled sample mean compared to the true population mean; it reflects both within- location and between-block variability absorbed by the pooled error term.</p>
+<p><strong>Mean Square Error (MSE)</strong>: The Pooled Error Mean Square from the combined RBD ANOVA table. It represents the “noise” or unexplained residual error averaged across all locations and blocks.</p>
+<p><strong>Coefficient of Variation (CV%)</strong>: A percentage that shows the level of dispersion in the pooled data relative to the grand mean. A lower CV indicates higher experimental precision across the combined multi-location multi-block dataset.</p>
 </small><p><small><strong>Cohen’s F</strong>: A standardized measure of effect size that describes the magnitude of the experimental effect, regardless of the sample size. </small></p>
 </details>
 </section>
 <section id="interpretation-from-fig-101" class="level3" data-number="7.2">
 <h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;8</a></h3>
 <div style="text-align: justify;">
-<p>Treatments are grouped using letters such as <strong>“a”, “b”, “c”</strong> to indicate statistical similarity based on pairwise comparisons of pooled means. Overlapping grouping letters (e.g., <strong>ab</strong> or <strong>bc</strong>) indicate that the absolute difference between pooled treatment means is less than the critical difference at the chosen level of significance, implying statistical similarity <strong>(on par)</strong>. For example, if both HD2967 (V1) and DBW17 (V4) are labelled <strong>“a”</strong>, their pooled yields are statistically similar at the <strong>5%</strong> significance level. Treatments with no common letters (e.g., <strong>a</strong> and <strong>c</strong>) differ significantly across environments, providing a clear visual summary of all pairwise comparisons. For characters exhibiting significant treatment effects, pairwise comparisons of pooled treatment means were conducted using the Least Significant Difference (LSD) test. The LSD test provides the critical difference (CD) value based on the pooled error mean square, which was used to determine significant differences between pairs of means. Treatments sharing at least one common letter within a character were considered not significantly different. The Cohen’s f values in the table quantify the magnitude of treatment effects: values below 0.10 indicate a very small effect, below 0.25 indicate a small effect, below 0.40 indicate a medium effect, and values of 0.40 or higher indicate a large effect. The observed effect sizes confirm that varietal differences in grain yield are not only statistically significant but also agronomically meaningful across the pooled multi-environment multi-block dataset.</p>
+<p>Treatments are grouped using letters such as <strong>“a”, “b”, “c”</strong> to indicate statistical similarity based on pairwise comparisons of pooled means. Overlapping grouping letters (e.g., <strong>ab</strong> or <strong>bc</strong>) indicate that the absolute difference between pooled treatment means is less than the critical difference at the chosen level of significance, implying statistical similarity <strong>(on par)</strong>. For example, if both HD2967 (V1) and DBW17 (V4) are labelled <strong>“a”</strong>, their pooled yields are statistically similar at the <strong>5%</strong> significance level. Treatments with no common letters (e.g., <strong>a</strong> and <strong>c</strong>) differ significantly across location, providing a clear visual summary of all pairwise comparisons. For characters exhibiting significant treatment effects, pairwise comparisons of pooled treatment means were conducted using the Least Significant Difference (LSD) test. The LSD test provides the critical difference (CD) value based on the pooled error mean square, which was used to determine significant differences between pairs of means. Treatments sharing at least one common letter within a character were considered not significantly different. The Cohen’s f values in the table quantify the magnitude of treatment effects: values below 0.10 indicate a very small effect, below 0.25 indicate a small effect, below 0.40 indicate a medium effect, and values of 0.40 or higher indicate a large effect. The observed effect sizes confirm that varietal differences in grain yield are not only statistically significant but also agronomically meaningful across the pooled multi-environment multi-block dataset.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -465,13 +466,13 @@ Figure&nbsp;8: Treatment :Detailed tabular representation with multiple comparis
 </ul>
 </details>
 <div style="text-align: justify;">
-<p>After obtaining a significant F-value for the Treatment effect in the pooled RBD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly when averaged across all environments and blocks. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>).</p>
+<p>After obtaining a significant F-value for the Treatment effect in the pooled RBD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly when averaged across all locations and blocks. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>).</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20multi%20com.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/rp%20multi%20com.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20multi%20com.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/rp%20multi%20com.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: Multiple comparison test options explained
@@ -525,7 +526,7 @@ Figure&nbsp;9: Multiple comparison test options explained
 <div id="fig-104" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20ind%20anova.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;10: Pooled RBD ANOVA table for yield"><img src="www/rp%20ind%20anova.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20ind%20anova.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;10: Pooled RBD ANOVA table for yield"><img src="www/rp%20ind%20anova.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: Pooled RBD ANOVA table for yield
@@ -545,23 +546,23 @@ Figure&nbsp;10: Pooled RBD ANOVA table for yield
 <section id="interpretation-from-fig-104" class="level3" data-number="10.1">
 <h3 data-number="10.1" class="anchored" data-anchor-id="interpretation-from-fig-104"><span class="header-section-number">10.1</span> Interpretation from <a href="#fig-104" class="quarto-xref">Figure&nbsp;10</a></h3>
 <div style="text-align: justify;">
-<p>For the character <strong>yield</strong>, the Treatment mean square is 52,340.85, while the Pooled Error mean square is 9,418.64, yielding an F-value of approximately 5.56 with 5 degrees of freedom for treatment and 45 degrees of freedom for pooled error, significant at the 1% level. The Environment mean square is 186,420.75 and highly significant, confirming large productivity differences among the four trial locations. The Blocks within Environments mean square is 18,720.32 and significant, validating the RBD blocking structure in controlling field heterogeneity. The L×T interaction mean square is 7,245.60 and non-significant (F ≈ 0.77), confirming that pooled means are appropriate for variety recommendations. The MSE of 9,418.64 reflects the residual within-block variability pooled across locations. The SE(m) is approximately 34.26 and the SE(d) is approximately 48.46. The CD at 5% is 99.20 and at 1% is 134.45, indicating the minimum pooled yield difference required to declare any two varieties significantly different. The overall CV% of 7.4% reflects good experimental precision across the combined multi-environment blocked trial network.</p>
+<p>For the character <strong>yield</strong>, the Treatment mean square is 52,340.85, while the Pooled Error mean square is 9,418.64, yielding an F-value of approximately 5.56 with 5 degrees of freedom for treatment and 45 degrees of freedom for pooled error, significant at the 1% level. The Location mean square is 186,420.75 and highly significant, confirming large productivity differences among the four trial locations. The Blocks within Location mean square is 18,720.32 and significant, validating the RBD blocking structure in controlling field heterogeneity. The L×T interaction mean square is 7,245.60 and non-significant (F ≈ 0.77), confirming that pooled means are appropriate for variety recommendations. The MSE of 9,418.64 reflects the residual within-block variability pooled across locations. The SE(m) is approximately 34.26 and the SE(d) is approximately 48.46. The CD at 5% is 99.20 and at 1% is 134.45, indicating the minimum pooled yield difference required to declare any two varieties significantly different. The overall CV% of 7.4% reflects good experimental precision across the combined multi-location blocked trial network.</p>
 </div>
 </section>
 <section id="BP" class="level2" data-number="11">
 <h2 data-number="11" class="anchored" data-anchor-id="BP"><span class="header-section-number">11</span> Basic plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to <strong>RBD Pooled Analysis</strong> is readily available. Simply click on the <code>Basic Plots</code> tab to view them See <a href="#fig-8" class="quarto-xref">Figure&nbsp;11</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to <strong>RBD Pooled Analysis</strong> is readily available. Simply click on the Basic Plots tab to view them See <a href="#fig-8" class="quarto-xref">Figure&nbsp;11</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
 </div>
 <section id="customizing-plots" class="level3" data-number="11.1">
-<h3 data-number="11.1" class="anchored"><span class="header-section-number">11.1</span> Customizing plots</h3>
+<h3 data-number="11.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</h3>
 <div style="text-align: justify;">
 <p><strong>RAISINS</strong> provides users various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;11</a> to get a clear idea on the customizing features.</p>
 </div>
 <div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20basic%20plot%20first.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;11: Plot settings for customizing"><img src="www/rp%20basic%20plot%20first.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20basic%20plot%20first.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;11: Plot settings for customizing"><img src="www/rp%20basic%20plot%20first.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: Plot settings for customizing
@@ -641,6 +642,7 @@ function hideDescription(id) {
 #connectedplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
 #meanvalueplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
 #violinplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+#correlationplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
 </style>
 <div class="grid">
 <div class="g-col-6">
@@ -649,7 +651,7 @@ function hideDescription(id) {
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20box.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;12: Box plot"><img src="www/rp%20box.png" class="img-fluid figure-img"></a>
+<a href="images/rp%20box.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;12: Box plot"><img src="images/rp%20box.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Box plot
@@ -658,7 +660,7 @@ Figure&nbsp;12: Box plot
 </div>
 <div id="boxplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>box plot</strong> compares the distribution of pooled values across different treatments. Each colored box represents a treatment and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers) from the combined multi-environment multi-block data. Letters above each box indicate statistical groupings — treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>box plot</strong> compares the distribution of values across different treatment combinations. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -669,7 +671,7 @@ Figure&nbsp;12: Box plot
 <div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;13: Violin plot"><img src="www/rp%20violin.png" class="img-fluid figure-img"></a>
+<a href="images/rp%20violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;13: Violin plot"><img src="images/rp%20violin.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: Violin plot
@@ -678,7 +680,7 @@ Figure&nbsp;13: Violin plot
 </div>
 <div id="violinplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>violin plot</strong> compares the distribution of pooled values across different treatments. Each treatment is shown as a violin shape that reflects how the data is spread across all environments and blocks — wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>violin plot</strong> compares the distribution of values across different treatment combinations. Each treatment combination is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -689,7 +691,7 @@ Figure&nbsp;13: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20bar%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;14: Bar plot"><img src="www/rp%20bar%20plot.png" class="img-fluid figure-img"></a>
+<a href="images/rp%20bar%20plot-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;14: Bar plot"><img src="images/rp%20bar%20plot-01.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14: Bar plot
@@ -698,7 +700,7 @@ Figure&nbsp;14: Bar plot
 </div>
 <div id="barplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>bar plot</strong> compares the pooled average values of different treatments, with error bars showing variability across environments and blocks. The letters above each bar indicate statistical groupings: treatments sharing letters are similar, while those with different letters are significantly different. It highlights which treatments have higher or lower pooled averages and whether those differences are meaningful.</p>
+<p>A <strong>Bar plot</strong> compares the average values of different treatment combinations, with error bars showing variability. The letters above each bar indicate statistical groupings: treatment combinations sharing letters are similar, while those with different letters are significantly different. It highlights which treatment combinations have higher or lower averages and whether those differences are meaningful.</p>
 </div>
 </div>
 </div>
@@ -709,7 +711,7 @@ Figure&nbsp;14: Bar plot
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20mean.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;15: Mean Value Plot"><img src="www/rp%20mean.png" class="img-fluid figure-img"></a>
+<a href="images/rp%20mean.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;15: Mean Value Plot"><img src="images/rp%20mean.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15: Mean Value Plot
@@ -718,7 +720,7 @@ Figure&nbsp;15: Mean Value Plot
 </div>
 <div id="meanvalueplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>mean value plot</strong> compares the pooled mean values of different treatments, each shown as a colored dot with horizontal error bars indicating variability across environments and blocks. Letters next to each point represent statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different based on the pooled RBD analysis.</p>
+<p>A <strong>mean value plot</strong> compares the mean values of different treatment combinations, each shown as a colored dot with horizontal error bars indicating variability. Letters next to each point represent statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -730,7 +732,7 @@ Figure&nbsp;15: Mean Value Plot
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20con%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;16: Connected line plot"><img src="www/rp%20con%20plot.png" class="img-fluid figure-img"></a>
+<a href="images/rp%20con%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;16: Connected line plot"><img src="images/rp%20con%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: Connected line plot
@@ -740,11 +742,18 @@ Figure&nbsp;16: Connected line plot
 </div>
 <div id="connectedplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>connected line plot</strong> compares the pooled mean values of different treatments, with each point representing a treatment’s pooled average and error bars showing variability across environments and blocks. The points are linked by lines to highlight performance trends across treatments. Letters above each point indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>connected line plot</strong> compares the mean values of different treatment combinations, with each point representing a treatment combination’s average and error bars showing variability. The points are linked by lines to highlight trends across treatment combinations. Letters above each point indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('correlationplot-desc')" onmouseout="hideDescription('correlationplot-desc')">
+<div style="text-align: center;">
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/rp%20cor%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Correlation plot"><img src="www/rp%20cor%20plot.png" class="img-fluid figure-img" alt="Correlation plot"></a></p>
+<p><a href="www/rp%20cor%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Correlation plot"><img src="www/rp%20cor%20plot.png" class="img-fluid figure-img" alt="Correlation plot"></a></p>
 <figcaption>Correlation plot</figcaption>
 </figure>
 </div>
@@ -757,32 +766,49 @@ Figure&nbsp;16: Connected line plot
 </div>
 </div>
 </div>
+</section>
+</section>
 <section id="AP" class="level2" data-number="12">
 <h2 data-number="12" class="anchored" data-anchor-id="AP"><span class="header-section-number">12</span> Advanced plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your pooled data, especially distributions, relationships, and deviations from expectations across environments and blocks, see <a href="#fig-90" class="quarto-xref">Figure&nbsp;17</a>.</p>
+<p><strong>RAISINS</strong> also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your pooled data, especially distributions, relationships, and deviations from expectations across locations and blocks, see <a href="#fig-90" class="quarto-xref">Figure&nbsp;17</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20adv%20plot%201%20tab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;17: Advanced plots"><img src="www/rp%20adv%20plot%201%20tab.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20adv%20plot%201%20tab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;17: Advanced plots"><img src="www/rp%20adv%20plot%201%20tab.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: Advanced plots
 </figcaption>
 </figure>
 </div>
-<p><strong>3D SCATTER PLOT</strong></p>
+<p><strong>INTERACTION PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/rp%203d.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;18: 3D scatter plot"><img src="images/rp%203d.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/rp%20int%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;18: INTERACTION plot"><img src="images/rp%20int%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18: 3D scatter plot
+Figure&nbsp;18: INTERACTION plot
 </figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The interaction plot illustrates how the response variable changes across the levels of two factors in a 2F-RBD. The lines represent factor levels, and their trends show how the effect of one factor varies with the levels of the other factor. Non-parallel or crossing lines indicate the presence of interaction, helping to understand whether the factors jointly influence the response. In a block design, the interaction plot reflects the treatment effects after block variation has been removed from the error.</p>
+</div>
+<p><strong>3D SCATTER PLOT</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/rp%203d.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="3D scatter plot"><img src="images/rp%203d.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="3D scatter plot"></a></p>
+</figure>
+</div>
+<figcaption>3D scatter plot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
@@ -833,7 +859,7 @@ Figure&nbsp;19: AI powered RAISINS Assistant to interpret your results
 <section id="MUL" class="level2" data-number="14">
 <h2 data-number="14" class="anchored" data-anchor-id="MUL"><span class="header-section-number">14</span> Multivariate</h2>
 <div style="text-align: justify;">
-<p>Multivariate analysis in <strong>RBD Pooled Analysis</strong> helps you to compare different response variables simultaneously across all treatments in the combined multi-environment multi-block dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 6 wheat varieties HD2967, GW322, K307, DBW17, PBW343, and NW1014 across four environments and four blocks per environment, navigate to Multivariate see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;20</a>.</p>
+<p>Multivariate analysis in <strong>RBD Pooled Analysis</strong> helps you to compare different response variables simultaneously across all treatments in the combined multi-location multi-block dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 6 wheat varieties HD2967, GW322, K307, DBW17, PBW343, and NW1014 across four locations and four blocks per environment, navigate to Multivariate, see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;20</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -850,58 +876,48 @@ Figure&nbsp;20: Multivariate tab in RAISINS
 <p>PCA will be automatically carried out based on the selected variables using the pooled dataset.PCA results and plots will appear along with automated interpretation.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
-<div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_PCAIndex_RBDPooled.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;21: PCA-based Index Score"><img src="www/PLACEHOLDER_PCAIndex_RBDPooled.webp" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21: PCA-based Index Score
-</figcaption>
-</figure>
-</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/rp%20index%20score.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="PCA-based Index Score"><img src="www/rp%20index%20score.png" class="img-fluid figure-img" alt="PCA-based Index Score"></a></p>
+<p><a href="www/rp%20index%20score.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="PCA-based Index Score"><img src="www/rp%20index%20score.png" class="img-fluid figure-img" alt="PCA-based Index Score"></a></p>
 <figcaption>PCA-based Index Score</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;22</a> illustrates the proportion of variance explained by each principal component derived from the pooled RBD data.</p>
+<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;21</a> illustrates the proportion of variance explained by each principal component derived from the pooled RBD data.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20scree.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;22: Scree plot"><img src="www/rp%20scree.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20scree.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;21: Scree plot"><img src="www/rp%20scree.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;22: Scree plot
+Figure&nbsp;21: Scree plot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Look upon the loadings of each variable in the given <strong>?@fig-loadings</strong> and decide which PC-based index needs to be selected. In PC1, yield and Obs2 (number of grains per spike) show high positive loadings (approximately +0.66 and +0.54 respectively), while FW (thousand grain weight) also loads positively (+0.46), indicating that varieties with high scores on PC1 are superior across yield and its most important physiological components. Obs1 (plant height) loads more prominently on PC2 (+0.72), suggesting it captures a relatively independent dimension of variation — likely reflecting varietal differences in plant stature that do not necessarily co-vary with grain yield performance. Based on this pattern, a PC1-based index score is most informative for identifying wheat varieties that optimise grain yield, spike fertility, and grain filling simultaneously across the pooled multi-environment blocked data. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;22</a> and decide which PC-based index needs to be selected. In PC1, yield and Char2 (number of grains per spike) show high positive loadings (approximately +0.66 and +0.54 respectively), while Char3 (thousand grain weight) also loads positively (+0.46), indicating that varieties with high scores on PC1 are superior across yield and its most important physiological components. Char1 (plant height) loads more prominently on PC2 (+0.72), suggesting it captures a relatively independent dimension of variation likely reflecting varietal differences in plant stature that do not necessarily co-vary with grain yield performance. Based on this pattern, a PC1-based index score is most informative for identifying wheat varieties that optimise grain yield, spike fertility, and grain filling simultaneously across the pooled multi-location blocked data. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="www/rp%20loadings.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Loadings of each variable"><img src="www/rp%20loadings.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Loadings of each variable"></a></p>
-</figure>
+<div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/rp%20loadings.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;22: Loadings of each variable"><img src="www/rp%20loadings.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
-<figcaption>Loadings of each variable</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22: Loadings of each variable
+</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The biplot gives a visual representation of the relationships among variables and treatments based on the pooled multi-environment multi-block data. Treatments with high values for a specific variable are positioned in the direction of that variable’s loading vector. The angle between variables in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, yield and Obs2 vectors point in approximately the same direction, confirming their strong positive association in the pooled dataset, while Obs1 points in a moderately different direction, reflecting its more independent contribution to varietal differentiation.</p>
+<p>The biplot gives a visual representation of the relationships among variables and treatments based on the pooled multi-location multi-block data. Treatments with high values for a specific variable are positioned in the direction of that variable’s loading vector. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, yield and Char2 vectors point in approximately the same direction, confirming their strong positive association in the pooled dataset, while Char1 points in a moderately different direction, reflecting its more independent contribution to varietal differentiation.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20bio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;23: PCA-Biplot"><img src="www/rp%20bio.png" class="img-fluid figure-img"></a>
+<a href="www/rp%20bio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;23: PCA-Biplot"><img src="www/rp%20bio.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23: PCA-Biplot
@@ -915,7 +931,7 @@ Figure&nbsp;23: PCA-Biplot
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20index%20sc%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;24: Index score"><img src="www/rp%20index%20sc%202.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20index%20sc%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;24: Index score"><img src="www/rp%20index%20sc%202.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;24: Index score
@@ -927,14 +943,14 @@ Figure&nbsp;24: Index score
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/rp%20index%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Indexplot"><img src="www/rp%20index%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Indexplot"></a></p>
+<p><a href="www/rp%20index%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Indexplot"><img src="www/rp%20index%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Indexplot"></a></p>
 </figure>
 </div>
 <figcaption>Indexplot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Combining all this information, the researcher can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of pooled RBD ANOVA results with multivariate PCA-based index scores enables plant breeders and agronomists to identify varieties that perform consistently well across multiple environments in terms of both individual traits and overall multi-trait merit the ultimate objective of a multi-location blocked variety evaluation programme.</p>
+<p>Combining all this information, the researcher can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of pooled RBD ANOVA results with multivariate PCA-based index scores enables plant breeders and agronomists to identify varieties that perform consistently well across multiple locations in terms of both individual traits and overall multi-trait merit the ultimate objective of a multi-location blocked variety evaluation programme.</p>
 </div>
 </section>
 <section id="PRE" class="level2" data-number="15">
@@ -950,12 +966,12 @@ Figure&nbsp;24: Index score
 <section id="EX" class="level2" data-number="16">
 <h2 data-number="16" class="anchored" data-anchor-id="EX"><span class="header-section-number">16</span> Preparing data in MS Excel</h2>
 <div style="text-align: justify;">
-<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for <strong>RBD Pooled Analysis</strong> must follow a column-based format with at least four structural columns: an <strong>location</strong> column (identifying the trial location, season, or year for each row), a <strong>Block</strong> column (identifying the block number within that environment), a <strong>Treatment</strong> column (identifying the variety or treatment label), and one or more columns for the response variables. Every treatment must appear in every block of every environment the same number of times (one observation per treatment per block per environment) to ensure a balanced pooled analysis. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;25</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, the data must be arranged so that each treatment is fully replicated within each block of each environment, and the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;26</a>.</p>
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for <strong>RBD Pooled Analysis</strong> must follow a column-based format with at least four structural columns: an <strong>location</strong> column (identifying the trial location, season, or year for each row), a <strong>Block</strong> column (identifying the block number within that location), a <strong>Treatment</strong> column (identifying the variety or treatment label), and one or more columns for the response variables. Every treatment must appear in every block of every location the same number of times (one observation per treatment per block per location) to ensure a balanced pooled analysis. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;25</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, the data must be arranged so that each treatment is fully replicated within each block of each location, and the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;26</a>.</p>
 </div>
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-05-07%20112554-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;25: Model-1: showing how the prepared Excel file for upload should look like"><img src="images/Screenshot%202026-05-07%20112554-01.png" class="img-fluid figure-img"></a>
+<a href="images/Screenshot%202026-05-07%20112554-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;25: Model-1: showing how the prepared Excel file for upload should look like"><img src="images/Screenshot%202026-05-07%20112554-01.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;25: Model-1: showing how the prepared Excel file for upload should look like
@@ -965,7 +981,7 @@ Figure&nbsp;25: Model-1: showing how the prepared Excel file for upload should l
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/Screenshot%202026-05-07%20112716.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;26: Model-2: Showing how the prepared Excel file for upload should look like"><img src="images/Screenshot%202026-05-07%20112716.png" class="img-fluid figure-img"></a>
+<a href="images/Screenshot%202026-05-07%20112716.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;26: Model-2: Showing how the prepared Excel file for upload should look like"><img src="images/Screenshot%202026-05-07%20112716.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;26: Model-2: Showing how the prepared Excel file for upload should look like
@@ -1031,7 +1047,7 @@ How to Save as CSV in MS Excel
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20csv%20new.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;27: Creating dataset within RAISINS"><img src="www/rp%20csv%20new.png" class="img-fluid figure-img"></a>
+<a href="www/rp%20csv%20new.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;27: Creating dataset within RAISINS"><img src="www/rp%20csv%20new.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;27: Creating dataset within RAISINS
@@ -1047,7 +1063,7 @@ Figure&nbsp;27: Creating dataset within RAISINS
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20model%20data%20sets.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;28: Model dataset"><img src="www/rp%20model%20data%20sets.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20model%20data%20sets.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;28: Model dataset"><img src="www/rp%20model%20data%20sets.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;28: Model dataset
@@ -1063,7 +1079,7 @@ Figure&nbsp;28: Model dataset
 <div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/rp%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;29: FAQs"><img src="www/rp%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/rp%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;29: FAQs"><img src="www/rp%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;29: FAQs
@@ -1080,16 +1096,15 @@ Figure&nbsp;29: FAQs
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/rp%20view%20data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="View data"><img src="www/rp%20view%20data.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+<p><a href="www/rp%20view%20data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="View data"><img src="www/rp%20view%20data.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
 </figure>
 </div>
 <figcaption>View data</figcaption>
 </figure>
 </div>
-<hr>
-</section>
+<div class=":::::::::::::::::::">
+
 </div>
-</section>
 </section>
 
 </main>

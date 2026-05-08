@@ -122,7 +122,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![RBD Pooled Analysis Layout](www/RP LAYOUT.png){#fig-lay fig-align="center"}
+![RBD Pooled Analysis Layout](www/RP%20LAYOUT.png){#fig-lay fig-align="center"}
 
 </small>
 
@@ -162,8 +162,6 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](www/rp csv new.png){#fig-4 fig-align="center"}
-
 ![Illustrating how to create a dataset](www/rp%20csv.png){fig-align="center"}
 
 ## RBD Pooled Analysis tab explained {#AO}
@@ -201,7 +199,7 @@ Log, square root, and arcsine transformations are often used in **RBD Pooled Ana
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, and the **RBD Pooled ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the pooled RBD context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to **Environment**, **Blocks within Environments**, **Treatment**, **Treatment × Environment interaction (T×E)**, and **Pooled Error**, and comparing them using the F-test (see @fig-100).
+Once your dataset is uploaded, click on `Run Analysis`, and the **RBD Pooled ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the pooled RBD context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to **Environment**, **Blocks within Environments**, **Treatment**, **Treatment × Environment interaction (T×E)**, and **Pooled Error**, and comparing them using the F-test ,see @fig-100.
 :::
 
 **Table 1 ANOVA summary**
@@ -515,10 +513,11 @@ function hideDescription(id) {
 #connectedplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
 #meanvalueplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
 #violinplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+#correlationplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
 </style>
 ```
 
-:::::::::::::::::::::::::::::::::::::::::::::::: grid
+::::::::::::::::::::::::::::: grid
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
@@ -575,21 +574,28 @@ A **mean value plot** compares the pooled mean values of different treatments, e
 :::::
 ::::::
 
-::::::::: g-col-6
-:::::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
 ::: {style="text-align: center;"}
 <!-- REPLACE THIS SCREENSHOT -->
 
 ![Connected line plot](www/rp%20con%20plot.png){#fig-13}
 :::
 
-:::::: {#connectedplot-desc .plot-description}
+:::: {#connectedplot-desc .plot-description}
 ::: {style="text-align: justify;"}
 A **connected line plot** compares the pooled mean values of different treatments, with each point representing a treatment's pooled average and error bars showing variability across environments and blocks. The points are linked by lines to highlight performance trends across treatments. Letters above each point indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.
+:::
+::::
+::::::
+:::::::
 
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('correlationplot-desc')" onmouseout="hideDescription('correlationplot-desc')"}
+::: {style="text-align: center;"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Correlation plot](www/rp%20cor%20plot.png)
+![Correlation plot](www/rp%20cor%20plot.png){#fig-14}
 :::
 
 :::: {#correlationplot-desc .plot-description}
@@ -598,8 +604,8 @@ A **correlation plot** provides a visual summary of the pairwise relationships b
 :::
 ::::
 ::::::
-::::::::
-:::::::::
+:::::::
+:::::::::::::::::::::::::::::
 
 ## Advanced plots {#AP}
 
@@ -613,9 +619,21 @@ A **correlation plot** provides a visual summary of the pairwise relationships b
 
 **3D SCATTER PLOT**
 
+## Advanced plots
+
+::: {style="text-align: justify;"}
+**RAISINS** also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your pooled data, especially distributions, relationships, and deviations from expectations across environments and blocks, see @fig-90.
+:::
+
 <!-- REPLACE THIS SCREENSHOT -->
 
-![3D scatter plot](images/rp%203d.gif){#fig-14 fig-align="center"}
+![Advanced plots](www/rp%20adv%20plot%201%20tab.png){fig-align="center"}
+
+**3D SCATTER PLOT**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![3D scatter plot](images/rp%203d.gif){fig-align="center"}
 
 ::::: {style="text-align: justify;"}
 :::: {style="text-align: justify;"}
@@ -793,7 +811,7 @@ If you're unsure about the correct format for creating a dataset, don't worry RA
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
-![Creating dataset within RAISINS](www/rp csv new.png){#fig-createdata}
+![Creating dataset within RAISINS](www/rp%20csv%20new.png){#fig-createdata}
 
 ## Model datasets {#M}
 
@@ -818,6 +836,3 @@ View Data serves as the primary diagnostic tool for ensuring data integrity befo
 :::
 
 ![View data](www/rp%20view%20data.png){fig-align="center"}
-
-------------------------------------------------------------------------
-::::::::::::::::::::::::::::::::::::::::::::::::

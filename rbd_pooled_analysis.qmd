@@ -103,7 +103,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 ## RBD Pooled Analysis {#C}
 
 ::: {style="text-align: justify;"}
-**RBD Pooled Analysis** refers to the combined analysis of two or more individual Randomized Block Design experiments that share the same set of treatments but are conducted independently across different locations which may represent different locations, seasons, years, or trial centres. Within each environment the individual experiment follows the standard RBD structure, where treatments are randomized within homogeneous blocks to control local variation. When these experiments are pooled, the combined ANOVA model includes location as a main factor, Blocks nested within locations to account for the block structure of each individual trial, a Treatment main effect representing the average treatment performance across all locations, and a Location× Treatment interaction (L×T) that quantifies how consistently treatment rankings are reproduced across environments. A non-significant L×T interaction indicates stable treatment performance, allowing pooled means to be reported and recommended broadly; a significant L×T interaction implies location-specific rankings and calls for stability analysis or location-specific recommendations. The primary advantage of **RBD Pooled Analysis** over separate analyses of each experiment is a substantial increase in error degrees of freedom, which improves the sensitivity of treatment comparisons and the reliability of confidence intervals. Its main requirement is that the same treatments must appear in every location with consistent blocking structure, ensuring that a balanced combined analysis is possible.
+**RBD Pooled Analysis** refers to the combined analysis of two or more individual Randomized Block Design experiments that share the same set of treatments but are conducted independently across different locations which may represent different locations, seasons, years, or trial centres. Within each location the individual experiment follows the standard RBD structure, where treatments are randomized within homogeneous blocks to control local variation. When these experiments are pooled, the combined ANOVA model includes location as a main factor, Blocks nested within locations to account for the block structure of each individual trial, a Treatment main effect representing the average treatment performance across all locations, and a Location× Treatment interaction (L×T) that quantifies how consistently treatment rankings are reproduced across locations. A non-significant L×T interaction indicates stable treatment performance, allowing pooled means to be reported and recommended broadly; a significant L×T interaction implies location-specific rankings and calls for stability analysis or location-specific recommendations. The primary advantage of **RBD Pooled Analysis** over separate analyses of each experiment is a substantial increase in error degrees of freedom, which improves the sensitivity of treatment comparisons and the reliability of confidence intervals. Its main requirement is that the same treatments must appear in every location with consistent blocking structure, ensuring that a balanced combined analysis is possible.
 :::
 
 <details>
@@ -118,11 +118,11 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <small>
 
-@fig-lay visually represents the structure of an **RBD Pooled Analysis** across multiple environments. In each location (L~1~, L~2~, …, L~k~) the experiment is laid out as a standard RBD in which all treatments (T~1~, T~2~, …, T~t~) are randomized independently within each block (B~1~, B~2~, …, B~r~), so every treatment appears exactly once per block. When the individual experiments are pooled, the full data matrix is organised by environment, block within environment, and treatment. The combined ANOVA then partitions variation into location (differences among trial locations), Blocks within locations (differences among blocks at each location), Treatment (differences among treatments averaged across all locations), location× Treatment interaction (differential response of treatments across locations), and Pooled Error (residual within-block variation pooled across all locations). The layout makes clear that the block structure of each individual RBD is preserved and explicitly modelled in the pooled analysis, providing a more accurate error estimate than pooling without blocking.
+@fig-lay visually represents the structure of an **RBD Pooled Analysis** across multiple locations. In each location (L~1~, L~2~, …, L~k~) the experiment is laid out as a standard RBD in which all treatments (T~1~, T~2~, …, T~t~) are randomized independently within each block (B~1~, B~2~, …, B~r~), so every treatment appears exactly once per block. When the individual experiments are pooled, the full data matrix is organised by location, block within location, and treatment. The combined ANOVA then partitions variation into location (differences among trial locations), Blocks within locations (differences among blocks at each location), Treatment (differences among treatments averaged across all locations), location× Treatment interaction (differential response of treatments across locations), and Pooled Error (residual within-block variation pooled across all locations). The layout makes clear that the block structure of each individual RBD is preserved and explicitly modelled in the pooled analysis, providing a more accurate error estimate than pooling without blocking.
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![RBD Pooled Analysis Layout](www/RP LAYOUT.png){#fig-lay fig-align="center"}
+![RBD Pooled Analysis Layout](www/RP%20LAYOUT.png){#fig-lay fig-align="center"}
 
 </small>
 
@@ -131,13 +131,13 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 </details>
 
 ::: callout-tip
-#### RBD Pooled Analysis is a combined multi-environment ANOVA that pools data from independent Randomized Block Design experiments, partitioning variation into Treatment, Location, Blocks within locations, and Location × Treatment interaction components to assess both treatment effects and their stability across locations.
+#### RBD Pooled Analysis is a combined multi-location ANOVA that pools data from independent Randomized Block Design experiments, partitioning variation into Treatment, Location, Blocks within locations, and Location × Treatment interaction components to assess both treatment effects and their stability across locations.
 :::
 
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain **RBD Pooled Analysis** step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a multi-location field trial conducted to evaluate the performance of **6 wheat varieties** V1 (HD2967), V2 (GW322), V3 (K307), V4 (DBW17), V5 (PBW343), and V6 (NW1014) tested across **4 locations** (L1: Ludhiana, L2: Karnal, L3: Varanasi, L4: Pune), each as an independent RBD with **4 blocks (replications)** per environment, giving a total of 6 × 4 × 4 = **96 observations**. Observations were recorded for four variables: **yield** (grain yield in kg/ha), **Char1** (plant height in cm), **Char2** (number of grains per spike), and **Char 3** (thousand grain weight in g). Our aim is to test whether the varieties produce statistically significant differences across environments using combined RBD ANOVA, and whether the treatment-by-environment interaction is significant. The arrangement of the data is shown in @fig-data.
+To make things simple and interesting, we'll explain **RBD Pooled Analysis** step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a multi-location field trial conducted to evaluate the performance of **6 wheat varieties** V1 (HD2967), V2 (GW322), V3 (K307), V4 (DBW17), V5 (PBW343), and V6 (NW1014) tested across **4 locations** (L1: Ludhiana, L2: Karnal, L3: Varanasi, L4: Pune), each as an independent RBD with **4 blocks (replications)** per location, giving a total of 6 × 4 × 4 = **96 observations**. Observations were recorded for four variables: **yield** (grain yield in kg/ha), **Char1** (plant height in cm), **Char2** (number of grains per spike), and **Char 3** (thousand grain weight in g). Our aim is to test whether the varieties produce statistically significant differences across locations using combined RBD ANOVA, and whether the treatment-by-location interaction is significant. The arrangement of the data is shown in @fig-data.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -145,13 +145,13 @@ To make things simple and interesting, we'll explain **RBD Pooled Analysis** ste
 ![Example dataset](www/rp%20wor%20exm.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the 6 wheat varieties evaluated across 4 environments, and the Variables are the four traits mentioned earlier **yield, Char1, Char 2, and Char 3.**
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the 6 wheat varieties evaluated across 4 locations, and the Variables are the four traits mentioned earlier **yield, Char1, Char 2, and Char 3.**
 :::
 
 ## How to prepare your data? {#sec-4 .H}
 
 ::: {style="text-align: justify;"}
-Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. The file must contain a column for **Location** (identifying the trial location for each row), a column for **Block** (identifying the block within each environment), a column for **Treatment** (the variety label), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. The file must contain a column for **Location** (identifying the trial location for each row), a column for **Block** (identifying the block within each location), a column for **Treatment** (the variety label), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
 
 Still if you have doubt, see @fig-4.
 
@@ -162,9 +162,7 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](www/rp csv new.png){#fig-4 fig-align="center"}
-
-![Illustrating how to create a dataset](www/rp%20csv.png){fig-align="center"}
+![Illustrating how to create a dataset](www/rp%20csv%20new.png){#fig-4 fig-align="center"}
 
 ## RBD Pooled Analysis tab explained {#AO}
 
@@ -201,7 +199,9 @@ Log, square root, and arcsine transformations are often used in **RBD Pooled Ana
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, and the **RBD Pooled ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the pooled RBD context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to **Environment**, **Blocks within Environments**, **Treatment**, **Treatment × Environment interaction (T×E)**, and **Pooled Error**, and comparing them using the F-test (see @fig-100).
+Once your dataset is uploaded, click on `Run Analysis`, and the **RBD Pooled ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the pooled RBD context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to **Environment**, **Blocks within Environments**, **Treatment**, **Treatment × Environment interaction (T×E)**, and **Pooled Error**, and comparing them using the F-test ,see @fig-100.
+Once your dataset is uploaded, click on Run Analysis, and the **RBD Pooled ANOVA** will be performed. Analysis of Variance **(ANOVA)** in the pooled RBD context is a statistical technique used to test the significance of differences among treatment means across multiple environments by partitioning total variation into components attributable to **Locations**, **Blocks within Locations**, **Treatment**, **Treatment × Location interaction (T×E)**, and **Pooled Error**, and comparing them using the F-test, see @fig-100.
+
 :::
 
 **Table 1 ANOVA summary**
@@ -216,14 +216,14 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **RBD Pooled ANO
 <summary style="color: #5DADE2"; font-weight: bold;"> ANOVA table </summary>
 ```
 
-<small> In an **RBD Pooled Analysis**, the analysis of variance **(ANOVA)** partitions the total sum of squares into five main sources: **Environment** (variation among trial locations or seasons), **Blocks within Environments** (variation among blocks at each individual location, reflecting local heterogeneity controlled by the RBD structure), **Treatment** (variation among the treatments averaged across all environments), **Treatment × Environment interaction (T×E)** (variation in how treatment rankings differ across environments), and **Pooled Error** (within-block residual variation pooled across all environments). The degrees of freedom are: Environment = e−1 (where e = number of environments), Blocks within Environments = e(r−1) (where r = number of blocks per environment), Treatment = t−1 (where t = number of treatments), T×E = (e−1)(t−1), and Pooled Error = e(r−1)(t−1). Each mean square is obtained by dividing the sum of squares by its degrees of freedom. The F-statistic for Treatment and T×E is computed by dividing their respective mean squares by the Pooled Error mean square. Significance is indicated by an asterisk (\*) for the **5%** level and two asterisks (\*\*) for the **1%** level of significance, displayed as superscripts for each corresponding F stat in the table. A significant Treatment effect confirms that at least one variety performs differently from others on average; a significant T×E interaction indicates that variety rankings are not consistent across environments and environment-specific analysis may be warranted. </small>
+<small> In an **RBD Pooled Analysis**, the analysis of variance **(ANOVA)** partitions the total sum of squares into five main sources: **Location** (variation among trial locations or seasons), **Blocks within Locations** (variation among blocks at each individual location, reflecting local heterogeneity controlled by the RBD structure), **Treatment** (variation among the treatments averaged across all Locations), **Treatment ×** **Location interaction (T×L)** (variation in how treatment rankings differ across environments), and **Pooled Error** (within-block residual variation pooled across all locations). The degrees of freedom are:Location = e−1 (where e = number of Locations), Blocks within Locations = e(r−1) (where r = number of blocks per Location), Treatment = t−1 (where t = number of treatments), T×L = (e−1)(t−1), and Pooled Error = e(r−1)(t−1). Each mean square is obtained by dividing the sum of squares by its degrees of freedom. The F-statistic for Treatment and T×L is computed by dividing their respective mean squares by the Pooled Error mean square. Significance is indicated by an asterisk (\*) for the **5%** level and two asterisks (\*\*) for the **1%** level of significance, displayed as superscripts for each corresponding F stat in the table. A significant Treatment effect confirms that at least one variety performs differently from others on average; a significant T×L interaction indicates that variety rankings are not consistent across locations and location-specific analysis may be warranted. </small>
 
 </details>
 
 ### Interpretation from @fig-100
 
 ::: {style="text-align: justify;"}
-The pooled RBD ANOVA results reveal a highly significant Treatment effect for yield, with a treatment mean square of 52,340.85 and a pooled error mean square of 9,418.64, yielding an F-ratio of approximately 5.56 with 5 degrees of freedom for treatment and 45 degrees of freedom for pooled error, significant at the 1% level. The Environment mean square is also large and highly significant, confirming meaningful differences in wheat productivity across the four trial locations. The Blocks within Environments mean square (18,720.32) is significant, confirming that the RBD blocking structure effectively absorbed local field heterogeneity within each environment, which justifies the use of RBD over CRD in these trials. The Treatment × Environment interaction mean square of 7,245.60 is non-significant (F ≈ 0.77, p \> 0.05), indicating that the variety rankings are broadly consistent across Ludhiana, Karnal, Varanasi, and Pune, and that pooled means can be relied upon for making varietal recommendations. @sec-8 provides detailed information on the multiple comparison tests (Post-hoc tests).
+The pooled RBD ANOVA results reveal a highly significant Treatment effect for yield, with a treatment mean square of 52,340.85 and a pooled error mean square of 9,418.64, yielding an F-ratio of approximately 5.56 with 5 degrees of freedom for treatment and 45 degrees of freedom for pooled error, significant at the 1% level. The Location mean square is also large and highly significant, confirming meaningful differences in wheat productivity across the four trial locations. The Blocks within Locations mean square (18,720.32) is significant, confirming that the RBD blocking structure effectively absorbed local field heterogeneity within each location, which justifies the use of RBD over CRD in these trials. The Treatment × Location interaction mean square of 7,245.60 is non-significant (F ≈ 0.77, p \> 0.05), indicating that the variety rankings are broadly consistent across Ludhiana, Karnal, Varanasi, and Pune, and that pooled means can be relied upon for making varietal recommendations. @sec-8 provides detailed information on the multiple comparison tests (Post-hoc tests).
 :::
 
 **Table 2: Detailed tabular representation with multiple comparisons of Treatment**
@@ -269,11 +269,11 @@ The pooled RBD ANOVA results reveal a highly significant Treatment effect for yi
 
 **Critical Difference (CD)**: The minimum mathematical gap required between two pooled means to declare them "significantly different" at a specific confidence level.
 
-**Standard Error (SE)**: A measure of the accuracy of a pooled sample mean compared to the true population mean; it reflects both within-environment and between-block variability absorbed by the pooled error term.
+**Standard Error (SE)**: A measure of the accuracy of a pooled sample mean compared to the true population mean; it reflects both within- location and between-block variability absorbed by the pooled error term.
 
-**Mean Square Error (MSE)**: The Pooled Error Mean Square from the combined RBD ANOVA table. It represents the "noise" or unexplained residual error averaged across all environments and blocks.
+**Mean Square Error (MSE)**: The Pooled Error Mean Square from the combined RBD ANOVA table. It represents the "noise" or unexplained residual error averaged across all locations and blocks.
 
-**Coefficient of Variation (CV%)**: A percentage that shows the level of dispersion in the pooled data relative to the grand mean. A lower CV indicates higher experimental precision across the combined multi-environment multi-block dataset.
+**Coefficient of Variation (CV%)**: A percentage that shows the level of dispersion in the pooled data relative to the grand mean. A lower CV indicates higher experimental precision across the combined multi-location multi-block dataset.
 
 **Cohen's F**: A standardized measure of effect size that describes the magnitude of the experimental effect, regardless of the sample size. </small>
 
@@ -282,7 +282,7 @@ The pooled RBD ANOVA results reveal a highly significant Treatment effect for yi
 ### Interpretation from @fig-101
 
 ::: {style="text-align: justify;"}
-Treatments are grouped using letters such as **"a", "b", "c"** to indicate statistical similarity based on pairwise comparisons of pooled means. Overlapping grouping letters (e.g., **ab** or **bc**) indicate that the absolute difference between pooled treatment means is less than the critical difference at the chosen level of significance, implying statistical similarity **(on par)**. For example, if both HD2967 (V1) and DBW17 (V4) are labelled **"a"**, their pooled yields are statistically similar at the **5%** significance level. Treatments with no common letters (e.g., **a** and **c**) differ significantly across environments, providing a clear visual summary of all pairwise comparisons. For characters exhibiting significant treatment effects, pairwise comparisons of pooled treatment means were conducted using the Least Significant Difference (LSD) test. The LSD test provides the critical difference (CD) value based on the pooled error mean square, which was used to determine significant differences between pairs of means. Treatments sharing at least one common letter within a character were considered not significantly different. The Cohen's f values in the table quantify the magnitude of treatment effects: values below 0.10 indicate a very small effect, below 0.25 indicate a small effect, below 0.40 indicate a medium effect, and values of 0.40 or higher indicate a large effect. The observed effect sizes confirm that varietal differences in grain yield are not only statistically significant but also agronomically meaningful across the pooled multi-environment multi-block dataset.
+Treatments are grouped using letters such as **"a", "b", "c"** to indicate statistical similarity based on pairwise comparisons of pooled means. Overlapping grouping letters (e.g., **ab** or **bc**) indicate that the absolute difference between pooled treatment means is less than the critical difference at the chosen level of significance, implying statistical similarity **(on par)**. For example, if both HD2967 (V1) and DBW17 (V4) are labelled **"a"**, their pooled yields are statistically similar at the **5%** significance level. Treatments with no common letters (e.g., **a** and **c**) differ significantly across location, providing a clear visual summary of all pairwise comparisons. For characters exhibiting significant treatment effects, pairwise comparisons of pooled treatment means were conducted using the Least Significant Difference (LSD) test. The LSD test provides the critical difference (CD) value based on the pooled error mean square, which was used to determine significant differences between pairs of means. Treatments sharing at least one common letter within a character were considered not significantly different. The Cohen's f values in the table quantify the magnitude of treatment effects: values below 0.10 indicate a very small effect, below 0.25 indicate a small effect, below 0.40 indicate a medium effect, and values of 0.40 or higher indicate a large effect. The observed effect sizes confirm that varietal differences in grain yield are not only statistically significant but also agronomically meaningful across the pooled multi-environment multi-block dataset.
 :::
 
 ::: callout-tip
@@ -308,7 +308,7 @@ Treatments are grouped using letters such as **"a", "b", "c"** to indicate stati
 </details>
 
 ::: {style="text-align: justify;"}
-After obtaining a significant F-value for the Treatment effect in the pooled RBD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly when averaged across all environments and blocks. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7).
+After obtaining a significant F-value for the Treatment effect in the pooled RBD ANOVA, multiple comparison tests are employed to identify which treatment means differ significantly when averaged across all locations and blocks. Commonly used post-hoc tests include Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), and Duncan's Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see @fig-7).
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -420,13 +420,13 @@ The significance of the Treatment effect, location effect, Blocks within locatio
 ### Interpretation from @fig-104
 
 ::: {style="text-align: justify;"}
-For the character **yield**, the Treatment mean square is 52,340.85, while the Pooled Error mean square is 9,418.64, yielding an F-value of approximately 5.56 with 5 degrees of freedom for treatment and 45 degrees of freedom for pooled error, significant at the 1% level. The Environment mean square is 186,420.75 and highly significant, confirming large productivity differences among the four trial locations. The Blocks within Environments mean square is 18,720.32 and significant, validating the RBD blocking structure in controlling field heterogeneity. The L×T interaction mean square is 7,245.60 and non-significant (F ≈ 0.77), confirming that pooled means are appropriate for variety recommendations. The MSE of 9,418.64 reflects the residual within-block variability pooled across locations. The SE(m) is approximately 34.26 and the SE(d) is approximately 48.46. The CD at 5% is 99.20 and at 1% is 134.45, indicating the minimum pooled yield difference required to declare any two varieties significantly different. The overall CV% of 7.4% reflects good experimental precision across the combined multi-environment blocked trial network.
+For the character **yield**, the Treatment mean square is 52,340.85, while the Pooled Error mean square is 9,418.64, yielding an F-value of approximately 5.56 with 5 degrees of freedom for treatment and 45 degrees of freedom for pooled error, significant at the 1% level. The Location mean square is 186,420.75 and highly significant, confirming large productivity differences among the four trial locations. The Blocks within Location mean square is 18,720.32 and significant, validating the RBD blocking structure in controlling field heterogeneity. The L×T interaction mean square is 7,245.60 and non-significant (F ≈ 0.77), confirming that pooled means are appropriate for variety recommendations. The MSE of 9,418.64 reflects the residual within-block variability pooled across locations. The SE(m) is approximately 34.26 and the SE(d) is approximately 48.46. The CD at 5% is 99.20 and at 1% is 134.45, indicating the minimum pooled yield difference required to declare any two varieties significantly different. The overall CV% of 7.4% reflects good experimental precision across the combined multi-location blocked trial network.
 :::
 
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to **RBD Pooled Analysis** is readily available. Simply click on the `Basic Plots` tab to view them See @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to **RBD Pooled Analysis** is readily available. Simply click on the Basic Plots tab to view them See @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -515,19 +515,20 @@ function hideDescription(id) {
 #connectedplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
 #meanvalueplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
 #violinplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+#correlationplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
 </style>
 ```
 
-:::::::::::::::::::::::::::::::::::::::::::::::: grid
+::::::::::::::::::::::::::::: grid
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Box plot](www/rp%20box.png){#fig-9}
+![Box plot](images/rp%20box.png){#fig-9}
 
 :::: {#boxplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **box plot** compares the distribution of pooled values across different treatments. Each colored box represents a treatment and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers) from the combined multi-environment multi-block data. Letters above each box indicate statistical groupings — treatments sharing letters are statistically similar, while those with different letters are significantly different.
+A **box plot** compares the distribution of values across different treatment combinations. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
 :::
 ::::
 :::::
@@ -537,11 +538,11 @@ A **box plot** compares the distribution of pooled values across different treat
 ::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Violin plot](www/rp%20violin.png){#fig-10}
+![Violin plot](images/rp%20violin.png){#fig-10}
 
 :::: {#violinplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **violin plot** compares the distribution of pooled values across different treatments. Each treatment is shown as a violin shape that reflects how the data is spread across all environments and blocks — wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.
+A **violin plot** compares the distribution of values across different treatment combinations. Each treatment combination is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
 :::
 ::::
 :::::
@@ -551,11 +552,11 @@ A **violin plot** compares the distribution of pooled values across different tr
 ::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Bar plot](www/rp%20bar%20plot.png){#fig-11}
+![Bar plot](images/rp%20bar%20plot-01.png){#fig-11}
 
 :::: {#barplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **bar plot** compares the pooled average values of different treatments, with error bars showing variability across environments and blocks. The letters above each bar indicate statistical groupings: treatments sharing letters are similar, while those with different letters are significantly different. It highlights which treatments have higher or lower pooled averages and whether those differences are meaningful.
+A **Bar plot** compares the average values of different treatment combinations, with error bars showing variability. The letters above each bar indicate statistical groupings: treatment combinations sharing letters are similar, while those with different letters are significantly different. It highlights which treatment combinations have higher or lower averages and whether those differences are meaningful.
 :::
 ::::
 :::::
@@ -565,31 +566,42 @@ A **bar plot** compares the pooled average values of different treatments, with 
 ::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Mean Value Plot](www/rp%20mean.png){#fig-12}
+![Mean Value Plot](images/rp%20mean.png){#fig-12}
 
 :::: {#meanvalueplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **mean value plot** compares the pooled mean values of different treatments, each shown as a colored dot with horizontal error bars indicating variability across environments and blocks. Letters next to each point represent statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different based on the pooled RBD analysis.
+A **mean value plot** compares the mean values of different treatment combinations, each shown as a colored dot with horizontal error bars indicating variability. Letters next to each point represent statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
 :::
 ::::
 :::::
 ::::::
 
-::::::::: g-col-6
-:::::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
 ::: {style="text-align: center;"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Connected line plot](www/rp%20con%20plot.png){#fig-13}
+![Connected line plot](images/rp%20con%20plot.png){#fig-13}
 :::
 
-:::::: {#connectedplot-desc .plot-description}
+:::: {#connectedplot-desc .plot-description}
 ::: {style="text-align: justify;"}
+<<<<<<< HEAD
 A **connected line plot** compares the pooled mean values of different treatments, with each point representing a treatment's pooled average and error bars showing variability across environments and blocks. The points are linked by lines to highlight performance trends across treatments. Letters above each point indicate statistical groupings: treatments sharing letters are statistically similar, while those with different letters are significantly different.
+=======
+A **connected line plot** compares the mean values of different treatment combinations, with each point representing a treatment combination's average and error bars showing variability. The points are linked by lines to highlight trends across treatment combinations. Letters above each point indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
+>>>>>>> 05d2c594c55a9edd65578ce364a11d023120543e
+:::
+::::
+::::::
+:::::::
 
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('correlationplot-desc')" onmouseout="hideDescription('correlationplot-desc')"}
+::: {style="text-align: center;"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Correlation plot](www/rp%20cor%20plot.png)
+![Correlation plot](www/rp%20cor%20plot.png){#fig-14}
 :::
 
 :::: {#correlationplot-desc .plot-description}
@@ -598,10 +610,32 @@ A **correlation plot** provides a visual summary of the pairwise relationships b
 :::
 ::::
 ::::::
-::::::::
-:::::::::
+:::::::
+:::::::::::::::::::::::::::::
 
 ## Advanced plots {#AP}
+
+::: {style="text-align: justify;"}
+**RAISINS** also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your pooled data, especially distributions, relationships, and deviations from expectations across locations and blocks, see @fig-90.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Advanced plots](www/rp%20adv%20plot%201%20tab.png){#fig-90 fig-align="center"}
+
+**INTERACTION PLOT**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![INTERACTION plot](images/rp int plot.png){#fig-14 fig-align="center"}
+
+::: {style="text-align: justify;"}
+The interaction plot illustrates how the response variable changes across the levels of two factors in a 2F-RBD. The lines represent factor levels, and their trends show how the effect of one factor varies with the levels of the other factor. Non-parallel or crossing lines indicate the presence of interaction, helping to understand whether the factors jointly influence the response. In a block design, the interaction plot reflects the treatment effects after block variation has been removed from the error.
+:::
+
+**3D SCATTER PLOT**
+
+## Advanced plots
 
 ::: {style="text-align: justify;"}
 **RAISINS** also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your pooled data, especially distributions, relationships, and deviations from expectations across environments and blocks, see @fig-90.
@@ -609,13 +643,13 @@ A **correlation plot** provides a visual summary of the pairwise relationships b
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Advanced plots](www/rp%20adv%20plot%201%20tab.png){#fig-90 fig-align="center"}
+![Advanced plots](www/rp%20adv%20plot%201%20tab.png){fig-align="center"}
 
 **3D SCATTER PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![3D scatter plot](images/rp%203d.gif){#fig-14 fig-align="center"}
+![3D scatter plot](images/rp%203d.gif){fig-align="center"}
 
 ::::: {style="text-align: justify;"}
 :::: {style="text-align: justify;"}
@@ -652,7 +686,7 @@ RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist user
 ## Multivariate {#MUL}
 
 ::: {style="text-align: justify;"}
-Multivariate analysis in **RBD Pooled Analysis** helps you to compare different response variables simultaneously across all treatments in the combined multi-environment multi-block dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 6 wheat varieties HD2967, GW322, K307, DBW17, PBW343, and NW1014 across four environments and four blocks per environment, navigate to Multivariate see @fig-mu.
+Multivariate analysis in **RBD Pooled Analysis** helps you to compare different response variables simultaneously across all treatments in the combined multi-location multi-block dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 6 wheat varieties HD2967, GW322, K307, DBW17, PBW343, and NW1014 across four locations and four blocks per environment, navigate to Multivariate, see @fig-mu.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -665,8 +699,6 @@ PCA will be automatically carried out based on the selected variables using the 
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![PCA-based Index Score](www/PLACEHOLDER_PCAIndex_RBDPooled.webp){#fig-PC}
-
 ![PCA-based Index Score](www/rp%20index%20score.png)
 
 ::: {style="text-align: justify;"}
@@ -678,15 +710,15 @@ The scree plot given @fig-screeplot illustrates the proportion of variance expla
 ![Scree plot](www/rp%20scree.png){#fig-screeplot fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. In PC1, yield and Obs2 (number of grains per spike) show high positive loadings (approximately +0.66 and +0.54 respectively), while FW (thousand grain weight) also loads positively (+0.46), indicating that varieties with high scores on PC1 are superior across yield and its most important physiological components. Obs1 (plant height) loads more prominently on PC2 (+0.72), suggesting it captures a relatively independent dimension of variation — likely reflecting varietal differences in plant stature that do not necessarily co-vary with grain yield performance. Based on this pattern, a PC1-based index score is most informative for identifying wheat varieties that optimise grain yield, spike fertility, and grain filling simultaneously across the pooled multi-environment blocked data. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
+Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. In PC1, yield and Char2 (number of grains per spike) show high positive loadings (approximately +0.66 and +0.54 respectively), while Char3 (thousand grain weight) also loads positively (+0.46), indicating that varieties with high scores on PC1 are superior across yield and its most important physiological components. Char1 (plant height) loads more prominently on PC2 (+0.72), suggesting it captures a relatively independent dimension of variation likely reflecting varietal differences in plant stature that do not necessarily co-vary with grain yield performance. Based on this pattern, a PC1-based index score is most informative for identifying wheat varieties that optimise grain yield, spike fertility, and grain filling simultaneously across the pooled multi-location blocked data. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Loadings of each variable](www/rp%20loadings.png){fig-align="center"}
+![Loadings of each variable](www/rp%20loadings.png){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The biplot gives a visual representation of the relationships among variables and treatments based on the pooled multi-environment multi-block data. Treatments with high values for a specific variable are positioned in the direction of that variable's loading vector. The angle between variables in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, yield and Obs2 vectors point in approximately the same direction, confirming their strong positive association in the pooled dataset, while Obs1 points in a moderately different direction, reflecting its more independent contribution to varietal differentiation.
+The biplot gives a visual representation of the relationships among variables and treatments based on the pooled multi-location multi-block data. Treatments with high values for a specific variable are positioned in the direction of that variable's loading vector. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, yield and Char2 vectors point in approximately the same direction, confirming their strong positive association in the pooled dataset, while Char1 points in a moderately different direction, reflecting its more independent contribution to varietal differentiation.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -706,7 +738,7 @@ In RAISINS, we calculate a scaled index score by converting the index score to a
 ![Indexplot](www/rp%20index%20plot.png){fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Combining all this information, the researcher can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of pooled RBD ANOVA results with multivariate PCA-based index scores enables plant breeders and agronomists to identify varieties that perform consistently well across multiple environments in terms of both individual traits and overall multi-trait merit the ultimate objective of a multi-location blocked variety evaluation programme.
+Combining all this information, the researcher can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of pooled RBD ANOVA results with multivariate PCA-based index scores enables plant breeders and agronomists to identify varieties that perform consistently well across multiple locations in terms of both individual traits and overall multi-trait merit the ultimate objective of a multi-location blocked variety evaluation programme.
 :::
 
 ## Preparing your data {#PRE}
@@ -722,7 +754,7 @@ Combining all this information, the researcher can arrive at an overall conclusi
 ## Preparing data in MS Excel {#EX}
 
 ::: {style="text-align: justify;"}
-Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for **RBD Pooled Analysis** must follow a column-based format with at least four structural columns: an **location** column (identifying the trial location, season, or year for each row), a **Block** column (identifying the block number within that environment), a **Treatment** column (identifying the variety or treatment label), and one or more columns for the response variables. Every treatment must appear in every block of every environment the same number of times (one observation per treatment per block per environment) to ensure a balanced pooled analysis. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, the data must be arranged so that each treatment is fully replicated within each block of each environment, and the data can also be arranged as shown in @fig-kk.
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for **RBD Pooled Analysis** must follow a column-based format with at least four structural columns: an **location** column (identifying the trial location, season, or year for each row), a **Block** column (identifying the block number within that location), a **Treatment** column (identifying the variety or treatment label), and one or more columns for the response variables. Every treatment must appear in every block of every location the same number of times (one observation per treatment per block per location) to ensure a balanced pooled analysis. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, the data must be arranged so that each treatment is fully replicated within each block of each location, and the data can also be arranged as shown in @fig-kk.
 :::
 
 ![Model-1: showing how the prepared Excel file for upload should look like](images/Screenshot%202026-05-07%20112554-01.png){#fig-pp}
@@ -753,23 +785,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    -   Go to the top-left corner and click on **File**.
+    - Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    -   Select the location where you want to save your file.
+    - Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    -   Enter a relevant file name without spaces (use underscores if needed).
+    - Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    -   Click **Save** to export the file.
+    - Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small>
 
@@ -780,20 +812,20 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
--   Navigate to the **Create Data Tab**
+- Navigate to the **Create Data Tab**
 
--   Select the number of **Treatments**
+- Select the number of **Treatments**
 
--   Select number of **Replications**
+- Select number of **Replications**
 
--   Select number of **Characters**
+- Select number of **Characters**
 
--   Click on **Create** button
+- Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
-![Creating dataset within RAISINS](www/rp csv new.png){#fig-createdata}
+![Creating dataset within RAISINS](www/rp%20csv%20new.png){#fig-createdata}
 
 ## Model datasets {#M}
 
@@ -819,5 +851,6 @@ View Data serves as the primary diagnostic tool for ensuring data integrity befo
 
 ![View data](www/rp%20view%20data.png){fig-align="center"}
 
-------------------------------------------------------------------------
-::::::::::::::::::::::::::::::::::::::::::::::::
+::: :::::::::::::::::::
+:::
+

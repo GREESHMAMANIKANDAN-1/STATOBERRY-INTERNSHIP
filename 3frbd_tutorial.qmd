@@ -98,7 +98,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis of experiment tab](www/3f rbd an tab.png){#fig-aov fig-align="center"}
+![Analysis of experiment tab](www/3f%20rbd%20an%20tab.png){#fig-aov fig-align="center"}
 
 ## Three-Factor Randomized Block Design (3FRBD) {#C}
 
@@ -162,7 +162,7 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](images/3f rbd csv-01.png){#fig-4 fig-align="center"}
+![Illustrating how to create a dataset](images/3f%20rbd%20csv-01.png){#fig-4 fig-align="center"}
 
 ## 3FRBD analysis tab explained {#AO}
 
@@ -172,7 +172,7 @@ In @fig-5, you can see the detailed view of the Analysis tab, along with explana
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis window explained](images/Copy of Red Modern Blank Page A4 Landscape-01.png){#fig-5 fig-align="center"}
+![Analysis window explained](images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape-01.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset @sec-6. Here, **RAISINS** provides an inbuilt transformation option.
@@ -184,7 +184,7 @@ For some data, when there are a large number of zeros, discrete values, or when 
 Log, square root, and arcsine transformations are often used in **3FRBD** analysis to make data more normal and reduce uneven variation. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
-![Transformation options](www/3f rbd tran new.png){#fig-6 fig-align="center"}
+![Transformation options](www/3f%20rbd%20tran%20new.png){#fig-6 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -321,7 +321,7 @@ After obtaining a significant F-value in ANOVA under **3FCRD**, multiple compari
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multiple comparison test options explained](www/3fvrbd multi edit.png){#fig-7 fig-align="center"}
+![Multiple comparison test options explained](www/3fvrbd%20multi%20edit.png){#fig-7 fig-align="center"}
 
 <details>
 
@@ -375,7 +375,7 @@ If you need to know about the detailed values of the various statistical metrics
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Summary statistics](www/3f summ.png){#fig-102 fig-align="center"}
+![Summary statistics](www/3f%20summ.png){#fig-102 fig-align="center"}
 
 <details>
 
@@ -421,7 +421,7 @@ The significance of each factor, interaction, and block effect can be measured u
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![ANOVA table for yield](www/3f rbd ind an.png){#fig-104 fig-align="center"}
+![ANOVA table for yield](www/3f%20rbd%20ind%20an.png){#fig-104 fig-align="center"}
 
 <details>
 
@@ -463,7 +463,7 @@ For the character **yield**, the treatment (treatment combination) mean square i
 **RAISINS** provides users various customization features for the plots to enhance the visualization according to the requirement of the user. **Click** on @fig-8 to get a clear idea on the customizing features.
 :::
 
-![Plot settings for customizing](www/3f box olot intr.png){#fig-8 fig-align="center"}
+![Plot settings for customizing](www/3f%20box%20olot%20intr.png){#fig-8 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 From @fig-9 to @fig-13, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.
@@ -551,7 +551,7 @@ function hideDescription(id) {
 ::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Box plot](www/3f box.png){#fig-9}
+![Box plot](www/3f%20box.png){#fig-9}
 
 :::: {#boxplot-desc .plot-description}
 ::: {style="text-align: justify;"}
@@ -565,7 +565,7 @@ A **box plot** compares the distribution of values across different treatment co
 ::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Violin plot](www/3f violin.png){#fig-10}
+![Violin plot](www/3f%20violin.png){#fig-10}
 
 :::: {#violinplot-desc .plot-description}
 ::: {style="text-align: justify;"}
@@ -579,7 +579,7 @@ A **violin plot** compares the distribution of values across different treatment
 ::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Bar plot](www/3f bar.png){#fig-11}
+![Bar plot](www/3f%20bar.png){#fig-11}
 
 :::: {#barplot-desc .plot-description}
 ::: {style="text-align: justify;"}
@@ -593,7 +593,7 @@ A **bar plot** compares the average values of different treatment combinations, 
 ::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Mean Value Plot](www/3f meam plot.png){#fig-12}
+![Mean Value Plot](www/3f%20meam%20plot.png){#fig-12}
 
 :::: {#meanvalueplot-desc .plot-description}
 ::: {style="text-align: justify;"}
@@ -608,7 +608,7 @@ A **mean value plot** compares the mean values of different treatment combinatio
 ::: {style="text-align: center;"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Connected line plot](www/3f con plot.png){#fig-13}
+![Connected line plot](www/3f%20con%20plot.png){#fig-13}
 :::
 
 :::: {#connectedplot-desc .plot-description}
@@ -628,13 +628,13 @@ A **connected line plot** compares the mean values of different treatment combin
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Advanced plots](www/3f advance.png){#fig-90 fig-align="center"}
+![Advanced plots](www/3f%20advance.png){#fig-90 fig-align="center"}
 
 **INTERACTION PLOT**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Interaction plot](www/3f int plot.png){#fig-14 fig-align="center"}
+![Interaction plot](www/3f%20int%20plot.png){#fig-14 fig-align="center"}
 
 :::: {style="text-align: justify;"}
 ::: {style="text-align: justify;"}
@@ -646,7 +646,7 @@ Explains how it reveals whether the effect of one factor changes across levels o
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![3D SCATTER PLOT](images/3d gif lat.gif){#fig-15 fig-align="center"}
+![3D SCATTER PLOT](images/3d%20gif%20lat.gif){#fig-15 fig-align="center"}
 
 :::: {style="text-align: justify;"}
 ::: {style="text-align: justify;"}
@@ -656,7 +656,9 @@ Describes how three response variables (Yield, Char 1, Char 2) are plotted simul
 
 **3D SCATTER PLOT WITH LINE**
 
-<!-- REPLACE THIS SCREENSHOT -->![](images/3d line new-01.gif)
+<!-- REPLACE THIS SCREENSHOT -->
+
+![](images/3d%20line%20new-01.gif)
 
 3D SCATTER PLOT WITH LINE
 
@@ -672,7 +674,7 @@ Extends the 3D scatter by connecting replicated observations within each treatme
 RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant main effects and interactions between factors, and offers informed suggestions for potential next steps or interpretations. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below @fig-ai.
 :::
 
-![AI powered RAISINS Assistant to interpret your results](www/3f ai intr.png){#fig-ai fig-align="center"}
+![AI powered RAISINS Assistant to interpret your results](www/3f%20ai%20intr.png){#fig-ai fig-align="center"}
 
 ## Multivariate {#MUL}
 
@@ -682,7 +684,7 @@ Multivariate analysis in **Three-Factor Randomized Block Design (3FRBD)** helps 
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multivariate tab in RAISINS](www/3f multivariate.png){#fig-mu}
+![Multivariate tab in RAISINS](www/3f%20multivariate.png){#fig-mu}
 
 ::: {style="text-align: justify;"}
 MANOVA and PCA will be automatically carried out based on the selected variables. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.
@@ -690,7 +692,7 @@ MANOVA and PCA will be automatically carried out based on the selected variables
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Manova Results](www/3f manova.png){#fig-MAN2 fig-align="center"}
+![Manova Results](www/3f%20manova.png){#fig-MAN2 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 The table titled 'Eigen Values PCA' given @fig-PC provides information about the eigen values and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 54% of the variance in the dataset, while PC2 accounts for about 22% of the variance. Together, PC1 and PC2 explain approximately 76% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs together explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
@@ -698,13 +700,15 @@ The table titled 'Eigen Values PCA' given @fig-PC provides information about the
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![PCA-based Index Score](www/3f pca.png){#fig-PC}
+![PCA-based Index Score](www/3f%20pca.png){#fig-PC}
 
 ::: {style="text-align: justify;"}
 The scree plot given @fig-screeplot illustrates the proportion of variance explained by each principal component.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->![](www/3f scree pl.png){#fig-screeplot}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![](www/3f%20scree%20pl.png){#fig-screeplot}
 
 scree plot
 
@@ -714,7 +718,7 @@ Look upon the loadings of each variable in the given @fig-loadings and decide wh
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Loadings of each variable](www/3f loasings.png){#fig-loadings fig-align="center"}
+![Loadings of each variable](www/3f%20loasings.png){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
 The biplot gives a visual representation of the relationships among variables and treatment combinations. Treatment combinations with high values for a specific variable are positioned in the direction of that variable's loading vector. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, yield and FW vectors point in approximately the same direction, confirming their strong positive association, while Obs1 points in a direction more orthogonal to yield, confirming its independent contribution.
@@ -722,7 +726,7 @@ The biplot gives a visual representation of the relationships among variables an
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![PCA-Biplot](www/3f bio.png)
+![PCA-Biplot](www/3f%20bio.png)
 
 ::: {style="text-align: justify;"}
 In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment combinations based on their index scores. To refine your selection, use the 'Select cutoff for Scaled Index Score' feature given as in @fig-indexscore, where you can choose the cutoff percentage to select treatment combinations above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment combinations as per your preference. Selected treatment combinations are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.
@@ -730,11 +734,11 @@ In RAISINS, we calculate a scaled index score by converting the index score to a
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Index score](www/3f index.png){#fig-indexscore fig-align="center"}
+![Index score](www/3f%20index.png){#fig-indexscore fig-align="center"}
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Indexplot](www/3f i plot.png){fig-align="center"}
+![Indexplot](www/3f%20i%20plot.png){fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of univariate ANOVA results with multivariate PCA-based index scores allows researchers to identify the most promising treatment combinations for both individual traits and overall multi-trait performance in a **3FRBD** experiment.
@@ -756,9 +760,9 @@ Combining all this information, the experimenter can arrive at an overall conclu
 Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the Block (replicate), the second column represents the treatment combination label or, alternatively, separate columns for Factor A, Factor B, and Factor C. You can name these columns appropriately, such as "Block", "Variety", "Nitrogen", "Irrigation". All characters under study (e.g., yield, Char1 and Char 2) should be arranged in separate columns, and each treatment combination should be repeated according to the number of blocks. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, treatment combinations must appear repeatedly based on the number of blocks, and the data can also be arranged as shown in @fig-kk.
 :::
 
-![Model-1: showing how the prepared Excel file for upload should look like](www/3f mod 1.png){#fig-pp}
+![Model-1: showing how the prepared Excel file for upload should look like](www/3f%20mod%201.png){#fig-pp}
 
-![Model-2: Showing how the prepared Excel file for upload should look like](www/3f mod 2.png){#fig-kk}
+![Model-2: Showing how the prepared Excel file for upload should look like](www/3f%20mod%202.png){#fig-kk}
 
 <details>
 
@@ -824,9 +828,9 @@ If you're unsure about the correct format for creating a dataset, don't worry RA
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
-![Creating dataset within RAISINS](images/3f rbd csv.png){#fig-createdata}
+![Creating dataset within RAISINS](images/3f%20rbd%20csv.png){#fig-createdata}
 
-![Creating dataset within RAISINS](www/3f csv.png)
+![Creating dataset within RAISINS](www/3f%20csv.png)
 
 ## Model datasets {#M}
 
@@ -834,7 +838,7 @@ Model layout will appear as shown in @fig-createdata. Now you may enter the obse
 To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the Datasets.
 :::
 
-![Model dataset](www/3f model dataset.png){#fig-188 fig-align="center"}
+![Model dataset](www/3f%20model%20dataset.png){#fig-188 fig-align="center"}
 
 ## FAQ's {#F}
 

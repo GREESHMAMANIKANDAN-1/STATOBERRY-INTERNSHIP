@@ -98,7 +98,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis of experiment tab](www/ac ana exp.png){#fig-aov fig-align="center"}
+![Analysis of experiment tab](www/ac%20ana%20exp.png){#fig-aov fig-align="center"}
 
 ## ANCOVA — Completely Randomised Design {#C}
 
@@ -142,7 +142,7 @@ To make things simple and interesting, we'll explain **ANCOVA CRD** step by step
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Example dataset](www/ac work exm.png){#fig-data fig-align="center"}
+![Example dataset](www/ac%20work%20exm.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the 5 fertiliser levels, the covariate is the initial plant height recorded before treatment application, and the Variables are the four response traits measured at harvest — **Biomass, Obs1, Obs2, and FW**.
@@ -162,7 +162,7 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](www/ac csv.png){#fig-4 fig-align="center"}
+![Illustrating how to create a dataset](www/ac%20csv.png){#fig-4 fig-align="center"}
 
 ## ANCOVA CRD analysis tab explained {#AO}
 
@@ -172,7 +172,7 @@ In @fig-5, you can see the detailed view of the Analysis tab, along with explana
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis window explained](www/ac analy tab exp.png){#fig-5 fig-align="center"}
+![Analysis window explained](www/ac%20analy%20tab%20exp.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset (@sec-6). Here, **RAISINS** provides an inbuilt transformation option.
@@ -184,7 +184,7 @@ For some data, when there are a large number of zeros, discrete values, or when 
 Log, square root, and arcsine transformations are often used in **ANCOVA CRD** to make data more normal and to stabilize variance before covariance adjustment. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
-![Transformation options](www/ac trans.png){#fig-6 fig-align="center"}
+![Transformation options](www/ac%20trans.png){#fig-6 fig-align="center"}
 
 ![Transformation options](www/trans.webp){fig-align="center"}
 
@@ -208,7 +208,7 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **ANCOVA** will 
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Adjusted ANOVA table — Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares](www/ac ancova sum.jpeg){#fig-100 fig-align="center"}
+![Adjusted ANOVA table — Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares](www/ac%20ancova%20sum.jpeg){#fig-100 fig-align="center"}
 
 <details>
 
@@ -230,7 +230,7 @@ The ANCOVA results reveal that the covariate (initial plant height) is highly si
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Adjusted treatment means with multiple comparisons](www/ac tabular.jpeg){#fig-101 fig-align="center"}
+![Adjusted treatment means with multiple comparisons](www/ac%20tabular.jpeg){#fig-101 fig-align="center"}
 
 <details>
 
@@ -307,7 +307,7 @@ After obtaining a significant F-value for the adjusted Treatment effect in the A
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multiple comparison test options explained](www/ac multi com.png){#fig-7 fig-align="center"}
+![Multiple comparison test options explained](www/ac%20multi%20com.png){#fig-7 fig-align="center"}
 
 <details>
 
@@ -461,7 +461,7 @@ The adjusted treatment means with letter groupings show that T5 (N+P+K combined)
 **RAISINS** provides users various customization features for the plots to enhance the visualization according to the requirement of the user. **Click** on @fig-8 to get a clear idea on the customizing features.
 :::
 
-![Plot settings for customizing](www/ac custo plot.png){#fig-8 fig-align="center"}
+![Plot settings for customizing](www/ac%20custo%20plot.png){#fig-8 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 From @fig-9 to @fig-13, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.
@@ -813,23 +813,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    -   Go to the top-left corner and click on **File**.
+    - Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    -   Select the location where you want to save your file.
+    - Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    -   Enter a relevant file name without spaces (use underscores if needed).
+    - Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    -   Click **Save** to export the file.
+    - Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small>
 
@@ -840,15 +840,15 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
--   Navigate to the **Create Data Tab**
+- Navigate to the **Create Data Tab**
 
--   Select the number of **Treatments**
+- Select the number of **Treatments**
 
--   Select number of **Replications**
+- Select number of **Replications**
 
--   Select number of **Characters**
+- Select number of **Characters**
 
--   Click on **Create** button
+- Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::

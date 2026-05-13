@@ -118,7 +118,7 @@ A Pooled Strip Plot Design **(PSPD)** is a multi-environment experimental design
 
 @fig-lay visually represents a Pooled Strip Plot Design arrangement across multiple environments (seasons/years/locations). Within each environment, Factor A levels (e.g., A1, A2, A3) are assigned to horizontal strips that span the full width of the experimental area, while Factor B levels (e.g., B1, B2, B3) are assigned to vertical strips that span the full length. The intersections of these horizontal and vertical strips form the observational plots for the A × B interaction. This layout is replicated across two or more blocks within each environment, and the entire block-within-strip arrangement is then repeated across environments. Randomization of horizontal strips and vertical strips is performed independently within each block in every environment.
 
-![PSPD Layout](images/LAYOUT POOLED STRIP.png){#fig-lay fig-align="center"}
+![PSPD Layout](www/PLACEHOLDER_Layout_PSPD.webp){#fig-lay fig-align="center"}
 
 </small>
 
@@ -572,23 +572,39 @@ A **connected line plot** in pooled strip plot design is a graphical method used
 ![Inter Plot](images/inter%20ploo.png){#fig-14 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-An interaction plot is a graphical tool used to study the interaction between two or more factors in an experiment. It helps compare treatment effects, where non-parallel or intersecting lines indicate the presence of interaction between factors
+A summary plot is a visual representation that shows how data are distributed across factor levels and environments in the Pooled Strip Plot Design. It helps quickly understand the pattern, spread, and central tendency of the data pooled across seasons.
 :::
 
-.**3D SCATTER PLOT**
+**3D SCATTER PLOT**
 
-![3D Scatter plot](images/Screen Recording 2026-05-08 121957.gif){#fig-15 fig-align="center"}
+![Advanced rain cloud plot](www/PLACEHOLDER_AdvancedRaincloud_PSPD.webp){#fig-15 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-A 3D scatter plot is a graphical representation used to display the relationship among three variables on X, Y, and Z axes. It helps visualize patterns, trends, and interactions in multidimensional data.
+Advanced raincloud plot combines a density plot, boxplot, and individual data points to show the full distribution of each factor level group. The colored density ("cloud") shows where values are most concentrated, the boxplot summarizes the median and quartiles, and the dots ("rain") represent individual observations across the pooled environments.
 :::
 
 **3D SCATTER PLOT WITH LINES**
 
-![3D SCATTER PLOT WITH LINE](images/Screen Recording 2026-05-08 122043.gif){#fig-16 fig-align="center"}
+![QQ plot](www/PLACEHOLDER_QQPlot_PSPD.webp){#fig-16 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-3D Scatter Plot with Lines: A 3D scatter plot with lines is used to display the relationship among three variables by plotting data points on X, Y, and Z axes and connecting them with lines to show trends, patterns, or progression in the data.
+Q–Q (quantile–quantile) plot is used to assess normality of the data. The points represent observed data quantiles plotted against theoretical quantiles from a normal distribution. Because most points lie close to the diagonal reference line, the data approximately follows a normal distribution, satisfying the assumptions of the PSPD ANOVA.
+:::
+
+**RAIN CLOUD PLOT**
+
+![Rain cloud plot](www/PLACEHOLDER_Raincloud_PSPD.webp){#fig-17 fig-align="center"}
+
+::: {style="text-align: justify;"}
+Raincloud plot shows the distribution of the response variable across factor levels. The half-violin (cloud) represents the data density, indicating where values are most concentrated across pooled environments. The boxplot summarizes the median and interquartile range, and the jittered points (rain) show individual observations from all blocks and seasons.
+:::
+
+**DISTRIBUTION PLOT**
+
+![Distribution plot](www/PLACEHOLDER_Distribution_PSPD.webp){#fig-18 fig-align="center"}
+
+::: {style="text-align: justify;"}
+The distribution plot shows how the data values are spread for each factor level or treatment combination in the Pooled Strip Plot Design. It provides a visual comparison of the pattern, spread, and variability of observations across factor levels pooled over environments, helping to understand overall differences and consistency in the data.
 :::
 
 ## AI interpretation {#AI}

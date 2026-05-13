@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Split Plot Design (SPD)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -26,21 +29,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="spd_files/libs/clipboard/clipboard.min.js"></script>
 <script src="spd_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="spd_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="spd_files/libs/quarto-html/popper.min.js"></script>
 <script src="spd_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="spd_files/libs/quarto-html/anchor.min.js"></script>
 <link href="spd_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="spd_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="spd_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="spd_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="spd_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="spd_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="spd_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="spd_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="spd_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -552,11 +554,9 @@ Figure&nbsp;10: Summary statistics
 <p><small></small></p><small>
 <p><strong>Mean</strong> The arithmetic average of all observations within a treatment combination. It represents the “typical” value for that specific main plot and sub-plot combination.</p>
 <p><strong>SD (Standard Deviation)</strong> A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.</p>
-<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[
-SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>, where n is the number of observations.</p>
+<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100\]</span>, where n is the number of observations.</p>
 <p><strong>Min / Max</strong> The lowest and highest recorded values within that specific treatment combination group.</p>
-<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[
-CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
+<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage <span class="math display">\[CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100\]</span></p>
 <p>It allows you to compare the variability between groups with different scales.</p>
 <p><strong>Skewness</strong> A measure of the asymmetry of the probability distribution. Positive value: Data is skewed to the right (long tail on the right). Negative value: Data is skewed to the left (long tail on the left).</p>
 <p><strong>Kurtosis</strong> A measure of the “tailedness” of the distribution. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.</p>

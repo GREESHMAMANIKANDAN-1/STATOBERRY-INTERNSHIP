@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Regression Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="regression_tutorial_files/libs/clipboard/clipboard.min.js"></script>
+<script src="regression_tutorial_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="regression_tutorial_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="regression_tutorial_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="regression_tutorial_files/libs/quarto-html/popper.min.js"></script>
+<script src="regression_tutorial_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="regression_tutorial_files/libs/quarto-html/anchor.min.js"></script>
+<link href="regression_tutorial_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="regression_tutorial_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="regression_tutorial_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="regression_tutorial_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="regression_tutorial_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="regression_tutorial_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="regression_tutorial_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="regression_tutorial_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="sty.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>TABLE OF CONTENTS</strong></h2>
+   
+  <ul>
+  <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Regression Analysis</a></li>
+  <li><a href="#SLR" id="toc-SLR" class="nav-link" data-scroll-target="#SLR"><span class="header-section-number">2</span> Simple Linear Regression (SLR)</a></li>
+  <li><a href="#MLR" id="toc-MLR" class="nav-link" data-scroll-target="#MLR"><span class="header-section-number">3</span> Multiple Linear Regression (MLR)</a></li>
+  <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">4</span> A working example</a></li>
+  <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">5</span> How to prepare your data?</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">6</span> Regression Analysis tab explained</a></li>
+  <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">7</span> Analysis results</a>
+  <ul class="collapse">
+  <li><a href="#model-coefficients" id="toc-model-coefficients" class="nav-link" data-scroll-target="#model-coefficients"><span class="header-section-number">7.1</span> Model Coefficients</a></li>
+  <li><a href="#model-statistics" id="toc-model-statistics" class="nav-link" data-scroll-target="#model-statistics"><span class="header-section-number">7.2</span> Model Statistics</a></li>
+  <li><a href="#anova-table-for-regression" id="toc-anova-table-for-regression" class="nav-link" data-scroll-target="#anova-table-for-regression"><span class="header-section-number">7.3</span> ANOVA Table for Regression</a></li>
+  </ul></li>
+  <li><a href="#sec-8" id="toc-sec-8" class="nav-link" data-scroll-target="#sec-8"><span class="header-section-number">8</span> Assumptions</a>
+  <ul class="collapse">
+  <li><a href="#assumption-1-independence-of-errors" id="toc-assumption-1-independence-of-errors" class="nav-link" data-scroll-target="#assumption-1-independence-of-errors"><span class="header-section-number">8.1</span> Assumption 1: Independence of Errors</a></li>
+  <li><a href="#assumption-2-homoscedasticity-constant-variance" id="toc-assumption-2-homoscedasticity-constant-variance" class="nav-link" data-scroll-target="#assumption-2-homoscedasticity-constant-variance"><span class="header-section-number">8.2</span> Assumption 2: Homoscedasticity (Constant Variance)</a></li>
+  <li><a href="#assumption-3-normality-of-residuals" id="toc-assumption-3-normality-of-residuals" class="nav-link" data-scroll-target="#assumption-3-normality-of-residuals"><span class="header-section-number">8.3</span> Assumption 3: Normality of Residuals</a></li>
+  <li><a href="#assumption-4-no-multicollinearity-mlr" id="toc-assumption-4-no-multicollinearity-mlr" class="nav-link" data-scroll-target="#assumption-4-no-multicollinearity-mlr"><span class="header-section-number">8.4</span> Assumption 4: No Multicollinearity (MLR)</a></li>
+  </ul></li>
+  <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">9</span> Plot Designs</a>
+  <ul class="collapse">
+  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</a></li>
+  </ul></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">10</span> AI Interpretation</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">11</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">12</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">13</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">14</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">15</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">16</span> View data</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Regression Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+<div class="affiliations">
+<p><sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
+</div>
+<p>ABSTRACT</p>
+<div style="text-align: justify;">
+<p><strong>Regression Analysis</strong> is a fundamental statistical technique used to model and quantify the linear relationship between a response variable and one or more predictor variables, enabling researchers to predict outcomes and understand the unique contribution of each predictor. <strong>RAISINS</strong> supports both <strong>Simple Linear Regression (SLR)</strong> and <strong>Multiple Linear Regression (MLR)</strong>, allowing you to build, interpret, and validate regression models without writing a single line of code. This tutorial will guide you through performing regression analysis step by step in <strong>RAISINS</strong> and interpreting the coefficient estimates, model fit statistics, and significance tests effectively. In addition, you will learn how to check the five classical regression assumptions using formal tests and diagnostic plots built into the Assumptions tab. You can expect publication-ready coefficient tables, ANOVA summaries, model fit indices, and a full suite of diagnostic and scatter plots.</p>
+</div>
+<details>
+<p><em>Hover or click each point to see more information.</em></p>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Introduction Regression Analysis
+</summary>
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+<ul>
+<small> The concept of regression was first introduced by <span class="hover-img">Sir Francis Galton</span> in the late nineteenth century, when he observed that the heights of children of exceptionally tall parents tended to be closer to the population average than their parents — a phenomenon he termed <em>regression to mediocrity</em>. Galton’s insight was purely biological, but it planted the seed of an idea that would reshape empirical science.<span class="hover-img">Karl Pearson</span> subsequently formalized Galton’s observations into the mathematical framework of correlation and linear regression that researchers rely upon to this day, developing the method of ordinary least squares as a general tool for fitting lines to data. Over the twentieth century, regression analysis expanded far beyond its biological origins into agriculture, medicine, economics, engineering, and the social sciences, serving simultaneously as a predictive model and as a method for isolating the independent effect of each explanatory variable. <strong>RAISINS</strong> brings this powerful methodology to researchers through an intuitive, code-free interface, making rigorous regression analysis with full assumption diagnostics accessible to students and scientists at every level. </small>
+</ul>
+</details>
+<section id="AE" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Regression Analysis</h2>
+<div style="text-align: justify;">
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and navigate to the <strong>Regression Analysis</strong> tab. Here, you can perform both <strong>Simple Linear Regression (SLR)</strong> and <strong>Multiple Linear Regression (MLR)</strong> directly, as shown in <a href="#fig-regtab" class="quarto-xref">Figure&nbsp;1</a>. No prior programming knowledge is required simply upload your data, select your response and predictor variables, and <strong>RAISINS</strong> handles all computation and output generation instantly.</p>
+</div>
+<div id="fig-regtab" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-regtab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/analysis%20regre.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Regression Analysis tab in RAISINS"><img src="images/analysis%20regre.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regtab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Regression Analysis tab in RAISINS
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="SLR" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="SLR"><span class="header-section-number">2</span> Simple Linear Regression (SLR)</h2>
+<div style="text-align: justify;">
+<p>Simple Linear Regression is a statistical method used to model the linear relationship between a single continuous predictor variable (X) and a single continuous response variable (Y). It estimates the best-fitting straight line through the observed data by minimizing the total squared deviations of the observed values from the line the principle of Ordinary Least Squares (OLS). SLR is most appropriate when you have one clearly defined independent variable and wish to predict or explain the variation in a dependent variable. It is widely applied in agricultural research (predicting yield from fertilizer dose), biological studies (growth from nutrient concentration), and quality control, provided that the core assumptions of linearity, independence, constant variance, and normality of residuals are satisfied.</p>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  SLR Equation and Terms
+</summary>
+<ul>
+<p><small></small></p><small>
+<p>The Simple Linear Regression model is expressed as:</p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X + \varepsilon\]</span></p>
+<p>where <strong>Y</strong> is the response (dependent) variable, <strong>X</strong> is the predictor (independent) variable, <strong>β₀</strong> is the intercept — the expected value of Y when X equals zero, <strong>β₁</strong> is the slope — the expected change in Y for each one-unit increase in X, and <strong>ε</strong> is the random error term, assumed to be normally distributed with mean zero and constant variance. Both β₀ and β₁ are estimated from the data using OLS, which finds the line that minimises the sum of squared residuals (observed minus predicted values).</p>
+</small><p><small></small></p>
+</ul>
+</details>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Simple Linear Regression (SLR) models the linear relationship between one predictor variable (X) and one response variable (Y), estimating the slope and intercept that minimise the total squared deviation of observed points from the fitted line.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="MLR" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="MLR"><span class="header-section-number">3</span> Multiple Linear Regression (MLR)</h2>
+<div style="text-align: justify;">
+<p>Multiple Linear Regression extends the simple linear model to situations where two or more predictor variables are used simultaneously to explain or predict a single response variable. By including multiple predictors, MLR allows researchers to control for confounding variables and to assess the independent contribution of each predictor that is, the effect of one predictor after accounting for all others. The model remains linear in its parameters, meaning each predictor enters the equation with an additive slope coefficient. A key concern unique to MLR is <strong>multicollinearity</strong> when two or more predictors are highly correlated with each other, their individual coefficient estimates become unstable and difficult to interpret, even though overall model predictions may remain valid. <strong>RAISINS</strong> automatically computes the <strong>Generalized Variance Inflation Factor (GVIF)</strong> for each predictor, giving you a clear diagnostic for multicollinearity without any manual calculation.</p>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  MLR Equation and Terms
+</summary>
+<ul>
+<p><small></small></p><small>
+<p>The Multiple Linear Regression model is expressed as:</p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_k X_k + \varepsilon\]</span></p>
+<p>where <strong>Y</strong> is the response variable, <strong>X₁, X₂, …, Xₖ</strong> are the k predictor variables, <strong>β₀</strong> is the intercept, and <strong>β₁ through βₖ</strong> are the partial regression coefficients — the change in Y for a one-unit increase in Xⱼ, holding all other predictors constant. The <strong>Coefficient of Determination (R²)</strong> quantifies the proportion of total variation in Y explained by the full model:</p>
+<p><span class="math display">\[R^2 = 1 - \frac{SS_{Residual}}{SS_{Total}}\]</span></p>
+<p>The <strong>Adjusted R²</strong> penalises for the number of predictors included and is the more reliable index when comparing models with different numbers of variables, since adding predictors always increases R² regardless of their actual usefulness.</p>
+</small><p><small></small></p>
+</ul>
+</details>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Multiple Linear Regression (MLR) models the simultaneous linear effect of two or more predictor variables (X₁, X₂, …, Xₖ) on a single response variable (Y), with each partial regression coefficient representing the unique contribution of its predictor while holding all others constant.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="W" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="W"><span class="header-section-number">4</span> A working example</h2>
+<div style="text-align: justify;">
+<p>To make things clear and practical, we will demonstrate regression analysis step by step using an agricultural dataset, so you can follow the logic and interpret every output with confidence. Consider a study in which a researcher aimed to predict <strong>irrigation water use (litres/plot)</strong> the response variable (Y) from four predictors recorded across 200 plots: <strong>NPK fertiliser dose (kg/ha)</strong> (X₁), <strong>weed growth score</strong> (X₂), <strong>crop yield (kg/plot)</strong> (X₃), and <strong>harvest month</strong> (X₄, a categorical variable with levels January, June, July, and March). The objective was to identify which of these agronomic factors significantly influence irrigation demand and to quantify their effects. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>.</p>
+</div>
+<div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/working%20regre.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Example dataset — irrigation predicted from NPK, weed growth, yield, and harvest month"><img src="images/working%20regre.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Example dataset — irrigation predicted from NPK, weed growth, yield, and harvest month
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Data organised in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;5</a>. Two terms that we will use frequently are <strong>Response Variable (Y)</strong> and <strong>Predictor Variable(s) (X)</strong>. In our example, the <strong>Response Variable</strong> is <strong>irrigation (litres/plot)</strong>, and the <strong>Predictor Variables</strong> are the four factors mentioned <strong>NPK dose</strong>, <strong>weed growth</strong>, <strong>yield</strong>, and <strong>harvest month</strong>.</p>
+</div>
+</section>
+<section id="sec-4" class="level2 H" data-number="5">
+<h2 class="H anchored" data-number="5" data-anchor-id="sec-4"><span class="header-section-number">5</span> How to prepare your data?</h2>
+<div style="text-align: justify;">
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>, using a single-sheet Excel file. The response variable (Y) and all predictor variables (X) should each occupy their own column, with one row per observation. Make sure no blank rows are left above the data, and all columns carry proper names without spaces or special characters. That is it your file is ready to upload.</p>
+<p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
+<p>Creating dataset in MS Excel</p>
+<p>Creating your dataset directly within the <strong>RAISINS</strong> app</p>
+</div>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/csv%20regression.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Illustrating how to create a dataset"><img src="images/csv%20regression.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Illustrating how to create a dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="AO" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="AO"><span class="header-section-number">6</span> Regression Analysis tab explained</h2>
+<div style="text-align: justify;">
+<p>Once your dataset is ready, navigate to the Regression Analysis tab in <strong>RAISINS</strong>. In <a href="#fig-aotab" class="quarto-xref">Figure&nbsp;4</a> you can see the detailed view of the Analysis tab, along with explanations of what each option does. Click the Browse button in the sidebar to upload your CSV or Excel file. After upload, use the <strong>Response Variable (Y)</strong> dropdown to select the column representing your dependent variable. Next, use the <strong>Predictor Variable(s) (X)</strong> selector to choose one predictor for SLR or two or more for MLR categorical predictors such as harvest month are automatically recognised and dummy-coded by <strong>RAISINS</strong>. When your selections are complete, click Run Analysis to generate the full regression output. All relevant tables and plots appear instantly. You may navigate to the Assumptions sub-tab at any point after upload to check whether your data satisfies the classical regression assumptions before drawing final conclusions.</p>
+</div>
+<div id="fig-aotab" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aotab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/MULTI%201%20RE.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Regression Analysis tab — variable selection and Run Analysis button"><img src="images/MULTI%201%20RE.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aotab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Regression Analysis tab — variable selection and Run Analysis button
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-7" class="level2 AR" data-number="7">
+<h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
+<div style="text-align: justify;">
+<p>Once you click Run Analysis, <strong>RAISINS</strong> produces three core output tables that together provide a comprehensive picture of the fitted regression model. The first is the <strong>Model Coefficients</strong> table, which reports the estimated effect of each predictor. The second is the <strong>Model Statistics</strong> table, which summarises overall model fit. The third is the <strong>ANOVA table for Regression</strong>, which tests whether the model as a whole explains a statistically significant portion of the variation in the response.</p>
+</div>
+<section id="model-coefficients" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="model-coefficients"><span class="header-section-number">7.1</span> Model Coefficients</h3>
+<div style="text-align: justify;">
+<p>The Model Coefficients table shown in <a href="#fig-res1" class="quarto-xref">Figure&nbsp;5</a> is the central output of regression analysis. It provides, for every term in the model, the estimated regression coefficient (β), its Standard Error, the t-statistic, and the p-value for the two-sided test that the true coefficient equals zero. Asterisks indicate the level of significance: *** for p &lt; 0.001, ** for p &lt; 0.01, and * for p &lt; 0.05.</p>
+</div>
+<p><strong>Table 1: Model Coefficients</strong></p>
+<div id="fig-res1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-res1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/coefficient.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Model Coefficients table — β estimates, SE, t-values, and p-values"><img src="images/coefficient.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-res1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Model Coefficients table — β estimates, SE, t-values, and p-values
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Understanding the Coefficients Table
+</summary>
+<p><small></small></p><small>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Estimate (β)</strong></td>
+<td>The partial regression coefficient. The expected change in Y for a one-unit increase in the predictor, holding all other predictors constant.</td>
+</tr>
+<tr class="even">
+<td><strong>Std. Error</strong></td>
+<td>The standard error of the estimate. A smaller SE relative to the coefficient indicates a more precise estimate.</td>
+</tr>
+<tr class="odd">
+<td><strong>t Value</strong></td>
+<td>The t-statistic = Estimate ÷ Std. Error. Tests whether the coefficient is significantly different from zero.</td>
+</tr>
+<tr class="even">
+<td><strong>P Value</strong></td>
+<td>The probability of observing a t-value this extreme if the true coefficient were zero. p &lt; 0.05 indicates a statistically significant predictor.</td>
+</tr>
+<tr class="odd">
+<td><strong>Significance codes</strong></td>
+<td>*** p &lt; 0.001 · ** p &lt; 0.01 · * p &lt; 0.05 · (blank) not significant</td>
+</tr>
+</tbody>
+</table>
+</small><p><small></small></p>
+</details>
+<section id="interpretation-from-fig-res1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="interpretation-from-fig-res1">Interpretation from <a href="#fig-res1" class="quarto-xref">Figure&nbsp;5</a></h4>
+<div style="text-align: justify;">
+<p>The fitted model for predicting irrigation demand from NPK dose, weed growth, crop yield, and harvest month reveals a clear and informative pattern. The intercept was estimated at −52.03 (p &lt; 0.001), representing the baseline irrigation level when all predictors are at their reference values. <strong>NPK dose</strong> had a highly significant negative effect on irrigation (β = −3.40, t = −16.41, p &lt; 0.001), indicating that each additional kg/ha of NPK was associated with a reduction of 3.40 litres/plot in irrigation demand after accounting for the other variables a finding consistent with improved nutrient-driven water use efficiency. <strong>Crop yield</strong> was the strongest predictor in the model (β = 18.49, t = 32.81, p &lt; 0.001), demonstrating that higher-yielding plots required substantially greater irrigation. <strong>Weed growth</strong> was not a statistically significant predictor (β = 0.046, p = 0.695), suggesting that weed pressure did not independently alter irrigation requirements in this dataset. Among the harvest month contrasts (reference = January), neither July (β = 16.19, p = 0.050), June (β = 12.03, p = 0.140), nor March (β = 14.45, p = 0.077) reached the conventional 5% threshold, though July was borderline significant.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Interpreting β coefficients: Each β is a <em>partial</em> effect the estimated change in the response for a one-unit increase in that predictor, with all other predictors held constant. A significant p-value (&lt; 0.05) confirms that the predictor’s contribution goes beyond what the other variables already explain.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="model-statistics" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="model-statistics"><span class="header-section-number">7.2</span> Model Statistics</h3>
+<div style="text-align: justify;">
+<p>The Model Statistics table shown in <a href="#fig-res2" class="quarto-xref">Figure&nbsp;6</a> summarises the overall goodness-of-fit of the regression model. These indices tell you how well the set of predictors collectively accounts for the variation in the response variable.</p>
+</div>
+<p><strong>Table 2: Model Statistics</strong></p>
+<div id="fig-res2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-res2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/model%20dataset.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Model Statistics table — R², Adjusted R², Residual Error, PRESS"><img src="images/model%20dataset.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-res2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Model Statistics table — R², Adjusted R², Residual Error, PRESS
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Understanding Model Statistics
+</summary>
+<p><small></small></p><small>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Statistic</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>R²</strong></td>
+<td>Coefficient of Determination. The proportion of total variance in Y explained by the model. Ranges from 0 to 1; higher is better.</td>
+</tr>
+<tr class="even">
+<td><strong>Adjusted R²</strong></td>
+<td>R² penalised for the number of predictors. More reliable than R² when comparing models of different sizes; always ≤ R².</td>
+</tr>
+<tr class="odd">
+<td><strong>Residual Error</strong></td>
+<td>The Root Mean Square Error (RMSE) — the standard deviation of the residuals. Measures average prediction error in the same units as Y.</td>
+</tr>
+<tr class="even">
+<td><strong>PRESS</strong></td>
+<td>Prediction Residual Error Sum of Squares. A leave-one-out cross-validation statistic assessing how well the model predicts new observations; lower PRESS indicates better predictive ability.</td>
+</tr>
+</tbody>
+</table>
+</small><p><small></small></p>
+</details>
+<section id="interpretation-from-fig-res2" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="interpretation-from-fig-res2">Interpretation from <a href="#fig-res2" class="quarto-xref">Figure&nbsp;6</a></h4>
+<div style="text-align: justify;">
+<p>The model achieved an R² of 0.850, indicating that approximately 85% of the total variation in irrigation demand across the 200 plots is accounted for collectively by NPK dose, weed growth, crop yield, and harvest month. The Adjusted R² of 0.846 confirms that this explanatory power is genuine and not inflated by the inclusion of additional predictors. The Residual Standard Error of 40.46 litres/plot quantifies the typical size of prediction error on average, the model’s irrigation predictions deviate from observed values by about 40 litres. The PRESS statistic of 344,396 serves as a cross-validation benchmark; a lower PRESS relative to competing models would indicate superior predictive accuracy for new observations.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Interpreting R²: An R² of 0.85 means 85% of the variability in the response is explained by the model. The remaining 15% reflects factors not included in the model or inherent random variation. R² alone does not confirm that the model is correctly specified always check the Assumptions tab.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="anova-table-for-regression" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="anova-table-for-regression"><span class="header-section-number">7.3</span> ANOVA Table for Regression</h3>
+<div style="text-align: justify;">
+<p>The ANOVA table for regression shown in <a href="#fig-res3" class="quarto-xref">Figure&nbsp;7</a> partitions the total variation in Y into the portion explained by the model (Regression SS) and the unexplained residual variation (Error SS). The F-test in this table assesses whether the model as a whole fits the data significantly better than an intercept-only (null) model.</p>
+</div>
+<p><strong>Table 3: Analysis of Variance</strong></p>
+<div id="fig-res3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-res3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/anova%20re.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: ANOVA table for Regression — SS, df, MS, F-value, and p-value"><img src="images/anova%20re.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-res3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: ANOVA table for Regression — SS, df, MS, F-value, and p-value
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  ANOVA Table Structure for Regression
+</summary>
+<p><small></small></p><small>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Df</th>
+<th>Sum_Sq</th>
+<th>Mean_Sq</th>
+<th>F_value</th>
+<th>Pr_F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Regression</td>
+<td>6</td>
+<td>1,796,229.66</td>
+<td>299,371.61</td>
+<td>182.85</td>
+<td>&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td>NPK</td>
+<td>1</td>
+<td>6,345.09</td>
+<td>6,345.09</td>
+<td>3.88</td>
+<td>0.050</td>
+</tr>
+<tr class="odd">
+<td>weedgrowth</td>
+<td>1</td>
+<td>3,349.21</td>
+<td>3,349.21</td>
+<td>2.05</td>
+<td>0.154</td>
+</tr>
+<tr class="even">
+<td>yield</td>
+<td>1</td>
+<td>1,778,654.45</td>
+<td>1,778,654.45</td>
+<td>1086.37</td>
+<td>&lt; 0.001</td>
+</tr>
+<tr class="odd">
+<td>harvest</td>
+<td>3</td>
+<td>7,880.92</td>
+<td>2,626.97</td>
+<td>1.61</td>
+<td>0.190</td>
+</tr>
+<tr class="even">
+<td>Error</td>
+<td>193</td>
+<td>315,989.75</td>
+<td>1,637.25</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>199</td>
+<td>2,112,219.40</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>In this table, <strong>Regression</strong> is the overall model row. Each subsequent predictor row shows its individual sequential (Type I) contribution to SS. The <strong>Error</strong> row represents unexplained residual variation, and its Mean Square (MSE = 1,637.25) is the denominator for all F-tests.</p>
+</small><p><small></small></p>
+</details>
+<section id="interpretation-from-fig-res3" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="interpretation-from-fig-res3">Interpretation from <a href="#fig-res3" class="quarto-xref">Figure&nbsp;7</a></h4>
+<div style="text-align: justify;">
+<p>The overall regression model was highly significant (F₆,₁₉₃ = 182.85, p &lt; 0.001), confirming that the six predictors collectively explain a statistically meaningful portion of the variation in irrigation demand. Examining individual predictors sequentially, <strong>yield</strong> contributed by far the largest share of explained variation (SS = 1,778,654; F = 1086.37; p &lt; 0.001), consistent with its dominant coefficient in the Model Coefficients table. <strong>NPK dose</strong> also contributed significantly to the regression SS (F = 3.88; p = 0.050), while <strong>weed growth</strong> (p = 0.154) and the combined <strong>harvest month</strong> factor (F₃ = 1.61; p = 0.190) did not reach significance. The Mean Square Error of 1,637.25 provides the baseline estimate of unexplained variance used to compute all standard errors and F-ratios in the analysis.</p>
+</div>
+</section>
+</section>
+</section>
+<section id="sec-8" class="level2 ASM" data-number="8">
+<h2 class="ASM anchored" data-number="8" data-anchor-id="sec-8"><span class="header-section-number">8</span> Assumptions</h2>
+<div style="text-align: justify;">
+<p>The validity of regression inference depends on five classical assumptions. If these are violated, coefficient estimates may be biased, standard errors incorrect, or significance tests misleading. <strong>RAISINS</strong> provides formal statistical tests and diagnostic outputs for each assumption, accessible directly from the Assumptions sub-tab after running your analysis. Checking assumptions is not optional it is an essential part of responsible regression reporting.</p>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  What are Regression Assumptions?
+</summary>
+<ul>
+<small>Regression assumptions are the conditions under which Ordinary Least Squares (OLS) estimators are <strong>BLUE</strong> -Best Linear Unbiased Estimators as guaranteed by the Gauss-Markov theorem. When all assumptions hold, OLS coefficients have minimum variance among all linear unbiased estimators. Different violations have different consequences: non-normality primarily affects small-sample inference; heteroscedasticity produces incorrect standard errors; autocorrelation invalidates standard errors for time-ordered data; multicollinearity destabilises individual coefficient estimates while leaving overall predictions intact.</small>
+</ul>
+</details>
+<section id="assumption-1-independence-of-errors" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="assumption-1-independence-of-errors"><span class="header-section-number">8.1</span> Assumption 1: Independence of Errors</h3>
+<div style="text-align: justify;">
+<p>The independence assumption states that the error terms for different observations are uncorrelated with one another. Violation known as autocorrelation most commonly arises in time-series or spatially ordered data, where nearby observations tend to share similar values. <strong>RAISINS</strong> reports the <strong>Durbin-Watson (DW) statistic</strong> (<a href="#fig-dw" class="quarto-xref">Figure&nbsp;8</a>) to test for serial autocorrelation. The DW statistic ranges from 0 to 4: a value near 2 indicates no autocorrelation (DW = 2.194 in our working example; p = 0.877, confirming independence); values below 1.5 suggest positive autocorrelation; values above 2.5 suggest negative autocorrelation. For cross-sectional experimental data such as field trials this assumption is generally expected to hold, and the Durbin-Watson test serves as a confirmatory check.</p>
+</div>
+<div id="fig-dw" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/durbin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Durbin-Watson test output — checking independence of errors"><img src="images/durbin.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Durbin-Watson test output — checking independence of errors
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="assumption-2-homoscedasticity-constant-variance" class="level3" data-number="8.2">
+<h3 data-number="8.2" class="anchored" data-anchor-id="assumption-2-homoscedasticity-constant-variance"><span class="header-section-number">8.2</span> Assumption 2: Homoscedasticity (Constant Variance)</h3>
+<div style="text-align: justify;">
+<p>Homoscedasticity requires that the variance of the residuals is constant across all levels of the fitted values. When variance is non-constant (heteroscedasticity), standard errors of the coefficients are incorrect, producing unreliable hypothesis tests and confidence intervals even if the coefficient estimates themselves are unbiased. <strong>RAISINS</strong> checks this assumption with two complementary tools: the <strong>Scale-Location plot</strong> and the <strong>Non-Constant Variance (NCV) test</strong> (also known as the Breusch-Pagan test), as shown in <a href="#fig-asmh" class="quarto-xref">Figure&nbsp;9</a>. In the Scale-Location plot, a horizontal smoothed line with uniformly scattered points indicates constant variance; a rising or fanning pattern signals heteroscedasticity. In our working example, the NCV test yielded χ²(1) = 13.53, p &lt; 0.001, indicating significant non-constant variance a violation that may require a variance-stabilizing transformation of the response (e.g., log or square root of Y) or the use of heteroscedasticity-consistent standard errors.</p>
+</div>
+<div id="fig-asmh" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-asmh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/homoscedasticity.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: NCV test and Scale-Location plot — checking homoscedasticity"><img src="images/homoscedasticity.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-asmh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: NCV test and Scale-Location plot — checking homoscedasticity
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="assumption-3-normality-of-residuals" class="level3" data-number="8.3">
+<h3 data-number="8.3" class="anchored" data-anchor-id="assumption-3-normality-of-residuals"><span class="header-section-number">8.3</span> Assumption 3: Normality of Residuals</h3>
+<div style="text-align: justify;">
+<p>The normality assumption requires that the residuals follow a normal distribution. This is particularly important for the validity of t-tests on individual coefficients and the F-test for the overall model, especially in small samples. In large samples (typically n &gt; 30) the Central Limit Theorem ensures that OLS estimators are approximately normal regardless of the residual distribution, but formal testing remains good practice. <strong>RAISINS</strong> provides the <strong>Shapiro-Wilk test</strong> and a <strong>Normal QQ plot of residuals</strong> for this purpose, as shown in <a href="#fig-asmn" class="quarto-xref">Figure&nbsp;10</a>. In the QQ plot, residual quantiles are plotted against the corresponding quantiles of a standard normal distribution points lying closely along the diagonal confirm normality, while systematic departures at the tails indicate skewness or heavy tails. In our example, the Shapiro-Wilk statistic W = 0.958 with p &lt; 0.001 suggests that the residuals depart significantly from normality, a finding common with large datasets and one that should prompt consideration of a response transformation or robust regression.</p>
+</div>
+<div id="fig-asmn" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-asmn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/normality.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Shapiro-Wilk test and Normal QQ plot — checking normality of residuals"><img src="images/normality.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-asmn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Shapiro-Wilk test and Normal QQ plot — checking normality of residuals
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="assumption-4-no-multicollinearity-mlr" class="level3" data-number="8.4">
+<h3 data-number="8.4" class="anchored" data-anchor-id="assumption-4-no-multicollinearity-mlr"><span class="header-section-number">8.4</span> Assumption 4: No Multicollinearity (MLR)</h3>
+<div style="text-align: justify;">
+<p>Multicollinearity occurs when two or more predictor variables are highly correlated, causing individual coefficient estimates to become imprecise and sensitive to small changes in the data, even though overall model predictions may remain stable. <strong>RAISINS</strong> computes the <strong>Generalized Variance Inflation Factor (GVIF)</strong> for each predictor, generalised to handle categorical variables with multiple dummy codes. The GVIF is calculated using the formula:</p>
+<p><span class="math display">\[VIF_j = \frac{1}{1 - R_j^2}\]</span></p>
+<p>where <span class="math inline">\(R_j^2\)</span> is the R² from regressing predictor <span class="math inline">\(X_j\)</span> on all other predictors. For categorical predictors with multiple degrees of freedom, the <strong>Standard GVIF</strong> (reported in <strong>RAISINS</strong> as GVIF^(1/2df)) is the preferred comparison metric, with values below approximately 2.24 (equivalent to VIF &lt; 5) indicating acceptable collinearity. As shown in <a href="#fig-asmv" class="quarto-xref">Figure&nbsp;11</a>, in our working example all Standard GVIF values were close to 1 (NPK: 1.288; weed growth: 1.076; yield: 1.230; harvest: 1.008), confirming that multicollinearity is not a concern in this model.</p>
+</div>
+<div id="fig-asmv" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-asmv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/multicolinearity%20regre.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Generalized VIF table — checking for multicollinearity among predictors"><img src="images/multicolinearity%20regre.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-asmv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Generalized VIF table — checking for multicollinearity among predictors
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Assumptions Summary Table
+</summary>
+<p><small></small></p><small>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Assumption</th>
+<th>Test / Plot in RAISINS</th>
+<th>Acceptable Result</th>
+<th>Sub-tab</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linearity</td>
+<td>Residuals vs Fitted plot</td>
+<td>Random scatter around zero</td>
+<td><code>Assumptions</code></td>
+</tr>
+<tr class="even">
+<td>Independence</td>
+<td>Durbin-Watson statistic</td>
+<td>1.5 &lt; DW &lt; 2.5; p &gt; 0.05</td>
+<td><code>Assumptions</code></td>
+</tr>
+<tr class="odd">
+<td>Homoscedasticity</td>
+<td>Scale-Location plot; NCV test</td>
+<td>Horizontal band; p &gt; 0.05</td>
+<td><code>Assumptions</code></td>
+</tr>
+<tr class="even">
+<td>Normality</td>
+<td>Shapiro-Wilk test; Normal QQ plot</td>
+<td>W p &gt; 0.05; points on diagonal</td>
+<td><code>Assumptions</code></td>
+</tr>
+<tr class="odd">
+<td>No Multicollinearity</td>
+<td>GVIF table</td>
+<td>Standard GVIF &lt; 2.24 for all predictors</td>
+<td><code>Assumptions</code></td>
+</tr>
+</tbody>
+</table>
+</small><p><small></small></p>
+</details>
+<div style="text-align: justify;">
+<p>Among the four assumptions,<strong>homoscedasticity</strong> tend to have the most serious practical consequences when violated, since non-linearity produces biased coefficient estimates and heteroscedasticity invalidates standard errors and significance tests. <strong>Normality</strong> matters most in small samples (n &lt; 30) and becomes less critical as sample size grows, owing to the Central Limit Theorem. <strong>Independence</strong> is most critical when data have a temporal or spatial ordering, and least so in simple cross-sectional field experiments with random treatment allocation. <strong>Multicollinearity</strong> is unique in that it does not bias predictions but makes individual coefficient estimates unreliable and difficult to interpret, which is particularly important when the goal of the analysis is to understand the unique contribution of each predictor rather than merely to predict Y.</p>
+</div>
+</section>
+</section>
+<section id="BP" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="BP"><span class="header-section-number">9</span> Plot Designs</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysbutton, all relevant results and plots appear instantly leaving no room for confusion. Navigate to the Plot design sub-tab to access the full suite of diagnostic and visualisation plots for your regression model (see <a href="#fig-cust" class="quarto-xref">Figure&nbsp;12</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customise its appearance. You can also download these plots in high-quality PNG (300 dpi), JPEG, TIFF, PDF, and SVG formats for use in reports and publications.</p>
+</div>
+<section id="customizing-plots" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</h3>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> provides a range of customization features for each plot. Click the gear icon on any plot panel to open the settings shown in <a href="#fig-cust" class="quarto-xref">Figure&nbsp;12</a>, where you can modify the plot title, axis labels, colour palette, point size, line type, and theme. Changes are reflected in real time and the updated plot can be downloaded immediately.</p>
+</div>
+<div id="fig-cust" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/scatter%20pca%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Plot settings for customizing"><img src="images/scatter%20pca%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Plot settings for customizing
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;13</a> to <strong>?@fig-14</strong>, you can see the different types of plots available in the Plot Design tab of the Regression Analysis module in <strong>RAISINS</strong>. Each is visually illustrated and accompanied by a clear description below hover over any plot thumbnail to read it.</p>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+#scatter-desc    { background: linear-gradient(135deg, rgba(255, 107, 107, 0.88), rgba(255, 142, 83, 0.88)); }
+#residfit-desc   { background: linear-gradient(135deg, rgba(161, 140, 209, 0.88), rgba(251, 194, 235, 0.88)); }
+#qq-desc         { background: linear-gradient(135deg, rgba(0, 221, 235, 0.88), rgba(38, 166, 154, 0.88)); }
+#scaleloc-desc   { background: linear-gradient(135deg, rgba(255, 154, 139, 0.88), rgba(255, 106, 136, 0.88)); }
+#cooks-desc      { background: linear-gradient(135deg, rgba(132, 250, 176, 0.88), rgba(143, 211, 244, 0.88)); }
+#reslev-desc     { background: linear-gradient(135deg, rgba(255, 200, 80, 0.88),  rgba(255, 140, 0, 0.88)); }
+</style>
+<div class="grid">
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('scatter-desc')" onmouseout="hideDescription('scatter-desc')">
+<div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/line%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Regression Line Plot"><img src="images/line%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Regression Line Plot
+</figcaption>
+</figure>
+</div>
+<div id="scatter-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A regression line plot in regression analysis is a graphical representation used to show the relationship between an independent variable (X) and a dependent variable (Y). It consists of scattered data points along with a fitted regression line that represents the best linear relationship between the variables. The regression line helps in understanding the trend, direction, and strength of the relationship. If the line slopes upward, it indicates a positive relationship, while a downward slope indicates a negative relationship. Regression line plots are widely used to predict values, identify patterns, and analyze the accuracy of regression models.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('residfit-desc')" onmouseout="hideDescription('residfit-desc')">
+<div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/facet.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: Facet Regression Plot"><img src="images/facet.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Facet Regression Plot
+</figcaption>
+</figure>
+</div>
+<div id="residfit-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>facet regression plot</strong> in regression analysis is an advanced graphical method used to display regression relationships across multiple groups or categories simultaneously. The data is divided into separate panels, called facets, based on a categorical variable, and each panel contains its own scatter plot and regression line. This helps compare trends, patterns, and relationships between variables across different groups in a clear and organized manner. Facet regression plots are useful for identifying variations in regression behavior, detecting group-wise differences, and improving the interpretation of complex datasets.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('qq-desc')" onmouseout="hideDescription('qq-desc')">
+<div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/pareto.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Pareto chart of regression coefficients"><img src="images/pareto.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Pareto chart of regression coefficients
+</figcaption>
+</figure>
+</div>
+<div id="qq-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>Pareto chart of regression coefficients</strong> is a graphical tool used in regression analysis to display the relative importance of predictor variables based on the magnitude of their regression coefficients or standardized effects. The variables are arranged in descending order of their impact, with bars representing the coefficient values and a cumulative percentage line showing the overall contribution. This chart helps identify the most influential variables affecting the response variable and simplifies interpretation by highlighting the key factors in the regression model. Pareto charts are widely used in statistical modeling, quality control, and experimental analysis for effective decision-making.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="AI" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="AI"><span class="header-section-number">10</span> AI Interpretation</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is equipped with an AI-powered RAISINS Assistant designed to help users understand the outputs of regression analysis clearly and confidently. As shown in <a href="#fig-ai" class="quarto-xref">Figure&nbsp;16</a>, the AI provides plain-language summaries of the model coefficients identifying which predictors are statistically significant and explaining the direction and magnitude of each effect in the context of your data. It also interprets the overall model fit (R² and F-test), flags any assumption violations detected in the Assumptions tab, and suggests practical remedies such as response transformations, removal of redundant predictors, or consideration of robust regression when violations are detected. Users can access this feature by clicking on <code>AI Interpretation</code> within the Regression Analysis tab.</p>
+</div>
+<div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/ai%20inter%20regre.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: AI powered RAISINS Assistant to interpret your results"><img src="images/ai%20inter%20regre.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: AI powered RAISINS Assistant to interpret your results
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="PRE" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="PRE"><span class="header-section-number">11</span> Preparing your data</h2>
+<div style="text-align: justify;">
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
+<ol type="1">
+<li><p>Create your dataset in MS Excel</p></li>
+<li><p>Build your dataset directly within the RAISINS app</p></li>
+</ol>
+</div>
+</section>
+<section id="EX" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="EX"><span class="header-section-number">12</span> Preparing data in MS Excel</h2>
+<div style="text-align: justify;">
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for regression should follow a column-based format: dedicate one column to the <strong>response variable (Y)</strong> and one column to each <strong>predictor variable (X)</strong>. Each row represents one observation. Categorical predictors (such as harvest month) should be entered as text labels <strong>RAISINS</strong> will automatically convert them to the appropriate dummy-coded contrasts. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that all variable columns containing measurements are purely numeric, with no text, symbols, or missing-value indicators. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;17</a>. The data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;18</a>.</p>
+</div>
+<div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/reg%20data%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;17: Model-1: showing how the prepared Excel file for upload should look like"><img src="images/reg%20data%201.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Model-1: showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/reg%20data%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;18: Model-2: Showing how the prepared Excel file for upload should look like"><img src="images/reg%20data%202.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Model-2: Showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<details>
+<summary>
+Dataset Creation Rules
+</summary>
+<p><small> 1. <strong>Column Naming Convention</strong> - No spaces allowed in column names.<br>
+- Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %,# etc 2. <strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
+- Ensure the row above the data is not blank. 3. <strong>Cell Management</strong> - Avoid typing or deleting in cells without data.<br>
+- If needed, select affected cells, right-click, and select <strong>Clear Contents</strong>. 4. <strong>Column Relevance</strong> - Name all columns meaningfully.<br>
+- Exclude unnecessary columns not required for analysis. 5. <strong>Numeric Columns</strong> - All response and measurement predictor columns must be purely numeric. Non-numeric entries (e.g., “NA”, “–”, text) will cause upload errors. Categorical predictors should be entered as consistent text labels (e.g., “January”, “July”). </small></p>
+</details>
+<details>
+<summary>
+How to Save as CSV in MS Excel
+</summary>
+<p><small> 1. <strong>Open Your Workbook</strong></small></p><small>
+<pre><code>-   Ensure your data is arranged properly with only one sheet.</code></pre>
+<ol start="2" type="1">
+<li><p><strong>Click ‘File’ Menu</strong></p>
+<ul>
+<li>Go to the top-left corner and click on <strong>File</strong>.</li>
+</ul></li>
+<li><p><strong>Choose ‘Save As’ or ‘Save a Copy’</strong></p>
+<ul>
+<li>Select the location where you want to save your file.</li>
+</ul></li>
+<li><p><strong>Set File Type to CSV</strong></p>
+<ul>
+<li>In the <strong>‘Save as type’</strong> dropdown menu, choose <strong>CSV (Comma delimited) (*.csv)</strong>.</li>
+</ul></li>
+<li><p><strong>Name Your File</strong></p>
+<ul>
+<li>Enter a relevant file name without spaces (use underscores if needed).</li>
+</ul></li>
+<li><p><strong>Click ‘Save’</strong></p>
+<ul>
+<li>Click <strong>Save</strong> to export the file.</li>
+</ul></li>
+</ol>
+</small><blockquote class="blockquote"><small>
+</small><p><small>💡 Tip: Before saving, double-check that your data is on the first sheet, all numeric columns are clean, and categorical columns use consistent labels with no trailing spaces. </small></p>
+</blockquote>
+</details>
+</section>
+<section id="CR" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="CR"><span class="header-section-number">13</span> Creating dataset in RAISINS</h2>
+<div style="text-align: justify;">
+<p>If you’re unsure about the correct format for creating a dataset, don’t worry <strong>RAISINS</strong> offers an option to create data directly within the app using a prescribed template. Here’s how:</p>
+<ul>
+<li><p>Navigate to the <strong>Create Data Tab</strong></p></li>
+<li><p>Select the number of <strong>Variables</strong> (total columns = 1 response + all predictors)</p></li>
+<li><p>Select the number of <strong>Observations</strong> (number of rows / data points)</p></li>
+<li><p>Click on the <strong>Create</strong> button</p></li>
+</ul>
+<p>The model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;19</a>. Enter your observations manually into the downloaded CSV file, or paste them directly. Once all values are entered, download the CSV file and upload it in the Regression Analysis tab.</p>
+</div>
+<div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/csv%20regression-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;19: Creating dataset within RAISINS"><img src="images/csv%20regression-01.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: Creating dataset within RAISINS
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="M" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="M"><span class="header-section-number">14</span> Model datasets</h2>
+<div style="text-align: justify;">
+<p>To test the app or better understand the expected data arrangement for regression, <strong>RAISINS</strong> provides model datasets within the app. You can download them from the Datasets tab and use them to explore the regression module before uploading your own data.</p>
+</div>
+<div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/model%20data%20regres-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;20: Model dataset"><img src="images/model%20data%20regres-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: Model dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="F" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="F"><span class="header-section-number">15</span> FAQ’s</h2>
+<div style="text-align: justify;">
+<p>The app includes a dedicated FAQs tab to help clarify common doubts and guide users through all features of the Regression Analysis module. This section provides detailed answers to frequently asked questions, covering topics such as how to interpret R² correctly, what to do when assumptions are violated, how to handle categorical predictors, and when to prefer MLR over SLR. If you’re ever unsure about how something works in <strong>RAISINS</strong>, the FAQs tab is a great place to start.</p>
+</div>
+<div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/faq%20regre.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;21: FAQs"><img src="images/faq%20regre.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21: FAQs
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="U" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="U"><span class="header-section-number">16</span> View data</h2>
+<div style="text-align: justify;">
+<p>View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For regression analysis this step is particularly important <strong>RAISINS</strong> will flag any predictor or response column that contains non-numeric values, missing entries, or formatting inconsistencies that could compromise the regression computation. Resolving these issues before clicking Run Analysis ensures that all outputs are based on clean, correctly typed data.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/view%20regre.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="View data"><img src="images/view%20regre.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+</figure>
+</div>
+<figcaption>View data</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

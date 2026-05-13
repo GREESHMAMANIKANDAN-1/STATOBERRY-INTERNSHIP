@@ -94,6 +94,7 @@ window.Quarto = {
   <li><a href="#interpretation-from-fig-101" id="toc-interpretation-from-fig-101" class="nav-link" data-scroll-target="#interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from Figure&nbsp;8</a></li>
   </ul></li>
   <li><a href="#sec-8" id="toc-sec-8" class="nav-link" data-scroll-target="#sec-8"><span class="header-section-number">8</span> Multiple comparison tests</a></li>
+<<<<<<< HEAD
   <li><a href="#SUM" id="toc-SUM" class="nav-link" data-scroll-target="#SUM"><span class="header-section-number">9</span> Summary stats</a>
   <ul class="collapse">
   <li><a href="#interpretations-from-fig-102" id="toc-interpretations-from-fig-102" class="nav-link" data-scroll-target="#interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from Figure&nbsp;10</a></li>
@@ -116,6 +117,21 @@ window.Quarto = {
   <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">18</span> Model datasets</a></li>
   <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">19</span> FAQ’s</a></li>
   <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">20</span> View data</a></li>
+=======
+  <li><a href="#sec-9" id="toc-sec-9" class="nav-link" data-scroll-target="#sec-9"><span class="header-section-number">9</span> Calculation</a></li>
+  <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">10</span> Basic plots</a>
+  <ul class="collapse">
+  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">10.1</span> Customizing plots</a></li>
+  </ul></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">11</span> AI interpretation</a></li>
+  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">12</span> Multivariate</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">13</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">14</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">15</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">16</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">17</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">18</span> View data</a></li>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
   </ul>
 </nav>
 </div>
@@ -156,7 +172,11 @@ window.Quarto = {
 </div>
 <p>ABSTRACT</p>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p><strong>Analysis of Covariance under Completely Randomised Design (ANCOVA CRD)</strong> is a powerful statistical technique that combines Analysis of Variance (ANOVA) with regression, adjusting treatment means for the influence of one or more continuous covariates that are related to the response variable but are not under experimental control. By removing the variation explained by the covariate from the error term, <strong>ANCOVA CRD</strong> increases the precision of treatment comparisons and produces adjusted means that represent what treatment performance would look like had all experimental units started from an identical baseline. In <strong>RAISINS</strong> you can perform <strong>ANCOVA CRD</strong> very easily without writing a single line of code. This tutorial will guide you, how to perform <strong>ANCOVA CRD</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
+=======
+<p><strong>Analysis of Covariance under Completely Randomised Design (ANCOVA CRD)</strong> is a powerful statistical technique that combines Analysis of Variance (ANOVA) with regression, adjusting treatment means for the influence of one or more continuous covariates that are related to the response variable but are not under experimental control. By removing the variation explained by the covariate from the error term, <strong>ANCOVA CRD</strong> increases the precision of treatment comparisons and produces adjusted means that represent what treatment performance would look like had all experimental units started from an identical baseline. In <strong>RAISINS</strong> you can perform <strong>ANCOVA CRD</strong> very easily without writing a single line of code. This tutorial will guide you, how to perform <strong>ANCOVA CRD</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including PCA.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <details>
 <p><em>Hover or click each point to see more information.</em></p>
@@ -196,19 +216,31 @@ window.Quarto = {
 }
 </style>
 <ul>
+<<<<<<< HEAD
 <small> The foundations of Analysis of Covariance were laid by statistician <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> in his landmark 1932 publication, where he demonstrated that incorporating a continuous concomitant variable — one measured alongside the response but not controlled by the experimenter — into the linear model could substantially reduce the residual error and improve the sensitivity of treatment F-tests. Fisher recognised that in many biological and agricultural experiments, experimental units such as animals or plants inevitably differ in some pre-existing characteristic — initial body weight, seedling height, or soil organic matter — that influences the final response regardless of the treatment applied. Rather than discarding such information or using restrictive blocking, ANCOVA uses the covariate’s linear relationship with the response to statistically adjust all observations to a common covariate value (the grand mean), effectively equating the experimental units before comparing treatments. This approach was rapidly adopted in animal nutrition, agronomy, psychology, and medical research throughout the mid-twentieth century as a standard method for increasing precision in randomised experiments. In the context of a <strong>Completely Randomised Design</strong>, where no physical blocking is used, ANCOVA is especially valuable because it recovers precision that would otherwise require blocking, making it an indispensable tool wherever pre-existing differences among experimental units cannot be eliminated by design alone. </small>
+=======
+<small> The foundations of Analysis of Covariance were laid by statistician <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> in his landmark 1932 publication, where he demonstrated that incorporating a continuous concomitant variable one measured alongside the response but not controlled by the experimenter into the linear model could substantially reduce the residual error and improve the sensitivity of treatment F-tests. Fisher recognised that in many biological and agricultural experiments, experimental units such as animals or plants inevitably differ in some pre-existing characteristic initial body weight, seedling height, or soil organic matter that influences the final response regardless of the treatment applied. Rather than discarding such information or using restrictive blocking, ANCOVA uses the covariate’s linear relationship with the response to statistically adjust all observations to a common covariate value (the grand mean), effectively equating the experimental units before comparing treatments. This approach was rapidly adopted in animal nutrition, agronomy, psychology, and medical research throughout the mid-twentieth century as a standard method for increasing precision in randomised experiments. In the context of a <strong>Completely Randomised Design</strong>, where no physical blocking is used, ANCOVA is especially valuable because it recovers precision that would otherwise require blocking, making it an indispensable tool wherever pre-existing differences among experimental units cannot be eliminated by design alone. </small>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </ul>
 </details>
 <section id="AE" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different experimental designs and their associated analysis options. In this tutorial, we focus on <strong>ANCOVA — Completely Randomised Design</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+=======
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different experimental designs and their associated analysis options. In this tutorial, we focus on <strong>ANCOVA - Completely Randomised Design</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20ana%20exp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/ac%20ana%20exp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+=======
+<a href="images/NEWW%20EXP.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="images/NEWW%20EXP.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Analysis of experiment tab
@@ -219,7 +251,11 @@ Figure&nbsp;1: Analysis of experiment tab
 <section id="C" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> ANCOVA — Completely Randomised Design</h2>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p><strong>Analysis of Covariance under a Completely Randomised Design (ANCOVA CRD)</strong> is a statistical method that extends the standard one-way ANOVA by incorporating one or more continuous covariates into the model. A covariate is a variable that is measurable and correlated with the response variable, but is not itself affected by the treatments — common examples include initial plant height, pre-treatment body weight, baseline soil nutrient content, or age of an animal at the start of a study. By regressing the response on the covariate and then testing treatment effects on the residuals of that regression, ANCOVA removes the covariate’s contribution from the error sum of squares, resulting in a smaller error mean square and a more powerful F-test for treatments. The analysis produces <strong>adjusted treatment means</strong> — estimates of what each treatment group’s average response would have been had all units possessed the same covariate value — which are more equitable and interpretable than unadjusted means when initial conditions differ across experimental units. ANCOVA CRD is most appropriate when experimental units are not homogeneous, when physical blocking is not feasible or has already been applied, and when a measurable continuous variable exists that explains a meaningful portion of the response variability. Its main assumptions are that the covariate is measured without error, that the covariate is not influenced by the treatments, and crucially, that the regression of the response on the covariate is linear and has the <strong>same slope in every treatment group</strong> — a condition known as homogeneity of regression slopes, which RAISINS automatically tests.</p>
+=======
+<p><strong>Analysis of Covariance under a Completely Randomised Design (ANCOVA CRD)</strong> is a statistical method that extends the standard one-way ANOVA by incorporating one or more continuous covariates into the model. A covariate is a variable that is measurable and correlated with the response variable, but is not itself affected by the treatments common examples include initial plant height, pre-treatment body weight, baseline soil nutrient content, or age of an animal at the start of a study. By regressing the response on the covariate and then testing treatment effects on the residuals of that regression, ANCOVA removes the covariate’s contribution from the error sum of squares, resulting in a smaller error mean square and a more powerful F-test for treatments. The analysis produces <strong>adjusted treatment means</strong> estimates of what each treatment group’s average response would have been had all units possessed the same covariate value which are more equitable and interpretable than unadjusted means when initial conditions differ across experimental units. ANCOVA CRD is most appropriate when experimental units are not homogeneous, when physical blocking is not feasible or has already been applied, and when a measurable continuous variable exists that explains a meaningful portion of the response variability. Its main assumptions are that the covariate is measured without error, that the covariate is not influenced by the treatments, and crucially, that the regression of the response on the covariate is linear and has the <strong>same slope in every treatment group</strong> a condition known as homogeneity of regression slopes, which RAISINS automatically tests.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
@@ -227,12 +263,20 @@ Figure&nbsp;1: Analysis of experiment tab
 </summary>
 <ul>
 <p><small></small></p><small>
+<<<<<<< HEAD
 <p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents the structure of an <strong>ANCOVA CRD</strong> experiment. Treatments (T<sub>1</sub>, T<sub>2</sub>, …, T<sub>t</sub>) are randomly assigned to experimental units with r replications per treatment, exactly as in a standard CRD. For each experimental unit, two measurements are recorded: the <strong>covariate (X)</strong> — measured before or independently of the treatment — and the <strong>response variable (Y)</strong> — measured after the treatment has been applied. The covariate values are used to fit a common within-treatment regression slope (b), and all Y observations are adjusted to what they would have been had X been equal to the grand mean of the covariate. The adjusted observations are then subjected to the standard ANOVA F-test. The layout makes clear that ANCOVA does not change the randomisation or replication structure of the CRD; it simply adds a regression adjustment step to improve precision.</p>
+=======
+<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents the structure of an <strong>ANCOVA CRD</strong> experiment. Treatments (T<sub>1</sub>, T<sub>2</sub>, …, T<sub>t</sub>) are randomly assigned to experimental units with r replications per treatment, exactly as in a standard CRD. For each experimental unit, two measurements are recorded: the <strong>covariate (X)</strong> measured before or independently of the treatment and the <strong>response variable (Y)</strong> measured after the treatment has been applied. The covariate values are used to fit a common within-treatment regression slope (b), and all Y observations are adjusted to what they would have been had X been equal to the grand mean of the covariate. The adjusted observations are then subjected to the standard ANOVA F-test. The layout makes clear that ANCOVA does not change the randomisation or replication structure of the CRD; it simply adds a regression adjustment step to improve precision.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/PLACEHOLDER_Layout_ANCOVCRD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: ANCOVA CRD Layout"><img src="www/PLACEHOLDER_Layout_ANCOVCRD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+=======
+<a href="images/layweb.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: ANCOVA CRD Layout"><img src="images/layweb.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: ANCOVA CRD Layout
@@ -259,13 +303,21 @@ Figure&nbsp;2: ANCOVA CRD Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>To make things simple and interesting, we’ll explain <strong>ANCOVA CRD</strong> step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a greenhouse experiment conducted to evaluate the effect of <strong>5 fertiliser treatments</strong> on the final biomass of sunflower plants — T1 (Control — no fertiliser), T2 (N alone at 60 kg/ha), T3 (P alone at 40 kg/ha), T4 (N+P combined), and T5 (N+P+K combined) — arranged as a CRD with <strong>4 replications</strong> per treatment, giving a total of 5 × 4 = <strong>20 experimental pots</strong>. Because seedlings of different sizes were used, <strong>initial plant height (cm)</strong> at the time of transplanting was recorded as the <strong>covariate (X)</strong> to account for pre-existing variability among plants. The response variables measured at harvest were: <strong>Biomass</strong> (total fresh biomass in g), <strong>Obs1</strong> (leaf area index), <strong>Obs2</strong> (stem diameter in mm), and <strong>FW</strong> (root fresh weight in g). Our aim is to test whether the five fertiliser treatments produce statistically significant differences in the response variables after adjusting for initial plant height, and to obtain adjusted treatment means for fair comparison. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+=======
+<p>To make things simple and interesting, we’ll explain <strong>ANCOVA CRD</strong> step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a greenhouse experiment conducted to evaluate the effect of <strong>10 treatments</strong>, each representing a distinct mango variety, with three replicates per variety. The varieties included are Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay, Langra, and Totapuri and they are arranged as a CRD with <strong>3 replications</strong> per treatment, giving a total of 10 × 3 = <strong>30 experimental pots</strong>. Because seedlings of different sizes were used, <strong>initial plant height (cm)</strong> at the time of transplanting was recorded as the <strong>covariate (X)</strong> to account for pre-existing variability among plants. The response variables measured at harvest were: <strong>Yield</strong> (fruit yield per plant in kg), <strong>Obs1</strong> (plant height in cm), <strong>Obs2</strong> (number of fruits per plant), and <strong>FW</strong> (fresh fruit weight in g). Our aim is to test whether the five fertiliser treatments produce statistically significant differences in the response variables after adjusting for initial plant height, and to obtain adjusted treatment means for fair comparison.The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20work%20exm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/ac%20work%20exm.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+=======
+<a href="images/basic%20plot%20(2)-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="images/basic%20plot%20(2)-03.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Example dataset
@@ -273,13 +325,21 @@ Figure&nbsp;3: Example dataset
 </figure>
 </div>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the 5 fertiliser levels, the covariate is the initial plant height recorded before treatment application, and the Variables are the four response traits measured at harvest — <strong>Biomass, Obs1, Obs2, and FW</strong>.</p>
+=======
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the mango varieties, the covariate is the initial plant height recorded before treatment application, and the Variables are the four response traits measured at harvest - <strong>Yield, Obs1, Obs2, and FW</strong>.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 </section>
 <section id="sec-4" class="level2 H" data-number="4">
 <h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. The file must contain a column for <strong>Treatment</strong> (the fertiliser label for each observation), a column for the <strong>Covariate (X)</strong> (e.g., initial plant height), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That’s it — your file is ready to upload.</p>
+=======
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. The file must contain a column for <strong>Treatment</strong> (the mango varieties), a column for the <strong>Covariate (X)</strong> (e.g., initial plant height), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 <p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
 <p>Creating dataset in MS Excel</p>
@@ -288,7 +348,11 @@ Figure&nbsp;3: Example dataset
 <div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/ac%20csv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+=======
+<a href="images/csv%20ac-07.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="images/csv%20ac-07.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Illustrating how to create a dataset
@@ -299,7 +363,11 @@ Figure&nbsp;4: Illustrating how to create a dataset
 <section id="AO" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> ANCOVA CRD analysis tab explained</h2>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking <code>Browse</code> in the sidebar of the <code>Analysis</code> tab. When the file is uploaded, options to select the <strong>Treatment</strong> column, the <strong>Covariate</strong> column, and the <strong>response variables</strong> will appear. Select the appropriate columns under each field. Once you click the <code>Run Analysis</code> button, the ANCOVA is performed and all relevant results and outputs appear instantly, including the test for homogeneity of regression slopes, the adjusted ANOVA table, and the adjusted treatment means with post-hoc groupings.</p>
+=======
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the <strong>Treatment</strong> column, the <strong>Covariate</strong> column, and the <strong>response variables</strong> will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, the ANCOVA is performed and all relevant results and outputs appear instantly, including the test for homogeneity of regression slopes, the adjusted ANOVA table, and the adjusted treatment means with post-hoc groupings.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -324,13 +392,18 @@ Figure&nbsp;5: Analysis window explained
 <div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20trans.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/ac%20trans.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+=======
+<a href="images/TRANS.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="images/TRANS.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Transformation options
 </figcaption>
 </figure>
 </div>
+<<<<<<< HEAD
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
@@ -341,6 +414,8 @@ Figure&nbsp;6: Transformation options
 <figcaption>Transformation options</figcaption>
 </figure>
 </div>
+=======
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 <div style="text-align: justify;">
 <p><strong>Logarithmic transformation</strong> is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.</p>
 <p><strong>Square root transformation</strong> is a statistical method used to stabilize variance and reduce right-skewness by replacing each data point (x) with its square root. It is primarily applied to non-negative, discrete “count” data such as those following a Poisson distribution, where the variance of the data tends to increase in proportion to the mean. By compressing the upper end of the scale more significantly than the lower end, this transformation brings the data closer to a normal distribution, satisfying the homoscedasticity requirements of many parametric statistical tests.</p>
@@ -353,14 +428,22 @@ Figure&nbsp;6: Transformation options
 <section id="sec-7" class="level2 AR" data-number="7">
 <h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>Once your dataset is uploaded, click on <code>Run Analysis</code>, and the <strong>ANCOVA</strong> will be performed. <strong>ANCOVA</strong> first tests the assumption of homogeneity of regression slopes — verifying that the relationship between the covariate and the response is consistent across all treatment groups — and then partitions the covariate-adjusted total variation into components attributable to <strong>Treatments (adjusted)</strong>, the <strong>Covariate</strong>, and <strong>Error (adjusted)</strong>, and compares them using the F-test (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>). If the homogeneity of slopes assumption is met, the adjusted treatment means and post-hoc comparisons are valid and can be interpreted directly.</p>
+=======
+<p>Once your dataset is uploaded, click on Run Analysis, and the <strong>ANCOVA</strong> will be performed. <strong>ANCOVA</strong> first tests the assumption of homogeneity of regression slopes verifying that the relationship between the covariate and the response is consistent across all treatment groups and then partitions the covariate-adjusted total variation into components attributable to <strong>Treatments (adjusted)</strong>, the <strong>Covariate</strong>, and <strong>Error (adjusted)</strong>, and compares them using the F-test, see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>. If the homogeneity of slopes assumption is met, the adjusted treatment means and post-hoc comparisons are valid and can be interpreted directly.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <p><strong>Table 1 ANCOVA summary</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20ancova%20sum.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;7: Adjusted ANOVA table — Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares"><img src="www/ac%20ancova%20sum.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+=======
+<a href="www/ac%20ancova%20sum.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Adjusted ANOVA table — Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares"><img src="www/ac%20ancova%20sum.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Adjusted ANOVA table — Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares
@@ -369,19 +452,31 @@ Figure&nbsp;7: Adjusted ANOVA table — Covariate, Treatment (adjusted), and Err
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> ANCOVA table </summary>
+<<<<<<< HEAD
 <p><small> In an <strong>ANCOVA CRD</strong>, the analysis partitions the adjusted total sum of squares into three main sources: <strong>Covariate (X)</strong> (variation in the response that is linearly explained by the covariate, removed from the error), <strong>Treatments (adjusted)</strong> (variation among treatment means after removing the covariate’s effect), and <strong>Error (adjusted)</strong> (residual variation remaining after accounting for both treatments and the covariate). The degrees of freedom are: Covariate = 1, Treatments = t−1 (where t = number of treatments), and Error = N−t−1 (where N = total number of observations). The adjusted error degrees of freedom are one fewer than in a standard CRD ANOVA because one df is used to estimate the common regression slope (b). Each mean square is obtained by dividing the adjusted sum of squares by its degrees of freedom. The F-statistic for Treatments is the ratio of the adjusted Treatment mean square to the adjusted Error mean square. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance. A significant covariate F-test confirms that the adjustment was necessary and meaningful; a significant Treatment F-test confirms that the adjusted treatment means differ significantly. A preliminary test for <strong>homogeneity of regression slopes</strong> (Treatment × Covariate interaction) is also reported — a non-significant result validates the core ANCOVA assumption. </small></p>
+=======
+<p><small> In an <strong>ANCOVA CRD</strong>, the analysis partitions the adjusted total sum of squares into three main sources: <strong>Covariate (X)</strong> (variation in the response that is linearly explained by the covariate, removed from the error), <strong>Treatments (adjusted)</strong> (variation among treatment means after removing the covariate’s effect), and <strong>Error (adjusted)</strong> (residual variation remaining after accounting for both treatments and the covariate). The degrees of freedom are: Covariate = 1, Treatments = t−1 (where t = number of treatments), and Error = N−t−1 (where N = total number of observations). The adjusted error degrees of freedom are one fewer than in a standard CRD ANOVA because one df is used to estimate the common regression slope (b). Each mean square is obtained by dividing the adjusted sum of squares by its degrees of freedom. The F-statistic for Treatments is the ratio of the adjusted Treatment mean square to the adjusted Error mean square. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance. A significant covariate F-test confirms that the adjustment was necessary and meaningful; a significant Treatment F-test confirms that the adjusted treatment means differ significantly. A preliminary test for <strong>homogeneity of regression slopes</strong> (Treatment × Covariate interaction) is also reported a non-significant result validates the core ANCOVA assumption. </small></p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </details>
 <section id="interpretation-from-fig-100" class="level3" data-number="7.1">
 <h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
 <div style="text-align: justify;">
 <p>The ANCOVA results reveal that the covariate (initial plant height) is highly significant, with a covariate mean square of 2,418.65 and F-ratio of approximately 18.34 (1 df), confirming that pre-transplanting height explained a meaningful portion of the variation in final biomass and that the covariance adjustment was both necessary and effective. The homogeneity of regression slopes test (Treatment × Covariate interaction) is non-significant (F ≈ 0.72, p &gt; 0.05), confirming that a single common slope adequately describes the covariate-response relationship in all five treatment groups and that the ANCOVA assumptions are satisfied. The adjusted Treatment mean square is 1,842.30 with an adjusted error mean square of 131.92, yielding an F-ratio of approximately 13.97 with 4 degrees of freedom for treatment and 14 for adjusted error, significant at the 1% level. This confirms that the five fertiliser treatments produce significantly different biomass after accounting for initial plant height differences. <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provides detailed information on the multiple comparison tests (Post-hoc tests) for adjusted means.</p>
 </div>
+<<<<<<< HEAD
 <p><strong>Table 2: Detailed tabular representation — adjusted means with multiple comparisons</strong></p>
+=======
+<p><strong>Table 2: Detailed tabular representation adjusted means with multiple comparisons</strong></p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20tabular.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;8: Adjusted treatment means with multiple comparisons"><img src="www/ac%20tabular.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+=======
+<a href="www/ac%20tabular.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Adjusted treatment means with multiple comparisons"><img src="www/ac%20tabular.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Adjusted treatment means with multiple comparisons
@@ -467,7 +562,11 @@ Figure&nbsp;8: Adjusted treatment means with multiple comparisons
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20multi%20com.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/ac%20multi%20com.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+=======
+<a href="www/ac%20multi%20com.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/ac%20multi%20com.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: Multiple comparison test options explained
@@ -496,6 +595,7 @@ Figure&nbsp;9: Multiple comparison test options explained
 <p>In the example for those characters, a pairwise comparison of adjusted treatment means was performed using the Least Significant Difference (LSD) test.</p>
 </div>
 </section>
+<<<<<<< HEAD
 <section id="SUM" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="SUM"><span class="header-section-number">9</span> Summary stats</h2>
 <div style="text-align: justify;">
@@ -574,10 +674,25 @@ Figure&nbsp;11: ANCOVA table for Biomass
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-103-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Adjusted means with groupings
+=======
+<section id="sec-9" class="level2 C" data-number="9">
+<h2 class="C anchored" data-number="9" data-anchor-id="sec-9"><span class="header-section-number">9</span> Calculation</h2>
+<div style="text-align: justify;">
+<p>The Calculation tab displays the detailed statistical computations generated during the ANCOVA analysis. It presents the pairwise comparison tables for all treatment combinations across different characters, including estimates, standard errors [SE(d)], degrees of freedom (DF), t-ratios, p-values, and critical difference (CD) values. These calculations help users identify statistically significant differences between treatment means based on the selected multiple comparison test. The tab provides a transparent view of the analytical process and enables users to verify the statistical outputs used for interpretation and decision-making.The pairwise comparison table is shown in <a href="#fig-cal" class="quarto-xref">Figure&nbsp;10</a>.</p>
+</div>
+<div id="fig-cal" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/cal-04.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Pairwise Comparison Table"><img src="images/cal-04.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Pairwise Comparison Table
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
 </section>
+<<<<<<< HEAD
 <section id="interpretation-from-fig-103" class="level3" data-number="10.2">
 <h3 data-number="10.2" class="anchored" data-anchor-id="interpretation-from-fig-103"><span class="header-section-number">10.2</span> Interpretation from <a href="#fig-103" class="quarto-xref">Figure&nbsp;12</a></h3>
 <div style="text-align: justify;">
@@ -594,19 +709,41 @@ Figure&nbsp;12: Adjusted means with groupings
 <h3 data-number="11.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</h3>
 <div style="text-align: justify;">
 <p><strong>RAISINS</strong> provides users various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;13</a> to get a clear idea on the customizing features.</p>
+=======
+<section id="BP" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="BP"><span class="header-section-number">10</span> Basic plots</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to <strong>ANCOVA CRD</strong> is readily available. Simply click on the Basic Plots tab to view them, see <a href="#fig-8" class="quarto-xref">Figure&nbsp;11</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
+</div>
+<section id="customizing-plots" class="level3" data-number="10.1">
+<h3 data-number="10.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">10.1</span> Customizing plots</h3>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> provides users various customization features for the plots to enhance the visualization according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;11</a> to get a clear idea on the customizing features.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20custo%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;13: Plot settings for customizing"><img src="www/ac%20custo%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: Plot settings for customizing
+=======
+<a href="www/ac%20custo%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Plot settings for customizing"><img src="www/ac%20custo%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Plot settings for customizing
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;14</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;18</a>, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
+=======
+<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;12</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;16</a>, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -687,10 +824,17 @@ function hideDescription(id) {
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20box%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;14: Box plot"><img src="www/ac%20box%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14: Box plot
+=======
+<a href="www/ac%20box%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Box plot"><img src="www/ac%20box%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Box plot
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
@@ -707,10 +851,17 @@ Figure&nbsp;14: Box plot
 <div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;15: Violin plot"><img src="www/ac%20violin.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15: Violin plot
+=======
+<a href="www/ac%20violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Violin plot"><img src="www/ac%20violin.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Violin plot
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
@@ -727,10 +878,17 @@ Figure&nbsp;15: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20bar.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;16: Bar plot"><img src="www/ac%20bar.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: Bar plot
+=======
+<a href="www/ac%20bar.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: Bar plot"><img src="www/ac%20bar.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Bar plot
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
@@ -747,10 +905,17 @@ Figure&nbsp;16: Bar plot
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20mean.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;17: Mean Value Plot"><img src="www/ac%20mean.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: Mean Value Plot
+=======
+<a href="www/ac%20mean.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Mean Value Plot"><img src="www/ac%20mean.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Mean Value Plot
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
@@ -768,10 +933,17 @@ Figure&nbsp;17: Mean Value Plot
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20con%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;18: Connected line plot"><img src="www/ac%20con%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: Connected line plot
+=======
+<a href="www/ac%20con%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: Connected line plot"><img src="www/ac%20con%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Connected line plot
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
@@ -790,10 +962,17 @@ Figure&nbsp;18: Connected line plot
 <div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20cor%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;19: Correlation plot"><img src="www/ac%20cor%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19: Correlation plot
+=======
+<a href="www/ac%20cor%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;17: Correlation plot"><img src="www/ac%20cor%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Correlation plot
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
@@ -808,6 +987,7 @@ Figure&nbsp;19: Correlation plot
 </div>
 </section>
 </section>
+<<<<<<< HEAD
 <section id="AP" class="level2" data-number="12">
 <h2 data-number="12" class="anchored" data-anchor-id="AP"><span class="header-section-number">12</span> Advanced plots</h2>
 <div style="text-align: justify;">
@@ -904,18 +1084,32 @@ Figure&nbsp;24: Distribution plot of adjusted residuals
 <h2 data-number="13" class="anchored" data-anchor-id="AI"><span class="header-section-number">13</span> AI interpretation</h2>
 <div style="text-align: justify;">
 <p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of ANCOVA results, identifies whether the covariate adjustment was significant, reports the homogeneity of slopes test outcome, and identifies statistically significant adjusted treatment differences. The assistant also offers informed suggestions for potential next steps or interpretations, including guidance on whether adjusted or raw means should be reported and recommendations on treatment selection. The user can get detailed interpretations of the analysis by clicking on <code>AI interpretation</code> on the <code>Analysis</code> as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;25</a>.</p>
+=======
+<section id="AI" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="AI"><span class="header-section-number">11</span> AI interpretation</h2>
+<div style="text-align: justify;">
+<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of ANCOVA results, identifies whether the covariate adjustment was significant, reports the homogeneity of slopes test outcome, and identifies statistically significant adjusted treatment differences. The assistant also offers informed suggestions for potential next steps or interpretations, including guidance on whether adjusted or raw means should be reported and recommendations on treatment selection. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;18</a>.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20ai%20int.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results"><img src="www/ac%20ai%20int.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results
+=======
+<a href="www/ac%20ai%20int.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results"><img src="www/ac%20ai%20int.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
 </section>
+<<<<<<< HEAD
 <section id="MUL" class="level2" data-number="14">
 <h2 data-number="14" class="anchored" data-anchor-id="MUL"><span class="header-section-number">14</span> Multivariate</h2>
 <div style="text-align: justify;">
@@ -939,24 +1133,51 @@ Figure&nbsp;25: AI powered RAISINS Assistant to interpret your results
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;26: Manova Results
+=======
+<section id="MUL" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="MUL"><span class="header-section-number">12</span> Multivariate</h2>
+<div style="text-align: justify;">
+<p>Multivariate analysis in <strong>ANCOVA CRD</strong> helps you to compare different response variables simultaneously across all treatment groups using the covariate-adjusted dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 5 fertiliser treatments — Control, N alone, P alone, N+P, and N+P+K on sunflower growth and biomass across 4 replications, navigate to Multivariate, see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;19</a>.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/ac%20multi%20tab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;19: Multivariate tab in RAISINS"><img src="www/ac%20multi%20tab.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: Multivariate tab in RAISINS
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>The table titled ‘Eigen Values PCA’ given <a href="#fig-PC" class="quarto-xref">Figure&nbsp;27</a> provides information about the eigen values and the percentage of variance explained by each principal component derived from the ANCOVA-adjusted data. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 59% of the variance in the dataset, while PC2 accounts for about 20% of the variance. Together, PC1 and PC2 explain approximately 79% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs together explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.</p>
+=======
+<p>PCA will be automatically carried out based on the selected response variables using the ANCOVA-adjusted dataset. PCA results and plots will appear along with automated interpretation.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20pca%20index%20score.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;27: PCA-based Index Score"><img src="www/ac%20pca%20index%20score.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;27: PCA-based Index Score
+=======
+<a href="www/ac%20pca%20index%20score.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;20: PCA-based Index Score"><img src="www/ac%20pca%20index%20score.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: PCA-based Index Score
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>The scree plot given <strong>?@fig-screeplot</strong> illustrates the proportion of variance explained by each principal component derived from the ANCOVA-adjusted data.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
@@ -972,43 +1193,89 @@ Figure&nbsp;27: PCA-based Index Score
 </div>
 <div style="text-align: justify;">
 <p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;28</a> and decide which PC-based index needs to be selected. In PC1, Biomass and FW (root fresh weight) show high positive loadings (approximately +0.67 and +0.55 respectively), while Obs2 (stem diameter) also loads positively (+0.44), indicating that treatment groups with high scores on PC1 are superior in overall growth and biomass accumulation after covariate correction. Obs1 (leaf area index) loads more prominently on PC2 (+0.70), suggesting it captures a partially independent dimension of plant response to fertilisation. Based on this pattern, a PC1-based index score is most informative for identifying fertiliser treatments that maximise total plant growth simultaneously across multiple traits. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+=======
+<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;21</a> illustrates the proportion of variance explained by each principal component derived from the ANCOVA-adjusted data.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/ac%20scree.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;21: Scree plot"><img src="www/ac%20scree.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21: Scree plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;22</a> and decide which PC-based index needs to be selected. In PC1, Biomass and FW (root fresh weight) show high positive loadings (approximately +0.67 and +0.55 respectively), while Obs2 (stem diameter) also loads positively (+0.44), indicating that treatment groups with high scores on PC1 are superior in overall growth and biomass accumulation after covariate correction. Obs1 (leaf area index) loads more prominently on PC2 (+0.70), suggesting it captures a partially independent dimension of plant response to fertilisation. Based on this pattern, a PC1-based index score is most informative for identifying fertiliser treatments that maximise total plant growth simultaneously across multiple traits. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20loadings.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;28: Loadings of each variable"><img src="www/ac%20loadings.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;28: Loadings of each variable
+=======
+<a href="www/ac%20loadings.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;22: Loadings of each variable"><img src="www/ac%20loadings.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22: Loadings of each variable
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>The biplot gives a visual representation of the relationships among response variables and treatment groups based on the ANCOVA-adjusted data. Treatment groups with high adjusted values for a specific variable are positioned in the direction of that variable’s loading vector. The angle between variables in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, Biomass and FW vectors point in approximately the same direction, confirming their strong positive association after covariate adjustment, while Obs1 points in a moderately different direction, reflecting its more independent response to the fertiliser treatments.</p>
+=======
+<p>The biplot gives a visual representation of the relationships among response variables and treatment groups based on the ANCOVA-adjusted data. Treatment groups with high adjusted values for a specific variable are positioned in the direction of that variable’s loading vector. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, Biomass and FW vectors point in approximately the same direction, confirming their strong positive association after covariate adjustment, while Obs1 points in a moderately different direction, reflecting its more independent response to the fertiliser treatments.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20bioplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;29: PCA-Biplot"><img src="www/ac%20bioplot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;29: PCA-Biplot
+=======
+<a href="www/ac%20bioplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;23: PCA-Biplot"><img src="www/ac%20bioplot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;23: PCA-Biplot
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
+<<<<<<< HEAD
 <p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment groups based on their ANCOVA-adjusted multi-trait index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;30</a>, where you can choose the cutoff percentage to select treatment groups above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment groups as per your preference. Selected treatments are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
+=======
+<p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment groups based on their ANCOVA-adjusted multi-trait index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;24</a>, where you can choose the cutoff percentage to select treatment groups above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment groups as per your preference. Selected treatments are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20ind%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;30: Index score"><img src="www/ac%20ind%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;30: Index score
+=======
+<a href="www/ac%20ind%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;24: Index score"><img src="www/ac%20ind%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24: Index score
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
@@ -1016,10 +1283,17 @@ Figure&nbsp;30: Index score
 <div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20ind%20plot%20org.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;31: Indexplot"><img src="www/ac%20ind%20plot%20org.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;31: Indexplot
+=======
+<a href="www/ac%20ind%20plot%20org.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;25: Indexplot"><img src="www/ac%20ind%20plot%20org.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;25: Indexplot
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
@@ -1027,8 +1301,13 @@ Figure&nbsp;31: Indexplot
 <p>Combining all this information, the researcher can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of ANCOVA-adjusted treatment comparisons with multivariate PCA-based index scores enables agronomists and plant scientists to identify the fertilizer treatment that is not only significantly superior in individual adjusted traits but also performs best across multiple response variables simultaneously accounting for initial plant size differences that would otherwise confound the comparison.</p>
 </div>
 </section>
+<<<<<<< HEAD
 <section id="PRE" class="level2" data-number="15">
 <h2 data-number="15" class="anchored" data-anchor-id="PRE"><span class="header-section-number">15</span> Preparing your data</h2>
+=======
+<section id="PRE" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="PRE"><span class="header-section-number">13</span> Preparing your data</h2>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 <div style="text-align: justify;">
 <p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
 <ol type="1">
@@ -1037,28 +1316,49 @@ Figure&nbsp;31: Indexplot
 </ol>
 </div>
 </section>
+<<<<<<< HEAD
 <section id="EX" class="level2" data-number="16">
 <h2 data-number="16" class="anchored" data-anchor-id="EX"><span class="header-section-number">16</span> Preparing data in MS Excel</h2>
 <div style="text-align: justify;">
 <p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for <strong>ANCOVA CRD</strong> must follow a column-based format with at least three structural columns: a <strong>Treatment</strong> column (identifying the treatment group for each observation), a <strong>Covariate</strong> column (containing the continuous pre-treatment or concomitant measurement for each experimental unit, e.g., initial plant height), and one or more columns for the response variables measured after treatment application. Each experimental unit must have exactly one covariate value and one observation per response variable. The covariate column must contain only numeric values with no missing entries, as ANCOVA requires a complete covariate record for all observations. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;32</a>. The data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;33</a>.</p>
+=======
+<section id="EX" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="EX"><span class="header-section-number">14</span> Preparing data in MS Excel</h2>
+<div style="text-align: justify;">
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for <strong>ANCOVA CRD</strong> must follow a column-based format with at least three structural columns: a <strong>Treatment</strong> column (identifying the treatment group for each observation), a <strong>Covariate</strong> column (containing the continuous pre-treatment or concomitant measurement for each experimental unit, e.g., initial plant height), and one or more columns for the response variables measured after treatment application. Each experimental unit must have exactly one covariate value and one observation per response variable. The covariate column must contain only numeric values with no missing entries, as ANCOVA requires a complete covariate record for all observations. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;26</a>. The data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;27</a>.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20mod%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;32: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/ac%20mod%201.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;32: Model-1: showing how the prepared Excel file for upload should look like
+=======
+<a href="www/ac%20mod%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;26: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/ac%20mod%201.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;26: Model-1: showing how the prepared Excel file for upload should look like
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20mod%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;33: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/ac%20mod%202.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;33: Model-2: Showing how the prepared Excel file for upload should look like
+=======
+<a href="www/ac%20mod%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;27: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/ac%20mod%202.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;27: Model-2: Showing how the prepared Excel file for upload should look like
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
@@ -1105,8 +1405,13 @@ How to Save as CSV in MS Excel
 </blockquote>
 </details>
 </section>
+<<<<<<< HEAD
 <section id="CR" class="level2" data-number="17">
 <h2 data-number="17" class="anchored" data-anchor-id="CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</h2>
+=======
+<section id="CR" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="CR"><span class="header-section-number">15</span> Creating dataset in RAISINS</h2>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 <div style="text-align: justify;">
 <p>If you’re unsure about the correct format for creating a dataset, don’t worry RAISINS offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
 <ul>
@@ -1116,27 +1421,44 @@ How to Save as CSV in MS Excel
 <li><p>Select number of <strong>Characters</strong></p></li>
 <li><p>Click on <strong>Create</strong> button</p></li>
 </ul>
+<<<<<<< HEAD
 <p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;34</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.</p>
+=======
+<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;28</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </div>
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;34: Creating dataset within RAISINS"><img src="www/ac%20csv.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;34: Creating dataset within RAISINS
+=======
+<a href="images/csv%20ac-06.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;28: Creating dataset within RAISINS"><img src="images/csv%20ac-06.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28: Creating dataset within RAISINS
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figcaption>
 </figure>
 </div>
 </section>
+<<<<<<< HEAD
 <section id="M" class="level2" data-number="18">
 <h2 data-number="18" class="anchored" data-anchor-id="M"><span class="header-section-number">18</span> Model datasets</h2>
+=======
+<section id="M" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="M"><span class="header-section-number">16</span> Model datasets</h2>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 <div style="text-align: justify;">
 <p>To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the Datasets.</p>
 </div>
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 <a href="www/ac%20model%20datasets.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="Figure&nbsp;35: Model dataset"><img src="www/ac%20model%20datasets.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1159,20 +1481,46 @@ Figure&nbsp;35: Model dataset
 <h2 data-number="19" class="anchored" data-anchor-id="F"><span class="header-section-number">19</span> FAQ’s</h2>
 <div style="text-align: justify;">
 <p>The app includes a dedicated <code>FAQs</code> to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the <code>FAQs</code> is a great place to start.</p>
+=======
+<a href="www/ac%20model%20datasets.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;29: Model dataset"><img src="www/ac%20model%20datasets.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
-<div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41" title="Figure&nbsp;36: FAQs"><img src="www/ac%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;36: FAQs
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29: Model dataset
 </figcaption>
 </figure>
 </div>
 </section>
+<section id="F" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="F"><span class="header-section-number">17</span> FAQ’s</h2>
+<div style="text-align: justify;">
+<p>The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the FAQs is a great place to start.</p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
+</div>
+<div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
+<a href="www/ac%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41" title="Figure&nbsp;36: FAQs"><img src="www/ac%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;36: FAQs
+=======
+<a href="www/ac%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;30: FAQs"><img src="www/ac%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;30: FAQs
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
+</figcaption>
+</figure>
+</div>
+</section>
+<<<<<<< HEAD
 <section id="U" class="level2" data-number="20">
 <h2 data-number="20" class="anchored" data-anchor-id="U"><span class="header-section-number">20</span> View data</h2>
+=======
+<section id="U" class="level2" data-number="18">
+<h2 data-number="18" class="anchored" data-anchor-id="U"><span class="header-section-number">18</span> View data</h2>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 <div style="text-align: justify;">
 <p>View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.</p>
 </div>
@@ -1180,13 +1528,20 @@ Figure&nbsp;36: FAQs
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
+<<<<<<< HEAD
 <p><a href="www/ac%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42" title="View data"><img src="www/ac%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+=======
+<p><a href="www/ac%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="View data"><img src="www/ac%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </figure>
 </div>
 <figcaption>View data</figcaption>
 </figure>
 </div>
+<<<<<<< HEAD
 <hr>
+=======
+>>>>>>> 1cc1d5649a7022838b106f500d735464e903e785
 </section>
 
 </main>

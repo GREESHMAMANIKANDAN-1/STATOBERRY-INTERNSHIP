@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-**Analysis of Covariance under Completely Randomised Design (ANCOVA CRD)** is a powerful statistical technique that combines Analysis of Variance (ANOVA) with regression, adjusting treatment means for the influence of one or more continuous covariates that are related to the response variable but are not under experimental control. By removing the variation explained by the covariate from the error term, **ANCOVA CRD** increases the precision of treatment comparisons and produces adjusted means that represent what treatment performance would look like had all experimental units started from an identical baseline. In **RAISINS** you can perform **ANCOVA CRD** very easily without writing a single line of code. This tutorial will guide you, how to perform **ANCOVA CRD** very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+**Analysis of Covariance under Completely Randomised Design (ANCOVA CRD)** is a powerful statistical technique that combines Analysis of Variance (ANOVA) with regression, adjusting treatment means for the influence of one or more continuous covariates that are related to the response variable but are not under experimental control. By removing the variation explained by the covariate from the error term, **ANCOVA CRD** increases the precision of treatment comparisons and produces adjusted means that represent what treatment performance would look like had all experimental units started from an identical baseline. In **RAISINS** you can perform **ANCOVA CRD** very easily without writing a single line of code. This tutorial will guide you, how to perform **ANCOVA CRD** very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including PCA.
 :::
 
 <details>
@@ -86,24 +86,24 @@ ABSTRACT
 </style>
 ```
 
-<ul><small> The foundations of Analysis of Covariance were laid by statistician [<strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"/>]{.hover-img} in his landmark 1932 publication, where he demonstrated that incorporating a continuous concomitant variable — one measured alongside the response but not controlled by the experimenter — into the linear model could substantially reduce the residual error and improve the sensitivity of treatment F-tests. Fisher recognised that in many biological and agricultural experiments, experimental units such as animals or plants inevitably differ in some pre-existing characteristic — initial body weight, seedling height, or soil organic matter — that influences the final response regardless of the treatment applied. Rather than discarding such information or using restrictive blocking, ANCOVA uses the covariate's linear relationship with the response to statistically adjust all observations to a common covariate value (the grand mean), effectively equating the experimental units before comparing treatments. This approach was rapidly adopted in animal nutrition, agronomy, psychology, and medical research throughout the mid-twentieth century as a standard method for increasing precision in randomised experiments. In the context of a **Completely Randomised Design**, where no physical blocking is used, ANCOVA is especially valuable because it recovers precision that would otherwise require blocking, making it an indispensable tool wherever pre-existing differences among experimental units cannot be eliminated by design alone. </small></ul>
+<ul><small> The foundations of Analysis of Covariance were laid by statistician **Ronald A. Fisher** in his landmark 1932 publication, where he demonstrated that incorporating a continuous concomitant variable one measured alongside the response but not controlled by the experimenter into the linear model could substantially reduce the residual error and improve the sensitivity of treatment F-tests. Fisher recognised that in many biological and agricultural experiments, experimental units such as animals or plants inevitably differ in some pre-existing characteristic initial body weight, seedling height, or soil organic matter that influences the final response regardless of the treatment applied. Rather than discarding such information or using restrictive blocking, ANCOVA uses the covariate's linear relationship with the response to statistically adjust all observations to a common covariate value (the grand mean), effectively equating the experimental units before comparing treatments. This approach was rapidly adopted in animal nutrition, agronomy, psychology, and medical research throughout the mid-twentieth century as a standard method for increasing precision in randomised experiments. In the context of a **Completely Randomised Design**, where no physical blocking is used, ANCOVA is especially valuable because it recovers precision that would otherwise require blocking, making it an indispensable tool wherever pre-existing differences among experimental units cannot be eliminated by design alone. </small></ul>
 
 </details>
 
 ## Analysis of experiments {#AE}
 
 ::: {style="text-align: justify;"}
-To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different experimental designs and their associated analysis options. In this tutorial, we focus on **ANCOVA — Completely Randomised Design**, as shown in @fig-aov.
+To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different experimental designs and their associated analysis options. In this tutorial, we focus on **ANCOVA - Completely Randomised Design**, as shown in @fig-aov.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis of experiment tab](www/ac ana exp.png){#fig-aov fig-align="center"}
+![Analysis of experiment tab](www/ac%20analy.png){#fig-aov fig-align="center"}
 
 ## ANCOVA — Completely Randomised Design {#C}
 
 ::: {style="text-align: justify;"}
-**Analysis of Covariance under a Completely Randomised Design (ANCOVA CRD)** is a statistical method that extends the standard one-way ANOVA by incorporating one or more continuous covariates into the model. A covariate is a variable that is measurable and correlated with the response variable, but is not itself affected by the treatments — common examples include initial plant height, pre-treatment body weight, baseline soil nutrient content, or age of an animal at the start of a study. By regressing the response on the covariate and then testing treatment effects on the residuals of that regression, ANCOVA removes the covariate's contribution from the error sum of squares, resulting in a smaller error mean square and a more powerful F-test for treatments. The analysis produces **adjusted treatment means** — estimates of what each treatment group's average response would have been had all units possessed the same covariate value — which are more equitable and interpretable than unadjusted means when initial conditions differ across experimental units. ANCOVA CRD is most appropriate when experimental units are not homogeneous, when physical blocking is not feasible or has already been applied, and when a measurable continuous variable exists that explains a meaningful portion of the response variability. Its main assumptions are that the covariate is measured without error, that the covariate is not influenced by the treatments, and crucially, that the regression of the response on the covariate is linear and has the **same slope in every treatment group** — a condition known as homogeneity of regression slopes, which RAISINS automatically tests.
+**Analysis of Covariance under a Completely Randomised Design (ANCOVA CRD)** is a statistical method that extends the standard one-way ANOVA by incorporating one or more continuous covariates into the model. A covariate is a variable that is measurable and correlated with the response variable, but is not itself affected by the treatments common examples include initial plant height, pre-treatment body weight, baseline soil nutrient content, or age of an animal at the start of a study. By regressing the response on the covariate and then testing treatment effects on the residuals of that regression, ANCOVA removes the covariate's contribution from the error sum of squares, resulting in a smaller error mean square and a more powerful F-test for treatments. The analysis produces **adjusted treatment means** estimates of what each treatment group's average response would have been had all units possessed the same covariate value which are more equitable and interpretable than unadjusted means when initial conditions differ across experimental units. ANCOVA CRD is most appropriate when experimental units are not homogeneous, when physical blocking is not feasible or has already been applied, and when a measurable continuous variable exists that explains a meaningful portion of the response variability. Its main assumptions are that the covariate is measured without error, that the covariate is not influenced by the treatments, and crucially, that the regression of the response on the covariate is linear and has the **same slope in every treatment group** a condition known as homogeneity of regression slopes, which RAISINS automatically tests.
 :::
 
 <details>
@@ -118,11 +118,11 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <small>
 
-@fig-lay visually represents the structure of an **ANCOVA CRD** experiment. Treatments (T~1~, T~2~, …, T~t~) are randomly assigned to experimental units with r replications per treatment, exactly as in a standard CRD. For each experimental unit, two measurements are recorded: the **covariate (X)** — measured before or independently of the treatment — and the **response variable (Y)** — measured after the treatment has been applied. The covariate values are used to fit a common within-treatment regression slope (b), and all Y observations are adjusted to what they would have been had X been equal to the grand mean of the covariate. The adjusted observations are then subjected to the standard ANOVA F-test. The layout makes clear that ANCOVA does not change the randomisation or replication structure of the CRD; it simply adds a regression adjustment step to improve precision.
+@fig-lay visually represents the structure of an **ANCOVA CRD** experiment. Treatments (T~1~, T~2~, …, T~t~) are randomly assigned to experimental units with r replications per treatment, exactly as in a standard CRD. For each experimental unit, two measurements are recorded: the **covariate (X)** measured before or independently of the treatment and the **response variable (Y)** measured after the treatment has been applied. The covariate values are used to fit a common within-treatment regression slope (b), and all Y observations are adjusted to what they would have been had X been equal to the grand mean of the covariate. The adjusted observations are then subjected to the standard ANOVA F-test. The layout makes clear that ANCOVA does not change the randomisation or replication structure of the CRD; it simply adds a regression adjustment step to improve precision.
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![ANCOVA CRD Layout](www/PLACEHOLDER_Layout_ANCOVCRD.webp){#fig-lay fig-align="center"}
+![ANCOVA CRD Layout](www/layweb%20(1).webp){#fig-lay fig-align="center"}
 
 </small>
 
@@ -137,21 +137,21 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain **ANCOVA CRD** step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a greenhouse experiment conducted to evaluate the effect of **5 fertiliser treatments** on the final biomass of sunflower plants — T1 (Control — no fertiliser), T2 (N alone at 60 kg/ha), T3 (P alone at 40 kg/ha), T4 (N+P combined), and T5 (N+P+K combined) — arranged as a CRD with **4 replications** per treatment, giving a total of 5 × 4 = **20 experimental pots**. Because seedlings of different sizes were used, **initial plant height (cm)** at the time of transplanting was recorded as the **covariate (X)** to account for pre-existing variability among plants. The response variables measured at harvest were: **Biomass** (total fresh biomass in g), **Obs1** (leaf area index), **Obs2** (stem diameter in mm), and **FW** (root fresh weight in g). Our aim is to test whether the five fertiliser treatments produce statistically significant differences in the response variables after adjusting for initial plant height, and to obtain adjusted treatment means for fair comparison. The arrangement of the data is shown in @fig-data.
+To make things simple and interesting, we'll explain **ANCOVA CRD** step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a greenhouse experiment conducted to evaluate the effect of **10 treatments**, each representing a distinct mango variety, with three replicates per variety. The varieties included are Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay, Langra, and Totapuri and they are arranged as a CRD with **3 replications** per treatment, giving a total of 10 × 3 = **30 experimental pots**. Because seedlings of different sizes were used, **initial plant height (cm)** at the time of transplanting was recorded as the **covariate (X)** to account for pre-existing variability among plants. The response variables measured at harvest were: **Yield** (fruit yield per plant in kg), **Obs1** (plant height in cm), **Obs2** (number of fruits per plant), and **FW** (fresh fruit weight in g). Our aim is to test whether the five fertiliser treatments produce statistically significant differences in the response variables after adjusting for initial plant height, and to obtain adjusted treatment means for fair comparison.The arrangement of the data is shown in @fig-data.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Example dataset](www/ac work exm.png){#fig-data fig-align="center"}
+![Example dataset](www/ac%20working.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the 5 fertiliser levels, the covariate is the initial plant height recorded before treatment application, and the Variables are the four response traits measured at harvest — **Biomass, Obs1, Obs2, and FW**.
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the mango varieties, the covariate is the initial plant height recorded before treatment application, and the Variables are the four response traits measured at harvest - **Yield, Obs1, Obs2, and FW**.
 :::
 
 ## How to prepare your data? {#sec-4 .H}
 
 ::: {style="text-align: justify;"}
-Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. The file must contain a column for **Treatment** (the fertiliser label for each observation), a column for the **Covariate (X)** (e.g., initial plant height), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That's it — your file is ready to upload.
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. The file must contain a column for **Treatment** (the mango varieties), a column for the **Covariate (X)** (e.g., initial plant height), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
 
 Still if you have doubt, see @fig-4.
 
@@ -162,17 +162,17 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](www/ac csv.png){#fig-4 fig-align="center"}
+![Illustrating how to create a dataset](www/csv%20ac.png){#fig-4 fig-align="center"}
 
 ## ANCOVA CRD analysis tab explained {#AO}
 
 ::: {style="text-align: justify;"}
-In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the **Treatment** column, the **Covariate** column, and the **response variables** will appear. Select the appropriate columns under each field. Once you click the `Run Analysis` button, the ANCOVA is performed and all relevant results and outputs appear instantly, including the test for homogeneity of regression slopes, the adjusted ANOVA table, and the adjusted treatment means with post-hoc groupings.
+In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Treatment** column, the **Covariate** column, and the **response variables** will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, the ANCOVA is performed and all relevant results and outputs appear instantly, including the test for homogeneity of regression slopes, the adjusted ANOVA table, and the adjusted treatment means with post-hoc groupings.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis window explained](www/ac analy tab exp.png){#fig-5 fig-align="center"}
+![Analysis window explained](www/ac%20analy%20tab%20exp.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset (@sec-6). Here, **RAISINS** provides an inbuilt transformation option.
@@ -184,9 +184,7 @@ For some data, when there are a large number of zeros, discrete values, or when 
 Log, square root, and arcsine transformations are often used in **ANCOVA CRD** to make data more normal and to stabilize variance before covariance adjustment. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
-![Transformation options](www/ac trans.png){#fig-6 fig-align="center"}
-
-![Transformation options](www/trans.webp){fig-align="center"}
+![Transformation options](www/TRANS%20(1).png){#fig-6 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -201,14 +199,14 @@ Log, square root, and arcsine transformations are often used in **ANCOVA CRD** t
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, and the **ANCOVA** will be performed. **ANCOVA** first tests the assumption of homogeneity of regression slopes — verifying that the relationship between the covariate and the response is consistent across all treatment groups — and then partitions the covariate-adjusted total variation into components attributable to **Treatments (adjusted)**, the **Covariate**, and **Error (adjusted)**, and compares them using the F-test (see @fig-100). If the homogeneity of slopes assumption is met, the adjusted treatment means and post-hoc comparisons are valid and can be interpreted directly.
+Once your dataset is uploaded, click on Run Analysis, and the **ANCOVA** will be performed. **ANCOVA** first tests the assumption of homogeneity of regression slopes verifying that the relationship between the covariate and the response is consistent across all treatment groups and then partitions the covariate-adjusted total variation into components attributable to **Treatments (adjusted)**, the **Covariate**, and **Error (adjusted)**, and compares them using the F-test, see @fig-100. If the homogeneity of slopes assumption is met, the adjusted treatment means and post-hoc comparisons are valid and can be interpreted directly.
 :::
 
 **Table 1 ANCOVA summary**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Adjusted ANOVA table — Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares](www/ac ancova sum.jpeg){#fig-100 fig-align="center"}
+![Adjusted ANOVA table — Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares](www/ac%20ancova%20sum.jpeg){#fig-100 fig-align="center"}
 
 <details>
 
@@ -216,7 +214,7 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **ANCOVA** will 
 <summary style="color: #5DADE2"; font-weight: bold;"> ANCOVA table </summary>
 ```
 
-<small> In an **ANCOVA CRD**, the analysis partitions the adjusted total sum of squares into three main sources: **Covariate (X)** (variation in the response that is linearly explained by the covariate, removed from the error), **Treatments (adjusted)** (variation among treatment means after removing the covariate's effect), and **Error (adjusted)** (residual variation remaining after accounting for both treatments and the covariate). The degrees of freedom are: Covariate = 1, Treatments = t−1 (where t = number of treatments), and Error = N−t−1 (where N = total number of observations). The adjusted error degrees of freedom are one fewer than in a standard CRD ANOVA because one df is used to estimate the common regression slope (b). Each mean square is obtained by dividing the adjusted sum of squares by its degrees of freedom. The F-statistic for Treatments is the ratio of the adjusted Treatment mean square to the adjusted Error mean square. Significance is indicated by an asterisk (\*) for the **5%** level and two asterisks (\*\*) for the **1%** level of significance. A significant covariate F-test confirms that the adjustment was necessary and meaningful; a significant Treatment F-test confirms that the adjusted treatment means differ significantly. A preliminary test for **homogeneity of regression slopes** (Treatment × Covariate interaction) is also reported — a non-significant result validates the core ANCOVA assumption. </small>
+<small> In an **ANCOVA CRD**, the analysis partitions the adjusted total sum of squares into three main sources: **Covariate (X)** (variation in the response that is linearly explained by the covariate, removed from the error), **Treatments (adjusted)** (variation among treatment means after removing the covariate's effect), and **Error (adjusted)** (residual variation remaining after accounting for both treatments and the covariate). The degrees of freedom are: Covariate = 1, Treatments = t−1 (where t = number of treatments), and Error = N−t−1 (where N = total number of observations). The adjusted error degrees of freedom are one fewer than in a standard CRD ANOVA because one df is used to estimate the common regression slope (b). Each mean square is obtained by dividing the adjusted sum of squares by its degrees of freedom. The F-statistic for Treatments is the ratio of the adjusted Treatment mean square to the adjusted Error mean square. Significance is indicated by an asterisk (\*) for the **5%** level and two asterisks (\*\*) for the **1%** level of significance. A significant covariate F-test confirms that the adjustment was necessary and meaningful; a significant Treatment F-test confirms that the adjusted treatment means differ significantly. A preliminary test for **homogeneity of regression slopes** (Treatment × Covariate interaction) is also reported a non-significant result validates the core ANCOVA assumption. </small>
 
 </details>
 
@@ -226,11 +224,11 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **ANCOVA** will 
 The ANCOVA results reveal that the covariate (initial plant height) is highly significant, with a covariate mean square of 2,418.65 and F-ratio of approximately 18.34 (1 df), confirming that pre-transplanting height explained a meaningful portion of the variation in final biomass and that the covariance adjustment was both necessary and effective. The homogeneity of regression slopes test (Treatment × Covariate interaction) is non-significant (F ≈ 0.72, p \> 0.05), confirming that a single common slope adequately describes the covariate-response relationship in all five treatment groups and that the ANCOVA assumptions are satisfied. The adjusted Treatment mean square is 1,842.30 with an adjusted error mean square of 131.92, yielding an F-ratio of approximately 13.97 with 4 degrees of freedom for treatment and 14 for adjusted error, significant at the 1% level. This confirms that the five fertiliser treatments produce significantly different biomass after accounting for initial plant height differences. @sec-8 provides detailed information on the multiple comparison tests (Post-hoc tests) for adjusted means.
 :::
 
-**Table 2: Detailed tabular representation — adjusted means with multiple comparisons**
+**Table 2: Detailed tabular representation adjusted means with multiple comparisons**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Adjusted treatment means with multiple comparisons](www/ac tabular.jpeg){#fig-101 fig-align="center"}
+![Adjusted treatment means with multiple comparisons](www/ac%20tabular.jpeg){#fig-101 fig-align="center"}
 
 <details>
 
@@ -307,7 +305,7 @@ After obtaining a significant F-value for the adjusted Treatment effect in the A
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multiple comparison test options explained](www/ac multi com.png){#fig-7 fig-align="center"}
+![Multiple comparison test options explained](www/ac%20multi%20com.png){#fig-7 fig-align="center"}
 
 <details>
 
@@ -351,108 +349,18 @@ The choice of the post-hoc test completely relies on the researcher.
 In the example for those characters, a pairwise comparison of adjusted treatment means was performed using the Least Significant Difference (LSD) test.
 :::
 
-## Summary stats {#SUM}
+## Calculation {#sec-9 .C}
 
 ::: {style="text-align: justify;"}
-If you need to know about the detailed values of the various statistical metrics of treatments — both unadjusted and adjusted — move to `Summary stats` under the `Analysis`. In the context of **ANCOVA CRD**, the summary statistics table presents both the raw observed means and the covariate-adjusted means alongside their associated precision measures, allowing a direct comparison of what changes when the covariate is accounted for.
+The Calculation tab displays the detailed statistical computations generated during the ANCOVA analysis. It presents the pairwise comparison tables for all treatment combinations across different characters, including estimates, standard errors \[SE(d)\], degrees of freedom (DF), t-ratios, p-values, and critical difference (CD) values. These calculations help users identify statistically significant differences between treatment means based on the selected multiple comparison test. The tab provides a transparent view of the analytical process and enables users to verify the statistical outputs used for interpretation and decision-making.The pairwise comparison table is shown in @fig-cal.
 :::
 
-**Table 3: Summary statistics**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary statistics](www/PLACEHOLDER_SummaryStats_ANCOVCRD.webp){#fig-102 fig-align="center"}
-
-<details>
-
-```{=html}
-<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
-```
-
-<small>
-
-**Mean** The arithmetic average of all raw (unadjusted) observations within a treatment group. Useful for describing the observed data but should not be used for treatment comparisons in ANCOVA without adjustment.
-
-**Adjusted Mean** The estimated treatment mean after removing the linear effect of the covariate, calculated at the grand mean of the covariate. This is the primary quantity of interest in ANCOVA and should be used for all treatment comparisons and recommendations.
-
-**SD (Standard Deviation)** A measure of the amount of variation or dispersion of the raw observations within a treatment group.
-
-**SE (Standard Error)** Specifically the Standard Error of the adjusted Mean. It estimates how far the adjusted sample mean is likely to be from the true population adjusted mean. $$SE = \frac{\text{Standard deviation (SD)}}{\sqrt {n}}*100$$
-
-**Min / Max** The lowest and highest recorded raw values within that specific treatment group.
-
-**CV (Coefficient of Variation)** The ratio of the standard deviation to the raw mean, expressed as a percentage $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}}*100$$
-
-**Skewness** A measure of the asymmetry of the probability distribution of the raw observations. Positive value: Data is skewed to the right. Negative value: Data is skewed to the left.
-
-**Kurtosis** A measure of the "tailedness" of the distribution. A standard normal distribution has a kurtosis of 3; values lower than that indicate a flatter peak.
-
-</small>
-
-</details>
-
-### Interpretations from @fig-102
-
-::: {style="text-align: justify;"}
-The summary statistics table shows both raw and adjusted means for the five fertiliser treatments across 4 replications. Treatment T5 (N+P+K combined) recorded the highest raw mean biomass (328.50 g) and also the highest adjusted mean (319.75 g), confirming its superiority even after correcting for initial plant height differences. Treatment T1 (Control) recorded the lowest raw mean (198.30 g) and the lowest adjusted mean (207.10 g). Notably, the ranking of T2 (N alone) and T3 (P alone) changes slightly between raw and adjusted means — T3 moves above T2 after covariate adjustment — demonstrating the importance of using adjusted means for fair treatment comparisons when initial plant sizes differed systematically among groups. The CV% of 5.3% based on the adjusted error confirms good experimental precision. Skewness values close to zero for all treatments confirm approximate normality of the raw data, supporting the parametric ANCOVA.
-:::
-
-## Individual ANOVA {#IA}
-
-::: {style="text-align: justify;"}
-If the user wants to get individual ANCOVA tables for each response variable separately, click on `Individual ANOVA` in the `Analysis`. Each table presents the full ANCOVA decomposition — covariate, adjusted treatment, and adjusted error — for one response variable at a time, together with the adjusted means, CD, CV%, MSE, SE(m), and SE(d) as in @fig-104.
-:::
-
-**Table 4: ANCOVA table for Biomass**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![ANCOVA table for Biomass](www/PLACEHOLDER_IndividualANOVA_ANCOVCRD.webp){#fig-104 fig-align="center"}
-
-<details>
-
-```{=html}
-<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
-```
-
-<small>
-
-**Critical Difference (CD)** The minimum difference required between any two adjusted treatment means to consider them significantly different from each other, computed using the adjusted error mean square. At a 1% level, you are 99% confident in the difference. At a 5% level, you are 95% confident.
-
-**Coefficient of Variation (CV (%))** A relative measure of dispersion computed from the adjusted error mean square relative to the grand mean. $$CV = \frac{\sqrt{\text{MSE}_{\text{adj.}}}}{\text{Grand Mean}}*100$$
-
-**Mean Square Error (MSE)** The Adjusted Error Mean Square from the ANCOVA table. A smaller adjusted MSE compared to the unadjusted ANOVA MSE confirms that the covariate reduced the error variance effectively.
-
-**Standard Error of Adjusted Mean (SE(m))** Measures how much the adjusted treatment mean is likely to vary from the true population adjusted mean. $$ SE(m)=\sqrt{MSE_{\text{adj.}} / r}$$ Where r is the number of replications.
-
-**Standard Error of Difference (SE(d))** The standard error associated with the difference between two adjusted treatment means. $$ SE(d)=\sqrt{2 \times MSE_{\text{adj.}} / r}$$
-
-</small>
-
-</details>
-
-### Interpretation from @fig-104
-
-::: {style="text-align: justify;"}
-For the character **Biomass**, the covariate (initial plant height) mean square is 2,418.65 and highly significant, confirming effective adjustment. The adjusted Treatment mean square is 1,842.30 and the adjusted Error mean square is 131.92, yielding an F-value of approximately 13.97 with 4 degrees of freedom for adjusted treatment and 14 degrees of freedom for adjusted error, significant at the 1% level. The adjusted MSE of 131.92 is considerably smaller than the unadjusted ANOVA error mean square (estimated at 248.60), confirming that including the covariate nearly halved the error variance and substantially improved the precision of the experiment. The SE(m) is approximately 5.74 and the SE(d) is approximately 8.12. The CD at 5% is 17.32 and at 1% is 24.18, indicating the minimum adjusted biomass difference required to declare any two treatments significantly different. The overall CV% of 5.3% based on the adjusted error confirms excellent experimental precision.
-:::
-
-**Table 5: Adjusted means with letter groupings**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Adjusted means with groupings](www/PLACEHOLDER_SummaryGroupings_ANCOVCRD.webp){#fig-103 fig-align="center"}
-
-### Interpretation from @fig-103
-
-::: {style="text-align: justify;"}
-The adjusted treatment means with letter groupings show that T5 (N+P+K combined) recorded the highest adjusted biomass (319.75 g) and was assigned the letter grouping **"a"**, indicating it is statistically superior to all other treatments after covariate adjustment. It was statistically at par with T4 (N+P combined), which carried the grouping **"ab"**, reflecting a marginal but non-significant difference between these two highest-performing fertiliser combinations. T1 (Control) recorded the lowest adjusted mean biomass (207.10 g) and was assigned the letter grouping **"d"**, confirming it was significantly inferior to all fertilised treatments. Treatments T2 and T3 carried groupings **"bc"** and **"c"** respectively, differing significantly from the top group. These groupings are based entirely on adjusted means and provide a fair, covariate-corrected basis for fertiliser recommendations under the experimental conditions.
-:::
+![Pairwise Comparison Table](www/cal.png){#fig-cal fig-align="center"}
 
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly — leaving no room for confusion. We've ensured that every possible plot related to **ANCOVA CRD** is readily available. Simply click on the `Basic Plots` tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to **ANCOVA CRD** is readily available. Simply click on the Basic Plots tab to view them, see @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -461,7 +369,7 @@ The adjusted treatment means with letter groupings show that T5 (N+P+K combined)
 **RAISINS** provides users various customization features for the plots to enhance the visualization according to the requirement of the user. **Click** on @fig-8 to get a clear idea on the customizing features.
 :::
 
-![Plot settings for customizing](www/ac custo plot.png){#fig-8 fig-align="center"}
+![Plot settings for customizing](www/ac%20custo%20plot.png){#fig-8 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 From @fig-9 to @fig-13, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.
@@ -635,70 +543,10 @@ A **correlation plot** provides a visual summary of the pairwise relationships b
 :::::::
 :::::::::::::::::::::::::::::
 
-## Advanced plots {#AP}
-
-::: {style="text-align: justify;"}
-**RAISINS** also provides `advanced plots` which go beyond basic bar charts and histograms to give deeper insight into your ANCOVA data, especially the covariate-response relationship, residual distributions, and deviations from model assumptions. (See @fig-90)
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Advanced plots](www/PLACEHOLDER_AdvancedPlots_ANCOVCRD.webp){#fig-90 fig-align="center"}
-
-**SCATTER PLOT WITH REGRESSION LINES**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Scatter plot with within-group regression lines](www/PLACEHOLDER_ScatterRegression_ANCOVCRD.webp){fig-align="center"}
-
-::: {style="text-align: justify;"}
-A scatter plot with within-group regression lines displays the covariate (X) on the horizontal axis and the response variable (Y) on the vertical axis, with each treatment group shown in a distinct colour. A separate regression line is fitted for each group, and their approximate parallelism visually confirms the homogeneity of regression slopes assumption — the foundation of valid ANCOVA. Converging or crossing lines would signal a significant Treatment × Covariate interaction and would caution against standard ANCOVA interpretation.
-:::
-
-**ADJUSTED MEANS PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Adjusted means plot with confidence intervals](www/PLACEHOLDER_AdjustedMeansPlot_ANCOVCRD.webp){#fig-15 fig-align="center"}
-
-::: {style="text-align: justify;"}
-An adjusted means plot displays the covariate-corrected treatment means with their confidence intervals side by side, allowing a clear visual comparison of treatment performance after accounting for the covariate. Unlike a simple bar chart of raw means, this plot accurately represents the ANCOVA results and can be used directly in publications to communicate adjusted treatment differences.
-:::
-
-**QQ PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![QQ plot of adjusted residuals](www/PLACEHOLDER_QQPlot_ANCOVCRD.webp){#fig-16 fig-align="center"}
-
-::: {style="text-align: justify;"}
-Q–Q (quantile–quantile) plot of the ANCOVA adjusted residuals is used to assess the normality assumption. The points represent observed residual quantiles plotted against theoretical quantiles from a normal distribution. Because most points lie close to the diagonal reference line, the adjusted residuals approximately follow a normal distribution, confirming the validity of the parametric ANCOVA and the reliability of the F-tests and adjusted means.
-:::
-
-**RESIDUAL PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Residual vs. fitted values plot](www/PLACEHOLDER_ResidualPlot_ANCOVCRD.webp){#fig-17 fig-align="center"}
-
-::: {style="text-align: justify;"}
-A residual plot displays the ANCOVA adjusted residuals on the vertical axis against the fitted (predicted) values on the horizontal axis. A random scatter of residuals with no systematic pattern confirms that the linearity and homoscedasticity assumptions of ANCOVA are met. Patterns such as a fan shape or curved trend would indicate heteroscedasticity or non-linearity, respectively, signalling the need for data transformation or a non-linear model.
-:::
-
-**DISTRIBUTION PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Distribution plot of adjusted residuals](www/PLACEHOLDER_Distribution_ANCOVCRD.webp){#fig-18 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The distribution plot shows how the ANCOVA adjusted residuals are distributed. It provides a visual summary of the spread and symmetry of the residuals across all treatment groups, helping to confirm that the error distribution is approximately normal and that no single treatment group contributes disproportionate variability to the adjusted error term.
-:::
-
 ## AI interpretation {#AI}
 
 ::: {style="text-align: justify;"}
-RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of ANCOVA results, identifies whether the covariate adjustment was significant, reports the homogeneity of slopes test outcome, and identifies statistically significant adjusted treatment differences. The assistant also offers informed suggestions for potential next steps or interpretations, including guidance on whether adjusted or raw means should be reported and recommendations on treatment selection. The user can get detailed interpretations of the analysis by clicking on `AI interpretation` on the `Analysis` as shown below @fig-ai.
+RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of ANCOVA results, identifies whether the covariate adjustment was significant, reports the homogeneity of slopes test outcome, and identifies statistically significant adjusted treatment differences. The assistant also offers informed suggestions for potential next steps or interpretations, including guidance on whether adjusted or raw means should be reported and recommendations on treatment selection. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below @fig-ai.
 :::
 
 ![AI powered RAISINS Assistant to interpret your results](www/ac%20ai%20int.png){#fig-ai fig-align="center"}
@@ -706,28 +554,20 @@ RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist user
 ## Multivariate {#MUL}
 
 ::: {style="text-align: justify;"}
-Multivariate analysis in **ANCOVA CRD** helps you to compare different response variables simultaneously across all treatment groups using the covariate-adjusted dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 5 fertiliser treatments — Control, N alone, P alone, N+P, and N+P+K — on sunflower growth and biomass across 4 replications, navigate to `Multivariate` see @fig-mu.
+Multivariate analysis in **ANCOVA CRD** helps you to compare different response variables simultaneously across all treatment groups using the covariate-adjusted dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 5 fertiliser treatments — Control, N alone, P alone, N+P, and N+P+K on sunflower growth and biomass across 4 replications, navigate to Multivariate, see @fig-mu.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multivariate tab in RAISINS](www/ac%20multi%20tab.png)
+![Multivariate tab in RAISINS](www/ac%20multi%20tab%20(1).png){#fig-mu}
 
 ::: {style="text-align: justify;"}
-MANOVA and PCA will be automatically carried out based on the selected response variables using the ANCOVA-adjusted dataset. MANOVA table with interpretation appears automatically. PCA results and plots will appear along with automated interpretation.
+PCA will be automatically carried out based on the selected response variables using the ANCOVA-adjusted dataset. PCA results and plots will appear along with automated interpretation.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Manova Results](www/PLACEHOLDER_MANOVAResults_ANCOVCRD.webp){#fig-MAN2 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The table titled 'Eigen Values PCA' given @fig-PC provides information about the eigen values and the percentage of variance explained by each principal component derived from the ANCOVA-adjusted data. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 59% of the variance in the dataset, while PC2 accounts for about 20% of the variance. Together, PC1 and PC2 explain approximately 79% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs together explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![PCA-based Index Score](www/ac%20pca%20index%20score.png){#fig-PC}
+![PCA-based Index Score](www/ac%20pca%20index%20score%20(1).png){#fig-PC}
 
 ::: {style="text-align: justify;"}
 The scree plot given @fig-screeplot illustrates the proportion of variance explained by each principal component derived from the ANCOVA-adjusted data.
@@ -735,7 +575,7 @@ The scree plot given @fig-screeplot illustrates the proportion of variance expla
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Scree plot](www/ac%20scree.png){fig-align="center"}
+![Scree plot](www/ac%20scree%20(1).png){#fig-screeplot fig-align="center"}
 
 ::: {style="text-align: justify;"}
 Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. In PC1, Biomass and FW (root fresh weight) show high positive loadings (approximately +0.67 and +0.55 respectively), while Obs2 (stem diameter) also loads positively (+0.44), indicating that treatment groups with high scores on PC1 are superior in overall growth and biomass accumulation after covariate correction. Obs1 (leaf area index) loads more prominently on PC2 (+0.70), suggesting it captures a partially independent dimension of plant response to fertilisation. Based on this pattern, a PC1-based index score is most informative for identifying fertiliser treatments that maximise total plant growth simultaneously across multiple traits. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
@@ -743,10 +583,10 @@ Look upon the loadings of each variable in the given @fig-loadings and decide wh
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Loadings of each variable](www/ac%20loadings.png){#fig-loadings fig-align="center"}
+![Loadings of each variable](www/ac%20loadings%20(1).png){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The biplot gives a visual representation of the relationships among response variables and treatment groups based on the ANCOVA-adjusted data. Treatment groups with high adjusted values for a specific variable are positioned in the direction of that variable's loading vector. The angle between variables in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, Biomass and FW vectors point in approximately the same direction, confirming their strong positive association after covariate adjustment, while Obs1 points in a moderately different direction, reflecting its more independent response to the fertiliser treatments.
+The biplot gives a visual representation of the relationships among response variables and treatment groups based on the ANCOVA-adjusted data. Treatment groups with high adjusted values for a specific variable are positioned in the direction of that variable's loading vector. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, Biomass and FW vectors point in approximately the same direction, confirming their strong positive association after covariate adjustment, while Obs1 points in a moderately different direction, reflecting its more independent response to the fertiliser treatments.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -759,7 +599,7 @@ In RAISINS, we calculate a scaled index score by converting the index score to a
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Index score](www/ac%20ind%20plot.png){#fig-indexscore fig-align="center"}
+![Index score](www/ac%20ind%20plot%20(1).png){#fig-indexscore fig-align="center"}
 
 <!-- REPLACE THIS SCREENSHOT -->
 
@@ -813,23 +653,23 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 2.  **Click 'File' Menu**
 
-    -   Go to the top-left corner and click on **File**.
+    - Go to the top-left corner and click on **File**.
 
 3.  **Choose 'Save As' or 'Save a Copy'**
 
-    -   Select the location where you want to save your file.
+    - Select the location where you want to save your file.
 
 4.  **Set File Type to CSV**
 
-    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
 
 5.  **Name Your File**
 
-    -   Enter a relevant file name without spaces (use underscores if needed).
+    - Enter a relevant file name without spaces (use underscores if needed).
 
 6.  **Click 'Save'**
 
-    -   Click **Save** to export the file.
+    - Click **Save** to export the file.
 
 > 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small>
 
@@ -840,20 +680,20 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ::: {style="text-align: justify;"}
 If you're unsure about the correct format for creating a dataset, don't worry RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
--   Navigate to the **Create Data Tab**
+- Navigate to the **Create Data Tab**
 
--   Select the number of **Treatments**
+- Select the number of **Treatments**
 
--   Select number of **Replications**
+- Select number of **Replications**
 
--   Select number of **Characters**
+- Select number of **Characters**
 
--   Click on **Create** button
+- Click on **Create** button
 
 Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
-![Creating dataset within RAISINS](www/ac%20csv.png){#fig-createdata}
+![Creating dataset within RAISINS](www/csv%20ac.png){#fig-createdata}
 
 ## Model datasets {#M}
 
@@ -863,12 +703,10 @@ To test the app or better understand the data arrangement, we provide model data
 
 ![Model dataset](www/ac%20model%20datasets.png){#fig-188 fig-align="center"}
 
-![Model dataset](www/modeldata.webp){fig-align="center"}
-
 ## FAQ's {#F}
 
 ::: {style="text-align: justify;"}
-The app includes a dedicated `FAQs` to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the `FAQs` is a great place to start.
+The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQs is a great place to start.
 :::
 
 ![FAQs](www/ac%20faq.png){#fig-148 fig-align="center"}
@@ -880,5 +718,3 @@ View Data serves as the primary diagnostic tool for ensuring data integrity befo
 :::
 
 ![View data](www/ac%20view.png){fig-align="center"}
-
-------------------------------------------------------------------------

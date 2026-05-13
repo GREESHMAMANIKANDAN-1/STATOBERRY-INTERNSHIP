@@ -705,7 +705,6 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 
 <summary>How to Save as CSV in MS Excel</summary>
 
-
 <small> 1. **Open Your Workbook**
 
 ```         

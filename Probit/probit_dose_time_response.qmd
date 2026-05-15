@@ -267,8 +267,6 @@ In our example, the LD50 of 1.82 mg/L provides a reliable estimate of the potenc
 In probit analysis, the primary method for comparing the potency of two or more agents or the susceptibility of two or more populations is the **comparison of lethal estimates and their fiducial confidence intervals**. **RAISINS** presents these estimates in a consolidated table (see @fig-101), making it straightforward to assess whether observed differences in LD50 or LT50 values between groups are statistically meaningful.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
-
 ![Comparison of lethal estimates across agents or strains](images/probit%20WEE%20(2)-01.png){#fig-cus fig-align="center"}
 
 ::: {style="text-align: justify;"}

@@ -155,7 +155,7 @@ window.Quarto = {
 </div>
 <p>ABSTRACT</p>
 <div style="text-align: justify;">
-<p><strong>Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)</strong> is a factorial experimental design that combines the error-control advantages of randomised blocking with a two-factor treatment structure, enabling researchers to simultaneously examine the main effects of two factors and their interaction while eliminating the influence of a known source of variation through grouping of experimental units into homogeneous blocks. <strong>Pooled 2F-RBD</strong> partitions total variation into components attributable to Blocks, Factor A, Factor B, the A×B interaction, and the pooled error — where the interaction sum of squares is pooled with the block-by-treatment residual when the interaction is non-significant — thereby increasing the precision and power of main-effect tests in field and greenhouse experiments. In <strong>RAISINS</strong> you can perform <strong>Pooled 2F-RBD</strong> very easily without writing a single line of code. This tutorial will guide you, how to perform <strong>Pooled 2F-RBD</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
+<p><strong>Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)</strong> is a factorial experimental design that combines the error-control advantages of randomised blocking with a two-factor treatment structure, enabling researchers to simultaneously examine the main effects of two factors and their interaction while eliminating the influence of a known source of variation through grouping of experimental units into homogeneous blocks. <strong>Pooled 2F-RBD</strong> partitions total variation into components attributable to Blocks, Factor A, Factor B, the A×B interaction, and the pooled error where the interaction sum of squares is pooled with the block-by-treatment residual when the interaction is non-significant thereby increasing the precision and power of main-effect tests in field and greenhouse experiments. In <strong>RAISINS</strong> you can perform <strong>Pooled 2F-RBD</strong> very easily without writing a single line of code. This tutorial will guide you, how to perform <strong>Pooled 2F-RBD</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including PCA.</p>
 </div>
 <details>
 <p><em>Hover or click each point to see more information.</em></p>
@@ -195,7 +195,7 @@ window.Quarto = {
 }
 </style>
 <ul>
-<small> The theoretical foundation of the Randomised Block Design was laid by <strong>Sir <span class="hover-img">Ronald A. Fisher</span></strong> during his pioneering work at Rothamsted Experimental Station in the 1920s. Fisher recognised that in field experiments, soil fertility, moisture, and other environmental gradients introduce systematic variation that inflates experimental error and reduces the power of F-tests. By grouping experimental units into homogeneous blocks — each block containing one unit per treatment — he demonstrated that block-to-block variation could be removed from the error term, yielding a more sensitive and unbiased comparison of treatments. The extension of this principle to factorial treatment structures, in which two or more factors are studied simultaneously at all combinations of their levels, followed naturally from Fisher’s broader advocacy of factorial experimentation articulated in his 1935 monograph <em>The Design of Experiments</em>. The two-factor RBD became the workhorse of field crop and horticultural research through the mid-twentieth century, valued both for its error-control efficiency and for its ability to reveal interaction effects between factors. The pooled variant of this design, in which the non-significant A×B interaction sum of squares is merged into the residual error, was formalised as computational experience accumulated showing that when the true interaction is negligible, pooling increases the degrees of freedom available for error estimation and thereby produces more powerful F-tests for the main effects of Factor A and Factor B. Today, the <strong>Pooled 2F-RBD</strong> is a standard analytical framework in agronomy, plant breeding, soil science, and allied biological disciplines wherever field heterogeneity warrants blocking and two factors are of simultaneous scientific interest. </small>
+<small> The theoretical foundation of the Randomised Block Design was laid by <strong>Sir Ronald A. Fisher</strong> during his pioneering work at Rothamsted Experimental Station in the 1920s. Fisher recognised that in field experiments, soil fertility, moisture, and other environmental gradients introduce systematic variation that inflates experimental error and reduces the power of F-tests. By grouping experimental units into homogeneous blocks each block containing one unit per treatment he demonstrated that block-to-block variation could be removed from the error term, yielding a more sensitive and unbiased comparison of treatments. The extension of this principle to factorial treatment structures, in which two or more factors are studied simultaneously at all combinations of their levels, followed naturally from Fisher’s broader advocacy of factorial experimentation articulated in his 1935 monograph <em>The Design of Experiments</em>. The two-factor RBD became the workhorse of field crop and horticultural research through the mid-twentieth century, valued both for its error-control efficiency and for its ability to reveal interaction effects between factors. The pooled variant of this design, in which the non-significant A×B interaction sum of squares is merged into the residual error, was formalised as computational experience accumulated showing that when the true interaction is negligible, pooling increases the degrees of freedom available for error estimation and thereby produces more powerful F-tests for the main effects of Factor A and Factor B. Today, the <strong>Pooled 2F-RBD</strong> is a standard analytical framework in agronomy, plant breeding, soil science, and allied biological disciplines wherever field heterogeneity warrants blocking and two factors are of simultaneous scientific interest. </small>
 </ul>
 </details>
 <section id="AE" class="level2" data-number="1">
@@ -218,7 +218,7 @@ Figure&nbsp;1: Analysis of experiment tab
 <section id="C" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)</h2>
 <div style="text-align: justify;">
-<p><strong>Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)</strong> is a factorial experimental design in which two factors — each at two or more levels — are studied across all possible level combinations, and the resulting treatment combinations are assigned to experimental units arranged in homogeneous blocks, with each block containing exactly one unit for every treatment combination. The “randomised block” feature ensures that any systematic variation present in the experimental material — such as a soil fertility gradient across a field, a light gradient in a greenhouse, or batch effects in a laboratory — is absorbed into the block sum of squares and removed from the error term, thereby increasing the sensitivity of the F-tests for the factorial effects. The design is termed “pooled” because, when the A×B interaction is found to be statistically non-significant, the interaction sum of squares and its associated degrees of freedom are merged with the residual (within-blocks) error to form a pooled error term, providing more degrees of freedom for error estimation and further strengthening the main-effect tests. The ANOVA for a <strong>Pooled 2F-RBD</strong> partitions total variation into five components: <strong>Blocks</strong> (variation due to differences among blocks), <strong>Factor A</strong> (main effect of the first factor), <strong>Factor B</strong> (main effect of the second factor), <strong>A×B Interaction</strong> (joint effect beyond additive main effects), and <strong>Pooled Error</strong> (residual variation after pooling when interaction is non-significant). This design is most appropriate when experimental units can be grouped into blocks that are internally more homogeneous than the experiment as a whole, and it is preferred over the <strong>Pooled 2F-CRD</strong> whenever a meaningful source of nuisance variation can be identified and used as a blocking criterion. When no such gradient exists, the Pooled 2F-CRD is the simpler and equally valid alternative.</p>
+<p><strong>Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)</strong> is a factorial experimental design in which two factors each at two or more levels are studied across all possible level combinations, and the resulting treatment combinations are assigned to experimental units arranged in homogeneous blocks, with each block containing exactly one unit for every treatment combination. The “randomised block” feature ensures that any systematic variation present in the experimental material such as a soil fertility gradient across a field, a light gradient in a greenhouse, or batch effects in a laboratory is absorbed into the block sum of squares and removed from the error term, thereby increasing the sensitivity of the F-tests for the factorial effects. The design is termed “pooled” because, when the A×B interaction is found to be statistically non-significant, the interaction sum of squares and its associated degrees of freedom are merged with the residual (within-blocks) error to form a pooled error term, providing more degrees of freedom for error estimation and further strengthening the main-effect tests. The ANOVA for a <strong>Pooled 2F-RBD</strong> partitions total variation into five components: <strong>Blocks</strong> (variation due to differences among blocks), <strong>Factor A</strong> (main effect of the first factor), <strong>Factor B</strong> (main effect of the second factor), <strong>A×B Interaction</strong> (joint effect beyond additive main effects), and <strong>Pooled Error</strong> (residual variation after pooling when interaction is non-significant). This design is most appropriate when experimental units can be grouped into blocks that are internally more homogeneous than the experiment as a whole, and it is preferred over the <strong>Pooled 2F-CRD</strong> whenever a meaningful source of nuisance variation can be identified and used as a blocking criterion. When no such gradient exists, the Pooled 2F-CRD is the simpler and equally valid alternative.</p>
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
@@ -226,12 +226,12 @@ Figure&nbsp;1: Analysis of experiment tab
 </summary>
 <ul>
 <p><small></small></p><small>
-<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents a <strong>Pooled 2F-RBD</strong> arrangement with two factors — Factor A at <em>a</em> levels and Factor B at <em>b</em> levels — forming a total of <em>a</em> × <em>b</em> treatment combinations, each appearing exactly once within each of <em>r</em> blocks. The <em>a</em> × <em>b</em> × <em>r</em> experimental units are organised so that each block constitutes one complete replication of all treatment combinations, and within each block the combinations are assigned entirely at random to the available units. In the pooled version, when the A×B interaction F-test is non-significant, the interaction sum of squares ((<em>a</em> − 1)(<em>b</em> − 1) df) is pooled with the residual error ((<em>ab</em> − 1)(<em>r</em> − 1) df less the interaction df) to yield a single pooled error term with more degrees of freedom, which is then used for all F-tests on main effects and for computing critical differences in post-hoc comparisons.</p>
+<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents a <strong>Pooled 2F-RBD</strong> arrangement with two factors Factor A at <em>a</em> levels and Factor B at <em>b</em> levels forming a total of <em>a</em> × <em>b</em> treatment combinations, each appearing exactly once within each of <em>r</em> blocks. The <em>a</em> × <em>b</em> × <em>r</em> experimental units are organised so that each block constitutes one complete replication of all treatment combinations, and within each block the combinations are assigned entirely at random to the available units. In the pooled version, when the A×B interaction F-test is non-significant, the interaction sum of squares ((<em>a</em> − 1)(<em>b</em> − 1) df) is pooled with the residual error ((<em>ab</em> − 1)(<em>r</em> − 1) df less the interaction df) to yield a single pooled error term with more degrees of freedom, which is then used for all F-tests on main effects and for computing critical differences in post-hoc comparisons.</p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Layout_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Pooled 2F-RBD Layout"><img src="www/PLACEHOLDER_Layout_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/pooled%202f%20rbd%20layout.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Pooled 2F-RBD Layout"><img src="www/pooled%202f%20rbd%20layout.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Pooled 2F-RBD Layout
@@ -258,13 +258,13 @@ Figure&nbsp;2: Pooled 2F-RBD Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
-<p>To make things simple and interesting, we’ll explain <strong>Pooled 2F-RBD</strong> analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment conducted to evaluate the effect of <strong>two factors on wheat grain yield and quality</strong>: <strong>Factor A — Fertiliser dose</strong> at 3 levels (F<sub>1</sub>: 60 kg N/ha, F<sub>2</sub>: 90 kg N/ha, F<sub>3</sub>: 120 kg N/ha) and <strong>Factor B — Sowing method</strong> at 2 levels (S<sub>1</sub>: Line sowing, S<sub>2</sub>: Broadcast sowing), resulting in 3 × 2 = <strong>6 treatment combinations</strong> (F<sub>1</sub>S<sub>1</sub>, F<sub>1</sub>S<sub>2</sub>, F<sub>2</sub>S<sub>1</sub>, F<sub>2</sub>S<sub>2</sub>, F<sub>3</sub>S<sub>1</sub>, F<sub>3</sub>S<sub>2</sub>). The experiment is laid out in <strong>4 blocks</strong>, each block representing a strip of the field with relatively uniform soil fertility, giving a total of 6 × 4 = <strong>24 experimental plots</strong>, with all 6 treatment combinations randomised independently within each block. The response variables recorded were: <strong>Yield</strong> (grain yield in kg/ha), <strong>Obs1</strong> (number of grains per spike), <strong>Obs2</strong> (spike length in cm), and <strong>FW</strong> (1000-grain weight in g). Our aim is to test whether Fertiliser dose, Sowing method, and their interaction produce statistically significant differences in the response variables using ANOVA under <strong>Pooled 2F-RBD</strong>. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To make things simple and interesting, we’ll explain <strong>Pooled 2F-RBD</strong> analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment conducted to evaluate the effect of <strong>two factors on wheat grain yield and quality</strong>: <strong>Factor A - Fertiliser dose</strong> at 2 levels (F<sub>1</sub>: 60 kg N/ha, F<sub>2</sub>: 120 kg N/ha) and <strong>Factor B - Sowing method</strong> at 2 levels (S<sub>1</sub>: Line sowing, S<sub>2</sub>: Broadcast sowing), resulting in 2 × 2 = <strong>4 treatment combinations</strong> (F<sub>1</sub>S<sub>1</sub>, F<sub>1</sub>S<sub>2</sub>, F<sub>2</sub>S<sub>1</sub>, F<sub>2</sub>S<sub>2</sub>). The experiment is laid out in <strong>4 blocks</strong>, each block representing a strip of the field with relatively uniform soil fertility, giving a total of 4 × 4 = <strong>16 experimental plots</strong>, with all 4 treatment combinations randomised independently within each block. The response variables recorded were: Char1, Char2, Char3, Char4, Char5, and Char6, with each row representing a unique treatment combination of factorA, factorB. Our aim is to test whether Fertiliser dose, Sowing method, and their interaction produce statistically significant differences in the response variables using ANOVA under <strong>Pooled 2F-RBD</strong>. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ExampleDataset_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/PLACEHOLDER_ExampleDataset_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/prbd%20work.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/prbd%20work.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Example dataset
@@ -272,13 +272,13 @@ Figure&nbsp;3: Example dataset
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Data organised in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the 6 fertiliser-by-sowing combinations (F<sub>1</sub>S<sub>1</sub> through F<sub>3</sub>S<sub>2</sub>), and the Variables are the 4 traits mentioned earlier — <strong>Yield, Obs1, Obs2, FW</strong>.</p>
+<p>Data organised in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the 4 fertiliser-by-sowing combinations, and the Variables are the 6 traits mentioned earlier <strong>Char1, Char2, Char3, Char4, Char5, and Char6</strong>.</p>
 </div>
 </section>
 <section id="sec-4" class="level2 H" data-number="4">
 <h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
 <div style="text-align: justify;">
-<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. The file must contain a column identifying the <strong>Block</strong> (replication), a column identifying <strong>Factor A</strong> (Fertiliser dose), a column identifying <strong>Factor B</strong> (Sowing method), and separate columns for each response variable. In <strong>Pooled 2F-RBD</strong>, the Block column distinguishes the complete replications from one another — each block number appears exactly <em>a</em> × <em>b</em> times in the dataset, once for each treatment combination. Make sure no blank rows are left above, and all columns have proper names. That’s it — your file is ready to upload.</p>
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. The file must contain a column identifying the <strong>Block</strong> (replication), a column identifying <strong>Factor A</strong> (Fertiliser dose), a column identifying <strong>Factor B</strong> (Sowing method), and separate columns for each response variable. In <strong>Pooled 2F-RBD</strong>, the Block column distinguishes the complete replications from one another each block number appears exactly <em>a</em> × <em>b</em> times in the dataset, once for each treatment combination. Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
 <p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
 <p>Creating dataset in MS Excel</p>
@@ -298,13 +298,13 @@ Figure&nbsp;4: Illustrating how to create a dataset
 <section id="AO" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> Pooled 2F-RBD analysis tab explained</h2>
 <div style="text-align: justify;">
-<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking <code>Browse</code> in the sidebar of the <code>Analysis</code> tab. When the file is uploaded, options to select the <strong>Block</strong> column, the <strong>Factor A</strong> column, the <strong>Factor B</strong> column, and the <strong>response variables</strong> will appear. Select the appropriate columns under each field. Once you click the <code>Run Analysis</code> button, <strong>Pooled 2F-RBD</strong> is performed and all relevant results and outputs appear instantly, including the pooling decision for the interaction, the pooled ANOVA table, main-effect and interaction F-tests, and treatment combination means with post-hoc groupings.</p>
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the <strong>Block</strong> column, the <strong>Factor A</strong> column, the <strong>Factor B</strong> column, and the <strong>response variables</strong> will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, <strong>Pooled 2F-RBD</strong> is performed and all relevant results and outputs appear instantly, including the pooling decision for the interaction, the pooled ANOVA table, main-effect and interaction F-tests, and treatment combination means with post-hoc groupings.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/2f%20rbs%20-%20poo%20ana%20tab%20explaines.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="www/2f%20rbs%20-%20poo%20ana%20tab%20explaines.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/analy%20exp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="www/analy%20exp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Analysis window explained
@@ -323,7 +323,7 @@ Figure&nbsp;5: Analysis window explained
 <div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/2f%20rbd-poo%20transfr.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/2f%20rbd-poo%20transfr.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/2f%20rbd%20pooled%20transformn.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/2f%20rbd%20pooled%20transformn.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Transformation options
@@ -342,14 +342,14 @@ Figure&nbsp;6: Transformation options
 <section id="sec-7" class="level2 AR" data-number="7">
 <h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
-<p>Once your dataset is uploaded, click on <code>Run Analysis</code>, and the <strong>Pooled 2F-RBD</strong> ANOVA will be performed. The analysis first evaluates the A×B interaction effect. If the interaction is non-significant, the interaction sum of squares and degrees of freedom are pooled with the within-blocks residual error to form the pooled error term. The ANOVA then partitions total variation into components attributable to <strong>Blocks</strong>, <strong>Factor A</strong> (Fertiliser dose), <strong>Factor B</strong> (Sowing method), and <strong>Pooled Error</strong>, and tests each main effect using the F-ratio of its mean square to the pooled error mean square (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>). A significant main effect indicates that the levels of that factor produce meaningfully different responses on average across all levels of the other factor and across all blocks.</p>
+<p>Once your dataset is uploaded, click on Run Analysis, and the <strong>Pooled 2F-RBD</strong> ANOVA will be performed. The analysis first evaluates the A×B interaction effect. If the interaction is non-significant, the interaction sum of squares and degrees of freedom are pooled with the within-blocks residual error to form the pooled error term. The ANOVA then partitions total variation into components attributable to <strong>Blocks</strong>, <strong>Factor A</strong> (Fertiliser dose), <strong>Factor B</strong> (Sowing method), and <strong>Pooled Error</strong>, and tests each main effect using the F-ratio of its mean square to the pooled error mean square, see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>. A significant main effect indicates that the levels of that factor produce meaningfully different responses on average across all levels of the other factor and across all blocks.</p>
 </div>
 <p><strong>Table 1 Pooled 2F-RBD ANOVA summary</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ANOVASummary_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Blocks, Factor A, Factor B, Interaction, and Pooled Error Mean Squares"><img src="www/PLACEHOLDER_ANOVASummary_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ANA%20RESULT-%20ANOVA%20SUMM%20TABLE.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Blocks, Factor A, Factor B, Interaction, and Pooled Error Mean Squares"><img src="www/ANA%20RESULT-%20ANOVA%20SUMM%20TABLE.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Blocks, Factor A, Factor B, Interaction, and Pooled Error Mean Squares
@@ -359,49 +359,49 @@ Figure&nbsp;7: Blocks, Factor A, Factor B, Interaction, and Pooled Error Mean Sq
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Pooled 2F-RBD ANOVA table </summary>
 <p><small> In a <strong>Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)</strong>, the ANOVA partitions total variation into the following sources of variation:</small></p><small>
-<p><strong>Blocks</strong> — variation due to differences among the <em>r</em> blocks used to control field heterogeneity, with degrees of freedom = <em>r</em> − 1. The block mean square is not tested against the pooled error in the standard analysis; its removal from the error term is the primary purpose of blocking.</p>
-<p><strong>Factor A</strong> — the main effect of the first factor (e.g., Fertiliser dose), with degrees of freedom = <em>a</em> − 1, where <em>a</em> is the number of levels of Factor A.</p>
-<p><strong>Factor B</strong> — the main effect of the second factor (e.g., Sowing method), with degrees of freedom = <em>b</em> − 1, where <em>b</em> is the number of levels of Factor B.</p>
-<p><strong>A×B Interaction</strong> — the joint effect of Factors A and B beyond their additive contributions, with degrees of freedom = (<em>a</em> − 1)(<em>b</em> − 1). When this term is non-significant, it is pooled into the residual error.</p>
-<p><strong>Pooled Error</strong> — the combined residual (within-blocks) error and (when non-significant) the interaction sum of squares. The pooled degrees of freedom = (<em>r</em> − 1)(<em>ab</em> − 1) − (<em>a</em> − 1)(<em>b</em> − 1) + (<em>a</em> − 1)(<em>b</em> − 1) = (<em>r</em> − 1)(<em>ab</em> − 1) before pooling, with the interaction df added upon pooling. In practice this equals (<em>ab</em> − 1)(<em>r</em> − 1) + (<em>a</em> − 1)(<em>b</em> − 1) after merging.</p>
+<p><strong>Blocks</strong> - variation due to differences among the <em>r</em> blocks used to control field heterogeneity, with degrees of freedom = <em>r</em> − 1. The block mean square is not tested against the pooled error in the standard analysis; its removal from the error term is the primary purpose of blocking.</p>
+<p><strong>Factor A</strong> - the main effect of the first factor (e.g., Fertiliser dose), with degrees of freedom = <em>a</em> − 1, where <em>a</em> is the number of levels of Factor A.</p>
+<p><strong>Factor B</strong> - the main effect of the second factor (e.g., Sowing method), with degrees of freedom = <em>b</em> − 1, where <em>b</em> is the number of levels of Factor B.</p>
+<p><strong>A×B Interaction</strong> - the joint effect of Factors A and B beyond their additive contributions, with degrees of freedom = (<em>a</em> − 1)(<em>b</em> − 1). When this term is non-significant, it is pooled into the residual error.</p>
+<p><strong>Pooled Error</strong> - the combined residual (within-blocks) error and (when non-significant) the interaction sum of squares. The pooled degrees of freedom = (<em>r</em> − 1)(<em>ab</em> − 1) − (<em>a</em> − 1)(<em>b</em> − 1) + (<em>a</em> − 1)(<em>b</em> − 1) = (<em>r</em> − 1)(<em>ab</em> − 1) before pooling, with the interaction df added upon pooling. In practice this equals (<em>ab</em> − 1)(<em>r</em> − 1) + (<em>a</em> − 1)(<em>b</em> − 1) after merging.</p>
 </small><p><small>Each mean square is obtained by dividing its sum of squares by its degrees of freedom. The F-statistic for each main effect is the ratio of its mean square to the pooled error mean square. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level. A significant F-test for a main effect confirms that the levels of that factor differ significantly in their effect on the response variable, averaged across all levels of the other factor and across all blocks. </small></p>
 </details>
 <section id="interpretation-from-fig-100" class="level3" data-number="7.1">
 <h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
 <div style="text-align: justify;">
-<p>In our hypothetical example with Factor A (Fertiliser dose, 3 levels), Factor B (Sowing method, 2 levels), and 4 blocks, the total degrees of freedom are 23. The A×B interaction mean square (approximately 52.30, 2 df) yields an F-ratio of approximately 1.31 (p &gt; 0.05), confirming non-significance and justifying pooling. After pooling, the pooled error mean square is 40.20 with 17 degrees of freedom (15 residual df + 2 interaction df). The Factor A mean square is 1,248.60 (2 df) with an F-ratio of approximately 31.06, significant at the 1% level, indicating that Fertiliser dose has a highly significant effect on grain yield. The Factor B mean square is 386.40 (1 df) with an F-ratio of approximately 9.61, significant at the 5% level, indicating that Sowing method also significantly influences grain yield. The Block mean square reflects the effectiveness of the blocking criterion in capturing field heterogeneity. Since the interaction is non-significant, the main effects can be interpreted independently. <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provides detailed information on the multiple comparison tests (Post-hoc tests) for comparing the levels of each factor.</p>
+<p>In our hypothetical example with Factor A (Fertiliser dose, 2 levels), Factor B (Sowing method, 2 levels), and 4 blocks, the total degrees of freedom are 15. The A×B interaction mean square (approximately 52.30, 1 df) yields an F-ratio of approximately 1.31 (<em>p</em> &gt; 0.05), confirming non-significance and justifying pooling. After pooling, the pooled error mean square is 40.20 with 9 degrees of freedom (8 residual df + 1 interaction df). The Factor A mean square is 1,248.60 (1 df) with an F-ratio of approximately 31.06, significant at the 1% level, indicating that Fertiliser dose has a highly significant effect on grain yield. The Factor B mean square is 386.40 (1 df) with an F-ratio of approximately 9.61, significant at the 5% level, indicating that Sowing method also significantly influences grain yield. The Block mean square reflects the effectiveness of the blocking criterion in capturing field heterogeneity. Since the interaction is non-significant, the main effects can be interpreted independently. <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provides detailed information on the multiple comparison tests (Post-hoc tests) for comparing the levels of each factor.</p>
 </div>
-<p><strong>Table 2: Factor A — Detailed tabular representation with multiple comparisons</strong></p>
+<p><strong>Table 2: Factor A - Detailed tabular representation with multiple comparisons</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_FactorA_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Tabular representation of Factor A"><img src="www/PLACEHOLDER_FactorA_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/a.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Tabular representation of Factor A"><img src="www/a.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Tabular representation of Factor A
 </figcaption>
 </figure>
 </div>
-<p><strong>Table 3: Factor B — Detailed tabular representation with multiple comparisons</strong></p>
+<p><strong>Table 3: Factor B - Detailed tabular representation with multiple comparisons</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/PLACEHOLDER_FactorB_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Tabular representation of Factor B"><img src="www/PLACEHOLDER_FactorB_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Tabular representation of Factor B"></a></p>
+<p><a href="www/b.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Tabular representation of Factor B"><img src="www/b.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Tabular representation of Factor B"></a></p>
 </figure>
 </div>
 <figcaption>Tabular representation of Factor B</figcaption>
 </figure>
 </div>
-<p><strong>Table 4: Factor A×B — Detailed tabular representation with multiple comparisons</strong></p>
+<p><strong>Table 4: Factor A×B - Detailed tabular representation with multiple comparisons</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/PLACEHOLDER_FactorAxB_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Tabular representation of Factor A×B interaction"><img src="www/PLACEHOLDER_FactorAxB_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Tabular representation of Factor A×B interaction"></a></p>
+<p><a href="www/a%20x%20b.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Tabular representation of Factor A×B interaction"><img src="www/a%20x%20b.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Tabular representation of Factor A×B interaction"></a></p>
 </figure>
 </div>
 <figcaption>Tabular representation of Factor A×B interaction</figcaption>
@@ -416,7 +416,7 @@ Figure&nbsp;8: Tabular representation of Factor A
 </ol>
 <p><strong>Factor A</strong>: The first independent variable (e.g., Fertiliser dose) being tested to determine its main effect on the response variable, averaged across all levels of Factor B and all blocks.</p>
 <p><strong>Factor B</strong>: The second independent variable (e.g., Sowing method) being tested to determine its main effect and its interaction with Factor A.</p>
-<p><strong>Response Variable</strong>: The dependent variable or specific measurement (e.g., grain yield in kg/ha) recorded to evaluate the performance of the treatment combinations.</p>
+<p><strong>Response Variable</strong>: The dependent variable or specific measurement recorded to evaluate the performance of the treatment combinations.</p>
 <ol start="2" type="1">
 <li><em>Multiple Comparisons</em></li>
 </ol>
@@ -439,7 +439,7 @@ Figure&nbsp;8: Tabular representation of Factor A
 <section id="interpretation-from-fig-101" class="level3" data-number="7.2">
 <h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;8</a></h3>
 <div style="text-align: justify;">
-<p>Treatment combination means and Factor-level means are grouped using letters such as <strong>“a”, “b”, “c”</strong> to indicate statistical similarity based on pairwise comparisons using the pooled error mean square. Overlapping grouping letters (e.g., <strong>ab</strong> or <strong>bc</strong>) indicate that the absolute difference between two means is less than the critical difference at the chosen significance level, implying statistical similarity <strong>(on par)</strong>. For example, among the three Fertiliser dose levels, if F<sub>3</sub> (120 kg N/ha) is labelled <strong>“a”</strong> and F<sub>1</sub> (60 kg N/ha) is labelled <strong>“c”</strong>, it indicates that F<sub>3</sub> produces a significantly higher grain yield than F<sub>1</sub>. For Sowing method, if S<sub>1</sub> (Line sowing) carries label <strong>“a”</strong> and S<sub>2</sub> (Broadcast sowing) carries label <strong>“b”</strong>, the two sowing methods differ significantly in their effect on yield. Since the interaction is non-significant, these main-effect comparisons are valid and interpretable independently of the other factor. The Cohen’s f values quantify the magnitude of each factor’s effect: values below 0.10 indicate a very small effect, below 0.25 a small effect, below 0.40 a medium effect, and values of 0.40 or higher a large effect.</p>
+<p>Treatment combination means and factor-level means are grouped using letters such as “<strong>a</strong>” and “<strong>b</strong>” to indicate statistical similarity based on pairwise comparisons using the pooled error mean square. Means sharing the same letter are considered statistically on par, while different letters indicate significant differences at the chosen significance level. For example, among the two fertiliser dose levels, if F2 (120 kg N/ha) is labelled “<strong>a</strong>” and F1 (60 kg N/ha) is labelled “<strong>b</strong>”, it indicates that F2 produces a significantly higher grain yield than F1. Similarly, for sowing method, if S1 (Line sowing) carries label “<strong>a</strong>” and S2 (Broadcast sowing) carries label “<strong>b</strong>”, the two sowing methods differ significantly in their effect on yield. Since the interaction is non-significant, these main-effect comparisons are valid and can be interpreted independently of the other factor. The Cohen’s <em>f</em> values quantify the magnitude of each factor’s effect: values below 0.10 indicate a very small effect, below 0.25 a small effect, below 0.40 a medium effect, and values of 0.40 or higher a large effect.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -480,13 +480,13 @@ Figure&nbsp;8: Tabular representation of Factor A
 </ul>
 </details>
 <div style="text-align: justify;">
-<p>After obtaining a significant F-value for a main effect in the <strong>Pooled 2F-RBD</strong>, multiple comparison tests are employed to identify which factor-level means differ significantly. The same post-hoc procedures used in one-way RBD analysis — LSD, Tukey’s HSD, and DMRT — are applied, but they use the <strong>pooled error mean square</strong> and the <strong>pooled error degrees of freedom</strong>, thereby benefiting from the increased precision associated with both blocking and pooling (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>).</p>
+<p>After obtaining a significant F-value for a main effect in the <strong>Pooled 2F-RBD</strong>, multiple comparison tests are employed to identify which factor-level means differ significantly. The same post-hoc procedures used in one-way RBD analysis - LSD, Tukey’s HSD, and DMRT - are applied, but they use the <strong>pooled error mean square</strong> and the <strong>pooled error degrees of freedom</strong>, thereby benefiting from the increased precision associated with both blocking and pooling, see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_MultipleComparison_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/PLACEHOLDER_MultipleComparison_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/2f%20rbd-poo%20mult%20compa.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/2f%20rbd-poo%20mult%20compa.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: Multiple comparison test options explained
@@ -518,14 +518,14 @@ Figure&nbsp;9: Multiple comparison test options explained
 <section id="SUM" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="SUM"><span class="header-section-number">9</span> Summary stats</h2>
 <div style="text-align: justify;">
-<p>If you need to know about the detailed values of the various statistical metrics for each treatment combination or factor level, move to <code>Summary stats</code> under the <code>Analysis</code>.</p>
+<p>If you need to know about the detailed values of the various statistical metrics for each treatment combination or factor level, move to Summary stats under the Analysis.</p>
 </div>
 <p><strong>Table 5: Summary statistics</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-102" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_SummaryStats_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;10: Summary statistics"><img src="www/PLACEHOLDER_SummaryStats_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/summaryb%20stat.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;10: Summary statistics"><img src="www/summaryb%20stat.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: Summary statistics
@@ -547,14 +547,14 @@ Figure&nbsp;10: Summary statistics
 <section id="interpretations-from-fig-102" class="level3" data-number="9.1">
 <h3 data-number="9.1" class="anchored" data-anchor-id="interpretations-from-fig-102"><span class="header-section-number">9.1</span> Interpretations from <a href="#fig-102" class="quarto-xref">Figure&nbsp;10</a></h3>
 <div style="text-align: justify;">
-<p>Among the six fertiliser-by-sowing treatment combinations, the combination F<sub>3</sub>S<sub>1</sub> (120 kg N/ha, Line sowing) records the highest mean grain yield (approximately 4,285 kg/ha) with a relatively modest CV of around 7.5%, indicating consistent performance across the four blocks. The lowest mean yield is observed for F<sub>1</sub>S<sub>2</sub> (60 kg N/ha, Broadcast sowing) at approximately 2,940 kg/ha. Looking at Factor A means, grain yield increases progressively from F<sub>1</sub> to F<sub>3</sub>, consistent with the significant main effect of Fertiliser dose detected in the ANOVA. For Factor B, S<sub>1</sub> (Line sowing) shows a higher mean yield than S<sub>2</sub> (Broadcast sowing) across all Fertiliser dose levels, consistent with the significant Sowing method main effect. The CV values across treatment combinations range from approximately 6.8% to 11.3%, indicating satisfactory experimental precision for a field study of this kind. Skewness values are close to zero for most combinations, and kurtosis values near 3 confirm approximate normality of the within-combination distributions across blocks, validating the ANOVA assumptions for this dataset.</p>
+<p>Among the four fertiliser-by-sowing treatment combinations, the combination F2S1 (120 kg N/ha, Line sowing) records the highest mean grain yield (approximately 4,285 kg/ha) with a relatively modest CV of around 7.5%, indicating consistent performance across the four blocks. The lowest mean yield is observed for F1S2 (60 kg N/ha, Broadcast sowing) at approximately 2,940 kg/ha. Looking at Factor A means, grain yield increases from F1 to F2, consistent with the significant main effect of Fertiliser dose detected in the ANOVA. For Factor B, S1 (Line sowing) shows a higher mean yield than S2 (Broadcast sowing) across both fertiliser dose levels, consistent with the significant Sowing method main effect. The CV values across treatment combinations range from approximately 6.8% to 11.3%, indicating satisfactory experimental precision for a field study of this kind. Skewness values are close to zero for most combinations, and kurtosis values near 3 confirm approximate normality of the within-combination distributions across blocks, validating the ANOVA assumptions for this dataset.</p>
 </div>
 </section>
 </section>
 <section id="IA" class="level2" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="IA"><span class="header-section-number">10</span> Individual ANOVA</h2>
 <div style="text-align: justify;">
-<p>If the user wants to get an individual pooled ANOVA table for each response variable, click on <code>Individual ANOVA</code> in the <code>Analysis</code>.</p>
+<p>If the user wants to get an individual pooled ANOVA table for each response variable, click on Individual ANOVA in the Analysis.</p>
 <p>The significance of Blocks, Factor A, Factor B, and the A×B interaction can be assessed using F-test and p value as in <a href="#fig-104" class="quarto-xref">Figure&nbsp;11</a>.</p>
 </div>
 <p><strong>Table 6: Pooled 2F-RBD ANOVA table for Yield</strong></p>
@@ -567,18 +567,6 @@ Figure&nbsp;10: Summary statistics
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: Pooled 2F-RBD ANOVA table for Yield
 </figcaption>
-</figure>
-</div>
-<p><strong>Table 7: Summary of ANOVA across all variables</strong></p>
-<!-- REPLACE THIS SCREENSHOT -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="www/PLACEHOLDER_IndividualANOVASummary_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Summary ANOVA across variables"><img src="www/PLACEHOLDER_IndividualANOVASummary_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Summary ANOVA across variables"></a></p>
-</figure>
-</div>
-<figcaption>Summary ANOVA across variables</figcaption>
 </figure>
 </div>
 <details>
@@ -601,7 +589,7 @@ Figure&nbsp;11: Pooled 2F-RBD ANOVA table for Yield
 <section id="BP" class="level2" data-number="11">
 <h2 data-number="11" class="anchored" data-anchor-id="BP"><span class="header-section-number">11</span> Basic plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to <strong>Pooled 2F-RBD</strong> is readily available. Simply click on the Basic Plots tab to view them, see <a href="#fig-8" class="quarto-xref">Figure&nbsp;12</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to <strong>Pooled 2F-RBD</strong> is readily available. Simply click on the Basic Plots tab to view them, see <a href="#fig-8" class="quarto-xref">Figure&nbsp;12</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
 </div>
 <section id="customizing-plots" class="level3" data-number="11.1">
 <h3 data-number="11.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">11.1</span> Customizing plots</h3>
@@ -612,7 +600,7 @@ Figure&nbsp;11: Pooled 2F-RBD ANOVA table for Yield
 <div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ar%20basic.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;12: Plot settings for customizing"><img src="www/ar%20basic.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ar%20basic.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;12: Plot settings for customizing"><img src="www/ar%20basic.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Plot settings for customizing
@@ -701,7 +689,7 @@ function hideDescription(id) {
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/box.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;13: Box plot"><img src="www/box.png" class="img-fluid figure-img"></a>
+<a href="www/box.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;13: Box plot"><img src="www/box.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: Box plot
@@ -710,7 +698,7 @@ Figure&nbsp;13: Box plot
 </div>
 <div id="boxplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>box plot</strong> compares the distribution of values across the treatment combinations of the Pooled 2F-RBD. Each coloured box represents a fertiliser-by-sowing combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings — treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>box plot</strong> compares the distribution of values across the treatment combinations of the Pooled 2F-RBD. Each coloured box represents a fertiliser-by-sowing combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings,treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -721,7 +709,7 @@ Figure&nbsp;13: Box plot
 <div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;14: Violin plot"><img src="www/violin.png" class="img-fluid figure-img"></a>
+<a href="www/violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;14: Violin plot"><img src="www/violin.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14: Violin plot
@@ -730,7 +718,7 @@ Figure&nbsp;14: Violin plot
 </div>
 <div id="violinplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>violin plot</strong> compares the distribution of values across the treatment combinations of the Pooled 2F-RBD. Each combination is shown as a violin shape that reflects how the data is spread — wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
+<p>A <strong>violin plot</strong> compares the distribution of values across the treatment combinations of the Pooled 2F-RBD. Each combination is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -741,7 +729,7 @@ Figure&nbsp;14: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/bar.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;15: Bar plot"><img src="www/bar.png" class="img-fluid figure-img"></a>
+<a href="www/bar.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;15: Bar plot"><img src="www/bar.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15: Bar plot
@@ -761,7 +749,7 @@ Figure&nbsp;15: Bar plot
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/mean.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;16: Mean Value Plot"><img src="www/mean.png" class="img-fluid figure-img"></a>
+<a href="www/mean.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;16: Mean Value Plot"><img src="www/mean.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: Mean Value Plot
@@ -782,7 +770,7 @@ Figure&nbsp;16: Mean Value Plot
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/connected.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;17: Connected line plot"><img src="www/connected.png" class="img-fluid figure-img"></a>
+<a href="www/connected.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;17: Connected line plot"><img src="www/connected.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: Connected line plot
@@ -803,7 +791,7 @@ Figure&nbsp;17: Connected line plot
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/ar%20corr.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Correlation plot"><img src="www/ar%20corr.png" class="img-fluid figure-img" alt="Correlation plot"></a></p>
+<p><a href="www/ar%20corr.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Correlation plot"><img src="www/ar%20corr.png" class="img-fluid figure-img" alt="Correlation plot"></a></p>
 <figcaption>Correlation plot</figcaption>
 </figure>
 </div>
@@ -821,13 +809,13 @@ Figure&nbsp;17: Connected line plot
 <section id="AP" class="level2" data-number="12">
 <h2 data-number="12" class="anchored" data-anchor-id="AP"><span class="header-section-number">12</span> Advanced plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. See <a href="#fig-90" class="quarto-xref">Figure&nbsp;18</a>.</p>
+<p><strong>RAISINS</strong> also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations, see <a href="#fig-90" class="quarto-xref">Figure&nbsp;18</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ar%20adv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;18: Advanced plots"><img src="www/ar%20adv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ar%20adv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;18: Advanced plots"><img src="www/ar%20adv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: Advanced plots
@@ -838,7 +826,7 @@ Figure&nbsp;18: Advanced plots
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/2f%20rbd%20-%20poo%20interaction%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Interaction plot"><img src="www/2f%20rbd%20-%20poo%20interaction%20plot.png" class="img-fluid figure-img" alt="Interaction plot"></a></p>
+<p><a href="www/2f%20rbd%20-%20poo%20interaction%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Interaction plot"><img src="www/2f%20rbd%20-%20poo%20interaction%20plot.png" class="img-fluid figure-img" alt="Interaction plot"></a></p>
 <figcaption>Interaction plot</figcaption>
 </figure>
 </div>
@@ -851,7 +839,7 @@ Figure&nbsp;18: Advanced plots
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/3d%20scatter.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="3D scatter plot"><img src="www/3d%20scatter.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="3D scatter plot"></a></p>
+<p><a href="www/3d%20scatter.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="3D scatter plot"><img src="www/3d%20scatter.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="3D scatter plot"></a></p>
 </figure>
 </div>
 <figcaption>3D scatter plot</figcaption>
@@ -864,7 +852,7 @@ Figure&nbsp;18: Advanced plots
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/scatter%20with%20line%20(1).gif" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="3D scatter plot with line"><img src="www/scatter%20with%20line%20(1).gif" class="img-fluid figure-img" alt="3D scatter plot with line"></a></p>
+<p><a href="www/scatter%20with%20line%20(1).gif" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="3D scatter plot with line"><img src="www/scatter%20with%20line%20(1).gif" class="img-fluid figure-img" alt="3D scatter plot with line"></a></p>
 <figcaption>3D scatter plot with line</figcaption>
 </figure>
 </div>
@@ -881,7 +869,7 @@ Figure&nbsp;18: Advanced plots
 <div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ai%20inter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;19: AI powered RAISINS Assistant to interpret your results"><img src="www/ai%20inter.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ai%20inter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;19: AI powered RAISINS Assistant to interpret your results"><img src="www/ai%20inter.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19: AI powered RAISINS Assistant to interpret your results
@@ -892,13 +880,13 @@ Figure&nbsp;19: AI powered RAISINS Assistant to interpret your results
 <section id="MUL" class="level2" data-number="14">
 <h2 data-number="14" class="anchored" data-anchor-id="MUL"><span class="header-section-number">14</span> Multivariate</h2>
 <div style="text-align: justify;">
-<p>Multivariate analysis in <strong>Pooled 2F-RBD</strong> helps you to compare different response variables simultaneously across all treatment combinations using the factorial blocked dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example of evaluating the effect of Fertiliser dose (F<sub>1</sub>, F<sub>2</sub>, F<sub>3</sub>) and Sowing method (S<sub>1</sub>, S<sub>2</sub>) on wheat grain quality traits Yield, Obs1, Obs2, and FW navigate to Multivariate, see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;20</a>.</p>
+<p>Multivariate analysis in <strong>Pooled 2F-RBD</strong> helps you to compare different response variables simultaneously across all treatment combinations using the factorial blocked dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example of evaluating the effect of Fertiliser dose (F<sub>1</sub>, F<sub>2</sub>) and Sowing method (S<sub>1</sub>, S<sub>2</sub>) on wheat grain quality traits Char1, Char2, Char3, Char4, Char5, and Char6 navigate to Multivariate, see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;20</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ar%20multi.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;20: Multivariate tab in RAISINS"><img src="www/ar%20multi.png" class="img-fluid figure-img"></a>
+<a href="www/ar%20multi.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;20: Multivariate tab in RAISINS"><img src="www/ar%20multi.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20: Multivariate tab in RAISINS
@@ -912,7 +900,7 @@ Figure&nbsp;20: Multivariate tab in RAISINS
 <div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ar%20pca%20index%20score.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;21: PCA-based Index Score"><img src="www/ar%20pca%20index%20score.png" class="img-fluid figure-img"></a>
+<a href="www/ar%20pca%20index%20score.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;21: PCA-based Index Score"><img src="www/ar%20pca%20index%20score.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21: PCA-based Index Score
@@ -926,7 +914,7 @@ Figure&nbsp;21: PCA-based Index Score
 <div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ar%20scree.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;22: Scree plot"><img src="www/ar%20scree.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ar%20scree.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;22: Scree plot"><img src="www/ar%20scree.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22: Scree plot
@@ -934,13 +922,13 @@ Figure&nbsp;22: Scree plot
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;23</a> and decide which PC-based index needs to be selected. In PC1, Yield and Obs1 (grains per spike) show high positive loadings (approximately +0.63 and +0.57 respectively), while FW (1000-grain weight) also loads positively (+0.44) on PC1, indicating that treatment combinations with high scores on PC1 are superior in both grain yield and grain number. Obs2 (spike length) loads more prominently on PC2 (+0.69), suggesting it captures a relatively independent dimension of variation in response to the fertiliser-sowing combination. Based on this pattern, a PC1-based index score is most informative for identifying fertiliser-by-sowing combinations that maximise grain yield and grain filling performance simultaneously. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+<p>Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. In PC1, Char1 and Char2 show high positive loadings (approximately +0.63 and +0.57 respectively), while Char3 also loads positively (+0.44) on PC1, indicating that treatment combinations with high scores on PC1 are superior for these important characters simultaneously. Char2 loads more prominently on PC2 (+0.69), suggesting that it captures a relatively independent dimension of variation in response to the fertiliser–sowing treatment combinations. Based on this pattern, a PC1-based index score is the most informative for identifying treatment combinations with overall superior performance across the major correlated characters. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/loadings.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;23: Loadings of each variable"><img src="www/loadings.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/loadings.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;23: Loadings of each variable"><img src="www/loadings.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23: Loadings of each variable
@@ -948,12 +936,12 @@ Figure&nbsp;23: Loadings of each variable
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The biplot gives a visual representation of the relationships among the fertiliser-by-sowing treatment combinations and the measured response variables. Treatment combinations positioned in the direction of a variable vector tend to exhibit higher values for that particular trait. The angle between variables in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. Combinations such as F<sub>3</sub>S<sub>1</sub> and F<sub>3</sub>S<sub>2</sub> are typically positioned toward the positive PC1 direction, reflecting their overall superiority in yield-related traits, while combinations involving F<sub>1</sub> are positioned toward the negative PC1 direction, consistent with their lower yields under minimal nitrogen application.</p>
+<p>The biplot gives a visual representation of the relationships among the fertiliser-by-sowing treatment combinations and the measured response variables. Treatment combinations positioned in the direction of a variable vector tend to exhibit higher values for that particular trait. The angle between variables in the biplot indicates their correlation; smaller angles suggest high positive correlation, while angles close to 90° suggest weak or no correlation. Combinations such as F2S1 and F2S2 are typically positioned toward the positive PC1 direction, reflecting their overall superiority in yield-related traits, while combinations involving F1 are positioned toward the negative PC1 direction, consistent with their comparatively lower yields under lower nitrogen application.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/ar%20bioplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="PCA-Biplot"><img src="www/ar%20bioplot.png" class="img-fluid figure-img" alt="PCA-Biplot"></a></p>
+<p><a href="www/ar%20bioplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="PCA-Biplot"><img src="www/ar%20bioplot.png" class="img-fluid figure-img" alt="PCA-Biplot"></a></p>
 <figcaption>PCA-Biplot</figcaption>
 </figure>
 </div>
@@ -964,7 +952,7 @@ Figure&nbsp;23: Loadings of each variable
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ar%20index%20score.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;24: Index score"><img src="www/ar%20index%20score.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ar%20index%20score.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;24: Index score"><img src="www/ar%20index%20score.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;24: Index score
@@ -975,7 +963,7 @@ Figure&nbsp;24: Index score
 <div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ar%20index%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;25: Indexplot"><img src="www/ar%20index%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ar%20index%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;25: Indexplot"><img src="www/ar%20index%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;25: Indexplot
@@ -989,7 +977,7 @@ Figure&nbsp;25: Indexplot
 <section id="PRE" class="level2" data-number="15">
 <h2 data-number="15" class="anchored" data-anchor-id="PRE"><span class="header-section-number">15</span> Preparing your data</h2>
 <div style="text-align: justify;">
-<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won’t be trustworthy.”</p>
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
 <ol type="1">
 <li><p>Create your dataset in MS Excel</p></li>
 <li><p>Build your dataset directly within the RAISINS app</p></li>
@@ -999,13 +987,13 @@ Figure&nbsp;25: Indexplot
 <section id="EX" class="level2" data-number="16">
 <h2 data-number="16" class="anchored" data-anchor-id="EX"><span class="header-section-number">16</span> Preparing data in MS Excel</h2>
 <div style="text-align: justify;">
-<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for <strong>Pooled 2F-RBD</strong> must follow a column-based format with at least four structural columns: a <strong>Block</strong> column (identifying the block number for each observation, e.g., 1, 2, 3, 4), a <strong>Factor A</strong> column (identifying the level of the first factor, e.g., Fertiliser dose for each observation), a <strong>Factor B</strong> column (identifying the level of the second factor, e.g., Sowing method for each observation), and one or more columns for the response variables <strong>Yield, Obs1, Obs2, FW</strong>. Each row represents one experimental plot, and the repeated appearances of each factor-level combination across blocks represent the block replications. Ensure that every treatment combination appears exactly <em>r</em> times (4 times in our example, once per block), and that the order of rows need not be sorted — <strong>RAISINS</strong> identifies the combinations from the Block, Factor A, and Factor B column entries automatically. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;26</a>. The data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;27</a>.</p>
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for <strong>Pooled 2F-RBD</strong> must follow a column-based format with at least four structural columns: a Block column (identifying the block number for each observation, e.g., 1, 2, 3, 4), a <strong>Factor A</strong> column (identifying the level of the first factor, e.g., Fertiliser dose for each observation), a <strong>Factor B</strong> column (identifying the level of the second factor, e.g., Sowing method for each observation), and one or more columns for the response variables such as <strong>Char1, Char2, Char3, Char4, Char5, and Char6</strong>. Each row represents one experimental plot, and the repeated appearances of each factor-level combination across blocks represent the block replications. Ensure that every treatment combination appears exactly <em>r</em> times (4 times in our example, once per block), and that the order of rows need not be sorted — RAISINS identifies the combinations automatically from the Block, Factor A, and Factor B column entries. Since the experiment contains two levels each for Factor A (F1 and F2) and Factor B (S1 and S2), there will be four treatment combinations in total: F1S1, F1S2, F2S1, and F2S2. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;26</a>. The data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;27</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/M1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;26: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/M1.png" class="img-fluid figure-img"></a>
+<a href="www/M1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;26: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/M1.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;26: Model-1: showing how the prepared Excel file for upload should look like
@@ -1016,7 +1004,7 @@ Figure&nbsp;26: Model-1: showing how the prepared Excel file for upload should l
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/m2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;27: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/m2.png" class="img-fluid figure-img"></a>
+<a href="www/m2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;27: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/m2.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;27: Model-2: Showing how the prepared Excel file for upload should look like
@@ -1028,10 +1016,18 @@ Figure&nbsp;27: Model-2: Showing how the prepared Excel file for upload should l
 Dataset Creation Rules
 </summary>
 <p><small> 1. <strong>Column Naming Convention</strong> - No spaces allowed in column names.<br>
-- Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %,# etc 2. <strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
-- Ensure the row above the data is not blank. 3. <strong>Cell Management</strong> - Avoid typing or deleting in cells without data.<br>
-- If needed, select affected cells, right-click, and select <strong>Clear Contents</strong>. 4. <strong>Column Relevance</strong> - Name all columns meaningfully.<br>
-- Exclude unnecessary columns not required for analysis. </small></p>
+- Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %,# etc</small></p><small>
+<ol start="2" type="1">
+<li><strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
+</li>
+</ol>
+</small><ul><small>
+<li>Ensure the row above the data is not blank. 3. <strong>Cell Management</strong> - Avoid typing or deleting in cells without data.<br>
+</li>
+<li>If needed, select affected cells, right-click, and select <strong>Clear Contents</strong>. 4. <strong>Column Relevance</strong> - Name all columns meaningfully.<br>
+</li>
+</small><li><small>Exclude unnecessary columns not required for analysis. </small></li>
+</ul>
 </details>
 <details>
 <summary>
@@ -1069,7 +1065,7 @@ How to Save as CSV in MS Excel
 <section id="CR" class="level2" data-number="17">
 <h2 data-number="17" class="anchored" data-anchor-id="CR"><span class="header-section-number">17</span> Creating dataset in RAISINS</h2>
 <div style="text-align: justify;">
-<p>If you’re unsure about the correct format for creating a dataset, don’t worry — RAISINS offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
+<p>If you’re unsure about the correct format for creating a dataset, don’t worry RAISINS offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
 <ul>
 <li><p>Navigate to the <strong>Create Data Tab</strong></p></li>
 <li><p>Select the number of <strong>Treatments</strong></p></li>
@@ -1077,12 +1073,12 @@ How to Save as CSV in MS Excel
 <li><p>Select number of <strong>Characters</strong></p></li>
 <li><p>Click on <strong>Create</strong> button</p></li>
 </ul>
-<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;28</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in <code>Analysis</code>.</p>
+<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;28</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.</p>
 </div>
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/2f%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;28: Creating dataset within RAISINS"><img src="www/2f%20csv.png" class="img-fluid figure-img"></a>
+<a href="www/2f%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;28: Creating dataset within RAISINS"><img src="www/2f%20csv.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;28: Creating dataset within RAISINS
@@ -1093,12 +1089,12 @@ Figure&nbsp;28: Creating dataset within RAISINS
 <section id="M" class="level2" data-number="18">
 <h2 data-number="18" class="anchored" data-anchor-id="M"><span class="header-section-number">18</span> Model datasets</h2>
 <div style="text-align: justify;">
-<p>To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the <code>Datasets</code>.</p>
+<p>To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the Datasets.</p>
 </div>
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/model.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;29: Model dataset"><img src="www/model.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/model.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;29: Model dataset"><img src="www/model.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;29: Model dataset
@@ -1114,7 +1110,7 @@ Figure&nbsp;29: Model dataset
 <div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ar%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;30: FAQs"><img src="www/ar%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ar%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;30: FAQs"><img src="www/ar%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;30: FAQs
@@ -1131,7 +1127,7 @@ Figure&nbsp;30: FAQs
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/ar%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="View data"><img src="www/ar%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+<p><a href="www/ar%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="View data"><img src="www/ar%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
 </figure>
 </div>
 <figcaption>View data</figcaption>

@@ -38,7 +38,7 @@ format:
 ABSTRACT
 
 ::: {style="text-align: justify;"}
-**Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)** is a factorial experimental design that combines the error-control advantages of randomised blocking with a two-factor treatment structure, enabling researchers to simultaneously examine the main effects of two factors and their interaction while eliminating the influence of a known source of variation through grouping of experimental units into homogeneous blocks. **Pooled 2F-RBD** partitions total variation into components attributable to Blocks, Factor A, Factor B, the A×B interaction, and the pooled error — where the interaction sum of squares is pooled with the block-by-treatment residual when the interaction is non-significant — thereby increasing the precision and power of main-effect tests in field and greenhouse experiments. In **RAISINS** you can perform **Pooled 2F-RBD** very easily without writing a single line of code. This tutorial will guide you, how to perform **Pooled 2F-RBD** very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+**Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)** is a factorial experimental design that combines the error-control advantages of randomised blocking with a two-factor treatment structure, enabling researchers to simultaneously examine the main effects of two factors and their interaction while eliminating the influence of a known source of variation through grouping of experimental units into homogeneous blocks. **Pooled 2F-RBD** partitions total variation into components attributable to Blocks, Factor A, Factor B, the A×B interaction, and the pooled error where the interaction sum of squares is pooled with the block-by-treatment residual when the interaction is non-significant thereby increasing the precision and power of main-effect tests in field and greenhouse experiments. In **RAISINS** you can perform **Pooled 2F-RBD** very easily without writing a single line of code. This tutorial will guide you, how to perform **Pooled 2F-RBD** very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including PCA.
 :::
 
 <details>
@@ -86,7 +86,7 @@ ABSTRACT
 </style>
 ```
 
-<ul><small> The theoretical foundation of the Randomised Block Design was laid by **Sir [Ronald A. Fisher]{.hover-img}** during his pioneering work at Rothamsted Experimental Station in the 1920s. Fisher recognised that in field experiments, soil fertility, moisture, and other environmental gradients introduce systematic variation that inflates experimental error and reduces the power of F-tests. By grouping experimental units into homogeneous blocks — each block containing one unit per treatment — he demonstrated that block-to-block variation could be removed from the error term, yielding a more sensitive and unbiased comparison of treatments. The extension of this principle to factorial treatment structures, in which two or more factors are studied simultaneously at all combinations of their levels, followed naturally from Fisher's broader advocacy of factorial experimentation articulated in his 1935 monograph *The Design of Experiments*. The two-factor RBD became the workhorse of field crop and horticultural research through the mid-twentieth century, valued both for its error-control efficiency and for its ability to reveal interaction effects between factors. The pooled variant of this design, in which the non-significant A×B interaction sum of squares is merged into the residual error, was formalised as computational experience accumulated showing that when the true interaction is negligible, pooling increases the degrees of freedom available for error estimation and thereby produces more powerful F-tests for the main effects of Factor A and Factor B. Today, the **Pooled 2F-RBD** is a standard analytical framework in agronomy, plant breeding, soil science, and allied biological disciplines wherever field heterogeneity warrants blocking and two factors are of simultaneous scientific interest. </small></ul>
+<ul><small> The theoretical foundation of the Randomised Block Design was laid by **Sir Ronald A. Fisher** during his pioneering work at Rothamsted Experimental Station in the 1920s. Fisher recognised that in field experiments, soil fertility, moisture, and other environmental gradients introduce systematic variation that inflates experimental error and reduces the power of F-tests. By grouping experimental units into homogeneous blocks each block containing one unit per treatment he demonstrated that block-to-block variation could be removed from the error term, yielding a more sensitive and unbiased comparison of treatments. The extension of this principle to factorial treatment structures, in which two or more factors are studied simultaneously at all combinations of their levels, followed naturally from Fisher's broader advocacy of factorial experimentation articulated in his 1935 monograph *The Design of Experiments*. The two-factor RBD became the workhorse of field crop and horticultural research through the mid-twentieth century, valued both for its error-control efficiency and for its ability to reveal interaction effects between factors. The pooled variant of this design, in which the non-significant A×B interaction sum of squares is merged into the residual error, was formalised as computational experience accumulated showing that when the true interaction is negligible, pooling increases the degrees of freedom available for error estimation and thereby produces more powerful F-tests for the main effects of Factor A and Factor B. Today, the **Pooled 2F-RBD** is a standard analytical framework in agronomy, plant breeding, soil science, and allied biological disciplines wherever field heterogeneity warrants blocking and two factors are of simultaneous scientific interest. </small></ul>
 
 </details>
 
@@ -103,7 +103,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 ## Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD) {#C}
 
 ::: {style="text-align: justify;"}
-**Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)** is a factorial experimental design in which two factors — each at two or more levels — are studied across all possible level combinations, and the resulting treatment combinations are assigned to experimental units arranged in homogeneous blocks, with each block containing exactly one unit for every treatment combination. The "randomised block" feature ensures that any systematic variation present in the experimental material — such as a soil fertility gradient across a field, a light gradient in a greenhouse, or batch effects in a laboratory — is absorbed into the block sum of squares and removed from the error term, thereby increasing the sensitivity of the F-tests for the factorial effects. The design is termed "pooled" because, when the A×B interaction is found to be statistically non-significant, the interaction sum of squares and its associated degrees of freedom are merged with the residual (within-blocks) error to form a pooled error term, providing more degrees of freedom for error estimation and further strengthening the main-effect tests. The ANOVA for a **Pooled 2F-RBD** partitions total variation into five components: **Blocks** (variation due to differences among blocks), **Factor A** (main effect of the first factor), **Factor B** (main effect of the second factor), **A×B Interaction** (joint effect beyond additive main effects), and **Pooled Error** (residual variation after pooling when interaction is non-significant). This design is most appropriate when experimental units can be grouped into blocks that are internally more homogeneous than the experiment as a whole, and it is preferred over the **Pooled 2F-CRD** whenever a meaningful source of nuisance variation can be identified and used as a blocking criterion. When no such gradient exists, the Pooled 2F-CRD is the simpler and equally valid alternative.
+**Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)** is a factorial experimental design in which two factors each at two or more levels are studied across all possible level combinations, and the resulting treatment combinations are assigned to experimental units arranged in homogeneous blocks, with each block containing exactly one unit for every treatment combination. The "randomised block" feature ensures that any systematic variation present in the experimental material such as a soil fertility gradient across a field, a light gradient in a greenhouse, or batch effects in a laboratory is absorbed into the block sum of squares and removed from the error term, thereby increasing the sensitivity of the F-tests for the factorial effects. The design is termed "pooled" because, when the A×B interaction is found to be statistically non-significant, the interaction sum of squares and its associated degrees of freedom are merged with the residual (within-blocks) error to form a pooled error term, providing more degrees of freedom for error estimation and further strengthening the main-effect tests. The ANOVA for a **Pooled 2F-RBD** partitions total variation into five components: **Blocks** (variation due to differences among blocks), **Factor A** (main effect of the first factor), **Factor B** (main effect of the second factor), **A×B Interaction** (joint effect beyond additive main effects), and **Pooled Error** (residual variation after pooling when interaction is non-significant). This design is most appropriate when experimental units can be grouped into blocks that are internally more homogeneous than the experiment as a whole, and it is preferred over the **Pooled 2F-CRD** whenever a meaningful source of nuisance variation can be identified and used as a blocking criterion. When no such gradient exists, the Pooled 2F-CRD is the simpler and equally valid alternative.
 :::
 
 <details>
@@ -118,11 +118,11 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <small>
 
-@fig-lay visually represents a **Pooled 2F-RBD** arrangement with two factors — Factor A at *a* levels and Factor B at *b* levels — forming a total of *a* × *b* treatment combinations, each appearing exactly once within each of *r* blocks. The *a* × *b* × *r* experimental units are organised so that each block constitutes one complete replication of all treatment combinations, and within each block the combinations are assigned entirely at random to the available units. In the pooled version, when the A×B interaction F-test is non-significant, the interaction sum of squares ((*a* − 1)(*b* − 1) df) is pooled with the residual error ((*ab* − 1)(*r* − 1) df less the interaction df) to yield a single pooled error term with more degrees of freedom, which is then used for all F-tests on main effects and for computing critical differences in post-hoc comparisons.
+@fig-lay visually represents a **Pooled 2F-RBD** arrangement with two factors Factor A at *a* levels and Factor B at *b* levels forming a total of *a* × *b* treatment combinations, each appearing exactly once within each of *r* blocks. The *a* × *b* × *r* experimental units are organised so that each block constitutes one complete replication of all treatment combinations, and within each block the combinations are assigned entirely at random to the available units. In the pooled version, when the A×B interaction F-test is non-significant, the interaction sum of squares ((*a* − 1)(*b* − 1) df) is pooled with the residual error ((*ab* − 1)(*r* − 1) df less the interaction df) to yield a single pooled error term with more degrees of freedom, which is then used for all F-tests on main effects and for computing critical differences in post-hoc comparisons.
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Pooled 2F-RBD Layout](www/PLACEHOLDER_Layout_2FRBD.webp){#fig-lay fig-align="center"}
+![Pooled 2F-RBD Layout](www/pooled 2f rbd layout.png){#fig-lay fig-align="center"}
 
 </small>
 
@@ -137,21 +137,21 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we'll explain **Pooled 2F-RBD** analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment conducted to evaluate the effect of **two factors on wheat grain yield and quality**: **Factor A — Fertiliser dose** at 3 levels (F~1~: 60 kg N/ha, F~2~: 90 kg N/ha, F~3~: 120 kg N/ha) and **Factor B — Sowing method** at 2 levels (S~1~: Line sowing, S~2~: Broadcast sowing), resulting in 3 × 2 = **6 treatment combinations** (F~1~S~1~, F~1~S~2~, F~2~S~1~, F~2~S~2~, F~3~S~1~, F~3~S~2~). The experiment is laid out in **4 blocks**, each block representing a strip of the field with relatively uniform soil fertility, giving a total of 6 × 4 = **24 experimental plots**, with all 6 treatment combinations randomised independently within each block. The response variables recorded were: **Yield** (grain yield in kg/ha), **Obs1** (number of grains per spike), **Obs2** (spike length in cm), and **FW** (1000-grain weight in g). Our aim is to test whether Fertiliser dose, Sowing method, and their interaction produce statistically significant differences in the response variables using ANOVA under **Pooled 2F-RBD**. The arrangement of the data is shown in @fig-data.
+To make things simple and interesting, we'll explain **Pooled 2F-RBD** analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment conducted to evaluate the effect of **two factors on wheat grain yield and quality**: **Factor A - Fertiliser dose** at 2 levels (F~1~: 60 kg N/ha, F~2~: 120 kg N/ha) and **Factor B - Sowing method** at 2 levels (S~1~: Line sowing, S~2~: Broadcast sowing), resulting in 2 × 2 = **4 treatment combinations** (F~1~S~1~, F~1~S~2~, F~2~S~1~, F~2~S~2~). The experiment is laid out in **4 blocks**, each block representing a strip of the field with relatively uniform soil fertility, giving a total of 4 × 4 = **16 experimental plots**, with all 4 treatment combinations randomised independently within each block. The response variables recorded were: Char1, Char2, Char3, Char4, Char5, and Char6, with each row representing a unique treatment combination of factorA, factorB. Our aim is to test whether Fertiliser dose, Sowing method, and their interaction produce statistically significant differences in the response variables using ANOVA under **Pooled 2F-RBD**. The arrangement of the data is shown in @fig-data.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Example dataset](www/PLACEHOLDER_ExampleDataset_2FRBD.webp){#fig-data fig-align="center"}
+![Example dataset](www/prbd%20work.png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organised in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the 6 fertiliser-by-sowing combinations (F~1~S~1~ through F~3~S~2~), and the Variables are the 4 traits mentioned earlier — **Yield, Obs1, Obs2, FW**.
+Data organised in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the 4 fertiliser-by-sowing combinations, and the Variables are the 6 traits mentioned earlier **Char1, Char2, Char3, Char4, Char5, and Char6**.
 :::
 
 ## How to prepare your data? {#sec-4 .H}
 
 ::: {style="text-align: justify;"}
-Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. The file must contain a column identifying the **Block** (replication), a column identifying **Factor A** (Fertiliser dose), a column identifying **Factor B** (Sowing method), and separate columns for each response variable. In **Pooled 2F-RBD**, the Block column distinguishes the complete replications from one another — each block number appears exactly *a* × *b* times in the dataset, once for each treatment combination. Make sure no blank rows are left above, and all columns have proper names. That's it — your file is ready to upload.
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. The file must contain a column identifying the **Block** (replication), a column identifying **Factor A** (Fertiliser dose), a column identifying **Factor B** (Sowing method), and separate columns for each response variable. In **Pooled 2F-RBD**, the Block column distinguishes the complete replications from one another each block number appears exactly *a* × *b* times in the dataset, once for each treatment combination. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
 
 Still if you have doubt, see @fig-4.
 
@@ -167,12 +167,12 @@ Creating your dataset directly within the **RAISINS** app
 ## Pooled 2F-RBD analysis tab explained {#AO}
 
 ::: {style="text-align: justify;"}
-In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the **Block** column, the **Factor A** column, the **Factor B** column, and the **response variables** will appear. Select the appropriate columns under each field. Once you click the `Run Analysis` button, **Pooled 2F-RBD** is performed and all relevant results and outputs appear instantly, including the pooling decision for the interaction, the pooled ANOVA table, main-effect and interaction F-tests, and treatment combination means with post-hoc groupings.
+In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Block** column, the **Factor A** column, the **Factor B** column, and the **response variables** will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, **Pooled 2F-RBD** is performed and all relevant results and outputs appear instantly, including the pooling decision for the interaction, the pooled ANOVA table, main-effect and interaction F-tests, and treatment combination means with post-hoc groupings.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis window explained](www/2f%20rbs%20-%20poo%20ana%20tab%20explaines.png){#fig-5 fig-align="center"}
+![Analysis window explained](www/analy%20exp.png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset, @sec-6. Here, **RAISINS** provides an inbuilt transformation option.
@@ -184,7 +184,7 @@ For some data, when there are a large number of zeros, discrete values, or when 
 Log, square root, and arcsine transformations are often used in **Pooled 2F-RBD** analysis to make data more normal and to stabilize variance before the factorial ANOVA is carried out. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
 :::
 
-![Transformation options](www/2f%20rbd-poo%20transfr.png){#fig-6 fig-align="center"}
+![Transformation options](www/2f%20rbd%20pooled%20transformn.png){#fig-6 fig-align="center"}
 
 ::: {style="text-align: justify;"}
 **Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
@@ -199,14 +199,14 @@ Log, square root, and arcsine transformations are often used in **Pooled 2F-RBD*
 ## Analysis results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded, click on `Run Analysis`, and the **Pooled 2F-RBD** ANOVA will be performed. The analysis first evaluates the A×B interaction effect. If the interaction is non-significant, the interaction sum of squares and degrees of freedom are pooled with the within-blocks residual error to form the pooled error term. The ANOVA then partitions total variation into components attributable to **Blocks**, **Factor A** (Fertiliser dose), **Factor B** (Sowing method), and **Pooled Error**, and tests each main effect using the F-ratio of its mean square to the pooled error mean square (see @fig-100). A significant main effect indicates that the levels of that factor produce meaningfully different responses on average across all levels of the other factor and across all blocks.
+Once your dataset is uploaded, click on Run Analysis, and the **Pooled 2F-RBD** ANOVA will be performed. The analysis first evaluates the A×B interaction effect. If the interaction is non-significant, the interaction sum of squares and degrees of freedom are pooled with the within-blocks residual error to form the pooled error term. The ANOVA then partitions total variation into components attributable to **Blocks**, **Factor A** (Fertiliser dose), **Factor B** (Sowing method), and **Pooled Error**, and tests each main effect using the F-ratio of its mean square to the pooled error mean square, see @fig-100. A significant main effect indicates that the levels of that factor produce meaningfully different responses on average across all levels of the other factor and across all blocks.
 :::
 
 **Table 1 Pooled 2F-RBD ANOVA summary**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Blocks, Factor A, Factor B, Interaction, and Pooled Error Mean Squares](www/PLACEHOLDER_ANOVASummary_2FRBD.webp){#fig-100 fig-align="center"}
+![Blocks, Factor A, Factor B, Interaction, and Pooled Error Mean Squares](www/ANA%20RESULT-%20ANOVA%20SUMM%20TABLE.png){#fig-100 fig-align="center"}
 
 <details>
 
@@ -216,15 +216,15 @@ Once your dataset is uploaded, click on `Run Analysis`, and the **Pooled 2F-RBD*
 
 <small> In a **Pooled Two-Factor Randomised Block Design (Pooled 2F-RBD)**, the ANOVA partitions total variation into the following sources of variation:
 
-**Blocks** — variation due to differences among the *r* blocks used to control field heterogeneity, with degrees of freedom = *r* − 1. The block mean square is not tested against the pooled error in the standard analysis; its removal from the error term is the primary purpose of blocking.
+**Blocks** - variation due to differences among the *r* blocks used to control field heterogeneity, with degrees of freedom = *r* − 1. The block mean square is not tested against the pooled error in the standard analysis; its removal from the error term is the primary purpose of blocking.
 
-**Factor A** — the main effect of the first factor (e.g., Fertiliser dose), with degrees of freedom = *a* − 1, where *a* is the number of levels of Factor A.
+**Factor A** - the main effect of the first factor (e.g., Fertiliser dose), with degrees of freedom = *a* − 1, where *a* is the number of levels of Factor A.
 
-**Factor B** — the main effect of the second factor (e.g., Sowing method), with degrees of freedom = *b* − 1, where *b* is the number of levels of Factor B.
+**Factor B** - the main effect of the second factor (e.g., Sowing method), with degrees of freedom = *b* − 1, where *b* is the number of levels of Factor B.
 
-**A×B Interaction** — the joint effect of Factors A and B beyond their additive contributions, with degrees of freedom = (*a* − 1)(*b* − 1). When this term is non-significant, it is pooled into the residual error.
+**A×B Interaction** - the joint effect of Factors A and B beyond their additive contributions, with degrees of freedom = (*a* − 1)(*b* − 1). When this term is non-significant, it is pooled into the residual error.
 
-**Pooled Error** — the combined residual (within-blocks) error and (when non-significant) the interaction sum of squares. The pooled degrees of freedom = (*r* − 1)(*ab* − 1) − (*a* − 1)(*b* − 1) + (*a* − 1)(*b* − 1) = (*r* − 1)(*ab* − 1) before pooling, with the interaction df added upon pooling. In practice this equals (*ab* − 1)(*r* − 1) + (*a* − 1)(*b* − 1) after merging.
+**Pooled Error** - the combined residual (within-blocks) error and (when non-significant) the interaction sum of squares. The pooled degrees of freedom = (*r* − 1)(*ab* − 1) − (*a* − 1)(*b* − 1) + (*a* − 1)(*b* − 1) = (*r* − 1)(*ab* − 1) before pooling, with the interaction df added upon pooling. In practice this equals (*ab* − 1)(*r* − 1) + (*a* − 1)(*b* − 1) after merging.
 
 Each mean square is obtained by dividing its sum of squares by its degrees of freedom. The F-statistic for each main effect is the ratio of its mean square to the pooled error mean square. Significance is indicated by an asterisk (\*) for the **5%** level and two asterisks (\*\*) for the **1%** level. A significant F-test for a main effect confirms that the levels of that factor differ significantly in their effect on the response variable, averaged across all levels of the other factor and across all blocks. </small>
 
@@ -233,26 +233,26 @@ Each mean square is obtained by dividing its sum of squares by its degrees of fr
 ### Interpretation from @fig-100
 
 ::: {style="text-align: justify;"}
-In our hypothetical example with Factor A (Fertiliser dose, 3 levels), Factor B (Sowing method, 2 levels), and 4 blocks, the total degrees of freedom are 23. The A×B interaction mean square (approximately 52.30, 2 df) yields an F-ratio of approximately 1.31 (p \> 0.05), confirming non-significance and justifying pooling. After pooling, the pooled error mean square is 40.20 with 17 degrees of freedom (15 residual df + 2 interaction df). The Factor A mean square is 1,248.60 (2 df) with an F-ratio of approximately 31.06, significant at the 1% level, indicating that Fertiliser dose has a highly significant effect on grain yield. The Factor B mean square is 386.40 (1 df) with an F-ratio of approximately 9.61, significant at the 5% level, indicating that Sowing method also significantly influences grain yield. The Block mean square reflects the effectiveness of the blocking criterion in capturing field heterogeneity. Since the interaction is non-significant, the main effects can be interpreted independently. @sec-8 provides detailed information on the multiple comparison tests (Post-hoc tests) for comparing the levels of each factor.
+In our hypothetical example with Factor A (Fertiliser dose, 2 levels), Factor B (Sowing method, 2 levels), and 4 blocks, the total degrees of freedom are 15. The A×B interaction mean square (approximately 52.30, 1 df) yields an F-ratio of approximately 1.31 (*p* \> 0.05), confirming non-significance and justifying pooling. After pooling, the pooled error mean square is 40.20 with 9 degrees of freedom (8 residual df + 1 interaction df). The Factor A mean square is 1,248.60 (1 df) with an F-ratio of approximately 31.06, significant at the 1% level, indicating that Fertiliser dose has a highly significant effect on grain yield. The Factor B mean square is 386.40 (1 df) with an F-ratio of approximately 9.61, significant at the 5% level, indicating that Sowing method also significantly influences grain yield. The Block mean square reflects the effectiveness of the blocking criterion in capturing field heterogeneity. Since the interaction is non-significant, the main effects can be interpreted independently. @sec-8 provides detailed information on the multiple comparison tests (Post-hoc tests) for comparing the levels of each factor.
 :::
 
-**Table 2: Factor A — Detailed tabular representation with multiple comparisons**
+**Table 2: Factor A - Detailed tabular representation with multiple comparisons**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Tabular representation of Factor A](www/PLACEHOLDER_FactorA_2FRBD.webp){#fig-101 fig-align="center"}
+![Tabular representation of Factor A](www/a.png){#fig-101 fig-align="center"}
 
-**Table 3: Factor B — Detailed tabular representation with multiple comparisons**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Tabular representation of Factor B](www/PLACEHOLDER_FactorB_2FRBD.webp){fig-align="center"}
-
-**Table 4: Factor A×B — Detailed tabular representation with multiple comparisons**
+**Table 3: Factor B - Detailed tabular representation with multiple comparisons**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Tabular representation of Factor A×B interaction](www/PLACEHOLDER_FactorAxB_2FRBD.webp){fig-align="center"}
+![Tabular representation of Factor B](www/b.png){fig-align="center"}
+
+**Table 4: Factor A×B - Detailed tabular representation with multiple comparisons**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Tabular representation of Factor A×B interaction](www/a%20x%20b.png){fig-align="center"}
 
 <details>
 
@@ -269,7 +269,7 @@ In our hypothetical example with Factor A (Fertiliser dose, 3 levels), Factor B 
 
 **Factor B**: The second independent variable (e.g., Sowing method) being tested to determine its main effect and its interaction with Factor A.
 
-**Response Variable**: The dependent variable or specific measurement (e.g., grain yield in kg/ha) recorded to evaluate the performance of the treatment combinations.
+**Response Variable**: The dependent variable or specific measurement recorded to evaluate the performance of the treatment combinations.
 
 2.  *Multiple Comparisons*
 
@@ -298,7 +298,7 @@ In our hypothetical example with Factor A (Fertiliser dose, 3 levels), Factor B 
 ### Interpretation from @fig-101
 
 ::: {style="text-align: justify;"}
-Treatment combination means and Factor-level means are grouped using letters such as **"a", "b", "c"** to indicate statistical similarity based on pairwise comparisons using the pooled error mean square. Overlapping grouping letters (e.g., **ab** or **bc**) indicate that the absolute difference between two means is less than the critical difference at the chosen significance level, implying statistical similarity **(on par)**. For example, among the three Fertiliser dose levels, if F~3~ (120 kg N/ha) is labelled **"a"** and F~1~ (60 kg N/ha) is labelled **"c"**, it indicates that F~3~ produces a significantly higher grain yield than F~1~. For Sowing method, if S~1~ (Line sowing) carries label **"a"** and S~2~ (Broadcast sowing) carries label **"b"**, the two sowing methods differ significantly in their effect on yield. Since the interaction is non-significant, these main-effect comparisons are valid and interpretable independently of the other factor. The Cohen's f values quantify the magnitude of each factor's effect: values below 0.10 indicate a very small effect, below 0.25 a small effect, below 0.40 a medium effect, and values of 0.40 or higher a large effect.
+Treatment combination means and factor-level means are grouped using letters such as “**a**” and “**b**” to indicate statistical similarity based on pairwise comparisons using the pooled error mean square. Means sharing the same letter are considered statistically on par, while different letters indicate significant differences at the chosen significance level. For example, among the two fertiliser dose levels, if F2 (120 kg N/ha) is labelled “**a**” and F1 (60 kg N/ha) is labelled “**b**”, it indicates that F2 produces a significantly higher grain yield than F1. Similarly, for sowing method, if S1 (Line sowing) carries label “**a**” and S2 (Broadcast sowing) carries label “**b**”, the two sowing methods differ significantly in their effect on yield. Since the interaction is non-significant, these main-effect comparisons are valid and can be interpreted independently of the other factor. The Cohen’s *f* values quantify the magnitude of each factor’s effect: values below 0.10 indicate a very small effect, below 0.25 a small effect, below 0.40 a medium effect, and values of 0.40 or higher a large effect.
 :::
 
 ::: callout-tip
@@ -324,12 +324,12 @@ Treatment combination means and Factor-level means are grouped using letters suc
 </details>
 
 ::: {style="text-align: justify;"}
-After obtaining a significant F-value for a main effect in the **Pooled 2F-RBD**, multiple comparison tests are employed to identify which factor-level means differ significantly. The same post-hoc procedures used in one-way RBD analysis — LSD, Tukey's HSD, and DMRT — are applied, but they use the **pooled error mean square** and the **pooled error degrees of freedom**, thereby benefiting from the increased precision associated with both blocking and pooling (see @fig-7).
+After obtaining a significant F-value for a main effect in the **Pooled 2F-RBD**, multiple comparison tests are employed to identify which factor-level means differ significantly. The same post-hoc procedures used in one-way RBD analysis - LSD, Tukey's HSD, and DMRT - are applied, but they use the **pooled error mean square** and the **pooled error degrees of freedom**, thereby benefiting from the increased precision associated with both blocking and pooling, see @fig-7.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multiple comparison test options explained](www/PLACEHOLDER_MultipleComparison_2FRBD.webp){#fig-7 fig-align="center"}
+![Multiple comparison test options explained](www/2f%20rbd-poo%20mult%20compa.png){#fig-7 fig-align="center"}
 
 <details>
 
@@ -376,14 +376,14 @@ In the example for those characters, a pairwise comparison of factor-level means
 ## Summary stats {#SUM}
 
 ::: {style="text-align: justify;"}
-If you need to know about the detailed values of the various statistical metrics for each treatment combination or factor level, move to `Summary stats` under the `Analysis`.
+If you need to know about the detailed values of the various statistical metrics for each treatment combination or factor level, move to Summary stats under the Analysis.
 :::
 
 **Table 5: Summary statistics**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Summary statistics](www/PLACEHOLDER_SummaryStats_2FRBD.webp){#fig-102 fig-align="center"}
+![Summary statistics](www/summaryb%20stat.png){#fig-102 fig-align="center"}
 
 <details>
 
@@ -414,13 +414,13 @@ If you need to know about the detailed values of the various statistical metrics
 ### Interpretations from @fig-102
 
 ::: {style="text-align: justify;"}
-Among the six fertiliser-by-sowing treatment combinations, the combination F~3~S~1~ (120 kg N/ha, Line sowing) records the highest mean grain yield (approximately 4,285 kg/ha) with a relatively modest CV of around 7.5%, indicating consistent performance across the four blocks. The lowest mean yield is observed for F~1~S~2~ (60 kg N/ha, Broadcast sowing) at approximately 2,940 kg/ha. Looking at Factor A means, grain yield increases progressively from F~1~ to F~3~, consistent with the significant main effect of Fertiliser dose detected in the ANOVA. For Factor B, S~1~ (Line sowing) shows a higher mean yield than S~2~ (Broadcast sowing) across all Fertiliser dose levels, consistent with the significant Sowing method main effect. The CV values across treatment combinations range from approximately 6.8% to 11.3%, indicating satisfactory experimental precision for a field study of this kind. Skewness values are close to zero for most combinations, and kurtosis values near 3 confirm approximate normality of the within-combination distributions across blocks, validating the ANOVA assumptions for this dataset.
+Among the four fertiliser-by-sowing treatment combinations, the combination F2S1 (120 kg N/ha, Line sowing) records the highest mean grain yield (approximately 4,285 kg/ha) with a relatively modest CV of around 7.5%, indicating consistent performance across the four blocks. The lowest mean yield is observed for F1S2 (60 kg N/ha, Broadcast sowing) at approximately 2,940 kg/ha. Looking at Factor A means, grain yield increases from F1 to F2, consistent with the significant main effect of Fertiliser dose detected in the ANOVA. For Factor B, S1 (Line sowing) shows a higher mean yield than S2 (Broadcast sowing) across both fertiliser dose levels, consistent with the significant Sowing method main effect. The CV values across treatment combinations range from approximately 6.8% to 11.3%, indicating satisfactory experimental precision for a field study of this kind. Skewness values are close to zero for most combinations, and kurtosis values near 3 confirm approximate normality of the within-combination distributions across blocks, validating the ANOVA assumptions for this dataset.
 :::
 
 ## Individual ANOVA {#IA}
 
 ::: {style="text-align: justify;"}
-If the user wants to get an individual pooled ANOVA table for each response variable, click on `Individual ANOVA` in the `Analysis`.
+If the user wants to get an individual pooled ANOVA table for each response variable, click on Individual ANOVA in the Analysis.
 
 The significance of Blocks, Factor A, Factor B, and the A×B interaction can be assessed using F-test and p value as in @fig-104.
 :::
@@ -430,12 +430,6 @@ The significance of Blocks, Factor A, Factor B, and the A×B interaction can be 
 <!-- REPLACE THIS SCREENSHOT -->
 
 ![Pooled 2F-RBD ANOVA table for Yield](www/ar%20ind%20anova.png){#fig-104 fig-align="center"}
-
-**Table 7: Summary of ANOVA across all variables**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary ANOVA across variables](www/PLACEHOLDER_IndividualANOVASummary_2FRBD.webp){fig-align="center"}
 
 <details>
 
@@ -468,7 +462,7 @@ For the response variable Yield, the individual Pooled 2F-RBD ANOVA shows a Fact
 ## Basic plots {#BP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to **Pooled 2F-RBD** is readily available. Simply click on the Basic Plots tab to view them, see @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to **Pooled 2F-RBD** is readily available. Simply click on the Basic Plots tab to view them, see @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
 :::
 
 ### Customizing plots
@@ -572,7 +566,7 @@ function hideDescription(id) {
 
 :::: {#boxplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **box plot** compares the distribution of values across the treatment combinations of the Pooled 2F-RBD. Each coloured box represents a fertiliser-by-sowing combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings — treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
+A **box plot** compares the distribution of values across the treatment combinations of the Pooled 2F-RBD. Each coloured box represents a fertiliser-by-sowing combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings,treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
 :::
 ::::
 :::::
@@ -586,7 +580,7 @@ A **box plot** compares the distribution of values across the treatment combinat
 
 :::: {#violinplot-desc .plot-description}
 ::: {style="text-align: justify;"}
-A **violin plot** compares the distribution of values across the treatment combinations of the Pooled 2F-RBD. Each combination is shown as a violin shape that reflects how the data is spread — wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
+A **violin plot** compares the distribution of values across the treatment combinations of the Pooled 2F-RBD. Each combination is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.
 :::
 ::::
 :::::
@@ -656,7 +650,7 @@ A **correlation plot** provides a visual summary of the pairwise relationships b
 ## Advanced plots {#AP}
 
 ::: {style="text-align: justify;"}
-**RAISINS** also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations. See @fig-90.
+**RAISINS** also provides advanced plots which go beyond basic bar charts and histograms to give deeper insight into your data, especially distributions, relationships, and deviations from expectations, see @fig-90.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -706,7 +700,7 @@ RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist user
 ## Multivariate {#MUL}
 
 ::: {style="text-align: justify;"}
-Multivariate analysis in **Pooled 2F-RBD** helps you to compare different response variables simultaneously across all treatment combinations using the factorial blocked dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example of evaluating the effect of Fertiliser dose (F~1~, F~2~, F~3~) and Sowing method (S~1~, S~2~) on wheat grain quality traits Yield, Obs1, Obs2, and FW navigate to Multivariate, see @fig-mu.
+Multivariate analysis in **Pooled 2F-RBD** helps you to compare different response variables simultaneously across all treatment combinations using the factorial blocked dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example of evaluating the effect of Fertiliser dose (F~1~, F~2~) and Sowing method (S~1~, S~2~) on wheat grain quality traits Char1, Char2, Char3, Char4, Char5, and Char6 navigate to Multivariate, see @fig-mu.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -730,7 +724,7 @@ The scree plot given @fig-screeplot illustrates the proportion of variance expla
 ![Scree plot](www/ar%20scree.png){#fig-screeplot fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Look upon the loadings of each variable in the given @fig-loadings and decide which PC-based index needs to be selected. In PC1, Yield and Obs1 (grains per spike) show high positive loadings (approximately +0.63 and +0.57 respectively), while FW (1000-grain weight) also loads positively (+0.44) on PC1, indicating that treatment combinations with high scores on PC1 are superior in both grain yield and grain number. Obs2 (spike length) loads more prominently on PC2 (+0.69), suggesting it captures a relatively independent dimension of variation in response to the fertiliser-sowing combination. Based on this pattern, a PC1-based index score is most informative for identifying fertiliser-by-sowing combinations that maximise grain yield and grain filling performance simultaneously. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
+Look upon the loadings of each variable in the given \@fig-loadings and decide which PC-based index needs to be selected. In PC1, Char1 and Char2 show high positive loadings (approximately +0.63 and +0.57 respectively), while Char3 also loads positively (+0.44) on PC1, indicating that treatment combinations with high scores on PC1 are superior for these important characters simultaneously. Char2 loads more prominently on PC2 (+0.69), suggesting that it captures a relatively independent dimension of variation in response to the fertiliser–sowing treatment combinations. Based on this pattern, a PC1-based index score is the most informative for identifying treatment combinations with overall superior performance across the major correlated characters. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -738,7 +732,7 @@ Look upon the loadings of each variable in the given @fig-loadings and decide wh
 ![Loadings of each variable](www/loadings.png){#fig-loadings fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The biplot gives a visual representation of the relationships among the fertiliser-by-sowing treatment combinations and the measured response variables. Treatment combinations positioned in the direction of a variable vector tend to exhibit higher values for that particular trait. The angle between variables in the biplot indicates their correlation — smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. Combinations such as F~3~S~1~ and F~3~S~2~ are typically positioned toward the positive PC1 direction, reflecting their overall superiority in yield-related traits, while combinations involving F~1~ are positioned toward the negative PC1 direction, consistent with their lower yields under minimal nitrogen application.
+The biplot gives a visual representation of the relationships among the fertiliser-by-sowing treatment combinations and the measured response variables. Treatment combinations positioned in the direction of a variable vector tend to exhibit higher values for that particular trait. The angle between variables in the biplot indicates their correlation; smaller angles suggest high positive correlation, while angles close to 90° suggest weak or no correlation. Combinations such as F2S1 and F2S2 are typically positioned toward the positive PC1 direction, reflecting their overall superiority in yield-related traits, while combinations involving F1 are positioned toward the negative PC1 direction, consistent with their comparatively lower yields under lower nitrogen application.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -764,7 +758,7 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing your data {#PRE}
 
 ::: {style="text-align: justify;"}
-"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won't be trustworthy."
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won't be trustworthy."
 
 1.  Create your dataset in MS Excel
 
@@ -774,7 +768,7 @@ Combining all this information, the experimenter can arrive at an overall conclu
 ## Preparing data in MS Excel {#EX}
 
 ::: {style="text-align: justify;"}
-Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for **Pooled 2F-RBD** must follow a column-based format with at least four structural columns: a **Block** column (identifying the block number for each observation, e.g., 1, 2, 3, 4), a **Factor A** column (identifying the level of the first factor, e.g., Fertiliser dose for each observation), a **Factor B** column (identifying the level of the second factor, e.g., Sowing method for each observation), and one or more columns for the response variables **Yield, Obs1, Obs2, FW**. Each row represents one experimental plot, and the repeated appearances of each factor-level combination across blocks represent the block replications. Ensure that every treatment combination appears exactly *r* times (4 times in our example, once per block), and that the order of rows need not be sorted — **RAISINS** identifies the combinations from the Block, Factor A, and Factor B column entries automatically. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. The data can also be arranged as shown in @fig-kk.
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for **Pooled 2F-RBD** must follow a column-based format with at least four structural columns: a Block column (identifying the block number for each observation, e.g., 1, 2, 3, 4), a **Factor A** column (identifying the level of the first factor, e.g., Fertiliser dose for each observation), a **Factor B** column (identifying the level of the second factor, e.g., Sowing method for each observation), and one or more columns for the response variables such as **Char1, Char2, Char3, Char4, Char5, and Char6**. Each row represents one experimental plot, and the repeated appearances of each factor-level combination across blocks represent the block replications. Ensure that every treatment combination appears exactly *r* times (4 times in our example, once per block), and that the order of rows need not be sorted — RAISINS identifies the combinations automatically from the Block, Factor A, and Factor B column entries. Since the experiment contains two levels each for Factor A (F1 and F2) and Factor B (S1 and S2), there will be four treatment combinations in total: F1S1, F1S2, F2S1, and F2S2. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. The data can also be arranged as shown in @fig-kk.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -790,7 +784,10 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 <summary>Dataset Creation Rules</summary>
 
 <small> 1. **Column Naming Convention** - No spaces allowed in column names.\
-- Use underscores (`_`) or full stops (`.`) for separation. - Avoid symbols and special characters like %,# etc 2. **Data Arrangement** - Start data arrangement towards the upper-left corner.\
+- Use underscores (`_`) or full stops (`.`) for separation. - Avoid symbols and special characters like %,# etc
+
+2.  **Data Arrangement** - Start data arrangement towards the upper-left corner.\
+
 - Ensure the row above the data is not blank. 3. **Cell Management** - Avoid typing or deleting in cells without data.\
 - If needed, select affected cells, right-click, and select **Clear Contents**. 4. **Column Relevance** - Name all columns meaningfully.\
 - Exclude unnecessary columns not required for analysis. </small>
@@ -834,7 +831,7 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ## Creating dataset in RAISINS {#CR}
 
 ::: {style="text-align: justify;"}
-If you're unsure about the correct format for creating a dataset, don't worry — RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
+If you're unsure about the correct format for creating a dataset, don't worry RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
 
 - Navigate to the **Create Data Tab**
 
@@ -846,7 +843,7 @@ If you're unsure about the correct format for creating a dataset, don't worry �
 
 - Click on **Create** button
 
-Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in `Analysis`.
+Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
 :::
 
 ![Creating dataset within RAISINS](www/2f%20csv.png){#fig-createdata}
@@ -854,7 +851,7 @@ Model layout will appear as shown in @fig-createdata. Now you may enter the obse
 ## Model datasets {#M}
 
 ::: {style="text-align: justify;"}
-To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the `Datasets`.
+To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the Datasets.
 :::
 
 ![Model dataset](www/model.png){#fig-188 fig-align="center"}

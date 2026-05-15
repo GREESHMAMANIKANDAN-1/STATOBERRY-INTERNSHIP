@@ -1,0 +1,613 @@
+---
+title: "Correlation Analysis"
+format:
+  html:
+    mainfont: "Times New Roman"
+    fontsize: 0.90em
+    theme: cosmo
+    toc: true
+    lightbox: true
+    number-sections: true
+    number-depth: 3
+    number-offset: 1
+    toc-title: "**TABLE OF CONTENTS**"
+    toc-depth: 3
+    linkcolor: "purple"
+    citations-hover: true
+    css: sty.css
+---
+
+```{=html}
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+```
+
+::: affiliations
+<sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University
+:::
+
+ABSTRACT
+
+::: {style="text-align: justify;"}
+**Correlation Analysis** is a fundamental statistical technique used to quantify the strength and direction of the association between two or more numeric variables, enabling researchers to identify which traits move together and to what degree. **RAISINS** supports **Pearson**, **Spearman**, and **Kendall** correlation methods, allowing you to perform a complete correlation analysis and interpret the results without writing a single line of code. This tutorial will guide you step by step through uploading your dataset, selecting variables and the appropriate method, interpreting the correlation matrix, and assessing the statistical significance of each pairwise relationship. In addition, you will obtain publication-ready correlation tables and plots including heatmaps, network plots, scatter matrices, and correlograms directly from **RAISINS**. You can also leverage the built-in AI assistant for automated interpretation of your results.
+:::
+
+<details>
+
+*Hover or click each point to see more information.*
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Introduction Correlation Analysis
+</summary>
+```
+
+```{=html}
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+```
+
+<ul><small> The formal study of association between variables was pioneered in the late nineteenth century by [Sir Francis Galton]{.hover-img}, who observed that certain characteristics of parents and offspring tended to vary together a relationship he described as "co-relation" in his landmark 1888 paper. Galton's insight was primarily biological and intuitive, but it opened the door to a mathematically rigorous way of measuring how two quantities change in tandem. [Karl Pearson]{.hover-img} formalised this idea in 1895 by deriving the product-moment correlation coefficient, now universally denoted *r*, which provides a single number between −1 and +1 that captures both the direction and strength of a linear relationship. Pearson's coefficient became one of the most widely applied statistics in science, finding use in genetics, agronomy, medicine, economics, and the social sciences within a remarkably short time. In the early twentieth century, [Charles Spearman]{.hover-img} introduced a rank-based version of Pearson's coefficient (1904) that could handle ordinal data and non-normal distributions, while [Maurice Kendall]{.hover-img}developed his tau statistic (1938) as a robust alternative better suited to small samples and tied ranks. Together, these three methods **Pearson**, **Spearman**, and **Kendall** form the complete correlation toolkit available in **RAISINS** today. </small></ul>
+
+</details>
+
+## Correlation Analysis {#AE}
+
+::: {style="text-align: justify;"}
+To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and navigate to the **Data Analysis** section. Here, you can access a range of analytical tools including Descriptive Statistics, Regression, and Cluster Analysis. In this tutorial, we focus on **Correlation Analysis**, as shown in @fig-cortab. No prior programming knowledge is required simply upload your data, select your variables and method, and **RAISINS** generates all results and plots instantly.
+:::
+
+![Correlation Analysis tab in RAISINS](images/analysis%20coree.png){#fig-cortab fig-align="center"}
+
+## Pearson Correlation {#PC}
+
+::: {style="text-align: justify;"}
+The **Pearson product-moment correlation coefficient** is the most widely used measure of association and is the default method in **RAISINS**. It quantifies the degree of linear relationship between two continuous variables, assuming that both variables are approximately normally distributed and that the relationship between them is linear. The Pearson coefficient *r* is estimated from sample data as the ratio of the covariance of the two variables to the product of their standard deviations, producing a dimensionless index that lies strictly between −1 and +1. A value of +1 indicates a perfect positive linear relationship, −1 indicates a perfect negative linear relationship, and 0 indicates no linear association. Pearson correlation is sensitive to outliers - a single extreme value can substantially inflate or deflate *r* -so it is important to inspect scatter plots alongside the numeric coefficient. When either variable is non-normal, ordinal, or the dataset contains influential outliers, the **Spearman** or **Kendall** methods are more appropriate alternatives.
+:::
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Pearson Formula and Key Terms
+</summary>
+```
+
+<ul>
+
+<small>
+
+The Pearson correlation coefficient between variables X and Y is defined as:
+
+$$r = \frac{\sum_{i=1}^{n}(X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum_{i=1}^{n}(X_i - \bar{X})^2 \cdot \sum_{i=1}^{n}(Y_i - \bar{Y})^2}}$$
+
+where $\bar{X}$ and $\bar{Y}$ are the sample means of X and Y respectively, and *n* is the number of paired observations. The numerator is the sample covariance a measure of how much the two variables co-vary around their respective means and the denominator standardises this to the \[−1, +1\] range. The significance of *r* is tested with a *t*-statistic:
+
+$$t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}, \quad df = n-2$$
+
+Under the null hypothesis H₀: ρ = 0 (no population correlation), this *t* follows a Student's *t*-distribution with *n* − 2 degrees of freedom. A large \|*t*\| relative to the critical value leads to rejection of H₀, and the correlation is declared statistically significant.
+
+</small>
+
+</ul>
+
+</details>
+
+::: callout-tip
+#### Pearson Correlation (r) measures the strength and direction of the **linear** relationship between two continuous variables, and ranges from −1 (perfect negative) to +1 (perfect positive), with 0 indicating no linear association.
+:::
+
+## Spearman and Kendall Correlation {#SK}
+
+::: {style="text-align: justify;"}
+**Spearman's rank correlation coefficient** (ρ, rho) is a non-parametric alternative to Pearson's *r* that replaces raw data values with their ranks before computing the correlation. Because it operates on ranks rather than the actual measurements, it is robust to non-normality, unaffected by monotonic transformations of the data, and appropriate when variables are measured on an ordinal scale. Spearman's ρ detects any monotonic relationship one in which the two variables consistently increase or decrease together, even if the relationship is not strictly linear. It is the recommended choice when Shapiro-Wilk or QQ plots indicate a departure from normality, or when the dataset contains outliers that would distort the Pearson coefficient. **Kendall's tau** is also a rank-based non-parametric coefficient, but it is computed differently: rather than correlating ranks directly, it counts the number of concordant pairs (pairs of observations that rank in the same order on both variables) minus the number of discordant pairs, divided by the total possible pairs. Kendall's tau is generally smaller in absolute value than Spearman's ρ for the same data, but it is considered statistically more robust and is especially recommended when the sample size is small (n \< 30) or when many tied ranks are present. In **RAISINS**, you can switch freely between Pearson, Spearman, and Kendall using the method selector panel to compare results and select the most defensible estimate for your data.
+:::
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Choosing the Right Correlation Method
+</summary>
+```
+
+<ul>
+
+<small>
+
+| Method | Data Type | Key Assumption | Handles Outliers? | Best Used When |
+|---------------|---------------|---------------|---------------|---------------|
+| **Pearson** | Continuous | Normal, linear relationship | No | Both variables continuous and approximately normal |
+| **Spearman** | Continuous or Ordinal | Monotonic relationship; no normality required | Yes | Non-normal data, ordinal variables, presence of outliers |
+| **Kendall** | Continuous or Ordinal | Monotonic relationship; no normality required | Yes | Small samples (n \< 30), many tied ranks |
+
+A general decision rule: start with Pearson. If the Shapiro-Wilk test (available in the `Summary Stats` tab) or QQ plots indicate non-normality for either variable, switch to Spearman. If the sample is small or contains many ties, prefer Kendall. When Pearson and Spearman give very similar results, the linear assumption is likely satisfied.
+
+</small>
+
+</ul>
+
+</details>
+
+::: callout-tip
+#### When in doubt about normality, use **Spearman's** rank correlation it is robust to non-normality and outliers, detects any monotonic relationship, and is appropriate for both continuous and ordinal variables.
+:::
+
+## A working example {#W}
+
+::: {style="text-align: justify;"}
+To make things clear and practical, we will demonstrate correlation analysis step by step using an agricultural dataset, so you can follow the logic and interpret every output with confidence. Consider a study in which five agronomic traits were recorded across **30 rice genotypes**: **Yield** (g/plant), **Plant Height** (cm), **Days to Flowering**, **Panicle Length** (cm), and **1000-Grain Weight** (g). The objective was to examine the pairwise associations among these five traits to identify which pairs are positively or negatively correlated, assess the strength of each relationship, and determine which traits could serve as indirect selection criteria for improving yield. The arrangement of the data is shown in @fig-data.
+:::
+
+![Example dataset — 30 rice genotypes with five measured agronomic traits](images/workinggg%20core-01.png){#fig-data fig-align="center"}
+
+::: {style="text-align: justify;"}
+Data organised in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. The key term we will use throughout this tutorial is **Variables** referring to the numeric traits to be correlated. In our example, the Variables are the five agronomic traits: **Yield, Plant Height, Days to Flowering, Panicle Length**, and **1000-Grain Weight**. Unlike experimental design modules, Correlation Analysis does not require a treatment or block column every row simply represents one observation (here, one genotype), and all columns selected for analysis must be numeric.
+:::
+
+## How to prepare your data? {#sec-4 .H}
+
+::: {style="text-align: justify;"}
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel or CSV file. Each row should represent one observation (e.g., a genotype, plant, or experimental unit), and each column should represent a numeric variable to be correlated. There is no need for a treatment, group, or block column Correlation Analysis requires only numeric measurement columns. Ensure that no blank rows are left above the data, all column headers are present and free of spaces or special characters, and there are no entirely empty columns. That is it your file is ready to upload.
+
+Still if you have doubt, see @fig-4.
+
+To prepare your dataset for analysis in **RAISINS**, you have two options:
+
+Creating dataset in MS Excel
+
+Creating your dataset directly within the **RAISINS** app
+:::
+
+![Illustrating how to create a dataset](images/csv%20core-01.png){#fig-4 fig-align="center"}
+
+## Correlation Analysis tab explained {#AO}
+
+::: {style="text-align: justify;"}
+Once your dataset is ready, navigate to the Correlation Analysis tab in **RAISINS**. In @fig-aotab you can see the detailed view of the Analysis tab, along with explanations of what each option does. Click the Browse button in the sidebar to upload your CSV or Excel file. After upload, use the **Variables** selector to choose two or more numeric columns for analysis. Use the **Method** selector to choose between **Pearson**, **Spearman**, and **Kendall** if you are unsure which to use, refer to @sec-8 for guidance. When your selections are complete, click Run Analysis to generate the full correlation output. All tables and plots appear instantly. You may also access the Summary Stat sub-tab at any point after upload to review the distributional properties of your variables before drawing final conclusions.
+:::
+
+![Correlation Analysis tab — variable selector, method selector, and Run Analysis button](images/multi%20core-01.png){#fig-aotab fig-align="center"}
+
+## Analysis results {#sec-7 .AR}
+
+::: {style="text-align: justify;"}
+Once you click Run Analysis, **RAISINS** produces two core output tables that together provide a complete picture of the pairwise relationships among all selected variables. The first is the **Correlation Matrix**, which reports the correlation coefficient *r* for every variable pair. The second is the **Significance Matrix**, which reports the exact p-value for the test of no correlation (H₀: ρ = 0) for each pair. Both tables should always be read together a large *r* is informative only when accompanied by a statistically significant p-value, and a significant p-value from a very large sample may correspond to a practically negligible *r*.
+:::
+
+### Correlation Matrix
+
+::: {style="text-align: justify;"}
+The Correlation Matrix shown in @fig-res1 displays the pairwise correlation coefficient for every combination of selected variables. The main diagonal always contains 1.000, representing the perfect correlation of each variable with itself. The upper and lower triangles of the matrix are mirror images. Statistically significant correlations are automatically marked with asterisks: \* for p \< 0.05, \*\* for p \< 0.01, and \*\*\* for p \< 0.001.
+:::
+
+**Table 1: Correlation Matrix**
+
+![Correlation Matrix — pairwise r values with significance stars](images/correlation%20matrix.png){#fig-res1 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Understanding the Correlation Matrix
+</summary>
+```
+
+<small>
+
+| Element | Description |
+|--------------------------------|----------------------------------------|
+| **Diagonal (1.000)** | Every variable is perfectly correlated with itself. These cells carry no information about pairwise relationships. |
+| **Off-diagonal cells** | The correlation coefficient between the row variable and the column variable. Values range from −1 to +1. |
+| **Positive r** | Both variables tend to increase together (direct relationship). |
+| **Negative r** | One variable tends to increase as the other decreases (inverse relationship). |
+| **Significance stars** | \* p \< 0.05 · \*\* p \< 0.01 · \*\*\* p \< 0.001. Absence of stars means the correlation is not statistically significant at the 5% level. |
+| **Magnitude guide** | \|r\| \< 0.3: weak · 0.3–0.6: moderate · 0.6–0.8: strong · \> 0.8: very strong (context-dependent) |
+
+</small>
+
+</details>
+
+#### Interpretation from @fig-res1 {.unnumbered}
+
+::: {style="text-align: justify;"}
+In our hypothetical rice genotype study, the correlation matrix reveals several agronomically important relationships. **Yield** is strongly and positively correlated with **Panicle Length** (r = 0.74\*\*\*) and moderately positively correlated with **1000-Grain Weight** (r = 0.52\*\*), indicating that genotypes producing longer panicles and heavier grains tend to achieve higher yields. **Plant Height** shows a moderate positive correlation with **Days to Flowering** (r = 0.46\*\*), suggesting that taller genotypes tend to take longer to reach flowering. The correlation between **Days to Flowering** and **Yield** is weakly negative (r = −0.21) and does not reach statistical significance, implying that earliness alone does not reliably predict yield advantage in this dataset. **1000-Grain Weight** and **Panicle Length** are also moderately correlated (r = 0.44\*\*), consistent with the biological expectation that longer panicles bear more and heavier grains. These findings suggest that **Panicle Length** could serve as a reliable indirect selection criterion for yield improvement.
+:::
+
+::: callout-tip
+#### Correlation does not imply causation. A high *r* value between two variables indicates that they tend to vary together, but it does not establish that one causes the other. Always interpret correlation results in the context of domain knowledge and biological or theoretical reasoning.
+:::
+
+------------------------------------------------------------------------
+
+### Significance Matrix
+
+::: {style="text-align: justify;"}
+The Significance Matrix shown in @fig-res2 presents the exact p-value for the hypothesis test H₀: ρ = 0 (no population correlation) for each variable pair. A p-value below 0.05 indicates that the observed correlation is statistically significant unlikely to have arisen by chance if the true population correlation were zero. This matrix complements the Correlation Matrix and must always be consulted alongside it.
+:::
+
+**Table 2: Significance (p-value) Matrix**
+
+![Significance Matrix — p-values for all pairwise correlation tests](images/p%20values.png){#fig-res2 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Understanding Significance Stars and p-values
+</summary>
+```
+
+<small>
+
+| Symbol | Threshold | Interpretation |
+|------------------------|------------------------|------------------------|
+| \*\*\* | p \< 0.001 | Highly significant — very strong evidence against H₀: ρ = 0 |
+| \*\* | p \< 0.01 | Significant at 1% level |
+| \* | p \< 0.05 | Significant at conventional 5% level |
+| (no star) | p ≥ 0.05 | Not statistically significant — insufficient evidence to conclude a population correlation exists |
+
+The critical value of *r* for significance at α = 0.05 (two-tailed) depends on sample size. For n = 30 (df = 28), the critical \|r\| ≈ 0.361. Any correlation with magnitude below this threshold is not statistically significant regardless of its sign or direction. Larger samples have lower critical values with n = 100, any \|r\| \> 0.197 is significant which is why statistical significance and practical importance must be considered separately.
+
+</small>
+
+</details>
+
+#### Interpretation from @fig-res2 {.unnumbered}
+
+::: {style="text-align: justify;"}
+The significance matrix confirms that the Yield–Panicle Length (p \< 0.001) and Yield–1000-Grain Weight (p \< 0.01) correlations provide strong statistical evidence for a true population association between these trait pairs. The Plant Height–Days to Flowering correlation is also significant at the 1% level (p \< 0.01), and the 1000-Grain Weight–Panicle Length pair is significant at the 1% level as well. In contrast, the Yield–Days to Flowering correlation (r = −0.21, p = 0.264) is not statistically significant, confirming that this weak negative tendency cannot be distinguished from chance sampling variation in a sample of 30 genotypes. Researchers working with large correlation matrices should be aware that simultaneously testing many pairs increases the family-wise error rate consider applying a Bonferroni correction (dividing α by the number of tests) or a False Discovery Rate (FDR) adjustment when the number of variable pairs is large.
+:::
+
+::: callout-tip
+#### With small samples, even moderate correlations may not reach statistical significance. With very large samples, even trivially small correlations become statistically significant. Always report both *r* and its p-value, and discuss the practical or biological significance of the magnitude independently of the hypothesis test outcome.
+:::
+
+## Choosing a correlation method {#sec-8 .CM}
+
+::: {style="text-align: justify;"}
+Before running the analysis, selecting the appropriate correlation method for your data is an important step that directly affects the reliability of your results. The **Pearson** coefficient is the correct choice when both variables are continuous and approximately normally distributed you can assess normality using the Shapiro-Wilk test and QQ plots available in the Summary stat tab of **RAISINS**. If either variable is ordinal, substantially skewed, or if the data contain outliers, **Spearman's** rank correlation is the preferred alternative, as it replaces raw values with their ranks before computing *r* and thereby removes the influence of extreme observations and distributional asymmetry. **Kendall's tau** is recommended over Spearman when the sample size is small (typically n \< 30) or when the data contain a high proportion of tied ranks, since Kendall's statistic has better sampling properties under these conditions and produces more interpretable significance tests. In **RAISINS**, switching between methods requires only a single click on the method selector, and all output tables and plots update instantly to reflect the chosen method making it straightforward to compare Pearson and Spearman results side by side as a sensitivity check on the robustness of your conclusions.
+:::
+
+> "When in doubt about the distributional properties of your data, use **Spearman's** rank correlation it is robust, assumption-light, and appropriate for the vast majority of datasets encountered in agricultural and biological research."
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Description of Summary Statistics Parameters
+</summary>
+```
+
+<small>
+
+| Parameter | Description |
+|--------------------------------|----------------------------------------|
+| **Mean** | The arithmetic average of all observations. Represents the central tendency of the variable. |
+| **SD (Standard Deviation)** | Measures spread around the mean. A higher SD indicates greater variability across observations. |
+| **SE (Standard Error)** | Estimated precision of the sample mean = SD ÷ √n. Smaller SE indicates a more precise mean estimate. |
+| **Min / Max** | The smallest and largest observed values. Useful for identifying the data range and potential outliers. |
+| **CV%** | Coefficient of Variation = (SD ÷ Mean) × 100. A scale-free measure of relative variability, useful for comparing spread across variables with different units or magnitudes. |
+| **Skewness** | Measures distributional asymmetry. Values near 0 indicate approximate symmetry. Positive = right-skewed; Negative = left-skewed. Values beyond ±1 suggest notable non-normality. |
+| **Kurtosis** | Measures tail heaviness. Normal distribution has kurtosis = 3. Values above 3 (leptokurtic) indicate heavier tails; values below 3 (platykurtic) indicate lighter tails. |
+
+</small>
+
+</details>
+
+#### Interpretations from @fig-sum {.unnumbered}
+
+::: {style="text-align: justify;"}
+In our hypothetical rice genotype dataset, **Yield** has a mean of 28.4 g/plant and a CV% of 18.2%, indicating moderate variability among genotypes a level typical of yield studies and sufficient for meaningful correlation analysis. **Plant Height** (mean 112.6 cm, CV% 9.4%) and **Days to Flowering** (mean 94.3 days, CV% 7.1%) show relatively low variability, suggesting these traits are fairly uniform across genotypes. **Panicle Length** (mean 24.8 cm, CV% 14.7%) and **1000-Grain Weight** (mean 22.1 g, CV% 11.3%) show moderate variation. The Skewness values for all five variables fall within ±1 and Kurtosis values are close to 3, providing support for the approximate normality of each trait and confirming that **Pearson** correlation is an appropriate primary method for this dataset, though Spearman results should also be examined as a robustness check.
+:::
+
+## Plot Designs {#BP}
+
+::: {style="text-align: justify;"}
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and plots appear instantly leaving no room for confusion. Navigate to the Plot Design sub-tab to access the full suite of correlation visualisations for your dataset see @fig-cust. Each plot comes with a gear icon at the top-left corner, allowing you to customise its appearance. You can also download these plots in high-quality PNG (300 dpi), JPEG, TIFF, PDF, and SVG formats for use in reports and publications.
+:::
+
+### Customizing plots
+
+::: {style="text-align: justify;"}
+**RAISINS** provides a range of customisation features for each plot. Click the gear icon on any plot panel to open the settings shown in @fig-cust, where you can modify the colour palette, font size, label size, colour scale direction, and plot dimensions. For the Correlation Heatmap, you can choose a diverging colour scale (e.g., blue–white–red) that intuitively represents negative, near-zero, and positive correlations respectively. Changes are reflected in real time and the updated plot can be downloaded immediately.
+:::
+
+![Plot settings for customizing](images/plot%20and%20graph%20core-01.png){#fig-cust fig-align="center"}
+
+::: {style="text-align: justify;"}
+From @fig-9 to @fig-12, you can see the different types of plots available in the Plot Designs tab of the Correlation Analysis module in **RAISINS**. Each is visually illustrated and accompanied by a clear description below hover over any plot thumbnail to read it.
+:::
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+```
+
+```{=html}
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+#heatmap-desc   { background: linear-gradient(135deg, rgba(255, 107, 107, 0.88), rgba(255, 142, 83, 0.88)); }
+#network-desc   { background: linear-gradient(135deg, rgba(161, 140, 209, 0.88), rgba(251, 194, 235, 0.88)); }
+#scatter-desc   { background: linear-gradient(135deg, rgba(0, 221, 235, 0.88), rgba(38, 166, 154, 0.88)); }
+#correlo-desc   { background: linear-gradient(135deg, rgba(132, 250, 176, 0.88), rgba(143, 211, 244, 0.88)); }
+</style>
+```
+
+::::::::::::::::::: grid
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('heatmap-desc')" onmouseout="hideDescription('heatmap-desc')"}
+![Matrix Plot](images/graph%202%20core%20(2)-01.png){#fig-9}
+
+:::: {#heatmap-desc .plot-description}
+::: {style="text-align: justify;"}
+A **matrix plot** in correlation analysis is a graphical tool used to display the relationships between multiple variables simultaneously. It consists of a grid of scatter plots where each row and column represents a variable in the dataset. The plot helps in identifying positive, negative, or no correlation between variables. Diagonal sections often show variable names or histograms, while the off-diagonal sections display scatter plots illustrating pairwise relationships. Matrix plots are useful for detecting trends, patterns, clusters, and outliers in correlation studies.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('network-desc')" onmouseout="hideDescription('network-desc')"}
+![Pairs Plot](images/graph%203%20core-01.png){#fig-10}
+
+:::: {#network-desc .plot-description}
+::: {style="text-align: justify;"}
+A **pairs plot** in correlation analysis is a graphical method used to visualize the relationship between multiple variables in a dataset. It displays scatter plots for every possible pair of variables in a matrix format. The diagonal section often shows variable names, histograms, or density plots, while the other sections show the pairwise relationships. Pairs plots help identify positive or negative correlations, trends, clusters, and outliers, making them useful for understanding the overall association among variables.
+:::
+::::
+:::::
+::::::
+
+:::::::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('scatter-desc')" onmouseout="hideDescription('scatter-desc')"}
+![Scatter Plot Matrix](images/graph%204%20co-02.png){#fig-11}
+
+:::: {#scatter-desc .plot-description}
+::: {style="text-align: justify;"}
+A **scatter plot** in correlation analysis is a graphical representation used to show the relationship between two variables. Each point on the graph represents a pair of data values. The pattern of points helps identify the direction and strength of correlation. If the points move upward from left to right, it indicates a positive correlation, while a downward pattern shows a negative correlation. Randomly scattered points indicate little or no correlation. Scatter plots are useful for detecting trends, patterns, and outliers in data.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+:::::{.plot-container onmouseover="showDescription('correlo-desc')" onmouseout="hideDescription('correlo-desc')"}
+::::: {style="text-align: center;"}
+![Correlogram](images/graph%201%20core-01.png){#fig-12}
+
+:::: {#correlo-desc .plot-description}
+::: {style="text-align: justify;"}
+A **correlogram** in correlation analysis is a graphical representation used to display the correlation coefficients between multiple variables in a dataset. It is usually shown as a colored matrix where different colors and circle sizes represent the strength and direction of correlation. Positive correlations are often shown in one color and negative correlations in another. Correlograms help in quickly identifying strong, weak, or no relationships among variables and make complex correlation data easier to understand.
+:::
+::::
+:::::
+::::::
+::::::::::
+:::::::::::::::::::
+
+## AI Interpretation {#AI}
+
+::: {style="text-align: justify;"}
+**RAISINS** is equipped with an AI-powered RAISINS Assistant designed to help users understand the outputs of correlation analysis clearly and confidently. As shown in @fig-ai, the AI provides a plain-language summary of the full correlation matrix identifying the strongest and weakest pairwise associations, explaining the direction and practical meaning of each significant relationship in the context of your variables, and flagging pairs that may indicate multicollinearity if the data are to be used as inputs for a subsequent regression model. The assistant also draws attention to any variable pairs where the correlation is statistically non-significant despite an apparently large *r* (typically a consequence of a small sample size), and advises on whether Spearman or Kendall correlation may be more appropriate based on the distributional properties of the selected variables. Users can access this feature by clicking on within the Correlation Analysis tab.
+:::
+
+![AI powered RAISINS Assistant to interpret your results](images/ai%20corre.png){#fig-ai fig-align="center"}
+
+## Preparing your data {#PRE}
+
+::: {style="text-align: justify;"}
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won't be trustworthy."
+
+1.  Create your dataset in MS Excel
+
+2.  Build your dataset directly within the RAISINS app
+:::
+
+## Preparing data in MS Excel {#EX}
+
+::: {style="text-align: justify;"}
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for correlation analysis should follow a column-based format, where every column represents one numeric variable to be correlated and every row represents one observation (e.g., a genotype, plant, plot, or experimental unit). There is no requirement for a treatment, group, or block identifier column all columns should contain numeric measurements. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that all measurement columns are purely numeric with no text, symbols, or missing-value placeholders, that column names contain no spaces or special characters, and that there are no blank rows above the data. For reference, see the structure shown in @fig-pp. The data can also be arranged as shown in @fig-kk.
+:::
+
+![Model-1: showing how the prepared Excel file for upload should look like](images/correlation%20data%201-01.png){#fig-pp}
+
+![Model-2: Showing how the prepared Excel file for upload should look like](images/correlation%20data%202-01.png){#fig-kk}
+
+<details>
+
+<summary>Dataset Creation Rules</summary>
+
+<small> 1. **Column Naming Convention** - No spaces allowed in column names.\
+- Use underscores (`_`) or full stops (`.`) for separation. - Avoid symbols and special characters like %,# etc 2. **Data Arrangement** - Start data arrangement towards the upper-left corner.\
+- Ensure the row above the data is not blank. 3. **Cell Management** - Avoid typing or deleting in cells without data.\
+- If needed, select affected cells, right-click, and select **Clear Contents**. 4. **Column Relevance** - All columns selected for Correlation Analysis must be numeric.\
+- Non-numeric or identifier columns can remain in the file **RAISINS** will automatically exclude non-numeric columns from the variable selector. 5. **Missing Values** - Avoid missing values wherever possible. If any are present, **RAISINS** uses pairwise complete observations by default, meaning each pair is correlated using only the rows where both variables have valid entries. </small>
+
+</details>
+
+<details>
+
+<summary>How to Save as CSV in MS Excel</summary>
+
+<small> 1. **Open Your Workbook**
+
+```         
+-   Ensure your data is arranged properly with only one sheet.
+```
+
+2.  **Click 'File' Menu**
+
+    -   Go to the top-left corner and click on **File**.
+
+3.  **Choose 'Save As' or 'Save a Copy'**
+
+    -   Select the location where you want to save your file.
+
+4.  **Set File Type to CSV**
+
+    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+
+5.  **Name Your File**
+
+    -   Enter a relevant file name without spaces (use underscores if needed).
+
+6.  **Click 'Save'**
+
+    -   Click **Save** to export the file.
+
+> 💡 Tip: Before saving, double-check that all measurement columns are numeric, there are no blank rows above the data, and column names follow the naming rules above. </small>
+
+</details>
+
+## Creating dataset in RAISINS {#CR}
+
+::: {style="text-align: justify;"}
+If you're unsure about the correct format for creating a dataset, don't worry **RAISINS** offers an option to create data directly within the app using a prescribed template. Here's how:
+
+-   Navigate to the **Create Data Tab**
+
+-   Select the number of **Variables** (number of numeric columns to be correlated)
+
+-   Select the number of **Observations** (number of rows plants, genotypes, plots, etc.)
+
+-   Click on the **Create** button
+
+The model layout will appear as shown in @fig-createdata. Enter your observations manually into the downloaded CSV file, or paste them directly. Once all values are entered, download the CSV file and upload it in the Correlation Analysis tab.
+:::
+
+![Creating dataset within RAISINS](images/csv%20core-02.png){#fig-createdata}
+
+## Model datasets {#M}
+
+::: {style="text-align: justify;"}
+To test the app or better understand the expected data arrangement for correlation analysis, **RAISINS** provides model datasets within the app. You can download them from the Dataset tab and use them to explore the Correlation Analysis module before uploading your own data.
+:::
+
+![Model dataset](images/dataset%20corre.png){#fig-188 fig-align="center"}
+
+## FAQ's {#F}
+
+::: {style="text-align: justify;"}
+The app includes a dedicated FAQs tab to help clarify common doubts and guide users through all features of the Correlation Analysis module. This section provides detailed answers to frequently asked questions, covering topics such as how to choose between Pearson, Spearman, and Kendall, how to interpret asterisks in the correlation matrix, what to do when correlation is significant but *r* is small, and how to handle missing values in the dataset. If you're ever unsure about how something works in **RAISINS**, the FAQstab is a great place to start.
+:::
+
+![FAQs](images/Faq%20corre.png){#fig-148 fig-align="center"}
+
+## View data {#U}
+
+::: {style="text-align: justify;"}
+View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For correlation analysis, this step is particularly important **RAISINS** will flag any column that contains non-numeric values, missing entries, or formatting inconsistencies that could affect the correlation computation. Resolving these issues before clicking Run Analysis ensures that all outputs are based on clean, correctly typed data and that the correlation results are fully reliable.
+:::
+
+![View data](images/view%20data%20corre.png){fig-align="center"}
+
+------------------------------------------------------------------------

@@ -1,0 +1,580 @@
+---
+title: "Probit Dose/Time Response Analysis"
+format:
+  html:
+    mainfont: "Times New Roman"
+    fontsize: 0.90em
+    theme: cosmo
+    toc: true
+    lightbox: true
+    number-sections: true
+    number-depth: 3
+    number-offset: 1
+    toc-title: "**TABLE OF CONTENTS**"
+    toc-depth: 3
+    linkcolor: "purple"
+    citations-hover: true
+    css: sty.css
+---
+
+```{=html}
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+```
+
+::: affiliations
+<sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University
+:::
+
+ABSTRACT
+
+::: {style="text-align: justify;"}
+**Probit Dose/Time Response Analysis** is a statistical method used to model the relationship between a stimulus such as a dose of pesticide or duration of exposure and the probability of a binary response, such as mortality or inhibition, in a target population. **Probit analysis** transforms cumulative response proportions into probit units (normal equivalent deviates), linearising the sigmoid dose-response curve for reliable parameter estimation. In **RAISINS** you can perform Probit Dose/Time Response Analysis very easily without writing a single line of code. This tutorial will guide you through how to perform Probit analysis in **RAISINS** and interpret the results effectively. In addition, you will obtain publication-ready tables and plots, along with key estimates such as LD50, LC50, LT50, lethal dose/time confidence intervals, and slope parameters.
+:::
+
+<details>
+
+*Hover or click each point to see more information.*
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Introduction Probit Dose/Time Response Analysis
+</summary>
+```
+
+```{=html}
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+```
+
+<ul><small> The Probit model traces its origins to the pioneering work of [Chester Ittner Bliss]{.hover-img}, an American entomologist and statistician who introduced the **probit transformation** in **1934** as a practical tool for analysing insecticide bioassay data. Bliss observed that mortality proportions, when plotted against log-dose, followed a characteristic sigmoid (S-shaped) curve. By transforming proportions to **probit units** the inverse of the normal cumulative distribution function he linearised this relationship, enabling straightforward estimation of lethal doses using linear regression techniques available at the time. His landmark paper published in *Science* (1934) laid the foundation for what became a cornerstone method in toxicology, pharmacology, and pest management. The method was subsequently refined and formalised by **D.J. Finney** in his comprehensive monograph *Probit Analysis* (1947, Cambridge University Press), which codified the maximum likelihood estimation procedure still used today. Probit analysis remains the standard approach for estimating **LD50**, **LC50**, **LT50**, and their fiducial confidence intervals in regulatory toxicology and bioassay studies worldwide. </small></ul>
+
+</details>
+
+## Analysis of experiments {#AE}
+
+::: {style="text-align: justify;"}
+To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different analysis modules including dose and time response methods. In this tutorial, we focus on **Probit Dose/Time Response Analysis**, as shown in @fig-aov.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Analysis of experiment tab](images/probit%20front.png){#fig-aov fig-align="center"}
+
+## Probit Dose/Time Response Analysis {#C}
+
+::: {style="text-align: justify;"}
+Probit Dose/Time Response Analysis is a regression-based bioassay method that estimates the relationship between the log-dose (or log-time) of a treatment agent and the cumulative proportion of subjects exhibiting a defined quantal response, such as death, knockdown, or inhibition. The response proportions are transformed to probit units values derived from the inverse normal cumulative distribution function converting the sigmoid dose-response curve into a linear relationship amenable to ordinary or weighted least squares regression. This approach is most commonly applied in toxicology, pharmacology, entomology, and plant protection research to estimate key parameters such as the **lethal dose 50% (LD50)**, **lethal concentration 50% (LC50)**, **lethal time 50% (LT50)**, and their associated fiducial confidence intervals. **RAISINS** implements maximum likelihood-based probit regression, automatically computing the probit line, slope, intercept, goodness-of-fit (chi-square heterogeneity test), and lethal dose/time estimates across user-specified probability levels. The method is applicable whenever the response variable is binary (alive/dead, inhibited/not inhibited) and multiple dose or time levels are tested against a group of subjects.
+:::
+
+::: callout-tip
+#### Probit Dose/Time Response Analysis is a maximum likelihood regression method that linearises sigmoid dose-response data by transforming cumulative response proportions to probit (normal equivalent deviate) units, enabling precise estimation of lethal dose or time at any specified probability level.
+:::
+
+## A working example {#W}
+
+::: {style="text-align: justify;"}
+To make things simple and interesting, we'll explain Probit Dose/Time Response Analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters.The image represents a dose-response dataset used in probit or logistic analysis. The “Dose” column contains different treatment levels, while the “Response” column records binary outcomes (0 = no response, 1 = response). The data show that responses increase with increasing dose levels, indicating a positive dose-response relationship useful for estimating LD₅₀ or LC₅₀ values. The arrangement of the data is shown in @fig-data.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Example dataset](images/probit%20WEE-01.png){#fig-data fig-align="center"}
+
+::: {style="text-align: justify;"}
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently in this tutorial are **Dose/Time** and **Response**. In our example, the **Dose** column refers to the concentration of the insecticide in mg/L, the **Total** column contains the number of insects exposed per replicate, and the **Dead** column records the number of insects that died from which **RAISINS** internally computes the response proportion for probit regression.
+:::
+
+## How to prepare your data? {#sec-4 .H}
+
+::: {style="text-align: justify;"}
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. Your dataset must contain at minimum three columns: one for the **dose or time level**, one for the **total number of subjects exposed**, and one for the **number responding** (e.g., dead, inhibited, knockdown). Make sure no blank rows are left above the data, and all columns have proper names without spaces or special characters. That's it your file is ready to upload.
+
+Still if you have doubt, see @fig-4.
+
+To prepare your dataset for analysis in **RAISINS**, you have two options:
+
+Creating dataset in MS Excel
+
+Creating your dataset directly within the **RAISINS** app
+:::
+
+![Illustrating how to create a dataset](images/probit%20WEE%20(1).png){#fig-4 fig-align="center"}
+
+## Probit analysis tab explained {#AO}
+
+::: {style="text-align: justify;"}
+In @fig-5, you can see the detailed view of the Probit Analysis tab, along with explanations of what each option does. This section helps you understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Dose/Time column**, **Total column**, and **Response column** will appear in the sidebar. Select the appropriate columns for each field. You may also specify the **analysis type** either **Dose-Response** (for concentration-mortality data) or **Time-Response** (for time-mortality data) using the toggle provided. Once you click the Run Analysis button, all relevant probit results and outputs appear instantly, leaving no room for confusion.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Probit analysis window explained](images/probit%20WEE%20(2).png){#fig-5 fig-align="center"}
+
+::: {style="text-align: justify;"}
+For some bioassay data, particularly when the control mortality is non-zero, **RAISINS** provides an inbuilt option to apply **Abbott's correction** before fitting the probit model (@sec-6). Abbott's correction adjusts the observed proportions to account for natural (background) mortality in the untreated control group, ensuring that the estimated lethal parameters reflect only the effect of the treatment agent.
+:::
+
+## Analysis results {#sec-7 .AR}
+
+::: {style="text-align: justify;"}
+Once your dataset is uploaded and the appropriate columns and options are selected, click on Run Analysis. **RAISINS** will fit a maximum likelihood probit regression model and display the results in a structured output panel. The primary output includes the **probit regression equation**, **chi-square goodness-of-fit** statistic, and a table of **lethal dose/time estimates** at user-specified probability levels (see @fig-100).
+:::
+
+**Table 1 — Probit Regression Summary**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Probit regression summary slope, intercept, and goodness-of-fit](images/proanalyse%201.png){#fig-100 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> Probit regression table explained </summary>
+```
+
+<small> The probit regression table produced by **RAISINS** summarises the fitted linear model relating log-dose (or log-time) to the probit of the response proportion. The key parameters reported are:
+
+**Slope (b)**: The regression coefficient indicating the rate at which the probit response increases per unit increase in log-dose. A steeper slope indicates a more homogeneous population response; a shallower slope suggests greater variation in susceptibility among individuals.
+
+**Intercept (a)**: The value of the probit when log-dose equals zero. Together with the slope, it defines the complete probit line: $\text{Probit}(p) = a + b \cdot \log_{10}(\text{Dose})$.
+
+**Chi-square (χ²) heterogeneity test**: A goodness-of-fit statistic that tests whether the observed probit values deviate significantly from those predicted by the fitted line. A non-significant chi-square (p \> 0.05) indicates an adequate fit; a significant result suggests heterogeneity or non-linearity that may require investigation.
+
+**Degrees of freedom (df)**: Equal to the number of dose/time groups minus 2 (the number of estimated parameters). Used to evaluate the chi-square statistic against tabulated critical values.
+
+Significance is indicated by an asterisk (\*) for the **5%** level and two asterisks (\*\*) for the **1%** level of significance. </small>
+
+</details>
+
+### Interpretation from @fig-100
+
+::: {style="text-align: justify;"}
+The fitted probit regression line for the pyrethroid bioassay yields a slope of approximately **2.31** and an intercept of **–1.68**, indicating a moderately steep dose-response relationship. The chi-square heterogeneity test statistic (χ² = 4.12, df = 4) is non-significant (p = 0.39), confirming that the probit model fits the observed data adequately and there is no evidence of systematic departure from linearity. The positive slope confirms that mortality increases with increasing dose, as expected for a toxicant-response relationship. The steepness of the slope (b \> 2) suggests that the *Bemisia tabaci* population is relatively homogeneous in its susceptibility to the tested insecticide.
+
+@sec-8 provides detailed information on the lethal dose/time estimates and fiducial confidence intervals derived from this fitted model.
+:::
+
+**Table 2 — Lethal Dose / Time Estimates with Fiducial Limits**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Lethal dose/time estimates with 95% fiducial confidence limits](images/pro%20analyse%202.png){#fig-101 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">Overview of lethal estimate parameters
+</summary>
+```
+
+<small>
+
+1.  *Lethal Dose / Time Estimates*
+
+**LD50 / LC50 / LT50**: The dose, concentration, or time required to kill (or elicit a response in) exactly 50% of the exposed population. This is the most commonly reported summary statistic from probit analysis and serves as a standard benchmark for comparing the potency or speed of action of different agents.
+
+**LD90 / LC90 / LT90**: The dose, concentration, or time required to kill 90% of the population. This parameter is especially important in pest management and public health applications, where high levels of control are required.
+
+**LD10 / LC10 / LT10**: The dose, concentration, or time eliciting a response in only 10% of subjects. Useful as a no-observed-adverse-effect benchmark in risk assessment.
+
+2.  *Fiducial Confidence Limits*
+
+**Lower 95% Fiducial Limit**: The lower bound of the 95% fiducial confidence interval for the lethal estimate, computed using the Fieller's theorem approach as implemented in standard probit analysis. These limits are asymmetric on the original scale.
+
+**Upper 95% Fiducial Limit**: The upper bound of the confidence interval. Together, the lower and upper fiducial limits define the range within which the true lethal value is expected to lie with 95% confidence.
+
+3.  *Slope and Relative Potency*
+
+**Slope (SE)**: The slope of the probit line with its standard error. A steeper slope (larger b) indicates a sharper transition from no-response to full-response, reflecting a more uniform population.
+
+**Relative Potency**: When two agents are compared on the same probit plot, the ratio of their LD50 estimates gives the relative potency a standardised index of comparative efficacy.
+
+</small>
+
+</details>
+
+### Interpretation from @fig-101
+
+::: {style="text-align: justify;"}
+Based on the fitted probit model for the pyrethroid bioassay, the estimated **LD50** is **1.82 mg/L** (95% fiducial limits: 1.31–2.45 mg/L), indicating that a concentration of approximately 1.82 mg/L of the synthetic pyrethroid is required to kill 50% of the *Bemisia tabaci* population under the experimental conditions. The **LD90** is estimated at **8.74 mg/L** (95% fiducial limits: 6.12–14.20 mg/L), highlighting the substantially higher dose needed to achieve near-complete control. The narrow fiducial confidence intervals for LD50 relative to LD90 are typical and reflect greater statistical precision at the central portion of the dose-response curve. These estimates can be used to benchmark the tested insecticide against other compounds or to calculate application rates for field deployment.
+:::
+
+::: callout-tip
+#### The fiducial confidence limits for LD50 are computed using Fieller's theorem, which accounts for the uncertainty in both the slope and intercept of the fitted probit line they are not equivalent to simple symmetric confidence intervals based on standard errors alone.
+:::
+
+::: {style="text-align: justify;"}
+In our example, the LD50 of 1.82 mg/L provides a reliable estimate of the potency of the tested insecticide. When comparing multiple insecticides, the compound with the **lower LD50** is considered more potent it achieves the same level of control at a lower dose. The ratio of LD50 values between two compounds gives the **relative potency ratio**, a useful comparative index in toxicological and resistance monitoring studies.
+:::
+
+::: callout-tip
+#### Cohen's f (effect size) and R² are also reported alongside the probit regression output in RAISINS to quantify the overall strength of the dose-response relationship, independent of sample size.
+:::
+
+## Multiple Comparison Tests {#sec-8 .MCT}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> What is a comparison test in probit analysis? </summary>
+```
+
+<small> In Probit Dose/Time Response Analysis, pairwise comparisons between two or more tested agents or between different strains or populations are made by examining whether their **LD50 estimates** (or other lethal estimates) overlap in their 95% fiducial confidence intervals. Non-overlapping confidence intervals at the same probability level are interpreted as evidence of a statistically significant difference in potency or susceptibility. Additionally, formal significance testing can be conducted by computing the **ratio of LD50 estimates** and checking whether its fiducial interval includes 1.0; if the interval does not include 1.0, the two estimates are significantly different at the corresponding significance level. </small>
+
+</details>
+
+::: {style="text-align: justify;"}
+In probit analysis, the primary method for comparing the potency of two or more agents or the susceptibility of two or more populations is the **comparison of lethal estimates and their fiducial confidence intervals**. **RAISINS** presents these estimates in a consolidated table (see @fig-101), making it straightforward to assess whether observed differences in LD50 or LT50 values between groups are statistically meaningful.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Comparison of lethal estimates across agents or strains](images/probit%20WEE%20(2)-01.png){#fig-cus fig-align="center"}
+
+::: {style="text-align: justify;"}
+The three most relevant comparative metrics provided by **RAISINS** for probit analysis are the **fiducial confidence interval overlap approach**, the **resistance ratio (RR)**, and the **slope comparison**.
+
+The **fiducial confidence interval overlap approach** is the simplest and most widely used method in bioassay practice. If the 95% fiducial confidence intervals of two LD50 estimates do not overlap, the two potencies are considered significantly different at the 5% significance level. While this is a conservative criterion, it is robust and widely accepted in published toxicological literature.
+
+The **Resistance Ratio (RR)** is computed as the ratio of the LD50 of a potentially resistant strain to the LD50 of a reference (susceptible) strain: $$RR = \frac{LD50_{\text{resistant}}}{LD50_{\text{susceptible}}}$$ An RR close to 1 indicates equal susceptibility, values between 2 and 5 suggest low resistance, 5 to 10 moderate resistance, and values exceeding 10 indicate high resistance, according to standard entomological resistance classification guidelines. **RAISINS** reports the RR and its fiducial limits automatically when two datasets are analysed simultaneously.
+
+The **slope comparison** examines whether the probit lines of two agents or populations are parallel. If the slopes are not significantly different (parallel lines), the two agents have a consistent relative potency across all dose levels and a single relative potency estimate is valid. If slopes differ significantly, the relative potency itself varies with dose level, and comparisons should be made at a specific dose level of practical relevance rather than using a single summary ratio.
+:::
+
+## Plots and Graph {#BP}
+
+::: {style="text-align: justify;"}
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We have ensured that every possible plot related to Probit Dose/Time Response Analysis is readily available. Simply click on the Basic Plot tab to view them (see @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customise its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG for use in reports or publications.
+:::
+
+### Customizing plots
+
+::: {style="text-align: justify;"}
+**RAISINS** provides users with various customisation features for the plots to enhance the visualisation according to individual requirements. **Click** on @fig-8 to get a clear idea of the customising features available.
+:::
+
+![Plot settings for customising](images/probit%20WEE%20(3)-01.png){#fig-8 fig-align="center"}
+
+::: {style="text-align: justify;"}
+From @fig-9 to @fig-13, you can see the different types of plots available in **RAISINS** for Probit Dose/Time Response Analysis. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand what each plot conveys.
+:::
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+```
+
+```{=html}
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8));
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#probit-curve-desc   { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#observed-prop-desc  { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#confidence-band-desc{ background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#lethal-est-desc     { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#residual-desc       { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+</style>
+```
+
+:::::::::::::::::::::::: grid
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('probit-curve-desc')" onmouseout="hideDescription('probit-curve-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Probit dose-response curve](images/dose%20resopnsecurve.png){#fig-9}
+
+:::: {#probit-curve-desc .plot-description}
+::: {style="text-align: justify;"}
+A **dose-response curve** in probit analysis is a graph that shows the relationship between the dose of a substance and the biological response produced. The dose is plotted on the X-axis (usually logarithmic scale) and the probit mortality or response on the Y-axis. It helps determine the effective or lethal dose, such as LD₅₀, by converting sigmoid response data into a straight line for easy interpretation.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('observed-prop-desc')" onmouseout="hideDescription('observed-prop-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![probit transform plot](images/probit%20transform%20plot.png){#fig-10}
+
+:::: {#observed-prop-desc .plot-description}
+::: {style="text-align: justify;"}
+A **Probit transform plot** is a graphical representation where percentage response data are converted into probit values and plotted against the logarithm of dose or concentration. This transformation changes the sigmoid dose-response curve into a straight line, making it easier to estimate values like LD₅₀ or ED₅₀ and analyze the relationship between dose and response.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('confidence-band-desc')" onmouseout="hideDescription('confidence-band-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Residual Plot](images/resdul%20plot.png){#fig-11}
+
+:::: {#confidence-band-desc .plot-description}
+::: {style="text-align: justify;"}
+A **residual plot** is a graph that displays residuals (differences between observed and predicted values) on the Y-axis against fitted values or independent variables on the X-axis. It is used to check model assumptions and assess goodness of fit; random scatter around zero indicates a good model fit.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('lethal-est-desc')" onmouseout="hideDescription('lethal-est-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Lethal estimate comparison bar chart](images/ld%20lc%20ploo.png){#fig-12}
+
+:::: {#lethal-est-desc .plot-description}
+::: {style="text-align: justify;"}
+An **LD/LC estimate plot** is a graphical representation used in toxicity studies to estimate lethal dose (LD) or lethal concentration (LC) values, such as LD₅₀ or LC₅₀. It shows the relationship between dose/concentration and the percentage mortality or response. The plot helps identify the dose or concentration required to cause death or effect in 50% of the test population.
+:::
+::::
+:::::
+::::::
+
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('residual-desc')" onmouseout="hideDescription('residual-desc')"}
+::: {style="text-align: center;"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Residual plot for probit model diagnostics](images/boot%20straop.png){#fig-13}
+:::
+
+:::: {#residual-desc .plot-description}
+::: {style="text-align: justify;"}
+A **Bootstrap distribution plot** is a graph that displays the distribution of statistics obtained from repeated bootstrap samples of a dataset. It is used to estimate variability, confidence intervals, and the stability of a parameter such as the mean or median. The plot helps visualize how the statistic is distributed across resampled data.
+:::
+::::
+::::::
+:::::::
+::::::::::::::::::::::::
+
+## AI Interpretation {#AI}
+
+::: {style="text-align: justify;"}
+**RAISINS** includes an integrated **AI Interpretation** assistant that automatically synthesises the probit analysis results and generates a plain-language summary for the user. Once the analysis is run, the AI assistant accessible via the AI Interpretation tab reads the fitted probit regression parameters, lethal estimates, fiducial confidence limits, chi-square goodness-of-fit result, and slope comparison outputs, and produces a structured narrative interpretation (see @fig-ai). The assistant identifies whether the model fits adequately, highlights the key LD50/LT50 estimates and their confidence intervals, flags any heterogeneity or lack of fit, and suggests appropriate next steps such as running a resistance ratio comparison, checking for outlier replicates, or considering a non-linear alternative if the probit line is a poor fit. This feature is especially valuable for researchers who are new to probit analysis or who need to prepare results sections for manuscripts and regulatory submissions efficiently.
+:::
+
+![AI interpretation tab in RAISINS](images/ai%20iner%20pro.png){#fig-ai fig-align="center"}
+
+## Preparing your data {#PRE}
+
+::: {style="text-align: justify;"}
+"Your analysis is only as good as your data! Feed RAISINS high-quality bioassay data, and it will deliver powerful probit estimates feed it poorly structured data, and the results will not be trustworthy."
+
+1.  Create your dataset in MS Excel
+
+2.  Build your dataset directly within the RAISINS app
+:::
+
+## Preparing data in MS Excel {#EX}
+
+::: {style="text-align: justify;"}
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for Probit Dose/Time Response Analysis should follow a column-based format, where the first column contains the **dose or time level** (numeric), the second column contains the **total number of subjects exposed** at each replicate-dose combination, and the third column contains the **number of subjects responding** (e.g., dead). Additional response variable columns (e.g., knockdown count, fecundity count) may be appended for multivariate analysis. Column names must not contain spaces use underscores or dots as separators, and avoid symbols such as %, #, or &. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended for faster loading. Ensure there are no blank rows above the data. For reference, see the structure shown in @fig-pp. Data can also be arranged with repeated dose values for each replicate row, as illustrated in @fig-kk.
+:::
+
+![Model-1: showing how the prepared Excel file for Probit upload should look like](images/mod%201pro.png){#fig-pp}
+
+![Model-2: showing an alternative arrangement of the prepared Excel file for Probit upload](images/mod%202%20pro.png){#fig-kk}
+
+<details>
+
+<summary>Dataset Creation Rules</summary>
+
+<small> 1. **Column Naming Convention** - No spaces allowed in column names.\
+- Use underscores (`_`) or full stops (`.`) for separation. - Avoid symbols and special characters like %,# etc 2. **Data Arrangement** - Start data arrangement towards the upper-left corner.\
+- Ensure the row above the data is not blank. 3. **Cell Management** - Avoid typing or deleting in cells without data.\
+- If needed, select affected cells, right-click, and select **Clear Contents**. 4. **Column Relevance** - Name all columns meaningfully.\
+- Include only the dose/time, total, and response columns required for probit analysis; exclude any unnecessary columns. </small>
+
+</details>
+
+<details>
+
+<summary>How to Save as CSV in MS Excel</summary>
+
+<small> 1. **Open Your Workbook**
+
+```         
+-   Ensure your data is arranged properly with only one sheet.
+```
+
+2.  **Click 'File' Menu**
+
+    - Go to the top-left corner and click on **File**.
+
+3.  **Choose 'Save As' or 'Save a Copy'**
+
+    - Select the location where you want to save your file.
+
+4.  **Set File Type to CSV**
+
+    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+
+5.  **Name Your File**
+
+    - Enter a relevant file name without spaces (use underscores if needed).
+
+6.  **Click 'Save'**
+
+    - Click **Save** to export the file.
+
+> 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names, numeric dose/time values with no text). </small>
+
+</details>
+
+## Creating dataset in RAISINS {#CR}
+
+::: {style="text-align: justify;"}
+If you are unsure about the correct format for creating a probit bioassay dataset, do not worry **RAISINS** offers an option to create your data directly within the app using the prescribed template. Here is how:
+
+- Navigate to the **Create Data Tab**
+
+- Select the number of **Dose/Time Levels**
+
+- Select the number of **Replicates**
+
+- Select the number of **Response Variables**
+
+- Click on the **Create** button
+
+The model layout will appear as shown in @fig-createdata. You may then enter the observed counts manually into the downloaded CSV file, or paste them directly into the template provided. Once you have entered all observations, download the CSV file and upload it in the Analysis tab.
+:::
+
+![Illustrating how to create a dataset](images/probit%20WEE%20(1).png){fig-align="center"}
+
+## Model datasets {#M}
+
+::: {style="text-align: justify;"}
+To test the app or to better understand the required data arrangement for Probit Dose/Time Response Analysis, **RAISINS** provides model datasets within the app. You can download them from the Dataset tab and use them directly to explore the analysis workflow before uploading your own experimental data.
+:::
+
+![Model dataset](images/model data probit.png){#fig-188 fig-align="center"}
+
+## FAQ's {#F}
+
+::: {style="text-align: justify;"}
+The app includes a dedicated FAQs tab to help clarify common doubts and guide users through all features of the Probit Dose/Time Response module. This section provides detailed answers to frequently asked questions about data formatting, Abbott's correction, interpretation of LD50 confidence intervals, chi-square heterogeneity, and resistance ratio computation offering practical tips to ensure a smooth analytical experience. If you are ever unsure about how something works, the FAQs tab is the best place to start.
+:::
+
+![FAQs](images/pro faq.png){#fig-148 fig-align="center"}
+
+## View data {#U}
+
+::: {style="text-align: justify;"}
+View Data serves as the primary diagnostic tool for ensuring data integrity before running the Probit analysis. Upon uploading your dataset, the system performs an automated **Health Check** to validate column types and formatting confirming that the dose/time column is numeric, that the total and response columns contain non-negative integers, and that no response count exceeds the corresponding total. Any formatting issues detected are flagged before the analysis begins, preventing erroneous results from poorly structured input data.
+:::
+
+![View data](images/pro view.png){fig-align="center"}
+
+------------------------------------------------------------------------

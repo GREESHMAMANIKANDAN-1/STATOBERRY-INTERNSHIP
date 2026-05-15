@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Probit Dose/Time Response Analysis</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="probit_dose_time_response_files/libs/clipboard/clipboard.min.js"></script>
+<script src="probit_dose_time_response_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="probit_dose_time_response_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="probit_dose_time_response_files/libs/quarto-html/popper.min.js"></script>
+<script src="probit_dose_time_response_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="probit_dose_time_response_files/libs/quarto-html/anchor.min.js"></script>
+<link href="probit_dose_time_response_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="probit_dose_time_response_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="probit_dose_time_response_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="probit_dose_time_response_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="probit_dose_time_response_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="probit_dose_time_response_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="probit_dose_time_response_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="probit_dose_time_response_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="sty.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>TABLE OF CONTENTS</strong></h2>
+   
+  <ul>
+  <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Analysis of experiments</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Probit Dose/Time Response Analysis</a></li>
+  <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
+  <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> Probit analysis tab explained</a></li>
+  <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">6</span> Analysis results</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-100" id="toc-interpretation-from-fig-100" class="nav-link" data-scroll-target="#interpretation-from-fig-100"><span class="header-section-number">6.1</span> Interpretation from Figure&nbsp;5</a></li>
+  <li><a href="#interpretation-from-fig-101" id="toc-interpretation-from-fig-101" class="nav-link" data-scroll-target="#interpretation-from-fig-101"><span class="header-section-number">6.2</span> Interpretation from Figure&nbsp;6</a></li>
+  </ul></li>
+  <li><a href="#sec-8" id="toc-sec-8" class="nav-link" data-scroll-target="#sec-8"><span class="header-section-number">7</span> Multiple Comparison Tests</a></li>
+  <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">8</span> Plots and Graph</a>
+  <ul class="collapse">
+  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">8.1</span> Customizing plots</a></li>
+  </ul></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">9</span> AI Interpretation</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">10</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">11</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">12</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">13</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">14</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">15</span> View data</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Probit Dose/Time Response Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+<div class="affiliations">
+<p><sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
+</div>
+<p>ABSTRACT</p>
+<div style="text-align: justify;">
+<p><strong>Probit Dose/Time Response Analysis</strong> is a statistical method used to model the relationship between a stimulus such as a dose of pesticide or duration of exposure and the probability of a binary response, such as mortality or inhibition, in a target population. <strong>Probit analysis</strong> transforms cumulative response proportions into probit units (normal equivalent deviates), linearising the sigmoid dose-response curve for reliable parameter estimation. In <strong>RAISINS</strong> you can perform Probit Dose/Time Response Analysis very easily without writing a single line of code. This tutorial will guide you through how to perform Probit analysis in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will obtain publication-ready tables and plots, along with key estimates such as LD50, LC50, LT50, lethal dose/time confidence intervals, and slope parameters.</p>
+</div>
+<details>
+<p><em>Hover or click each point to see more information.</em></p>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Introduction Probit Dose/Time Response Analysis
+</summary>
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+<ul>
+<small> The Probit model traces its origins to the pioneering work of <span class="hover-img">Chester Ittner Bliss</span>, an American entomologist and statistician who introduced the <strong>probit transformation</strong> in <strong>1934</strong> as a practical tool for analysing insecticide bioassay data. Bliss observed that mortality proportions, when plotted against log-dose, followed a characteristic sigmoid (S-shaped) curve. By transforming proportions to <strong>probit units</strong> the inverse of the normal cumulative distribution function he linearised this relationship, enabling straightforward estimation of lethal doses using linear regression techniques available at the time. His landmark paper published in <em>Science</em> (1934) laid the foundation for what became a cornerstone method in toxicology, pharmacology, and pest management. The method was subsequently refined and formalised by <strong>D.J. Finney</strong> in his comprehensive monograph <em>Probit Analysis</em> (1947, Cambridge University Press), which codified the maximum likelihood estimation procedure still used today. Probit analysis remains the standard approach for estimating <strong>LD50</strong>, <strong>LC50</strong>, <strong>LT50</strong>, and their fiducial confidence intervals in regulatory toxicology and bioassay studies worldwide. </small>
+</ul>
+</details>
+<section id="AE" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
+<div style="text-align: justify;">
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different analysis modules including dose and time response methods. In this tutorial, we focus on <strong>Probit Dose/Time Response Analysis</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/probit%20front.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="images/probit%20front.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Analysis of experiment tab
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="C" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Probit Dose/Time Response Analysis</h2>
+<div style="text-align: justify;">
+<p>Probit Dose/Time Response Analysis is a regression-based bioassay method that estimates the relationship between the log-dose (or log-time) of a treatment agent and the cumulative proportion of subjects exhibiting a defined quantal response, such as death, knockdown, or inhibition. The response proportions are transformed to probit units values derived from the inverse normal cumulative distribution function converting the sigmoid dose-response curve into a linear relationship amenable to ordinary or weighted least squares regression. This approach is most commonly applied in toxicology, pharmacology, entomology, and plant protection research to estimate key parameters such as the <strong>lethal dose 50% (LD50)</strong>, <strong>lethal concentration 50% (LC50)</strong>, <strong>lethal time 50% (LT50)</strong>, and their associated fiducial confidence intervals. <strong>RAISINS</strong> implements maximum likelihood-based probit regression, automatically computing the probit line, slope, intercept, goodness-of-fit (chi-square heterogeneity test), and lethal dose/time estimates across user-specified probability levels. The method is applicable whenever the response variable is binary (alive/dead, inhibited/not inhibited) and multiple dose or time levels are tested against a group of subjects.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Probit Dose/Time Response Analysis is a maximum likelihood regression method that linearises sigmoid dose-response data by transforming cumulative response proportions to probit (normal equivalent deviate) units, enabling precise estimation of lethal dose or time at any specified probability level.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="W" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
+<div style="text-align: justify;">
+<p>To make things simple and interesting, we’ll explain Probit Dose/Time Response Analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters.The image represents a dose-response dataset used in probit or logistic analysis. The “Dose” column contains different treatment levels, while the “Response” column records binary outcomes (0 = no response, 1 = response). The data show that responses increase with increasing dose levels, indicating a positive dose-response relationship useful for estimating LD₅₀ or LC₅₀ values. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/probit%20WEE-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Example dataset"><img src="images/probit%20WEE-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Example dataset
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently in this tutorial are <strong>Dose/Time</strong> and <strong>Response</strong>. In our example, the <strong>Dose</strong> column refers to the concentration of the insecticide in mg/L, the <strong>Total</strong> column contains the number of insects exposed per replicate, and the <strong>Dead</strong> column records the number of insects that died from which <strong>RAISINS</strong> internally computes the response proportion for probit regression.</p>
+</div>
+</section>
+<section id="sec-4" class="level2 H" data-number="4">
+<h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
+<div style="text-align: justify;">
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>, using a single-sheet Excel file. Your dataset must contain at minimum three columns: one for the <strong>dose or time level</strong>, one for the <strong>total number of subjects exposed</strong>, and one for the <strong>number responding</strong> (e.g., dead, inhibited, knockdown). Make sure no blank rows are left above the data, and all columns have proper names without spaces or special characters. That’s it your file is ready to upload.</p>
+<p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
+<p>Creating dataset in MS Excel</p>
+<p>Creating your dataset directly within the <strong>RAISINS</strong> app</p>
+</div>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/probit%20WEE%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Illustrating how to create a dataset"><img src="images/probit%20WEE%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Illustrating how to create a dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="AO" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> Probit analysis tab explained</h2>
+<div style="text-align: justify;">
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;4</a>, you can see the detailed view of the Probit Analysis tab, along with explanations of what each option does. This section helps you understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the <strong>Dose/Time column</strong>, <strong>Total column</strong>, and <strong>Response column</strong> will appear in the sidebar. Select the appropriate columns for each field. You may also specify the <strong>analysis type</strong> either <strong>Dose-Response</strong> (for concentration-mortality data) or <strong>Time-Response</strong> (for time-mortality data) using the toggle provided. Once you click the Run Analysis button, all relevant probit results and outputs appear instantly, leaving no room for confusion.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/probit%20WEE%20(2).png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Probit analysis window explained"><img src="images/probit%20WEE%20(2).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Probit analysis window explained
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>For some bioassay data, particularly when the control mortality is non-zero, <strong>RAISINS</strong> provides an inbuilt option to apply <strong>Abbott’s correction</strong> before fitting the probit model (<strong>?@sec-6</strong>). Abbott’s correction adjusts the observed proportions to account for natural (background) mortality in the untreated control group, ensuring that the estimated lethal parameters reflect only the effect of the treatment agent.</p>
+</div>
+</section>
+<section id="sec-7" class="level2 AR" data-number="6">
+<h2 class="AR anchored" data-number="6" data-anchor-id="sec-7"><span class="header-section-number">6</span> Analysis results</h2>
+<div style="text-align: justify;">
+<p>Once your dataset is uploaded and the appropriate columns and options are selected, click on Run Analysis. <strong>RAISINS</strong> will fit a maximum likelihood probit regression model and display the results in a structured output panel. The primary output includes the <strong>probit regression equation</strong>, <strong>chi-square goodness-of-fit</strong> statistic, and a table of <strong>lethal dose/time estimates</strong> at user-specified probability levels (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;5</a>).</p>
+</div>
+<p><strong>Table 1 — Probit Regression Summary</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/proanalyse%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Probit regression summary slope, intercept, and goodness-of-fit"><img src="images/proanalyse%201.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Probit regression summary slope, intercept, and goodness-of-fit
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Probit regression table explained </summary>
+<p><small> The probit regression table produced by <strong>RAISINS</strong> summarises the fitted linear model relating log-dose (or log-time) to the probit of the response proportion. The key parameters reported are:</small></p><small>
+<p><strong>Slope (b)</strong>: The regression coefficient indicating the rate at which the probit response increases per unit increase in log-dose. A steeper slope indicates a more homogeneous population response; a shallower slope suggests greater variation in susceptibility among individuals.</p>
+<p><strong>Intercept (a)</strong>: The value of the probit when log-dose equals zero. Together with the slope, it defines the complete probit line: <span class="math inline">\(\text{Probit}(p) = a + b \cdot \log_{10}(\text{Dose})\)</span>.</p>
+<p><strong>Chi-square (χ²) heterogeneity test</strong>: A goodness-of-fit statistic that tests whether the observed probit values deviate significantly from those predicted by the fitted line. A non-significant chi-square (p &gt; 0.05) indicates an adequate fit; a significant result suggests heterogeneity or non-linearity that may require investigation.</p>
+<p><strong>Degrees of freedom (df)</strong>: Equal to the number of dose/time groups minus 2 (the number of estimated parameters). Used to evaluate the chi-square statistic against tabulated critical values.</p>
+</small><p><small>Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance. </small></p>
+</details>
+<section id="interpretation-from-fig-100" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">6.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;5</a></h3>
+<div style="text-align: justify;">
+<p>The fitted probit regression line for the pyrethroid bioassay yields a slope of approximately <strong>2.31</strong> and an intercept of <strong>–1.68</strong>, indicating a moderately steep dose-response relationship. The chi-square heterogeneity test statistic (χ² = 4.12, df = 4) is non-significant (p = 0.39), confirming that the probit model fits the observed data adequately and there is no evidence of systematic departure from linearity. The positive slope confirms that mortality increases with increasing dose, as expected for a toxicant-response relationship. The steepness of the slope (b &gt; 2) suggests that the <em>Bemisia tabaci</em> population is relatively homogeneous in its susceptibility to the tested insecticide.</p>
+<p><a href="#sec-8" class="quarto-xref">Section&nbsp;7</a> provides detailed information on the lethal dose/time estimates and fiducial confidence intervals derived from this fitted model.</p>
+</div>
+<p><strong>Table 2 — Lethal Dose / Time Estimates with Fiducial Limits</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/pro%20analyse%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Lethal dose/time estimates with 95% fiducial confidence limits"><img src="images/pro%20analyse%202.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Lethal dose/time estimates with 95% fiducial confidence limits
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">Overview of lethal estimate parameters
+</summary>
+<p><small></small></p><small>
+<ol type="1">
+<li><em>Lethal Dose / Time Estimates</em></li>
+</ol>
+<p><strong>LD50 / LC50 / LT50</strong>: The dose, concentration, or time required to kill (or elicit a response in) exactly 50% of the exposed population. This is the most commonly reported summary statistic from probit analysis and serves as a standard benchmark for comparing the potency or speed of action of different agents.</p>
+<p><strong>LD90 / LC90 / LT90</strong>: The dose, concentration, or time required to kill 90% of the population. This parameter is especially important in pest management and public health applications, where high levels of control are required.</p>
+<p><strong>LD10 / LC10 / LT10</strong>: The dose, concentration, or time eliciting a response in only 10% of subjects. Useful as a no-observed-adverse-effect benchmark in risk assessment.</p>
+<ol start="2" type="1">
+<li><em>Fiducial Confidence Limits</em></li>
+</ol>
+<p><strong>Lower 95% Fiducial Limit</strong>: The lower bound of the 95% fiducial confidence interval for the lethal estimate, computed using the Fieller’s theorem approach as implemented in standard probit analysis. These limits are asymmetric on the original scale.</p>
+<p><strong>Upper 95% Fiducial Limit</strong>: The upper bound of the confidence interval. Together, the lower and upper fiducial limits define the range within which the true lethal value is expected to lie with 95% confidence.</p>
+<ol start="3" type="1">
+<li><em>Slope and Relative Potency</em></li>
+</ol>
+<p><strong>Slope (SE)</strong>: The slope of the probit line with its standard error. A steeper slope (larger b) indicates a sharper transition from no-response to full-response, reflecting a more uniform population.</p>
+<p><strong>Relative Potency</strong>: When two agents are compared on the same probit plot, the ratio of their LD50 estimates gives the relative potency a standardised index of comparative efficacy.</p>
+</small><p><small></small></p>
+</details>
+</section>
+<section id="interpretation-from-fig-101" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">6.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;6</a></h3>
+<div style="text-align: justify;">
+<p>Based on the fitted probit model for the pyrethroid bioassay, the estimated <strong>LD50</strong> is <strong>1.82 mg/L</strong> (95% fiducial limits: 1.31–2.45 mg/L), indicating that a concentration of approximately 1.82 mg/L of the synthetic pyrethroid is required to kill 50% of the <em>Bemisia tabaci</em> population under the experimental conditions. The <strong>LD90</strong> is estimated at <strong>8.74 mg/L</strong> (95% fiducial limits: 6.12–14.20 mg/L), highlighting the substantially higher dose needed to achieve near-complete control. The narrow fiducial confidence intervals for LD50 relative to LD90 are typical and reflect greater statistical precision at the central portion of the dose-response curve. These estimates can be used to benchmark the tested insecticide against other compounds or to calculate application rates for field deployment.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The fiducial confidence limits for LD50 are computed using Fieller’s theorem, which accounts for the uncertainty in both the slope and intercept of the fitted probit line they are not equivalent to simple symmetric confidence intervals based on standard errors alone.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div style="text-align: justify;">
+<p>In our example, the LD50 of 1.82 mg/L provides a reliable estimate of the potency of the tested insecticide. When comparing multiple insecticides, the compound with the <strong>lower LD50</strong> is considered more potent it achieves the same level of control at a lower dose. The ratio of LD50 values between two compounds gives the <strong>relative potency ratio</strong>, a useful comparative index in toxicological and resistance monitoring studies.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Cohen’s f (effect size) and R² are also reported alongside the probit regression output in RAISINS to quantify the overall strength of the dose-response relationship, independent of sample size.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+</section>
+<section id="sec-8" class="level2 MCT" data-number="7">
+<h2 class="MCT anchored" data-number="7" data-anchor-id="sec-8"><span class="header-section-number">7</span> Multiple Comparison Tests</h2>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> What is a comparison test in probit analysis? </summary>
+<p><small> In Probit Dose/Time Response Analysis, pairwise comparisons between two or more tested agents or between different strains or populations are made by examining whether their <strong>LD50 estimates</strong> (or other lethal estimates) overlap in their 95% fiducial confidence intervals. Non-overlapping confidence intervals at the same probability level are interpreted as evidence of a statistically significant difference in potency or susceptibility. Additionally, formal significance testing can be conducted by computing the <strong>ratio of LD50 estimates</strong> and checking whether its fiducial interval includes 1.0; if the interval does not include 1.0, the two estimates are significantly different at the corresponding significance level. </small></p>
+</details>
+<div style="text-align: justify;">
+<p>In probit analysis, the primary method for comparing the potency of two or more agents or the susceptibility of two or more populations is the <strong>comparison of lethal estimates and their fiducial confidence intervals</strong>. <strong>RAISINS</strong> presents these estimates in a consolidated table (see <a href="#fig-101" class="quarto-xref">Figure&nbsp;6</a>), making it straightforward to assess whether observed differences in LD50 or LT50 values between groups are statistically meaningful.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-cus" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/probit%20WEE%20(2)-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Comparison of lethal estimates across agents or strains"><img src="images/probit%20WEE%20(2)-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Comparison of lethal estimates across agents or strains
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The three most relevant comparative metrics provided by <strong>RAISINS</strong> for probit analysis are the <strong>fiducial confidence interval overlap approach</strong>, the <strong>resistance ratio (RR)</strong>, and the <strong>slope comparison</strong>.</p>
+<p>The <strong>fiducial confidence interval overlap approach</strong> is the simplest and most widely used method in bioassay practice. If the 95% fiducial confidence intervals of two LD50 estimates do not overlap, the two potencies are considered significantly different at the 5% significance level. While this is a conservative criterion, it is robust and widely accepted in published toxicological literature.</p>
+<p>The <strong>Resistance Ratio (RR)</strong> is computed as the ratio of the LD50 of a potentially resistant strain to the LD50 of a reference (susceptible) strain: <span class="math display">\[RR = \frac{LD50_{\text{resistant}}}{LD50_{\text{susceptible}}}\]</span> An RR close to 1 indicates equal susceptibility, values between 2 and 5 suggest low resistance, 5 to 10 moderate resistance, and values exceeding 10 indicate high resistance, according to standard entomological resistance classification guidelines. <strong>RAISINS</strong> reports the RR and its fiducial limits automatically when two datasets are analysed simultaneously.</p>
+<p>The <strong>slope comparison</strong> examines whether the probit lines of two agents or populations are parallel. If the slopes are not significantly different (parallel lines), the two agents have a consistent relative potency across all dose levels and a single relative potency estimate is valid. If slopes differ significantly, the relative potency itself varies with dose level, and comparisons should be made at a specific dose level of practical relevance rather than using a single summary ratio.</p>
+</div>
+</section>
+<section id="BP" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="BP"><span class="header-section-number">8</span> Plots and Graph</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We have ensured that every possible plot related to Probit Dose/Time Response Analysis is readily available. Simply click on the Basic Plot tab to view them (see <a href="#fig-8" class="quarto-xref">Figure&nbsp;8</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customise its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG for use in reports or publications.</p>
+</div>
+<section id="customizing-plots" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">8.1</span> Customizing plots</h3>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> provides users with various customisation features for the plots to enhance the visualisation according to individual requirements. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;8</a> to get a clear idea of the customising features available.</p>
+</div>
+<div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/probit%20WEE%20(3)-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Plot settings for customising"><img src="images/probit%20WEE%20(3)-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Plot settings for customising
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;9</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;13</a>, you can see the different types of plots available in <strong>RAISINS</strong> for Probit Dose/Time Response Analysis. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand what each plot conveys.</p>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8));
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#probit-curve-desc   { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#observed-prop-desc  { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#confidence-band-desc{ background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#lethal-est-desc     { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#residual-desc       { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+</style>
+<div class="grid">
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('probit-curve-desc')" onmouseout="hideDescription('probit-curve-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/dose%20resopnsecurve.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Probit dose-response curve"><img src="images/dose%20resopnsecurve.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Probit dose-response curve
+</figcaption>
+</figure>
+</div>
+<div id="probit-curve-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>dose-response curve</strong> in probit analysis is a graph that shows the relationship between the dose of a substance and the biological response produced. The dose is plotted on the X-axis (usually logarithmic scale) and the probit mortality or response on the Y-axis. It helps determine the effective or lethal dose, such as LD₅₀, by converting sigmoid response data into a straight line for easy interpretation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('observed-prop-desc')" onmouseout="hideDescription('observed-prop-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/probit%20transform%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: probit transform plot"><img src="images/probit%20transform%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: probit transform plot
+</figcaption>
+</figure>
+</div>
+<div id="observed-prop-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>Probit transform plot</strong> is a graphical representation where percentage response data are converted into probit values and plotted against the logarithm of dose or concentration. This transformation changes the sigmoid dose-response curve into a straight line, making it easier to estimate values like LD₅₀ or ED₅₀ and analyze the relationship between dose and response.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('confidence-band-desc')" onmouseout="hideDescription('confidence-band-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/resdul%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Residual Plot"><img src="images/resdul%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Residual Plot
+</figcaption>
+</figure>
+</div>
+<div id="confidence-band-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>residual plot</strong> is a graph that displays residuals (differences between observed and predicted values) on the Y-axis against fitted values or independent variables on the X-axis. It is used to check model assumptions and assess goodness of fit; random scatter around zero indicates a good model fit.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('lethal-est-desc')" onmouseout="hideDescription('lethal-est-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/ld%20lc%20ploo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Lethal estimate comparison bar chart"><img src="images/ld%20lc%20ploo.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Lethal estimate comparison bar chart
+</figcaption>
+</figure>
+</div>
+<div id="lethal-est-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>An <strong>LD/LC estimate plot</strong> is a graphical representation used in toxicity studies to estimate lethal dose (LD) or lethal concentration (LC) values, such as LD₅₀ or LC₅₀. It shows the relationship between dose/concentration and the percentage mortality or response. The plot helps identify the dose or concentration required to cause death or effect in 50% of the test population.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('residual-desc')" onmouseout="hideDescription('residual-desc')">
+<div style="text-align: center;">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/boot%20straop.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Residual plot for probit model diagnostics"><img src="images/boot%20straop.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Residual plot for probit model diagnostics
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="residual-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>Bootstrap distribution plot</strong> is a graph that displays the distribution of statistics obtained from repeated bootstrap samples of a dataset. It is used to estimate variability, confidence intervals, and the stability of a parameter such as the mean or median. The plot helps visualize how the statistic is distributed across resampled data.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="AI" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="AI"><span class="header-section-number">9</span> AI Interpretation</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> includes an integrated <strong>AI Interpretation</strong> assistant that automatically synthesises the probit analysis results and generates a plain-language summary for the user. Once the analysis is run, the AI assistant accessible via the AI Interpretation tab reads the fitted probit regression parameters, lethal estimates, fiducial confidence limits, chi-square goodness-of-fit result, and slope comparison outputs, and produces a structured narrative interpretation (see <a href="#fig-ai" class="quarto-xref">Figure&nbsp;14</a>). The assistant identifies whether the model fits adequately, highlights the key LD50/LT50 estimates and their confidence intervals, flags any heterogeneity or lack of fit, and suggests appropriate next steps such as running a resistance ratio comparison, checking for outlier replicates, or considering a non-linear alternative if the probit line is a poor fit. This feature is especially valuable for researchers who are new to probit analysis or who need to prepare results sections for manuscripts and regulatory submissions efficiently.</p>
+</div>
+<div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/ai%20iner%20pro.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: AI interpretation tab in RAISINS"><img src="images/ai%20iner%20pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: AI interpretation tab in RAISINS
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="PRE" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="PRE"><span class="header-section-number">10</span> Preparing your data</h2>
+<div style="text-align: justify;">
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality bioassay data, and it will deliver powerful probit estimates feed it poorly structured data, and the results will not be trustworthy.”</p>
+<ol type="1">
+<li><p>Create your dataset in MS Excel</p></li>
+<li><p>Build your dataset directly within the RAISINS app</p></li>
+</ol>
+</div>
+</section>
+<section id="EX" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="EX"><span class="header-section-number">11</span> Preparing data in MS Excel</h2>
+<div style="text-align: justify;">
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for Probit Dose/Time Response Analysis should follow a column-based format, where the first column contains the <strong>dose or time level</strong> (numeric), the second column contains the <strong>total number of subjects exposed</strong> at each replicate-dose combination, and the third column contains the <strong>number of subjects responding</strong> (e.g., dead). Additional response variable columns (e.g., knockdown count, fecundity count) may be appended for multivariate analysis. Column names must not contain spaces use underscores or dots as separators, and avoid symbols such as %, #, or &amp;. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended for faster loading. Ensure there are no blank rows above the data. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;15</a>. Data can also be arranged with repeated dose values for each replicate row, as illustrated in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;16</a>.</p>
+</div>
+<div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/mod%201pro.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Model-1: showing how the prepared Excel file for Probit upload should look like"><img src="images/mod%201pro.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Model-1: showing how the prepared Excel file for Probit upload should look like
+</figcaption>
+</figure>
+</div>
+<div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/mod%202%20pro.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: Model-2: showing an alternative arrangement of the prepared Excel file for Probit upload"><img src="images/mod%202%20pro.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Model-2: showing an alternative arrangement of the prepared Excel file for Probit upload
+</figcaption>
+</figure>
+</div>
+<details>
+<summary>
+Dataset Creation Rules
+</summary>
+<p><small> 1. <strong>Column Naming Convention</strong> - No spaces allowed in column names.<br>
+- Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %,# etc 2. <strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
+- Ensure the row above the data is not blank. 3. <strong>Cell Management</strong> - Avoid typing or deleting in cells without data.<br>
+- If needed, select affected cells, right-click, and select <strong>Clear Contents</strong>. 4. <strong>Column Relevance</strong> - Name all columns meaningfully.<br>
+- Include only the dose/time, total, and response columns required for probit analysis; exclude any unnecessary columns. </small></p>
+</details>
+<details>
+<summary>
+How to Save as CSV in MS Excel
+</summary>
+<p><small> 1. <strong>Open Your Workbook</strong></small></p><small>
+<pre><code>-   Ensure your data is arranged properly with only one sheet.</code></pre>
+<ol start="2" type="1">
+<li><p><strong>Click ‘File’ Menu</strong></p>
+<ul>
+<li>Go to the top-left corner and click on <strong>File</strong>.</li>
+</ul></li>
+<li><p><strong>Choose ‘Save As’ or ‘Save a Copy’</strong></p>
+<ul>
+<li>Select the location where you want to save your file.</li>
+</ul></li>
+<li><p><strong>Set File Type to CSV</strong></p>
+<ul>
+<li>In the <strong>‘Save as type’</strong> dropdown menu, choose <strong>CSV (Comma delimited) (*.csv)</strong>.</li>
+</ul></li>
+<li><p><strong>Name Your File</strong></p>
+<ul>
+<li>Enter a relevant file name without spaces (use underscores if needed).</li>
+</ul></li>
+<li><p><strong>Click ‘Save’</strong></p>
+<ul>
+<li>Click <strong>Save</strong> to export the file.</li>
+</ul></li>
+</ol>
+</small><blockquote class="blockquote"><small>
+</small><p><small>💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names, numeric dose/time values with no text). </small></p>
+</blockquote>
+</details>
+</section>
+<section id="CR" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="CR"><span class="header-section-number">12</span> Creating dataset in RAISINS</h2>
+<div style="text-align: justify;">
+<p>If you are unsure about the correct format for creating a probit bioassay dataset, do not worry <strong>RAISINS</strong> offers an option to create your data directly within the app using the prescribed template. Here is how:</p>
+<ul>
+<li><p>Navigate to the <strong>Create Data Tab</strong></p></li>
+<li><p>Select the number of <strong>Dose/Time Levels</strong></p></li>
+<li><p>Select the number of <strong>Replicates</strong></p></li>
+<li><p>Select the number of <strong>Response Variables</strong></p></li>
+<li><p>Click on the <strong>Create</strong> button</p></li>
+</ul>
+<p>The model layout will appear as shown in <strong>?@fig-createdata</strong>. You may then enter the observed counts manually into the downloaded CSV file, or paste them directly into the template provided. Once you have entered all observations, download the CSV file and upload it in the Analysis tab.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/probit%20WEE%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Illustrating how to create a dataset"><img src="images/probit%20WEE%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Illustrating how to create a dataset"></a></p>
+</figure>
+</div>
+<figcaption>Illustrating how to create a dataset</figcaption>
+</figure>
+</div>
+</section>
+<section id="M" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="M"><span class="header-section-number">13</span> Model datasets</h2>
+<div style="text-align: justify;">
+<p>To test the app or to better understand the required data arrangement for Probit Dose/Time Response Analysis, <strong>RAISINS</strong> provides model datasets within the app. You can download them from the Dataset tab and use them directly to explore the analysis workflow before uploading your own experimental data.</p>
+</div>
+<div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/model%20data%20probit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;17: Model dataset"><img src="images/model%20data%20probit.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Model dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="F" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="F"><span class="header-section-number">14</span> FAQ’s</h2>
+<div style="text-align: justify;">
+<p>The app includes a dedicated FAQs tab to help clarify common doubts and guide users through all features of the Probit Dose/Time Response module. This section provides detailed answers to frequently asked questions about data formatting, Abbott’s correction, interpretation of LD50 confidence intervals, chi-square heterogeneity, and resistance ratio computation offering practical tips to ensure a smooth analytical experience. If you are ever unsure about how something works, the FAQs tab is the best place to start.</p>
+</div>
+<div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/pro%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;18: FAQs"><img src="images/pro%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: FAQs
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="U" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="U"><span class="header-section-number">15</span> View data</h2>
+<div style="text-align: justify;">
+<p>View Data serves as the primary diagnostic tool for ensuring data integrity before running the Probit analysis. Upon uploading your dataset, the system performs an automated <strong>Health Check</strong> to validate column types and formatting confirming that the dose/time column is numeric, that the total and response columns contain non-negative integers, and that no response count exceeds the corresponding total. Any formatting issues detected are flagged before the analysis begins, preventing erroneous results from poorly structured input data.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/pro%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="View data"><img src="images/pro%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+</figure>
+</div>
+<figcaption>View data</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

@@ -99,6 +99,14 @@ window.Quarto = {
   <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</a></li>
   </ul></li>
   <li><a href="#AP" id="toc-AP" class="nav-link" data-scroll-target="#AP"><span class="header-section-number">10</span> Advanced plots</a></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">11</span> AI interpretation</a></li>
+  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">12</span> Multivariate</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">13</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">14</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">15</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">16</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">17</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">18</span> View data</a></li>
   </ul>
 </nav>
 </div>
@@ -179,11 +187,7 @@ window.Quarto = {
 }
 </style>
 <ul>
-<<<<<<< HEAD
-<small> The Randomised Block Design has its roots in the pioneering work of <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> at Rothamsted Experimental Station during the <strong>1920s and 1930s</strong>. Fisher recognized that natural heterogeneity in experimental fields — caused by gradients in soil fertility, moisture, or topography — could confound treatment comparisons if left uncontrolled. He proposed grouping experimental units into homogeneous blocks and randomizing treatments separately within each block, thereby isolating and removing block-to-block variability from the error term. This innovation greatly improved the precision of field experiments. When factorial treatment structures were later combined with the block arrangement, the Two Factor Factorial RBD emerged as one of the most widely used designs in agricultural, biological, and industrial research, allowing researchers to study multiple factors and their interactions efficiently while controlling for environmental variability. </small>
-=======
 <small> The Randomised Block Design has its roots in the pioneering work of <strong>Ronald A Fisher</strong> at Rothamsted Experimental Station during the <strong>1920s and 1930s</strong>. Fisher recognized that natural heterogeneity in experimental fields caused by gradients in soil fertility, moisture, or topography could confound treatment comparisons if left uncontrolled. He proposed grouping experimental units into homogeneous blocks and randomizing treatments separately within each block, thereby isolating and removing block-to-block variability from the error term. This innovation greatly improved the precision of field experiments. When factorial treatment structures were later combined with the block arrangement, the Two Factor Factorial RBD emerged as one of the most widely used designs in agricultural, biological, and industrial research, allowing researchers to study multiple factors and their interactions efficiently while controlling for environmental variability. </small>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </ul>
 </details>
 <section id="AE" class="level2" data-number="1">
@@ -195,11 +199,7 @@ window.Quarto = {
 <div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_FrontPage_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/PLACEHOLDER_FrontPage_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-=======
 <a href="images/2f%20rbd%20analysis-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="images/2f%20rbd%20analysis-03.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Analysis of experiment tab
@@ -210,7 +210,7 @@ Figure&nbsp;1: Analysis of experiment tab
 <section id="C" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Two Factor Factorial RBD (2F-RBD)</h2>
 <div style="text-align: justify;">
-<p>A Two Factor Factorial Randomised Block Design (2F-RBD) is an experimental design in which two factors, each with two or more levels, are combined to form all possible treatment combinations, and these combinations are then randomly assigned within each homogeneous block. The design enables the researcher to evaluate the main effect of Factor A, the main effect of Factor B, and the interaction effect (A × B) simultaneously, while also accounting for variability among blocks. 2F-RBD is particularly useful in field experiments, greenhouse trials, and any situation where experimental units can be grouped into blocks that are more homogeneous within than between them. By removing block-to-block variation from the experimental error, the design improves the precision of treatment comparisons compared to a Two Factor Factorial CRD. It offers the dual advantage of factorial efficiency and block control, making it the preferred choice when environmental heterogeneity is expected to be a significant source of variation.</p>
+<p>A Two Factor Factorial Randomized Block Design (2F-RBD) is an experimental design in which two factors, each with two or more levels, are combined to form all possible treatment combinations, and these combinations are then randomly assigned within each homogeneous block. The design enables the researcher to evaluate the main effect of Factor A, the main effect of Factor B, and the interaction effect (A × B) simultaneously, while also accounting for variability among blocks. 2F-RBD is particularly useful in field experiments, greenhouse trials, and any situation where experimental units can be grouped into blocks that are more homogeneous within than between them. By removing block-to-block variation from the experimental error, the design improves the precision of treatment comparisons compared to a Two Factor Factorial CRD. It offers the dual advantage of factorial efficiency and block control, making it the preferred choice when environmental heterogeneity is expected to be a significant source of variation.</p>
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
@@ -218,12 +218,12 @@ Figure&nbsp;1: Analysis of experiment tab
 </summary>
 <ul>
 <p><small></small></p><small>
-<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents a Two Factor Factorial RBD arrangement. In this layout, the treatment combinations are formed by crossing all levels of Factor A with all levels of Factor B. For example, with Factor A having 2 levels (a1, a2) and Factor B having 3 levels (b1, b2, b3), a total of 6 treatment combinations (a1b1, a1b2, a1b3, a2b1, a2b2, a2b3) are generated. Each treatment combination appears exactly once within every block, and the assignment within each block is completely randomized. The blocks themselves represent distinct groups of experimental units that share similar characteristics (e.g., rows or columns of a field, growth chambers, or batches of material), thereby controlling for the variation among them.</p>
+<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents a Two Factor Factorial RBD arrangement. In this layout, the treatment combinations are formed by crossing all levels of Factor A with all levels of Factor B. For example, with Factor A having 2 levels (a1, a2) and Factor B having 2 levels (b1, b2), a total of 4 treatment combinations (a1b1, a1b2, a2b1, a2b2) are generated. Each treatment combination appears exactly once within every block, and the assignment within each block is completely randomized. The blocks themselves represent distinct groups of experimental units that share similar characteristics (e.g., rows or columns of a field, growth chambers, or batches of material), thereby controlling for the variation among them.</p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Layout_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: 2F-RBD Layout"><img src="www/PLACEHOLDER_Layout_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/rbd%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: 2F-RBD Layout"><img src="images/rbd%202.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: 2F-RBD Layout
@@ -250,13 +250,13 @@ Figure&nbsp;2: 2F-RBD Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
-<p>To make things simple and interesting, we’ll explain 2F-RBD analysis step by step using a working example, so you can clearly see how it works and why it matters. This dataset represents a factorial experiment involving two factors: <strong>FactorA</strong> and <strong>FactorB</strong>, each with multiple levels, laid out in a Randomised Block Design. FactorA consists of <strong>[PLACEHOLDER: number of levels, e.g., 2 levels (a1, a2)]</strong>, while FactorB has <strong>[PLACEHOLDER: number of levels, e.g., 3 levels (b1, b2, b3)]</strong>. The experiment is conducted in a Randomised Block Design (RBD), where the <strong>[PLACEHOLDER: number of treatment combinations]</strong> treatment combinations formed by crossing the levels of FactorA and FactorB are randomly assigned within each of <strong>[PLACEHOLDER: number of blocks, e.g., 4 blocks]</strong>. Observations were collected for <strong>[PLACEHOLDER: number and names of response variables, e.g., 6 response variables: y1, y2, y3, y4, y5, and y6]</strong>, representing different measured characteristics. <strong>[PLACEHOLDER: Add a brief description of what the factors and variables represent in the context of the experiment, e.g., Factor A represents irrigation levels, Factor B represents fertiliser doses, and variables represent yield and quality traits.]</strong> This dataset allows for the examination of the individual effects of FactorA and FactorB, as well as their interaction effects, with block effects accounted for to improve precision. Our aim is to test whether the factors and their interaction produce statistically significant differences in the response variables using ANOVA. The arrangement of the data is shown in the <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To make things simple and interesting, we’ll explain 2F-RBD analysis step by step using a working example, so you can clearly see how it works and why it matters. This data set represents a factorial experiment involving two factors: Factor A and Factor B, each with multiple levels, laid out in a Randomized Block Design. Factor A consists of 2 levels (A1, A2), while Factor B has 2levels (B1, B2). The experiment is conducted in a Randomized Block Design (RBD), where the treatment combinations formed by crossing the levels of Factor A and Factor B are randomly assigned within each of 3 blocks. Observations were recorded for 7 variables. This data set allows for the examination of the individual effects of Factor A and Factor B, as well as their interaction effects, with block effects accounted for to improve precision. Our aim is to test whether the factors and their interaction produce statistically significant differences in the response variables using ANOVA. The arrangement of the data is shown in the <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ExcelData_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/PLACEHOLDER_ExcelData_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/new%202f-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="images/new%202f-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Example dataset
@@ -264,7 +264,7 @@ Figure&nbsp;3: Example dataset
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Three terms that we will use frequently are <strong>Factor A</strong>, <strong>Factor B</strong>, and <strong>Variables</strong>. In our example, Factor A has <strong>[PLACEHOLDER: levels]</strong>, Factor B has <strong>[PLACEHOLDER: levels]</strong>, and the Variables are <strong>[PLACEHOLDER: list of traits/response variables]</strong>.</p>
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Three terms that we will use frequently are <strong>Factor A</strong>, <strong>Factor B</strong>, and <strong>Variables</strong>. In our example, Factor A has 2 levels, Factor B has 2 levels and the 7 Variables.</p>
 </div>
 </section>
 <section id="sec-4" class="level2 H" data-number="4">
@@ -280,11 +280,7 @@ Figure&nbsp;3: Example dataset
 <div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_CreateData_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/PLACEHOLDER_CreateData_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-=======
 <a href="images/2F%20CSV-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="images/2F%20CSV-03.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Illustrating how to create a dataset
@@ -295,17 +291,13 @@ Figure&nbsp;4: Illustrating how to create a dataset
 <section id="AO" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> 2F-RBD analysis tab explained</h2>
 <div style="text-align: justify;">
-<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking <code>Browse</code> in the sidebar of the Analysis tab. When the file is uploaded, options to select Block, Factor A, Factor B, and variables will appear. Select the appropriate columns under each category. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly leaving no room for confusion.</p>
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select Block, Factor A, Factor B, and variables will appear. Select the appropriate columns under each category. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_AnalysisTab_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="www/PLACEHOLDER_AnalysisTab_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-=======
 <a href="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(19).png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="images/Copy%20of%20Red%20Modern%20Blank%20Page%20A4%20Landscape%20(19).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Analysis window explained
@@ -324,11 +316,7 @@ Figure&nbsp;5: Analysis window explained
 <div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/trans.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/trans.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-=======
 <a href="images/2f%20transformation%20new-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="images/2f%20transformation%20new-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Transformation options
@@ -347,18 +335,18 @@ Figure&nbsp;6: Transformation options
 <section id="sec-7" class="level2 AR" data-number="7">
 <h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
-<p>Once your dataset is uploaded, click on <code>Run Analysis</code>, <strong>two-way ANOVA</strong> (factorial ANOVA) will be performed within a randomised block framework. Analysis of Variance <strong>(ANOVA)</strong> is a statistical technique used to test the significance of differences among population means by partitioning total variation into Blocks, Factor A, Factor B, Interaction (A × B), and error components and comparing them using the F-test.</p>
+<p>Once your dataset is uploaded, click on Run Analysis, <strong>two-way ANOVA</strong> (factorial ANOVA) will be performed within a randomized block framework. Analysis of Variance <strong>(ANOVA)</strong> is a statistical technique used to test the significance of differences among population means by partitioning total variation into Blocks, Factor A, Factor B, Interaction (A × B), and error components and comparing them using the F-test.</p>
 </div>
 <p><strong>Table 1 ANOVA summary</strong></p>
 <div style="text-align: justify;">
-<p>The ANOVA summary table below presents the mean squares for each source of variation — Blocks, Factor A, Factor B, the Interaction (A × B), and the residual Error — along with their degrees of freedom and significance indicators for each response variable.</p>
+<p>The ANOVA summary table below presents the mean squares for each source of variation Blocks, Factor A, Factor B, the Interaction (A × B), and the residual Error along with their degrees of freedom and significance indicators for each response variable.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/PLACEHOLDER_ANOVATable1_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Mean squares and significance"><img src="www/PLACEHOLDER_ANOVATable1_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Mean squares and significance"></a></p>
+<p><a href="images/rbd%20anova.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Mean squares and significance"><img src="images/rbd%20anova.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Mean squares and significance"></a></p>
 </figure>
 </div>
 <figcaption>Mean squares and significance</figcaption>
@@ -371,7 +359,7 @@ Figure&nbsp;6: Transformation options
 <section id="interpretation" class="level3" data-number="7.1">
 <h3 data-number="7.1" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">7.1</span> Interpretation</h3>
 <div style="text-align: justify;">
-<p><strong>[PLACEHOLDER: Add interpretation of the ANOVA summary table here. Describe which factors (Factor A, Factor B) and/or their interaction (A × B) are significant or non-significant for each response variable. Mention the error mean squares, degrees of freedom, and any patterns observed across traits. For example: “The ANOVA summary indicates that Factor A shows a significant effect on y1 and y3 (p &lt; 0.05), while Factor B is non-significant across all traits. The interaction A × B is significant for y2 at the 5% level, suggesting that the combined effect of the two factors influences y2 beyond their individual effects. The error mean squares range from X to Y with Z degrees of freedom.”]</strong></p>
+<p>The ANOVA summary indicates that Factor A shows a significant effect on y1 and y3 (p &lt; 0.05), while Factor B is non-significant across all traits. The interaction A × B is significant for y2 at the 5% level, suggesting that the combined effect of the two factors influences y2 beyond their individual effects. The error mean squares range from X to Y with Z degrees of freedom.</p>
 </div>
 <p><strong>Table 2: Factor A - Detailed results with multiple comparisons</strong></p>
 <div style="text-align: justify;">
@@ -382,7 +370,7 @@ Figure&nbsp;6: Transformation options
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/PLACEHOLDER_ANOVATable2_FactorA_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Factor A detailed results with multiple comparisons"><img src="www/PLACEHOLDER_ANOVATable2_FactorA_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Factor A detailed results with multiple comparisons"></a></p>
+<p><a href="images/factor%20A.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Factor A detailed results with multiple comparisons"><img src="images/factor%20A.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Factor A detailed results with multiple comparisons"></a></p>
 </figure>
 </div>
 <figcaption>Factor A detailed results with multiple comparisons</figcaption>
@@ -394,7 +382,7 @@ Figure&nbsp;6: Transformation options
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/PLACEHOLDER_ANOVATable3_FactorB_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Factor B detailed results with multiple comparisons"><img src="www/PLACEHOLDER_ANOVATable3_FactorB_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Factor B detailed results with multiple comparisons"></a></p>
+<p><a href="images/factor%20B.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Factor B detailed results with multiple comparisons"><img src="images/factor%20B.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Factor B detailed results with multiple comparisons"></a></p>
 </figure>
 </div>
 <figcaption>Factor B detailed results with multiple comparisons</figcaption>
@@ -406,7 +394,7 @@ Figure&nbsp;6: Transformation options
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/PLACEHOLDER_ANOVATable4_Interaction_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Interaction (A × B) detailed results"><img src="www/PLACEHOLDER_ANOVATable4_Interaction_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Interaction (A × B) detailed results"></a></p>
+<p><a href="images/cross%20AB.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Interaction (A × B) detailed results"><img src="images/cross%20AB.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Interaction (A × B) detailed results"></a></p>
 </figure>
 </div>
 <figcaption>Interaction (A × B) detailed results</figcaption>
@@ -428,7 +416,7 @@ Figure&nbsp;6: Transformation options
 <ol start="2" type="1">
 <li><em>Multiple Comparisons</em></li>
 </ol>
-<p><strong>Post-hoc Grouping</strong>: A method of using letters (a, b, c) to categorize means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.</p>
+<p><strong>Post hoc Grouping</strong>: A method of using letters (a, b, c) to categorize means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.</p>
 <ol start="3" type="1">
 <li><em>ANOVA Summary</em></li>
 </ol>
@@ -446,9 +434,7 @@ Figure&nbsp;6: Transformation options
 </section>
 <section id="interpretation-1" class="level3" data-number="7.2">
 <h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-1"><span class="header-section-number">7.2</span> Interpretation</h3>
-<div style="text-align: justify;">
-<p><strong>[PLACEHOLDER: Add detailed interpretation of Tables 2, 3, and 4 here. For each factor (A and B) and the interaction (A × B), describe the mean values at each level, the significance of F-statistics, p-values, and any pairwise groupings indicated by letter notation. Comment on the critical difference (CD) values, MSE, CV(%), and Cohen’s F for each trait. For example: “For Factor A, the mean values across levels a1 and a2 show meaningful differences for y1 (F = X.XX, p = 0.0X), with the LSD groupings confirming that a2 (mean = X.XX, group ‘a’) is significantly higher than a1 (mean = X.XX, group ‘b’). For Factor B, … The interaction A × B reveals significant combined effects for … The CV(%) values ranging from X to Y suggest moderate/low experimental variability, indicating good precision in the blocking arrangement.”]</strong></p>
-</div>
+<p>For Factor A, the mean values across levels A1 and A2 show meaningful differences for y1 (F = X.XX, p = 0.0X), with the LSD groupings confirming that A2 (mean = X.XX, group ‘a’) is significantly higher than a1 (mean = X.XX, group ‘b’). For Factor B, … The interaction A × B reveals significant combined effects for … The CV(%) values ranging from X to Y suggest moderate/low experimental variability, indicating good precision in the blocking arrangement.</p>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -484,25 +470,17 @@ Figure&nbsp;6: Transformation options
   What is Post-hoc test?
 </summary>
 <ul>
-<small> Post-hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA). It’s purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same.</small>
+<small> Post hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA). It’s purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same.</small>
 </ul>
 </details>
 <div style="text-align: justify;">
-<<<<<<< HEAD
-<p>After obtaining a significant F-value in ANOVA under 2F-RBD, multiple comparison tests are employed to identify which factor level means differ significantly. In a factorial design with a block arrangement, post-hoc comparisons can be applied separately for each significant factor (Factor A, Factor B) and for the interaction (A × B) when significant. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;7</a>).</p>
-=======
 <p>After obtaining a significant F-value in ANOVA under 2F-RBD, multiple comparison tests are employed to identify which factor level means differ significantly. In a factorial design with a block arrangement, post hoc comparisons can be applied separately for each significant factor (Factor A, Factor B) and for the interaction (A × B) when significant. Commonly used post hoc tests include Least Significant Difference (LSD), Tukey’s Honest Significant Difference (HSD), and Duncan’s Multiple Range Test (DMRT), each differing in their level of error control and suitability depending on the number of treatments and experimental conditions,see <a href="#fig-7" class="quarto-xref">Figure&nbsp;7</a>.</p>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_AnalysisTab_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;7: Multiple comparison test options explained"><img src="www/PLACEHOLDER_AnalysisTab_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-=======
 <a href="images/2f%20multi-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;7: Multiple comparison test options explained"><img src="images/2f%20multi-02.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Multiple comparison test options explained
@@ -514,18 +492,16 @@ Figure&nbsp;7: Multiple comparison test options explained
 <p><small></small></p><small>
 <p>When the ANOVA in a <strong>Two Factor Factorial RBD (2F-RBD)</strong> is significant, the following post hoc tests are commonly used for pairwise comparisons: Tukey’s Honestly Significant Difference (HSD) test, and Fisher’s Least Significant Difference (LSD) test.</p>
 <p><strong>LSD (Least Significant Difference) Test</strong></p>
-<p>The <strong>Least Significant Difference (LSD)</strong> test is a post-hoc statistical procedure used to identify which specific factor level means differ significantly after ANOVA has indicated a significant effect. The LSD is calculated as <span class="math display">\[
-\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}
-\]</span></p>
+<p>The <strong>Least Significant Difference (LSD)</strong> test is a post hoc statistical procedure used to identify which specific factor level means differ significantly after ANOVA has indicated a significant effect. The LSD is calculated as <span class="math display">\[\text{LSD} = t_{\alpha/2, \, df_{\text{error}}} \sqrt{\frac{2 \ \text{MSE}}{n}}\]</span></p>
 <p>where, <strong>t₍α/2, dfₑᵣᵣₒᵣ₎</strong> is the critical t-value at the chosen significance level (e.g., 0.05), MSE is the mean square error from the ANOVA, and n is the number of observations per factor level. In a 2F-RBD, the error degrees of freedom are (r − 1)(ab − 1), where r is the number of blocks, a is the number of levels of Factor A, and b is the number of levels of Factor B. The value of n depends on the comparison being made: for Factor A, n is the total number of observations per level of A (i.e., r × b); for Factor B, n is the total number of observations per level of B (i.e., r × a); and for the interaction, n is the number of blocks r per cell.</p>
 <p><strong>Tukey’s Honestly Significant Difference (HSD)</strong></p>
 <p>Tukey’s test helps you find out exactly which pairs of factor level means differ significantly. It compares all possible pairs of means while controlling the overall Type I error rate, so you avoid false positives when making multiple comparisons. In 2F-RBD, this method works well when the number of factor levels is large and a conservative, family-wise control of error is desired.</p>
 <p><strong>Duncan’s Multiple Range Test (DMRT)</strong></p>
-</small><p><small>After confirming significant overall differences via ANOVA, DMRT ranks the factor level means and calculates critical differences using the studentized range statistic (Q) and the standard error based on error variance from ANOVA. This systematic and sequential approach provides clear groupings of factor levels and has gained popularity in agricultural research. </small></p>
+</small><p><small>After confirming significant overall differences via ANOVA, DMRT ranks the factor level means and calculates critical differences using the standardized range statistic (Q) and the standard error based on error variance from ANOVA. This systematic and sequential approach provides clear groupings of factor levels and has gained popularity in agricultural research. </small></p>
 </details>
-<p><strong>Which Post-hoc test to use?</strong></p>
+<p><strong>Which Post hoc test to use?</strong></p>
 <div style="text-align: justify;">
-<p>The choice of the post-hoc test completely relies on the researcher.</p>
+<p>The choice of the post hoc test completely relies on the researcher.</p>
 <p><strong>LSD</strong> is used for pairwise comparison of factor level means after a significant ANOVA in 2F-RBD. It is most suitable when the number of factor levels is small and comparisons are limited, offering high sensitivity to detect differences, but it may increase Type I error when many comparisons are made. In agricultural experiments LSD is the most commonly used.</p>
 <p><strong>Tukey’s HSD</strong> is preferred when there are four or more levels of a factor in a balanced 2F-RBD. It compares all possible pairs while strictly controlling the family-wise error rate, making it a conservative and reliable method for multiple comparisons.</p>
 <p><strong>DMRT</strong> is commonly used in agricultural experiments with several factor levels. It ranks means step-wise and detects more significant differences than Tukey HSD, though it is less conservative and carries a higher risk of Type I error.</p>
@@ -535,11 +511,7 @@ Figure&nbsp;7: Multiple comparison test options explained
 <section id="BP" class="level2" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="BP"><span class="header-section-number">9</span> Basic plots</h2>
 <div style="text-align: justify;">
-<<<<<<< HEAD
-<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the <code>Run Analysis</code> button, all relevant results and outputs appear instantly - leaving no room for confusion. We’ve ensured that every possible plot related to the Two Factor Factorial RBD is readily available. Simply click on the <code>Basic Plots</code> tab to view them (See <a href="#fig-8" class="quarto-xref">Figure&nbsp;8</a>). Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
-=======
 <p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly - leaving no room for confusion. We’ve ensured that every possible plot related to the Two Factor Factorial RBD is readily available. Simply click on the Basic Plots tab to view them,see <a href="#fig-8" class="quarto-xref">Figure&nbsp;8</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <section id="customizing-plots" class="level3" data-number="9.1">
 <h3 data-number="9.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</h3>
@@ -550,7 +522,7 @@ Figure&nbsp;7: Multiple comparison test options explained
 <div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_BasicPlots_Customize_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;8: Plot settings for customizing"><img src="www/PLACEHOLDER_BasicPlots_Customize_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/rbd%2030-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;8: Plot settings for customizing"><img src="images/rbd%2030-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Plot settings for customizing
@@ -638,11 +610,7 @@ function hideDescription(id) {
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_BoxPlot_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;9: Box plot"><img src="www/PLACEHOLDER_BoxPlot_2FRBD.webp" class="img-fluid figure-img"></a>
-=======
 <a href="images/box.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;9: Box plot"><img src="images/box.png" class="img-fluid figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: Box plot
@@ -651,11 +619,7 @@ Figure&nbsp;9: Box plot
 </div>
 <div id="boxplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<<<<<<< HEAD
-<p><strong>[PLACEHOLDER: Describe the box plot here. Mention the factor being plotted, the distribution of the response variable across factor levels, approximate median values, spread/variability, outliers if any, and the letter groupings confirming statistical significance between levels.]</strong></p>
-=======
 <p>A <strong>box plot</strong> compares the distribution of values across different treatment combinations. Each colored box represents a treatment combination and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 </div>
 </div>
@@ -666,11 +630,7 @@ Figure&nbsp;9: Box plot
 <div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_ViolinPlot_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;10: Violin plot"><img src="www/PLACEHOLDER_ViolinPlot_2FRBD.webp" class="img-fluid figure-img"></a>
-=======
 <a href="images/violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;10: Violin plot"><img src="images/violin.png" class="img-fluid figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: Violin plot
@@ -679,11 +639,7 @@ Figure&nbsp;10: Violin plot
 </div>
 <div id="violinplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<<<<<<< HEAD
-<p><strong>[PLACEHOLDER: Describe the violin plot here. Discuss the distribution shape for each factor level, the concentration of data, the width of each violin indicating density, and any differences in spread or central tendency between levels. Include letter groupings if applicable.]</strong></p>
-=======
 <p>A <strong>violin plot</strong> compares the distribution of values across different treatment combinations. Each treatment combination is shown as a violin shape that reflects how the data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the median and interquartile range. Letters above each plot indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 </div>
 </div>
@@ -694,11 +650,7 @@ Figure&nbsp;10: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_BarPlot_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;11: Bar plot"><img src="www/PLACEHOLDER_BarPlot_2FRBD.webp" class="img-fluid figure-img"></a>
-=======
 <a href="images/bar%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;11: Bar plot"><img src="images/bar%20plot.png" class="img-fluid figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: Bar plot
@@ -707,11 +659,7 @@ Figure&nbsp;11: Bar plot
 </div>
 <div id="barplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<<<<<<< HEAD
-<p><strong>[PLACEHOLDER: Describe the bar plot here. Compare the mean values of the response variable across factor levels with error bars. Mention the approximate mean values for each level, whether error bars overlap, and the letter groupings confirming statistical differences as determined by the LSD/Tukey/DMRT test.]</strong></p>
-=======
 <p>A <strong>Bar plot</strong> compares the average values of different treatment combinations, with error bars showing variability. The letters above each bar indicate statistical groupings: treatment combinations sharing letters are similar, while those with different letters are significantly different. It highlights which treatment combinations have higher or lower averages and whether those differences are meaningful.</p>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 </div>
 </div>
@@ -722,11 +670,7 @@ Figure&nbsp;11: Bar plot
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_MeanValuePlot_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;12: Mean Value Plot"><img src="www/PLACEHOLDER_MeanValuePlot_2FRBD.webp" class="img-fluid figure-img"></a>
-=======
 <a href="images/mean%20value.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;12: Mean Value Plot"><img src="images/mean%20value.png" class="img-fluid figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Mean Value Plot
@@ -735,11 +679,7 @@ Figure&nbsp;12: Mean Value Plot
 </div>
 <div id="meanvalueplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<<<<<<< HEAD
-<p><strong>[PLACEHOLDER: Describe the mean value plot here. Explain the horizontal line representation of means for each factor level, the approximate positions of each level’s mean on the axis, and the letter groupings shown to confirm significant differences between factor levels.]</strong></p>
-=======
 <p>A <strong>mean value plot</strong> compares the mean values of different treatment combinations, each shown as a colored dot with horizontal error bars indicating variability. Letters next to each point represent statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 </div>
 </div>
@@ -751,11 +691,7 @@ Figure&nbsp;12: Mean Value Plot
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_ConnectedLinePlot_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;13: Connected line plot"><img src="www/PLACEHOLDER_ConnectedLinePlot_2FRBD.webp" class="img-fluid figure-img"></a>
-=======
 <a href="images/connected.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;13: Connected line plot"><img src="images/connected.png" class="img-fluid figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: Connected line plot
@@ -765,11 +701,7 @@ Figure&nbsp;13: Connected line plot
 </div>
 <div id="connectedplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<<<<<<< HEAD
-<p><strong>[PLACEHOLDER: Describe the connected line plot here. Explain how the mean values for each factor level are connected by a line to highlight the trend across levels. Mention the direction of the trend (increasing/decreasing), approximate mean values, error bars, and the letter groupings confirming statistical differences.]</strong></p>
-=======
 <p>A <strong>connected line plot</strong> compares the mean values of different treatment combinations, with each point representing a treatment combination’s average and error bars showing variability. The points are linked by lines to highlight trends across treatment combinations. Letters above each point indicate statistical groupings: treatment combinations sharing letters are statistically similar, while those with different letters are significantly different.</p>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 </div>
 </div>
@@ -786,11 +718,7 @@ Figure&nbsp;13: Connected line plot
 <div id="fig-90" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_AdvancedTab_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;14: Advanced plots"><img src="www/PLACEHOLDER_AdvancedTab_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-=======
 <a href="images/2f%20advanced-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;14: Advanced plots"><img src="images/2f%20advanced-03.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-90-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14: Advanced plots
@@ -802,7 +730,7 @@ Figure&nbsp;14: Advanced plots
 <div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_InteractionPlot_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;15: INTERACTION plot"><img src="www/PLACEHOLDER_InteractionPlot_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/rbd%2011%20b.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;15: INTERACTION plot"><img src="images/rbd%2011%20b.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15: INTERACTION plot
@@ -810,13 +738,14 @@ Figure&nbsp;15: INTERACTION plot
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The interaction plot illustrates how the response variable changes across the levels of two factors in a 2F-RBD. The lines represent factor levels, and their trends show how the effect of one factor varies with the levels of the other factor. Non-parallel or crossing lines indicate the presence of interaction, helping to understand whether the factors jointly influence the response. In a block design, the interaction plot reflects the treatment effects after block variation has been removed from the error.:::</p>
+<p>The interaction plot illustrates how the response variable changes across the levels of two factors in a 2F-RBD. The lines represent factor levels, and their trends show how the effect of one factor varies with the levels of the other factor. Non-parallel or crossing lines indicate the presence of interaction, helping to understand whether the factors jointly influence the response. In a block design, the interaction plot reflects the treatment effects after block variation has been removed from the error.</p>
+</div>
 <p><strong>3D SCATTER PLOT</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-15" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_3DScatter_2FRBD.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;16: 3D SCATTER plot"><img src="www/PLACEHOLDER_3DScatter_2FRBD.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/gif%201.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;16: 3D SCATTER plot"><img src="images/gif%201.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: 3D SCATTER plot
@@ -824,13 +753,14 @@ Figure&nbsp;16: 3D SCATTER plot
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>A 3D scatter plot visualizes the relationship between Factor A, Factor B, and the response variable in a three-dimensional space. Each point represents the mean response for a specific combination of factor levels, allowing clear observation of how the response changes across both factors simultaneously. This plot helps in identifying patterns, trends, and possible interaction effects between the factors in the factorial experiment.:::</p>
+<p>A 3D scatter plot visualizes the relationship between Factor A, Factor B, and the response variable in a three-dimensional space. Each point represents the mean response for a specific combination of factor levels, allowing clear observation of how the response changes across both factors simultaneously. This plot helps in identifying patterns, trends, and possible interaction effects between the factors in the factorial experiment.</p>
+</div>
 <p><strong>3D SCATTER PLOT WITH LINE</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_3DScatterLine_2FRBD.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;17: 3D SCATTER PLOT WITH LINE"><img src="www/PLACEHOLDER_3DScatterLine_2FRBD.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/gif%202-01.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;17: 3D SCATTER PLOT WITH LINE"><img src="images/gif%202-01.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: 3D SCATTER PLOT WITH LINE
@@ -838,21 +768,19 @@ Figure&nbsp;17: 3D SCATTER PLOT WITH LINE
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>A 3D scatter plot with connecting lines illustrates the mean response across combinations of Factor A and Factor B in a three-dimensional space. The points represent mean values for each treatment combination, while the lines connect levels within a factor to highlight trends and changes in response. This visualization helps in understanding patterns, comparing factor effects, and identifying possible interaction between the factors.:::</p>
+<p>A 3D scatter plot with connecting lines illustrates the mean response across combinations of Factor A and Factor B in a three-dimensional space. The points represent mean values for each treatment combination, while the lines connect levels within a factor to highlight trends and changes in response. This visualization helps in understanding patterns, comparing factor effects, and identifying possible interaction between the factors.</p>
+</div>
+</section>
 <section id="AI" class="level2" data-number="11">
 <h2 data-number="11" class="anchored" data-anchor-id="AI"><span class="header-section-number">11</span> AI interpretation</h2>
 <div style="text-align: justify;">
-<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences between groups, and offers informed suggestions for potential next steps or interpretations. The user can get detailed interpretations of the analysis by clicking on <code>AI interpretation</code> on the Analysis as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;18</a>.</p>
+<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant differences between groups, and offers informed suggestions for potential next steps or interpretations. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;18</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_AI_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results"><img src="www/PLACEHOLDER_AI_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
-=======
 <a href="images/ai%20intrep-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results"><img src="images/ai%20intrep-03.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results
@@ -863,13 +791,13 @@ Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results
 <section id="MUL" class="level2" data-number="12">
 <h2 data-number="12" class="anchored" data-anchor-id="MUL"><span class="header-section-number">12</span> Multivariate</h2>
 <div style="text-align: justify;">
-<p>Multivariate analysis in Two Factor Factorial RBD (2F-RBD) helps you to compare different response variables simultaneously. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example of evaluating treatment combinations formed by Factor A and Factor B across blocks, navigate to <code>Multivariate</code> see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;19</a>.</p>
+<p>Multivariate analysis in Two Factor Factorial RBD (2F-RBD) helps you to compare different response variables simultaneously. Remember the PCA used for multivariate selection, is an exploratory technique, not an inferential method. Now, in our example of evaluating treatment combinations formed by Factor A and Factor B across blocks, navigate to Multivariate see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;19</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Multivariate_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;19: Multivariate tab in RAISINS"><img src="www/PLACEHOLDER_Multivariate_2FRBD.webp" class="img-fluid figure-img"></a>
+<a href="images/multi%20tab%202f.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;19: Multivariate tab in RAISINS"><img src="images/multi%20tab%202f.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19: Multivariate tab in RAISINS
@@ -883,7 +811,7 @@ Figure&nbsp;19: Multivariate tab in RAISINS
 <div id="fig-MAN2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_MANOVA_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;20: Manova Results"><img src="www/PLACEHOLDER_MANOVA_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/2f%20manova%20new.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;20: Manova Results"><img src="images/2f%20manova%20new.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MAN2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20: Manova Results
@@ -897,7 +825,7 @@ Figure&nbsp;20: Manova Results
 <div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_PCA_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;21: PCA-based Index Score"><img src="www/PLACEHOLDER_PCA_2FRBD.webp" class="img-fluid figure-img"></a>
+<a href="images/rbd%2021.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;21: PCA-based Index Score"><img src="images/rbd%2021.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21: PCA-based Index Score
@@ -911,7 +839,7 @@ Figure&nbsp;21: PCA-based Index Score
 <div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Scree_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;22: Scree plot"><img src="www/PLACEHOLDER_Scree_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/rbd%20222.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;22: Scree plot"><img src="images/rbd%20222.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22: Scree plot
@@ -925,7 +853,7 @@ Figure&nbsp;22: Scree plot
 <div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Loadings_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;23: Loadings of each variable"><img src="www/PLACEHOLDER_Loadings_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/rbd%2023.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;23: Loadings of each variable"><img src="images/rbd%2023.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23: Loadings of each variable
@@ -939,7 +867,7 @@ Figure&nbsp;23: Loadings of each variable
 <div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_Biplot_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;24: PCA-Biplot"><img src="www/PLACEHOLDER_Biplot_2FRBD.webp" class="img-fluid figure-img"></a>
+<a href="images/rbd%2024.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;24: PCA-Biplot"><img src="images/rbd%2024.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;24: PCA-Biplot
@@ -953,7 +881,7 @@ Figure&nbsp;24: PCA-Biplot
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_IndexScore_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;25: Index score"><img src="www/PLACEHOLDER_IndexScore_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/rbd%2025.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;25: Index score"><img src="images/rbd%2025.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;25: Index score
@@ -964,7 +892,7 @@ Figure&nbsp;25: Index score
 <div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_IndexPlot_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;26: Index plot"><img src="www/PLACEHOLDER_IndexPlot_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/rbd%2026.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;26: Index plot"><img src="images/rbd%2026.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;26: Index plot
@@ -994,7 +922,7 @@ Figure&nbsp;26: Index plot
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ExcelModel1_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;27: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/PLACEHOLDER_ExcelModel1_2FRBD.webp" class="img-fluid figure-img"></a>
+<a href="images/rbd%2027.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;27: Model-1: showing how the prepared Excel file for upload should look like"><img src="images/rbd%2027.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;27: Model-1: showing how the prepared Excel file for upload should look like
@@ -1005,7 +933,7 @@ Figure&nbsp;27: Model-1: showing how the prepared Excel file for upload should l
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ExcelModel2_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;28: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/PLACEHOLDER_ExcelModel2_2FRBD.webp" class="img-fluid figure-img"></a>
+<a href="images/rbd%2028.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;28: Model-2: Showing how the prepared Excel file for upload should look like"><img src="images/rbd%2028.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;28: Model-2: Showing how the prepared Excel file for upload should look like
@@ -1073,11 +1001,7 @@ How to Save as CSV in MS Excel
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<<<<<<< HEAD
-<a href="www/PLACEHOLDER_CreateData_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;29: Creating dataset within RAISINS"><img src="www/PLACEHOLDER_CreateData_2FRBD.webp" class="img-fluid figure-img"></a>
-=======
 <a href="images/2F%20CSV-04.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;29: Creating dataset within RAISINS"><img src="images/2F%20CSV-04.png" class="img-fluid figure-img"></a>
->>>>>>> 997eec17a64ad5eefb311c8eb077b4e101bfebaf
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;29: Creating dataset within RAISINS
@@ -1094,7 +1018,7 @@ Figure&nbsp;29: Creating dataset within RAISINS
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_ModelDataset_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;30: Model dataset"><img src="www/PLACEHOLDER_ModelDataset_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/2f%20model%20data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;30: Model dataset"><img src="images/2f%20model%20data.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;30: Model dataset
@@ -1105,13 +1029,13 @@ Figure&nbsp;30: Model dataset
 <section id="F" class="level2" data-number="17">
 <h2 data-number="17" class="anchored" data-anchor-id="F"><span class="header-section-number">17</span> FAQ’s</h2>
 <div style="text-align: justify;">
-<p>The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the FAQs is a great place to start.</p>
+<p>The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the FAQ is a great place to start.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/PLACEHOLDER_FAQ_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;31: FAQs"><img src="www/PLACEHOLDER_FAQ_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="images/faq%209.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;31: FAQs"><img src="images/faq%209.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;31: FAQs
@@ -1129,16 +1053,15 @@ Figure&nbsp;31: FAQs
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/PLACEHOLDER_ViewData_2FRBD.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="View data"><img src="www/PLACEHOLDER_ViewData_2FRBD.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+<p><a href="images/2f%20view%20data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="View data"><img src="images/2f%20view%20data.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
 </figure>
 </div>
 <figcaption>View data</figcaption>
 </figure>
 </div>
 <hr>
-</section>
-</div>
-</div>
+<div class=":::::::::::::::::::">
+
 </div>
 </section>
 

@@ -61,6 +61,13 @@ section.MCT > h3 {
   background-color:#ffe4d6;
 }
 
+section#sec-9 > h1,
+section#sec-9 > h2,
+section#sec-9 > h3 {
+  color: #9a3412;
+  background-color: #fed7aa;
+}
+
 section#SUM > h1,
 section#SUM > h2,
 section#SUM > h3 {
@@ -214,6 +221,15 @@ section#U > h3 {
  .header-section-number::after{
   CONTENT:"." ;
 }}
+#TOC a[href="#sec-9"] {
+  color: #9a3412;
+  background-color: #fed7aa;
+  border-bottom: 4px solid #ffffff;
+}
+
+#TOC a[href="#sec-9"] .header-section-number::after {
+  content: ".";
+}
 
 #TOC a[href="#SUM"] {
    color:   #7f1d5d;

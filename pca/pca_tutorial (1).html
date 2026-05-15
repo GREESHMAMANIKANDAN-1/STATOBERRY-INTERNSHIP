@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Principal Component Analysis</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="pca_tutorial (1)_files/libs/clipboard/clipboard.min.js"></script>
+<script src="pca_tutorial (1)_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="pca_tutorial (1)_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="pca_tutorial (1)_files/libs/quarto-html/popper.min.js"></script>
+<script src="pca_tutorial (1)_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="pca_tutorial (1)_files/libs/quarto-html/anchor.min.js"></script>
+<link href="pca_tutorial (1)_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="pca_tutorial (1)_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="pca_tutorial (1)_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="pca_tutorial (1)_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="pca_tutorial (1)_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="pca_tutorial (1)_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="pca_tutorial (1)_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="pca_tutorial (1)_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="sty.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>TABLE OF CONTENTS</strong></h2>
+   
+  <ul>
+  <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> PCA in RAISINS</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Principal Component Analysis (PCA)</a></li>
+  <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
+  <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> PCA analysis tab explained</a></li>
+  <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">6</span> Analyse Results</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-100" id="toc-interpretation-from-fig-100" class="nav-link" data-scroll-target="#interpretation-from-fig-100"><span class="header-section-number">6.1</span> Interpretation from Figure&nbsp;5</a></li>
+  <li><a href="#interpretation-from-fig-101" id="toc-interpretation-from-fig-101" class="nav-link" data-scroll-target="#interpretation-from-fig-101"><span class="header-section-number">6.2</span> Interpretation from Figure&nbsp;6</a></li>
+  </ul></li>
+  <li><a href="#IDX" id="toc-IDX" class="nav-link" data-scroll-target="#IDX"><span class="header-section-number">7</span> Index</a></li>
+  <li><a href="#HCPC" id="toc-HCPC" class="nav-link" data-scroll-target="#HCPC"><span class="header-section-number">8</span> HCPC — Hierarchical Clustering on Principal Components</a></li>
+  <li><a href="#COR" id="toc-COR" class="nav-link" data-scroll-target="#COR"><span class="header-section-number">9</span> Correlation Analysis</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-corr" id="toc-interpretation-from-fig-corr" class="nav-link" data-scroll-target="#interpretation-from-fig-corr"><span class="header-section-number">9.1</span> Interpretation from Figure&nbsp;14</a></li>
+  </ul></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">10</span> AI Interpretation</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">11</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">12</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">13</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">14</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">15</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">16</span> View data</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Principal Component Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+<div class="affiliations">
+<p><sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
+</div>
+<p>ABSTRACT</p>
+<div style="text-align: justify;">
+<p><strong>Principal Component Analysis (PCA)</strong> is a powerful multivariate statistical technique used to reduce the dimensionality of a dataset while retaining as much of the original variation as possible. PCA transforms a set of correlated variables into a smaller number of uncorrelated components called principal components, each capturing a decreasing proportion of the total variance in the data. In <strong>RAISINS</strong> you can perform PCA very easily without writing a single line of code. This tutorial will guide you through how to perform PCA in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get publication-ready tables, scree plots, biplots, and index scores. You can also explore cluster structure in your data using HCPC (Hierarchical Clustering on Principal Components) and examine variable relationships through Correlation Analysis.</p>
+</div>
+<details>
+<p><em>Hover or click each point to see more information.</em></p>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Introduction Principal Component Analysis
+</summary>
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+<ul>
+<small> The origins of PCA trace back to the early twentieth century. In <strong>1901</strong>, mathematician and statistician <span class="hover-img">Karl Pearson</span> introduced the concept of fitting lines and planes to data clouds, laying the groundwork for what would later be formalized as Principal Component Analysis. Pearson described the technique as a way to find the axis of closest fit through a swarm of points in multidimensional space, a deceptively simple idea that would prove transformative for statistics, genetics, ecology, and social science alike. Harold Hotelling independently reformulated and extended PCA in <strong>1933</strong>, introducing the modern computational framework and demonstrating its practical utility for analyzing correlated measurements. Since then, PCA has become one of the most widely used tools in multivariate analysis, employed across disciplines ranging from agricultural research and plant breeding to genomics, remote sensing, finance, and machine learning. Its strength lies in its ability to summarize complex, high-dimensional data into interpretable components, revealing hidden structure and enabling efficient comparison of observations. </small>
+</ul>
+</details>
+<section id="AE" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> PCA in RAISINS</h2>
+<div style="text-align: justify;">
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and navigate to the <strong>Principal Component Analysis</strong> module. Here, you can see the dedicated PCA interface, which allows you to upload your dataset and explore dimensionality reduction, cluster analysis, and correlation structure. In this tutorial, we focus on <strong>Principal Component Analysis (PCA)</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/analysis%202%20sample%20(7).png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: PCA module tab in RAISINS"><img src="images/analysis%202%20sample%20(7).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: PCA module tab in RAISINS
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="C" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Principal Component Analysis (PCA)</h2>
+<div style="text-align: justify;">
+<p>Principal Component Analysis (PCA) is a multivariate statistical technique designed to reduce the dimensionality of a dataset consisting of a large number of interrelated variables while retaining as much of the variation present in the dataset as possible. It achieves this by transforming the original correlated variables into a new set of uncorrelated variables called principal components (PCs), which are ordered so that the first few retain most of the variation present in all of the original variables. PCA is widely applied in agricultural research, plant breeding, ecology, genetics, and social sciences wherever there is a need to summarize multiple measurements recorded on the same set of observations. It is particularly valuable when variables are correlated, as correlation implies redundancy and PCA removes that redundancy by rotating the data to a new coordinate system. It is important to note that PCA is an exploratory technique and not an inferential method it reveals structure in the data but does not test hypotheses about population parameters.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Principal Component Analysis (PCA) is a dimensionality reduction technique that transforms a set of correlated variables into a smaller number of uncorrelated principal components, each accounting for a decreasing proportion of the total variance in the data.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="W" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
+<div style="text-align: justify;">
+<p>To make things simple and interesting, we will explain PCA step by step using a hypothetical example, so you can clearly see how it works and why it matters.</p>
+<p>The image shows the basic structure of a dataset used for statistical analysis. Each row in the table represents a respondent or observation unit. In this example, the different states or locations act as respondents.Each column represents a variable or trait measured for every respondent. The variables shown are Murder, Assault, UrbanPop, and Rape. These values describe the characteristics recorded for each state.Such a row–column dataset format is commonly used in multivariate analyses like Principal Component Analysis (PCA), clustering, and correlation studies to study relationships among variables and observations.</p>
+<p>The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>.</p>
+</div>
+<div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/analysis%202%20sample%20(8).png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Example dataset"><img src="images/analysis%202%20sample%20(8).png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Example dataset
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Observations</strong> and <strong>Variables</strong>.</p>
+</div>
+</section>
+<section id="sec-4" class="level2 H" data-number="4">
+<h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
+<div style="text-align: justify;">
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>, using a single-sheet Excel file. The first column should contain the observation labels (e.g., genotype names or treatment identifiers), and each subsequent column should represent one variable. Make sure no blank rows are left above the data, and all columns have proper names with no spaces or special characters. That’s it your file is ready to upload.</p>
+<p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
+<p>Creating dataset in MS Excel</p>
+<p>Creating your dataset directly within the <strong>RAISINS</strong> app</p>
+</div>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/analysis%202%20sample%20(9)-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Illustrating how to create a dataset"><img src="images/analysis%202%20sample%20(9)-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Illustrating how to create a dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="AO" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> PCA analysis tab explained</h2>
+<div style="text-align: justify;">
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;4</a>, you can see the detailed view of the PCA Analysis tab, along with explanations of what each option does. This section helps you understand the purpose of every setting, so you can select the most appropriate options for your data. Upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the <strong>Observation</strong> column and the <strong>Variables</strong> for PCA will appear. Select the column that contains your observation labels (e.g., genotype names) under the Observation field, and choose all relevant numeric trait columns under Variables. Once you click the Run Analysis button, all PCA results, plots, and derived outputs appear instantly.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/analysis%202%20sample%20(10)-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: PCA Analysis tab explained"><img src="images/analysis%202%20sample%20(10)-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: PCA Analysis tab explained
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>It is strongly recommended to use variables that are meaningfully related and measured on a continuous scale for PCA, since the technique relies on the variance-covariance or correlation structure among variables. If variables are measured on very different scales, <strong>RAISINS</strong> will automatically standardize the data (using correlation matrix-based PCA) to ensure that no single variable dominates the analysis simply due to its unit of measurement.</p>
+</div>
+</section>
+<section id="sec-7" class="level2 AR" data-number="6">
+<h2 class="AR anchored" data-number="6" data-anchor-id="sec-7"><span class="header-section-number">6</span> Analyse Results</h2>
+<div style="text-align: justify;">
+<p>Once your dataset is uploaded and Run Analysis is clicked, <strong>RAISINS</strong> will perform PCA and display a comprehensive set of outputs. The analysis begins with an <strong>Eigenvalue Table</strong>, which summarizes how much variance each principal component explains (see <a href="#fig-100" class="quarto-xref">Figure&nbsp;5</a>). Eigenvalues represent the amount of variance associated with each principal component. Components with eigenvalues greater than 1.0 (the Kaiser criterion) are generally considered important for retention and further interpretation.</p>
+</div>
+<p><strong>Table 1: Eigenvalues and Variance Explained</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/scree%20pca.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Eigenvalues and variance explained by each principal component"><img src="images/scree%20pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Eigenvalues and variance explained by each principal component
+</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/eigen%20values%20pca.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Eigenvalues and variance explained by each principal component"><img src="images/eigen%20values%20pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Eigenvalues and variance explained by each principal component"></a></p>
+</figure>
+</div>
+<figcaption>Eigenvalues and variance explained by each principal component</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Understanding the Eigenvalue Table </summary>
+<p><small></small></p><small>
+<p>The Eigenvalue Table produced by <strong>RAISINS</strong> contains the following columns:</p>
+<p><strong>Principal Component (PC)</strong>: The sequential label for each derived component (PC1, PC2, PC3, …). They are ordered from the component capturing the most variance to the least.</p>
+<p><strong>Eigenvalue</strong>: The variance associated with each principal component. An eigenvalue of 1 means the component explains as much variance as one standardized original variable. Components with eigenvalues below 1 are generally discarded.</p>
+<p><strong>Proportion of Variance (%)</strong>: The percentage of total variance in the dataset explained by each component. PC1 always has the highest proportion.</p>
+<p><strong>Cumulative Variance (%)</strong>: The running total of variance explained as successive principal components are included. Analysts often retain components until the cumulative variance reaches 70–80%, as this threshold indicates that the retained components adequately summarize the data.</p>
+<p>Significance is indicated for the number of PCs recommended for retention based on the Kaiser criterion (eigenvalue &gt; 1) and the scree plot elbow method.</p>
+</small><p><small></small></p>
+</details>
+<section id="interpretation-from-fig-100" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">6.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;5</a></h3>
+<div style="text-align: justify;">
+<p>In our hypothetical rice genotype example, PC1 accounts for approximately 42.5% of the total variance, while PC2 accounts for about 26.8% of the variance. Together, PC1 and PC2 explain approximately 69.3% of the total variance in the dataset. Both PC1 and PC2 have eigenvalues greater than 1 and are therefore retained for further analysis. Since PC1 alone explains more than 40% of the total variance, a PC1-based selection index is a strong and defensible choice. Since the combined cumulative variance exceeds 60%, an index based on both PC1 and PC2 is also appropriate. PC3 and beyond have progressively smaller eigenvalues and explain relatively minor proportions of variance, making them less informative for interpretation in this example.</p>
+</div>
+<div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/pca%20biiiiiplooo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;6: PCA Biplot"><img src="images/pca%20biiiiiplooo.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: PCA Biplot
+</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/pca%2022%20biplooo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="PCA Biplot"><img src="images/pca%2022%20biplooo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="PCA Biplot"></a></p>
+</figure>
+</div>
+<figcaption>PCA Biplot</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/correlat%20circle%20pva.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Correlation Circle"><img src="images/correlat%20circle%20pva.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Correlation Circle"></a></p>
+</figure>
+</div>
+<figcaption>Correlation Circle</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/scatter%20pca.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="3D PCA Scatter Plot"><img src="images/scatter%20pca.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="3D PCA Scatter Plot"></a></p>
+</figure>
+</div>
+<figcaption>3D PCA Scatter Plot</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/correlat%20plot%20vs%20pca.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Correlation Plot of Variables vs PCs"><img src="images/correlat%20plot%20vs%20pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Correlation Plot of Variables vs PCs"></a></p>
+</figure>
+</div>
+<figcaption>Correlation Plot of Variables vs PCs</figcaption>
+</figure>
+</div>
+<p><strong>Table 2: Component Loadings (Variable Contributions to Each PC)</strong></p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/loading%20pca%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Loading of each variable on PCs"><img src="images/loading%20pca%201.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Loading of each variable on PCs"></a></p>
+</figure>
+</div>
+<figcaption>Loading of each variable on PCs</figcaption>
+</figure>
+</div>
+<div id="fig-pca_group" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pca_group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/perce%20pca.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;7: Percentage Contribution of Variables on PCs"><img src="images/perce%20pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca_group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Percentage Contribution of Variables on PCs
+</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/matrix%20vs%20pca.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Correlation Matrix of Variables vs PCs"><img src="images/matrix%20vs%20pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Correlation Matrix of Variables vs PCs"></a></p>
+</figure>
+</div>
+<figcaption>Correlation Matrix of Variables vs PCs</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">Overview of Loadings Table and Interpretation
+</summary>
+<p><small></small></p><small>
+<p><strong>Loadings</strong>: The correlation between each original variable and each principal component. Loadings range from −1 to +1. A large positive loading (e.g., &gt; 0.5) means the variable contributes strongly and positively to the component. A large negative loading means the variable contributes strongly but inversely. A loading near zero means the variable has little relationship with that component.</p>
+<p><strong>PC1 Loadings</strong>: Variables with high positive loadings in PC1 tend to increase together and form the dominant axis of variation. Genotypes with high PC1 scores perform well on these traits.</p>
+<p><strong>PC2 Loadings</strong>: Variables that have small loadings in PC1 but high loadings in PC2 represent a secondary axis of variation, capturing patterns not already explained by PC1.</p>
+<p><strong>Communality</strong>: The proportion of each variable’s variance that is explained by the retained principal components. High communality (close to 1) indicates that the retained PCs capture most of the information in that variable.</p>
+<p><strong>Interpretation tip</strong>: When selecting genotypes based on PCA, identify which traits you wish to improve, look at the sign of their loadings in the relevant PC, and choose genotypes with index scores in the corresponding direction.</p>
+</small><p><small></small></p>
+</details>
+</section>
+<section id="interpretation-from-fig-101" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">6.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;6</a></h3>
+<div style="text-align: justify;">
+<p>In our example, GY and TGW show strong positive loadings on PC1 (approximately +0.72 and +0.68 respectively), indicating that high-yielding genotypes with heavy grains score high on PC1. DTF and CL show negative loadings on PC1 (approximately −0.61 and −0.58), suggesting that late-flowering and chalky genotypes score lower on PC1 which is desirable for CL reduction. PH shows moderate positive loadings across both PC1 and PC2, indicating it contributes to variation captured by both components. Genotypes positioned in the positive direction of PC1 in the biplot therefore represent high-yielding, heavy-grained, early-flowering, and low-chalkiness accessions, making them the primary candidates for selection.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The sign of a loading indicates direction if GY has a positive loading on PC1, genotypes with high PC1 scores are expected to have high grain yield. Selecting genotypes based on the loading signs helps translate PCA results into actionable breeding decisions.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div style="text-align: justify;">
+<p>Treatments sharing similar PC score patterns are positioned close together in the biplot, while those that are very different are placed far apart. The biplot thus provides a powerful visual summary of both similarity among observations and the contributions of variables to the principal components.</p>
+</div>
+</section>
+</section>
+<section id="IDX" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="IDX"><span class="header-section-number">7</span> Index</h2>
+<div style="text-align: justify;">
+<p>The Index tab in <strong>RAISINS</strong> provides a powerful tool for translating PCA results into a practical ranking of observations (see <a href="#fig-index_tab" class="quarto-xref">Figure&nbsp;8</a>). A <strong>PCA-based selection index</strong> is constructed by combining the scores of the retained principal components weighted by their respective eigenvalues (proportion of variance explained). This composite index summarizes the overall multivariate performance of each genotype or treatment into a single numerical score, enabling straightforward ranking and selection.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-index_tab" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-index_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/index%20tab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;8: Index Tab"><img src="images/index%20tab.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Index Tab
+</figcaption>
+</figure>
+</div>
+<p><img src="images/pca%201.png" class="img-fluid" alt="PCA Based Index">{#<a href="#fig-indexscore_tab" class="quarto-xref">Figure&nbsp;9</a>. fig-align=“center”}</p>
+<div style="text-align: justify;">
+<p>In <strong>RAISINS</strong>, the index score is further converted to a <strong>Scaled Index Score</strong> ranging from 0 to 1, making it easier to interpret and compare across datasets and experiments. This standardization ensures that the index is dimensionless and robust to differences in unit of measurement across variables. To refine selection, use the Select cut off score for Scaled index score. feature as shown in <a href="#fig-indexscore_tab" class="quarto-xref">Figure&nbsp;9</a>. You can specify the cutoff percentage (default is 75%) to identify observations above or below a threshold. By toggling the up-arrow and down-arrow buttons, you can choose the top or bottom percentile of observations based on your breeding or selection objective. Observations meeting the criterion are highlighted in yellow in the ranking table below.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-indexscore_tab" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-indexscore_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/pca%20po1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;9: Index Plot Based on PC1"><img src="images/pca%20po1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Index Plot Based on PC1
+</figcaption>
+</figure>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-indexplot_tab" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-indexplot_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/pca%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;10: Index Score 2"><img src="images/pca%202.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexplot_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Index Score 2
+</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/pca%20po%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Index plot Based on PC2"><img src="images/pca%20po%202.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Index plot Based on PC2"></a></p>
+</figure>
+</div>
+<figcaption>Index plot Based on PC2</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>In our rice genotype example, the scaled index based on PC1 and PC2 (cumulative variance 69.3%) ranks G7 at the top (scaled index = 0.91), followed by G3 (0.87) and G15 (0.84). These genotypes exhibit superior combinations of high GY, high TGW, early flowering, and low chalkiness traits that loaded positively on the dominant components. Applying a 75% cutoff identifies the top five genotypes as elite candidates for further evaluation or advancement in the breeding pipeline.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The direction of the index score depends on how variables are loaded. Always check the loadings table before interpreting index scores if an undesirable trait (e.g., chalkiness) has a positive loading on PC1, high PC1 scores may not always indicate superior performance for that trait.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="HCPC" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="HCPC"><span class="header-section-number">8</span> HCPC — Hierarchical Clustering on Principal Components</h2>
+<div style="text-align: justify;">
+<p><strong>HCPC (Hierarchical Clustering on Principal Components)</strong> is an advanced clustering technique that combines the dimensionality reduction power of PCA with the grouping capability of hierarchical cluster analysis. In <strong>RAISINS</strong>, the HCPC tab performs this analysis automatically after PCA, enabling users to identify natural groupings (clusters) among observations in the reduced PC space (see <a href="#fig-hcpc" class="quarto-xref">Figure&nbsp;11</a>).</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-hcpc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hcpc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/hcpc%20dendrogram.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;11: HCPC Dendrogram"><img src="images/hcpc%20dendrogram.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hcpc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: HCPC Dendrogram
+</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/factor%20map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Factor Map"><img src="images/factor%20map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Factor Map"></a></p>
+</figure>
+</div>
+<figcaption>Factor Map</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The clustering proceeds in two steps. First, PCA is performed to obtain component scores for each observation. Second, Ward’s hierarchical clustering algorithm is applied to the PC scores (typically the retained components) to group observations into clusters that are as internally similar and as externally different from one another as possible. The number of clusters is determined by examining the dendrogram (tree diagram) produced during hierarchical clustering a horizontal cut at the appropriate height divides observations into the chosen number of clusters. <strong>RAISINS</strong> automatically suggests an optimal number of clusters based on the within-cluster inertia curve and Calinski-Harabasz index, though users may adjust the number of clusters manually.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-dendrogram" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dendrogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/3d%20hcpc%20poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;12: 3D HCPC Plot"><img src="images/3d%20hcpc%20poo.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dendrogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: 3D HCPC Plot
+</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/top%20vaiablessloo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Top Variable Per Cluster"><img src="images/top%20vaiablessloo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Top Variable Per Cluster"></a></p>
+</figure>
+</div>
+<figcaption>Top Variable Per Cluster</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The cluster map produced by HCPC (see <a href="#fig-clustermap" class="quarto-xref">Figure&nbsp;13</a>) overlays the identified clusters on the PCA biplot, color-coding each observation by its cluster membership. This visualization reveals which observations are most similar across all measured variables simultaneously and helps identify “diversity groups” in a genotype panel a critical step in designing crosses or selecting contrasting parents in plant breeding. Cluster membership is also reported in tabular form so that each genotype can be assigned to its group.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-clustermap" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-clustermap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/chor%20digam.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;13: Chord Diagram"><img src="images/chor%20digam.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clustermap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Chord Diagram
+</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/chord%20clutser.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Chord Diagram-Cluster Means"><img src="images/chord%20clutser.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Chord Diagram-Cluster Means"></a></p>
+</figure>
+</div>
+<figcaption>Chord Diagram-Cluster Means</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/cluster%20indicztiss.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Cluster Means &amp; Cluster Quality Indicator"><img src="images/cluster%20indicztiss.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Cluster Means &amp; Cluster Quality Indicator"></a></p>
+</figure>
+</div>
+<figcaption>Cluster Means &amp; Cluster Quality Indicator</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>In our rice example, HCPC identifies three distinct clusters. Cluster 1 (n = 7 genotypes) is characterized by high GY and TGW and low CL the most desirable cluster. Cluster 2 (n = 8 genotypes) contains intermediate performers with moderate values across all traits. Cluster 3 (n = 5 genotypes) includes late-flowering genotypes with high PH and high CL, representing the least desirable combination for most breeding objectives. This three-cluster solution is supported by the within-cluster inertia curve and aligns with the visual separation observed in the biplot.</p>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Understanding the HCPC outputs </summary>
+<p><small></small></p><small>
+<p><strong>Dendrogram</strong>: A tree diagram that displays the hierarchical merging of observations into clusters. The height of each merge reflects the dissimilarity at which two groups were joined. A horizontal line drawn across the dendrogram at a chosen height determines the number of clusters.</p>
+<p><strong>Cluster Map</strong>: The PCA biplot with observations color-coded by cluster membership. It provides a simultaneous view of how clusters are distributed across the principal component space and how they differ with respect to the original variables.</p>
+<p><strong>Cluster Description Table</strong>: A table produced by RAISINS showing the mean value of each variable within each cluster and comparing it to the overall mean. Variables with large positive or negative deviations from the overall mean are the “characterizing variables” for that cluster.</p>
+<p><strong>Inertia Curve</strong>: A plot of within-cluster inertia against the number of clusters. A distinct bend (elbow) in the curve indicates the optimal number of clusters adding more clusters beyond the elbow produces diminishing improvements in within-cluster homogeneity.</p>
+</small><p><small></small></p>
+</details>
+</section>
+<section id="COR" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="COR"><span class="header-section-number">9</span> Correlation Analysis</h2>
+<div style="text-align: justify;">
+<p>The Correlation analysis tab in <strong>RAISINS</strong> computes and displays pairwise Pearson correlation coefficients among all selected variables (see <a href="#fig-corr" class="quarto-xref">Figure&nbsp;14</a>). Understanding the correlation structure of the data is a crucial prerequisite for PCA, since PCA is most effective when variables are moderately to strongly correlated correlation implies redundancy, and PCA transforms correlated variables into uncorrelated components to remove this redundancy.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-corr" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/correlation%20analysss.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;14: Correlation Matrix of Variables and Correlation plot"><img src="images/correlation%20analysss.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Correlation Matrix of Variables and Correlation plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The correlation matrix displays the Pearson r value for each pair of variables, along with significance indicators. Significance is indicated by an asterisk (*) for the 5% level and two asterisks (**) for the 1% level. A <strong>correlation heatmap</strong> is also displayed, in which cells are color-coded from deep blue (strong negative correlation, r close to −1) through white (no correlation, r ≈ 0) to deep red (strong positive correlation, r close to +1). This heatmap allows rapid visual identification of variable clusters groups of variables that are highly intercorrelated and therefore likely to load together on the same principal component.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Interpreting the correlation matrix for PCA </summary>
+<p><small></small></p><small>
+<p><strong>Pearson Correlation Coefficient (r)</strong>: Measures the strength and direction of the linear relationship between two variables. Values range from −1 to +1. r = +1 indicates a perfect positive linear relationship; r = −1 indicates a perfect negative relationship; r = 0 indicates no linear relationship.</p>
+<p><strong>Significance of correlation</strong>: Even moderate correlations can be statistically significant with large sample sizes. Conversely, strong correlations may not reach significance with very small datasets. Always examine both the r value and its p-value together.</p>
+<p><strong>Implications for PCA</strong>:</p>
+<p>— If all variables are highly positively correlated, PC1 will capture most of the variance and will be interpretable as a general “size” or “performance” factor.</p>
+<p>— If variables form two or more groups of correlated variables, PC1 and PC2 will reflect these two clusters, with loadings from each cluster dominating each component.</p>
+<p>— If variables are uncorrelated with each other, PCA will not provide much compression each component will explain roughly the same proportion of variance, and the data may not be suitable for PCA.</p>
+<p><strong>Bartlett’s Test of Sphericity</strong> (shown in the correlation output): Tests the null hypothesis that the correlation matrix is an identity matrix (i.e., all variables are uncorrelated). A significant result (p &lt; 0.05) confirms that the correlation matrix is not an identity matrix and that PCA is appropriate for the data.</p>
+<p><strong>Kaiser-Meyer-Olkin (KMO) Measure of Sampling Adequacy</strong>: Ranges from 0 to 1. Values above 0.6 indicate that the patterns of correlations are relatively compact and PCA should yield distinct and reliable components.</p>
+</small><p><small></small></p>
+</details>
+<section id="interpretation-from-fig-corr" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="interpretation-from-fig-corr"><span class="header-section-number">9.1</span> Interpretation from <a href="#fig-corr" class="quarto-xref">Figure&nbsp;14</a></h3>
+<div style="text-align: justify;">
+<p>In our rice genotype dataset, GY and TGW show a strong positive correlation (r = 0.74, p &lt; 0.01), indicating that high-yielding genotypes tend to also produce heavier grains. DTF shows a moderate negative correlation with GY (r = −0.52, p &lt; 0.05), suggesting that later-flowering genotypes tend to yield less under these conditions. CL is positively correlated with DTF (r = 0.61, p &lt; 0.01), reflecting the known association between late maturity and grain chalkiness. PH shows weak to moderate correlations with most traits. Bartlett’s Test of Sphericity is significant (p &lt; 0.001) and the KMO value is 0.72, confirming that the correlation structure is suitable for PCA. The heatmap reveals two variable clusters: one comprising GY and TGW (positively associated), and another comprising DTF and CL (positively associated) consistent with the loading patterns observed in PC1 and PC2.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>A strong significant correlation between two variables does not mean one causes the other it means they share common underlying variation. PCA exploits this shared variation to construct interpretable components. Always interpret correlation patterns in the context of your subject-matter knowledge.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+</section>
+<section id="AI" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="AI"><span class="header-section-number">10</span> AI Interpretation</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is equipped with an AI-powered RAISINS Assistant designed to help users understand the outcomes of PCA and associated analyses. This functionality provides clear and concise summaries of the eigenvalue table, identifies which variables are most important for each principal component, interprets the biplot, describes the cluster structure revealed by HCPC, and offers informed suggestions for next steps in selection or further analysis. The user can access detailed interpretations by clicking on AI Interpretation in the Analysis tab as shown in <a href="#fig-ai" class="quarto-xref">Figure&nbsp;15</a>.</p>
+</div>
+<div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/ai%20intre.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;15: AI powered RAISINS Assistant to interpret your results"><img src="images/ai%20intre.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: AI powered RAISINS Assistant to interpret your results
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The AI assistant summarizes the number of components retained, the cumulative variance explained, the key variables driving each component, and the practical implications for genotype or treatment selection. It also flags any unusual features in the data such as variables with very low communality, unexpected loading signs, or observations that appear as outliers in the biplot and suggests whether transformations or variable re-selection might improve the analysis.</p>
+</div>
+</section>
+<section id="PRE" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="PRE"><span class="header-section-number">11</span> Preparing your data</h2>
+<div style="text-align: justify;">
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
+<ol type="1">
+<li><p>Create your dataset in MS Excel</p></li>
+<li><p>Build your dataset directly within the RAISINS app</p></li>
+</ol>
+</div>
+</section>
+<section id="EX" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="EX"><span class="header-section-number">12</span> Preparing data in MS Excel</h2>
+<div style="text-align: justify;">
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the observation labels (e.g., genotype names, variety names, sample identifiers) you can name this column appropriately, such as “Genotype” or “Treatment.” All variables under study (e.g., GY, PH, DTF, TGW, CL) should be arranged in separate columns, with one row per observation. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or observation labels. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;16</a>. The data should be arranged as illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a> and <a href="#fig-kk" class="quarto-xref">Figure&nbsp;17</a>.</p>
+</div>
+<div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/mod%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;16: Model-1: showing how the prepared Excel file for upload should look like"><img src="images/mod%201.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Model-1: showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/mod%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;17: Model-2: showing how the prepared Excel file for upload should look like"><img src="images/mod%202.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Model-2: showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<details>
+<summary>
+Dataset Creation Rules
+</summary>
+<p><small> 1. <strong>Column Naming Convention</strong> - No spaces allowed in column names.<br>
+- Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %, # etc. 2. <strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
+- Ensure the row above the data is not blank. 3. <strong>Cell Management</strong> - Avoid typing or deleting in cells without data.<br>
+- If needed, select affected cells, right-click, and select <strong>Clear Contents</strong>. 4. <strong>Column Relevance</strong> - Name all columns meaningfully.<br>
+- Exclude unnecessary columns not required for analysis. 5. <strong>Observation Labels</strong> - Ensure each row has a unique observation label in the first column.<br>
+- Do not use numbers only as labels if they could be mistaken for data values. </small></p>
+</details>
+<details>
+<summary>
+How to Save as CSV in MS Excel
+</summary>
+<p><small> 1. <strong>Open Your Workbook</strong></small></p><small>
+<pre><code>-   Ensure your data is arranged properly with only one sheet.</code></pre>
+<ol start="2" type="1">
+<li><p><strong>Click ‘File’ Menu</strong></p>
+<ul>
+<li>Go to the top-left corner and click on <strong>File</strong>.</li>
+</ul></li>
+<li><p><strong>Choose ‘Save As’ or ‘Save a Copy’</strong></p>
+<ul>
+<li>Select the location where you want to save your file.</li>
+</ul></li>
+<li><p><strong>Set File Type to CSV</strong></p>
+<ul>
+<li>In the <strong>‘Save as type’</strong> dropdown menu, choose <strong>CSV (Comma delimited) (*.csv)</strong>.</li>
+</ul></li>
+<li><p><strong>Name Your File</strong></p>
+<ul>
+<li>Enter a relevant file name without spaces (use underscores if needed).</li>
+</ul></li>
+<li><p><strong>Click ‘Save’</strong></p>
+<ul>
+<li>Click <strong>Save</strong> to export the file.</li>
+</ul></li>
+</ol>
+</small><blockquote class="blockquote"><small>
+</small><p><small>💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names, one row per observation). </small></p>
+</blockquote>
+</details>
+</section>
+<section id="CR" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="CR"><span class="header-section-number">13</span> Creating dataset in RAISINS</h2>
+<div style="text-align: justify;">
+<p>If you are unsure about the correct format for creating a dataset, don’t worry RAISINS offers an option to create data directly within the app using a prescribed template. Here’s how:</p>
+<ul>
+<li><p>Navigate to the <strong>Create Data Tab</strong></p></li>
+<li><p>Select the number of <strong>Observations</strong> (e.g., genotypes)</p></li>
+<li><p>Select number of <strong>Variables</strong> (e.g., traits)</p></li>
+<li><p>Click on the <strong>Create</strong> button</p></li>
+</ul>
+<p>A model layout will appear as shown in <strong>?@fig-createdata</strong>. You may enter the observations manually into the CSV file once downloaded, or paste the values directly into the provided template. Once observations are entered, download the CSV file and upload it in Analysis.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/analysis%202%20sample%20(9)-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Illustrating how to create a dataset"><img src="images/analysis%202%20sample%20(9)-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Illustrating how to create a dataset"></a></p>
+</figure>
+</div>
+<figcaption>Illustrating how to create a dataset</figcaption>
+</figure>
+</div>
+</section>
+<section id="M" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="M"><span class="header-section-number">14</span> Model datasets</h2>
+<div style="text-align: justify;">
+<p>To test the app or better understand the required data arrangement, <strong>RAISINS</strong> provides model datasets within the app. You can download them from the Datasets tab.</p>
+</div>
+<div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/model%20pca.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;18: Model dataset"><img src="images/model%20pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Model dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="F" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="F"><span class="header-section-number">15</span> FAQ’s</h2>
+<div style="text-align: justify;">
+<p>The app includes a dedicated FAQs tab to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you are ever unsure about how something works for instance, why a variable has a near-zero loading, or how to choose between PC1-based and PC1+PC2-based index scores the FAQs is a great place to start.</p>
+</div>
+<div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/faq%20pca.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;19: FAQs"><img src="images/faq%20pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: FAQs
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="U" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="U"><span class="header-section-number">16</span> View data</h2>
+<div style="text-align: justify;">
+<p>View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For PCA, it is particularly important to confirm that all variable columns are recognized as numeric and that there are no missing values, as PCA cannot proceed with incomplete data. The View Data tab will flag any columns with unexpected data types or structural issues, allowing you to correct the file before running analysis.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/viewn%20data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="View data"><img src="images/viewn%20data.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+</figure>
+</div>
+<figcaption>View data</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

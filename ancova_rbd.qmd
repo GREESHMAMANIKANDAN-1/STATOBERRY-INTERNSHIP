@@ -1,0 +1,724 @@
+---
+title: "ANCOVA-Randomised Block Design"
+format:
+  html:
+    mainfont: "Times New Roman"
+    fontsize: 0.90em
+    theme: cosmo
+    toc: true
+    lightbox: true
+    number-sections: true
+    number-depth: 3
+    number-offset: 1
+    toc-title: "**TABLE OF CONTENTS**"
+    toc-depth: 3
+    linkcolor: "purple"
+    citations-hover: true
+    css: sty.css
+---
+
+```{=html}
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+```
+
+::: affiliations
+<sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University
+:::
+
+ABSTRACT
+
+::: {style="text-align: justify;"}
+**Analysis of Covariance under Randomized Block Design (ANCOVA RBD)** is a powerful statistical technique that combines the blocking principle of the Randomized Block Design with regression-based covariate adjustment, simultaneously controlling for both known environmental heterogeneity through blocks and unmeasured or uncontrollable continuous variation through a covariate. By removing the variation explained by the covariate from the already-reduced error term of the RBD, **ANCOVA RBD** achieves greater precision than either technique alone and produces adjusted treatment means that represent what performance would look like had all experimental units shared an identical covariate baseline. In **RAISINS** you can perform **ANCOVA RBD** very easily without writing a single line of code. This tutorial will guide you, how to perform **ANCOVA RBD** very easily in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including PCA.
+:::
+
+<details>
+
+*Hover or click each point to see more information.*
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Introduction ANCOVA-Randomised Block Design
+</summary>
+```
+
+```{=html}
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+```
+
+<ul><small> The foundations of Analysis of Covariance were laid by statistician [<strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"/>]{.hover-img} in his landmark 1932 publication, where he demonstrated that incorporating a continuous concomitant variable one measured alongside the response but not controlled by the experimenter into the linear model could substantially reduce the residual error and improve the sensitivity of treatment F-tests. Fisher recognized that even in a well-blocked experiment, additional uncontrolled variation arising from differences among experimental units within blocks such as variation in initial plant vigour, animal body condition, or soil micronutrient status could obscure genuine treatment differences. By combining the Randomized Block Design with covariance adjustment, researchers gained access to two complementary sources of error reduction: the RBD's blocks absorb inter-block variation arising from systematic environmental gradients such as soil fertility, light intensity, or bench position in a greenhouse, while the covariate adjustment accounts for within-block unit-to-unit differences that blocking cannot remove. This dual error-control strategy makes **ANCOVA RBD** one of the most precise experimental analysis frameworks available in the biological and agricultural sciences, and it became a standard reference in experimental design textbooks through the mid-twentieth century contributions of Fisher's colleagues and successors at Rothamsted and elsewhere. Today, **ANCOVA RBD** remains the preferred analysis when both a blocking factor and a measurable continuous covariate are available to improve experimental precision. </small></ul>
+
+</details>
+
+## Analysis of experiments {#AE}
+
+::: {style="text-align: justify;"}
+To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different experimental designs and their associated analysis options. In this tutorial, we focus on **ANCOVA Randomized Block Design**, as shown in @fig-aov.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Analysis of experiment tab](www/ANC%20RBD%20AN%20EXP%20..png){#fig-aov fig-align="center"}
+
+## ANCOVA-Randomized Block Design {#C}
+
+::: {style="text-align: justify;"}
+**Analysis of Covariance under a Randomized Block Design (ANCOVA RBD)** is a statistical method that extends the standard RBD ANOVA by incorporating one or more continuous covariates into the model, achieving two simultaneous sources of error reduction. In a standard RBD, experimental units are grouped into homogeneous blocks before treatments are randomly assigned within each block, so that block-to-block variation is separated from the error term. ANCOVA RBD further reduces the residual error by regressing the response on a covariate -a continuous variable that is correlated with the response but is not affected by the treatments and removing its linear contribution from the error sum of squares. The combined model thus partitions total variation into four components: **Blocks** (removing inter-block environmental heterogeneity), **Covariate** (removing the linear covariate effect from the residual), **Treatments (adjusted)** (the treatment effect after accounting for both blocks and the covariate), and **Error (adjusted)** (the residual variation remaining after all three sources have been modelled). The analysis produces **adjusted treatment means** estimates of what each treatment's average response would have been had all experimental units possessed the same covariate value at the grand mean which are both block-corrected and covariate-corrected, providing the fairest possible treatment comparison. ANCOVA RBD is most appropriate when experimental units within blocks are not fully homogeneous, when a measurable continuous variable exists that explains within-block variability, and when the blocking structure is already in place as part of the experimental design. Its key assumptions are that the covariate is not influenced by the treatments, that the within-block regression of the response on the covariate is linear, and that the regression slope is the **same in every treatment group** the homogeneity of regression slopes assumption which **RAISINS** automatically tests before reporting adjusted results.
+:::
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  ANCOVA RBD Layout
+</summary>
+```
+
+<ul>
+
+<small>
+
+@fig-lay visually represents the structure of an **ANCOVA RBD** experiment. Experimental units are arranged in blocks (B~1~, B~2~, …, B~r~), each containing one plot per treatment (T~1~, T~2~, …, T~t~), with treatments randomly assigned within each block. For each experimental unit, two measurements are recorded: the **covariate (X)** a continuous variable measured before or independently of the treatment and the **response variable (Y)** measured after the treatment has been applied. The ANCOVA model first removes block effects and then removes the covariate's linear contribution from the residual, before testing the significance of treatment differences on the doubly adjusted observations. The layout makes clear that ANCOVA RBD preserves the full randomized block structure and simply adds a regression adjustment step to further improve precision beyond what blocking alone achieves.
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![ANCOVA RBD Layout](www/anr%20layout.png){#fig-lay fig-align="center"}
+
+</small>
+
+</ul>
+
+</details>
+
+::: callout-tip
+#### ANCOVA RBD is a statistical method that combines the error-reduction benefits of blocking in a Randomized Block Design with regression-based covariate adjustment, producing adjusted treatment means that are simultaneously corrected for inter-block heterogeneity and within-block covariate variation.
+:::
+
+## A working example {#W}
+
+::: {style="text-align: justify;"}
+To make things simple and interesting, we'll explain **ANCOVA RBD** step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment conducted to evaluate the performance of **10 mango varieties** - Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay, Langra, and Totapuri arranged as an **RBD** with **3 blocks (replications)**, giving a total of 10 × 3 = **30 experimental plots**. Since trees had slightly different canopy sizes at the start of the season, **Obs1 (canopy spread in m²)** was recorded as the **covariate (X)** to account for this within-block variability among trees. The response variables measured at harvest were: **yield** (fruit yield in kg/plant), **Obs2** (number of fruits per plant), and **FW** (average fruit weight in g). Our aim is to test whether the ten mango varieties produce statistically significant differences in the response variables after adjusting for canopy spread, and to obtain adjusted treatment means that are corrected for both block effects and the covariate. The arrangement of the data is shown in,\@fig-data.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Example dataset](www/anr%20work%20x.png){#fig-data fig-align="center"}
+
+::: {style="text-align: justify;"}
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the 10 mango varieties, the covariate is **Obs1** (canopy spread in m²) measured before harvest, and the Variables are the three response traits measured at harvest **Obs2**, **FW**, and **yield**..
+:::
+
+## How to prepare your data? {#sec-4 .H}
+
+::: {style="text-align: justify;"}
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. The file must contain a column for **Block** (the block or replicate number for each observation), a column for **Treatment** (the mango varieties), a column for the **Covariate (X)**, and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
+
+Still if you have doubt, see @fig-4.
+
+To prepare your dataset for analysis in **RAISINS**, you have two options:
+
+Creating dataset in MS Excel
+
+Creating your dataset directly within the **RAISINS** app
+:::
+
+![Illustrating how to create a dataset](www/anr%20csv.png){#fig-4 fig-align="center"}
+
+## ANCOVA RBD analysis tab explained {#AO}
+
+::: {style="text-align: justify;"}
+In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Block** column, the **Treatment** column, the **Covariate** column, and the **response variables** will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, the ANCOVA RBD is performed and all relevant results and outputs appear instantly, including the test for homogeneity of regression slopes, the adjusted ANOVA table with the block source separated out, and the adjusted treatment means with post hoc groupings.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Analysis window explained](www/anc%20rbd%20tab%20exp.png){#fig-5 fig-align="center"}
+
+::: {style="text-align: justify;"}
+For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset ,@sec-6. Here, **RAISINS** provides an inbuilt transformation option.
+:::
+
+## Transformation {#sec-6 .T}
+
+::: {style="text-align: justify;"}
+Log, square root, and arcsine transformations are often used in **ANCOVA RBD** to make data more normal and to stabilize variance before covariance and block adjustment. Researchers can use these transformations when analyzing experimental data in **RAISINS** as shown in @fig-6.
+:::
+
+![Transformation options](www/anr%20tran.png){#fig-6 fig-align="center"}
+
+::: {style="text-align: justify;"}
+**Logarithmic transformation** is a mathematical procedure used to convert a skewed distribution into a more symmetrical one by replacing each data point (x) with its logarithm. This technique is specifically applied to positive, continuous data where the variance is proportional to the mean, a relationship common in phenomena that exhibit multiplicative or exponential growth.
+
+**Square root transformation** is a statistical method used to stabilize variance and reduce right-skewness by replacing each data point (x) with its square root. It is primarily applied to non-negative, discrete "count" data such as those following a Poisson distribution, where the variance of the data tends to increase in proportion to the mean. By compressing the upper end of the scale more significantly than the lower end, this transformation brings the data closer to a normal distribution, satisfying the homoscedasticity requirements of many parametric statistical tests.
+
+**Arcsine transformation** (also known as the angular transformation) is a mathematical technique specifically designed for data expressed as proportions or percentages bounded between 0 and 1. By taking the inverse sine of the square root of the proportion, this transformation stretches the ends of the distribution near 0 and 1, where variance is naturally small. It is primarily used to achieve homoscedasticity in binomial data.
+:::
+
+> After choosing the appropriate transformation proceed to @sec-7 for analysis.
+
+## Analysis results {#sec-7 .AR}
+
+::: {style="text-align: justify;"}
+Once your dataset is uploaded, click on Run Analysis, and the **ANCOVA RBD** will be performed. **ANCOVA RBD** first tests the assumption of homogeneity of regression slopes verifying that the relationship between the covariate and the response is consistent across all treatment groups and then partitions the block-and-covariate-adjusted total variation into components attributable to **Blocks**, the **Covariate**, **Treatments (adjusted)**, and **Error (adjusted)**, and compares them using the F-test ,see @fig-100. If the homogeneity of slopes assumption is met, the adjusted treatment means and post-hoc comparisons are valid and can be interpreted directly.
+:::
+
+**Table 1 ANCOVA RBD summary**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Adjusted ANOVA table - Blocks, Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares](www/anr%20ancova%20summary.png){#fig-100 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> ANCOVA RBD table </summary>
+```
+
+<small> In an **ANCOVA RBD**, the analysis partitions the adjusted total sum of squares into four main sources: **Blocks** (variation among blocks, which represents the systematic environmental heterogeneity controlled by the RBD structure), **Covariate (X)** (variation in the response that is linearly explained by the covariate, further reducing the error beyond what blocking achieves), **Treatments (adjusted)** (variation among treatment means after removing both block effects and the covariate's contribution), and **Error (adjusted)** (residual variation remaining after accounting for blocks, covariate, and treatments). The degrees of freedom are: Blocks = r−1 (where r = number of blocks), Covariate = 1, Treatments = t−1 (where t = number of treatments), and Error = (r−1)(t−1)−1 (one degree of freedom is lost compared to a standard RBD because one df is used to estimate the common within-block regression slope). Each mean square is obtained by dividing the adjusted sum of squares by its degrees of freedom. The F-statistic for Treatments is the ratio of the adjusted Treatment mean square to the adjusted Error mean square. Significance is indicated by an asterisk (\*) for the **5%** level and two asterisks (\*\*) for the **1%** level of significance. A significant Block F-test confirms that the RBD blocking was effective; a significant covariate F-test confirms that the additional covariate adjustment was necessary and meaningful; a significant Treatment F-test confirms that the adjusted treatment means differ significantly. A preliminary test for **homogeneity of regression slopes** (Treatment × Covariate interaction) is also reported a non-significant result validates the core ANCOVA assumption. </small>
+
+</details>
+
+### Interpretation from @fig-100
+
+::: {style="text-align: justify;"}
+The ANCOVA results reveal that the covariate mean square is non-significant for all three characters (Obs1, Obs2, and FW), indicating that the covariate did not explain a meaningful portion of variation in any of the recorded traits and that the covariate adjustment provided limited additional precision in the pooled two-factor CRD framework. The Treatment mean square is significant at the 5% level for Obs1 (80.82\*), while it remains non-significant for both Obs2 (293.9NS) and FW (2088.9NS), suggesting that the treatment combinations of Factor A and Factor B produced significantly different responses only for Obs1 after accounting for the covariate effect. The Intercept is significant for Obs2 (918.62\*) but non-significant for Obs1 and FW, reflecting differences in baseline levels across the pooled locations. The adjusted error mean squares are 27.62, 160.43, and 1840.11 for Obs1, Obs2, and FW respectively, serving as the basis for further mean comparison. Since treatment differences were statistically significant for Obs1, @sec-8 provides detailed information on the multiple comparison tests (post-hoc tests) for adjusted treatment means to identify superior factor-level combinations across locations A and B.
+:::
+
+**Table 2: Detailed tabular representation with letter grouping and other important statistics**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Adjusted treatment means with multiple comparisons](www/anr%20tab%20comp.png){#fig-101 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">Overview of ANCOVA RBD Results and Interpretation
+</summary>
+```
+
+<small>
+
+1.  *Treatments and Response Variables*
+
+**Treatments**: **Treatments**: The independent variable or specific category (e.g., mango variety) being tested to determine its adjusted influence on the response variable after both block effects and the covariate have been accounted for.
+
+**Response Variable**: The dependent variable or specific measurement(eg: fruit yield in kg/plant) recorded to evaluate the adjusted performance of the treatments.
+
+2.  *Multiple Comparisons*
+
+**Post-hoc Grouping**: A method of using letters (a, b, c) to categorize adjusted treatment means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.
+
+3.  *ANCOVA RBD Summary*
+
+**Adjusted Mean**: The estimated treatment group mean after statistically removing both the block effects and the linear effect of the covariate. It represents what the mean would have been had all experimental units been in the same block and had the same covariate value (grand mean of X).
+
+**F stat**: A numerical value that compares the adjusted variance between treatment groups to the doubly adjusted residual variance; it determines if the treatment differences remain statistically significant after both block and covariate adjustment.
+
+**p value**: The probability that the observed adjusted differences occurred by random chance. A value below the chosen significance threshold indicates statistically significant adjusted treatment differences.
+
+4.  *Critical Difference (CD) and Error Estimates*
+
+**Critical Difference (CD)**: The minimum mathematical gap required between two adjusted means to declare them "significantly different" at a specific confidence level, computed using the adjusted error mean square from the ANCOVA RBD table.
+
+**Standard Error (SE)**: A measure of the precision of an adjusted treatment mean; it reflects residual variability after both block effects and the covariate have been partialled out.
+
+**Mean Square Error (MSE)**: The Adjusted Error Mean Square from the ANCOVA RBD table. It is smaller than both the unadjusted ANOVA error and the ANCOVA CRD error when the blocking and covariate together effectively explain within-experiment variation.
+
+**Coefficient of Variation (CV%)**: A percentage that shows the level of dispersion in the adjusted data relative to the grand mean. A lower CV after ANCOVA RBD adjustment compared to either unadjusted ANOVA or ANCOVA CRD alone confirms the combined benefit of blocking and covariate adjustment.
+
+**Cohen's F**: A standardized measure of effect size that describes the magnitude of the adjusted treatment effect, independent of sample size. </small>
+
+</details>
+
+### Interpretation from @fig-101
+
+::: {style="text-align: justify;"}
+Adjusted treatment means are grouped using letters such as **"a", "b", "c"** to indicate statistical similarity based on pairwise comparisons after both block and covariate correction. Overlapping grouping letters (e.g., **ab** or **bc**) indicate that the absolute difference between adjusted means is less than the critical difference at the chosen level of significance, implying statistical similarity **(on par)**. For example, if both Alphonso and Bombay are labelled **"a"**, their adjusted yields are statistically similar at the **5%** significance level even after correcting for canopy spread and block effects. Treatments with no common letters (e.g., **a** and **cde**) differ significantly in their adjusted means for instance, Alphonso (1440.89 kg/plant) carrying the grouping **"a"** is significantly superior to Safeda (1052.96 kg/plant) carrying the grouping **"a"** providing a fair comparison free from both environmental gradient effects and pre-existing canopy size differences. The adjusted means should always be used for interpretation and recommendations in **ANCOVA RBD** rather than the raw treatment means, since the latter confound treatment effects with block variation and covariate differences. The Cohen's f values quantify the magnitude of the adjusted treatment effects: values below 0.10 indicate a very small effect, below 0.25 a small effect, below 0.40 a medium effect, and values of 0.40 or higher a large effect
+:::
+
+::: callout-tip
+#### When a researcher uses Tukey's HSD or DMRT, each pairwise comparison produces a different value because the differences between the group means are unique.
+:::
+
+::: callout-tip
+#### Cohen's f is a measure of effect size. It tells you how strong or meaningful the treatment effect is, independent of sample size.
+:::
+
+## Multiple comparison tests {#sec-8 .MCT}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  What is Post-hoc test?
+</summary>
+```
+
+<ul><small> Post-hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA or ANCOVA). Its purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same. In ANCOVA RBD, post-hoc tests operate on the **adjusted means** rather than raw means, ensuring that comparisons are made on a level playing field after both the block effects and the covariate's influence have been removed.</small></ul>
+
+</details>
+
+::: {style="text-align: justify;"}
+After obtaining a significant F-value for the adjusted Treatment effect in the ANCOVA RBD, multiple comparison tests are employed to identify which adjusted treatment means differ significantly. The same post-hoc procedures used in ANOVA- LSD, Tukey's HSD, and DMRT are applied, but they use the **adjusted error mean square** and the **adjusted error degrees of freedom** from the ANCOVA RBD table, and they compare **adjusted treatment means** that are corrected for both block effects and the covariate ,see @fig-7.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Multiple comparison test options explained](www/anc%20rbd%20multi%20comp.png){#fig-7 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> Post-hoc test </summary>
+```
+
+<small>
+
+When the ANCOVA RBD is significant for adjusted Treatment, the following post-hoc tests are commonly used for pairwise comparisons of **adjusted treatment means**.
+
+**LSD (Least Significant Difference) Test**
+
+The **Least Significant Difference (LSD)** test identifies which specific adjusted treatment means differ significantly after the ANCOVA RBD has confirmed an overall significant Treatment effect. The LSD uses the adjusted error mean square and adjusted error degrees of freedom from the ANCOVA RBD table:
+
+$$\text{LSD} = t_{\alpha/2, \, df_{\text{adj. error}}} \sqrt{\text{MSE}_{\text{adj.}} \left(\frac{1}{r_i} + \frac{1}{r_j} + \frac{(\bar{X}_i - \bar{X}_j)^2}{S_{xx(\text{within blocks})}}\right)}$$
+
+where **t₍α/2, df_adj.error₎** is the critical t-value at the chosen significance level, MSE~adj.~ is the adjusted error mean square from the ANCOVA RBD, r~i~ and r~j~ are the number of blocks in the two groups being compared, $\bar{X}_i$ and $\bar{X}_j$ are the covariate means for those treatment groups, and S\~xx(within blocks)\~ is the within-block sum of squares of the covariate. In balanced RBD designs with equal block sizes, this simplifies to a straightforward LSD formula based on the adjusted error MSE. Any absolute difference between two adjusted treatment means exceeding this LSD value is declared statistically significant.
+
+**Tukey's Honestly Significant Difference (HSD)**
+
+Tukey's test identifies which pairs of adjusted treatment means differ significantly while controlling the overall Type I error rate. It is computed using the adjusted error mean square and adjusted error degrees of freedom from the ANCOVA RBD, and is especially appropriate when the number of treatments is moderate to large and all pairwise comparisons of adjusted means are of interest.
+
+**Duncan's Multiple Range Test (DMRT)**
+
+After confirming a significant adjusted Treatment effect via ANCOVA RBD, DMRT ranks the adjusted treatment means and calculates sequential critical differences based on the adjusted error mean square. It provides clear grouping letters for adjusted means and is widely used in field crop ANCOVA RBD reporting where a concise summary of treatment rankings is required. </small>
+
+</details>
+
+**Which Post-hoc test to use?**
+
+::: {style="text-align: justify;"}
+The choice of the post-hoc test completely relies on the researcher.
+
+**LSD** is used for pairwise comparison of adjusted treatment means after a significant adjusted Treatment effect in **ANCOVA RBD**. It is most suitable when the number of treatments is small and comparisons are pre-planned, offering high sensitivity to detect differences after both block and covariate correction. In agricultural and biological ANCOVA RBD, LSD is the most commonly used test.
+
+**Tukey's HSD** is preferred when there are four or more treatments in a balanced **ANCOVA RBD**. It compares all possible pairs of adjusted means while strictly controlling the family-wise error rate, making it a conservative and reliable method for multiple comparisons of block-and-covariate-adjusted results.
+
+**DMRT** is commonly used in field crop experiments with several treatment groups and provides step-wise critical differences for ranking adjusted treatment means. It detects more significant differences than Tukey HSD, though it is less conservative and carries a higher risk of Type I error.
+
+In the example for those characters, a pairwise comparison of adjusted treatment means was performed using the Least Significant Difference (LSD) test.
+:::
+
+## Calculation {#sec-9 .CT}
+
+::: {style="text-align: justify;"}
+The Calculation tab displays the detailed statistical computations generated during the ANCOVA analysis. It presents the pairwise comparison tables for all treatment combinations across different characters, including estimates, standard errors \[SE(d)\], degrees of freedom (DF), t-ratios, p-values, and critical difference (CD) values. These calculations help users identify statistically significant differences between treatment means based on the selected multiple comparison test. The tab provides a transparent view of the analytical process and enables users to verify the statistical outputs used for interpretation and decision-making.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![pairwise comparison table](www/anr%20calculations.png){#fig-104 fig-align="center"}
+
+## Basic plots {#BP}
+
+::: {style="text-align: justify;"}
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We've ensured that every possible plot related to **ANCOVA RBD** is readily available. Simply click on the Basic Plots tab to view them ,See @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.
+:::
+
+### Customizing plots
+
+::: {style="text-align: justify;"}
+**RAISINS** provides users various customization features for the plots to enhance the visualization according to the requirement of the user. **Click** on @fig-8 to get a clear idea on the customizing features.
+:::
+
+![Plot settings for customizing](www/anr%20cust%20plot.png){#fig-8 fig-align="center"}
+
+::: {style="text-align: justify;"}
+From @fig-9 to @fig-13, you can see the different types of plots available in RAISINS. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.
+:::
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+```
+
+```{=html}
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1000;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+#boxplot-desc { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#barplot-desc { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#connectedplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#meanvalueplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#violinplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+#correlationplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+</style>
+```
+
+::::::::::::::::::::::::::::: grid
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Box plot](www/anr%20box%20plot.png){#fig-9}
+
+:::: {#boxplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **box plot** compares the distribution of adjusted values across different treatment groups. Each coloured box represents an irrigation schedule and shows key statistics based on the block-and covariate-adjusted observations: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical grouping treatments sharing letters are statistically similar in adjusted means, while those with different letters are significantly different after block and covariate correction.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Violin plot](www/anr%20violin.png){#fig-10}
+
+:::: {#violinplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **violin plot** compares the distribution of adjusted values across different treatment groups. Each treatment is shown as a violin shape that reflects how the block-and-covariate-adjusted data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the adjusted median and interquartile range. Letters above each plot indicate statistical groupings based on adjusted means.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Bar plot](www/anr%20bar%20plot.png){#fig-11}
+
+:::: {#barplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **bar plot** compares the adjusted mean values of different treatments, with error bars showing variability based on the adjusted error from the ANCOVA RBD. The letters above each bar indicate statistical groupings based on adjusted means: treatments sharing letters are similar after block and covariate correction, while those with different letters are significantly different.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Mean Value Plot](www/anr%20mean.png){#fig-12}
+
+:::: {#meanvalueplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **mean value plot** compares the adjusted mean values of different treatments, each shown as a colored dot with horizontal error bars indicating precision based on the adjusted error from the ANCOVA RBD. Letters next to each point represent statistical groupings derived from adjusted means: treatments sharing letters are statistically similar, while those with different letters differ significantly after block and covariate adjustment.
+:::
+::::
+:::::
+::::::
+
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
+::: {style="text-align: center;"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Connected line plot](www/anr%20con%20plot.png){#fig-13}
+:::
+
+:::: {#connectedplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **connected line plot** compares the adjusted mean values of different treatments, with each point representing a treatment's block-and-covariate-adjusted average and error bars showing precision. The points are linked by lines to highlight performance trends across irrigation schedules after adjustment. Letters above each point indicate statistical groupings based on adjusted means.
+:::
+::::
+::::::
+:::::::
+
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('correlationplot-desc')" onmouseout="hideDescription('correlationplot-desc')"}
+::: {style="text-align: center;"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Correlation plot](www/anr%20cor%20plot.png){#fig-14}
+:::
+
+:::: {#correlationplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **correlation plot** provides a visual summary of the pairwise relationships between all response variables. Each cell displays the correlation coefficient between two variables, with colour intensity indicating the strength of association and direction indicating whether the relationship is positive or negative. This helps researchers quickly identify which traits are closely related before proceeding to multivariate analysis.
+:::
+::::
+::::::
+:::::::
+:::::::::::::::::::::::::::::
+
+## AI interpretation {#AI}
+
+::: {style="text-align: justify;"}
+RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of ANCOVA RBD results, identifies whether the block effect and covariate adjustment were both significant, reports the homogeneity of slopes test outcome, and identifies statistically significant adjusted treatment differences. The assistant also offers informed suggestions for potential next steps or interpretations, including guidance on whether block-and-covariate-adjusted means should be reported, whether the covariate added meaningful precision beyond blocking, and recommendations on treatment selection based on adjusted performance. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below @fig-ai.
+:::
+
+![AI powered RAISINS Assistant to interpret your results](www/anr%20ai%20int.png){#fig-ai fig-align="center"}
+
+## Multivariate {#MUL}
+
+::: {style="text-align: justify;"}
+Multivariate analysis in **ANCOVA RBD** helps you to compare different response variables simultaneously across all treatment groups using the block-and-covariate-adjusted dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 10 mango varieties Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay, Langra, and Totapuri on fruit yield and quality traits across 3 blocks, navigate to Multivariate ,see @fig-mu.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Multivariate tab in RAISINS](www/anr%20multi%20tab.png){#fig-mu}
+
+::: {style="text-align: justify;"}
+PCA will be automatically carried out based on the selected response variables using the ANCOVA RBD adjusted dataset.PCA results and plots will appear along with automated interpretation.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![PCA-based Index Score](www/anr%20pca%20index.png){#fig-PC}
+
+::: {style="text-align: justify;"}
+The scree plot given @fig-screeplot illustrates the proportion of variance explained by each principal component derived from the ANCOVA RBD adjusted data.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Scree plot](www/anr%20scree.png){#fig-screeplot fig-align="center"}
+
+::: {style="text-align: justify;"}
+Examining the loadings of each variable on the principal components @fig-loadin, Yield and Char1 exhibited high positive loadings on PC1 (approximately +0.54 and +0.64, respectively), while Char2 also loaded positively on PC1, indicating that PC1 primarily captures treatment combinations of Factor A and Factor B that excel across the major yield and quality traits after error adjustment in the pooled two-factor CRD across both locations. On PC2, certain characters loaded more prominently, suggesting that PC2 captures a relatively independent dimension of treatment response that reflects trait variation not accounted for by PC1, particularly across the interaction of Factor A and Factor B levels. Based on this loading pattern, a **PC1-based index score** is most informative for identifying treatment combinations (S1/S2 × C1/C2) that simultaneously maximize yield and the associated characters across locations A and B. It is recommended to select variables that are meaningfully correlated for PCA, as this ensures the construction of a reliable and agronomically interpretable composite index for ranking superior factor-level combinations in the pooled two-factor CRD framework.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Loadings of each variable](www/anr%20loadings.png){#fig-loadings fig-align="center"}
+
+::: {style="text-align: justify;"}
+The PCA biplot provides a visual representation of the relationships among mango varieties and the measured response variables based on the adjusted multivariate data. Varieties positioned in the direction of a variable vector tend to exhibit higher values for that particular trait. In the present biplot, the vectors for Yield and Obs2 are oriented in nearly the same direction along the positive side of PC1, indicating a strong positive association between these variables. Varieties such as Alphonso, Totapuri, and Dasheri are located close to these vectors, suggesting comparatively higher performance for yield-related characteristics. In contrast, the FW vector is directed toward the negative side of PC1 and positive side of PC2, indicating that fruit weight shows a different pattern of variation compared with Yield and Obs2. Chausa is positioned nearest to the FW vector, implying its stronger association with fruit weight. Varieties such as Safeda and Kesar are located away from the major loading vectors, reflecting comparatively lower contribution to the principal components. The separation of varieties across the four quadrants demonstrates the diversity in their multivariate response patterns captured by PC1 and PC2, which together explain a substantial proportion of the total variability.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![PCA-Biplot](www/anr%20bioplot.png)
+
+::: {style="text-align: justify;"}
+In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment groups based on their ANCOVA RBD adjusted multi-trait index scores. To refine your selection, use the 'Select cutoff for Scaled Index Score' feature given as in @fig-indexscore, where you can choose the cutoff percentage to select treatment groups above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment groups as per your preference. Selected treatments are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Index score](www/anr%20inex%20score.png){#fig-indexscore fig-align="center"}
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Indexplot](www/anr%20index%20plot.png){#fig-index fig-align="center"}
+
+::: {style="text-align: justify;"}
+Combining all this information, the researcher can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of ANCOVA RBD adjusted treatment comparisons with multivariate PCA-based index scores enables agronomists and crop physiologists to identify the irrigation schedule that is not only significantly superior in individual adjusted traits but also performs best across multiple response variables simultaneously accounting for both field heterogeneity within blocks and pre-season soil moisture variation that would otherwise confound the comparison.
+:::
+
+## Preparing your data {#PRE}
+
+::: {style="text-align: justify;"}
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won't be trustworthy."
+
+1.  Create your dataset in MS Excel
+
+2.  Build your dataset directly within the RAISINS app
+:::
+
+## Preparing data in MS Excel {#EX}
+
+::: {style="text-align: justify;"}
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for **ANCOVA RBD** must follow a column-based format with at least four structural columns: a **Replication** column (identifying the block or replicate number for each observation), a **Treatment** column (identifying the mango variety for each observation), a **Covariate** column (containing the continuous measurement for each experimental unit, e.g., Obs1 canopy spread in m²), and one or more columns for the response variables measured at harvest **Obs2, FW, and yield**. Each experimental unit must have exactly one block assignment, one treatment label, one covariate value, and one observation per response variable. The covariate column must contain only numeric values with no missing entries, as ANCOVA RBD requires a complete covariate record for all observations. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. The data can also be arranged as shown in @fig-kk.
+:::
+
+![Model-1: showing how the prepared Excel file for upload should look like](www/anr%20home.jpeg){#fig-pp}
+
+![Model-2: Showing how the prepared Excel file for upload should look like](www/anr%20data.jpeg){#fig-kk}
+
+<details>
+
+<summary>Dataset Creation Rules</summary>
+
+<small> 1. **Column Naming Convention** - No spaces allowed in column names.\
+- Use underscores (`_`) or full stops (`.`) for separation. - Avoid symbols and special characters like %,# etc 2. **Data Arrangement** - Start data arrangement towards the upper-left corner.\
+- Ensure the row above the data is not blank. 3. **Cell Management** - Avoid typing or deleting in cells without data.\
+- If needed, select affected cells, right-click, and select **Clear Contents**. 4. **Column Relevance** - Name all columns meaningfully.\
+- Exclude unnecessary columns not required for analysis. </small>
+
+</details>
+
+<details>
+
+<summary>How to Save as CSV in MS Excel</summary>
+
+<small> 1. **Open Your Workbook**
+
+```         
+-   Ensure your data is arranged properly with only one sheet.
+```
+
+2.  **Click 'File' Menu**
+
+    -   Go to the top-left corner and click on **File**.
+
+3.  **Choose 'Save As' or 'Save a Copy'**
+
+    -   Select the location where you want to save your file.
+
+4.  **Set File Type to CSV**
+
+    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+
+5.  **Name Your File**
+
+    -   Enter a relevant file name without spaces (use underscores if needed).
+
+6.  **Click 'Save'**
+
+    -   Click **Save** to export the file.
+
+> 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small>
+
+</details>
+
+## Creating dataset in RAISINS {#CR}
+
+::: {style="text-align: justify;"}
+If you're unsure about the correct format for creating a dataset, don't worry RAISINS offers an option to create data directly within the app using the prescribed template. Here's how:
+
+-   Navigate to the **Create Data Tab**
+
+-   Select the number of **Treatments**
+
+-   Select number of **Replications**
+
+-   Select number of **Characters**
+
+-   Click on **Create** button
+
+Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.
+:::
+
+![Creating dataset within RAISINS](www/anr%20csv.png){#fig-createdata}
+
+## Model datasets {#M}
+
+::: {style="text-align: justify;"}
+To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the Datasets.
+:::
+
+![Model dataset](www/anr%20model%20datasets.png){#fig-188 fig-align="center"}
+
+## FAQ's {#F}
+
+::: {style="text-align: justify;"}
+The app includes a dedicated FAQs to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQs is a great place to start.
+:::
+
+![FAQs](www/anr%20faq.png){#fig-148 fig-align="center"}
+
+## View data {#U}
+
+::: {style="text-align: justify;"}
+View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.
+:::
+
+![View data](www/anr%20view.png){fig-align="center"}
+
+------------------------------------------------------------------------

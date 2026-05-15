@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ANCOVA — Completely Randomised Design</title>
+<title>ANCOVA-Randomised Block Design</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +23,21 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="ancova_crd_files/libs/clipboard/clipboard.min.js"></script>
-<script src="ancova_crd_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="ancova_crd_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="ancova_crd_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="ancova_crd_files/libs/quarto-html/popper.min.js"></script>
-<script src="ancova_crd_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="ancova_crd_files/libs/quarto-html/anchor.min.js"></script>
-<link href="ancova_crd_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="ancova_crd_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="ancova_crd_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="ancova_crd_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="ancova_crd_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="ancova_crd_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="ancova_crd_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="ancova_crd_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="ancova_rbd_files/libs/clipboard/clipboard.min.js"></script>
+<script src="ancova_rbd_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="ancova_rbd_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="ancova_rbd_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="ancova_rbd_files/libs/quarto-html/popper.min.js"></script>
+<script src="ancova_rbd_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="ancova_rbd_files/libs/quarto-html/anchor.min.js"></script>
+<link href="ancova_rbd_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ancova_rbd_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="ancova_rbd_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="ancova_rbd_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="ancova_rbd_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="ancova_rbd_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="ancova_rbd_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="ancova_rbd_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -81,10 +81,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Analysis of experiments</a></li>
-  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> ANCOVA — Completely Randomised Design</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> ANCOVA-Randomized Block Design</a></li>
   <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
   <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
-  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> ANCOVA CRD analysis tab explained</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> ANCOVA RBD analysis tab explained</a></li>
   <li><a href="#sec-6" id="toc-sec-6" class="nav-link" data-scroll-target="#sec-6"><span class="header-section-number">6</span> Transformation</a></li>
   <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">7</span> Analysis results</a>
   <ul class="collapse">
@@ -112,7 +112,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ANCOVA — Completely Randomised Design</h1>
+<h1 class="title">ANCOVA-Randomised Block Design</h1>
 </div>
 
 
@@ -145,12 +145,12 @@ window.Quarto = {
 </div>
 <p>ABSTRACT</p>
 <div style="text-align: justify;">
-<p><strong>Analysis of Covariance under Completely Randomised Design (ANCOVA CRD)</strong> is a powerful statistical technique that combines Analysis of Variance (ANOVA) with regression, adjusting treatment means for the influence of one or more continuous covariates that are related to the response variable but are not under experimental control. By removing the variation explained by the covariate from the error term, <strong>ANCOVA CRD</strong> increases the precision of treatment comparisons and produces adjusted means that represent what treatment performance would look like had all experimental units started from an identical baseline. In <strong>RAISINS</strong> you can perform <strong>ANCOVA CRD</strong> very easily without writing a single line of code. This tutorial will guide you, how to perform <strong>ANCOVA CRD</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including PCA.</p>
+<p><strong>Analysis of Covariance under Randomized Block Design (ANCOVA RBD)</strong> is a powerful statistical technique that combines the blocking principle of the Randomized Block Design with regression-based covariate adjustment, simultaneously controlling for both known environmental heterogeneity through blocks and unmeasured or uncontrollable continuous variation through a covariate. By removing the variation explained by the covariate from the already-reduced error term of the RBD, <strong>ANCOVA RBD</strong> achieves greater precision than either technique alone and produces adjusted treatment means that represent what performance would look like had all experimental units shared an identical covariate baseline. In <strong>RAISINS</strong> you can perform <strong>ANCOVA RBD</strong> very easily without writing a single line of code. This tutorial will guide you, how to perform <strong>ANCOVA RBD</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including PCA.</p>
 </div>
 <details>
 <p><em>Hover or click each point to see more information.</em></p>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
-  Introduction ANCOVA — Completely Randomised Design
+  Introduction ANCOVA-Randomised Block Design
 </summary>
 <style>
 .hover-img {
@@ -185,19 +185,19 @@ window.Quarto = {
 }
 </style>
 <ul>
-<small> The foundations of Analysis of Covariance were laid by statistician <strong>Ronald A. Fisher</strong> in his landmark 1932 publication, where he demonstrated that incorporating a continuous concomitant variable one measured alongside the response but not controlled by the experimenter into the linear model could substantially reduce the residual error and improve the sensitivity of treatment F-tests. Fisher recognised that in many biological and agricultural experiments, experimental units such as animals or plants inevitably differ in some pre-existing characteristic initial body weight, seedling height, or soil organic matter that influences the final response regardless of the treatment applied. Rather than discarding such information or using restrictive blocking, ANCOVA uses the covariate’s linear relationship with the response to statistically adjust all observations to a common covariate value (the grand mean), effectively equating the experimental units before comparing treatments. This approach was rapidly adopted in animal nutrition, agronomy, psychology, and medical research throughout the mid-twentieth century as a standard method for increasing precision in randomised experiments. In the context of a <strong>Completely Randomised Design</strong>, where no physical blocking is used, ANCOVA is especially valuable because it recovers precision that would otherwise require blocking, making it an indispensable tool wherever pre-existing differences among experimental units cannot be eliminated by design alone. </small>
+<small> The foundations of Analysis of Covariance were laid by statistician <span class="hover-img"><strong>Ronald A. Fisher</strong> <img src="www/fisher.webp" alt="Preview"></span> in his landmark 1932 publication, where he demonstrated that incorporating a continuous concomitant variable one measured alongside the response but not controlled by the experimenter into the linear model could substantially reduce the residual error and improve the sensitivity of treatment F-tests. Fisher recognized that even in a well-blocked experiment, additional uncontrolled variation arising from differences among experimental units within blocks such as variation in initial plant vigour, animal body condition, or soil micronutrient status could obscure genuine treatment differences. By combining the Randomized Block Design with covariance adjustment, researchers gained access to two complementary sources of error reduction: the RBD’s blocks absorb inter-block variation arising from systematic environmental gradients such as soil fertility, light intensity, or bench position in a greenhouse, while the covariate adjustment accounts for within-block unit-to-unit differences that blocking cannot remove. This dual error-control strategy makes <strong>ANCOVA RBD</strong> one of the most precise experimental analysis frameworks available in the biological and agricultural sciences, and it became a standard reference in experimental design textbooks through the mid-twentieth century contributions of Fisher’s colleagues and successors at Rothamsted and elsewhere. Today, <strong>ANCOVA RBD</strong> remains the preferred analysis when both a blocking factor and a measurable continuous covariate are available to improve experimental precision. </small>
 </ul>
 </details>
 <section id="AE" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
 <div style="text-align: justify;">
-<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different experimental designs and their associated analysis options. In this tutorial, we focus on <strong>ANCOVA - Completely Randomised Design</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different experimental designs and their associated analysis options. In this tutorial, we focus on <strong>ANCOVA Randomized Block Design</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20analy.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/ac%20analy.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/ANC%20RBD%20AN%20EXP%20..png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/ANC%20RBD%20AN%20EXP%20..png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Analysis of experiment tab
@@ -206,25 +206,25 @@ Figure&nbsp;1: Analysis of experiment tab
 </div>
 </section>
 <section id="C" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> ANCOVA — Completely Randomised Design</h2>
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> ANCOVA-Randomized Block Design</h2>
 <div style="text-align: justify;">
-<p><strong>Analysis of Covariance under a Completely Randomised Design (ANCOVA CRD)</strong> is a statistical method that extends the standard one-way ANOVA by incorporating one or more continuous covariates into the model. A covariate is a variable that is measurable and correlated with the response variable, but is not itself affected by the treatments common examples include initial plant height, pre-treatment body weight, baseline soil nutrient content, or age of an animal at the start of a study. By regressing the response on the covariate and then testing treatment effects on the residuals of that regression, ANCOVA removes the covariate’s contribution from the error sum of squares, resulting in a smaller error mean square and a more powerful F-test for treatments. The analysis produces <strong>adjusted treatment means</strong> estimates of what each treatment group’s average response would have been had all units possessed the same covariate value which are more equitable and interpretable than unadjusted means when initial conditions differ across experimental units. ANCOVA CRD is most appropriate when experimental units are not homogeneous, when physical blocking is not feasible or has already been applied, and when a measurable continuous variable exists that explains a meaningful portion of the response variability. Its main assumptions are that the covariate is measured without error, that the covariate is not influenced by the treatments, and crucially, that the regression of the response on the covariate is linear and has the <strong>same slope in every treatment group</strong> a condition known as homogeneity of regression slopes, which RAISINS automatically tests.</p>
+<p><strong>Analysis of Covariance under a Randomized Block Design (ANCOVA RBD)</strong> is a statistical method that extends the standard RBD ANOVA by incorporating one or more continuous covariates into the model, achieving two simultaneous sources of error reduction. In a standard RBD, experimental units are grouped into homogeneous blocks before treatments are randomly assigned within each block, so that block-to-block variation is separated from the error term. ANCOVA RBD further reduces the residual error by regressing the response on a covariate -a continuous variable that is correlated with the response but is not affected by the treatments and removing its linear contribution from the error sum of squares. The combined model thus partitions total variation into four components: <strong>Blocks</strong> (removing inter-block environmental heterogeneity), <strong>Covariate</strong> (removing the linear covariate effect from the residual), <strong>Treatments (adjusted)</strong> (the treatment effect after accounting for both blocks and the covariate), and <strong>Error (adjusted)</strong> (the residual variation remaining after all three sources have been modelled). The analysis produces <strong>adjusted treatment means</strong> estimates of what each treatment’s average response would have been had all experimental units possessed the same covariate value at the grand mean which are both block-corrected and covariate-corrected, providing the fairest possible treatment comparison. ANCOVA RBD is most appropriate when experimental units within blocks are not fully homogeneous, when a measurable continuous variable exists that explains within-block variability, and when the blocking structure is already in place as part of the experimental design. Its key assumptions are that the covariate is not influenced by the treatments, that the within-block regression of the response on the covariate is linear, and that the regression slope is the <strong>same in every treatment group</strong> the homogeneity of regression slopes assumption which <strong>RAISINS</strong> automatically tests before reporting adjusted results.</p>
 </div>
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
-  ANCOVA CRD Layout
+  ANCOVA RBD Layout
 </summary>
 <ul>
 <p><small></small></p><small>
-<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents the structure of an <strong>ANCOVA CRD</strong> experiment. Treatments (T<sub>1</sub>, T<sub>2</sub>, …, T<sub>t</sub>) are randomly assigned to experimental units with r replications per treatment, exactly as in a standard CRD. For each experimental unit, two measurements are recorded: the <strong>covariate (X)</strong> measured before or independently of the treatment and the <strong>response variable (Y)</strong> measured after the treatment has been applied. The covariate values are used to fit a common within-treatment regression slope (b), and all Y observations are adjusted to what they would have been had X been equal to the grand mean of the covariate. The adjusted observations are then subjected to the standard ANOVA F-test. The layout makes clear that ANCOVA does not change the randomisation or replication structure of the CRD; it simply adds a regression adjustment step to improve precision.</p>
+<p><a href="#fig-lay" class="quarto-xref">Figure&nbsp;2</a> visually represents the structure of an <strong>ANCOVA RBD</strong> experiment. Experimental units are arranged in blocks (B<sub>1</sub>, B<sub>2</sub>, …, B<sub>r</sub>), each containing one plot per treatment (T<sub>1</sub>, T<sub>2</sub>, …, T<sub>t</sub>), with treatments randomly assigned within each block. For each experimental unit, two measurements are recorded: the <strong>covariate (X)</strong> a continuous variable measured before or independently of the treatment and the <strong>response variable (Y)</strong> measured after the treatment has been applied. The ANCOVA model first removes block effects and then removes the covariate’s linear contribution from the residual, before testing the significance of treatment differences on the doubly adjusted observations. The layout makes clear that ANCOVA RBD preserves the full randomized block structure and simply adds a regression adjustment step to further improve precision beyond what blocking alone achieves.</p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-lay" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/layweb%20(1).webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: ANCOVA CRD Layout"><img src="www/layweb%20(1).webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20layout.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: ANCOVA RBD Layout"><img src="www/anr%20layout.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: ANCOVA CRD Layout
+Figure&nbsp;2: ANCOVA RBD Layout
 </figcaption>
 </figure>
 </div>
@@ -237,7 +237,7 @@ Figure&nbsp;2: ANCOVA CRD Layout
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>ANCOVA CRD is a statistical method that combines ANOVA with regression to adjust treatment means for a continuous covariate, increasing the precision of treatment comparisons under a Completely Randomised Design.
+<span class="screen-reader-only">Tip</span>ANCOVA RBD is a statistical method that combines the error-reduction benefits of blocking in a Randomized Block Design with regression-based covariate adjustment, producing adjusted treatment means that are simultaneously corrected for inter-block heterogeneity and within-block covariate variation.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -248,13 +248,13 @@ Figure&nbsp;2: ANCOVA CRD Layout
 <section id="W" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
 <div style="text-align: justify;">
-<p>To make things simple and interesting, we’ll explain <strong>ANCOVA CRD</strong> step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a greenhouse experiment conducted to evaluate the effect of <strong>10 treatments</strong>, each representing a distinct mango variety, with three replicates per variety. The varieties included are Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay, Langra, and Totapuri and they are arranged as a CRD with <strong>3 replications</strong> per treatment, giving a total of 10 × 3 = <strong>30 experimental pots</strong>. Because seedlings of different sizes were used, <strong>initial plant height (cm)</strong> at the time of transplanting was recorded as the <strong>covariate (X)</strong> to account for pre-existing variability among plants. The response variables measured at harvest were: <strong>Yield</strong> (fruit yield per plant in kg), <strong>Obs1</strong> (plant height in cm), <strong>Obs2</strong> (number of fruits per plant), and <strong>FW</strong> (fresh fruit weight in g). Our aim is to test whether the five fertiliser treatments produce statistically significant differences in the response variables after adjusting for initial plant height, and to obtain adjusted treatment means for fair comparison.The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To make things simple and interesting, we’ll explain <strong>ANCOVA RBD</strong> step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a field experiment conducted to evaluate the performance of <strong>10 mango varieties</strong> - Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay, Langra, and Totapuri arranged as an <strong>RBD</strong> with <strong>3 blocks (replications)</strong>, giving a total of 10 × 3 = <strong>30 experimental plots</strong>. Since trees had slightly different canopy sizes at the start of the season, <strong>Obs1 (canopy spread in m²)</strong> was recorded as the <strong>covariate (X)</strong> to account for this within-block variability among trees. The response variables measured at harvest were: <strong>yield</strong> (fruit yield in kg/plant), <strong>Obs2</strong> (number of fruits per plant), and <strong>FW</strong> (average fruit weight in g). Our aim is to test whether the ten mango varieties produce statistically significant differences in the response variables after adjusting for canopy spread, and to obtain adjusted treatment means that are corrected for both block effects and the covariate. The arrangement of the data is shown in,@fig-data.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20working.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/ac%20working.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20work%20x.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example dataset"><img src="www/anr%20work%20x.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Example dataset
@@ -262,13 +262,13 @@ Figure&nbsp;3: Example dataset
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the mango varieties, the covariate is the initial plant height recorded before treatment application, and the Variables are the four response traits measured at harvest - <strong>Yield, Obs1, Obs2, and FW</strong>.</p>
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the 10 mango varieties, the covariate is <strong>Obs1</strong> (canopy spread in m²) measured before harvest, and the Variables are the three response traits measured at harvest <strong>Obs2</strong>, <strong>FW</strong>, and <strong>yield</strong>..</p>
 </div>
 </section>
 <section id="sec-4" class="level2 H" data-number="4">
 <h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
 <div style="text-align: justify;">
-<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. The file must contain a column for <strong>Treatment</strong> (the mango varieties), a column for the <strong>Covariate (X)</strong> (e.g., initial plant height), and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;3</a>, using a single-sheet Excel file. The file must contain a column for <strong>Block</strong> (the block or replicate number for each observation), a column for <strong>Treatment</strong> (the mango varieties), a column for the <strong>Covariate (X)</strong>, and separate columns for each response variable. Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
 <p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
 <p>Creating dataset in MS Excel</p>
@@ -277,7 +277,7 @@ Figure&nbsp;3: Example dataset
 <div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/csv%20ac.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/csv%20ac.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Illustrating how to create a dataset"><img src="www/anr%20csv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Illustrating how to create a dataset
@@ -286,15 +286,15 @@ Figure&nbsp;4: Illustrating how to create a dataset
 </div>
 </section>
 <section id="AO" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> ANCOVA CRD analysis tab explained</h2>
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> ANCOVA RBD analysis tab explained</h2>
 <div style="text-align: justify;">
-<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the <strong>Treatment</strong> column, the <strong>Covariate</strong> column, and the <strong>response variables</strong> will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, the ANCOVA is performed and all relevant results and outputs appear instantly, including the test for homogeneity of regression slopes, the adjusted ANOVA table, and the adjusted treatment means with post-hoc groupings.</p>
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the <strong>Block</strong> column, the <strong>Treatment</strong> column, the <strong>Covariate</strong> column, and the <strong>response variables</strong> will appear. Select the appropriate columns under each field. Once you click the Run Analysis button, the ANCOVA RBD is performed and all relevant results and outputs appear instantly, including the test for homogeneity of regression slopes, the adjusted ANOVA table with the block source separated out, and the adjusted treatment means with post hoc groupings.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20analy%20tab%20exp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="www/ac%20analy%20tab%20exp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anc%20rbd%20tab%20exp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Analysis window explained"><img src="www/anc%20rbd%20tab%20exp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Analysis window explained
@@ -302,18 +302,18 @@ Figure&nbsp;5: Analysis window explained
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset (<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>). Here, <strong>RAISINS</strong> provides an inbuilt transformation option.</p>
+<p>For some data, when there are a large number of zeros, discrete values, or when the observed variables are not normally distributed, we need to apply a transformation on the dataset ,<a href="#sec-6" class="quarto-xref">Section&nbsp;6</a>. Here, <strong>RAISINS</strong> provides an inbuilt transformation option.</p>
 </div>
 </section>
 <section id="sec-6" class="level2 T" data-number="6">
 <h2 class="T anchored" data-number="6" data-anchor-id="sec-6"><span class="header-section-number">6</span> Transformation</h2>
 <div style="text-align: justify;">
-<p>Log, square root, and arcsine transformations are often used in <strong>ANCOVA CRD</strong> to make data more normal and to stabilize variance before covariance adjustment. Researchers can use these transformations when analyzing experimental data in <strong>RAISINS</strong> as shown in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>.</p>
+<p>Log, square root, and arcsine transformations are often used in <strong>ANCOVA RBD</strong> to make data more normal and to stabilize variance before covariance and block adjustment. Researchers can use these transformations when analyzing experimental data in <strong>RAISINS</strong> as shown in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>.</p>
 </div>
 <div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/TRANS%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/TRANS%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20tran.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Transformation options"><img src="www/anr%20tran.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Transformation options
@@ -332,35 +332,35 @@ Figure&nbsp;6: Transformation options
 <section id="sec-7" class="level2 AR" data-number="7">
 <h2 class="AR anchored" data-number="7" data-anchor-id="sec-7"><span class="header-section-number">7</span> Analysis results</h2>
 <div style="text-align: justify;">
-<p>Once your dataset is uploaded, click on Run Analysis, and the <strong>ANCOVA</strong> will be performed. <strong>ANCOVA</strong> first tests the assumption of homogeneity of regression slopes verifying that the relationship between the covariate and the response is consistent across all treatment groups and then partitions the covariate-adjusted total variation into components attributable to <strong>Treatments (adjusted)</strong>, the <strong>Covariate</strong>, and <strong>Error (adjusted)</strong>, and compares them using the F-test, see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>. If the homogeneity of slopes assumption is met, the adjusted treatment means and post-hoc comparisons are valid and can be interpreted directly.</p>
+<p>Once your dataset is uploaded, click on Run Analysis, and the <strong>ANCOVA RBD</strong> will be performed. <strong>ANCOVA RBD</strong> first tests the assumption of homogeneity of regression slopes verifying that the relationship between the covariate and the response is consistent across all treatment groups and then partitions the block-and-covariate-adjusted total variation into components attributable to <strong>Blocks</strong>, the <strong>Covariate</strong>, <strong>Treatments (adjusted)</strong>, and <strong>Error (adjusted)</strong>, and compares them using the F-test ,see <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a>. If the homogeneity of slopes assumption is met, the adjusted treatment means and post-hoc comparisons are valid and can be interpreted directly.</p>
 </div>
-<p><strong>Table 1 ANCOVA summary</strong></p>
+<p><strong>Table 1 ANCOVA RBD summary</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20ancova%20sum.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Adjusted ANOVA table — Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares"><img src="www/ac%20ancova%20sum.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20ancova%20summary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Adjusted ANOVA table - Blocks, Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares"><img src="www/anr%20ancova%20summary.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Adjusted ANOVA table — Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares
+Figure&nbsp;7: Adjusted ANOVA table - Blocks, Covariate, Treatment (adjusted), and Error (adjusted) Mean Squares
 </figcaption>
 </figure>
 </div>
 <details>
-<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> ANCOVA table </summary>
-<p><small> In an <strong>ANCOVA CRD</strong>, the analysis partitions the adjusted total sum of squares into three main sources: <strong>Covariate (X)</strong> (variation in the response that is linearly explained by the covariate, removed from the error), <strong>Treatments (adjusted)</strong> (variation among treatment means after removing the covariate’s effect), and <strong>Error (adjusted)</strong> (residual variation remaining after accounting for both treatments and the covariate). The degrees of freedom are: Covariate = 1, Treatments = t−1 (where t = number of treatments), and Error = N−t−1 (where N = total number of observations). The adjusted error degrees of freedom are one fewer than in a standard CRD ANOVA because one df is used to estimate the common regression slope (b). Each mean square is obtained by dividing the adjusted sum of squares by its degrees of freedom. The F-statistic for Treatments is the ratio of the adjusted Treatment mean square to the adjusted Error mean square. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance. A significant covariate F-test confirms that the adjustment was necessary and meaningful; a significant Treatment F-test confirms that the adjusted treatment means differ significantly. A preliminary test for <strong>homogeneity of regression slopes</strong> (Treatment × Covariate interaction) is also reported a non-significant result validates the core ANCOVA assumption. </small></p>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> ANCOVA RBD table </summary>
+<p><small> In an <strong>ANCOVA RBD</strong>, the analysis partitions the adjusted total sum of squares into four main sources: <strong>Blocks</strong> (variation among blocks, which represents the systematic environmental heterogeneity controlled by the RBD structure), <strong>Covariate (X)</strong> (variation in the response that is linearly explained by the covariate, further reducing the error beyond what blocking achieves), <strong>Treatments (adjusted)</strong> (variation among treatment means after removing both block effects and the covariate’s contribution), and <strong>Error (adjusted)</strong> (residual variation remaining after accounting for blocks, covariate, and treatments). The degrees of freedom are: Blocks = r−1 (where r = number of blocks), Covariate = 1, Treatments = t−1 (where t = number of treatments), and Error = (r−1)(t−1)−1 (one degree of freedom is lost compared to a standard RBD because one df is used to estimate the common within-block regression slope). Each mean square is obtained by dividing the adjusted sum of squares by its degrees of freedom. The F-statistic for Treatments is the ratio of the adjusted Treatment mean square to the adjusted Error mean square. Significance is indicated by an asterisk (*) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance. A significant Block F-test confirms that the RBD blocking was effective; a significant covariate F-test confirms that the additional covariate adjustment was necessary and meaningful; a significant Treatment F-test confirms that the adjusted treatment means differ significantly. A preliminary test for <strong>homogeneity of regression slopes</strong> (Treatment × Covariate interaction) is also reported a non-significant result validates the core ANCOVA assumption. </small></p>
 </details>
 <section id="interpretation-from-fig-100" class="level3" data-number="7.1">
 <h3 data-number="7.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">7.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;7</a></h3>
 <div style="text-align: justify;">
-<p>The ANCOVA results reveal that the covariate (initial plant height) is highly significant, with a covariate mean square of 2,418.65 and F-ratio of approximately 18.34 (1 df), confirming that pre-transplanting height explained a meaningful portion of the variation in final biomass and that the covariance adjustment was both necessary and effective. The homogeneity of regression slopes test (Treatment × Covariate interaction) is non-significant (F ≈ 0.72, p &gt; 0.05), confirming that a single common slope adequately describes the covariate-response relationship in all five treatment groups and that the ANCOVA assumptions are satisfied. The adjusted Treatment mean square is 1,842.30 with an adjusted error mean square of 131.92, yielding an F-ratio of approximately 13.97 with 4 degrees of freedom for treatment and 14 for adjusted error, significant at the 1% level. This confirms that the five fertiliser treatments produce significantly different biomass after accounting for initial plant height differences. <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provides detailed information on the multiple comparison tests (Post-hoc tests) for adjusted means.</p>
+<p>The ANCOVA results reveal that the covariate mean square is non-significant for all three characters (Obs1, Obs2, and FW), indicating that the covariate did not explain a meaningful portion of variation in any of the recorded traits and that the covariate adjustment provided limited additional precision in the pooled two-factor CRD framework. The Treatment mean square is significant at the 5% level for Obs1 (80.82*), while it remains non-significant for both Obs2 (293.9NS) and FW (2088.9NS), suggesting that the treatment combinations of Factor A and Factor B produced significantly different responses only for Obs1 after accounting for the covariate effect. The Intercept is significant for Obs2 (918.62*) but non-significant for Obs1 and FW, reflecting differences in baseline levels across the pooled locations. The adjusted error mean squares are 27.62, 160.43, and 1840.11 for Obs1, Obs2, and FW respectively, serving as the basis for further mean comparison. Since treatment differences were statistically significant for Obs1, <a href="#sec-8" class="quarto-xref">Section&nbsp;8</a> provides detailed information on the multiple comparison tests (post-hoc tests) for adjusted treatment means to identify superior factor-level combinations across locations A and B.</p>
 </div>
-<p><strong>Table 2: Detailed tabular representation adjusted means with multiple comparisons</strong></p>
+<p><strong>Table 2: Detailed tabular representation with letter grouping and other important statistics</strong></p>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20tabular.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Adjusted treatment means with multiple comparisons"><img src="www/ac%20tabular.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20tab%20comp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Adjusted treatment means with multiple comparisons"><img src="www/anr%20tab%20comp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Adjusted treatment means with multiple comparisons
@@ -368,38 +368,38 @@ Figure&nbsp;8: Adjusted treatment means with multiple comparisons
 </figure>
 </div>
 <details>
-<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">Overview of ANCOVA Results and Interpretation
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">Overview of ANCOVA RBD Results and Interpretation
 </summary>
 <p><small></small></p><small>
 <ol type="1">
 <li><em>Treatments and Response Variables</em></li>
 </ol>
-<p><strong>Treatments</strong>: The independent variable or specific category (e.g., fertiliser level) being tested to determine its adjusted influence on the response variable after the covariate has been accounted for.</p>
-<p><strong>Response Variable</strong>: The dependent variable or specific measurement (e.g., total fresh biomass in g) recorded to evaluate the adjusted performance of the treatments.</p>
+<p><strong>Treatments</strong>: <strong>Treatments</strong>: The independent variable or specific category (e.g., mango variety) being tested to determine its adjusted influence on the response variable after both block effects and the covariate have been accounted for.</p>
+<p><strong>Response Variable</strong>: The dependent variable or specific measurement(eg: fruit yield in kg/plant) recorded to evaluate the adjusted performance of the treatments.</p>
 <ol start="2" type="1">
 <li><em>Multiple Comparisons</em></li>
 </ol>
 <p><strong>Post-hoc Grouping</strong>: A method of using letters (a, b, c) to categorize adjusted treatment means. Items sharing the same letter are statistically similar, while those with different letters are significantly different.</p>
 <ol start="3" type="1">
-<li><em>ANCOVA Summary</em></li>
+<li><em>ANCOVA RBD Summary</em></li>
 </ol>
-<p><strong>Adjusted Mean</strong>: The estimated treatment group mean after statistically removing the linear effect of the covariate. It represents what the mean would have been had all experimental units had the same covariate value (grand mean of X).</p>
-<p><strong>F stat</strong>: A numerical value that compares the adjusted variance between treatment groups to the adjusted residual variance; it determines if the treatment differences remain statistically significant after covariate adjustment.</p>
+<p><strong>Adjusted Mean</strong>: The estimated treatment group mean after statistically removing both the block effects and the linear effect of the covariate. It represents what the mean would have been had all experimental units been in the same block and had the same covariate value (grand mean of X).</p>
+<p><strong>F stat</strong>: A numerical value that compares the adjusted variance between treatment groups to the doubly adjusted residual variance; it determines if the treatment differences remain statistically significant after both block and covariate adjustment.</p>
 <p><strong>p value</strong>: The probability that the observed adjusted differences occurred by random chance. A value below the chosen significance threshold indicates statistically significant adjusted treatment differences.</p>
 <ol start="4" type="1">
 <li><em>Critical Difference (CD) and Error Estimates</em></li>
 </ol>
-<p><strong>Critical Difference (CD)</strong>: The minimum mathematical gap required between two adjusted means to declare them “significantly different” at a specific confidence level, computed using the adjusted error mean square.</p>
-<p><strong>Standard Error (SE)</strong>: A measure of the precision of an adjusted treatment mean; it reflects residual variability after the covariate has been partialled out.</p>
-<p><strong>Mean Square Error (MSE)</strong>: The Adjusted Error Mean Square from the ANCOVA table. It is smaller than the unadjusted ANOVA error when the covariate is effective, confirming the gain in precision.</p>
-<p><strong>Coefficient of Variation (CV%)</strong>: A percentage that shows the level of dispersion in the adjusted data relative to the grand mean. A lower CV after adjustment compared to the unadjusted analysis confirms the benefit of including the covariate.</p>
+<p><strong>Critical Difference (CD)</strong>: The minimum mathematical gap required between two adjusted means to declare them “significantly different” at a specific confidence level, computed using the adjusted error mean square from the ANCOVA RBD table.</p>
+<p><strong>Standard Error (SE)</strong>: A measure of the precision of an adjusted treatment mean; it reflects residual variability after both block effects and the covariate have been partialled out.</p>
+<p><strong>Mean Square Error (MSE)</strong>: The Adjusted Error Mean Square from the ANCOVA RBD table. It is smaller than both the unadjusted ANOVA error and the ANCOVA CRD error when the blocking and covariate together effectively explain within-experiment variation.</p>
+<p><strong>Coefficient of Variation (CV%)</strong>: A percentage that shows the level of dispersion in the adjusted data relative to the grand mean. A lower CV after ANCOVA RBD adjustment compared to either unadjusted ANOVA or ANCOVA CRD alone confirms the combined benefit of blocking and covariate adjustment.</p>
 </small><p><small><strong>Cohen’s F</strong>: A standardized measure of effect size that describes the magnitude of the adjusted treatment effect, independent of sample size. </small></p>
 </details>
 </section>
 <section id="interpretation-from-fig-101" class="level3" data-number="7.2">
 <h3 data-number="7.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">7.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;8</a></h3>
 <div style="text-align: justify;">
-<p>Adjusted treatment means are grouped using letters such as <strong>“a”, “b”, “c”</strong> to indicate statistical similarity based on pairwise comparisons after covariate correction. Overlapping grouping letters (e.g., <strong>ab</strong> or <strong>bc</strong>) indicate that the absolute difference between adjusted means is less than the critical difference at the chosen level of significance, implying statistical similarity <strong>(on par)</strong>. For example, if both T4 (N+P combined) and T5 (N+P+K combined) are labelled <strong>“a”</strong>, their adjusted biomass values are statistically similar at the <strong>5%</strong> significance level even after correcting for initial plant height. Treatments with no common letters (e.g., <strong>a</strong> and <strong>c</strong>) differ significantly in their adjusted means, providing a fair comparison that accounts for the starting size of the plants. The adjusted means should always be used for interpretation and recommendations in ANCOVA rather than the raw (unadjusted) treatment means, since the latter confound treatment effects with covariate differences among groups. The Cohen’s f values quantify the magnitude of the adjusted treatment effects: values below 0.10 indicate a very small effect, below 0.25 a small effect, below 0.40 a medium effect, and values of 0.40 or higher a large effect.</p>
+<p>Adjusted treatment means are grouped using letters such as <strong>“a”, “b”, “c”</strong> to indicate statistical similarity based on pairwise comparisons after both block and covariate correction. Overlapping grouping letters (e.g., <strong>ab</strong> or <strong>bc</strong>) indicate that the absolute difference between adjusted means is less than the critical difference at the chosen level of significance, implying statistical similarity <strong>(on par)</strong>. For example, if both Alphonso and Bombay are labelled <strong>“a”</strong>, their adjusted yields are statistically similar at the <strong>5%</strong> significance level even after correcting for canopy spread and block effects. Treatments with no common letters (e.g., <strong>a</strong> and <strong>cde</strong>) differ significantly in their adjusted means for instance, Alphonso (1440.89 kg/plant) carrying the grouping <strong>“a”</strong> is significantly superior to Safeda (1052.96 kg/plant) carrying the grouping <strong>“a”</strong> providing a fair comparison free from both environmental gradient effects and pre-existing canopy size differences. The adjusted means should always be used for interpretation and recommendations in <strong>ANCOVA RBD</strong> rather than the raw treatment means, since the latter confound treatment effects with block variation and covariate differences. The Cohen’s f values quantify the magnitude of the adjusted treatment effects: values below 0.10 indicate a very small effect, below 0.25 a small effect, below 0.40 a medium effect, and values of 0.40 or higher a large effect</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -436,17 +436,17 @@ Figure&nbsp;8: Adjusted treatment means with multiple comparisons
   What is Post-hoc test?
 </summary>
 <ul>
-<small> Post-hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA or ANCOVA). Its purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same. In ANCOVA, post-hoc tests operate on the <strong>adjusted means</strong> rather than raw means, ensuring that comparisons are made on a level playing field after the covariate’s influence has been removed.</small>
+<small> Post-hoc test is a follow-up analysis, performed after finding a significant result in an overall statistical test (like ANOVA or ANCOVA). Its purpose is to identify exactly which groups or treatments differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same. In ANCOVA RBD, post-hoc tests operate on the <strong>adjusted means</strong> rather than raw means, ensuring that comparisons are made on a level playing field after both the block effects and the covariate’s influence have been removed.</small>
 </ul>
 </details>
 <div style="text-align: justify;">
-<p>After obtaining a significant F-value for the adjusted Treatment effect in the ANCOVA, multiple comparison tests are employed to identify which adjusted treatment means differ significantly. The same post-hoc procedures used in ANOVA — LSD, Tukey’s HSD, and DMRT — are applied, but they use the <strong>adjusted error mean square</strong> and the <strong>adjusted error degrees of freedom</strong> from the ANCOVA table, and they compare <strong>adjusted treatment means</strong> rather than raw means (see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>).</p>
+<p>After obtaining a significant F-value for the adjusted Treatment effect in the ANCOVA RBD, multiple comparison tests are employed to identify which adjusted treatment means differ significantly. The same post-hoc procedures used in ANOVA- LSD, Tukey’s HSD, and DMRT are applied, but they use the <strong>adjusted error mean square</strong> and the <strong>adjusted error degrees of freedom</strong> from the ANCOVA RBD table, and they compare <strong>adjusted treatment means</strong> that are corrected for both block effects and the covariate ,see <a href="#fig-7" class="quarto-xref">Figure&nbsp;9</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20multi%20com.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/ac%20multi%20com.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anc%20rbd%20multi%20comp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Multiple comparison test options explained"><img src="www/anc%20rbd%20multi%20comp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: Multiple comparison test options explained
@@ -456,37 +456,38 @@ Figure&nbsp;9: Multiple comparison test options explained
 <details>
 <summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Post-hoc test </summary>
 <p><small></small></p><small>
-<p>When the ANCOVA is significant for adjusted Treatment, the following post-hoc tests are commonly used for pairwise comparisons of <strong>adjusted treatment means</strong>.</p>
+<p>When the ANCOVA RBD is significant for adjusted Treatment, the following post-hoc tests are commonly used for pairwise comparisons of <strong>adjusted treatment means</strong>.</p>
 <p><strong>LSD (Least Significant Difference) Test</strong></p>
-<p>The <strong>Least Significant Difference (LSD)</strong> test identifies which specific adjusted treatment means differ significantly after the ANCOVA has confirmed an overall significant Treatment effect. The LSD in ANCOVA uses the adjusted error mean square and adjusted error degrees of freedom:</p>
-<p><span class="math display">\[\text{LSD} = t_{\alpha/2, \, df_{\text{adj. error}}} \sqrt{\text{MSE}_{\text{adj.}} \left(\frac{1}{r_i} + \frac{1}{r_j} + \frac{(\bar{X}_i - \bar{X}_j)^2}{S_{xx}}\right)}\]</span></p>
-<p>where <strong>t₍α/2, df_adj.error₎</strong> is the critical t-value at the chosen significance level, MSE<sub>adj.</sub> is the adjusted error mean square, r<sub>i</sub> and r<sub>j</sub> are the number of replications in the two groups being compared, <span class="math inline">\(\bar{X}_i\)</span> and <span class="math inline">\(\bar{X}_j\)</span> are the covariate means for those groups, and S<sub>xx</sub> is the total within-group sum of squares of the covariate. In balanced designs with equal replications, this simplifies to a straightforward LSD formula based on the adjusted MSE. Any absolute difference between two adjusted treatment means exceeding this LSD value is declared statistically significant.</p>
+<p>The <strong>Least Significant Difference (LSD)</strong> test identifies which specific adjusted treatment means differ significantly after the ANCOVA RBD has confirmed an overall significant Treatment effect. The LSD uses the adjusted error mean square and adjusted error degrees of freedom from the ANCOVA RBD table:</p>
+<p><span class="math display">\[\text{LSD} = t_{\alpha/2, \, df_{\text{adj. error}}} \sqrt{\text{MSE}_{\text{adj.}} \left(\frac{1}{r_i} + \frac{1}{r_j} + \frac{(\bar{X}_i - \bar{X}_j)^2}{S_{xx(\text{within blocks})}}\right)}\]</span></p>
+<p>where <strong>t₍α/2, df_adj.error₎</strong> is the critical t-value at the chosen significance level, MSE<sub>adj.</sub> is the adjusted error mean square from the ANCOVA RBD, r<sub>i</sub> and r<sub>j</sub> are the number of blocks in the two groups being compared, <span class="math inline">\(\bar{X}_i\)</span> and <span class="math inline">\(\bar{X}_j\)</span> are the covariate means for those treatment groups, and S~xx(within blocks)~ is the within-block sum of squares of the covariate. In balanced RBD designs with equal block sizes, this simplifies to a straightforward LSD formula based on the adjusted error MSE. Any absolute difference between two adjusted treatment means exceeding this LSD value is declared statistically significant.</p>
 <p><strong>Tukey’s Honestly Significant Difference (HSD)</strong></p>
-<p>Tukey’s test identifies which pairs of adjusted treatment means differ significantly while controlling the overall Type I error rate. It is computed using the adjusted error mean square and adjusted error degrees of freedom, and is especially appropriate in <strong>ANCOVA CRD</strong> when the number of treatments is moderate to large and all pairwise comparisons of adjusted means are of interest.</p>
+<p>Tukey’s test identifies which pairs of adjusted treatment means differ significantly while controlling the overall Type I error rate. It is computed using the adjusted error mean square and adjusted error degrees of freedom from the ANCOVA RBD, and is especially appropriate when the number of treatments is moderate to large and all pairwise comparisons of adjusted means are of interest.</p>
 <p><strong>Duncan’s Multiple Range Test (DMRT)</strong></p>
-</small><p><small>After confirming a significant adjusted Treatment effect via ANCOVA, DMRT ranks the adjusted treatment means and calculates sequential critical differences based on the adjusted error mean square. It provides clear grouping letters for adjusted means and is widely used in biological and agricultural ANCOVA reporting. </small></p>
+</small><p><small>After confirming a significant adjusted Treatment effect via ANCOVA RBD, DMRT ranks the adjusted treatment means and calculates sequential critical differences based on the adjusted error mean square. It provides clear grouping letters for adjusted means and is widely used in field crop ANCOVA RBD reporting where a concise summary of treatment rankings is required. </small></p>
 </details>
 <p><strong>Which Post-hoc test to use?</strong></p>
 <div style="text-align: justify;">
 <p>The choice of the post-hoc test completely relies on the researcher.</p>
-<p><strong>LSD</strong> is used for pairwise comparison of adjusted treatment means after a significant adjusted Treatment effect in <strong>ANCOVA CRD</strong>. It is most suitable when the number of treatments is small and comparisons are pre-planned, offering high sensitivity to detect differences, but it may increase Type I error when many adjusted means are compared simultaneously. In agricultural and biological ANCOVA, LSD is the most commonly used test.</p>
-<p><strong>Tukey’s HSD</strong> is preferred when there are four or more treatments in a balanced <strong>ANCOVA CRD</strong>. It compares all possible pairs of adjusted means while strictly controlling the family-wise error rate, making it a conservative and reliable method for multiple comparisons of covariate-adjusted results.</p>
-<p><strong>DMRT</strong> is commonly used in agricultural experiments with several treatment groups and provides step-wise critical differences for ranking adjusted treatment means. It detects more significant differences than Tukey HSD, though it is less conservative and carries a higher risk of Type I error.</p>
+<p><strong>LSD</strong> is used for pairwise comparison of adjusted treatment means after a significant adjusted Treatment effect in <strong>ANCOVA RBD</strong>. It is most suitable when the number of treatments is small and comparisons are pre-planned, offering high sensitivity to detect differences after both block and covariate correction. In agricultural and biological ANCOVA RBD, LSD is the most commonly used test.</p>
+<p><strong>Tukey’s HSD</strong> is preferred when there are four or more treatments in a balanced <strong>ANCOVA RBD</strong>. It compares all possible pairs of adjusted means while strictly controlling the family-wise error rate, making it a conservative and reliable method for multiple comparisons of block-and-covariate-adjusted results.</p>
+<p><strong>DMRT</strong> is commonly used in field crop experiments with several treatment groups and provides step-wise critical differences for ranking adjusted treatment means. It detects more significant differences than Tukey HSD, though it is less conservative and carries a higher risk of Type I error.</p>
 <p>In the example for those characters, a pairwise comparison of adjusted treatment means was performed using the Least Significant Difference (LSD) test.</p>
 </div>
 </section>
-<section id="sec-9" class="level2 C" data-number="9">
-<h2 class="C anchored" data-number="9" data-anchor-id="sec-9"><span class="header-section-number">9</span> Calculation</h2>
+<section id="sec-9" class="level2 CT" data-number="9">
+<h2 class="CT anchored" data-number="9" data-anchor-id="sec-9"><span class="header-section-number">9</span> Calculation</h2>
 <div style="text-align: justify;">
-<p>The Calculation tab displays the detailed statistical computations generated during the ANCOVA analysis. It presents the pairwise comparison tables for all treatment combinations across different characters, including estimates, standard errors [SE(d)], degrees of freedom (DF), t-ratios, p-values, and critical difference (CD) values. These calculations help users identify statistically significant differences between treatment means based on the selected multiple comparison test. The tab provides a transparent view of the analytical process and enables users to verify the statistical outputs used for interpretation and decision-making.The pairwise comparison table is shown in <a href="#fig-cal" class="quarto-xref">Figure&nbsp;10</a>.</p>
+<p>The Calculation tab displays the detailed statistical computations generated during the ANCOVA analysis. It presents the pairwise comparison tables for all treatment combinations across different characters, including estimates, standard errors [SE(d)], degrees of freedom (DF), t-ratios, p-values, and critical difference (CD) values. These calculations help users identify statistically significant differences between treatment means based on the selected multiple comparison test. The tab provides a transparent view of the analytical process and enables users to verify the statistical outputs used for interpretation and decision-making.</p>
 </div>
-<div id="fig-cal" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-104" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/cal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Pairwise Comparison Table"><img src="www/cal.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<div aria-describedby="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/anr%20calculations.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: pairwise comparison table"><img src="www/anr%20calculations.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: Pairwise Comparison Table
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-104-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: pairwise comparison table
 </figcaption>
 </figure>
 </div>
@@ -494,7 +495,7 @@ Figure&nbsp;10: Pairwise Comparison Table
 <section id="BP" class="level2" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="BP"><span class="header-section-number">10</span> Basic plots</h2>
 <div style="text-align: justify;">
-<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to <strong>ANCOVA CRD</strong> is readily available. Simply click on the Basic Plots tab to view them, see <a href="#fig-8" class="quarto-xref">Figure&nbsp;11</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to <strong>ANCOVA RBD</strong> is readily available. Simply click on the Basic Plots tab to view them ,See <a href="#fig-8" class="quarto-xref">Figure&nbsp;11</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF and SVG for use in reports or presentations.</p>
 </div>
 <section id="customizing-plots" class="level3" data-number="10.1">
 <h3 data-number="10.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">10.1</span> Customizing plots</h3>
@@ -504,7 +505,7 @@ Figure&nbsp;10: Pairwise Comparison Table
 <div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20custo%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Plot settings for customizing"><img src="www/ac%20custo%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20cust%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Plot settings for customizing"><img src="www/anr%20cust%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: Plot settings for customizing
@@ -593,7 +594,7 @@ function hideDescription(id) {
 <div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20box%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Box plot"><img src="www/ac%20box%20plot.png" class="img-fluid figure-img"></a>
+<a href="www/anr%20box%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Box plot"><img src="www/anr%20box%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Box plot
@@ -602,7 +603,7 @@ Figure&nbsp;12: Box plot
 </div>
 <div id="boxplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>box plot</strong> compares the distribution of adjusted values across different treatment groups. Each colored box represents a treatment and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical groupings based on adjusted means — treatments sharing letters are statistically similar, while those with different letters are significantly different after covariate correction.</p>
+<p>A <strong>box plot</strong> compares the distribution of adjusted values across different treatment groups. Each coloured box represents an irrigation schedule and shows key statistics based on the block-and covariate-adjusted observations: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). Letters above each box indicate statistical grouping treatments sharing letters are statistically similar in adjusted means, while those with different letters are significantly different after block and covariate correction.</p>
 </div>
 </div>
 </div>
@@ -613,7 +614,7 @@ Figure&nbsp;12: Box plot
 <div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Violin plot"><img src="www/ac%20violin.png" class="img-fluid figure-img"></a>
+<a href="www/anr%20violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Violin plot"><img src="www/anr%20violin.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: Violin plot
@@ -622,7 +623,7 @@ Figure&nbsp;13: Violin plot
 </div>
 <div id="violinplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>violin plot</strong> compares the distribution of adjusted values across different treatment groups. Each treatment is shown as a violin shape that reflects how the covariate-adjusted data is spread — wider sections mean more data points at that value. Inside each violin is a box plot showing the adjusted median and interquartile range. Letters above each plot indicate statistical groupings based on adjusted means.</p>
+<p>A <strong>violin plot</strong> compares the distribution of adjusted values across different treatment groups. Each treatment is shown as a violin shape that reflects how the block-and-covariate-adjusted data is spread wider sections mean more data points at that value. Inside each violin is a box plot showing the adjusted median and interquartile range. Letters above each plot indicate statistical groupings based on adjusted means.</p>
 </div>
 </div>
 </div>
@@ -633,7 +634,7 @@ Figure&nbsp;13: Violin plot
 <div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20bar.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: Bar plot"><img src="www/ac%20bar.png" class="img-fluid figure-img"></a>
+<a href="www/anr%20bar%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: Bar plot"><img src="www/anr%20bar%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14: Bar plot
@@ -642,7 +643,7 @@ Figure&nbsp;14: Bar plot
 </div>
 <div id="barplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>bar plot</strong> compares the adjusted mean values of different treatments, with error bars showing variability based on the adjusted error. The letters above each bar indicate statistical groupings based on adjusted means: treatments sharing letters are similar after covariate correction, while those with different letters are significantly different.</p>
+<p>A <strong>bar plot</strong> compares the adjusted mean values of different treatments, with error bars showing variability based on the adjusted error from the ANCOVA RBD. The letters above each bar indicate statistical groupings based on adjusted means: treatments sharing letters are similar after block and covariate correction, while those with different letters are significantly different.</p>
 </div>
 </div>
 </div>
@@ -653,7 +654,7 @@ Figure&nbsp;14: Bar plot
 <div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20mean.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Mean Value Plot"><img src="www/ac%20mean.png" class="img-fluid figure-img"></a>
+<a href="www/anr%20mean.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Mean Value Plot"><img src="www/anr%20mean.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15: Mean Value Plot
@@ -662,7 +663,7 @@ Figure&nbsp;15: Mean Value Plot
 </div>
 <div id="meanvalueplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>mean value plot</strong> compares the adjusted mean values of different treatments, each shown as a colored dot with horizontal error bars indicating precision based on the adjusted error. Letters next to each point represent statistical groupings derived from adjusted means: treatments sharing letters are statistically similar, while those with different letters differ significantly after covariate adjustment.</p>
+<p>A <strong>mean value plot</strong> compares the adjusted mean values of different treatments, each shown as a colored dot with horizontal error bars indicating precision based on the adjusted error from the ANCOVA RBD. Letters next to each point represent statistical groupings derived from adjusted means: treatments sharing letters are statistically similar, while those with different letters differ significantly after block and covariate adjustment.</p>
 </div>
 </div>
 </div>
@@ -674,7 +675,7 @@ Figure&nbsp;15: Mean Value Plot
 <div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20con%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: Connected line plot"><img src="www/ac%20con%20plot.png" class="img-fluid figure-img"></a>
+<a href="www/anr%20con%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: Connected line plot"><img src="www/anr%20con%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: Connected line plot
@@ -684,7 +685,7 @@ Figure&nbsp;16: Connected line plot
 </div>
 <div id="connectedplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>connected line plot</strong> compares the adjusted mean values of different treatments, with each point representing a treatment’s covariate-adjusted average and error bars showing precision. The points are linked by lines to highlight performance trends across treatments after adjustment. Letters above each point indicate statistical groupings based on adjusted means.</p>
+<p>A <strong>connected line plot</strong> compares the adjusted mean values of different treatments, with each point representing a treatment’s block-and-covariate-adjusted average and error bars showing precision. The points are linked by lines to highlight performance trends across irrigation schedules after adjustment. Letters above each point indicate statistical groupings based on adjusted means.</p>
 </div>
 </div>
 </div>
@@ -696,7 +697,7 @@ Figure&nbsp;16: Connected line plot
 <div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20cor%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;17: Correlation plot"><img src="www/ac%20cor%20plot.png" class="img-fluid figure-img"></a>
+<a href="www/anr%20cor%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;17: Correlation plot"><img src="www/anr%20cor%20plot.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: Correlation plot
@@ -706,7 +707,7 @@ Figure&nbsp;17: Correlation plot
 </div>
 <div id="correlationplot-desc" class="plot-description">
 <div style="text-align: justify;">
-<p>A <strong>correlation plot</strong> provides a visual summary of the pairwise relationships between all response variables. Each cell displays the correlation coefficient between two variables, with colour intensity indicating the strength of association and direction indicating whether the relationship is positive or negative. This helps researchers quickly identify which traits are closely related before proceeding to multivariate analysis..</p>
+<p>A <strong>correlation plot</strong> provides a visual summary of the pairwise relationships between all response variables. Each cell displays the correlation coefficient between two variables, with colour intensity indicating the strength of association and direction indicating whether the relationship is positive or negative. This helps researchers quickly identify which traits are closely related before proceeding to multivariate analysis.</p>
 </div>
 </div>
 </div>
@@ -717,12 +718,12 @@ Figure&nbsp;17: Correlation plot
 <section id="AI" class="level2" data-number="11">
 <h2 data-number="11" class="anchored" data-anchor-id="AI"><span class="header-section-number">11</span> AI interpretation</h2>
 <div style="text-align: justify;">
-<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of ANCOVA results, identifies whether the covariate adjustment was significant, reports the homogeneity of slopes test outcome, and identifies statistically significant adjusted treatment differences. The assistant also offers informed suggestions for potential next steps or interpretations, including guidance on whether adjusted or raw means should be reported and recommendations on treatment selection. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;18</a>.</p>
+<p>RAISINS is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of ANCOVA RBD results, identifies whether the block effect and covariate adjustment were both significant, reports the homogeneity of slopes test outcome, and identifies statistically significant adjusted treatment differences. The assistant also offers informed suggestions for potential next steps or interpretations, including guidance on whether block-and-covariate-adjusted means should be reported, whether the covariate added meaningful precision beyond blocking, and recommendations on treatment selection based on adjusted performance. The user can get detailed interpretations of the analysis by clicking on AI interpretation on the Analysis as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;18</a>.</p>
 </div>
 <div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20ai%20int.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results"><img src="www/ac%20ai%20int.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20ai%20int.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results"><img src="www/anr%20ai%20int.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results
@@ -733,13 +734,13 @@ Figure&nbsp;18: AI powered RAISINS Assistant to interpret your results
 <section id="MUL" class="level2" data-number="12">
 <h2 data-number="12" class="anchored" data-anchor-id="MUL"><span class="header-section-number">12</span> Multivariate</h2>
 <div style="text-align: justify;">
-<p>Multivariate analysis in <strong>ANCOVA CRD</strong> helps you to compare different response variables simultaneously across all treatment groups using the covariate-adjusted dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 5 fertiliser treatments — Control, N alone, P alone, N+P, and N+P+K on sunflower growth and biomass across 4 replications, navigate to Multivariate, see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;19</a>.</p>
+<p>Multivariate analysis in <strong>ANCOVA RBD</strong> helps you to compare different response variables simultaneously across all treatment groups using the block-and-covariate-adjusted dataset. Remember that the PCA used for multivariate selection is an exploratory technique, not an inferential method. Now, in our example, of evaluation of 10 mango varieties Alphonso, Kesar, Dasheri, Himsagar, Chausa, Badami, Safeda, Bombay, Langra, and Totapuri on fruit yield and quality traits across 3 blocks, navigate to Multivariate ,see <a href="#fig-mu" class="quarto-xref">Figure&nbsp;19</a>.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20multi%20tab%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;19: Multivariate tab in RAISINS"><img src="www/ac%20multi%20tab%20(1).png" class="img-fluid figure-img"></a>
+<a href="www/anr%20multi%20tab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;19: Multivariate tab in RAISINS"><img src="www/anr%20multi%20tab.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19: Multivariate tab in RAISINS
@@ -747,13 +748,13 @@ Figure&nbsp;19: Multivariate tab in RAISINS
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>PCA will be automatically carried out based on the selected response variables using the ANCOVA-adjusted dataset. PCA results and plots will appear along with automated interpretation.</p>
+<p>PCA will be automatically carried out based on the selected response variables using the ANCOVA RBD adjusted dataset.PCA results and plots will appear along with automated interpretation.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-PC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20pca%20index%20score%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;20: PCA-based Index Score"><img src="www/ac%20pca%20index%20score%20(1).png" class="img-fluid figure-img"></a>
+<a href="www/anr%20pca%20index.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;20: PCA-based Index Score"><img src="www/anr%20pca%20index.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-PC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20: PCA-based Index Score
@@ -761,13 +762,13 @@ Figure&nbsp;20: PCA-based Index Score
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;21</a> illustrates the proportion of variance explained by each principal component derived from the ANCOVA-adjusted data.</p>
+<p>The scree plot given <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;21</a> illustrates the proportion of variance explained by each principal component derived from the ANCOVA RBD adjusted data.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20scree%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;21: Scree plot"><img src="www/ac%20scree%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20scree.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;21: Scree plot"><img src="www/anr%20scree.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21: Scree plot
@@ -775,13 +776,13 @@ Figure&nbsp;21: Scree plot
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Look upon the loadings of each variable in the given <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;22</a> and decide which PC-based index needs to be selected. In PC1, Biomass and FW (root fresh weight) show high positive loadings (approximately +0.67 and +0.55 respectively), while Obs2 (stem diameter) also loads positively (+0.44), indicating that treatment groups with high scores on PC1 are superior in overall growth and biomass accumulation after covariate correction. Obs1 (leaf area index) loads more prominently on PC2 (+0.70), suggesting it captures a partially independent dimension of plant response to fertilisation. Based on this pattern, a PC1-based index score is most informative for identifying fertiliser treatments that maximise total plant growth simultaneously across multiple traits. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+<p>Examining the loadings of each variable on the principal components <strong>?@fig-loadin</strong>, Yield and Char1 exhibited high positive loadings on PC1 (approximately +0.54 and +0.64, respectively), while Char2 also loaded positively on PC1, indicating that PC1 primarily captures treatment combinations of Factor A and Factor B that excel across the major yield and quality traits after error adjustment in the pooled two-factor CRD across both locations. On PC2, certain characters loaded more prominently, suggesting that PC2 captures a relatively independent dimension of treatment response that reflects trait variation not accounted for by PC1, particularly across the interaction of Factor A and Factor B levels. Based on this loading pattern, a <strong>PC1-based index score</strong> is most informative for identifying treatment combinations (S1/S2 × C1/C2) that simultaneously maximize yield and the associated characters across locations A and B. It is recommended to select variables that are meaningfully correlated for PCA, as this ensures the construction of a reliable and agronomically interpretable composite index for ranking superior factor-level combinations in the pooled two-factor CRD framework.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20loadings%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;22: Loadings of each variable"><img src="www/ac%20loadings%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20loadings.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;22: Loadings of each variable"><img src="www/anr%20loadings.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22: Loadings of each variable
@@ -789,30 +790,26 @@ Figure&nbsp;22: Loadings of each variable
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>The biplot gives a visual representation of the relationships among response variables and treatment groups based on the ANCOVA-adjusted data. Treatment groups with high adjusted values for a specific variable are positioned in the direction of that variable’s loading vector. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while larger angles close to 90 degrees suggest weak or no correlation. In the present example, Biomass and FW vectors point in approximately the same direction, confirming their strong positive association after covariate adjustment, while Obs1 points in a moderately different direction, reflecting its more independent response to the fertiliser treatments.</p>
+<p>The PCA biplot provides a visual representation of the relationships among mango varieties and the measured response variables based on the adjusted multivariate data. Varieties positioned in the direction of a variable vector tend to exhibit higher values for that particular trait. In the present biplot, the vectors for Yield and Obs2 are oriented in nearly the same direction along the positive side of PC1, indicating a strong positive association between these variables. Varieties such as Alphonso, Totapuri, and Dasheri are located close to these vectors, suggesting comparatively higher performance for yield-related characteristics. In contrast, the FW vector is directed toward the negative side of PC1 and positive side of PC2, indicating that fruit weight shows a different pattern of variation compared with Yield and Obs2. Chausa is positioned nearest to the FW vector, implying its stronger association with fruit weight. Varieties such as Safeda and Kesar are located away from the major loading vectors, reflecting comparatively lower contribution to the principal components. The separation of varieties across the four quadrants demonstrates the diversity in their multivariate response patterns captured by PC1 and PC2, which together explain a substantial proportion of the total variability.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
-<div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20bioplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;23: PCA-Biplot"><img src="www/ac%20bioplot.png" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23: PCA-Biplot
-</figcaption>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="www/anr%20bioplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="PCA-Biplot"><img src="www/anr%20bioplot.png" class="img-fluid figure-img" alt="PCA-Biplot"></a></p>
+<figcaption>PCA-Biplot</figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment groups based on their ANCOVA-adjusted multi-trait index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;24</a>, where you can choose the cutoff percentage to select treatment groups above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment groups as per your preference. Selected treatments are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
+<p>In RAISINS, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment groups based on their ANCOVA RBD adjusted multi-trait index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature given as in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;23</a>, where you can choose the cutoff percentage to select treatment groups above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatment groups as per your preference. Selected treatments are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is also displayed to aid in your analysis.</p>
 </div>
 <!-- REPLACE THIS SCREENSHOT -->
 <div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20ind%20plot%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;24: Index score"><img src="www/ac%20ind%20plot%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20inex%20score.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;23: Index score"><img src="www/anr%20inex%20score.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;24: Index score
+Figure&nbsp;23: Index score
 </figcaption>
 </figure>
 </div>
@@ -820,15 +817,15 @@ Figure&nbsp;24: Index score
 <div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20ind%20plot%20org.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;25: Indexplot"><img src="www/ac%20ind%20plot%20org.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20index%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;24: Indexplot"><img src="www/anr%20index%20plot.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;25: Indexplot
+Figure&nbsp;24: Indexplot
 </figcaption>
 </figure>
 </div>
 <div style="text-align: justify;">
-<p>Combining all this information, the researcher can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of ANCOVA-adjusted treatment comparisons with multivariate PCA-based index scores enables agronomists and plant scientists to identify the fertilizer treatment that is not only significantly superior in individual adjusted traits but also performs best across multiple response variables simultaneously accounting for initial plant size differences that would otherwise confound the comparison.</p>
+<p>Combining all this information, the researcher can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. The integration of ANCOVA RBD adjusted treatment comparisons with multivariate PCA-based index scores enables agronomists and crop physiologists to identify the irrigation schedule that is not only significantly superior in individual adjusted traits but also performs best across multiple response variables simultaneously accounting for both field heterogeneity within blocks and pre-season soil moisture variation that would otherwise confound the comparison.</p>
 </div>
 </section>
 <section id="PRE" class="level2" data-number="13">
@@ -844,25 +841,25 @@ Figure&nbsp;25: Indexplot
 <section id="EX" class="level2" data-number="14">
 <h2 data-number="14" class="anchored" data-anchor-id="EX"><span class="header-section-number">14</span> Preparing data in MS Excel</h2>
 <div style="text-align: justify;">
-<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for <strong>ANCOVA CRD</strong> must follow a column-based format with at least three structural columns: a <strong>Treatment</strong> column (identifying the treatment group for each observation), a <strong>Covariate</strong> column (containing the continuous pre-treatment or concomitant measurement for each experimental unit, e.g., initial plant height), and one or more columns for the response variables measured after treatment application. Each experimental unit must have exactly one covariate value and one observation per response variable. The covariate column must contain only numeric values with no missing entries, as ANCOVA requires a complete covariate record for all observations. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;26</a>. The data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;27</a>.</p>
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset for <strong>ANCOVA RBD</strong> must follow a column-based format with at least four structural columns: a <strong>Replication</strong> column (identifying the block or replicate number for each observation), a <strong>Treatment</strong> column (identifying the mango variety for each observation), a <strong>Covariate</strong> column (containing the continuous measurement for each experimental unit, e.g., Obs1 canopy spread in m²), and one or more columns for the response variables measured at harvest <strong>Obs2, FW, and yield</strong>. Each experimental unit must have exactly one block assignment, one treatment label, one covariate value, and one observation per response variable. The covariate column must contain only numeric values with no missing entries, as ANCOVA RBD requires a complete covariate record for all observations. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;25</a>. The data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;26</a>.</p>
 </div>
 <div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20mod%201.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;26: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/ac%20mod%201.png" class="img-fluid figure-img"></a>
+<a href="www/anr%20home.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;25: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/anr%20home.jpeg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;26: Model-1: showing how the prepared Excel file for upload should look like
+Figure&nbsp;25: Model-1: showing how the prepared Excel file for upload should look like
 </figcaption>
 </figure>
 </div>
 <div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20mod%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;27: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/ac%20mod%202.png" class="img-fluid figure-img"></a>
+<a href="www/anr%20data.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;26: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/anr%20data.jpeg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;27: Model-2: Showing how the prepared Excel file for upload should look like
+Figure&nbsp;26: Model-2: Showing how the prepared Excel file for upload should look like
 </figcaption>
 </figure>
 </div>
@@ -920,15 +917,15 @@ How to Save as CSV in MS Excel
 <li><p>Select number of <strong>Characters</strong></p></li>
 <li><p>Click on <strong>Create</strong> button</p></li>
 </ul>
-<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;28</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.</p>
+<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;27</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in Analysis.</p>
 </div>
 <div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/csv%20ac.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;28: Creating dataset within RAISINS"><img src="www/csv%20ac.png" class="img-fluid figure-img"></a>
+<a href="www/anr%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;27: Creating dataset within RAISINS"><img src="www/anr%20csv.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;28: Creating dataset within RAISINS
+Figure&nbsp;27: Creating dataset within RAISINS
 </figcaption>
 </figure>
 </div>
@@ -941,10 +938,10 @@ Figure&nbsp;28: Creating dataset within RAISINS
 <div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20model%20datasets.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;29: Model dataset"><img src="www/ac%20model%20datasets.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20model%20datasets.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;28: Model dataset"><img src="www/anr%20model%20datasets.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;29: Model dataset
+Figure&nbsp;28: Model dataset
 </figcaption>
 </figure>
 </div>
@@ -957,10 +954,10 @@ Figure&nbsp;29: Model dataset
 <div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="www/ac%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;30: FAQs"><img src="www/ac%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+<a href="www/anr%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;29: FAQs"><img src="www/anr%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;30: FAQs
+Figure&nbsp;29: FAQs
 </figcaption>
 </figure>
 </div>
@@ -974,12 +971,13 @@ Figure&nbsp;30: FAQs
 <figure class="figure">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="www/ac%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="View data"><img src="www/ac%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+<p><a href="www/anr%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="View data"><img src="www/anr%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
 </figure>
 </div>
 <figcaption>View data</figcaption>
 </figure>
 </div>
+<hr>
 </section>
 
 </main>

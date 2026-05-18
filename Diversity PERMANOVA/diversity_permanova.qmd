@@ -386,7 +386,7 @@ The pairwise PERMANOVA results show that all pairwise comparisons involving Fore
 :::
 
 ::: callout-tip
-#### PERMANOVA tests for differences in community composition (centroid and/or dispersion) between groups, but a significant result does not necessarily mean that group centroids differ  it may also reflect differences in within-group dispersion. Always complement PERMANOVA with a PERMDISP (homogeneity of multivariate dispersion) test, which RAISINS runs automatically alongside PERMANOVA.
+#### PERMANOVA tests for differences in community composition (centroid and/or dispersion) between groups, but a significant result does not necessarily mean that group centroids differ it may also reflect differences in within-group dispersion. Always complement PERMANOVA with a PERMDISP (homogeneity of multivariate dispersion) test, which RAISINS runs automatically alongside PERMANOVA.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -539,7 +539,7 @@ A **relative bar graph** is used to display the proportional abundance or percen
 **RAISINS** is equipped with an AI-powered **RAISINS Assistant** designed to help users understand and communicate the outcomes of Diversity Analysis and PERMANOVA. Once the analysis is run, the AI assistant accessible via the AI Interpretation tab in the Analysis panel reads all computed outputs including alpha diversity index tables, pairwise comparison results, NMDS stress values, PERMANOVA pseudo-F and R² values, pairwise PERMANOVA results, and PERMDISP results, and generates a structured, plain-language narrative interpretation (see @fig-ai). The assistant identifies which groups are significantly more or less diverse, summarises which group pairs are compositionally distinct in PERMANOVA, flags any heterogeneity of dispersion detected by PERMDISP, and suggests appropriate ecological interpretations and next analytical steps such as indicator species analysis, network analysis, or differential abundance testing. This feature is especially valuable for researchers who are reporting diversity analysis results for the first time or who need to prepare results and discussion sections for manuscripts efficiently.
 :::
 
-![AI powered RAISINS Assistant to interpret your diversity analysis results](images/Screenshot 2026-05-16 144756.png){#fig-ai fig-align="center"}
+![AI powered RAISINS Assistant to interpret your diversity analysis results](images/Screenshot%202026-05-16%20144756.png){#fig-ai fig-align="center"}
 
 ## Preparing your data {#PRE}
 
@@ -632,7 +632,7 @@ The model layout will appear as shown in @fig-createdata. You may then enter the
 To test the app or to better understand the required community matrix format for Diversity Analysis and PERMANOVA, **RAISINS** provides model datasets within the app. You can download them from the Datasets tab and use them directly to explore the full analysis workflow including diversity index computation, NMDS ordination, and PERMANOVA before uploading your own experimental data.
 :::
 
-![Model dataset](images/model proo.png){#fig-188 fig-align="center"}
+![Model dataset](images/model%20proo.png){#fig-188 fig-align="center"}
 
 ## FAQ's {#F}
 

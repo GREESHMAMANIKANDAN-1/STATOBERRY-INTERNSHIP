@@ -1,0 +1,645 @@
+---
+title: "Kruskal-Wallis Test"
+format:
+  html:
+    mainfont: "Times New Roman"
+    fontsize: 0.90em
+    theme: cosmo
+    toc: true
+    lightbox: true
+    number-sections: true
+    number-depth: 3
+    number-offset: 1
+    toc-title: "**TABLE OF CONTENTS**"
+    toc-depth: 3
+    linkcolor: "purple"
+    citations-hover: true
+    css: sty.css
+---
+
+```{=html}
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+```
+
+::: affiliations
+<sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University
+:::
+
+ABSTRACT
+
+::: {style="text-align: justify;"}
+The **Kruskal-Wallis Test (KWT)** is a powerful non-parametric statistical method used to determine whether there are significant differences among three or more independent groups when the assumptions of normality or homogeneity of variance cannot be met. **KWT** ranks all observations across groups and compares the rank sums, making it a robust alternative to one-way ANOVA for ordinal or non-normally distributed data. In **RAISINS** you can perform the **Kruskal-Wallis Test** very easily without writing a single line of code. This tutorial will guide you through how to perform **KWT** in **RAISINS** and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.
+:::
+
+<details>
+
+*Hover or click each point to see more information.*
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Introduction Kruskal-Wallis Test
+</summary>
+```
+
+```{=html}
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+```
+
+<ul><small> The **Kruskal-Wallis Test** was introduced in **1952** by statisticians [William Kruskal]{.hover-img} and W. Allen Wallis as a non-parametric extension of the one-way analysis of variance. Published in the *Journal of the American Statistical Association*, the test was developed to address situations where data do not meet the stringent normality assumptions required by parametric ANOVA. Kruskal and Wallis proposed a rank-based approach rather than comparing raw group means, the method assigns ranks to all combined observations and evaluates whether those ranks are distributed evenly across groups. This innovation made rigorous group comparison accessible for ordinal data, small samples, and distributions with heavy tails or outliers. Over the following decades, **KWT** became a cornerstone of non-parametric statistics and is today widely applied across agricultural science, medicine, ecology, psychology, and social research wherever distributional assumptions are in doubt. </small></ul>
+
+</details>
+
+## Analysis of experiments {#AE}
+
+::: {style="text-align: justify;"}
+To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see different analytical methods including non-parametric tests. In this tutorial, we focus on the **Kruskal-Wallis Test (KWT)**, as shown in @fig-aov.
+:::
+
+![Analysis of experiment tab](images/analyse%20kruskii.png){#fig-aov fig-align="center"}
+
+## Kruskal-Wallis Test (KWT) {#C}
+
+::: {style="text-align: justify;"}
+The **Kruskal-Wallis Test (KWT)** is a non-parametric statistical method used to compare three or more independent groups on a continuous or ordinal outcome variable. Unlike one-way ANOVA, **KWT** does not assume that the data follow a normal distribution; instead, it works by ranking all observations from lowest to highest across all groups combined, and then assessing whether the groups differ in their rank distributions. The test statistic H is computed from the rank sums of each group and compared against a chi-square distribution to determine statistical significance. **KWT** is particularly appropriate when sample sizes are small, when data are ordinal (e.g., scores or ratings), or when the data contain outliers that would violate parametric assumptions. When the **KWT** result is significant, post-hoc pairwise comparison tests such as Dunn's test are applied to identify which specific groups differ from one another.
+:::
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  KWT — How the Ranking Works
+</summary>
+```
+
+<ul>
+
+<small>
+
+@fig-lay illustrates the conceptual structure of the Kruskal-Wallis Test applied to multiple independent groups. All observations from every group are pooled together and ranked from 1 (smallest) to N (largest). Tied values receive the average of the ranks they would otherwise occupy. Once ranks are assigned, the mean rank of each group is calculated. If all groups are drawn from the same population, their mean ranks should be roughly equal. The H statistic summarises how far the observed group mean ranks deviate from the overall mean rank. A large H value indicates that at least one group has a systematically higher or lower rank distribution, suggesting a significant difference.
+
+</small>
+
+</ul>
+
+</details>
+
+::: callout-tip
+#### The Kruskal-Wallis Test (KWT) is a rank-based non-parametric test that compares three or more independent groups without assuming normality, making it a robust alternative to one-way ANOVA.
+:::
+
+## A working example {#W}
+
+::: {style="text-align: justify;"}
+To make things simple and interesting, we'll explain **KWT** analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Let's assume an experiment is conducted to evaluate the effect of five different soil amendment treatments on the fruit quality of tomato (*Solanum lycopersicum*) under field conditions. The five treatments are: **Control** (no amendment), **Vermicompost**, **Biochar**, **FYM** (Farm Yard Manure), and **NPK** (chemical fertilizer). Each treatment is applied to eight replicate plots, giving a total of 40 experimental units. Since preliminary tests indicated that the yield data showed significant non-normality (heavy right skew due to a few high-yielding outlier plots), the **Kruskal-Wallis Test** is the appropriate method of analysis. Observations were recorded for four variables: **Yield** (kg/plot), **Obs1** (fruit weight in grams), **Obs2** (fruit diameter in mm), and **FW** (firmness in Newtons). Our aim is to test whether the soil amendment treatments produce statistically significant differences in these variables. The arrangement of the data is shown in @fig-data.
+:::
+
+![Example dataset — Tomato soil amendment trial](images/working%20example%20kruski.png){#fig-data fig-align="center"}
+
+::: {style="text-align: justify;"}
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Treatments** and **Variables**. In our example, the Treatments refer to the five soil amendment types **Control, Vermicompost, Biochar, FYM**, and **NPK** and the Variables are the four traits mentioned earlier: **Yield, Obs1, Obs2**, and **FW**.
+:::
+
+## How to prepare your data? {#sec-4 .H}
+
+::: {style="text-align: justify;"}
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. Make sure no blank rows are left above, and all columns have proper names. That's it your file is ready to upload.
+
+Still if you have doubt, see @fig-4.
+
+To prepare your dataset for analysis in **RAISINS**, you have two options:
+
+Creating dataset in MS Excel
+
+Creating your dataset directly within the **RAISINS** app
+:::
+
+![Illustrating how to create a dataset](images/csvv%20kruskii.png){#fig-4 fig-align="center"}
+
+## KWT analysis tab explained {#AO}
+
+::: {style="text-align: justify;"}
+In @fig-5, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the Treatment and Variables will appear. Select the appropriate column under Treatments and Variables. Once you click the Run Analysis button, all relevant results and outputs appear instantly, leaving no room for confusion.
+:::
+
+![KWT analysis window explained](images/probit%20WEE%20(1).png){#fig-5 fig-align="center"}
+
+::: {style="text-align: justify;"}
+For some data, when there are large numbers of zeros, discrete values, or when the observed variables are proportions or percentages, a transformation may help improve the analysis @sec-6. **RAISINS** provides an inbuilt transformation option to handle such scenarios before running the **KWT**.
+:::
+
+## Analysis results {#sec-7 .AR}
+
+::: {style="text-align: justify;"}
+Once your dataset is uploaded, click on Run analysis, and the **Kruskal-Wallis Test** will be performed. The **Kruskal-Wallis Test** is a rank-based non-parametric procedure that tests the null hypothesis that all groups are drawn from the same population distribution. The test statistic **H** is calculated from the rank sums of each group and evaluated against a chi-square distribution with (k − 1) degrees of freedom, where k is the number of groups see @fig-100.
+:::
+
+**Table 1: Kruskal-Wallis Test Summary**
+
+![Kruskal-Wallis H statistic and group rank sums](images/result%20kruskal.png){#fig-100 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> Kruskal-Wallis Test table </summary>
+```
+
+<small> In the **Kruskal-Wallis Test**, all observations from every group are pooled and ranked from 1 to N. The test statistic **H** is computed as:
+
+$$H = \frac{12}{N(N+1)} \sum_{i=1}^{k} \frac{R_i^2}{n_i} - 3(N+1)$$
+
+where **N** is the total number of observations, **k** is the number of groups, **R_i** is the sum of ranks in group *i*, and **n_i** is the number of observations in group *i*. The H statistic follows a chi-square distribution with **(k − 1)** degrees of freedom under the null hypothesis.
+
+Significance is indicated by an asterisk ( \* ) for the **5%** level and two asterisks (\*\*) for the **1%** level of significance, displayed as superscripts for each corresponding H statistic in the table.
+
+If the computed H value exceeds the critical chi-square value at the chosen significance level, the null hypothesis is rejected, indicating that at least one group's distribution differs significantly from the others. However, like ANOVA, the **KWT** alone does not indicate which specific groups differ. Therefore, if a significant result is detected, post-hoc pairwise comparison tests such as Dunn's test are performed to identify precisely where the differences exist. </small>
+
+</details>
+
+### Interpretation from @fig-100
+
+::: {style="text-align: justify;"}
+The Kruskal-Wallis Test result shows that the H statistic for Yield is approximately 18.64, with 4 degrees of freedom (k − 1 = 5 − 1 = 4), and this value is statistically significant at the 1% level (p \< 0.01). This indicates that the distribution of Yield ranks differs significantly across the five soil amendment treatments, and the null hypothesis that all groups are drawn from the same distribution can be rejected.
+
+In practical terms, the soil amendment treatments exerted a meaningful influence on tomato yield performance, confirming that at least one treatment produces a distinctly different yield outcome compared to the others. The presence of such significant rank-based differences suggests that further post-hoc pairwise comparison using Dunn's test would be appropriate to identify which specific treatments contributed to the observed variation.
+
+@sec-8 provides detailed information on the pairwise comparison tests available after a significant **KWT** result.
+:::
+
+## Multiple comparison tests {#sec-8 .MCT}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  What is a Post-hoc test?
+</summary>
+```
+
+<ul><small> A post-hoc test is a follow-up analysis performed after finding a significant result in an overall statistical test (like the Kruskal-Wallis Test). Its purpose is to identify exactly which groups differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same.</small></ul>
+
+</details>
+
+::: {style="text-align: justify;"}
+After obtaining a significant H value in the **Kruskal-Wallis Test**, pairwise comparison tests are employed to identify which treatment groups differ significantly in their rank distributions. In **RAISINS**, the available post-hoc methods include **Dunn's Test**, **Conover's Test**, and the **Nemenyi Test**, each differing in their approach to controlling error across multiple comparisons see @fig-7.
+:::
+
+![Post-hoc comparison options for KWT](images/probit%20WEE-01.png){#fig-7 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> Post-hoc tests for KWT </summary>
+```
+
+<small>
+
+When the **Kruskal-Wallis Test** is significant, the following post-hoc tests are available for pairwise comparisons:
+
+**Dunn's Test**
+
+**Dunn's Test** is the most widely used post-hoc procedure following a significant Kruskal-Wallis result. It performs pairwise comparisons using the rank sums from the original **KWT** procedure, and applies a correction for multiple comparisons — typically the **Bonferroni** or **Benjamini-Hochberg (BH)** correction — to control the family-wise or false discovery error rate. The test statistic for a comparison between groups *i* and *j* is calculated as:
+
+$$z_{ij} = \frac{\bar{R}_i - \bar{R}_j}{\sqrt{\frac{N(N+1)}{12}\left(\frac{1}{n_i} + \frac{1}{n_j}\right)}}$$
+
+where $\bar{R}_i$ and $\bar{R}_j$ are the mean ranks of groups *i* and *j*, **N** is the total sample size, and **n_i**, **n_j** are the respective group sizes. The adjusted p-values from Dunn's test determine whether any two groups differ significantly. It is the recommended default for pairwise comparisons after **KWT** and is particularly well-suited to unequal group sizes.
+
+**Conover's Test**
+
+**Conover's Test** is a more powerful alternative to Dunn's test that uses a t-statistic derived from the ranks, incorporating the pooled variance estimate from the Kruskal-Wallis procedure. Because it uses a t-distribution rather than a normal approximation, it tends to be more sensitive to detecting true differences, especially with smaller samples. However, its increased power comes at the cost of a slightly higher Type I error rate, so it is best applied when the researcher prioritises detecting real differences and has a moderate number of groups.
+
+**Nemenyi Test**
+
+The **Nemenyi Test** is a conservative post-hoc procedure that compares all pairs of groups simultaneously while controlling the overall Type I error rate using the studentized range distribution. It is analogous to Tukey's HSD in the parametric context and is particularly appropriate when the number of groups is large or when strict control over false positives is required. Because it is the most conservative of the three methods, it may miss smaller but real differences between groups when many comparisons are made. </small>
+
+</details>
+
+**Which post-hoc test to use?**
+
+::: {style="text-align: justify;"}
+The choice of post-hoc test depends on the researcher's priorities and experimental context.
+
+**Dunn's Test** is the standard and most commonly used choice after a significant Kruskal-Wallis result. It is appropriate for most experimental settings, handles unequal group sizes well, and offers flexible error correction through Bonferroni or Benjamini-Hochberg adjustment. In agricultural and biological research, Dunn's test with BH correction is the recommended default.
+
+**Conover's Test** is preferred when the researcher requires higher statistical power to detect smaller differences between groups and when the overall Type I error rate is less of a primary concern. It is best suited to balanced designs with a moderate number of groups.
+
+**Nemenyi Test** is most appropriate when strict family-wise error control is required across a large number of pairwise comparisons. It is the most conservative option and minimises the risk of false positives, making it suitable for confirmatory analyses or high-stakes decisions.
+
+In our example, for those variables showing a significant Kruskal-Wallis result, Dunn's test with Bonferroni correction was applied for pairwise comparisons to identify significantly different treatment groups.
+:::
+
+## Summary stats {#SUM}
+
+::: {style="text-align: justify;"}
+If you need to know about the detailed values of the various statistical metrics of treatments, move to Summary statistics under the Analysis tab. The summary statistics table provides a comprehensive view of the distribution of each response variable within each treatment group.
+:::
+
+**Table 3: Summary statistics**
+
+![Summary statistics](images/summary%20kruski.png){#fig-102 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
+```
+
+<small>
+
+**Mean** The arithmetic average of all observations within a treatment group. It represents the "typical" value for that specific group, though in non-parametric analysis the **median** and **mean rank** are often more informative.
+
+**SD (Standard Deviation)** A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.
+
+**SE (Standard Error)** Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as $$SE = \frac{\text{Standard deviation (SD)}}{\sqrt{n}} \times 100$$, where n is the number of observations.
+
+**Min / Max** The lowest and highest recorded values within that specific treatment group.
+
+**CV (Coefficient of Variation)** The ratio of the standard deviation to the mean, expressed as a percentage: $$CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}} \times 100$$
+
+It allows you to compare the variability between groups with different scales.
+
+**Skewness** A measure of the asymmetry of the probability distribution. A positive value indicates data skewed to the right (long tail on the right); a negative value indicates data skewed to the left (long tail on the left). High skewness in the raw data is one of the primary indicators that a non-parametric test like **KWT** is more appropriate than ANOVA.
+
+**Kurtosis** A measure of the "tailedness" of the distribution. It describes how much of the data is concentrated in the tails versus the peak. A standard normal distribution has a kurtosis of 3; values substantially different from 3 suggest departure from normality.
+
+</small>
+
+</details>
+
+### Interpretations from @fig-102
+
+::: {style="text-align: justify;"}
+From the summary statistics table, the NPK treatment recorded the highest mean Yield (32.6 kg/plot) with a relatively low coefficient of variation (CV = 14.2%), indicating consistent performance across its eight replicate plots. In contrast, the Control treatment exhibited the lowest mean Yield (18.3 kg/plot) with the highest CV (31.7%), reflecting greater variability in the absence of any soil amendment. The Vermicompost and Biochar treatments showed intermediate mean values with moderate skewness and kurtosis, providing further justification for the use of the non-parametric **Kruskal-Wallis Test** rather than the standard parametric ANOVA. The FYM treatment displayed a slight positive skew in Yield, consistent with a few high-yielding plots pulling the distribution rightward. These distributional patterns across groups reinforce the appropriateness of the **KWT** framework for this dataset.
+:::
+
+## Basic plots {#BP}
+
+::: {style="text-align: justify;"}
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run analysis button, all relevant results and outputs appear instantly, leaving no room for confusion. We have ensured that every possible plot related to the **Kruskal-Wallis Test** is readily available. Simply click on the Basic plot tab to view them see @fig-8. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG for use in reports or presentations.
+:::
+
+### Customizing plots
+
+::: {style="text-align: justify;"}
+**RAISINS** provides users with various customization features for the plots to enhance the visualization according to their requirements. **Click** on @fig-8 to get a clear idea of the customizing features.
+:::
+
+![Plot settings for customizing](images/basic%20plot%20kruski-01.png){#fig-8 fig-align="center"}
+
+::: {style="text-align: justify;"}
+From @fig-9 to @fig-13, you can see the different types of plots available in **RAISINS**. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.
+:::
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+```
+
+```{=html}
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8));
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#boxplot-desc { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#barplot-desc { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#connectedplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#meanvalueplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#violinplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+</style>
+```
+
+:::::::::::::::::::::::: grid
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
+![Box plot](images/box%20plot%20kruski.png){#fig-9}
+
+:::: {#boxplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **box plot** in the Kruskal–Wallis test is used to visually compare the distribution of data among different groups. Since the Kruskal–Wallis test is a non-parametric test, the box plot helps display the median, spread, and variability of ranked data without assuming normal distribution. Each box represents the interquartile range (IQR), the line inside the box shows the median, and whiskers indicate the range of the data. Outliers may also appear as separate points. By comparing the box plots of different groups, differences in central tendency and variability can be easily observed, supporting the interpretation of the Kruskal–Wallis test results.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
+![Violin plot](images/violin%20plot%20kruski.png){#fig-10}
+
+:::: {#violinplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **violin plot** in the Kruskal–Wallis test is a graphical representation used to compare the distribution of data across multiple groups. It combines features of a box plot and a density plot, showing both summary statistics and the shape of the data distribution. The width of the violin indicates the concentration of data points at different values, while the central part often displays the median and interquartile range. Since the Kruskal–Wallis test is a non-parametric method, violin plots are useful for visualizing differences in distribution, spread, and symmetry among groups without assuming normality.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
+![Bar plot](images/bar%20plot%20kruski.png){#fig-11}
+
+:::: {#barplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **bar plot** in the Kruskal–Wallis test is used to compare the values or summary statistics of different groups visually. Each bar represents a separate treatment or category, and the height of the bar indicates the magnitude of the group value, such as the mean or median. This plot helps in easily identifying differences among groups and understanding variations in the dataset. In the context of the Kruskal–Wallis test, the bar plot provides a simple visual comparison that supports the interpretation of non-parametric group differences.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
+![Mean Value Plot](images/mean%20value%20kruski.png){#fig-12}
+
+:::: {#meanvalueplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **mean value plot** in the Kruskal–Wallis test is a graphical representation used to compare the average values of different groups. Although the Kruskal–Wallis test mainly focuses on comparing group medians and ranks, the mean value plot helps visualize the overall trend and differences among treatments or categories. In this plot, the mean of each group is displayed as points or markers, often connected by lines for easier comparison. It helps identify which groups have relatively higher or lower values and provides a simple summary of group performance across the dataset.
+:::
+::::
+:::::
+::::::
+
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
+::: {style="text-align: center;"}
+![Connected line plot](images/connected%20line%20plot%20kruski.png){#fig-13}
+:::
+
+:::: {#connectedplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **connected line plot** in the Kruskal–Wallis test is used to display and compare the trend of values across different groups or treatments. In this plot, data points or group summary values are connected using lines, making it easier to observe variations and patterns among groups. Although the Kruskal–Wallis test is based on ranked data and medians, the connected line plot provides a clear visual representation of how the values change from one group to another. It helps in identifying increasing or decreasing trends, consistency, and differences in the distribution of observations across treatments.
+:::
+::::
+::::::
+:::::::
+::::::::::::::::::::::::
+
+## AI interpretation {#AI}
+
+::: {style="text-align: justify;"}
+**RAISINS** is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant rank differences between groups, interprets effect sizes such as epsilon-squared, and offers informed suggestions for potential next steps or interpretations. The user can obtain detailed interpretations of the **Kruskal-Wallis** analysis by clicking on AI Interpretation on the Analysis tab, as shown in @fig-ai.
+:::
+
+![AI powered RAISINS Assistant to interpret your results](images/ai%20kruski.png){#fig-ai fig-align="center"}
+
+## Multivariate {#MUL}
+
+::: {style="text-align: justify;"}
+Multivariate analysis in the context of the **Kruskal-Wallis Test** helps you to examine multiple response variables simultaneously. Remember that PCA used for multivariate selection is an exploratory technique, not an inferential method. In our example of evaluating five soil amendment treatments **Control, Vermicompost, Biochar, FYM**, and **NPK** on tomato fruit quality, navigate to Multivariate as shown in @fig-mu.
+:::
+
+![Multivariate tab in RAISINS](images/multi%20variate%20kruski.png){#fig-mu}
+
+::: {style="text-align: justify;"}
+The table titled 'Eigen Values PCA' given in @fig-PC provides information about the eigenvalues and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately \[XX\]% of the variance in the dataset, while PC2 accounts for about \[XX\]% of the variance. Together, PC1 and PC2 explain approximately \[XX\]% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
+:::
+
+::: {style="text-align: justify;"}
+The scree plot given in @fig-screeplot illustrates the proportion of variance explained by each principal component.
+:::
+
+![Scree plot](images/scree%20kruski.png){#fig-screeplot fig-align="center"}
+
+::: {style="text-align: justify;"}
+Look upon the loadings of each variable in @fig-loadings and decide which PC-based index needs to be selected. In our example, Yield and Obs1 show strong positive loadings on PC1, while FW and Obs2 contribute more substantially to PC2. This suggests that PC1 primarily captures productivity-related variation, while PC2 reflects fruit physical characteristics. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.
+:::
+
+![Loadings of each variable](images/variable%20kruski.png){#fig-loadings fig-align="center"}
+
+::: {style="text-align: justify;"}
+The biplot gives a visual representation of the relationships among variables and treatment groups. Treatment groups with high values for a specific variable are positioned in the direction of that variable's arrow. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while angles close to 90 degrees suggest weak or no correlation.
+:::
+
+![PCA Biplot](images/biplot%20kruski.png){#fig-biplot}
+
+::: {style="text-align: justify;"}
+In **RAISINS**, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment groups based on their index scores. To refine your selection, use the 'Select cutoff for Scaled Index Score' feature shown in @fig-indexscore, where you can choose the cutoff percentage to select treatment groups above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatments as per your preference. Selected treatment groups are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is displayed to aid in your analysis.
+:::
+
+![Index score](images/index%20kruski.png){#fig-indexscore fig-align="center"}
+
+![Index plot](images/index%202%20kruski.png){#fig-index fig-align="center"}
+
+::: {style="text-align: justify;"}
+Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study identifying which soil amendment treatments are most effective across multiple fruit quality traits simultaneously.
+:::
+
+## Preparing your data {#PRE}
+
+::: {style="text-align: justify;"}
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won't be trustworthy."
+
+1.  Create your dataset in MS Excel
+
+2.  Build your dataset directly within the RAISINS app
+:::
+
+## Preparing data in MS Excel {#EX}
+
+::: {style="text-align: justify;"}
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the treatment or group to be compared you can name this column appropriately, such as "Group" or "Treatment." All characters under study (e.g., Yield, Obs1, Obs2, FW) should be arranged in separate columns, and each group should be repeated according to the number of replications. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in @fig-pp. As illustrated in @fig-data, groups must appear repeatedly based on replications, and the data can also be arranged as shown in @fig-kk.
+:::
+
+![Model-1: showing how the prepared Excel file for upload should look like](images/kruski%202.png){#fig-pp}
+
+![Model-2: Showing how the prepared Excel file for upload should look like](images/kruski%201-01.png){#fig-kk}
+
+<details>
+
+<summary>Dataset Creation Rules</summary>
+
+<small> 1. **Column Naming Convention** - No spaces allowed in column names.\
+- Use underscores (`_`) or full stops (`.`) for separation. - Avoid symbols and special characters like %,# etc 2. **Data Arrangement** - Start data arrangement towards the upper-left corner.\
+- Ensure the row above the data is not blank. 3. **Cell Management** - Avoid typing or deleting in cells without data.\
+- If needed, select affected cells, right-click, and select **Clear Contents**. 4. **Column Relevance** - Name all columns meaningfully.\
+- Exclude unnecessary columns not required for analysis. </small>
+
+</details>
+
+<details>
+
+<summary>How to Save as CSV in MS Excel</summary>
+
+<small> 1. **Open Your Workbook**
+
+```         
+-   Ensure your data is arranged properly with only one sheet.
+```
+
+2.  **Click 'File' Menu**
+
+    -   Go to the top-left corner and click on **File**.
+
+3.  **Choose 'Save As' or 'Save a Copy'**
+
+    -   Select the location where you want to save your file.
+
+4.  **Set File Type to CSV**
+
+    -   In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+
+5.  **Name Your File**
+
+    -   Enter a relevant file name without spaces (use underscores if needed).
+
+6.  **Click 'Save'**
+
+    -   Click **Save** to export the file.
+
+> 💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small>
+
+</details>
+
+## Creating dataset in RAISINS {#CR}
+
+::: {style="text-align: justify;"}
+If you're unsure about the correct format for creating a dataset, don't worry **RAISINS** offers an option to create data directly within the app using the prescribed template. Here's how:
+
+-   Navigate to the **Create Data Tab**
+
+-   Select the number of **Treatments**
+
+-   Select number of **Replications**
+
+-   Select number of **Characters**
+
+-   Click on **Create** button
+
+Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the CSV file and upload it in `Analysis`.
+:::
+
+![Creating dataset within RAISINS](images/csvv%20kruskii-02.png){#fig-createdata}
+
+## Model datasets {#M}
+
+::: {style="text-align: justify;"}
+To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the `Datasets` tab.
+:::
+
+![Model dataset](images/dataset%20kruski.png){#fig-188 fig-align="center"}
+
+## FAQ's {#F}
+
+::: {style="text-align: justify;"}
+The app includes a dedicated FAQs tab to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you're ever unsure about how something works, the FAQs tab is a great place to start.
+:::
+
+![FAQs](images/faq%20kruski.png){#fig-148 fig-align="center"}
+
+## View data {#U}
+
+::: {style="text-align: justify;"}
+View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For the **Kruskal-Wallis Test**, it is particularly important that the Treatment column contains categorical group labels and that all response variable columns contain numeric values with no missing entries, as rank computation requires a complete dataset.
+:::
+
+![View data](images/view%20data%20kruski.png){fig-align="center"}
+
+------------------------------------------------------------------------

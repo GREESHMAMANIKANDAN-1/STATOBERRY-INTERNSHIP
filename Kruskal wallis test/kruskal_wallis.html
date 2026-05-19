@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Kruskal-Wallis Test</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="kruskal_wallis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="kruskal_wallis_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="kruskal_wallis_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="kruskal_wallis_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="kruskal_wallis_files/libs/quarto-html/popper.min.js"></script>
+<script src="kruskal_wallis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="kruskal_wallis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="kruskal_wallis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="kruskal_wallis_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="kruskal_wallis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="kruskal_wallis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="kruskal_wallis_files/libs/bootstrap/bootstrap-c990c777837f11351117d1804adb4096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="kruskal_wallis_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="kruskal_wallis_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="kruskal_wallis_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="sty.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>TABLE OF CONTENTS</strong></h2>
+   
+  <ul>
+  <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Analysis of experiments</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Kruskal-Wallis Test (KWT)</a></li>
+  <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
+  <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> KWT analysis tab explained</a></li>
+  <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">6</span> Analysis results</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-100" id="toc-interpretation-from-fig-100" class="nav-link" data-scroll-target="#interpretation-from-fig-100"><span class="header-section-number">6.1</span> Interpretation from Figure&nbsp;5</a></li>
+  </ul></li>
+  <li><a href="#sec-8" id="toc-sec-8" class="nav-link" data-scroll-target="#sec-8"><span class="header-section-number">7</span> Multiple comparison tests</a></li>
+  <li><a href="#SUM" id="toc-SUM" class="nav-link" data-scroll-target="#SUM"><span class="header-section-number">8</span> Summary stats</a>
+  <ul class="collapse">
+  <li><a href="#interpretations-from-fig-102" id="toc-interpretations-from-fig-102" class="nav-link" data-scroll-target="#interpretations-from-fig-102"><span class="header-section-number">8.1</span> Interpretations from Figure&nbsp;7</a></li>
+  </ul></li>
+  <li><a href="#BP" id="toc-BP" class="nav-link" data-scroll-target="#BP"><span class="header-section-number">9</span> Basic plots</a>
+  <ul class="collapse">
+  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</a></li>
+  </ul></li>
+  <li><a href="#AI" id="toc-AI" class="nav-link" data-scroll-target="#AI"><span class="header-section-number">10</span> AI interpretation</a></li>
+  <li><a href="#MUL" id="toc-MUL" class="nav-link" data-scroll-target="#MUL"><span class="header-section-number">11</span> Multivariate</a></li>
+  <li><a href="#PRE" id="toc-PRE" class="nav-link" data-scroll-target="#PRE"><span class="header-section-number">12</span> Preparing your data</a></li>
+  <li><a href="#EX" id="toc-EX" class="nav-link" data-scroll-target="#EX"><span class="header-section-number">13</span> Preparing data in MS Excel</a></li>
+  <li><a href="#CR" id="toc-CR" class="nav-link" data-scroll-target="#CR"><span class="header-section-number">14</span> Creating dataset in RAISINS</a></li>
+  <li><a href="#M" id="toc-M" class="nav-link" data-scroll-target="#M"><span class="header-section-number">15</span> Model datasets</a></li>
+  <li><a href="#F" id="toc-F" class="nav-link" data-scroll-target="#F"><span class="header-section-number">16</span> FAQ’s</a></li>
+  <li><a href="#U" id="toc-U" class="nav-link" data-scroll-target="#U"><span class="header-section-number">17</span> View data</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Kruskal-Wallis Test</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+<div class="affiliations">
+<p><sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
+</div>
+<p>ABSTRACT</p>
+<div style="text-align: justify;">
+<p>The <strong>Kruskal-Wallis Test (KWT)</strong> is a powerful non-parametric statistical method used to determine whether there are significant differences among three or more independent groups when the assumptions of normality or homogeneity of variance cannot be met. <strong>KWT</strong> ranks all observations across groups and compares the rank sums, making it a robust alternative to one-way ANOVA for ordinal or non-normally distributed data. In <strong>RAISINS</strong> you can perform the <strong>Kruskal-Wallis Test</strong> very easily without writing a single line of code. This tutorial will guide you through how to perform <strong>KWT</strong> in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication. You can also perform a multivariate analysis including MANOVA and PCA.</p>
+</div>
+<details>
+<p><em>Hover or click each point to see more information.</em></p>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Introduction Kruskal-Wallis Test
+</summary>
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+<ul>
+<small> The <strong>Kruskal-Wallis Test</strong> was introduced in <strong>1952</strong> by statisticians <span class="hover-img">William Kruskal</span> and W. Allen Wallis as a non-parametric extension of the one-way analysis of variance. Published in the <em>Journal of the American Statistical Association</em>, the test was developed to address situations where data do not meet the stringent normality assumptions required by parametric ANOVA. Kruskal and Wallis proposed a rank-based approach rather than comparing raw group means, the method assigns ranks to all combined observations and evaluates whether those ranks are distributed evenly across groups. This innovation made rigorous group comparison accessible for ordinal data, small samples, and distributions with heavy tails or outliers. Over the following decades, <strong>KWT</strong> became a cornerstone of non-parametric statistics and is today widely applied across agricultural science, medicine, ecology, psychology, and social research wherever distributional assumptions are in doubt. </small>
+</ul>
+</details>
+<section id="AE" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
+<div style="text-align: justify;">
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Analysis of experiments</strong>. Here, you can see different analytical methods including non-parametric tests. In this tutorial, we focus on the <strong>Kruskal-Wallis Test (KWT)</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+</div>
+<div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/analyse%20kruskii.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="images/analyse%20kruskii.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Analysis of experiment tab
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="C" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Kruskal-Wallis Test (KWT)</h2>
+<div style="text-align: justify;">
+<p>The <strong>Kruskal-Wallis Test (KWT)</strong> is a non-parametric statistical method used to compare three or more independent groups on a continuous or ordinal outcome variable. Unlike one-way ANOVA, <strong>KWT</strong> does not assume that the data follow a normal distribution; instead, it works by ranking all observations from lowest to highest across all groups combined, and then assessing whether the groups differ in their rank distributions. The test statistic H is computed from the rank sums of each group and compared against a chi-square distribution to determine statistical significance. <strong>KWT</strong> is particularly appropriate when sample sizes are small, when data are ordinal (e.g., scores or ratings), or when the data contain outliers that would violate parametric assumptions. When the <strong>KWT</strong> result is significant, post-hoc pairwise comparison tests such as Dunn’s test are applied to identify which specific groups differ from one another.</p>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  KWT — How the Ranking Works
+</summary>
+<ul>
+<p><small></small></p><small>
+<p><strong>?@fig-lay</strong> illustrates the conceptual structure of the Kruskal-Wallis Test applied to multiple independent groups. All observations from every group are pooled together and ranked from 1 (smallest) to N (largest). Tied values receive the average of the ranks they would otherwise occupy. Once ranks are assigned, the mean rank of each group is calculated. If all groups are drawn from the same population, their mean ranks should be roughly equal. The H statistic summarises how far the observed group mean ranks deviate from the overall mean rank. A large H value indicates that at least one group has a systematically higher or lower rank distribution, suggesting a significant difference.</p>
+</small><p><small></small></p>
+</ul>
+</details>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The Kruskal-Wallis Test (KWT) is a rank-based non-parametric test that compares three or more independent groups without assuming normality, making it a robust alternative to one-way ANOVA.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="W" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
+<div style="text-align: justify;">
+<p>To make things simple and interesting, we’ll explain <strong>KWT</strong> analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Let’s assume an experiment is conducted to evaluate the effect of five different soil amendment treatments on the fruit quality of tomato (<em>Solanum lycopersicum</em>) under field conditions. The five treatments are: <strong>Control</strong> (no amendment), <strong>Vermicompost</strong>, <strong>Biochar</strong>, <strong>FYM</strong> (Farm Yard Manure), and <strong>NPK</strong> (chemical fertilizer). Each treatment is applied to eight replicate plots, giving a total of 40 experimental units. Since preliminary tests indicated that the yield data showed significant non-normality (heavy right skew due to a few high-yielding outlier plots), the <strong>Kruskal-Wallis Test</strong> is the appropriate method of analysis. Observations were recorded for four variables: <strong>Yield</strong> (kg/plot), <strong>Obs1</strong> (fruit weight in grams), <strong>Obs2</strong> (fruit diameter in mm), and <strong>FW</strong> (firmness in Newtons). Our aim is to test whether the soil amendment treatments produce statistically significant differences in these variables. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>.</p>
+</div>
+<div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/working%20example%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Example dataset — Tomato soil amendment trial"><img src="images/working%20example%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Example dataset — Tomato soil amendment trial
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Data organized in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the five soil amendment types <strong>Control, Vermicompost, Biochar, FYM</strong>, and <strong>NPK</strong> and the Variables are the four traits mentioned earlier: <strong>Yield, Obs1, Obs2</strong>, and <strong>FW</strong>.</p>
+</div>
+</section>
+<section id="sec-4" class="level2 H" data-number="4">
+<h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
+<div style="text-align: justify;">
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>, using a single-sheet Excel file. Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
+<p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
+<p>Creating dataset in MS Excel</p>
+<p>Creating your dataset directly within the <strong>RAISINS</strong> app</p>
+</div>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/csvv%20kruskii.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Illustrating how to create a dataset"><img src="images/csvv%20kruskii.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Illustrating how to create a dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="AO" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> KWT analysis tab explained</h2>
+<div style="text-align: justify;">
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;4</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the Treatment and Variables will appear. Select the appropriate column under Treatments and Variables. Once you click the Run Analysis button, all relevant results and outputs appear instantly, leaving no room for confusion.</p>
+</div>
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/probit%20WEE%20(1).png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: KWT analysis window explained"><img src="images/probit%20WEE%20(1).png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: KWT analysis window explained
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>For some data, when there are large numbers of zeros, discrete values, or when the observed variables are proportions or percentages, a transformation may help improve the analysis <strong>?@sec-6</strong>. <strong>RAISINS</strong> provides an inbuilt transformation option to handle such scenarios before running the <strong>KWT</strong>.</p>
+</div>
+</section>
+<section id="sec-7" class="level2 AR" data-number="6">
+<h2 class="AR anchored" data-number="6" data-anchor-id="sec-7"><span class="header-section-number">6</span> Analysis results</h2>
+<div style="text-align: justify;">
+<p>Once your dataset is uploaded, click on Run analysis, and the <strong>Kruskal-Wallis Test</strong> will be performed. The <strong>Kruskal-Wallis Test</strong> is a rank-based non-parametric procedure that tests the null hypothesis that all groups are drawn from the same population distribution. The test statistic <strong>H</strong> is calculated from the rank sums of each group and evaluated against a chi-square distribution with (k − 1) degrees of freedom, where k is the number of groups see <a href="#fig-100" class="quarto-xref">Figure&nbsp;5</a>.</p>
+</div>
+<p><strong>Table 1: Kruskal-Wallis Test Summary</strong></p>
+<div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/result%20kruskal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Kruskal-Wallis H statistic and group rank sums"><img src="images/result%20kruskal.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Kruskal-Wallis H statistic and group rank sums
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Kruskal-Wallis Test table </summary>
+<p><small> In the <strong>Kruskal-Wallis Test</strong>, all observations from every group are pooled and ranked from 1 to N. The test statistic <strong>H</strong> is computed as:</small></p><small>
+<p><span class="math display">\[H = \frac{12}{N(N+1)} \sum_{i=1}^{k} \frac{R_i^2}{n_i} - 3(N+1)\]</span></p>
+<p>where <strong>N</strong> is the total number of observations, <strong>k</strong> is the number of groups, <strong>R_i</strong> is the sum of ranks in group <em>i</em>, and <strong>n_i</strong> is the number of observations in group <em>i</em>. The H statistic follows a chi-square distribution with <strong>(k − 1)</strong> degrees of freedom under the null hypothesis.</p>
+<p>Significance is indicated by an asterisk ( * ) for the <strong>5%</strong> level and two asterisks (**) for the <strong>1%</strong> level of significance, displayed as superscripts for each corresponding H statistic in the table.</p>
+</small><p><small>If the computed H value exceeds the critical chi-square value at the chosen significance level, the null hypothesis is rejected, indicating that at least one group’s distribution differs significantly from the others. However, like ANOVA, the <strong>KWT</strong> alone does not indicate which specific groups differ. Therefore, if a significant result is detected, post-hoc pairwise comparison tests such as Dunn’s test are performed to identify precisely where the differences exist. </small></p>
+</details>
+<section id="interpretation-from-fig-100" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">6.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;5</a></h3>
+<div style="text-align: justify;">
+<p>The Kruskal-Wallis Test result shows that the H statistic for Yield is approximately 18.64, with 4 degrees of freedom (k − 1 = 5 − 1 = 4), and this value is statistically significant at the 1% level (p &lt; 0.01). This indicates that the distribution of Yield ranks differs significantly across the five soil amendment treatments, and the null hypothesis that all groups are drawn from the same distribution can be rejected.</p>
+<p>In practical terms, the soil amendment treatments exerted a meaningful influence on tomato yield performance, confirming that at least one treatment produces a distinctly different yield outcome compared to the others. The presence of such significant rank-based differences suggests that further post-hoc pairwise comparison using Dunn’s test would be appropriate to identify which specific treatments contributed to the observed variation.</p>
+<p><a href="#sec-8" class="quarto-xref">Section&nbsp;7</a> provides detailed information on the pairwise comparison tests available after a significant <strong>KWT</strong> result.</p>
+</div>
+</section>
+</section>
+<section id="sec-8" class="level2 MCT" data-number="7">
+<h2 class="MCT anchored" data-number="7" data-anchor-id="sec-8"><span class="header-section-number">7</span> Multiple comparison tests</h2>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  What is a Post-hoc test?
+</summary>
+<ul>
+<small> A post-hoc test is a follow-up analysis performed after finding a significant result in an overall statistical test (like the Kruskal-Wallis Test). Its purpose is to identify exactly which groups differ from each other. In other words, it helps to pinpoint where the differences lie between multiple groups, when the initial test shows that not all groups are the same.</small>
+</ul>
+</details>
+<div style="text-align: justify;">
+<p>After obtaining a significant H value in the <strong>Kruskal-Wallis Test</strong>, pairwise comparison tests are employed to identify which treatment groups differ significantly in their rank distributions. In <strong>RAISINS</strong>, the available post-hoc methods include <strong>Dunn’s Test</strong>, <strong>Conover’s Test</strong>, and the <strong>Nemenyi Test</strong>, each differing in their approach to controlling error across multiple comparisons see <a href="#fig-7" class="quarto-xref">Figure&nbsp;6</a>.</p>
+</div>
+<div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/probit%20WEE-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Post-hoc comparison options for KWT"><img src="images/probit%20WEE-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Post-hoc comparison options for KWT
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Post-hoc tests for KWT </summary>
+<p><small></small></p><small>
+<p>When the <strong>Kruskal-Wallis Test</strong> is significant, the following post-hoc tests are available for pairwise comparisons:</p>
+<p><strong>Dunn’s Test</strong></p>
+<p><strong>Dunn’s Test</strong> is the most widely used post-hoc procedure following a significant Kruskal-Wallis result. It performs pairwise comparisons using the rank sums from the original <strong>KWT</strong> procedure, and applies a correction for multiple comparisons — typically the <strong>Bonferroni</strong> or <strong>Benjamini-Hochberg (BH)</strong> correction — to control the family-wise or false discovery error rate. The test statistic for a comparison between groups <em>i</em> and <em>j</em> is calculated as:</p>
+<p><span class="math display">\[z_{ij} = \frac{\bar{R}_i - \bar{R}_j}{\sqrt{\frac{N(N+1)}{12}\left(\frac{1}{n_i} + \frac{1}{n_j}\right)}}\]</span></p>
+<p>where <span class="math inline">\(\bar{R}_i\)</span> and <span class="math inline">\(\bar{R}_j\)</span> are the mean ranks of groups <em>i</em> and <em>j</em>, <strong>N</strong> is the total sample size, and <strong>n_i</strong>, <strong>n_j</strong> are the respective group sizes. The adjusted p-values from Dunn’s test determine whether any two groups differ significantly. It is the recommended default for pairwise comparisons after <strong>KWT</strong> and is particularly well-suited to unequal group sizes.</p>
+<p><strong>Conover’s Test</strong></p>
+<p><strong>Conover’s Test</strong> is a more powerful alternative to Dunn’s test that uses a t-statistic derived from the ranks, incorporating the pooled variance estimate from the Kruskal-Wallis procedure. Because it uses a t-distribution rather than a normal approximation, it tends to be more sensitive to detecting true differences, especially with smaller samples. However, its increased power comes at the cost of a slightly higher Type I error rate, so it is best applied when the researcher prioritises detecting real differences and has a moderate number of groups.</p>
+<p><strong>Nemenyi Test</strong></p>
+</small><p><small>The <strong>Nemenyi Test</strong> is a conservative post-hoc procedure that compares all pairs of groups simultaneously while controlling the overall Type I error rate using the studentized range distribution. It is analogous to Tukey’s HSD in the parametric context and is particularly appropriate when the number of groups is large or when strict control over false positives is required. Because it is the most conservative of the three methods, it may miss smaller but real differences between groups when many comparisons are made. </small></p>
+</details>
+<p><strong>Which post-hoc test to use?</strong></p>
+<div style="text-align: justify;">
+<p>The choice of post-hoc test depends on the researcher’s priorities and experimental context.</p>
+<p><strong>Dunn’s Test</strong> is the standard and most commonly used choice after a significant Kruskal-Wallis result. It is appropriate for most experimental settings, handles unequal group sizes well, and offers flexible error correction through Bonferroni or Benjamini-Hochberg adjustment. In agricultural and biological research, Dunn’s test with BH correction is the recommended default.</p>
+<p><strong>Conover’s Test</strong> is preferred when the researcher requires higher statistical power to detect smaller differences between groups and when the overall Type I error rate is less of a primary concern. It is best suited to balanced designs with a moderate number of groups.</p>
+<p><strong>Nemenyi Test</strong> is most appropriate when strict family-wise error control is required across a large number of pairwise comparisons. It is the most conservative option and minimises the risk of false positives, making it suitable for confirmatory analyses or high-stakes decisions.</p>
+<p>In our example, for those variables showing a significant Kruskal-Wallis result, Dunn’s test with Bonferroni correction was applied for pairwise comparisons to identify significantly different treatment groups.</p>
+</div>
+</section>
+<section id="SUM" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="SUM"><span class="header-section-number">8</span> Summary stats</h2>
+<div style="text-align: justify;">
+<p>If you need to know about the detailed values of the various statistical metrics of treatments, move to Summary statistics under the Analysis tab. The summary statistics table provides a comprehensive view of the distribution of each response variable within each treatment group.</p>
+</div>
+<p><strong>Table 3: Summary statistics</strong></p>
+<div id="fig-102" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/summary%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Summary statistics"><img src="images/summary%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-102-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Summary statistics
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Table parameters </summary>
+<p><small></small></p><small>
+<p><strong>Mean</strong> The arithmetic average of all observations within a treatment group. It represents the “typical” value for that specific group, though in non-parametric analysis the <strong>median</strong> and <strong>mean rank</strong> are often more informative.</p>
+<p><strong>SD (Standard Deviation)</strong> A measure of the amount of variation or dispersion of a set of values. A low SD indicates that the data points tend to be very close to the mean.</p>
+<p><strong>SE (Standard Error)</strong> Specifically the Standard Error of the Mean. It estimates how far the sample mean is likely to be from the true population mean. It is calculated as <span class="math display">\[SE = \frac{\text{Standard deviation (SD)}}{\sqrt{n}} \times 100\]</span>, where n is the number of observations.</p>
+<p><strong>Min / Max</strong> The lowest and highest recorded values within that specific treatment group.</p>
+<p><strong>CV (Coefficient of Variation)</strong> The ratio of the standard deviation to the mean, expressed as a percentage: <span class="math display">\[CV = \frac{\text{Standard deviation (SD)}}{\text{Mean}} \times 100\]</span></p>
+<p>It allows you to compare the variability between groups with different scales.</p>
+<p><strong>Skewness</strong> A measure of the asymmetry of the probability distribution. A positive value indicates data skewed to the right (long tail on the right); a negative value indicates data skewed to the left (long tail on the left). High skewness in the raw data is one of the primary indicators that a non-parametric test like <strong>KWT</strong> is more appropriate than ANOVA.</p>
+<p><strong>Kurtosis</strong> A measure of the “tailedness” of the distribution. It describes how much of the data is concentrated in the tails versus the peak. A standard normal distribution has a kurtosis of 3; values substantially different from 3 suggest departure from normality.</p>
+</small><p><small></small></p>
+</details>
+<section id="interpretations-from-fig-102" class="level3" data-number="8.1">
+<h3 data-number="8.1" class="anchored" data-anchor-id="interpretations-from-fig-102"><span class="header-section-number">8.1</span> Interpretations from <a href="#fig-102" class="quarto-xref">Figure&nbsp;7</a></h3>
+<div style="text-align: justify;">
+<p>From the summary statistics table, the NPK treatment recorded the highest mean Yield (32.6 kg/plot) with a relatively low coefficient of variation (CV = 14.2%), indicating consistent performance across its eight replicate plots. In contrast, the Control treatment exhibited the lowest mean Yield (18.3 kg/plot) with the highest CV (31.7%), reflecting greater variability in the absence of any soil amendment. The Vermicompost and Biochar treatments showed intermediate mean values with moderate skewness and kurtosis, providing further justification for the use of the non-parametric <strong>Kruskal-Wallis Test</strong> rather than the standard parametric ANOVA. The FYM treatment displayed a slight positive skew in Yield, consistent with a few high-yielding plots pulling the distribution rightward. These distributional patterns across groups reinforce the appropriateness of the <strong>KWT</strong> framework for this dataset.</p>
+</div>
+</section>
+</section>
+<section id="BP" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="BP"><span class="header-section-number">9</span> Basic plots</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run analysis button, all relevant results and outputs appear instantly, leaving no room for confusion. We have ensured that every possible plot related to the <strong>Kruskal-Wallis Test</strong> is readily available. Simply click on the Basic plot tab to view them see <a href="#fig-8" class="quarto-xref">Figure&nbsp;8</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customize its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG for use in reports or presentations.</p>
+</div>
+<section id="customizing-plots" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="customizing-plots"><span class="header-section-number">9.1</span> Customizing plots</h3>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> provides users with various customization features for the plots to enhance the visualization according to their requirements. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;8</a> to get a clear idea of the customizing features.</p>
+</div>
+<div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/basic%20plot%20kruski-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Plot settings for customizing"><img src="images/basic%20plot%20kruski-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Plot settings for customizing
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;9</a> to <a href="#fig-13" class="quarto-xref">Figure&nbsp;13</a>, you can see the different types of plots available in <strong>RAISINS</strong>. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8));
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#boxplot-desc { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#barplot-desc { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#connectedplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#meanvalueplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#violinplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+</style>
+<div class="grid">
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')">
+<div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/box%20plot%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Box plot"><img src="images/box%20plot%20kruski.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Box plot
+</figcaption>
+</figure>
+</div>
+<div id="boxplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>box plot</strong> in the Kruskal–Wallis test is used to visually compare the distribution of data among different groups. Since the Kruskal–Wallis test is a non-parametric test, the box plot helps display the median, spread, and variability of ranked data without assuming normal distribution. Each box represents the interquartile range (IQR), the line inside the box shows the median, and whiskers indicate the range of the data. Outliers may also appear as separate points. By comparing the box plots of different groups, differences in central tendency and variability can be easily observed, supporting the interpretation of the Kruskal–Wallis test results.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')">
+<div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/violin%20plot%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Violin plot"><img src="images/violin%20plot%20kruski.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Violin plot
+</figcaption>
+</figure>
+</div>
+<div id="violinplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>violin plot</strong> in the Kruskal–Wallis test is a graphical representation used to compare the distribution of data across multiple groups. It combines features of a box plot and a density plot, showing both summary statistics and the shape of the data distribution. The width of the violin indicates the concentration of data points at different values, while the central part often displays the median and interquartile range. Since the Kruskal–Wallis test is a non-parametric method, violin plots are useful for visualizing differences in distribution, spread, and symmetry among groups without assuming normality.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')">
+<div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/bar%20plot%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Bar plot"><img src="images/bar%20plot%20kruski.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Bar plot
+</figcaption>
+</figure>
+</div>
+<div id="barplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>bar plot</strong> in the Kruskal–Wallis test is used to compare the values or summary statistics of different groups visually. Each bar represents a separate treatment or category, and the height of the bar indicates the magnitude of the group value, such as the mean or median. This plot helps in easily identifying differences among groups and understanding variations in the dataset. In the context of the Kruskal–Wallis test, the bar plot provides a simple visual comparison that supports the interpretation of non-parametric group differences.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')">
+<div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/mean%20value%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Mean Value Plot"><img src="images/mean%20value%20kruski.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Mean Value Plot
+</figcaption>
+</figure>
+</div>
+<div id="meanvalueplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>mean value plot</strong> in the Kruskal–Wallis test is a graphical representation used to compare the average values of different groups. Although the Kruskal–Wallis test mainly focuses on comparing group medians and ranks, the mean value plot helps visualize the overall trend and differences among treatments or categories. In this plot, the mean of each group is displayed as points or markers, often connected by lines for easier comparison. It helps identify which groups have relatively higher or lower values and provides a simple summary of group performance across the dataset.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')">
+<div style="text-align: center;">
+<div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/connected%20line%20plot%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Connected line plot"><img src="images/connected%20line%20plot%20kruski.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Connected line plot
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="connectedplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>connected line plot</strong> in the Kruskal–Wallis test is used to display and compare the trend of values across different groups or treatments. In this plot, data points or group summary values are connected using lines, making it easier to observe variations and patterns among groups. Although the Kruskal–Wallis test is based on ranked data and medians, the connected line plot provides a clear visual representation of how the values change from one group to another. It helps in identifying increasing or decreasing trends, consistency, and differences in the distribution of observations across treatments.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="AI" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="AI"><span class="header-section-number">10</span> AI interpretation</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is equipped with an AI-powered RAISINS Assistant designed to assist users in comprehending the outcomes of statistical tests and data analysis. This functionality provides clear and concise summaries of results, identifies statistically significant rank differences between groups, interprets effect sizes such as epsilon-squared, and offers informed suggestions for potential next steps or interpretations. The user can obtain detailed interpretations of the <strong>Kruskal-Wallis</strong> analysis by clicking on AI Interpretation on the Analysis tab, as shown in <a href="#fig-ai" class="quarto-xref">Figure&nbsp;14</a>.</p>
+</div>
+<div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/ai%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: AI powered RAISINS Assistant to interpret your results"><img src="images/ai%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: AI powered RAISINS Assistant to interpret your results
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="MUL" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="MUL"><span class="header-section-number">11</span> Multivariate</h2>
+<div style="text-align: justify;">
+<p>Multivariate analysis in the context of the <strong>Kruskal-Wallis Test</strong> helps you to examine multiple response variables simultaneously. Remember that PCA used for multivariate selection is an exploratory technique, not an inferential method. In our example of evaluating five soil amendment treatments <strong>Control, Vermicompost, Biochar, FYM</strong>, and <strong>NPK</strong> on tomato fruit quality, navigate to Multivariate as shown in <a href="#fig-mu" class="quarto-xref">Figure&nbsp;15</a>.</p>
+</div>
+<div id="fig-mu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/multi%20variate%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Multivariate tab in RAISINS"><img src="images/multi%20variate%20kruski.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Multivariate tab in RAISINS
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The table titled ‘Eigen Values PCA’ given in <strong>?@fig-PC</strong> provides information about the eigenvalues and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately [XX]% of the variance in the dataset, while PC2 accounts for about [XX]% of the variance. Together, PC1 and PC2 explain approximately [XX]% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.</p>
+</div>
+<div style="text-align: justify;">
+<p>The scree plot given in <a href="#fig-screeplot" class="quarto-xref">Figure&nbsp;16</a> illustrates the proportion of variance explained by each principal component.</p>
+</div>
+<div id="fig-screeplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/scree%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: Scree plot"><img src="images/scree%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Scree plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Look upon the loadings of each variable in <a href="#fig-loadings" class="quarto-xref">Figure&nbsp;17</a> and decide which PC-based index needs to be selected. In our example, Yield and Obs1 show strong positive loadings on PC1, while FW and Obs2 contribute more substantially to PC2. This suggests that PC1 primarily captures productivity-related variation, while PC2 reflects fruit physical characteristics. It is recommended to use variables that are highly correlated for PCA, as this helps in constructing a more reliable and meaningful index.</p>
+</div>
+<div id="fig-loadings" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/variable%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;17: Loadings of each variable"><img src="images/variable%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Loadings of each variable
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>The biplot gives a visual representation of the relationships among variables and treatment groups. Treatment groups with high values for a specific variable are positioned in the direction of that variable’s arrow. The angle between variables in the biplot indicates their correlation smaller angles suggest high positive correlation, while angles close to 90 degrees suggest weak or no correlation.</p>
+</div>
+<div id="fig-biplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/biplot%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;18: PCA Biplot"><img src="images/biplot%20kruski.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: PCA Biplot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>In <strong>RAISINS</strong>, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating treatment groups based on their index scores. To refine your selection, use the ‘Select cutoff for Scaled Index Score’ feature shown in <a href="#fig-indexscore" class="quarto-xref">Figure&nbsp;19</a>, where you can choose the cutoff percentage to select treatment groups above or below a certain threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of treatments as per your preference. Selected treatment groups are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is displayed to aid in your analysis.</p>
+</div>
+<div id="fig-indexscore" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/index%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;19: Index score"><img src="images/index%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indexscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: Index score
+</figcaption>
+</figure>
+</div>
+<div id="fig-index" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/index%202%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;20: Index plot"><img src="images/index%202%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-index-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: Index plot
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Combining all this information, the experimenter can arrive at an overall conclusion that is statistically sound and contextually relevant to their study identifying which soil amendment treatments are most effective across multiple fruit quality traits simultaneously.</p>
+</div>
+</section>
+<section id="PRE" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="PRE"><span class="header-section-number">12</span> Preparing your data</h2>
+<div style="text-align: justify;">
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
+<ol type="1">
+<li><p>Create your dataset in MS Excel</p></li>
+<li><p>Build your dataset directly within the RAISINS app</p></li>
+</ol>
+</div>
+</section>
+<section id="EX" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="EX"><span class="header-section-number">13</span> Preparing data in MS Excel</h2>
+<div style="text-align: justify;">
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the treatment or group to be compared you can name this column appropriately, such as “Group” or “Treatment.” All characters under study (e.g., Yield, Obs1, Obs2, FW) should be arranged in separate columns, and each group should be repeated according to the number of replications. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;21</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>, groups must appear repeatedly based on replications, and the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;22</a>.</p>
+</div>
+<div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/kruski%202.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;21: Model-1: showing how the prepared Excel file for upload should look like"><img src="images/kruski%202.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21: Model-1: showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/kruski%201-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;22: Model-2: Showing how the prepared Excel file for upload should look like"><img src="images/kruski%201-01.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22: Model-2: Showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<details>
+<summary>
+Dataset Creation Rules
+</summary>
+<p><small> 1. <strong>Column Naming Convention</strong> - No spaces allowed in column names.<br>
+- Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %,# etc 2. <strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
+- Ensure the row above the data is not blank. 3. <strong>Cell Management</strong> - Avoid typing or deleting in cells without data.<br>
+- If needed, select affected cells, right-click, and select <strong>Clear Contents</strong>. 4. <strong>Column Relevance</strong> - Name all columns meaningfully.<br>
+- Exclude unnecessary columns not required for analysis. </small></p>
+</details>
+<details>
+<summary>
+How to Save as CSV in MS Excel
+</summary>
+<p><small> 1. <strong>Open Your Workbook</strong></small></p><small>
+<pre><code>-   Ensure your data is arranged properly with only one sheet.</code></pre>
+<ol start="2" type="1">
+<li><p><strong>Click ‘File’ Menu</strong></p>
+<ul>
+<li>Go to the top-left corner and click on <strong>File</strong>.</li>
+</ul></li>
+<li><p><strong>Choose ‘Save As’ or ‘Save a Copy’</strong></p>
+<ul>
+<li>Select the location where you want to save your file.</li>
+</ul></li>
+<li><p><strong>Set File Type to CSV</strong></p>
+<ul>
+<li>In the <strong>‘Save as type’</strong> dropdown menu, choose <strong>CSV (Comma delimited) (*.csv)</strong>.</li>
+</ul></li>
+<li><p><strong>Name Your File</strong></p>
+<ul>
+<li>Enter a relevant file name without spaces (use underscores if needed).</li>
+</ul></li>
+<li><p><strong>Click ‘Save’</strong></p>
+<ul>
+<li>Click <strong>Save</strong> to export the file.</li>
+</ul></li>
+</ol>
+</small><blockquote class="blockquote"><small>
+</small><p><small>💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small></p>
+</blockquote>
+</details>
+</section>
+<section id="CR" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="CR"><span class="header-section-number">14</span> Creating dataset in RAISINS</h2>
+<div style="text-align: justify;">
+<p>If you’re unsure about the correct format for creating a dataset, don’t worry <strong>RAISINS</strong> offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
+<ul>
+<li><p>Navigate to the <strong>Create Data Tab</strong></p></li>
+<li><p>Select the number of <strong>Treatments</strong></p></li>
+<li><p>Select number of <strong>Replications</strong></p></li>
+<li><p>Select number of <strong>Characters</strong></p></li>
+<li><p>Click on <strong>Create</strong> button</p></li>
+</ul>
+<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;23</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the CSV file and upload it in <code>Analysis</code>.</p>
+</div>
+<div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/csvv%20kruskii-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;23: Creating dataset within RAISINS"><img src="images/csvv%20kruskii-02.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;23: Creating dataset within RAISINS
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="M" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="M"><span class="header-section-number">15</span> Model datasets</h2>
+<div style="text-align: justify;">
+<p>To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the <code>Datasets</code> tab.</p>
+</div>
+<div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/dataset%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;24: Model dataset"><img src="images/dataset%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24: Model dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="F" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="F"><span class="header-section-number">16</span> FAQ’s</h2>
+<div style="text-align: justify;">
+<p>The app includes a dedicated FAQs tab to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the FAQs tab is a great place to start.</p>
+</div>
+<div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/faq%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;25: FAQs"><img src="images/faq%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;25: FAQs
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="U" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="U"><span class="header-section-number">17</span> View data</h2>
+<div style="text-align: justify;">
+<p>View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For the <strong>Kruskal-Wallis Test</strong>, it is particularly important that the Treatment column contains categorical group labels and that all response variable columns contain numeric values with no missing entries, as rank computation requires a complete dataset.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/view%20data%20kruski.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="View data"><img src="images/view%20data%20kruski.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+</figure>
+</div>
+<figcaption>View data</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

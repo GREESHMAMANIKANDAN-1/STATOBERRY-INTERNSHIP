@@ -103,7 +103,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 ## Principal Component Analysis (PCA) {#C}
 
 ::: {style="text-align: justify;"}
-Principal Component Analysis (PCA) is a multivariate statistical technique designed to reduce the dimensionality of a dataset consisting of a large number of interrelated variables while retaining as much of the variation present in the dataset as possible. It achieves this by transforming the original correlated variables into a new set of uncorrelated variables called principal components (PCs), which are ordered so that the first few retain most of the variation present in all of the original variables. PCA is widely applied in agricultural research, plant breeding, ecology, genetics, and social sciences wherever there is a need to summarize multiple measurements recorded on the same set of observations. It is particularly valuable when variables are correlated, as correlation implies redundancy and PCA removes that redundancy by rotating the data to a new coordinate system. It is important to note that PCA is an exploratory technique and not an inferential method it reveals structure in the data but does not test hypotheses about population parameters.
+Principal Component Analysis (PCA) is a multivariate statistical technique designed to reduce the dimensionality of a dataset consisting of a large number of interrelated variables while retaining as much of the variation present in the dataset as possible. It achieves this by transforming the original correlated variables into a new set of uncorrelated variables called principal components (PCs), which are ordered so that the first few retain most of the variation present in all of the original variables. PCA is widely applied in agricultural research, plant breeding, ecology, genetics, and social sciences wherever there is a need to summarize multiple measurements recorded on the same set of observations. It is particularly valuable when variables are correlated, as correlation implies redundancy and PCA removes that redundancy by rotating the data to a new coordinate system. It is important to note that PCA is an exploratory technique and not an inferential method — it reveals structure in the data but does not test hypotheses about population parameters.
 :::
 
 ::: callout-tip
@@ -113,17 +113,17 @@ Principal Component Analysis (PCA) is a multivariate statistical technique desig
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we will explain PCA step by step using a hypothetical example, so you can clearly see how it works and why it matters.
-
-The image shows the basic structure of a dataset used for statistical analysis. Each row in the table represents a respondent or observation unit. In this example, the different states or locations act as respondents.Each column represents a variable or trait measured for every respondent. The variables shown are Murder, Assault, UrbanPop, and Rape. These values describe the characteristics recorded for each state.Such a row–column dataset format is commonly used in multivariate analyses like Principal Component Analysis (PCA), clustering, and correlation studies to study relationships among variables and observations.
-
-The arrangement of the data is shown in @fig-data.
+To make things simple and interesting, we will explain PCA step by step using a hypothetical example, so you can clearly see how it works and why it matters. Let us assume an experiment conducted to evaluate twenty rice genotypes across a set of agro-morphological and quality traits. The genotypes are named G1 through G20. Observations were recorded for five variables: **GY** (Grain Yield in g/plant), **PH** (Plant Height in cm), **DTF** (Days to Flowering), **TGW** (Thousand Grain Weight in g), and **CL** (Chalkiness percentage). Our aim is to use PCA to uncover the underlying structure of variation among these genotypes, identify traits that contribute most to differentiation, and derive a composite index score to rank genotypes. The arrangement of the data is shown in @fig-data.
 :::
 
-![Example dataset](images/analysis%202%20sample%20(8).png){#fig-data}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Example dataset — rice genotypes with five traits](www/PLACEHOLDER_ExampleDataset.webp){#fig-data fig-align="center"}
+
+![Example dataset — rice genotypes with five traits](images/analysis%202%20sample%20(8).png){fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Observations** and **Variables**.
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Observations** and **Variables**. In our example, the Observations refer to the twenty rice genotypes (G1–G20), and the Variables are the five traits measured — **GY, PH, DTF, TGW, and CL**.
 :::
 
 ## How to prepare your data? {#sec-4 .H}
@@ -145,7 +145,7 @@ Creating your dataset directly within the **RAISINS** app
 ## PCA analysis tab explained {#AO}
 
 ::: {style="text-align: justify;"}
-In @fig-5, you can see the detailed view of the PCA Analysis tab, along with explanations of what each option does. This section helps you understand the purpose of every setting, so you can select the most appropriate options for your data. Upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Observation** column and the **Variables** for PCA will appear. Select the column that contains your observation labels (e.g., genotype names) under the Observation field, and choose all relevant numeric trait columns under Variables. Once you click the Run Analysis button, all PCA results, plots, and derived outputs appear instantly.
+In @fig-5, you can see the detailed view of the PCA Analysis tab, along with explanations of what each option does. This section helps you understand the purpose of every setting, so you can select the most appropriate options for your data. Upload the prepared file by clicking `Browse` in the sidebar of the `Analysis` tab. When the file is uploaded, options to select the **Observation** column and the **Variables** for PCA will appear. Select the column that contains your observation labels (e.g., genotype names) under the Observation field, and choose all relevant numeric trait columns under Variables. Once you click the `Run Analysis` button, all PCA results, plots, and derived outputs appear instantly.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
@@ -159,7 +159,7 @@ It is strongly recommended to use variables that are meaningfully related and me
 ## Analyse Results {#sec-7 .AR}
 
 ::: {style="text-align: justify;"}
-Once your dataset is uploaded and Run Analysis is clicked, **RAISINS** will perform PCA and display a comprehensive set of outputs. The analysis begins with an **Eigenvalue Table**, which summarizes how much variance each principal component explains (see @fig-100). Eigenvalues represent the amount of variance associated with each principal component. Components with eigenvalues greater than 1.0 (the Kaiser criterion) are generally considered important for retention and further interpretation.
+Once your dataset is uploaded and `Run Analysis` is clicked, **RAISINS** will perform PCA and display a comprehensive set of outputs. The analysis begins with an **Eigenvalue Table**, which summarizes how much variance each principal component explains (see @fig-100). Eigenvalues represent the amount of variance associated with each principal component. Components with eigenvalues greater than 1.0 (the Kaiser criterion) are generally considered important for retention and further interpretation.
 :::
 
 **Table 1: Eigenvalues and Variance Explained**
@@ -200,25 +200,11 @@ Significance is indicated for the number of PCs recommended for retention based 
 In our hypothetical rice genotype example, PC1 accounts for approximately 42.5% of the total variance, while PC2 accounts for about 26.8% of the variance. Together, PC1 and PC2 explain approximately 69.3% of the total variance in the dataset. Both PC1 and PC2 have eigenvalues greater than 1 and are therefore retained for further analysis. Since PC1 alone explains more than 40% of the total variance, a PC1-based selection index is a strong and defensible choice. Since the combined cumulative variance exceeds 60%, an index based on both PC1 and PC2 is also appropriate. PC3 and beyond have progressively smaller eigenvalues and explain relatively minor proportions of variance, making them less informative for interpretation in this example.
 :::
 
-![PCA Biplot](images/pca%20biiiiiplooo.png){#fig-101 fig-align="center"}
-
-![PCA Biplot](images/pca%2022%20biplooo.png){fig-align="center"}
-
-![Correlation Circle](images/correlat%20circle%20pva.png){fig-align="center"}
-
-![3D PCA Scatter Plot](images/scatter%20pca.gif){fig-align="center"}
-
-![Correlation Plot of Variables vs PCs](images/correlat%20plot%20vs%20pca.png){fig-align="center"}
-
 **Table 2: Component Loadings (Variable Contributions to Each PC)**
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Loading of each variable on PCs](images/loading%20pca%201.png){fig-align="center"}
-
-![Percentage Contribution of Variables on PCs](images/perce%20pca.png){#fig-pca_group fig-align="center"}
-
-![Correlation Matrix of Variables vs PCs](images/matrix%20vs%20pca.png){fig-align="center"}
+![Component loadings for each variable across principal components](www/PLACEHOLDER_LoadingsTable.webp){#fig-101 fig-align="center"}
 
 <details>
 
@@ -246,49 +232,374 @@ In our hypothetical rice genotype example, PC1 accounts for approximately 42.5% 
 ### Interpretation from @fig-101
 
 ::: {style="text-align: justify;"}
-In our example, GY and TGW show strong positive loadings on PC1 (approximately +0.72 and +0.68 respectively), indicating that high-yielding genotypes with heavy grains score high on PC1. DTF and CL show negative loadings on PC1 (approximately −0.61 and −0.58), suggesting that late-flowering and chalky genotypes score lower on PC1 which is desirable for CL reduction. PH shows moderate positive loadings across both PC1 and PC2, indicating it contributes to variation captured by both components. Genotypes positioned in the positive direction of PC1 in the biplot therefore represent high-yielding, heavy-grained, early-flowering, and low-chalkiness accessions, making them the primary candidates for selection.
+In our example, GY and TGW show strong positive loadings on PC1 (approximately +0.72 and +0.68 respectively), indicating that high-yielding genotypes with heavy grains score high on PC1. DTF and CL show negative loadings on PC1 (approximately −0.61 and −0.58), suggesting that late-flowering and chalky genotypes score lower on PC1 — which is desirable for CL reduction. PH shows moderate positive loadings across both PC1 and PC2, indicating it contributes to variation captured by both components. Genotypes positioned in the positive direction of PC1 in the biplot therefore represent high-yielding, heavy-grained, early-flowering, and low-chalkiness accessions, making them the primary candidates for selection.
 :::
 
 ::: callout-tip
-#### The sign of a loading indicates direction if GY has a positive loading on PC1, genotypes with high PC1 scores are expected to have high grain yield. Selecting genotypes based on the loading signs helps translate PCA results into actionable breeding decisions.
+#### The sign of a loading indicates direction — if GY has a positive loading on PC1, genotypes with high PC1 scores are expected to have high grain yield. Selecting genotypes based on the loading signs helps translate PCA results into actionable breeding decisions.
 :::
 
 ::: {style="text-align: justify;"}
 Treatments sharing similar PC score patterns are positioned close together in the biplot, while those that are very different are placed far apart. The biplot thus provides a powerful visual summary of both similarity among observations and the contributions of variables to the principal components.
 :::
 
+## Multiple Comparison Tests {#sec-8 .MCT}
+
+::: {style="text-align: justify;"}
+PCA itself is not a hypothesis-testing procedure and does not generate p-values for comparing groups directly. However, **RAISINS** integrates PCA with subsequent analyses that do involve group comparisons. Once principal component scores are computed, users may proceed to HCPC (see @fig-hcpc) to identify clusters of similar observations, or return to ANOVA-based modules to compare group means on individual components. In the context of PCA-based selection indices, the ranking of genotypes by their scaled index score serves as the primary criterion for ordering and selecting superior entries. The **Critical Difference (CD)** and post-hoc grouping letters that appear in complementary ANOVA results help establish which genotype groups are statistically distinct on individual traits, providing inferential support for selections guided by PCA.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Relationship between PCA scores and ANOVA-based groupings](www/PLACEHOLDER_PCAGroupings.webp){#fig-pca_group fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> When to combine PCA with post-hoc tests </summary>
+```
+
+<small>
+
+PCA is exploratory — it summarizes multivariate data but does not tell you whether the differences among groups are statistically significant. For rigorous inference, complement PCA with:
+
+**MANOVA**: Tests whether groups differ significantly across all variables simultaneously. If MANOVA is significant, PCA helps visualize where and how the groups differ.
+
+**Individual ANOVA with post-hoc tests (LSD, Tukey's HSD, DMRT)**: Tests significance on each variable separately. LSD (Least Significant Difference) is the most liberal test, suitable when few comparisons are made. Tukey's HSD controls the family-wise error rate and is recommended for all pairwise comparisons. DMRT (Duncan's Multiple Range Test) is intermediate in stringency and widely used in agricultural research.
+
+The combination of PCA (structure discovery) and ANOVA post-hoc tests (significance testing) gives the most complete picture of multivariate treatment differences.
+
+</small>
+
+</details>
+
+## Summary Stats {#SUM}
+
+::: {style="text-align: justify;"}
+Before interpreting PCA results, it is essential to examine the descriptive statistics of each variable. In **RAISINS**, click on the `Summary Stats` tab within the PCA module to access a table that shows Mean, Standard Deviation (SD), Standard Error (SE), Minimum, Maximum, Coefficient of Variation (CV%), Skewness, and Kurtosis for each variable across all observations, as shown in @fig-102.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Summary statistics for all variables](www/PLACEHOLDER_SummaryStats.webp){#fig-102 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
+```
+
+<small>
+
+**Mean**: The arithmetic average of all observations for the variable. It provides a central reference point.
+
+**SD (Standard Deviation)**: A measure of dispersion around the mean. Higher SD indicates greater variability across genotypes or observations for that trait.
+
+**SE (Standard Error)**: Estimates how far the observed mean is likely to deviate from the true population mean. Calculated as $$SE = \frac{SD}{\sqrt{n}}$$, where n is the number of observations.
+
+**Min / Max**: The lowest and highest recorded values for the variable, providing the range of observed performance.
+
+**CV (Coefficient of Variation)**: Expresses the standard deviation as a percentage of the mean: $$CV = \frac{SD}{\text{Mean}} \times 100$$. A low CV indicates high consistency; a high CV suggests large variability, which may mean the variable has discriminating power useful for PCA.
+
+**Skewness**: Measures the asymmetry of the distribution. A value close to zero indicates symmetry. Positive values indicate a longer right tail (a few high-performing outliers); negative values indicate a longer left tail.
+
+**Kurtosis**: Measures the "tailedness" of the distribution relative to a normal distribution (kurtosis = 3). Values above 3 indicate a sharper peak with heavier tails; values below 3 indicate a flatter distribution.
+
+</small>
+
+</details>
+
+### Interpretations from @fig-102
+
+::: {style="text-align: justify;"}
+In our rice genotype example, GY shows a mean of 28.4 g/plant with a CV of 18.2%, indicating substantial variation among genotypes that is well-suited for PCA-based discrimination. TGW shows a mean of 22.1 g with a CV of 12.5%, while DTF has the lowest CV (8.3%), suggesting less variation in days to flowering across the set. CL exhibits moderate skewness (0.72), reflecting a few genotypes with notably high chalkiness values that may be driving separation in a specific component. PH shows near-symmetric distribution and moderate variability. These patterns confirm that the five variables capture distinct and complementary aspects of genotype performance, making the dataset appropriate for PCA.
+:::
+
+## Individual ANOVA {#IA}
+
+::: {style="text-align: justify;"}
+To examine the significance of variation for each individual variable before or alongside PCA, click on `Individual ANOVA` in the `Analysis` tab. This provides a separate ANOVA table for each variable, allowing you to determine which traits show statistically significant differences among genotypes or treatments, as shown in @fig-104.
+:::
+
+**Table 4: ANOVA table for Grain Yield (GY)**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Individual ANOVA table for Grain Yield](www/PLACEHOLDER_IndividualANOVA.webp){#fig-104 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
+```
+
+<small>
+
+**Critical Difference (CD)**
+
+The minimum difference required between any two treatment means to declare them significantly different. At the 5% level, you are 95% confident in the declared difference; at the 1% level, 99% confident.
+
+**Coefficient of Variation (CV (%))**
+
+A relative measure of experimental precision: $$CV = \frac{SD}{\text{Mean}} \times 100$$ A low CV (below 15% for field experiments) indicates that experimental error is small relative to the treatment means, lending credibility to the ANOVA findings.
+
+**Mean Square Error (MSE)**
+
+The residual mean square from the ANOVA table. It represents unexplained variance (noise) within groups and is used to compute SE and CD values.
+
+**Standard Error of Mean SE(m)**
+
+Measures how much a treatment mean is expected to vary from the true population mean: $$SE(m) = \sqrt{MSE / r}$$ where r is the number of replications or the number of observations per group.
+
+**Standard Error of Difference SE(d)**
+
+The standard error associated with the difference between two treatment means: $$SE(d) = \sqrt{2 \times MSE / r}$$ It is the direct basis for computing the CD value.
+
+</small>
+
+</details>
+
+### Interpretation from @fig-104
+
+::: {style="text-align: justify;"}
+The individual ANOVA for GY shows a genotype mean square of 182.4, considerably larger than the error mean square of 31.6, yielding an F-value of 5.77 significant at the 1% level (p \< 0.01). This confirms that grain yield varies significantly among the twenty rice genotypes, validating the use of GY as a discriminating variable in PCA. The CV of 9.8% is satisfactory for a field-based evaluation. The CD at the 5% level is 8.34 g/plant, and at the 1% level is 11.27 g/plant, values that can be used to identify pairs of genotypes with significantly different yields when complementing PCA results with direct pairwise comparisons.
+:::
+
+**Table 5: Summary statistics with grouping letters**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Summary statistics with post-hoc grouping letters](www/PLACEHOLDER_SummaryABC.webp){#fig-103 fig-align="center"}
+
+### Interpretation from @fig-103
+
+::: {style="text-align: justify;"}
+The table compares rice genotypes based on their mean GY values and statistical groupings. Genotype G7 recorded the highest mean grain yield (34.2 g/plant), followed by G3 and G15, while G19 showed the lowest mean (19.8 g/plant). Genotypes sharing a common letter grouping (e.g., "ab", "bc") are not significantly different from each other at the 5% level of significance, whereas those with entirely different letters differ significantly. This tabular view complements the PCA biplot by confirming which apparent differences among genotypes are statistically substantiated.
+:::
+
+## Basic Plots {#BP}
+
+::: {style="text-align: justify;"}
+**RAISINS** provides a suite of standard plots to visualize variable distributions and genotype performance profiles. Once `Run Analysis` is clicked, navigate to the `Basic Plots` tab to access them (see @fig-8). Each plot includes a gear icon at the top-left corner for customization of colors, labels, and fonts. Plots can be downloaded in high-quality PNG (300 dpi), JPEG, TIFF, PDF, and SVG formats for use in reports and publications.
+:::
+
+### Customizing plots
+
+::: {style="text-align: justify;"}
+Click the gear icon on any plot to access the customization panel, as shown in @fig-custom. You can modify axis labels, title text, color palettes, point size, and font size to match your publication requirements.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Plot customization panel](www/PLACEHOLDER_CustomizePlots.webp){#fig-custom fig-align="center"}
+
+```{=html}
+<style>
+.plot-container {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+.plot-description {
+  display: none;
+  background-color: rgba(248, 249, 250, 0.97);
+  border-left: 4px solid #5DADE2;
+  padding: 10px 14px;
+  margin-top: 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+</style>
+<script>
+function showDescription(id) {
+  document.getElementById(id).style.display = 'block';
+}
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+```
+
+:::::::::::::::::::::::: grid
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Box plot](www/PLACEHOLDER_BoxPlot.webp){#fig-9 fig-align="center"}
+
+:::: {#boxplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **box plot** compares the distribution of each variable across all observations. Each colored box represents a variable and shows key statistics: the median (middle line), interquartile range (the box), minimum and maximum (whiskers), and outliers (individual points). This plot is useful for identifying variables with wide spread (high discriminating potential) versus those with narrow ranges (low variation, less suitable for PCA).
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Violin plot](www/PLACEHOLDER_ViolinPlot.webp){#fig-10 fig-align="center"}
+
+:::: {#violinplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **violin plot** combines a density plot and box plot to show the full distribution of each variable. Wider sections of the violin indicate where values are most concentrated. Variables with multi-modal distributions may reflect natural groupings among observations — a pattern that PCA will reveal as distinct clusters in score space.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Bar plot](www/PLACEHOLDER_BarPlot.webp){#fig-11 fig-align="center"}
+
+:::: {#barplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **bar plot** displays the mean value of each variable (or of each observation for a selected variable) with error bars representing variability. It provides a straightforward visual summary of average performance, allowing quick identification of variables with the greatest overall mean differences across genotypes or treatments.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('meanvalueplot-desc')" onmouseout="hideDescription('meanvalueplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Mean Value Plot](www/PLACEHOLDER_MeanValuePlot.webp){#fig-12 fig-align="center"}
+
+:::: {#meanvalueplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **mean value plot** displays observation means (e.g., genotype means) for a selected variable as colored dots with horizontal error bars. Observations are listed vertically, allowing comparison of performance across the full set. This plot complements PCA by confirming the ranking of individual observations on specific traits.
+:::
+::::
+:::::
+::::::
+
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('connectedplot-desc')" onmouseout="hideDescription('connectedplot-desc')"}
+::: {style="text-align: center;"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Connected line plot](www/PLACEHOLDER_ConnectedPlot.webp){#fig-13 fig-align="center"}
+:::
+
+:::: {#connectedplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **connected line plot** links mean values of successive observations with lines, highlighting trends and ranking patterns across genotypes or treatments. It is particularly useful for visualizing how a set of observations ranks on a specific trait and for spotting unusual performers at either extreme — observations that may represent outlier genotypes or data entry errors.
+:::
+::::
+::::::
+:::::::
+::::::::::::::::::::::::
+
+## Advanced Plots {#AP}
+
+::: {style="text-align: justify;"}
+**RAISINS** also provides `Advanced Plots` which go beyond basic charts to offer deeper insight into data distributions, multivariate relationships, and deviations from normality (see @fig-90). These plots are particularly valuable in the context of PCA, where understanding the structure of the raw data helps interpret the principal components more accurately.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Advanced plots tab](www/PLACEHOLDER_AdvancedPlotsTab.webp){#fig-90 fig-align="center"}
+
+**SUMMARY PLOT**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Summary plot](www/PLACEHOLDER_SummaryPlot.webp){#fig-14 fig-align="center"}
+
+::: {style="text-align: justify;"}
+A summary plot is a visual representation that shows how data values are distributed across all variables simultaneously. It helps quickly identify which variables exhibit the widest spread, which are most symmetric, and which may contain extreme values — information that directly affects how PCA distributes variance across components.
+:::
+
+**ADVANCED RAINCLOUD PLOT**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Advanced raincloud plot](www/PLACEHOLDER_AdvancedRaincloud.webp){#fig-15 fig-align="center"}
+
+::: {style="text-align: justify;"}
+The advanced raincloud plot combines a density curve (the cloud), a boxplot, and individual observation points (the rain) to present the complete distributional picture for a selected variable. It reveals whether the data is unimodal or multimodal, whether outliers are present, and how compact the central mass of observations is — all of which influence PCA output.
+:::
+
+**QQ PLOT**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![QQ plot](www/PLACEHOLDER_QQPlot.webp){#fig-16 fig-align="center"}
+
+::: {style="text-align: justify;"}
+The Q-Q (quantile–quantile) plot assesses whether a variable follows a normal distribution by plotting observed quantiles against theoretical quantiles from a standard normal distribution. Points lying close to the diagonal reference line indicate approximate normality. PCA assumes multivariate normality for inferential extensions such as MANOVA; the QQ plot helps verify this assumption for each variable.
+:::
+
+**RAIN CLOUD PLOT**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Rain cloud plot](www/PLACEHOLDER_RaincloudPlot.webp){#fig-17 fig-align="center"}
+
+::: {style="text-align: justify;"}
+The raincloud plot shows the distribution of a selected variable across all observations. The half-violin (cloud) represents the data density, the embedded boxplot summarizes the median and interquartile range, and the jittered dots (rain) display individual observations. This plot is useful for confirming that a variable has sufficient variance to contribute meaningfully to a principal component.
+:::
+
+**DISTRIBUTION PLOT**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Distribution plot](www/PLACEHOLDER_DistributionPlot.webp){#fig-18 fig-align="center"}
+
+::: {style="text-align: justify;"}
+The distribution plot shows how the observed values are spread for each variable in the dataset. It provides a visual comparison of the pattern, spread, and variability of measurements, helping to understand which variables carry the most discriminating information — an important consideration before interpreting PCA loadings.
+:::
+
+## Analyse Result {#RES}
+
+::: {style="text-align: justify;"}
+The `Analyse Result` tab in **RAISINS** provides the primary numerical outputs of PCA, including the eigenvalue table, variance explained, and component loadings for all variables. This is the central output panel from which all further interpretation begins (see @fig-res). After clicking `Run Analysis`, this tab is automatically populated. Users can examine how many principal components to retain, which variables drive each component, and how much of the total variability in the data is accounted for by the retained components.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Analyse Result tab showing PCA numerical outputs](www/PLACEHOLDER_AnalyseResult.webp){#fig-res fig-align="center"}
+
+::: {style="text-align: justify;"}
+A scree plot is automatically generated alongside the eigenvalue table. The scree plot shows eigenvalues plotted against the component number — a sharp "elbow" in the curve indicates the point beyond which additional components contribute diminishing returns. Retaining components to the left of the elbow is a common rule of thumb that complements the Kaiser criterion (eigenvalue \> 1). Together, these two criteria guide the selection of the optimal number of components for interpretation and index construction.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Scree plot from the Analyse Result tab](www/PLACEHOLDER_ScreePlot_Result.webp){#fig-scree_res fig-align="center"}
+
 ## Index {#IDX}
 
 ::: {style="text-align: justify;"}
-The Index tab in **RAISINS** provides a powerful tool for translating PCA results into a practical ranking of observations (see @fig-index_tab). A **PCA-based selection index** is constructed by combining the scores of the retained principal components weighted by their respective eigenvalues (proportion of variance explained). This composite index summarizes the overall multivariate performance of each genotype or treatment into a single numerical score, enabling straightforward ranking and selection.
+The `Index` tab in **RAISINS** provides a powerful tool for translating PCA results into a practical ranking of observations (see @fig-index_tab). A **PCA-based selection index** is constructed by combining the scores of the retained principal components weighted by their respective eigenvalues (proportion of variance explained). This composite index summarizes the overall multivariate performance of each genotype or treatment into a single numerical score, enabling straightforward ranking and selection.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Index Tab](images/index%20tab.png){#fig-index_tab fig-align="center"}
-
-![PCA Based Index](images/pca%201.png){#@fig-indexscore_tab. fig-align="center"}
+![Index tab showing PCA-based index scores](www/PLACEHOLDER_IndexTab.webp){#fig-index_tab fig-align="center"}
 
 ::: {style="text-align: justify;"}
-In **RAISINS**, the index score is further converted to a **Scaled Index Score** ranging from 0 to 1, making it easier to interpret and compare across datasets and experiments. This standardization ensures that the index is dimensionless and robust to differences in unit of measurement across variables. To refine selection, use the Select cut off score for Scaled index score. feature as shown in @fig-indexscore_tab. You can specify the cutoff percentage (default is 75%) to identify observations above or below a threshold. By toggling the up-arrow and down-arrow buttons, you can choose the top or bottom percentile of observations based on your breeding or selection objective. Observations meeting the criterion are highlighted in yellow in the ranking table below.
+In **RAISINS**, the index score is further converted to a **Scaled Index Score** ranging from 0 to 1, making it easier to interpret and compare across datasets and experiments. This standardization ensures that the index is dimensionless and robust to differences in unit of measurement across variables. To refine selection, use the `Select cutoff for Scaled Index Score` feature as shown in @fig-indexscore_tab. You can specify the cutoff percentage (default is 75%) to identify observations above or below a threshold. By toggling the up-arrow and down-arrow buttons, you can choose the top or bottom percentile of observations based on your breeding or selection objective. Observations meeting the criterion are highlighted in yellow in the ranking table below.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Index Plot Based on PC1](images/pca%20po1.png){#fig-indexscore_tab fig-align="center"}
+![Scaled Index Score selection with cutoff control](www/PLACEHOLDER_IndexScoreCutoff.webp){#fig-indexscore_tab fig-align="center"}
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Index Score 2](images/pca%202.png){#fig-indexplot_tab fig-align="center"}
-
-![Index plot Based on PC2](images/pca%20po%202.png){fig-align="center"}
+![Index score plot for ranked genotypes](www/PLACEHOLDER_IndexPlot.webp){#fig-indexplot_tab fig-align="center"}
 
 ::: {style="text-align: justify;"}
-In our rice genotype example, the scaled index based on PC1 and PC2 (cumulative variance 69.3%) ranks G7 at the top (scaled index = 0.91), followed by G3 (0.87) and G15 (0.84). These genotypes exhibit superior combinations of high GY, high TGW, early flowering, and low chalkiness traits that loaded positively on the dominant components. Applying a 75% cutoff identifies the top five genotypes as elite candidates for further evaluation or advancement in the breeding pipeline.
+In our rice genotype example, the scaled index based on PC1 and PC2 (cumulative variance 69.3%) ranks G7 at the top (scaled index = 0.91), followed by G3 (0.87) and G15 (0.84). These genotypes exhibit superior combinations of high GY, high TGW, early flowering, and low chalkiness — traits that loaded positively on the dominant components. Applying a 75% cutoff identifies the top five genotypes as elite candidates for further evaluation or advancement in the breeding pipeline.
 :::
 
 ::: callout-tip
-#### The direction of the index score depends on how variables are loaded. Always check the loadings table before interpreting index scores if an undesirable trait (e.g., chalkiness) has a positive loading on PC1, high PC1 scores may not always indicate superior performance for that trait.
+#### The direction of the index score depends on how variables are loaded. Always check the loadings table before interpreting index scores — if an undesirable trait (e.g., chalkiness) has a positive loading on PC1, high PC1 scores may not always indicate superior performance for that trait.
 :::
 
 ## HCPC — Hierarchical Clustering on Principal Components {#HCPC}
@@ -299,34 +610,26 @@ In our rice genotype example, the scaled index based on PC1 and PC2 (cumulative 
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![HCPC Dendrogram](images/hcpc%20dendrogram.png){#fig-hcpc fig-align="center"}
-
-![Factor Map](images/factor%20map.png){fig-align="center"}
+![HCPC tab — hierarchical clustering on principal components](www/PLACEHOLDER_HCPCTab.webp){#fig-hcpc fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The clustering proceeds in two steps. First, PCA is performed to obtain component scores for each observation. Second, Ward's hierarchical clustering algorithm is applied to the PC scores (typically the retained components) to group observations into clusters that are as internally similar and as externally different from one another as possible. The number of clusters is determined by examining the dendrogram (tree diagram) produced during hierarchical clustering a horizontal cut at the appropriate height divides observations into the chosen number of clusters. **RAISINS** automatically suggests an optimal number of clusters based on the within-cluster inertia curve and Calinski-Harabasz index, though users may adjust the number of clusters manually.
+The clustering proceeds in two steps. First, PCA is performed to obtain component scores for each observation. Second, Ward's hierarchical clustering algorithm is applied to the PC scores (typically the retained components) to group observations into clusters that are as internally similar and as externally different from one another as possible. The number of clusters is determined by examining the dendrogram (tree diagram) produced during hierarchical clustering — a horizontal cut at the appropriate height divides observations into the chosen number of clusters. **RAISINS** automatically suggests an optimal number of clusters based on the within-cluster inertia curve and Calinski-Harabasz index, though users may adjust the number of clusters manually.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![3D HCPC Plot](images/3d%20hcpc%20poo.png){#fig-dendrogram fig-align="center"}
-
-![Top Variable Per Cluster](images/top%20vaiablessloo.png){fig-align="center"}
+![Dendrogram from HCPC analysis showing cluster structure](www/PLACEHOLDER_HCPCDendrogram.webp){#fig-dendrogram fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The cluster map produced by HCPC (see @fig-clustermap) overlays the identified clusters on the PCA biplot, color-coding each observation by its cluster membership. This visualization reveals which observations are most similar across all measured variables simultaneously and helps identify "diversity groups" in a genotype panel a critical step in designing crosses or selecting contrasting parents in plant breeding. Cluster membership is also reported in tabular form so that each genotype can be assigned to its group.
+The cluster map produced by HCPC (see @fig-clustermap) overlays the identified clusters on the PCA biplot, color-coding each observation by its cluster membership. This visualization reveals which observations are most similar across all measured variables simultaneously and helps identify "diversity groups" in a genotype panel — a critical step in designing crosses or selecting contrasting parents in plant breeding. Cluster membership is also reported in tabular form so that each genotype can be assigned to its group.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Chord Diagram](images/chor%20digam.png){#fig-clustermap fig-align="center"}
-
-![Chord Diagram-Cluster Means](images/chord%20clutser.png){fig-align="center"}
-
-![Cluster Means & Cluster Quality Indicator](images/cluster%20indicztiss.png){fig-align="center"}
+![HCPC cluster map overlaid on PCA biplot](www/PLACEHOLDER_HCPCClusterMap.webp){#fig-clustermap fig-align="center"}
 
 ::: {style="text-align: justify;"}
-In our rice example, HCPC identifies three distinct clusters. Cluster 1 (n = 7 genotypes) is characterized by high GY and TGW and low CL the most desirable cluster. Cluster 2 (n = 8 genotypes) contains intermediate performers with moderate values across all traits. Cluster 3 (n = 5 genotypes) includes late-flowering genotypes with high PH and high CL, representing the least desirable combination for most breeding objectives. This three-cluster solution is supported by the within-cluster inertia curve and aligns with the visual separation observed in the biplot.
+In our rice example, HCPC identifies three distinct clusters. Cluster 1 (n = 7 genotypes) is characterized by high GY and TGW and low CL — the most desirable cluster. Cluster 2 (n = 8 genotypes) contains intermediate performers with moderate values across all traits. Cluster 3 (n = 5 genotypes) includes late-flowering genotypes with high PH and high CL, representing the least desirable combination for most breeding objectives. This three-cluster solution is supported by the within-cluster inertia curve and aligns with the visual separation observed in the biplot.
 :::
 
 <details>
@@ -343,7 +646,7 @@ In our rice example, HCPC identifies three distinct clusters. Cluster 1 (n = 7 g
 
 **Cluster Description Table**: A table produced by RAISINS showing the mean value of each variable within each cluster and comparing it to the overall mean. Variables with large positive or negative deviations from the overall mean are the "characterizing variables" for that cluster.
 
-**Inertia Curve**: A plot of within-cluster inertia against the number of clusters. A distinct bend (elbow) in the curve indicates the optimal number of clusters adding more clusters beyond the elbow produces diminishing improvements in within-cluster homogeneity.
+**Inertia Curve**: A plot of within-cluster inertia against the number of clusters. A distinct bend (elbow) in the curve indicates the optimal number of clusters — adding more clusters beyond the elbow produces diminishing improvements in within-cluster homogeneity.
 
 </small>
 
@@ -352,18 +655,20 @@ In our rice example, HCPC identifies three distinct clusters. Cluster 1 (n = 7 g
 ## Correlation Analysis {#COR}
 
 ::: {style="text-align: justify;"}
-The Correlation analysis tab in **RAISINS** computes and displays pairwise Pearson correlation coefficients among all selected variables (see @fig-corr). Understanding the correlation structure of the data is a crucial prerequisite for PCA, since PCA is most effective when variables are moderately to strongly correlated correlation implies redundancy, and PCA transforms correlated variables into uncorrelated components to remove this redundancy.
+The `Correlation Analysis` tab in **RAISINS** computes and displays pairwise Pearson correlation coefficients among all selected variables (see @fig-corr). Understanding the correlation structure of the data is a crucial prerequisite for PCA, since PCA is most effective when variables are moderately to strongly correlated — correlation implies redundancy, and PCA transforms correlated variables into uncorrelated components to remove this redundancy.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Correlation Matrix of Variables and Correlation plot](images/correlation%20analysss.png){#fig-corr fig-align="center"}
+![Correlation Analysis tab — correlation matrix and heatmap](www/PLACEHOLDER_CorrelationTab.webp){#fig-corr fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The correlation matrix displays the Pearson r value for each pair of variables, along with significance indicators. Significance is indicated by an asterisk (\*) for the 5% level and two asterisks (\*\*) for the 1% level. A **correlation heatmap** is also displayed, in which cells are color-coded from deep blue (strong negative correlation, r close to −1) through white (no correlation, r ≈ 0) to deep red (strong positive correlation, r close to +1). This heatmap allows rapid visual identification of variable clusters groups of variables that are highly intercorrelated and therefore likely to load together on the same principal component.
+The correlation matrix displays the Pearson r value for each pair of variables, along with significance indicators. Significance is indicated by an asterisk (\*) for the 5% level and two asterisks (\*\*) for the 1% level. A **correlation heatmap** is also displayed, in which cells are color-coded from deep blue (strong negative correlation, r close to −1) through white (no correlation, r ≈ 0) to deep red (strong positive correlation, r close to +1). This heatmap allows rapid visual identification of variable clusters — groups of variables that are highly intercorrelated and therefore likely to load together on the same principal component.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
+
+![Correlation heatmap with significance annotations](www/PLACEHOLDER_CorrelationHeatmap.webp){#fig-heatmap fig-align="center"}
 
 <details>
 
@@ -383,7 +688,7 @@ The correlation matrix displays the Pearson r value for each pair of variables, 
 
 — If variables form two or more groups of correlated variables, PC1 and PC2 will reflect these two clusters, with loadings from each cluster dominating each component.
 
-— If variables are uncorrelated with each other, PCA will not provide much compression each component will explain roughly the same proportion of variance, and the data may not be suitable for PCA.
+— If variables are uncorrelated with each other, PCA will not provide much compression — each component will explain roughly the same proportion of variance, and the data may not be suitable for PCA.
 
 **Bartlett's Test of Sphericity** (shown in the correlation output): Tests the null hypothesis that the correlation matrix is an identity matrix (i.e., all variables are uncorrelated). A significant result (p \< 0.05) confirms that the correlation matrix is not an identity matrix and that PCA is appropriate for the data.
 
@@ -396,29 +701,95 @@ The correlation matrix displays the Pearson r value for each pair of variables, 
 ### Interpretation from @fig-corr
 
 ::: {style="text-align: justify;"}
-In our rice genotype dataset, GY and TGW show a strong positive correlation (r = 0.74, p \< 0.01), indicating that high-yielding genotypes tend to also produce heavier grains. DTF shows a moderate negative correlation with GY (r = −0.52, p \< 0.05), suggesting that later-flowering genotypes tend to yield less under these conditions. CL is positively correlated with DTF (r = 0.61, p \< 0.01), reflecting the known association between late maturity and grain chalkiness. PH shows weak to moderate correlations with most traits. Bartlett's Test of Sphericity is significant (p \< 0.001) and the KMO value is 0.72, confirming that the correlation structure is suitable for PCA. The heatmap reveals two variable clusters: one comprising GY and TGW (positively associated), and another comprising DTF and CL (positively associated) consistent with the loading patterns observed in PC1 and PC2.
+In our rice genotype dataset, GY and TGW show a strong positive correlation (r = 0.74, p \< 0.01), indicating that high-yielding genotypes tend to also produce heavier grains. DTF shows a moderate negative correlation with GY (r = −0.52, p \< 0.05), suggesting that later-flowering genotypes tend to yield less under these conditions. CL is positively correlated with DTF (r = 0.61, p \< 0.01), reflecting the known association between late maturity and grain chalkiness. PH shows weak to moderate correlations with most traits. Bartlett's Test of Sphericity is significant (p \< 0.001) and the KMO value is 0.72, confirming that the correlation structure is suitable for PCA. The heatmap reveals two variable clusters: one comprising GY and TGW (positively associated), and another comprising DTF and CL (positively associated) — consistent with the loading patterns observed in PC1 and PC2.
 :::
 
 ::: callout-tip
-#### A strong significant correlation between two variables does not mean one causes the other it means they share common underlying variation. PCA exploits this shared variation to construct interpretable components. Always interpret correlation patterns in the context of your subject-matter knowledge.
+#### A strong significant correlation between two variables does not mean one causes the other — it means they share common underlying variation. PCA exploits this shared variation to construct interpretable components. Always interpret correlation patterns in the context of your subject-matter knowledge.
 :::
 
 ## AI Interpretation {#AI}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is equipped with an AI-powered RAISINS Assistant designed to help users understand the outcomes of PCA and associated analyses. This functionality provides clear and concise summaries of the eigenvalue table, identifies which variables are most important for each principal component, interprets the biplot, describes the cluster structure revealed by HCPC, and offers informed suggestions for next steps in selection or further analysis. The user can access detailed interpretations by clicking on AI Interpretation in the Analysis tab as shown in @fig-ai.
+**RAISINS** is equipped with an AI-powered RAISINS Assistant designed to help users understand the outcomes of PCA and associated analyses. This functionality provides clear and concise summaries of the eigenvalue table, identifies which variables are most important for each principal component, interprets the biplot, describes the cluster structure revealed by HCPC, and offers informed suggestions for next steps in selection or further analysis. The user can access detailed interpretations by clicking on `AI Interpretation` in the `Analysis` tab as shown in @fig-ai.
 :::
 
-![AI powered RAISINS Assistant to interpret your results](images/ai%20intre.png){#fig-ai fig-align="center"}
+![AI powered RAISINS Assistant to interpret your results](www/ai.webp){#fig-ai fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The AI assistant summarizes the number of components retained, the cumulative variance explained, the key variables driving each component, and the practical implications for genotype or treatment selection. It also flags any unusual features in the data such as variables with very low communality, unexpected loading signs, or observations that appear as outliers in the biplot and suggests whether transformations or variable re-selection might improve the analysis.
+The AI assistant summarizes the number of components retained, the cumulative variance explained, the key variables driving each component, and the practical implications for genotype or treatment selection. It also flags any unusual features in the data — such as variables with very low communality, unexpected loading signs, or observations that appear as outliers in the biplot — and suggests whether transformations or variable re-selection might improve the analysis.
+:::
+
+## Multivariate {#MUL}
+
+::: {style="text-align: justify;"}
+For users coming to the PCA module from an experimental design context (e.g., after a CRD or RBD analysis), the `Multivariate` tab in **RAISINS** provides an integrated MANOVA and PCA workflow. MANOVA tests whether treatment groups differ significantly across all measured variables simultaneously, and PCA then visualizes how and where those differences occur. In the context of our rice genotype evaluation, navigate to `Multivariate` as shown in @fig-mu to run this combined analysis.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Multivariate tab in RAISINS](www/PLACEHOLDER_MultivariateTab.webp){#fig-mu fig-align="center"}
+
+::: {style="text-align: justify;"}
+MANOVA and PCA will be automatically carried out based on the selected variables. The MANOVA table with automated interpretation appears first. PCA results and plots appear below, including the scree plot, loadings table, biplot, and index scores.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![MANOVA results table](www/PLACEHOLDER_MANOVAResults.webp){#fig-MAN2 fig-align="center"}
+
+::: {style="text-align: justify;"}
+The table titled 'Eigen Values PCA' given in @fig-PC provides information about the eigenvalues and the percentage of variance explained by each principal component. The principal components PC1 and PC2 have eigenvalues greater than one and are considered important for further analysis. PC1 accounts for approximately 42.5% of the variance in the dataset, while PC2 accounts for about 26.8% of the variance. Together, PC1 and PC2 explain approximately 69.3% of the total variance (termed as cumulative variance). Since PC1 explains more than 40% of the variance, a PC1-based index score is a strong consideration. Additionally, since both PCs explain more than 60% of the variance in the data, an index score based on both PCs is also appropriate. The scree plot below illustrates the proportion of variance explained by each principal component.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![PCA-based Index Score — Eigen Values Table](www/PLACEHOLDER_PCAIndex.webp){#fig-PC fig-align="center"}
+
+::: {style="text-align: justify;"}
+The scree plot given in @fig-screeplot illustrates the proportion of variance explained by each principal component.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Scree plot](www/PLACEHOLDER_ScreePlot.webp){#fig-screeplot fig-align="center"}
+
+::: {style="text-align: justify;"}
+Look upon the loadings of each variable in @fig-loadings and decide which PC-based index needs to be selected. In our rice example, you can see that GY and TGW have positive loadings on PC1. If you are seeking genotypes with high grain yield and grain weight, consider genotypes with a high index score based on PC1. Conversely, DTF and CL have negative loadings on PC1 — genotypes with low PC1 scores are less desirable for these variables in terms of yield optimization, but may be relevant if long duration or high chalkiness is the study objective. For PC2, PH has a strong positive loading. If plant height is your focus, the PC2-based index would be more relevant. It is recommended to use variables that are meaningfully correlated for PCA, as this helps construct a more reliable and interpretable index.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Loadings of each variable on principal components](www/PLACEHOLDER_Loadings.webp){#fig-loadings fig-align="center"}
+
+::: {style="text-align: justify;"}
+The biplot gives a visual representation of the relationships among variables and genotypes. Genotypes with high values for a specific variable are positioned in the direction of that variable's arrow. The angle between variable arrows in the biplot indicates their correlation — smaller angles suggest high positive correlation, while angles close to 90 degrees suggest weak or no correlation, and angles close to 180 degrees suggest negative correlation.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![PCA Biplot — variables and observations](www/PLACEHOLDER_Biplot.webp){#fig-biplot fig-align="center"}
+
+::: {style="text-align: justify;"}
+In **RAISINS**, we calculate a scaled index score by converting the index score to a range of 0 to 1, making it easier to interpret and compare. This standardized approach ensures consistency in evaluating observations based on their index scores. To refine your selection, use the `Select cutoff for Scaled Index Score` feature shown in @fig-indexscore, where you can choose the cutoff percentage to select observations above or below a threshold. The default cutoff is set at 75%. By toggling the up-arrow and down-arrow buttons below the cutoff selection, you can select the top or bottom percentage of observations as per your preference. Selected observations are highlighted in yellow in the table below, providing a clear visual cue. Additionally, a plot based on the index scores is displayed to aid in your analysis.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Scaled index score table with cutoff selection](www/PLACEHOLDER_IndexScore.webp){#fig-indexscore fig-align="center"}
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Index score plot for all observations](www/PLACEHOLDER_IndexPlot_MUL.webp){#fig-index fig-align="center"}
+
+::: {style="text-align: justify;"}
+Combining all this information — MANOVA significance, PC eigenvalues, loadings, biplot patterns, HCPC cluster membership, correlation structure, and scaled index scores — the researcher can arrive at an overall conclusion that is statistically sound and contextually relevant to their study. Superior genotypes identified through PCA-based indices can be validated against individual ANOVA results and post-hoc groupings to ensure that their superiority is not confined to one or two traits but reflects genuine multivariate excellence.
 :::
 
 ## Preparing your data {#PRE}
 
 ::: {style="text-align: justify;"}
-"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won't be trustworthy."
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights — feed it messy data, and the results won't be trustworthy."
 
 1.  Create your dataset in MS Excel
 
@@ -428,12 +799,12 @@ The AI assistant summarizes the number of components retained, the cumulative va
 ## Preparing data in MS Excel {#EX}
 
 ::: {style="text-align: justify;"}
-Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the observation labels (e.g., genotype names, variety names, sample identifiers) you can name this column appropriately, such as "Genotype" or "Treatment." All variables under study (e.g., GY, PH, DTF, TGW, CL) should be arranged in separate columns, with one row per observation. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or observation labels. For reference, see the structure shown in @fig-pp. The data should be arranged as illustrated in @fig-data and @fig-kk.
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the observation labels (e.g., genotype names, variety names, sample identifiers) — you can name this column appropriately, such as "Genotype" or "Treatment." All variables under study (e.g., GY, PH, DTF, TGW, CL) should be arranged in separate columns, with one row per observation. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or observation labels. For reference, see the structure shown in @fig-pp. The data should be arranged as illustrated in @fig-data and @fig-kk.
 :::
 
-![Model-1: showing how the prepared Excel file for upload should look like](images/mod%201.png){#fig-pp}
+![Model-1: showing how the prepared Excel file for upload should look like](www/P1.webp){#fig-pp}
 
-![Model-2: showing how the prepared Excel file for upload should look like](images/mod%202.png){#fig-kk}
+![Model-2: showing how the prepared Excel file for upload should look like](www/P2.webp){#fig-kk}
 
 <details>
 
@@ -485,7 +856,7 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ## Creating dataset in RAISINS {#CR}
 
 ::: {style="text-align: justify;"}
-If you are unsure about the correct format for creating a dataset, don't worry RAISINS offers an option to create data directly within the app using a prescribed template. Here's how:
+If you are unsure about the correct format for creating a dataset, don't worry — RAISINS offers an option to create data directly within the app using a prescribed template. Here's how:
 
 - Navigate to the **Create Data Tab**
 
@@ -495,33 +866,33 @@ If you are unsure about the correct format for creating a dataset, don't worry R
 
 - Click on the **Create** button
 
-A model layout will appear as shown in @fig-createdata. You may enter the observations manually into the CSV file once downloaded, or paste the values directly into the provided template. Once observations are entered, download the CSV file and upload it in Analysis.
+A model layout will appear as shown in @fig-createdata. You may enter the observations manually into the CSV file once downloaded, or paste the values directly into the provided template. Once observations are entered, download the CSV file and upload it in `Analysis`.
 :::
 
-![Illustrating how to create a dataset](images/analysis%202%20sample%20(9)-01.png){fig-align="center"}
+![Creating dataset within RAISINS](www/CREATEDAT.webp){#fig-createdata width="1011"}
 
 ## Model datasets {#M}
 
 ::: {style="text-align: justify;"}
-To test the app or better understand the required data arrangement, **RAISINS** provides model datasets within the app. You can download them from the Datasets tab.
+To test the app or better understand the required data arrangement, **RAISINS** provides model datasets within the app. You can download them from the `Datasets` tab.
 :::
 
-![Model dataset](images/model%20pca.png){#fig-188 fig-align="center"}
+![Model dataset](www/modeldata.webp){#fig-188 fig-align="center"}
 
 ## FAQ's {#F}
 
 ::: {style="text-align: justify;"}
-The app includes a dedicated FAQs tab to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you are ever unsure about how something works for instance, why a variable has a near-zero loading, or how to choose between PC1-based and PC1+PC2-based index scores the FAQs is a great place to start.
+The app includes a dedicated `FAQs` tab to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you are ever unsure about how something works — for instance, why a variable has a near-zero loading, or how to choose between PC1-based and PC1+PC2-based index scores — the `FAQs` is a great place to start.
 :::
 
-![FAQs](images/faq%20pca.png){#fig-148 fig-align="center"}
+![FAQs](www/FAQ%20TAB.webp){#fig-148 fig-align="center"}
 
 ## View data {#U}
 
 ::: {style="text-align: justify;"}
-View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For PCA, it is particularly important to confirm that all variable columns are recognized as numeric and that there are no missing values, as PCA cannot proceed with incomplete data. The View Data tab will flag any columns with unexpected data types or structural issues, allowing you to correct the file before running analysis.
+`View Data` serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For PCA, it is particularly important to confirm that all variable columns are recognized as numeric and that there are no missing values, as PCA cannot proceed with incomplete data. The View Data tab will flag any columns with unexpected data types or structural issues, allowing you to correct the file before running analysis.
 :::
 
-![View data](images/viewn%20data.png){fig-align="center"}
+![View data](www/view%20data.webp){fig-align="center"}
 
 ------------------------------------------------------------------------

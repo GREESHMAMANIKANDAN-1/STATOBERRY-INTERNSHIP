@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Descriptive Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Descriptive_Statistics_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Descriptive_Statistics_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Descriptive_Statistics_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Descriptive_Statistics_files/libs/quarto-html/popper.min.js"></script>
+<script src="Descriptive_Statistics_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Descriptive_Statistics_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Descriptive_Statistics_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Descriptive_Statistics_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Descriptive_Statistics_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Descriptive_Statistics_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Descriptive_Statistics_files/libs/bootstrap/bootstrap-7878631324201c7d3f4a2d71277b9299.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Descriptive_Statistics_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="Descriptive_Statistics_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="Descriptive_Statistics_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="sty.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title"><strong>TABLE OF CONTENTS</strong></h2>
+   
+  <ul>
+  <li><a href="#AE" id="toc-AE" class="nav-link active" data-scroll-target="#AE"><span class="header-section-number">1</span> Analysis of experiments</a></li>
+  <li><a href="#C" id="toc-C" class="nav-link" data-scroll-target="#C"><span class="header-section-number">2</span> Descriptive Statistics</a></li>
+  <li><a href="#W" id="toc-W" class="nav-link" data-scroll-target="#W"><span class="header-section-number">3</span> A working example</a></li>
+  <li><a href="#sec-4" id="toc-sec-4" class="nav-link" data-scroll-target="#sec-4"><span class="header-section-number">4</span> How to prepare your data?</a></li>
+  <li><a href="#AO" id="toc-AO" class="nav-link" data-scroll-target="#AO"><span class="header-section-number">5</span> Descriptive Statistics analysis tab explained</a></li>
+  <li><a href="#sec-7" id="toc-sec-7" class="nav-link" data-scroll-target="#sec-7"><span class="header-section-number">6</span> Analysis results</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-from-fig-100" id="toc-interpretation-from-fig-100" class="nav-link" data-scroll-target="#interpretation-from-fig-100"><span class="header-section-number">6.1</span> Interpretation from Figure&nbsp;5</a></li>
+  <li><a href="#interpretation-from-fig-101" id="toc-interpretation-from-fig-101" class="nav-link" data-scroll-target="#interpretation-from-fig-101"><span class="header-section-number">6.2</span> Interpretation from Figure&nbsp;6</a></li>
+  </ul></li>
+  <li><a href="#P" id="toc-P" class="nav-link" data-scroll-target="#P"><span class="header-section-number">7</span> Plots</a>
+  <ul class="collapse">
+  <li><a href="#customizing-plots" id="toc-customizing-plots" class="nav-link" data-scroll-target="#customizing-plots"><span class="header-section-number">7.1</span> Customizing plots</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Descriptive Statistics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+<div class="affiliations">
+<p><sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University</p>
+</div>
+<p>ABSTRACT</p>
+<div style="text-align: justify;">
+<p><strong>Descriptive Statistics</strong> is the branch of statistics concerned with summarising, organising, and presenting data in a meaningful and informative way, providing the essential numerical and graphical foundation upon which all further inferential analyses are built.Descriptive Statistics encompasses measures of central tendency (mean, median, mode), measures of dispersion (standard deviation, variance, range, coefficient of variation), and measures of distributional shape (skewness, kurtosis), together giving a complete picture of how data values are distributed across a dataset. In <strong>RAISINS</strong> you can perform <strong>Descriptive Statistics</strong> very easily without writing a single line of code. This tutorial will guide you, how to perform <strong>Descriptive Statistics</strong> very easily in <strong>RAISINS</strong> and interpret the results effectively. In addition, you will get tables and plots ready for publication.</p>
+</div>
+<details>
+<p><em>Hover or click each point to see more information.</em></p>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">
+  Introduction Descriptive Statistics
+</summary>
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+<ul>
+<p><small> The systematic use of numerical summaries to describe collections of observations traces back to the pioneering work of <span class="hover-img"><strong>Karl Pearson</strong></span><img src="www/Kar%20pear.png" class="img-fluid" alt="Preview"></small></p><small>
+</small><p><small>, the British mathematician and statistician who, in the closing decades of the nineteenth century, formalised many of the concepts now central to descriptive statistics. Pearson introduced the product-moment correlation coefficient, developed the concept of the standard deviation as a measure of spread, and championed the use of frequency distributions and histograms to visualise data contributions published in his landmark series of papers in the journal <em>Biometrika</em>, which he founded in 1901. His contemporary <span class="hover-img"><strong>Francis Galton</strong></span><img src="www/fr%20gal.png" class="img-fluid" alt="Preview"> had earlier quantified the concept of regression toward the mean while studying the inheritance of physical traits, laying the groundwork for understanding how individual observations relate to the central tendency of a population. The early twentieth century saw the consolidation of descriptive methods into a coherent framework: measures of central tendency (mean, median, and mode) were systematically defined and compared; measures of dispersion (range, variance, standard deviation, and coefficient of variation) were formalised as indispensable companions to any measure of location; and the third and fourth standardised moments skewness and kurtosis were introduced to characterise the shape of frequency distributions beyond location and spread. Together, these tools transformed raw data into interpretable summaries that could be communicated, compared across studies, and used as the entry point for inferential reasoning. Today, <strong>Descriptive Statistics</strong> remains the universal first step in any data analysis pipeline, providing the numerical and graphical context without which inferential results cannot be meaningfully understood or communicated. </small></p>
+</ul>
+</details>
+<section id="AE" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="AE"><span class="header-section-number">1</span> Analysis of experiments</h2>
+<div style="text-align: justify;">
+<p>To get started, visit <strong>RAISINS</strong> <a href="https://www.raisins.live">www.raisins.live</a> home page and go to <strong>Data Analysis</strong>. Here, you can see different analysis modules available on the platform. In this tutorial, we focus on <strong>Descriptive Statistics and Chi-Square test</strong>, as shown in <a href="#fig-aov" class="quarto-xref">Figure&nbsp;1</a>.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-aov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20ftab%20n.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Analysis of experiment tab"><img src="www/d%20ftab%20n.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Analysis of experiment tab
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="C" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="C"><span class="header-section-number">2</span> Descriptive Statistics</h2>
+<div style="text-align: justify;">
+<p><strong>Descriptive Statistics</strong> refers to the collection of quantitative methods used to summarise, organise, and describe the principal features of a dataset without making any probabilistic inferences about a larger population. Rather than drawing conclusions that extend beyond the data at hand, descriptive statistics characterise what the data actually show providing a clear and compact numerical and graphical portrait of the observations. The core measures fall into three categories: <strong>measures of central tendency</strong> (mean, median, mode), which identify the location of the typical or representative value in the distribution; <strong>measures of dispersion</strong> (range, variance, standard deviation, coefficient of variation), which quantify how spread out or variable the observations are around that centre; and <strong>measures of shape</strong> (skewness, kurtosis), which describe the symmetry and peakedness of the distribution. Descriptive statistics are applicable to virtually any domain from agricultural and biological sciences to social sciences, clinical research, quality control, and data science and serve as the mandatory first step before any inferential or multivariate analysis is conducted. They are most informative when the goal is to understand the internal structure of a single dataset, compare the distributional properties of several groups or variables, detect outliers and anomalies, verify assumptions required by subsequent tests, or communicate the main features of data to a non-specialist audience.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Descriptive Statistics is the systematic numerical and graphical summarisation of a dataset, encompassing measures of central tendency, dispersion, and distributional shape, providing the indispensable foundation for all subsequent statistical analysis.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="W" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="W"><span class="header-section-number">3</span> A working example</h2>
+<div style="text-align: justify;">
+<p>To make things simple and interesting, we’ll explain <strong>Descriptive Statistics</strong> step by step using the celebrated <strong>Iris dataset</strong>, one of the most widely studied datasets in statistics and machine learning, so you can clearly see how the analysis works and why it matters. The Iris dataset contains measurements of <strong>150 iris flowers</strong> drawn from <strong>three species</strong> <em>Iris setosa</em>, <em>Iris versicolor</em>, and <em>Iris virginica</em> with <strong>50 flowers per species</strong>, making the dataset perfectly balanced. For each flower, four morphological measurements were recorded in centimetres: <strong>Sepal.Length</strong> (sepal length), <strong>Sepal.Width</strong> (sepal width), <strong>Petal.Length</strong> (petal length), and <strong>Petal.Width</strong> (petal width). The three species serve as the <strong>groups (Treatments)</strong> and the four floral measurements serve as the <strong>Variables</strong> whose distributional properties we wish to characterise and compare. Our aim is to describe how the four morphological traits vary within and across the three species, to detect differences in their central tendency and spread, and to assess the shape of each variable’s distribution all of which are achieved entirely through descriptive methods without requiring a formal hypothesis test. The arrangement of the data is shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20work%20exm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Iris dataset — first rows showing Species, Sepal.Length, Sepal.Width, Petal.Length, and Petal.Width"><img src="www/d%20work%20exm.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Iris dataset — first rows showing Species, Sepal.Length, Sepal.Width, Petal.Length, and Petal.Width
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>Data organised in MS Excel can be directly uploaded to <strong>RAISINS</strong> for analysis. For more details on data preparation see <a href="#sec-4" class="quarto-xref">Section&nbsp;4</a>. Two terms that we will use frequently are <strong>Treatments</strong> and <strong>Variables</strong>. In our example, the Treatments refer to the three iris <strong>species</strong> (<em>Iris setosa</em>, <em>Iris versicolor</em>, and <em>Iris virginica</em>), and the Variables are the four floral traits,<strong>Sepal.Length</strong>, <strong>Sepal.Width</strong>, <strong>Petal.Length</strong>, and <strong>Petal.Width</strong>.</p>
+</div>
+</section>
+<section id="sec-4" class="level2 H" data-number="4">
+<h2 class="H anchored" data-number="4" data-anchor-id="sec-4"><span class="header-section-number">4</span> How to prepare your data?</h2>
+<div style="text-align: justify;">
+<p>Arranging data for uploading in <strong>RAISINS</strong> is very simple. Prepare your data exactly like the one shown in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>, using a single-sheet Excel file. The file must contain one column identifying the <strong>group</strong> (in our example, the Species column) and one column for each variable to be described (Sepal.Length, Sepal.Width, Petal.Length, Petal.Width). Make sure no blank rows are left above, and all columns have proper names. That’s it your file is ready to upload.</p>
+<p>Still if you have doubt, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>To prepare your dataset for analysis in <strong>RAISINS</strong>, you have two options:</p>
+<p>Creating dataset in MS Excel</p>
+<p>Creating your dataset directly within the <strong>RAISINS</strong> app</p>
+</div>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Illustrating how to create a dataset"><img src="www/d%20csv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Illustrating how to create a dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="AO" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="AO"><span class="header-section-number">5</span> Descriptive Statistics analysis tab explained</h2>
+<div style="text-align: justify;">
+<p>In <a href="#fig-5" class="quarto-xref">Figure&nbsp;4</a>, you can see the detailed view of the Analysis tab, along with explanations of what each option does. This section helps you to understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Now, upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, an option to select the <strong>Group</strong> column and the <strong>Variables</strong> will appear. Select the Species column under Group and the four morphological measurements under Variables. Once you click the Run Analysis button, all relevant descriptive statistics and outputs appear instantly, leaving no room for confusion.</p>
+</div>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20an%20ex.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Analysis window explained"><img src="www/d%20an%20ex.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Analysis window explained
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-7" class="level2 AR" data-number="6">
+<h2 class="AR anchored" data-number="6" data-anchor-id="sec-7"><span class="header-section-number">6</span> Analysis results</h2>
+<div style="text-align: justify;">
+<p>Once your dataset is uploaded, click on Run Analysis, and <strong>Descriptive Statistics</strong> will be computed for each variable across each species group. The primary output is a comprehensive <strong>Descriptive Statistics table</strong> that reports, for each combination of species and variable, the mean, standard deviation, standard error, minimum, maximum, coefficient of variation, skewness, and kurtosis,see <a href="#fig-100" class="quarto-xref">Figure&nbsp;5</a>. These metrics together provide a complete numerical portrait of the Iris dataset, allowing the analyst to compare the three species on each morphological trait without yet invoking a formal hypothesis test.</p>
+</div>
+<p>##Table 1 — Descriptive Statistics</p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-100" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20s%20table.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Descriptive statistics table — Mean, SD, SE, Min, Max, CV, Skewness, and Kurtosis by species and variable"><img src="www/d%20s%20table.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Descriptive statistics table — Mean, SD, SE, Min, Max, CV, Skewness, and Kurtosis by species and variable
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"=""> Descriptive Statistics table </summary>
+<p><small> In a <strong>Descriptive Statistics</strong> analysis, the summary table organises all key metrics for every variable across every group in a single, readable layout. Each row corresponds to a species–variable combination, and the columns report the following quantities. The <strong>Mean</strong> is the arithmetic average of all observations within the group for that variable, representing the central location of the data. The <strong>Standard Deviation (SD)</strong> measures average deviation from the mean; a large SD relative to the mean indicates high variability. The <strong>Standard Error (SE)</strong> is the estimated precision of the group mean and is computed as SD divided by the square root of the group sample size. The <strong>Minimum (Min)</strong> and <strong>Maximum (Max)</strong> are the smallest and largest observed values, together defining the observed range of the variable in that group. The <strong>Coefficient of Variation (CV%)</strong> expresses the SD as a percentage of the mean, enabling comparison of relative variability across variables measured on different scales. <strong>Skewness</strong> quantifies asymmetry: a value near zero indicates approximate symmetry, positive values indicate a right-skewed distribution with a long upper tail, and negative values indicate left skew. <strong>Kurtosis</strong> measures the tailedness of the distribution relative to a normal curve; values substantially above 3 (excess kurtosis &gt; 0) indicate heavier tails and a sharper peak, while values below 3 indicate a flatter, lighter-tailed distribution. </small></p>
+</details>
+<section id="interpretation-from-fig-100" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="interpretation-from-fig-100"><span class="header-section-number">6.1</span> Interpretation from <a href="#fig-100" class="quarto-xref">Figure&nbsp;5</a></h3>
+<div style="text-align: justify;">
+<p>The descriptive statistics of the Iris dataset reveal clear morphological differences among the three species, setosa, versicolor, and virginica based on sepal and petal measurements. For Sepal.Length, virginica shows the highest mean value (≈ 6.59 cm) along with the largest range (3.0 cm), indicating greater variability in flower size, whereas setosa records the smallest mean (≈ 5.01 cm) with comparatively low dispersion (SD ≈ 0.35 cm). Versicolor occupies an intermediate position with a mean Sepal.Length of approximately 5.94 cm. In terms of Sepal.Width, setosa exhibits the highest average width (≈ 3.43 cm), while versicolor has the lowest mean value (≈ 2.77 cm), suggesting noticeable variation in floral structure across species.</p>
+<p>Petal characteristics provide the most distinct separation among species. Setosa possesses the smallest Petal.Length (≈ 1.46 cm) and Petal.Width (≈ 0.25 cm) with very low standard deviations, indicating high uniformity within the species. Versicolor displays intermediate petal dimensions, with mean Petal.Length and Petal.Width values of approximately 4.26 cm and 1.33 cm respectively. Virginica exhibits the largest petals overall, with mean Petal.Length around 5.55 cm and Petal.Width around 2.03 cm, accompanied by relatively higher variability. Quartile measures (Q1, Q3, and IQR) also confirm a gradual increase in petal size from setosa to versicolor and finally to virginica.</p>
+<p>The skewness values for most variables remain close to zero, indicating approximately symmetric distributions, although slight positive and negative skewness are observed in certain petal and sepal measurements. Kurtosis values are generally near the normal reference value of 3, implying moderate distribution shapes without extreme peakedness or flatness. Overall, the descriptive statistics indicate that petal-related variables are the most effective features for distinguishing among the three Iris species and therefore play a major role in classification and predictive modeling studies.</p>
+</div>
+<p>##Table 2: Normality Test</p>
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-101" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20normality%20test.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Detailed tabular representation with group summaries and variability metrics"><img src="www/d%20normality%20test.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Detailed tabular representation with group summaries and variability metrics
+</figcaption>
+</figure>
+</div>
+<details>
+<summary style="color: #5DADE2" ;="" font-weight:="" bold;"="">Overview of Descriptive Statistics Results and Interpretation
+</summary>
+<p><small></small></p><small>
+<p>Normality tests are used to determine whether a dataset follows a normal distribution, which is essential for selecting appropriate statistical methods. In this study, the Shapiro–Wilk test and Anderson–Darling test were applied to assess the normality of four important iris dataset variables: Petal Length, Petal Width, Sepal Length, and Sepal Width. Descriptive statistical analysis was also performed to summarize the characteristics of the three species Iris setosa, Iris versicolor, and Iris virginica using measures such as mean, median, standard deviation, range, minimum, and maximum values. These measures helped explain the central tendency and variability of the floral traits. In addition, the Chi-square test was conducted to examine associations and distributional differences among the species. The combined analysis provided a clear understanding of variation, relationships, and statistical patterns within the iris dataset.</p>
+</small><p><small></small></p>
+</details>
+</section>
+<section id="interpretation-from-fig-101" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="interpretation-from-fig-101"><span class="header-section-number">6.2</span> Interpretation from <a href="#fig-101" class="quarto-xref">Figure&nbsp;6</a></h3>
+<div style="text-align: justify;">
+<p>The Shapiro–Wilk normality test results for the Iris dataset indicate that most of the selected variables follow an approximately normal distribution across the three species. For <em>Iris setosa</em>, Sepal.Length and Sepal.Width exhibit high p-values (0.46 and 0.27 respectively), suggesting no significant deviation from normality. Petal.Length also remains close to normality with a p-value of 0.05, whereas Petal.Width shows a statistically significant departure from normality (p ≈ 0.00), indicating a non-normal distribution for this variable within the species.</p>
+<p>For <em>Iris versicolor</em>, Sepal.Length, Sepal.Width, and Petal.Length all satisfy the normality assumption with p-values greater than 0.05, reflecting approximately symmetric and bell-shaped distributions. However, Petal.Width records a p-value of 0.03, suggesting that this variable does not follow a normal distribution for versicolor.</p>
+<p>In the case of <em>Iris virginica</em>, all four variables Sepal.Length, Sepal.Width, Petal.Length, and Petal.Width display p-values above the 0.05 significance threshold, indicating that the distributions are consistent with normality. The W-statistics for most variables remain close to 1, further supporting the presence of near-normal distributions.</p>
+<p>Overall, the normality analysis demonstrates that the majority of sepal and petal measurements satisfy the assumption of normality, with the exception of Petal.Width in <em>setosa</em> and <em>versicolor</em>. These findings suggest that parametric statistical methods can generally be applied to the Iris dataset, although caution may be required for variables exhibiting non-normal behavior.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>When comparing groups using descriptive statistics, always report both a measure of central tendency (mean or median) and a measure of dispersion (SD or CV%) together , the mean alone does not convey whether the groups are internally consistent or highly variable.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>A low CV% (below 10–15%) within a group indicates high measurement precision and internal homogeneity; a high CV% may signal natural biological variability, measurement error, or the presence of outliers that warrant further investigation.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+</section>
+<section id="P" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="P"><span class="header-section-number">7</span> Plots</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We’ve ensured that every possible plot related to <strong>Descriptive Statistics</strong> is readily available. Simply click on the <code>Basic Plots</code> tab to view them , see <a href="#fig-8" class="quarto-xref">Figure&nbsp;7</a>. Each plot comes with a gear icon at the top-left corner, allowing you to customise its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG for use in reports or presentations.</p>
+</div>
+<section id="customizing-plots" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored"><span class="header-section-number">7.1</span> Customizing plots</h3>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> provides users various customisation features for the plots to enhance the visualisation according to the requirement of the user. <strong>Click</strong> on <a href="#fig-8" class="quarto-xref">Figure&nbsp;7</a> to get a clear idea of the customising features.</p>
+</div>
+<div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20plts.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Plot settings for customizing"><img src="www/d%20plts.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Plot settings for customizing
+</figcaption>
+</figure>
+</div>
+<div style="text-align: justify;">
+<p>From <a href="#fig-9" class="quarto-xref">Figure&nbsp;8</a> to <a href="#fig-21" class="quarto-xref">Figure&nbsp;20</a>, you can see the different types of plots available in <strong>RAISINS</strong>. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.</p>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1000;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+#violinplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+#densityplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#histogramplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#boxplot-desc { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#ridgelineplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+#barplot-desc { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#beeswarmplot-desc { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#stripchartplot-desc { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#rankchartplot-desc { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#sparklineplot-desc { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#summaryplot-desc { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+</style>
+<div class="grid">
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('violinplot-desc')" onmouseout="hideDescription('violinplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20violin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Violin plot"><img src="www/d%20violin.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Violin plot
+</figcaption>
+</figure>
+</div>
+<div id="violinplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>violin plot</strong> compares the distribution of each variable across the three Iris species. Each violin shape reflects how the data is spread wider sections indicate more data points at that value. Inside each violin is a box plot showing the median and interquartile range. The narrow violin for <em>Iris setosa</em> on petal length clearly reflects the very low within-species variability of this species on petal dimensions, as confirmed by its low CV%.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('densityplot-desc')" onmouseout="hideDescription('densityplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20density%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Density plot"><img src="www/d%20density%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Density plot
+</figcaption>
+</figure>
+</div>
+<div id="densityplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>density plot</strong> is a graphical representation used in statistics to show the distribution and concentration of continuous data values. It provides a smooth curve that estimates the probability density of a dataset, helping to identify patterns such as skewness, peaks, spread, and variation more clearly than a traditional histogram in data analysis.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('histogramplot-desc')" onmouseout="hideDescription('histogramplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20histogram.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Histogram plot"><img src="www/d%20histogram.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Histogram plot
+</figcaption>
+</figure>
+</div>
+<div class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>histogram plot</strong> is a graphical representation used to display the frequency distribution of numerical data. It groups data into continuous intervals called bins and uses adjacent bars to show how often values occur within each interval. Histograms help in understanding data distribution, central tendency, spread, and patterns such as skewness or symmetry</p>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('boxplot-desc')" onmouseout="hideDescription('boxplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20box%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Box plot"><img src="www/d%20box%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Box plot
+</figcaption>
+</figure>
+</div>
+<div class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>box plot</strong> compares the distribution of each morphological measurement across the three Iris species. Each coloured box represents one species and shows key statistics: the median (middle line), the interquartile range (the box itself), and potential outliers (points outside the whiskers). The species-level separation is immediately visible for petal variables, where the three boxes are non-overlapping, while sepal variables show greater overlap between <em>versicolor</em> and <em>virginica</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('ridgelineplot-desc')" onmouseout="hideDescription('ridgelineplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20ridge%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Ridgeline plot"><img src="www/d%20ridge%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Ridgeline plot
+</figcaption>
+</figure>
+</div>
+<div class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>ridgeline plot</strong> is a data visualization method used to display multiple distributions simultaneously through overlapping density curves. Each curve represents a different group or category, arranged one above another for easy comparison. Ridgeline plots help identify patterns, variations, trends, and differences in distributions across several datasets clearly and effectively.</p>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('correlogramplot-desc')" onmouseout="hideDescription('correlogramplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20correlogram.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: Correlogram plot"><img src="www/d%20correlogram.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Correlogram plot
+</figcaption>
+</figure>
+</div>
+<div class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>correlogram plot</strong> is a graphical representation used to display the correlation matrix between multiple variables in a dataset. It uses colors, shapes, or sizes to indicate the strength and direction of correlations. Correlograms help in identifying relationships, patterns, and dependencies among variables for better statistical analysis and interpretation.</p>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('barplot-desc')" onmouseout="hideDescription('barplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20bar%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: Bar plot"><img src="www/d%20bar%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Bar plot
+</figcaption>
+</figure>
+</div>
+<div class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>bar plot</strong> is a graphical representation used to compare different categories of data using rectangular bars. The length or height of each bar represents the value or frequency of the category. Bar plots help in visualizing comparisons, trends, and differences among groups clearly and effectively in statistical analysis.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('beeswarmplot-desc')" onmouseout="hideDescription('beeswarmplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20bee%20swarm%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: Beeswarm plot"><img src="www/d%20bee%20swarm%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Beeswarm plot
+</figcaption>
+</figure>
+</div>
+<div id="beeswarmplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>beeswarm plot</strong> is a data visualization technique used to display individual data points without overlap. Points are arranged closely along a categorical axis to show the distribution, density, and spread of data clearly. It helps in identifying clusters, outliers, and variation while preserving the visibility of every observation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('stripchartplot-desc')" onmouseout="hideDescription('stripchartplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-17" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20strip%20chart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: Strip Chart plot"><img src="www/d%20strip%20chart.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Strip Chart plot
+</figcaption>
+</figure>
+</div>
+<div id="stripchartplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>strip chart plot</strong> compares the distribution of each variable across the three Iris species. Each stripchart shape reflects how the data is spread — wider sections indicate more data points at that value. Inside each stripchart is a box plot showing the median and interquartile range. The narrow stripchart for <em>Iris setosa</em> on petal length clearly reflects the very low within-species variability of this species on petal dimensions, as confirmed by its low CV%.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('rankchartplot-desc')" onmouseout="hideDescription('rankchartplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-18" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20bump%20chart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;17: Rank Chart plot"><img src="www/d%20bump%20chart.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Rank Chart plot
+</figcaption>
+</figure>
+</div>
+<div id="rankchartplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>rankchart plot</strong> compares the distribution of each variable across the three Iris species. Each rankchart shape reflects how the data is spread — wider sections indicate more data points at that value. Inside each rankchart is a box plot showing the median and interquartile range. The narrow rankchart for <em>Iris setosa</em> on petal length clearly reflects the very low within-species variability of this species on petal dimensions, as confirmed by its low CV%.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('sparklineplot-desc')" onmouseout="hideDescription('sparklineplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-19" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20str%20lin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;18: SparkLine plot"><img src="www/d%20str%20lin.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: SparkLine plot
+</figcaption>
+</figure>
+</div>
+<div id="sparklineplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>sparkline plot</strong> compares the distribution of each variable across the three Iris species. Each sparkline shape reflects how the data is spread — wider sections indicate more data points at that value. Inside each sparkline is a box plot showing the median and interquartile range. The narrow sparkline for <em>Iris setosa</em> on petal length clearly reflects the very low within-species variability of this species on petal dimensions, as confirmed by its low CV%.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('distributionplot-desc')" onmouseout="hideDescription('distributionplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-20" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20distribution.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;19: Distribution plot"><img src="www/d%20distribution.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: Distribution plot
+</figcaption>
+</figure>
+</div>
+<div id="distributionplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>distribution plot</strong> compares the distribution of each variable across the three Iris species. Each distribution shape reflects how the data is spread — wider sections indicate more data points at that value. Inside each distribution is a box plot showing the median and interquartile range. The narrow distribution for <em>Iris setosa</em> on petal length clearly reflects the very low within-species variability of this species on petal dimensions, as confirmed by its low CV%.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-6">
+<div class="plot-container" onmouseover="showDescription('summaryplot-desc')" onmouseout="hideDescription('summaryplot-desc')">
+<!-- REPLACE THIS SCREENSHOT -->
+<div id="fig-21" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20summary%20plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;20: Summary plot"><img src="www/d%20summary%20plot.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: Summary plot
+</figcaption>
+</figure>
+</div>
+<div id="summaryplot-desc" class="plot-description">
+<div style="text-align: justify;">
+<p>A <strong>summary plot</strong> compares the distribution of each variable across the three Iris species. Each summary shape reflects how the data is spread — wider sections indicate more data points at that value. Inside each summary is a box plot showing the median and interquartile range. The narrow summary for <em>Iris setosa</em> on petal length clearly reflects the very low within-species variability of this species on petal dimensions, as confirmed by its low CV%.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="classification" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="classification"><span class="header-section-number">8</span> Classification</h2>
+<div style="text-align: justify;">
+<p>The <strong>Classification</strong> tab in <strong>RAISINS</strong> enables users to perform supervised machine learning analyses for predicting and categorizing observations into predefined groups. This module supports the evaluation of classification models using statistical and machine learning techniques, allowing users to identify patterns and relationships within the dataset. The tab provides model summaries, prediction accuracy measures, confusion matrices, and graphical outputs for better interpretation of classification performance. It also assists users in understanding the contribution of variables toward class separation and prediction efficiency. The results generated help in selecting suitable classification approaches for reliable decision-making and further predictive analysis. Users can access the classification outputs and detailed visual interpretations through the <code>Classification</code> section as illustrated below in <a href="#fig-classification" class="quarto-xref">Figure&nbsp;21</a>.</p>
+</div>
+<div id="fig-classification" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-classification-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20classification.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;21: Classification tab interface"><img src="www/d%20classification.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-classification-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21: Classification tab interface
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="chisquare" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="chisquare"><span class="header-section-number">9</span> Chi-square Analysis</h2>
+<div style="text-align: justify;">
+<p>The <strong>Chi-square Analysis</strong> tab in <strong>RAISINS</strong> enables users to examine the association between categorical variables using Chi-square statistical testing. In the present iris dataset analysis, the four important variables <strong>Petal Length, Petal Width, Sepal Length, and Sepal Width</strong> were evaluated across the three species: <strong>Iris setosa, Iris versicolor, and Iris virginica</strong>. The module generates a <strong>contingency table</strong> based on the selected categorical and comparison variables to summarize the observed frequencies among groups. It further provides Chi-square statistics, degrees of freedom, and p-values for determining whether significant associations exist between the variables. The tab also includes graphical summaries and concise interpretations to assist users in understanding the statistical significance and contribution of variables toward species differentiation. Users can access the outputs and visual summaries through the <code>Chi-square Analysis</code> section as illustrated below in <a href="#fig-chisquare" class="quarto-xref">Figure&nbsp;22</a>.</p>
+</div>
+<div id="fig-chisquare" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chisquare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20chi%20square.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;22: Chi-square analysis of iris dataset"><img src="www/d%20chi%20square.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chisquare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22: Chi-square analysis of iris dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="AI" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="AI"><span class="header-section-number">10</span> AI interpretation</h2>
+<div style="text-align: justify;">
+<p><strong>RAISINS</strong> is equipped with an AI-powered <strong>RAISINS Assistant</strong> designed to assist users in comprehending the outcomes of statistical analyses. This functionality provides clear and concise summaries of the descriptive results, identifies variables with the highest between-group discrimination, comments on the shape metrics (skewness and kurtosis) across groups, and offers informed suggestions for potential next steps including whether the data are suitable for parametric inference, which variables are most informative for group separation, and whether outlier removal or transformation is advisable before proceeding to inferential analysis. The user can get detailed interpretations of the analysis by clicking on <code>AI interpretation</code> on the <code>Analysis</code> as shown below <a href="#fig-ai" class="quarto-xref">Figure&nbsp;23</a>.</p>
+</div>
+<div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20ai%20int.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;23: AI powered RAISINS Assistant to interpret your results"><img src="www/d%20ai%20int.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;23: AI powered RAISINS Assistant to interpret your results
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="PRE" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="PRE"><span class="header-section-number">11</span> Preparing your data</h2>
+<div style="text-align: justify;">
+<p>“Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won’t be trustworthy.”</p>
+<ol type="1">
+<li><p>Create your dataset in MS Excel</p></li>
+<li><p>Build your dataset directly within the RAISINS app</p></li>
+</ol>
+</div>
+</section>
+<section id="EX" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="EX"><span class="header-section-number">12</span> Preparing data in MS Excel</h2>
+<div style="text-align: justify;">
+<p>Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the group or species label you can name this column appropriately, such as “Species” or “Group.” All variables under study (e.g., Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) should be arranged in separate columns, and each observation should occupy a single row. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or group names. For reference, see the structure shown in <a href="#fig-pp" class="quarto-xref">Figure&nbsp;24</a>. As illustrated in <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a>, groups must appear as labels in one column repeated across all observations belonging to that group, and the data can also be arranged as shown in <a href="#fig-kk" class="quarto-xref">Figure&nbsp;25</a>.</p>
+</div>
+<div id="fig-pp" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20exc%20ho.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;24: Model-1: showing how the prepared Excel file for upload should look like"><img src="www/d%20exc%20ho.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24: Model-1: showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<div id="fig-kk" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20exc%20dat.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;25: Model-2: Showing how the prepared Excel file for upload should look like"><img src="www/d%20exc%20dat.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;25: Model-2: Showing how the prepared Excel file for upload should look like
+</figcaption>
+</figure>
+</div>
+<details>
+<summary>
+Dataset Creation Rules
+</summary>
+<p><small> 1. <strong>Column Naming Convention</strong> - No spaces allowed in column names.<br>
+- Use underscores (<code>_</code>) or full stops (<code>.</code>) for separation. - Avoid symbols and special characters like %,# etc 2. <strong>Data Arrangement</strong> - Start data arrangement towards the upper-left corner.<br>
+- Ensure the row above the data is not blank. 3. <strong>Cell Management</strong> - Avoid typing or deleting in cells without data.<br>
+- If needed, select affected cells, right-click, and select <strong>Clear Contents</strong>. 4. <strong>Column Relevance</strong> - Name all columns meaningfully.<br>
+- Exclude unnecessary columns not required for analysis. </small></p>
+</details>
+<details>
+<summary>
+How to Save as CSV in MS Excel
+</summary>
+<p><small> 1. <strong>Open Your Workbook</strong></small></p><small>
+<pre><code>-   Ensure your data is arranged properly with only one sheet.</code></pre>
+<ol start="2" type="1">
+<li><p><strong>Click ‘File’ Menu</strong></p>
+<ul>
+<li>Go to the top-left corner and click on <strong>File</strong>.</li>
+</ul></li>
+<li><p><strong>Choose ‘Save As’ or ‘Save a Copy’</strong></p>
+<ul>
+<li>Select the location where you want to save your file.</li>
+</ul></li>
+<li><p><strong>Set File Type to CSV</strong></p>
+<ul>
+<li>In the <strong>‘Save as type’</strong> dropdown menu, choose <strong>CSV (Comma delimited) (*.csv)</strong>.</li>
+</ul></li>
+<li><p><strong>Name Your File</strong></p>
+<ul>
+<li>Enter a relevant file name without spaces (use underscores if needed).</li>
+</ul></li>
+<li><p><strong>Click ‘Save’</strong></p>
+<ul>
+<li>Click <strong>Save</strong> to export the file.</li>
+</ul></li>
+</ol>
+</small><blockquote class="blockquote"><small>
+</small><p><small>💡 Tip: Before saving, double-check that your data is on the first sheet and follows the required format (e.g., no empty rows above the data, meaningful column names). </small></p>
+</blockquote>
+</details>
+</section>
+<section id="CR" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="CR"><span class="header-section-number">13</span> Creating dataset in RAISINS</h2>
+<div style="text-align: justify;">
+<p>If you’re unsure about the correct format for creating a dataset, don’t worry — <strong>RAISINS</strong> offers an option to create data directly within the app using the prescribed template. Here’s how:</p>
+<ul>
+<li><p>Navigate to the <strong>Create Data Tab</strong></p></li>
+<li><p>Select the number of <strong>Treatments</strong> (Groups / Species)</p></li>
+<li><p>Select number of <strong>Replications</strong></p></li>
+<li><p>Select number of <strong>Characters</strong> (Variables)</p></li>
+<li><p>Click on <strong>Create</strong> button</p></li>
+</ul>
+<p>Model layout will appear as shown in <a href="#fig-createdata" class="quarto-xref">Figure&nbsp;26</a>. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the observations in the layout, download the csv file and upload in <code>Analysis</code>.</p>
+</div>
+<div id="fig-createdata" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20csv.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;26: Creating dataset within RAISINS"><img src="www/d%20csv.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;26: Creating dataset within RAISINS
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="M" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="M"><span class="header-section-number">14</span> Model datasets</h2>
+<div style="text-align: justify;">
+<p>To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the <code>Datasets</code>.</p>
+</div>
+<div id="fig-188" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20model%20datasets.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;27: Model dataset"><img src="www/d%20model%20datasets.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-188-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;27: Model dataset
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="F" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="F"><span class="header-section-number">15</span> FAQ’s</h2>
+<div style="text-align: justify;">
+<p>The app includes a dedicated <code>FAQs</code> to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions, offering additional information and helpful tips to ensure a smooth user experience. If you’re ever unsure about how something works, the <code>FAQs</code> is a great place to start.</p>
+</div>
+<div id="fig-148" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="www/d%20faq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;28: FAQs"><img src="www/d%20faq.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-148-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28: FAQs
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="U" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="U"><span class="header-section-number">16</span> View data</h2>
+<div style="text-align: justify;">
+<p><code>View Data</code> serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="www/d%20view.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="View data"><img src="www/d%20view.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="View data"></a></p>
+</figure>
+</div>
+<figcaption>View data</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

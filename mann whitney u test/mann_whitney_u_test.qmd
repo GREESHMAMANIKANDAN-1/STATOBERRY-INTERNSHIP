@@ -589,7 +589,7 @@ Model layout will appear as shown in @fig-createdata. Now you may enter the obse
 To test the app or better understand the data arrangement, we provide model datasets within the app. You can download them from the Datasets tab. A model dataset for the Mann-Whitney U Test is available, pre-formatted with two groups and multiple response variables, ready to upload directly into the Analysis tab.
 :::
 
-![Model dataset](images/model data wyt.png){#fig-188 fig-align="center"}
+![Model dataset](images/model%20data%20wyt.png){#fig-188 fig-align="center"}
 
 ## FAQ's {#F}
 
@@ -597,7 +597,7 @@ To test the app or better understand the data arrangement, we provide model data
 The app includes a dedicated FAQs tab to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions about the Mann-Whitney U Test including when to use it versus the t-test, how to handle ties in the data, how to interpret the U statistic, and how to report results in academic publications. If you're ever unsure about how something works, the FAQs tab is a great place to start.
 :::
 
-![FAQs](images/faq wyt.png){#fig-148 fig-align="center"}
+![FAQs](images/faq%20wyt.png){#fig-148 fig-align="center"}
 
 ## View data {#U}
 
@@ -605,6 +605,6 @@ The app includes a dedicated FAQs tab to help clarify common doubts and guide us
 View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For the MannWhitney U Test, the Health Check specifically verifies that the Group column contains exactly two distinct values, that all response variable columns contain numeric data, and that there are no missing values that could distort the rank computation. Addressing any flagged issues before running the analysis ensures that the results are accurate and reproducible.
 :::
 
-![View data](images/view wyt.png){fig-align="center"}
+![View data](images/view%20wyt.png){fig-align="center"}
 
 ------------------------------------------------------------------------

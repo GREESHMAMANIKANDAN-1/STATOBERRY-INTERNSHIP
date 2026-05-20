@@ -557,7 +557,7 @@ The model layout will appear as shown in @fig-createdata. You may then enter the
 To test the app or to better understand the required data arrangement for Probit Dose/Time Response Analysis, **RAISINS** provides model datasets within the app. You can download them from the Dataset tab and use them directly to explore the analysis workflow before uploading your own experimental data.
 :::
 
-![Model dataset](images/model data probit.png){#fig-188 fig-align="center"}
+![Model dataset](images/model%20data%20probit.png){#fig-188 fig-align="center"}
 
 ## FAQ's {#F}
 
@@ -565,7 +565,7 @@ To test the app or to better understand the required data arrangement for Probit
 The app includes a dedicated FAQs tab to help clarify common doubts and guide users through all features of the Probit Dose/Time Response module. This section provides detailed answers to frequently asked questions about data formatting, Abbott's correction, interpretation of LD50 confidence intervals, chi-square heterogeneity, and resistance ratio computation offering practical tips to ensure a smooth analytical experience. If you are ever unsure about how something works, the FAQs tab is the best place to start.
 :::
 
-![FAQs](images/pro faq.png){#fig-148 fig-align="center"}
+![FAQs](images/pro%20faq.png){#fig-148 fig-align="center"}
 
 ## View data {#U}
 
@@ -573,6 +573,6 @@ The app includes a dedicated FAQs tab to help clarify common doubts and guide us
 View Data serves as the primary diagnostic tool for ensuring data integrity before running the Probit analysis. Upon uploading your dataset, the system performs an automated **Health Check** to validate column types and formatting confirming that the dose/time column is numeric, that the total and response columns contain non-negative integers, and that no response count exceeds the corresponding total. Any formatting issues detected are flagged before the analysis begins, preventing erroneous results from poorly structured input data.
 :::
 
-![View data](images/pro view.png){fig-align="center"}
+![View data](images/pro%20view.png){fig-align="center"}
 
 ------------------------------------------------------------------------

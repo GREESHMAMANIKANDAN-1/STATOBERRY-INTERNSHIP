@@ -86,7 +86,7 @@ ABSTRACT
 </style>
 ```
 
-<ul><small> The quantitative study of biological diversity traces its roots to the mid-twentieth century, with foundational contributions from [Claude Shannon ]{.hover-img}, the American mathematician and electrical engineer who introduced the **Shannon Entropy index** in his landmark paper *A Mathematical Theory of Communication* (1948, Bell System Technical Journal). Although developed in the context of information theory, Shannon's entropy was quickly adopted by ecologists to measure the uncertainty — and by analogy, the diversity — of species assemblages in a community. Shortly thereafter, [Edward H. Simpson ]{.hover-img} proposed the **Simpson's Index** (1949, *Nature*) as a measure of the probability that two randomly selected individuals from a community belong to the same species, providing a complementary concentration-based perspective on diversity. The conceptual distinction between **alpha diversity** (within-sample diversity), **beta diversity** (between-sample compositional turnover), and **gamma diversity** (regional total diversity) was formalised by [Robert H. Whittaker]{.hover-img} in 1960, establishing the hierarchical framework that underpins all modern diversity analysis. The **PERMANOVA** method — Permutational Multivariate Analysis of Variance — was introduced by [Marti J. Anderson]{.hover-img} in 2001 (*Austral Ecology*) as a robust non-parametric alternative to MANOVA for testing the significance of group differences in multivariate community composition, using any dissimilarity measure and permutation-based inference to avoid distributional assumptions. Together, these methods form the backbone of community ecology, microbiome research, environmental monitoring, and biodiversity assessment. </small></ul>
+<ul><small> The quantitative study of biological diversity traces its roots to the mid-twentieth century, with foundational contributions from [Claude Shannon]{.hover-img}, the American mathematician and electrical engineer who introduced the **Shannon Entropy index** in his landmark paper *A Mathematical Theory of Communication* (1948, Bell System Technical Journal). Although developed in the context of information theory, Shannon's entropy was quickly adopted by ecologists to measure the uncertainty and by analogy, the diversity of species assemblages in a community. Shortly thereafter, Edward H. Simpson proposed the **Simpson's Index** (1949, *Nature*) as a measure of the probability that two randomly selected individuals from a community belong to the same species, providing a complementary concentration-based perspective on diversity. The conceptual distinction between **alpha diversity** (within-sample diversity), **beta diversity** (between-sample compositional turnover), and **gamma diversity** (regional total diversity) was formalised by Robert H. Whittaker in 1960, establishing the hierarchical framework that underpins all modern diversity analysis. The **PERMANOVA** method Permutational Multivariate Analysis of Variance was introduced by [Marti J. Anderson]{.hover-img} in 2001 (*Austral Ecology*) as a robust non-parametric alternative to MANOVA for testing the significance of group differences in multivariate community composition, using any dissimilarity measure and permutation-based inference to avoid distributional assumptions. Together, these methods form the backbone of community ecology, microbiome research, environmental monitoring, and biodiversity assessment. </small></ul>
 
 </details>
 
@@ -98,7 +98,7 @@ To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) h
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis of experiment tab — Diversity Analysis and PERMANOVA](images/probit WEE (4).png){#fig-aov fig-align="center"}
+![Analysis of experiment tab — Diversity Analysis and PERMANOVA](images/probit%20WEE%20(4).png){#fig-aov fig-align="center"}
 
 ## Diversity Analysis and PERMANOVA {#C}
 
@@ -113,21 +113,25 @@ Diversity Analysis is a suite of ecological statistical methods used to characte
 ## A working example {#W}
 
 ::: {style="text-align: justify;"}
-To make things simple and interesting, we will explain Diversity Analysis and PERMANOVA step by step using a hypothetical example, so you can clearly see how it works and why it matters. Consider a soil microbial ecology study in which soil samples were collected from **four land-use types** Forest, Agriculture, Grassland, and Urban with **five replicate samples per land-use type** (20 samples in total). From each soil sample, 16S rRNA amplicon sequencing was performed and reads were clustered into **Operational Taxonomic Units (OTUs)**. The resulting community matrix consists of **20 samples (rows)** and **30 OTU columns**, with cell values representing read counts per OTU per sample. A separate metadata file records the **Land_Use** group for each sample. The variables (OTUs) are named OTU_01 through OTU_30. Our aim is to (i) compute alpha diversity indices for each sample and compare them across land-use groups, (ii) visualise beta diversity patterns using NMDS ordination, and (iii) test whether community composition differs significantly among land-use types using PERMANOVA. The arrangement of the data is shown in @fig-data.
+To make things simple and interesting, we will explain Diversity Analysis and PERMANOVA step by step using a hypothetical example, so you can clearly see how it works and why it matters.
+
+The image shows the structure of a biodiversity dataset used for diversity and PERMANOVA analysis. The dataset contains four important columns: Species, Location (Loc), Site, and Count. The Species column represents the organism being studied, such as Lepidoptera. The Location column indicates the study area or region (e.g., TVM, KOL, PATH), while the Site column represents different sampling sites within each location. The Count column shows the number of individuals recorded at each site.
+
+This dataset format is useful for ecological and diversity analysis because it organizes species abundance data across multiple locations and sampling sites. The count values help in calculating diversity indices, abundance patterns, community composition, and statistical analyses such as PERMANOVA and ordination methods.The arrangement of the data is shown in @fig-data.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Working Example](images/probit WEE (5).png){fig-align="center"}
+![Working Example](images/probit%20WEE%20(5).png){#fig-data fig-align="center"}
 
 ::: {style="text-align: justify;"}
-Data organised in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently in this tutorial are **Samples** and **Species/OTUs**. In our example, the **Samples** refer to the 20 soil samples assigned to one of four **Land_Use** groups — Forest, Agriculture, Grassland, and Urban — and the **Species/OTUs** are the 30 OTU columns (OTU_01 to OTU_30) representing the microbial taxa detected across all samples.
+Data organised in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently in this tutorial are **Samples** and **Species/OTUs**. In our example, the **Samples** refer to the 20 soil samples assigned to one of four **Land_Use** groups Forest, Agriculture, Grassland, and Urban and the **Species/OTUs** are the 30 OTU columns (OTU_01 to OTU_30) representing the microbial taxa detected across all samples.
 :::
 
 ## How to prepare your data? {#sec-4 .H}
 
 ::: {style="text-align: justify;"}
-Arranging data for uploading in **RAISINS** is very simple. Your primary dataset must be a **community matrix** arranged with samples as rows and species or OTUs as columns, exactly as shown in @fig-data. The first column must contain the **sample identifiers** and the second column must contain the **group label** (e.g., treatment, site, or land-use type) for each sample. All remaining columns contain the abundance or count values for each species or OTU. Use a single-sheet Excel file, ensure no blank rows are left above the data, and make sure all column names are properly formatted without spaces or special characters. That's it — your file is ready to upload.
+Arranging data for uploading in **RAISINS** is very simple. Your primary dataset must be a **community matrix** arranged with samples as rows and species or OTUs as columns, exactly as shown in @fig-data. The first column must contain the **sample identifiers** and the second column must contain the **group label** (e.g., treatment, site, or land-use type) for each sample. All remaining columns contain the abundance or count values for each species or OTU. Use a single-sheet Excel file, ensure no blank rows are left above the data, and make sure all column names are properly formatted without spaces or special characters. That's it your file is ready to upload.
 
 Still if you have doubt, see @fig-4.
 
@@ -138,7 +142,7 @@ Creating dataset in MS Excel
 Creating your dataset directly within the **RAISINS** app
 :::
 
-![Illustrating how to create a dataset](images/probit WEE (6).png){#fig-4 fig-align="center"}
+![Illustrating how to create a dataset](images/probit%20WEE%20(6).png){#fig-4 fig-align="center"}
 
 ## Diversity analysis tab explained {#AO}
 
@@ -148,29 +152,11 @@ In @fig-5, you can see the detailed view of the Diversity Analysis tab, along wi
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Diversity analysis tab explained](images/probit WEE (7).png){#fig-5 fig-align="center"}
+![Diversity analysis tab explained](images/probit%20WEE%20(7).png){#fig-5 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-For community datasets that include rare OTUs or highly uneven sequencing depths across samples, **RAISINS** provides an inbuilt **rarefaction** option that subsamples all samples to a common sequencing depth before computing alpha diversity indices (@sec-6). This step is recommended whenever total read counts vary substantially among samples, as uneven sampling effort can artificially inflate diversity estimates in more deeply sequenced samples.
+For community datasets that include rare OTUs or highly uneven sequencing depths across samples, **RAISINS** provides an inbuilt **rarefaction** option that subsamples all samples to a common sequencing depth before computing alpha diversity indices . This step is recommended whenever total read counts vary substantially among samples, as uneven sampling effort can artificially inflate diversity estimates in more deeply sequenced samples.
 :::
-
-## Rarefaction and Data Standardisation {#sec-6 .T}
-
-::: {style="text-align: justify;"}
-In Diversity Analysis and PERMANOVA, appropriate data standardisation or normalisation before computing diversity indices and dissimilarity measures is critical for ensuring valid and comparable results. **RAISINS** provides the following options as shown in @fig-6.
-:::
-
-![Rarefaction and standardisation options in RAISINS](www/trans.webp){#fig-6 fig-align="center"}
-
-::: {style="text-align: justify;"}
-**Rarefaction** (subsampling to an even depth) is the most widely recommended approach for equalising sequencing effort across samples before computing alpha diversity indices. **RAISINS** allows users to set a minimum read-count threshold; all samples with counts below this threshold are excluded, and all remaining samples are subsampled (without replacement) to this common depth. This ensures that Shannon, Simpson, and richness estimates are not confounded by differences in sequencing depth among samples.
-
-**Relative abundance transformation** converts raw count data to proportions (each cell divided by the row total), standardising each sample to a common sum of 1. This is appropriate for beta diversity and PERMANOVA analyses when absolute abundance differences among samples are not biologically meaningful and only compositional patterns are of interest. Relative abundance data is commonly used with Bray-Curtis dissimilarity.
-
-**Presence-absence transformation** converts all non-zero counts to 1 and retains zero values as 0, reducing the community matrix to a binary indicator of taxon occurrence regardless of abundance. This transformation is used with the **Jaccard dissimilarity** index and is appropriate when the identity of taxa present (rather than their abundance) is the primary focus, for example in species co-occurrence studies or when abundance data are unreliable.
-:::
-
-> After selecting the appropriate rarefaction depth or transformation, proceed to @sec-7 for full analysis results.
 
 ## Analysis results {#sec-7 .AR}
 
@@ -182,7 +168,7 @@ Once your community matrix is uploaded and the group column and analysis options
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Analysis](images/prmno ana.png){#fig-100 fig-align="center"}
+![Analysis](images/prmno%20ana.png){#fig-100 fig-align="center"}
 
 <details>
 
@@ -192,7 +178,7 @@ Once your community matrix is uploaded and the group column and analysis options
 
 <small> The alpha diversity table produced by **RAISINS** reports the following indices for each sample, along with the group label for convenient comparison:
 
-**Species Richness (S)**: The simplest measure of diversity — the total number of distinct species or OTUs observed in a sample, irrespective of their relative abundances. Richness is sensitive to rare taxa and increases with sampling effort.
+**Species Richness (S)**: The simplest measure of diversity the total number of distinct species or OTUs observed in a sample, irrespective of their relative abundances. Richness is sensitive to rare taxa and increases with sampling effort.
 
 **Shannon Entropy (H')**: The most widely used alpha diversity index, computed as: $$H' = -\sum_{i=1}^{S} p_i \ln(p_i)$$ where $p_i$ is the relative abundance of the *i*-th species. Higher values indicate greater diversity and more even distribution of abundances. A community dominated by one species has a low H', while a community with many equally abundant species has a high H'.
 
@@ -213,10 +199,6 @@ The alpha diversity summary table for the soil microbial study reveals clear dif
 :::
 
 **Table 2 — Pairwise Group Comparison of Alpha Diversity**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Pairwise comparison of alpha diversity indices across land-use groups](www/PLACEHOLDER_AlphaDiversityPairwise.webp){#fig-101 fig-align="center"}
 
 <details>
 
@@ -251,175 +233,43 @@ The alpha diversity summary table for the soil microbial study reveals clear dif
 
 </details>
 
-### Interpretation from @fig-101
-
-::: {style="text-align: justify;"}
-The pairwise comparison table for Shannon entropy confirms that land-use type has a statistically significant effect on microbial alpha diversity (Kruskal-Wallis H = 14.38, df = 3, p = 0.002). Post-hoc Dunn's test with Bonferroni correction reveals that Forest samples are significantly more diverse than both Agriculture (p = 0.008) and Urban (p \< 0.001) samples, while the difference between Forest and Grassland is marginally non-significant (p = 0.061). Agriculture and Urban sites also differ significantly from each other (p = 0.031), while Grassland does not differ significantly from Agriculture (p = 0.183). Letter groupings assigned to each group provide a clear visual summary of these pairwise distinctions. The effect size (ε² = 0.58) indicates that land-use type accounts for approximately 58% of the variance in Shannon entropy among samples — a large and ecologically meaningful effect.
-:::
-
-::: callout-tip
-#### When comparing alpha diversity indices across groups, always check whether the index values meet the normality assumption before selecting ANOVA versus Kruskal-Wallis — RAISINS performs this check automatically and selects the appropriate test.
-:::
-
-::: {style="text-align: justify;"}
-In our example, the gradient of Shannon entropy from Forest to Urban reflects the well-documented pattern of microbial diversity loss under agricultural intensification and urbanisation. The letter groupings — Forest: **a**, Grassland: **ab**, Agriculture: **bc**, Urban: **c** — indicate that Forest and Urban communities are unambiguously distinct, while Grassland and Agriculture occupy intermediate positions that partially overlap with their neighbours in the gradient.
-:::
-
-::: callout-tip
-#### Cohen's f (effect size) is also reported alongside the diversity index comparison to quantify the overall strength of the group effect, enabling meaningful comparison of land-use impacts across studies with different sample sizes.
-:::
-
-## Alpha Diversity Comparisons {#sec-8 .MCT}
-
-<details>
-
-```{=html}
-<summary style="color: #5DADE2"; font-weight: bold;"> What are alpha diversity comparison tests? </summary>
-```
-
-<small> Alpha diversity comparison tests are univariate statistical procedures applied to diversity index values — one index value per sample — to determine whether mean diversity differs significantly across predefined groups. Because diversity index values are continuous scalars, standard parametric (ANOVA, t-test) or non-parametric (Kruskal-Wallis, Mann-Whitney U) tests can be applied, with the choice depending on distributional properties of the index values and sample size. These tests operate on the computed index values, not on the raw community matrix, and are therefore distinct from PERMANOVA which operates on the full multivariate dissimilarity matrix. </small>
-
-</details>
-
-::: {style="text-align: justify;"}
-In Diversity Analysis, the primary methods available in **RAISINS** for comparing alpha diversity indices across groups are the **one-way ANOVA with Tukey's HSD**, the **Kruskal-Wallis test with Dunn's post-hoc**, and **pairwise Wilcoxon tests with Bonferroni or FDR correction**.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Alpha diversity comparison across groups — statistical test output](www/PLACEHOLDER_AlphaDiversityComparison.webp){#fig-cus fig-align="center"}
-
-::: {style="text-align: justify;"}
-**One-way ANOVA with Tukey's HSD** is appropriate when diversity index values are approximately normally distributed across groups and group variances are homogeneous. The F-statistic tests whether at least one group mean differs from the others. If significant, Tukey's HSD provides pairwise comparisons with family-wise error rate control. The formula for the ANOVA F-statistic is: $$F = \frac{MS_{Between}}{MS_{Within}}$$ where $MS_{Between}$ is the mean square between groups and $MS_{Within}$ is the mean square within groups (error). **RAISINS** reports the F-statistic, degrees of freedom, p-value, and Tukey's HSD letter groupings automatically.
-
-**Kruskal-Wallis test with Dunn's post-hoc** is the recommended non-parametric alternative when normality is violated or sample sizes are small (fewer than 5 per group). It ranks all observations across groups and tests whether the rank distributions differ among groups. Post-hoc Dunn's test with Bonferroni or Benjamini-Hochberg FDR correction is used to identify which specific pairs of groups differ significantly.
-
-**Pairwise Wilcoxon rank-sum tests** are the two-sample non-parametric equivalent of the t-test and are applied for direct pairwise comparisons of diversity between two specific groups. These tests are particularly useful when only two groups are being compared or when a targeted pairwise question is of primary interest rather than an overall group effect.
-
-The choice among these three approaches follows a simple decision tree: if there are exactly two groups, use the Wilcoxon test (or t-test if normal); if there are three or more groups and the data are normally distributed, use ANOVA with Tukey's HSD; and if there are three or more groups with non-normal data or small samples, use Kruskal-Wallis with Dunn's test. **RAISINS** automates this decision based on the Shapiro-Wilk normality test applied to the diversity index values within each group.
-:::
-
-## Summary Stats {#SUM}
-
-::: {style="text-align: justify;"}
-In addition to the diversity index comparison outputs, **RAISINS** provides a `Summary Stats` tab that displays comprehensive descriptive statistics for all alpha diversity indices across all samples, broken down by group. Click on the `Summary Stats` tab within the `Analysis` panel to access the table shown in @fig-102. This table reports group-level summary measures for each index, enabling rapid assessment of the central tendency, variability, and distributional properties of community diversity within each treatment or site group.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary statistics table — alpha diversity indices by group](www/summary_stat.webp){#fig-102 fig-align="center"}
-
-<details>
-
-```{=html}
-<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
-```
-
-<small>
-
-**Group**: The categorical classification of each sample (e.g., Forest, Agriculture, Grassland, Urban in our working example).
-
-**Mean**: The arithmetic average of the diversity index across all replicate samples within the group. It represents the typical diversity level for that community type.
-
-**SD (Standard Deviation)**: A measure of the spread of diversity index values within the group. A low SD indicates that all replicate samples within the group have similar diversity levels, while a high SD suggests heterogeneity among replicates.
-
-**SE (Standard Error)**: Estimates how far the sample mean is likely to deviate from the true population mean: $$SE = \frac{SD}{\sqrt{n}}$$ where n is the number of replicate samples per group. Smaller SE values indicate more precise group mean estimates.
-
-**Min / Max**: The lowest and highest diversity index values recorded among replicate samples within the group. Wide Min-Max ranges suggest high within-group heterogeneity.
-
-**CV (Coefficient of Variation)**: The ratio of the standard deviation to the mean, expressed as a percentage: $$CV = \frac{SD}{Mean} \times 100$$ Lower CV values indicate more consistent diversity within the group, which is desirable for reliable group-level inference.
-
-**Skewness**: A measure of the asymmetry of the distribution of diversity index values within the group. A positive value indicates a right-skewed distribution (a few samples with unusually high diversity), while a negative value indicates left skew.
-
-**Kurtosis**: A measure of the tailedness of the distribution. Values close to 3 (or 0 for excess kurtosis) indicate a near-normal distribution; higher values indicate heavier tails with more extreme observations.
-
-</small>
-
-</details>
-
-### Interpretations from @fig-102
-
-::: {style="text-align: justify;"}
-The summary statistics table for Shannon entropy reveals that the Forest group exhibits the highest mean diversity (H' = 3.82) with a relatively low coefficient of variation (CV = 5.5%), indicating both high and consistent microbial diversity across replicate forest soil samples. The Urban group records the lowest mean diversity (H' = 2.54) but the highest CV (13.0%), suggesting greater spatial heterogeneity in microbial communities within urban environments — a pattern consistent with the patchy and disturbed nature of urban soils. The Agriculture group shows a moderate mean (H' = 2.97) with moderate variability (CV = 9.8%), likely reflecting within-group variation in soil management practices across the five replicate plots. Skewness values close to zero for all groups indicate approximately symmetric distributions of Shannon entropy within groups, supporting the use of parametric tests for formal comparisons. All groups show kurtosis values near 3, consistent with approximately normal within-group distributions of the diversity index.
-:::
-
-## Individual ANOVA {#IA}
-
-::: {style="text-align: justify;"}
-The **Individual ANOVA** tab in **RAISINS** provides a separate, detailed one-way ANOVA (or Kruskal-Wallis) table for each alpha diversity index individually — Shannon entropy, Simpson's index, species richness, and Pielou's evenness — allowing users to assess the statistical significance of the group effect on each index in isolation. Click on `Individual ANOVA` in the `Analysis` panel to access the tables shown in @fig-104.
-
-The significance of the group effect on each diversity index can be assessed using the F-test (or H statistic) and the corresponding p value, as shown in @fig-104.
-:::
-
-**Table 4: ANOVA table for Shannon Entropy (H')**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Individual ANOVA table for Shannon entropy by land-use group](www/PLACEHOLDER_IndividualANOVA_Diversity.webp){#fig-104 fig-align="center"}
-
-<details>
-
-```{=html}
-<summary style="color: #5DADE2"; font-weight: bold;"> Table parameters </summary>
-```
-
-<small>
-
-**Critical Difference (CD)**
-
-The minimum difference required between any two group means of the diversity index to declare them statistically significantly different at the chosen level of significance, computed from the LSD or Tukey's HSD formula.
-
-**Coefficient of Variation (CV (%))**
-
-A relative measure of experimental precision, expressing the within-group standard deviation as a percentage of the overall mean diversity index: $$CV = \frac{SD_{within}}{Grand\ Mean} \times 100$$ A low CV indicates that replicate samples within groups are consistent in their diversity levels, suggesting good sampling reliability.
-
-**Mean Square Error (MSE)**
-
-The within-group (residual) mean square from the ANOVA table, representing unexplained variance in the diversity index not accounted for by the group factor. It is used as the denominator in the F-ratio and as the basis for computing SE and CD values.
-
-**Standard Error of Mean (SE(m))**
-
-Estimates how much the sample mean diversity index of a group is expected to vary from the true population mean: $$SE(m) = \sqrt{MSE / n}$$ where n is the number of replicate samples per group.
-
-**Standard Error of Difference (SE(d))**
-
-The standard error of the difference between any two group mean diversity indices: $$SE(d) = \sqrt{2 \times MSE / n}$$ This forms the basis for computing the critical difference used in post-hoc pairwise comparisons.
-
-</small>
-
-</details>
-
-### Interpretation from @fig-104
-
-::: {style="text-align: justify;"}
-The individual ANOVA table for Shannon entropy shows a highly significant effect of land-use type on microbial alpha diversity (F = 12.74, df = 3, 16; p \< 0.001). The mean square error (MSE = 0.048) is small relative to the between-group mean square (MSS = 0.611), indicating that within-group variability in Shannon entropy is low compared to the differences observed between groups. The coefficient of variation (CV = 6.5%) confirms good precision in the diversity measurements across replicate samples. The critical difference at the 5% significance level (CD = 0.31) provides the minimum detectable difference between any two group means for Shannon entropy. The standard error of the mean (SE(m) = 0.098) and standard error of difference (SE(d) = 0.139) are both small, supporting the reliability of the group mean estimates.
-:::
-
-**Table 5: Summary statistics with grouping letters for Shannon Entropy**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary statistics with post-hoc letter groupings for Shannon entropy](www/PLACEHOLDER_SummaryABC_Diversity.webp){#fig-103 fig-align="center"}
-
-### Interpretation from @fig-103
-
-::: {style="text-align: justify;"}
-The summary statistics table with post-hoc letter groupings confirms the pattern identified in the overall ANOVA. Forest samples (mean H' = 3.82, group **a**) are significantly more diverse than Agriculture (mean H' = 2.97, group **bc**) and Urban samples (mean H' = 2.54, group **c**). Grassland occupies an intermediate position (mean H' = 3.41, group **ab**), sharing a letter with Forest but not with Urban, indicating that Grassland diversity is statistically similar to Forest but significantly greater than Urban. These groupings provide a concise visual summary of which land-use types support statistically distinguishable levels of microbial alpha diversity.
-:::
-
 ## Diversity Indices {#DI}
 
 ::: {style="text-align: justify;"}
-The `Diversity Indices` tab in **RAISINS** provides a comprehensive, sample-level breakdown of all computed alpha diversity indices in a single consolidated table (see @fig-di). This tab is the primary reference for individual sample-level diversity values and complements the group-level summaries provided in the Analysis Results and Summary Stats tabs. Each row in the table corresponds to one sample, and each column corresponds to one diversity index, enabling rapid cross-sample and cross-group comparison of the full diversity profile.
+The Diversity Indices tab in **RAISINS** provides a comprehensive, sample-level breakdown of all computed alpha diversity indices in a single consolidated table (see @fig-di). This tab is the primary reference for individual sample-level diversity values and complements the group-level summaries provided in the Analysis Results and Summary Stats tabs. Each row in the table corresponds to one sample, and each column corresponds to one diversity index, enabling rapid cross-sample and cross-group comparison of the full diversity profile.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Diversity indices table — full sample-level breakdown of all alpha diversity metrics](www/PLACEHOLDER_DiversityIndicesTab.webp){#fig-di fig-align="center"}
+![Diversity index tab](images/diversity%20index%20tab.png){#fig-di fig-align="center"}
 
 ::: {style="text-align: justify;"}
 The diversity indices table reports the following metrics for every sample in the uploaded community matrix. **Species Richness (S)** counts the number of OTUs or species with at least one read in each sample. **Shannon Entropy (H')** quantifies diversity incorporating both richness and evenness, with higher values indicating more diverse and evenly distributed communities. **Pielou's Evenness (J)** normalises Shannon entropy by the maximum possible entropy (ln S), isolating the equitability component of diversity on a 0–1 scale. **Simpson's Index (D)** and its complement **(1 – D)** provide concentration-based measures of dominance and diversity respectively, with 1 – D approaching 1 for highly diverse communities. The **Inverse Simpson (1/D)** is the effective number of equally dominant species, a particularly intuitive diversity measure for ecological interpretation. **Chao1** provides a bias-corrected richness estimate that accounts for undetected singletons, while **ACE (Abundance-based Coverage Estimator)** provides an alternative non-parametric richness estimate using low-abundance species. All indices are computed after any rarefaction or transformation selected in the Analysis tab options.
 :::
+
+![Alpha Index](images/alpha%20index%20tab.png){fig-align="center"}
+
+Alpha diversity indexes are statistical measures used to evaluate the diversity within a single sample or community. They describe species richness (number of species) and evenness (distribution of individuals among species). Common alpha diversity indexes include Shannon index, Simpson index, Chao1, and Observed species index. These indexes help assess the complexity and stability of biological communities.
+
+![Heat Map](images/standardized%20alpha-01.png){fig-align="center"}
+
+A heat map in diversity analysis is a color-coded graphical representation used to visualize the abundance or distribution of species, genes, or variables across different samples or treatments. Different colors indicate varying intensity levels, where darker or warmer colors usually represent higher abundance and lighter colors indicate lower abundance. It helps identify patterns, similarities, and clustering among samples easily.
+
+![PCA Plot](images/heat%20map%20pro-01.png){fig-align="center"}
+
+A PCA (Principal Component Analysis) plot is a multivariate graphical tool used in diversity analysis to reduce complex data into principal components and visualize similarities or differences among samples. Each point in the plot represents a sample, and samples positioned closer together indicate similar characteristics or community composition. PCA plots help identify clustering patterns, variation, and relationships between treatments or groups.
+
+![Correlation Plot](images/pca%20plot.png){fig-align="center"}
+
+A correlation plot is a graphical representation used to show the strength and direction of relationships between variables in a dataset. It is commonly displayed as a matrix with colored circles or squares, where positive correlations are shown in one color and negative correlations in another. The plot helps identify patterns, associations, and dependencies among variables in diversity or multivariate analysis.
+
+![Box Plot](images/Correlation%20pro.png){fig-align="center"}
+
+A box plot is a statistical graph used to display the distribution of data based on minimum value, first quartile, median, third quartile, and maximum value. The box represents the interquartile range, while the line inside the box shows the median. Whiskers and outlier points help identify data spread, variability, and unusual observations among groups or treatments.
+
+![Standardized Alpha Index Plot](images/Screenshot%202026-05-16%20140833.png){fig-align="center"}
+
+A standardised alpha index plot is a graphical representation used to compare alpha diversity indices across different samples or treatments after standardization. It helps reduce the effect of differences in sample size or sequencing depth, allowing fair comparison of diversity measures such as Shannon, Simpson, or Chao1 indices. The plot clearly shows variations in species richness and evenness among groups.
 
 <details>
 
@@ -449,21 +299,17 @@ where in all formulae $p_i$ is the relative abundance of the *i*-th species in t
 
 </details>
 
-### Interpretation from @fig-di
-
-::: {style="text-align: justify;"}
-The sample-level diversity index table for the soil microbial study confirms the group-level patterns identified in the analysis results section. Individual Forest samples consistently record Shannon entropy values between 3.61 and 4.05 and Chao1 estimates between 26 and 31, reflecting both high true richness and high estimated undetected richness. Urban samples show the widest range of Shannon values (2.21–2.88), consistent with the high within-group CV reported in the summary statistics. Pielou's evenness values are uniformly high (\> 0.78) in Forest samples, while Urban samples include two replicates with J \< 0.70, indicating noticeable dominance by a small number of abundant OTUs in the most disturbed sites. The Inverse Simpson values corroborate the Shannon gradient, ranging from a mean of 18.4 in Forest to 8.7 in Urban. Chao1 estimates generally exceed observed richness by 2–5 OTUs in all groups, suggesting that a small number of additional rare taxa would likely be detected with deeper sequencing.
-:::
-
 ## Beta Diversity {#BD}
 
 ::: {style="text-align: justify;"}
-Beta diversity quantifies the compositional dissimilarity between pairs of samples, capturing the degree to which community composition changes across samples, groups, or environmental gradients. In **RAISINS**, the `Beta Diversity` tab computes the full pairwise dissimilarity matrix from the uploaded community matrix using the selected dissimilarity measure and displays it as a colour-coded heatmap (see @fig-bd). Additionally, two ordination methods — **Non-metric Multidimensional Scaling (NMDS)** and **Principal Coordinates Analysis (PCoA)** — are available to visualise the arrangement of samples in low-dimensional space based on their pairwise dissimilarities. Samples that are compositionally similar appear close together in the ordination plot, while compositionally dissimilar samples appear far apart.
+Beta diversity quantifies the compositional dissimilarity between pairs of samples, capturing the degree to which community composition changes across samples, groups, or environmental gradients. In **RAISINS**, the Beta Diversity tab computes the full pairwise dissimilarity matrix from the uploaded community matrix using the selected dissimilarity measure and displays it as a colour-coded heatmap. Additionally, two ordination methods **Non-metric Multidimensional Scaling (NMDS)** and **Principal Coordinates Analysis (PCoA)** are available to visualise the arrangement of samples in low-dimensional space based on their pairwise dissimilarities. Samples that are compositionally similar appear close together in the ordination plot, while compositionally dissimilar samples appear far apart.
 :::
 
-<!-- REPLACE THIS SCREENSHOT -->
+![Sorenson Heat Map](images/sorenson.png){fig-align="center"}
 
-![Beta diversity dissimilarity heatmap — Bray-Curtis dissimilarities among 20 soil samples](www/PLACEHOLDER_BetaDiversityHeatmap.webp){#fig-bd fig-align="center"}
+A Sorenson heat map is a color-coded graphical representation based on the Sørensen similarity index, used to show the similarity or dissimilarity between samples or communities. Different color intensities indicate the degree of similarity, where higher similarity values are represented by stronger colors. It helps visualize clustering patterns and relationships among samples in diversity analysis
+
+<!-- REPLACE THIS SCREENSHOT -->
 
 ::: {style="text-align: justify;"}
 The **Bray-Curtis dissimilarity** is the default measure in **RAISINS** for abundance-based community data. It is computed for each pair of samples *i* and *j* as: $$BC_{ij} = 1 - \frac{2 \sum_{k} \min(x_{ik}, x_{jk})}{\sum_{k} x_{ik} + \sum_{k} x_{jk}}$$ where $x_{ik}$ is the abundance of species *k* in sample *i*. Bray-Curtis values range from 0 (identical communities) to 1 (no shared species with abundance). The **Jaccard dissimilarity** is recommended for presence-absence data and is computed as the proportion of species present in one sample but not the other relative to the total number of species present in either sample. The **Euclidean distance** is available for standardised data but is generally not recommended for raw ecological count data due to its sensitivity to double-zeros. Users may select the preferred dissimilarity measure from the Analysis tab sidebar before running the analysis.
@@ -471,29 +317,33 @@ The **Bray-Curtis dissimilarity** is the default measure in **RAISINS** for abun
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![NMDS ordination plot — community composition coloured by land-use group](www/PLACEHOLDER_NMDSPlot.webp){#fig-nmds fig-align="center"}
+![Dendrogram](images/dendrogram%20pro.png){fig-align="center"}
+
+A dendrogram is a tree-like diagram used in cluster analysis to show the similarity or relationship among samples, species, or variables. It groups similar objects into clusters based on their characteristics or distance measures. The length of the branches indicates the degree of similarity or dissimilarity between groups, helping visualize hierarchical relationships in diversity analysis.
+
+![Box Plot](images/box%202%20pro-01.png){fig-align="center"}
+
+A box plot in beta diversity analysis is used to compare the distribution of dissimilarity or distance values among different groups or treatments. It summarizes variations in community composition using median, quartiles, spread, and outliers of beta diversity distances such as Bray–Curtis or UniFrac distances. This plot helps assess differences in diversity patterns between sample groups.
+
+![PCoA Plot 1](images/pcoa%201.png){fig-align="center"}
+
+A PCoA (Principal Coordinates Analysis) plot is a multivariate visualization used in beta diversity analysis to display similarities or differences among samples based on distance matrices such as Bray–Curtis or UniFrac distances. Each point represents a sample, and samples located closer together have more similar community composition. The plot helps identify clustering patterns, variation, and relationships among different groups or treatments.
+
+![PCoA Plot 2](images/pcoa%202.png){fig-align="center"}
+
+A PCoA plot 2 represents the second dimension or coordinate in Principal Coordinates Analysis, showing additional variation in beta diversity among samples. Together with the first coordinate, it helps explain the overall differences in community composition and reveals clustering or separation patterns between treatments or sample groups more clearly.
 
 ::: {style="text-align: justify;"}
-The NMDS ordination plot shown in @fig-nmds represents the 20 soil samples in two-dimensional space such that the rank order of distances between points approximates the rank order of their pairwise Bray-Curtis dissimilarities as closely as possible. Points are coloured by land-use type and 95% confidence ellipses are drawn around each group centroid. The **stress value** — a goodness-of-fit measure for the NMDS solution — is displayed on the plot; values below 0.10 indicate an excellent representation, values between 0.10 and 0.20 indicate a good representation with some distortion, and values above 0.20 suggest that a 3-dimensional solution may be more appropriate. In our example, the stress value of 0.08 indicates an excellent two-dimensional ordination. The clear spatial separation of Forest and Urban clusters in the NMDS plot provides a compelling visual confirmation that these land-use types harbour compositionally distinct microbial communities.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![PCoA ordination plot — Principal Coordinates Analysis of community dissimilarity](www/PLACEHOLDER_PCoAPlot.webp){#fig-pcoa fig-align="center"}
-
-::: {style="text-align: justify;"}
-The PCoA plot shown in @fig-pcoa is a metric ordination — also known as classical multidimensional scaling — that finds the linear combination of eigenvectors that best preserves the actual (not merely rank-order) dissimilarities among samples. The percentage of total variation explained by each principal coordinate axis is displayed on the axis labels. PCoA is particularly informative when Bray-Curtis or UniFrac distances are used, as it explicitly decomposes the total dissimilarity variance into orthogonal axes whose relative magnitudes are directly interpretable. In our example, PCoA axis 1 explains 38.4% and PCoA axis 2 explains 22.1% of total dissimilarity variance, together capturing 60.5% of the beta diversity structure in two dimensions.
+The NMDS ordination plot shown in @fig-nmds represents the 20 soil samples in two-dimensional space such that the rank order of distances between points approximates the rank order of their pairwise Bray-Curtis dissimilarities as closely as possible. Points are coloured by land-use type and 95% confidence ellipses are drawn around each group centroid. The **stress value** a goodness-of-fit measure for the NMDS solution is displayed on the plot; values below 0.10 indicate an excellent representation, values between 0.10 and 0.20 indicate a good representation with some distortion, and values above 0.20 suggest that a 3-dimensional solution may be more appropriate. In our example, the stress value of 0.08 indicates an excellent two-dimensional ordination. The clear spatial separation of Forest and Urban clusters in the NMDS plot provides a compelling visual confirmation that these land-use types harbour compositionally distinct microbial communities.
 :::
 
 ## PERMANOVA {#PER}
 
 ::: {style="text-align: justify;"}
-**PERMANOVA** (Permutational Multivariate Analysis of Variance) is the formal statistical test used to determine whether community composition differs significantly among the predefined groups. It partitions the total multivariate dissimilarity among samples into between-group and within-group components, analogously to univariate ANOVA, but uses a permutation procedure to assess statistical significance rather than relying on parametric distributional assumptions. In **RAISINS**, PERMANOVA is run automatically when `Run Analysis` is clicked, using the dissimilarity matrix generated from the selected measure and the group variable specified in the sidebar. The PERMANOVA results table is shown in @fig-per.
+**PERMANOVA** (Permutational Multivariate Analysis of Variance) is the formal statistical test used to determine whether community composition differs significantly among the predefined groups. It partitions the total multivariate dissimilarity among samples into between-group and within-group components, analogously to univariate ANOVA, but uses a permutation procedure to assess statistical significance rather than relying on parametric distributional assumptions. In **RAISINS**, PERMANOVA is run automatically when Run Analysis is clicked, using the dissimilarity matrix generated from the selected measure and the group variable specified in the sidebar. The PERMANOVA results table is shown in @fig-per.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
-
-![PERMANOVA results table — group effect on community composition](www/PLACEHOLDER_PERMANOVAResults.webp){#fig-per fig-align="center"}
 
 <details>
 
@@ -526,33 +376,33 @@ The PERMANOVA table produced by **RAISINS** reports the following parameters:
 ### Interpretation from @fig-per
 
 ::: {style="text-align: justify;"}
-The PERMANOVA results confirm that land-use type has a highly significant effect on soil microbial community composition (pseudo-F = 8.43, df = 3, 16; R² = 0.61; p = 0.001 based on 999 permutations). The R² value of 0.61 indicates that land-use type accounts for 61% of the total Bray-Curtis dissimilarity among all 20 samples — a large and ecologically meaningful proportion. The residual variation (39%) reflects within-group compositional heterogeneity among replicate samples of the same land-use type. The statistically significant PERMANOVA result, combined with the visual separation of groups in the NMDS ordination (@fig-nmds), provides strong and convergent evidence that the microbial communities of Forest, Grassland, Agriculture, and Urban soils are compositionally distinct from one another. A pairwise PERMANOVA table (see @fig-perpair) identifies which specific pairs of land-use groups are significantly different.
+The PERMANOVA results confirm that land-use type has a highly significant effect on soil microbial community composition (pseudo-F = 8.43, df = 3, 16; R² = 0.61; p = 0.001 based on 999 permutations). The R² value of 0.61 indicates that land-use type accounts for 61% of the total Bray-Curtis dissimilarity among all 20 samples a large and ecologically meaningful proportion. The residual variation (39%) reflects within-group compositional heterogeneity among replicate samples of the same land-use type. The statistically significant PERMANOVA result, combined with the visual separation of groups in the NMDS ordination , provides strong and convergent evidence that the microbial communities of Forest, Grassland, Agriculture, and Urban soils are compositionally distinct from one another. A pairwise PERMANOVA table identifies which specific pairs of land-use groups are significantly different.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
-
-![Pairwise PERMANOVA results — group-by-group comparison of community composition](www/PLACEHOLDER_PERMANOVAPairwise.webp){#fig-perpair fig-align="center"}
 
 ::: {style="text-align: justify;"}
 The pairwise PERMANOVA results show that all pairwise comparisons involving Forest versus Urban (pseudo-F = 14.21, p = 0.002) and Forest versus Agriculture (pseudo-F = 9.87, p = 0.002) are highly significant after Bonferroni correction for multiple comparisons. The Grassland versus Urban comparison is also significant (pseudo-F = 6.44, p = 0.010), while the Agriculture versus Grassland comparison is marginally significant (pseudo-F = 3.91, p = 0.048). The Forest versus Grassland comparison is the least differentiated (pseudo-F = 2.83, p = 0.084), suggesting partial compositional overlap between these two more natural land-use types.
 :::
 
 ::: callout-tip
-#### PERMANOVA tests for differences in community composition (centroid and/or dispersion) between groups, but a significant result does not necessarily mean that group centroids differ — it may also reflect differences in within-group dispersion. Always complement PERMANOVA with a PERMDISP (homogeneity of multivariate dispersion) test, which RAISINS runs automatically alongside PERMANOVA.
+#### PERMANOVA tests for differences in community composition (centroid and/or dispersion) between groups, but a significant result does not necessarily mean that group centroids differ it may also reflect differences in within-group dispersion. Always complement PERMANOVA with a PERMDISP (homogeneity of multivariate dispersion) test, which RAISINS runs automatically alongside PERMANOVA.
 :::
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![PERMDISP results — test of homogeneity of multivariate dispersions among groups](www/PLACEHOLDER_PERMDISPResults.webp){#fig-permdisp fig-align="center"}
+![Permanova](images/permanova%201.png){#fig-per fig-align="center"}
+
+![Permanova](images/permanova%202.png){fig-align="center"}
 
 ::: {style="text-align: justify;"}
-The **PERMDISP** (Permutational analysis of multivariate dispersions) test assesses whether the within-group spread of samples around their group centroid is homogeneous across groups — analogous to Levene's test of variance homogeneity in univariate ANOVA. A significant PERMDISP result (p \< 0.05) indicates that at least one group shows greater or lesser within-group compositional variability than the others, which should be considered when interpreting a significant PERMANOVA result. In our example, the PERMDISP test is non-significant (F = 1.82, p = 0.189), indicating homogeneous within-group dispersions across the four land-use types and confirming that the significant PERMANOVA result reflects genuine differences in group centroids (community composition), not merely differences in within-group variability.
+The **PERMDISP** (Permutational analysis of multivariate dispersions) test assesses whether the within-group spread of samples around their group centroid is homogeneous across groups analogous to Levene's test of variance homogeneity in univariate ANOVA. A significant PERMDISP result (p \< 0.05) indicates that at least one group shows greater or lesser within-group compositional variability than the others, which should be considered when interpreting a significant PERMANOVA result. In our example, the PERMDISP test is non-significant (F = 1.82, p = 0.189), indicating homogeneous within-group dispersions across the four land-use types and confirming that the significant PERMANOVA result reflects genuine differences in group centroids (community composition), not merely differences in within-group variability.
 :::
 
 ## Visualisation {#VIS}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is designed for a smooth and hassle-free experience. Once you click the `Run Analysis` button, all relevant results and outputs appear instantly leaving no room for confusion. The `Visualisation` tab provides a comprehensive gallery of publication-ready plots for all aspects of the diversity analysis, from alpha diversity box plots to beta diversity ordinations and rarefaction curves (see @fig-8). Each plot comes with a gear icon at the top-left corner allowing you to customise its appearance, and you can download plots in high-quality PNG (300 dpi), JPEG, TIFF, PDF, and SVG formats for use in manuscripts, reports, or presentations.
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analsis button, all relevant results and outputs appear instantly leaving no room for confusion. The Visualisation tab provides a comprehensive gallery of publication-ready plots for all aspects of the diversity analysis, from alpha diversity box plots to beta diversity ordinations and rarefaction curves (see @fig-8). Each plot comes with a gear icon at the top-left corner allowing you to customise its appearance, and you can download plots in high-quality PNG (300 dpi), JPEG, TIFF, PDF, and SVG formats for use in manuscripts, reports, or presentations.
 :::
 
 ### Customizing plots
@@ -561,10 +411,10 @@ The **PERMDISP** (Permutational analysis of multivariate dispersions) test asses
 **RAISINS** provides users with various customisation features for the plots to enhance the visualisation according to individual requirements. **Click** on @fig-8 to get a clear idea of the available customising features, including colour palettes, axis label font size, point size, ellipse transparency, and legend positioning.
 :::
 
-![Plot settings for customising](images/visual plot.png){#fig-8 fig-align="center"}
+![Plot settings for customising](images/visual%20plot.png){#fig-8 fig-align="center"}
 
 ::: {style="text-align: justify;"}
-From @fig-9 to @fig-13, you can see the different types of plots available in **RAISINS** for Diversity Analysis and PERMANOVA. Each one is visually illustrated and accompanied by a clear, insightful description, making it easy to understand what each plot conveys and when to use it.
+From @fig-9 to @fig-10, you can see the different types of plots available in **RAISINS** for Diversity Analysis and PERMANOVA. Each one is visually illustrated and accompanied by a clear, insightful description, making it easy to understand what each plot conveys and when to use it.
 :::
 
 ```{=html}
@@ -653,16 +503,16 @@ function hideDescription(id) {
 </style>
 ```
 
-:::::::::::::::::::::::: grid
+::::::::::: grid
 :::::: g-col-6
 ::::: {.plot-container onmouseover="showDescription('alphabox-desc')" onmouseout="hideDescription('alphabox-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Alpha diversity box plot](images/staked bar.png){#fig-9}
+![Stacked Bar graph](images/staked%20bar.png){#fig-9}
 
 :::: {#alphabox-desc .plot-description}
 ::: {style="text-align: justify;"}
-The **Alpha Diversity Box Plot** displays the distribution of a selected diversity index (e.g., Shannon H') across the replicate samples within each group. Each box shows the median, interquartile range, and whiskers for that group. Statistical letter groupings above each box indicate which groups are significantly different — groups sharing a letter are not significantly different at the 5% level. This is the primary figure for reporting alpha diversity comparisons in publications.
+A **stacked bar graph** is a graphical representation used to display the composition and abundance of different groups within a dataset. In biodiversity analysis, it shows the relative or absolute contribution of species across different locations or sites. Each bar represents a sample or site, and different colored segments within the bar indicate the proportion or count of individual species. This graph helps compare species distribution patterns, dominance, and community structure among sampling locations.
 :::
 ::::
 :::::
@@ -672,199 +522,29 @@ The **Alpha Diversity Box Plot** displays the distribution of a selected diversi
 ::::: {.plot-container onmouseover="showDescription('rarefaction-desc')" onmouseout="hideDescription('rarefaction-desc')"}
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Rarefaction curves by sample and group](images/relatuve bar.png){#fig-10}
+![Relative Bar Graph](images/relatuve%20bar.png){#fig-10}
 
 :::: {#rarefaction-desc .plot-description}
 ::: {style="text-align: justify;"}
-The **Rarefaction Curve Plot** displays the accumulation of observed species richness as a function of sequencing depth (number of reads sampled) for each sample, coloured by group. Curves that reach a clear plateau indicate that sampling depth is sufficient to capture the majority of species present. Samples whose curves have not plateaued suggest that deeper sequencing would reveal additional taxa. This plot is essential for evaluating whether sequencing effort was adequate and for selecting an appropriate rarefaction depth before computing alpha diversity indices.
+A **relative bar graph** is used to display the proportional abundance or percentage contribution of different species or groups within each sample or site. Instead of showing absolute counts, the values are converted into relative proportions, allowing easy comparison of community composition across locations. In biodiversity studies, it helps visualize species dominance, diversity patterns, and variation in relative abundance among sampling sites.
 :::
 ::::
 :::::
 ::::::
-
-:::::: g-col-6
-::::: {.plot-container onmouseover="showDescription('nmds-desc')" onmouseout="hideDescription('nmds-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
-
-![NMDS ordination plot with group ellipses](www/PLACEHOLDER_Plot_NMDSOrdination.webp){#fig-11}
-
-:::: {#nmds-desc .plot-description}
-::: {style="text-align: justify;"}
-The **NMDS Ordination Plot** represents all samples as points in two-dimensional ordination space, where proximity reflects compositional similarity based on the chosen dissimilarity metric. Points are coloured by group, and 95% confidence ellipses are drawn around each group centroid. The stress value printed on the plot quantifies the goodness of fit. Visual separation of group ellipses indicates compositional differentiation, which is formally tested by PERMANOVA. This is the standard beta diversity visualisation in ecological and microbiome research.
-:::
-::::
-:::::
-::::::
-
-:::::: g-col-6
-::::: {.plot-container onmouseover="showDescription('heatmap-desc')" onmouseout="hideDescription('heatmap-desc')"}
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Beta diversity dissimilarity heatmap](www/PLACEHOLDER_Plot_DissimilarityHeatmap.webp){#fig-12}
-
-:::: {#heatmap-desc .plot-description}
-::: {style="text-align: justify;"}
-The **Beta Diversity Heatmap** displays the pairwise dissimilarity matrix as a colour-coded symmetric matrix, with samples arranged by group along both axes. Darker colours indicate greater dissimilarity between sample pairs. The heatmap makes it visually straightforward to identify clusters of similar samples within groups and to assess the overall magnitude of between-group versus within-group dissimilarity. Dendrograms computed from hierarchical clustering of the dissimilarity matrix are optionally overlaid on both axes.
-:::
-::::
-:::::
-::::::
-
-::::::: g-col-6
-:::::: {.plot-container onmouseover="showDescription('barstack-desc')" onmouseout="hideDescription('barstack-desc')"}
-::: {style="text-align: center;"}
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Stacked bar chart of community composition](www/PLACEHOLDER_Plot_StackedBarComposition.webp){#fig-13}
-:::
-
-:::: {#barstack-desc .plot-description}
-::: {style="text-align: justify;"}
-The **Stacked Bar Chart of Community Composition** displays the relative abundance of the most abundant taxa (OTUs or species) in each sample or group as proportional coloured segments of a bar. Samples are arranged by group along the x-axis, and each colour segment represents one taxon. This plot enables rapid visual comparison of the dominant taxa across groups, identification of group-specific taxa, and assessment of community evenness. Taxa below a user-specified abundance threshold are pooled into an "Other" category for clarity.
-:::
-::::
-::::::
-:::::::
-::::::::::::::::::::::::
-
-## Advanced plots {#AP}
-
-::: {style="text-align: justify;"}
-**RAISINS** also provides `Advanced Plots` that go beyond standard alpha and beta diversity visualisations, offering deeper insight into community structure, distributional properties, and cross-sample patterns (see @fig-90).
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Advanced plots tab in RAISINS for Diversity Analysis](www/PLACEHOLDER_AdvancedPlotsTab_Diversity.webp){#fig-90 fig-align="center"}
-
-**SUMMARY PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Summary plot — composite diversity overview](www/PLACEHOLDER_AdvPlot_Summary_Diversity.webp){#fig-14 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The summary plot provides a composite panel combining the NMDS ordination, alpha diversity box plots for Shannon and Simpson indices, and the PERMANOVA R² annotation in a single publication-ready figure. It is designed to communicate the key diversity analysis results — both alpha and beta diversity patterns and their statistical significance — in one integrated graphic suitable for inclusion in manuscripts without requiring multiple separate figures.
-:::
-
-**ADVANCED RAINCLOUD PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Advanced raincloud plot — alpha diversity index distribution by group](www/PLACEHOLDER_AdvPlot_Raincloud_Diversity.webp){#fig-15 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The advanced raincloud plot combines a kernel density estimate (cloud), a box plot (showing median, IQR and whiskers), and individual sample data points (rain) for the selected alpha diversity index, broken down by group. This plot is particularly informative for revealing the full distributional shape of diversity within each group, identifying multimodal distributions that would be hidden by a box plot alone, and detecting outlier samples with unusually high or low diversity values within a group.
-:::
-
-**QQ PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![QQ plot — normality assessment of alpha diversity index values](www/PLACEHOLDER_AdvPlot_QQ_Diversity.webp){#fig-16 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The Q–Q (quantile–quantile) plot assesses whether the alpha diversity index values within each group follow a normal distribution, a key assumption for the parametric ANOVA-based comparison of diversity indices. Observed quantiles are plotted against theoretical normal quantiles; points lying close to the diagonal reference line indicate approximate normality. Departures from normality — such as heavy tails or a curved pattern — support using the Kruskal-Wallis non-parametric test instead of ANOVA for group comparisons, which **RAISINS** detects and implements automatically.
-:::
-
-**RAIN CLOUD PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Raincloud plot — simpler version for diversity index distribution](www/PLACEHOLDER_AdvPlot_RaincloudSimple_Diversity.webp){#fig-17 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The simpler raincloud plot presents the distribution of the selected diversity index across groups using a half-violin density curve (cloud) paired with individual sample points (rain), without the box plot overlay. This cleaner version is preferred for presentations or reports where a visually uncluttered display of group distributions is desired while still showing individual replicate data points.
-:::
-
-**DISTRIBUTION PLOT**
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Distribution plot — frequency distribution of diversity index values](www/PLACEHOLDER_AdvPlot_Distribution_Diversity.webp){#fig-18 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The distribution plot displays overlapping density curves or histograms for the selected alpha diversity index across all groups on a common axis. This plot enables direct visual comparison of the central tendency, spread, and shape of the diversity distribution within each group simultaneously, making it easy to identify which groups have broader or narrower distributions, where group distributions overlap, and whether any group shows bimodality or extreme skewness that may affect the validity of parametric comparisons.
-:::
+:::::::::::
 
 ## AI interpretation {#AI}
 
 ::: {style="text-align: justify;"}
-**RAISINS** is equipped with an AI-powered **RAISINS Assistant** designed to help users understand and communicate the outcomes of Diversity Analysis and PERMANOVA. Once the analysis is run, the AI assistant — accessible via the `AI interpretation` tab in the `Analysis` panel — reads all computed outputs including alpha diversity index tables, pairwise comparison results, NMDS stress values, PERMANOVA pseudo-F and R² values, pairwise PERMANOVA results, and PERMDISP results, and generates a structured, plain-language narrative interpretation (see @fig-ai). The assistant identifies which groups are significantly more or less diverse, summarises which group pairs are compositionally distinct in PERMANOVA, flags any heterogeneity of dispersion detected by PERMDISP, and suggests appropriate ecological interpretations and next analytical steps — such as indicator species analysis, network analysis, or differential abundance testing. This feature is especially valuable for researchers who are reporting diversity analysis results for the first time or who need to prepare results and discussion sections for manuscripts efficiently.
+**RAISINS** is equipped with an AI-powered **RAISINS Assistant** designed to help users understand and communicate the outcomes of Diversity Analysis and PERMANOVA. Once the analysis is run, the AI assistant accessible via the AI Interpretation tab in the Analysis panel reads all computed outputs including alpha diversity index tables, pairwise comparison results, NMDS stress values, PERMANOVA pseudo-F and R² values, pairwise PERMANOVA results, and PERMDISP results, and generates a structured, plain-language narrative interpretation (see @fig-ai). The assistant identifies which groups are significantly more or less diverse, summarises which group pairs are compositionally distinct in PERMANOVA, flags any heterogeneity of dispersion detected by PERMDISP, and suggests appropriate ecological interpretations and next analytical steps such as indicator species analysis, network analysis, or differential abundance testing. This feature is especially valuable for researchers who are reporting diversity analysis results for the first time or who need to prepare results and discussion sections for manuscripts efficiently.
 :::
 
-![AI powered RAISINS Assistant to interpret your diversity analysis results](www/ai.webp){#fig-ai fig-align="center"}
-
-## Multivariate {#MUL}
-
-::: {style="text-align: justify;"}
-In addition to PERMANOVA and ordination, **RAISINS** provides a `Multivariate` tab for complementary **MANOVA** and **Principal Component Analysis (PCA)** based on the computed alpha diversity indices across groups. This analysis treats the set of diversity indices — Shannon H', Simpson 1-D, Richness, and Evenness — as a multivariate response vector and examines whether the overall diversity profile differs among groups. Navigate to the `Multivariate` tab as shown in @fig-mu.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Multivariate tab in RAISINS for diversity index MANOVA and PCA](www/PLACEHOLDER_MultivariateTab_Diversity.webp){#fig-mu}
-
-::: {style="text-align: justify;"}
-MANOVA and PCA are automatically carried out based on the selected alpha diversity indices. The MANOVA table with automated interpretation appears first, followed by PCA results and plots.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![MANOVA results — multivariate test of group differences in diversity index profiles](www/PLACEHOLDER_MANOVAResults_Diversity.webp){#fig-MAN2 fig-align="center"}
-
-::: {style="text-align: justify;"}
-The table titled **'Eigen Values PCA'** shown in @fig-PC provides information about the eigenvalues and the percentage of variance explained by each principal component derived from the alpha diversity index matrix. PC1 typically captures the dominant gradient of overall diversity (combining richness and evenness variation across groups), while PC2 may reflect differential patterns in the dominance-evenness trade-off. PC1 and PC2 together explain the majority of variance in the diversity index profiles, and the scree plot below illustrates the proportion of variance attributable to each component.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![PCA-based index score for diversity index profiles](www/PLACEHOLDER_PCAIndex_Diversity.webp){#fig-PC}
-
-::: {style="text-align: justify;"}
-The scree plot shown in @fig-screeplot illustrates the proportion of variance explained by each principal component of the alpha diversity index PCA, providing a visual basis for determining how many components capture the main axes of diversity variation across groups.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Scree plot — PCA of alpha diversity index profiles](www/PLACEHOLDER_ScreePlot_Diversity.webp){#fig-screeplot fig-align="center"}
-
-::: {style="text-align: justify;"}
-Examine the loadings of each diversity index on PC1 and PC2 in @fig-loadings to understand which indices drive the differentiation among groups. Indices with large positive loadings on PC1 tend to be highest in the groups positioned to the right of the PCA biplot, while indices with negative loadings are lowest in those groups. This loading structure guides the selection of a biologically informative composite diversity score for ranking or selecting among groups. It is recommended to include diversity indices that are not perfectly correlated (such as combining a richness measure with an evenness measure) to ensure the PCA captures multiple independent axes of diversity variation.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Loadings of each diversity index on PC1 and PC2](www/PLACEHOLDER_Loadings_Diversity.webp){#fig-loadings fig-align="center"}
-
-::: {style="text-align: justify;"}
-The biplot in @fig-biplot simultaneously displays the groups (as points) and the diversity indices (as loading vectors) in the same two-dimensional PCA space. Groups positioned in the direction of a loading vector have high values for the corresponding diversity index. The angle between index vectors reflects their correlation: small angles indicate positive correlation, large angles (close to 90°) indicate weak or no correlation, and angles close to 180° indicate negative correlation. This biplot aids in understanding which diversity indices co-vary across groups and which groups are characterised by distinct combinations of diversity measures.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![PCA biplot — diversity indices and group scores](www/PLACEHOLDER_Biplot_Diversity.webp){#fig-biplot}
-
-::: {style="text-align: justify;"}
-In **RAISINS**, a **scaled composite diversity index score** is computed by normalising the PC-based index to a range of 0 to 1, enabling straightforward ranking and selection of groups by their overall diversity profile. Use the `Select cutoff for Scaled Index Score` feature shown in @fig-indexscore to choose a threshold percentage for identifying groups above or below a defined diversity criterion. The default cutoff is set at 75%. Groups meeting the cutoff are highlighted in yellow in the table, and an index score plot is displayed alongside the table for visual confirmation of the group ranking.
-:::
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Scaled composite diversity index score for group ranking](www/PLACEHOLDER_IndexScore_Diversity.webp){#fig-indexscore fig-align="center"}
-
-<!-- REPLACE THIS SCREENSHOT -->
-
-![Composite diversity index score plot](www/PLACEHOLDER_IndexPlot_Diversity.webp){#fig-index fig-align="center"}
-
-::: {style="text-align: justify;"}
-Combining the alpha diversity comparison results, PERMANOVA findings, NMDS ordination, and PCA-based composite diversity scores, the researcher can arrive at a comprehensive, statistically rigorous, and ecologically interpretable conclusion regarding the impact of the grouping factor on both within-sample and between-sample dimensions of community diversity.
-:::
+![AI powered RAISINS Assistant to interpret your diversity analysis results](images/Screenshot%202026-05-16%20144756.png){#fig-ai fig-align="center"}
 
 ## Preparing your data {#PRE}
 
 ::: {style="text-align: justify;"}
-"Your analysis is only as good as your data! Feed RAISINS high-quality community abundance data, and it will deliver powerful diversity and PERMANOVA insights — feed it poorly structured or contaminated data, and the results will not be trustworthy."
+"Your analysis is only as good as your data! Feed RAISINS high-quality community abundance data, and it will deliver powerful diversity and PERMANOVA insights feed it poorly structured or contaminated data, and the results will not be trustworthy."
 
 1.  Create your dataset in MS Excel
 
@@ -874,12 +554,12 @@ Combining the alpha diversity comparison results, PERMANOVA findings, NMDS ordin
 ## Preparing data in MS Excel {#EX}
 
 ::: {style="text-align: justify;"}
-Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The community matrix for Diversity Analysis and PERMANOVA must follow a **sample-by-species** (rows × columns) format. The first column must contain unique **sample identifiers** (e.g., Sample_01, Sample_02), the second column must contain the **group label** for each sample (e.g., Forest, Agriculture, Grassland, Urban), and all remaining columns must contain the **abundance counts** (or relative abundances, or presence-absence values) for each species or OTU. Column headers for the species columns should be concise species or OTU identifiers without spaces. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended for faster loading. Ensure that there are no blank rows above the data, no blank species columns, and no negative values in the abundance cells. For reference, see the structure shown in @fig-pp. An alternative arrangement where species are rows and samples are columns — the transposed format used by some sequencing pipelines — is also accepted by **RAISINS** and can be specified in the Analysis tab options, as illustrated in @fig-kk.
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The community matrix for Diversity Analysis and PERMANOVA must follow a **sample-by-species** (rows × columns) format. The first column must contain unique **sample identifiers** (e.g., Sample_01, Sample_02), the second column must contain the **group label** for each sample (e.g., Forest, Agriculture, Grassland, Urban), and all remaining columns must contain the **abundance counts** (or relative abundances, or presence-absence values) for each species or OTU. Column headers for the species columns should be concise species or OTU identifiers without spaces. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended for faster loading. Ensure that there are no blank rows above the data, no blank species columns, and no negative values in the abundance cells. For reference, see the structure shown in @fig-pp. An alternative arrangement where species are rows and samples are columns the transposed format used by some sequencing pipelines is also accepted by **RAISINS** and can be specified in the Analysis tab options, as illustrated in @fig-kk.
 :::
 
-![Model-1: showing how the prepared community matrix (samples × species) should look like](www/P1.webp){#fig-pp}
+![Model-1: showing how the prepared community matrix (samples × species) should look like](images/mode%201%20per.png){#fig-pp}
 
-![Model-2: showing the transposed format (species × samples) also accepted by RAISINS](www/P2.webp){#fig-kk}
+![Model-2: showing the transposed format (species × samples) also accepted by RAISINS](images/moddd%202%20pwer.png){#fig-kk}
 
 <details>
 
@@ -929,7 +609,7 @@ Open a new blank sheet in MS Excel with only one sheet included, and avoid addin
 ## Creating dataset in RAISINS {#CR}
 
 ::: {style="text-align: justify;"}
-If you are unsure about the correct format for creating a community matrix dataset, do not worry — **RAISINS** offers an option to create your data directly within the app using the prescribed template. Here is how:
+If you are unsure about the correct format for creating a community matrix dataset, do not worry **RAISINS** offers an option to create your data directly within the app using the prescribed template. Here is how:
 
 - Navigate to the **Create Data Tab**
 
@@ -941,18 +621,18 @@ If you are unsure about the correct format for creating a community matrix datas
 
 - Click on the **Create** button
 
-The model layout will appear as shown in @fig-createdata. You may then enter the observed abundance counts manually into the downloaded CSV file, or paste them directly into the template. Once all observations have been entered, download the CSV file and upload it in the `Analysis` tab for diversity analysis.
+The model layout will appear as shown in @fig-createdata. You may then enter the observed abundance counts manually into the downloaded CSV file, or paste them directly into the template. Once all observations have been entered, download the CSV file and upload it in the Analysis tab for diversity analysis.
 :::
 
-![Creating dataset within RAISINS](www/CREATEDAT.webp){#fig-createdata width="1011"}
+![Illustrating how to create a dataset](images/probit%20WEE%20(6).png){fig-align="center"}
 
 ## Model datasets {#M}
 
 ::: {style="text-align: justify;"}
-To test the app or to better understand the required community matrix format for Diversity Analysis and PERMANOVA, **RAISINS** provides model datasets within the app. You can download them from the `Datasets` tab and use them directly to explore the full analysis workflow — including diversity index computation, NMDS ordination, and PERMANOVA — before uploading your own experimental data.
+To test the app or to better understand the required community matrix format for Diversity Analysis and PERMANOVA, **RAISINS** provides model datasets within the app. You can download them from the Datasets tab and use them directly to explore the full analysis workflow including diversity index computation, NMDS ordination, and PERMANOVA before uploading your own experimental data.
 :::
 
-![Model dataset](www/modeldata.webp){#fig-188 fig-align="center"}
+![Model dataset](images/model%20proo.png){#fig-188 fig-align="center"}
 
 ## FAQ's {#F}
 
@@ -960,14 +640,14 @@ To test the app or to better understand the required community matrix format for
 The app includes a dedicated `FAQs` tab to help clarify common doubts and guide users through all features of the Diversity Analysis and PERMANOVA module. This section provides detailed answers to frequently asked questions about community matrix formatting, choice of dissimilarity measure, interpretation of NMDS stress values, understanding PERMANOVA R² versus p values, the difference between PERMANOVA and PERMDISP, rarefaction depth selection, and how to report diversity results in manuscripts. If you are ever unsure about how something works or what a result means, the `FAQs` tab is the best place to start.
 :::
 
-![FAQs](www/FAQ%20TAB.webp){#fig-148 fig-align="center"}
+![FAQs](images/faq%20pro.png){#fig-148 fig-align="center"}
 
 ## View data {#U}
 
 ::: {style="text-align: justify;"}
-`View Data` serves as the primary diagnostic tool for ensuring data integrity before running Diversity Analysis and PERMANOVA. Upon uploading your community matrix, the system performs an automated **Health Check** to validate that the Sample ID column contains unique identifiers, the Group column has consistent group labels with at least two groups and at least two samples per group, all species/OTU columns contain non-negative numeric values, zero values are properly represented (not as blank cells), and no columns contain entirely zero observations across all samples (which would indicate a species that was never detected and should be removed). Any formatting issues detected are clearly flagged before the analysis begins, preventing erroneous diversity or PERMANOVA results from poorly structured input data.
+View Data serves as the primary diagnostic tool for ensuring data integrity before running Diversity Analysis and PERMANOVA. Upon uploading your community matrix, the system performs an automated **Health Check** to validate that the Sample ID column contains unique identifiers, the Group column has consistent group labels with at least two groups and at least two samples per group, all species/OTU columns contain non-negative numeric values, zero values are properly represented (not as blank cells), and no columns contain entirely zero observations across all samples (which would indicate a species that was never detected and should be removed). Any formatting issues detected are clearly flagged before the analysis begins, preventing erroneous diversity or PERMANOVA results from poorly structured input data.
 :::
 
-![View data](www/view%20data.webp){fig-align="center"}
+![View data](images/view%20data-01.png){fig-align="center"}
 
 ------------------------------------------------------------------------

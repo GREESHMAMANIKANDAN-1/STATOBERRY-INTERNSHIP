@@ -1,0 +1,577 @@
+---
+title: "Binary Logistic Regression"
+format:
+  html:
+    mainfont: "Times New Roman"
+    fontsize: 0.90em
+    theme: cosmo
+    toc: true
+    lightbox: true
+    number-sections: true
+    number-depth: 3
+    number-offset: 1
+    toc-title: "**TABLE OF CONTENTS**"
+    toc-depth: 3
+    linkcolor: "purple"
+    citations-hover: true
+    css: sty.css
+---
+
+```{=html}
+<style>
+ sup {
+   color: blue;
+   font-size: 0.8em;
+ }
+ .affiliations {
+   color: grey;
+   font-size: 0.9em;
+   margin-top: 0.2em;
+ }
+</style>
+```
+
+::: affiliations
+<sup>1</sup>Statoberry LLP, <sup>2</sup>Department of Agricultural Statistics, Kerala Agricultural University
+:::
+
+ABSTRACT
+
+::: {style="text-align: justify;"}
+**Binary Logistic Regression (BLR)** is a statistical modelling technique used to predict the probability of a binary outcome one that takes exactly two possible values, such as presence or absence, success or failure, diseased or healthy based on one or more predictor variables that may be continuous, categorical, or a mixture of both. **BLR** models the relationship between predictors and the log-odds of the outcome through the logistic (sigmoid) function, producing interpretable coefficients in the form of odds ratios that quantify the strength and direction of each predictor's effect. In **RAISINS** you can perform Binary Logistic Regression very easily without writing a single line of code. This tutorial will guide you on how to perform **BLR** in **RAISINS** and interpret the results effectively. In addition, you will get publication-ready tables and plots including ROC curves, confusion matrices, and coefficient plots. You can also perform multivariate exploration including Principal Component Analysis (PCA) to examine predictor relationships before modelling.
+:::
+
+<details>
+
+*Hover or click each point to see more information.*
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  Introduction Binary Logistic Regression
+</summary>
+```
+
+```{=html}
+<style>
+.hover-img {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed currentColor;
+}
+
+.hover-img img {
+  position: absolute;
+  left: 50%;
+  top: 1.6em;
+  transform: translateX(-50%);
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  padding: 6px;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+
+.hover-img:hover img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 999;
+}
+</style>
+```
+
+<ul><small> The origins of logistic regression trace back to the work of [David Cox]{.hover-img}, who formally presented the logistic regression model in **1958** in his landmark paper *"The Regression Analysis of Binary Sequences"* published in the Journal of the Royal Statistical Society. Cox's contribution was pivotal in establishing a rigorous statistical framework for modelling binary outcomes outcomes that could take only one of two values in terms of predictor variables. Prior to this, researchers had relied on linear probability models, which were prone to producing predicted probabilities outside the valid range of 0 to 1. Cox resolved this by linking the linear predictor to the outcome probability through the logistic function, ensuring that all predicted values remained bounded. Over subsequent decades, binary logistic regression became one of the most extensively applied statistical methods in medicine, epidemiology, agriculture, social sciences, and machine learning, prized for its interpretability, robustness, and the natural meaning of its coefficients as odds ratios. The method's relevance has only grown in the era of data science, where binary classification problems are ubiquitous. </small></ul>
+
+</details>
+
+## Analysis of experiments {#AE}
+
+::: {style="text-align: justify;"}
+To get started, visit **RAISINS** [www.raisins.live](https://www.raisins.live) home page and go to **Analysis of experiments**. Here, you can see the different statistical analysis modules available within the app. In this tutorial, we focus on **Binary Logistic Regression (BLR)**, as shown in @fig-aov.
+:::
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Analysis of experiment tab showing Binary Logistic Regression](images/probit%20WEE%20(14)-02.png){#fig-aov fig-align="center"}
+
+## Binary Logistic Regression (BLR) {#C}
+
+::: {style="text-align: justify;"}
+Binary Logistic Regression is a supervised statistical learning method used to model the relationship between one or more predictor variables (also called independent variables or features) and a binary response variable an outcome that takes exactly two values, conventionally coded as 0 (absence, failure, non-event) and 1 (presence, success, event). Unlike ordinary linear regression, which predicts a continuous outcome, logistic regression predicts the **probability** that an observation belongs to the event category (coded 1), constraining all predictions to the range \[0, 1\] through the logistic (sigmoid) transformation. The model is particularly well-suited for classification problems in agriculture (e.g., predicting crop disease occurrence), medicine (e.g., patient survival), and ecology (e.g., species presence/absence). Its primary strength lies in interpretability the model coefficients, when exponentiated, yield **odds ratios** that convey how much the odds of the event change per unit increase in each predictor. Assumptions include the independence of observations, absence of multicollinearity among predictors, linearity between continuous predictors and the log-odds of the outcome, and a sufficiently large sample size (typically at least 10 events per predictor variable). When the response variable has more than two categories, Multinomial Logistic Regression is the appropriate extension.
+:::
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">
+  BLR — The Logistic Function
+</summary>
+```
+
+::: callout-tip
+#### Binary Logistic Regression (BLR) is a statistical classification model that estimates the probability of a binary outcome as a function of one or more predictor variables, using the logistic function to constrain predictions between 0 and 1, with coefficients interpreted as log-odds and exponentiated coefficients interpreted as odds ratios.
+:::
+
+## A working example {#W}
+
+::: {style="text-align: justify;"}
+To make things simple and interesting, we'll explain Binary Logistic Regression analysis step by step using a hypothetical example, so you can clearly see how it works and why it matters. Let's assume we are studying the factors that influence the occurrence of blast disease in rice.
+
+The image shows a dataset prepared for Binary Logistic Regression analysis in RStudio. The variable “Pest_Outbreak” is marked as the dependent variable, representing the outcome being predicted, usually in binary form (0 = No outbreak, 1 = Outbreak). The remaining columns such as LeafAreaIndex, Humidity, Rainfall, Temperature, FertilizerDosage, SoilMoisture, and PestScoutingCount are the independent variables used to explain or predict the occurrence of pest outbreaks.This dataset structure is suitable for studying how environmental and management factors influence pest incidence. The screenshot also demonstrates the arrangement of predictor and response variables before performing statistical modelling and interpretation in RStudio. The arrangement of the data is shown in @fig-data.
+:::
+
+![Example dataset ](images/probit%20WEE%20(15).png){#fig-data fig-align="center"}
+
+::: {style="text-align: justify;"}
+Data organized in MS Excel can be directly uploaded to **RAISINS** for analysis. For more details on data preparation see @sec-4. Two terms that we will use frequently are **Response Variable** and **Predictors**. In our example, the Response Variable is **Disease_Status** (0 = Healthy, 1 = Diseased), and the Predictors are the four environmental and varietal traits recorded **Temp, Humidity, Leaf_Wetness, and Variety_Resistance**.
+:::
+
+## How to prepare your data? {#sec-4 .H}
+
+::: {style="text-align: justify;"}
+Arranging data for uploading in **RAISINS** is very simple. Prepare your data exactly like the one shown in @fig-data, using a single-sheet Excel file. The response variable column must contain exactly **two distinct values** preferably coded as 0 and 1, or as two clearly named categories (e.g., "Healthy" and "Diseased"). All predictor variable columns must contain numeric values. Make sure no blank rows are left above the data, and all columns have proper names without spaces or special characters. That's it your file is ready to upload.
+
+Still if you have doubt, see @fig-4.
+
+To prepare your dataset for analysis in **RAISINS**, you have two options:
+
+Creating dataset in MS Excel
+
+Creating your dataset directly within the **RAISINS** app
+:::
+
+![Illustrating how to create a dataset](images/binary.png){#fig-4 fig-align="center"}
+
+## BLR analysis tab explained {#AO}
+
+::: {style="text-align: justify;"}
+In @fig-5 , you can see the detailed view of the Binary Logistic Regression Analysis tab, along with explanations of what each option does. This section helps you understand the purpose of every setting, so you can select the most appropriate ones for your data and analysis. Upload the prepared file by clicking Browse in the sidebar of the Analysis tab. When the file is uploaded, options to select the **Response Variable** column and the **Predictor** columns will appear. Select the column containing your binary outcome under Response Variable, and select one or more numeric columns as Predictors. You may also specify the **Reference Category** the value in the response variable treated as the baseline (typically 0 or the "non-event" category). Once you click the Run Analysis button, the full logistic regression output including model coefficients, odds ratios, model fit statistics, and classification performance metrics appears instantly.
+:::
+
+![BLR Analysis window explained](images/probit%20WEE%20(17).png){#fig-5 fig-align="center"}
+
+::: {style="text-align: justify;"}
+For some datasets, when predictor variables are heavily skewed or span very different scales, applying a transformation prior to fitting the model may improve model convergence and coefficient interpretability . **RAISINS** provides an inbuilt transformation option accessible from the Analysis tab.
+:::
+
+## Analysis results {#sec-7 .AR}
+
+::: {style="text-align: justify;"}
+Once your dataset is uploaded and the response variable and predictors are selected, click on Run Analysis. **RAISINS** will fit the Binary Logistic Regression model using maximum likelihood estimation and produce a comprehensive set of outputs. The primary output is the **model coefficient table** reporting the estimated log-odds coefficients, standard errors, Wald statistics, p-values, and odds ratios with 95% confidence intervals for each predictor (see @fig-100).
+:::
+
+**Table 1: Model Coefficient Summary**
+
+![Binary Logistic Regression — Model coefficient table](images/bin%201.png){#fig-100 fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;"> Model Coefficient Table </summary>
+```
+
+<small> In a Binary Logistic Regression (BLR) model, the coefficient table presents the estimated parameters of the logistic equation. Each row corresponds to one predictor variable (plus the intercept), and the columns report the following:
+
+**Coefficient (β)**: The estimated change in the log-odds of the outcome per one-unit increase in the predictor, holding all other predictors constant. A positive coefficient indicates that increasing the predictor increases the probability of the event; a negative coefficient indicates the reverse.
+
+**Standard Error (SE)**: The estimated standard deviation of the coefficient estimator, reflecting the precision of the estimate. Smaller SE values indicate more reliable coefficient estimates.
+
+**Wald Statistic**: The square of the ratio of the coefficient to its standard error, $W = (\beta / SE)^2$. It follows a chi-squared distribution with one degree of freedom under the null hypothesis that the coefficient equals zero.
+
+**p-value**: The probability of observing a Wald statistic as extreme as the one computed, under the null hypothesis that the predictor has no effect on the log-odds. A p-value below 0.05 is conventionally considered statistically significant.
+
+**Odds Ratio (OR = exp(β))**: The exponentiated coefficient, representing the multiplicative change in the odds of the event per one-unit increase in the predictor. An OR greater than 1 indicates that the predictor increases the odds of the event; an OR less than 1 indicates it decreases the odds. An OR of exactly 1 implies no effect.
+
+**95% Confidence Interval for OR**: The range within which the true population odds ratio is expected to fall with 95% confidence. If this interval does not include 1, the predictor is statistically significant at the 5% level.
+
+Significance is indicated by an asterisk (\*) for the **5%** level and two asterisks (\*\*) for the **1%** level, displayed as superscripts next to the p-value for each predictor. </small>
+
+</details>
+
+### Interpretation from @fig-100
+
+::: {style="text-align: justify;"}
+The model coefficient table reveals that **Temp** (β = 0.312, OR = 1.37, p = 0.008) and **Humidity** (β = 0.284, OR = 1.33, p = 0.014) are statistically significant positive predictors of blast disease occurrence, indicating that higher temperature and humidity are associated with increased odds of disease. Specifically, each one-unit increase in temperature increases the odds of blast by approximately 37%, and each one-percentage-point increase in humidity increases the odds by about 33%, holding all other predictors constant. **Leaf_Wetness** (β = 0.198, OR = 1.22, p = 0.061) shows a positive trend but does not reach conventional significance at the 5% level. **Variety_Resistance** (β = −0.421, OR = 0.66, p = 0.002) is a highly significant negative predictor each one-unit increase in the resistance score reduces the odds of blast occurrence by approximately 34%, confirming the protective role of genetic resistance. The intercept (β = −7.84, p \< 0.001) represents the log-odds of disease when all predictors equal zero and has no direct practical interpretation in this context.
+
+It provides detailed information on model fit statistics and the overall assessment of model adequacy.
+:::
+
+**Table 2: Model Fit Statistics and Classification Performance**
+
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Model fit statistics and overall classification performance](images/bin2.png){#fig-101 fig-align="center"}
+
+![Model fit statistics and overall classification performance](images/bin3.png){fig-align="center"}
+
+![Model fit statistics and overall classification performance](images/bin4.png){fig-align="center"}
+
+<details>
+
+```{=html}
+<summary style="color: #5DADE2"; font-weight: bold;">Overview of BLR Model Fit and Performance Metrics
+</summary>
+```
+
+<small>
+
+1.  *Likelihood-Based Fit Statistics*
+
+**Log-Likelihood (LL)**: The value of the log-likelihood function evaluated at the estimated coefficients. More negative values indicate poorer fit; the log-likelihood of the full model is always greater than or equal to that of the null (intercept-only) model.
+
+**−2 Log-Likelihood (−2LL)**: Also called the deviance, this is −2 times the log-likelihood and follows a chi-squared distribution. It is used to compare nested models: a statistically significant decrease in −2LL when adding predictors confirms that the predictors collectively improve model fit.
+
+**AIC (Akaike Information Criterion)**: A penalised likelihood criterion that balances model fit against complexity. Calculated as $AIC = -2LL + 2k$, where k is the number of estimated parameters. Lower AIC values indicate better models. AIC is particularly useful for comparing non-nested models.
+
+**BIC (Bayesian Information Criterion)**: Similar to AIC but applies a stronger penalty for model complexity: $BIC = -2LL + k \ln(n)$, where n is the sample size. BIC tends to favour more parsimonious models than AIC.
+
+2.  *Pseudo R-Squared Measures*
+
+**Cox and Snell R²**: An approximation of the proportion of variance explained by the model, analogous to R² in linear regression. Its maximum value is less than 1, so it is difficult to interpret in absolute terms.
+
+**Nagelkerke R²**: A corrected version of Cox and Snell R² that is scaled to range from 0 to 1, making it more interpretable. Values above 0.3 are generally considered moderate and above 0.5 as strong.
+
+3.  *Hosmer-Lemeshow Test*
+
+**Hosmer-Lemeshow χ² and p-value**: A goodness-of-fit test that groups observations into deciles of predicted probability and compares observed to expected frequencies within each group. A **non-significant p-value (\> 0.05)** indicates adequate model fit — meaning the model's predicted probabilities are not significantly different from observed outcomes.
+
+4.  *Classification Performance*
+
+**Accuracy**: The proportion of correctly classified observations (both events and non-events) out of the total. Calculated as $(TP + TN) / N$.
+
+**Sensitivity (Recall)**: The proportion of actual events correctly identified by the model. Calculated as $TP / (TP + FN)$.
+
+**Specificity**: The proportion of actual non-events correctly identified. Calculated as $TN / (TN + FP)$.
+
+**Positive Predictive Value (PPV / Precision)**: The proportion of predicted events that are true events. Calculated as $TP / (TP + FP)$.
+
+**AUC (Area Under the ROC Curve)**: A threshold-independent measure of the model's discriminatory ability, ranging from 0.5 (no discrimination, equivalent to random guessing) to 1.0 (perfect discrimination). AUC values of 0.7–0.8 are considered acceptable, 0.8–0.9 excellent, and above 0.9 outstanding.
+
+</small>
+
+</details>
+
+### Interpretation from @fig-101
+
+::: {style="text-align: justify;"}
+The model fit statistics confirm that the fitted Binary Logistic Regression model provides a substantially better fit to the data than a null (intercept-only) model. The chi-squared test of overall model significance (χ² = 38.72, df = 4, p \< 0.001) demonstrates that the four predictors collectively contribute significantly to explaining disease occurrence. The Nagelkerke R² of 0.41 indicates that the model accounts for approximately 41% of the variability in blast disease status a moderate-to-strong effect. The Hosmer-Lemeshow test (χ² = 7.14, df = 8, p = 0.521) is non-significant, confirming that the model's predicted probabilities are well-calibrated to the observed outcomes. In terms of classification performance at the default 0.50 probability threshold, the model correctly classifies 83.3% of all plots (overall accuracy). Sensitivity is 80.0%, indicating that 80% of truly diseased plots are correctly identified, while specificity is 85.7%, meaning that 85.7% of healthy plots are correctly classified as healthy. The AUC of 0.88 confirms excellent discriminatory ability the model strongly distinguishes between diseased and healthy plots across all possible classification thresholds.
+:::
+
+::: callout-tip
+#### Odds Ratio Interpretation Guide
+
+An **Odds Ratio (OR) \> 1** means the predictor *increases* the odds of the event. An **OR \< 1** means it *decreases* the odds. An **OR = 1** means no association. Always report the 95% confidence interval alongside the OR if the interval contains 1, the predictor is not statistically significant at the 5% level.
+:::
+
+::: callout-tip
+#### AUC as a Model Quality Benchmark
+
+The **AUC (Area Under the ROC Curve)** is the most robust single-number summary of a logistic regression model's classification performance. **AUC = 0.5** means the model is no better than chance. **AUC = 0.7–0.8** is acceptable. **AUC = 0.8–0.9** is excellent. **AUC \> 0.9** is outstanding. Always report AUC alongside accuracy, as accuracy alone can be misleading when class proportions are unequal.
+:::
+
+##  Plots and Graphs {#BP}
+
+::: {style="text-align: justify;"}
+**RAISINS** is designed for a smooth and hassle-free experience. Once you click the Run Analysis button, all relevant results and outputs appear instantly leaving no room for confusion. We have ensured that every possible plot related to Binary Logistic Regression is readily available. Simply click on the Plots and Graphs tab to view them (See @fig-8). Each plot comes with a gear icon at the top-left corner, allowing you to customise its appearance. You can also download these plots in high-quality PNG format (300 dpi), JPEG, TIFF, PDF, and SVG format for use in reports or presentations.
+:::
+
+### Customizing plots
+
+::: {style="text-align: justify;"}
+**RAISINS** provides users various customisation features for the plots to enhance the visualisation according to their requirements. **Click** on @fig-8 to get a clear idea of the customising features.
+:::
+
+![Plot settings for customizing](images/probit%20WEE%20(18).png){#fig-8 fig-align="center"}
+
+::: {style="text-align: justify;"}
+From @fig-9 to @fig-13, you can see the different types of plots available in **RAISINS** for Binary Logistic Regression. Each one is visually illustrated and accompanied by a clear, insightful description below, making it easy to understand.
+:::
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const descriptions = document.querySelectorAll('.plot-description');
+  descriptions.forEach(desc => {
+    desc.style.display = 'none';
+  });
+});
+
+function showDescription(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function hideDescription(id) {
+  document.getElementById(id).style.display = 'none';
+}
+</script>
+```
+
+```{=html}
+<style>
+.plot-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.plot-container img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plot-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plot-description {
+  display: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8));
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.plot-container:hover .plot-description {
+  display: flex !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#rocplot-desc     { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 142, 83, 0.8)); }
+#confmatrix-desc  { background: linear-gradient(135deg, rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8)); }
+#coefplot-desc    { background: linear-gradient(135deg, rgba(0, 221, 235, 0.8), rgba(38, 166, 154, 0.8)); }
+#probplot-desc    { background: linear-gradient(135deg, rgba(255, 154, 139, 0.8), rgba(255, 106, 136, 0.8)); }
+#varimpplot-desc  { background: linear-gradient(135deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8)); }
+</style>
+```
+
+:::::::::::::::::::::::: grid
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('rocplot-desc')" onmouseout="hideDescription('rocplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Logistic probability plot](images/logist%20bin.png){#fig-9}
+
+:::: {#rocplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **Logistic Probability Plot** in binary logistic regression shows the relationship between the predictor variables and the probability of occurrence of the binary outcome (0 or 1). The plot displays an S-shaped logistic curve, where the probability values range from 0 to 1. It helps visualize how changes in independent variables influence the likelihood of the dependent event occurring.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('confmatrix-desc')" onmouseout="hideDescription('confmatrix-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Odds ratio plot](images/ods.png){#fig-10}
+
+:::: {#confmatrix-desc .plot-description}
+::: {style="text-align: justify;"}
+An **Odds Ratio** in binary logistic regression measures how the odds of an event occurring change with a one-unit increase in an independent variable. It indicates the strength and direction of association between predictors and the outcome. An odds ratio greater than 1 shows increased odds, less than 1 shows decreased odds, and equal to 1 indicates no effect on the outcome.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('coefplot-desc')" onmouseout="hideDescription('coefplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Importance plot](images/imp%20pl.png){#fig-11}
+
+:::: {#coefplot-desc .plot-description}
+::: {style="text-align: justify;"}
+An **Importance Plot** in binary logistic regression is a graphical representation that shows the relative contribution of independent variables in predicting the dependent binary outcome. Variables with higher importance values have a stronger influence on the model prediction, helping identify the most significant factors affecting the response variable.
+:::
+::::
+:::::
+::::::
+
+:::::: g-col-6
+::::: {.plot-container onmouseover="showDescription('probplot-desc')" onmouseout="hideDescription('probplot-desc')"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Residual plot](images/res%20pl.png){#fig-12}
+
+:::: {#probplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **Residual Plot** in binary logistic regression is used to examine the difference between observed and predicted values of the model. It helps identify model fit, outliers, and unusual patterns in the data. A random distribution of residuals around zero indicates that the logistic regression model fits the data appropriately.
+:::
+::::
+:::::
+::::::
+
+::::::: g-col-6
+:::::: {.plot-container onmouseover="showDescription('varimpplot-desc')" onmouseout="hideDescription('varimpplot-desc')"}
+::: {style="text-align: center;"}
+<!-- REPLACE THIS SCREENSHOT -->
+
+![Historgram of deviance residuals](images/his.png){#fig-13}
+:::
+
+:::: {#varimpplot-desc .plot-description}
+::: {style="text-align: justify;"}
+A **Histogram of Deviance Residuals** in binary logistic regression displays the distribution of deviance residuals to assess model fit and detect unusual observations. It helps determine whether residuals are symmetrically distributed around zero. A roughly balanced and normal-like distribution indicates a better fitting logistic regression model, while extreme residuals may suggest outliers or poor model fit.
+:::
+::::
+::::::
+:::::::
+::::::::::::::::::::::::
+
+## AI Interpretation {#AI}
+
+::: {style="text-align: justify;"}
+**RAISINS** features an integrated AI Assistant designed to provide automated, plain-language interpretation of your Binary Logistic Regression results. Once the analysis is complete, the AI Assistant reads the model coefficient table, odds ratios, model fit statistics, AUC, and classification performance metrics to generate a concise narrative summary identifying which predictors are statistically significant, describing the direction and magnitude of their effects in terms of odds ratios, evaluating the overall model fit and discriminatory ability, and suggesting appropriate next steps such as reporting confidence intervals, applying a different classification threshold, or conducting additional residual diagnostics. The AI Assistant makes interpreting complex logistic regression output accessible even to users without a deep statistical background. See @fig-ai.
+:::
+
+![AI Interpretation in RAISINS](images/ai%20bin.png){#fig-ai fig-align="center"}
+
+## Preparing your data {#PRE}
+
+::: {style="text-align: justify;"}
+"Your analysis is only as good as your data! Feed RAISINS high-quality data, and it will deliver powerful insights feed it messy data, and the results won't be trustworthy."
+
+1.  Create your dataset in MS Excel
+
+2.  Build your dataset directly within the RAISINS app
+:::
+
+## Preparing data in MS Excel {#EX}
+
+::: {style="text-align: justify;"}
+Open a new blank sheet in MS Excel with only one sheet included, and avoid adding any unnecessary content. The dataset should follow a column-based format, where the first column represents the binary response variable you can name this column appropriately, such as "Disease_Status" or "Outcome." This column must contain exactly **two distinct values** (e.g., 0 and 1, or "Healthy" and "Diseased") with consistent spelling and capitalisation throughout. All predictor variables (e.g., Temp, Humidity, Leaf_Wetness, Variety_Resistance) should be arranged in separate subsequent columns and must contain **numeric values only** categorical predictors should be dummy-coded as 0/1 binary indicator variables before upload. The file can be saved in CSV, XLS, or XLSX format, but CSV is recommended as it is lighter and enables faster loading. Ensure that there are no unwanted spaces in column names or cell values. For reference, see the structure shown in @fig-pp. The data can also be arranged as shown in @fig-kk.
+:::
+
+![Model-1: showing how the prepared Excel file for upload should look like](images/bin11.png){#fig-pp}
+
+![Model-2: Showing how the prepared Excel file for upload should look like](images/bin222.png){#fig-kk}
+
+<details>
+
+<summary>Dataset Creation Rules</summary>
+
+<small> 1. **Column Naming Convention** - No spaces allowed in column names.\
+- Use underscores (`_`) or full stops (`.`) for separation. - Avoid symbols and special characters like %, \# etc. 2. **Response Variable** - Must contain exactly **two distinct values** — binary (0/1) or two clearly named categories.\
+- Consistent capitalisation is essential (e.g., "Diseased" and "diseased" will be treated as different categories). 3. **Predictor Variables** - All predictor columns must contain **numeric values only**.\
+- Dummy-code any categorical predictors as 0/1 indicator variables before uploading. 4. **Data Arrangement** - Start data arrangement towards the upper-left corner.\
+- Ensure the row above the data is not blank. 5. **Cell Management** - Avoid typing or deleting in cells without data.\
+- If needed, select affected cells, right-click, and select **Clear Contents**. 6. **Missing Values** - Ensure there are no missing values in either the response variable or the predictor columns, as missing values will cause the analysis to fail. </small>
+
+</details>
+
+<details>
+
+<summary>How to Save as CSV in MS Excel</summary>
+
+<small> 1. **Open Your Workbook**
+
+```         
+-   Ensure your data is arranged properly with only one sheet.
+```
+
+2.  **Click 'File' Menu**
+
+    - Go to the top-left corner and click on **File**.
+
+3.  **Choose 'Save As' or 'Save a Copy'**
+
+    - Select the location where you want to save your file.
+
+4.  **Set File Type to CSV**
+
+    - In the **'Save as type'** dropdown menu, choose **CSV (Comma delimited) (\*.csv)**.
+
+5.  **Name Your File**
+
+    - Enter a relevant file name without spaces (use underscores if needed).
+
+6.  **Click 'Save'**
+
+    - Click **Save** to export the file.
+
+> 💡 Tip: Before saving, double-check that your response variable column contains exactly two distinct values, all predictor columns are numeric, and there are no missing values or blank rows above the data. </small>
+
+</details>
+
+## Creating dataset in RAISINS {#CR}
+
+::: {style="text-align: justify;"}
+If you're unsure about the correct format for creating a dataset, don't worry **RAISINS** offers an option to create data directly within the app using the prescribed template. Here's how:
+
+- Navigate to the **Create Data Tab**
+
+- Set the **Response Variable** type to Binary (0/1)
+
+- Select number of **Predictor Variables**
+
+- Select number of **Observations** (rows/sample size)
+
+- Click on **Create** button
+
+Model layout will appear as shown in @fig-createdata. Now you may enter the observations manually into the CSV file once downloaded, or paste the observations straight into the file provided. Once you have entered the data in the layout, download the csv file and upload in Analysis.
+:::
+
+![Illustrating how to create a dataset](images/binary.png){#fig-createdata fig-align="center"}
+
+## Model datasets {#M}
+
+::: {style="text-align: justify;"}
+To test the app or better understand the required data arrangement, we provide model datasets within the app. You can download them from the Datasets tab. A model dataset for Binary Logistic Regression is pre-formatted with a binary response column and multiple numeric predictor columns, and is ready to upload directly into the Analysis tab for an immediate demonstration of the full analysis workflow.
+:::
+
+![Model dataset](images/mod%20bin.png){#fig-188 fig-align="center"}
+
+## FAQ's {#F}
+
+::: {style="text-align: justify;"}
+The app includes a dedicated FAQs tab to help clarify common doubts and guide users through various features. This section provides detailed answers to frequently asked questions about Binary Logistic Regression including when to use BLR versus linear regression or a t-test, how to handle categorical predictors, how to interpret odds ratios when the predictor is continuous versus binary, what to do when the model does not converge, and how to report results in accordance with academic journal guidelines. If you're ever unsure about how something works, the FAQs tab is a great place to start.
+:::
+
+![FAQs](images/faq%20bin.png){#fig-148 fig-align="center"}
+
+## View data {#U}
+
+::: {style="text-align: justify;"}
+View Data serves as the primary diagnostic tool for ensuring data integrity before analysis. Upon uploading your dataset, the system performs an automated Health Check to validate column types and formatting. For Binary Logistic Regression, the Health Check specifically verifies that the response variable column contains exactly two distinct values, that all predictor columns contain numeric data with no missing values, and that the dataset has a sufficient number of observations relative to the number of predictors (a minimum of 10 events per predictor is recommended as a rule of thumb). Any formatting issues or potential data quality problems identified at this stage should be resolved before proceeding to analysis to ensure that the logistic regression results are accurate, reliable, and interpretable.
+:::
+
+![View data](images/view%20bin.png){fig-align="center"}
+
+------------------------------------------------------------------------

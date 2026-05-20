@@ -321,7 +321,7 @@ After obtaining a significant F-value in ANOVA under **3FCRD**, multiple compari
 
 <!-- REPLACE THIS SCREENSHOT -->
 
-![Multiple comparison test options explained](images/3f multiple.png){#fig-7 fig-align="center"}
+![Multiple comparison test options explained](images/3f%20multiple.png){#fig-7 fig-align="center"}
 
 <details>
 
